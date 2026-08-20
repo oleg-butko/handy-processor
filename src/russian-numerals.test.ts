@@ -13,6 +13,31 @@ describe("normalizeRussianNumerals", () => {
     assert.equal(normalizeRussianNumerals("девятьсот девяносто девять"), "999");
   });
 
+  it("converts common case forms", () => {
+    assert.equal(normalizeRussianNumerals("двадцати двух"), "22");
+    assert.equal(normalizeRussianNumerals("двумястами двадцатью двумя"), "222");
+    assert.equal(normalizeRussianNumerals("трёхсот сорока пяти"), "345");
+  });
+
+  it("converts thousands and millions", () => {
+    assert.equal(normalizeRussianNumerals("тысяча сто"), "1100");
+    assert.equal(normalizeRussianNumerals("две тысячи двадцать два"), "2022");
+    assert.equal(normalizeRussianNumerals("миллион сто тысяч сто"), "1100100");
+    assert.equal(
+      normalizeRussianNumerals("двух миллионов трехсот тысяч пяти"),
+      "2300005",
+    );
+  });
+
+  it("uses bigint arithmetic for billion and trillion scales", () => {
+    assert.equal(
+      normalizeRussianNumerals(
+        "девятьсот триллионов восемьсот миллиардов семьсот миллионов шестьсот тысяч пятьсот",
+      ),
+      "900800700600500",
+    );
+  });
+
   it("replaces numeral spans inside ordinary text", () => {
     assert.equal(
       normalizeRussianNumerals("мне нужно двадцать два файла и три каталога"),
@@ -28,9 +53,11 @@ describe("normalizeRussianNumerals", () => {
     assert.equal(normalizeRussianNumerals("сто двести триста"), "100 200 300");
     assert.equal(normalizeRussianNumerals("один два"), "1 2");
     assert.equal(normalizeRussianNumerals("двадцать тридцать"), "20 30");
+    assert.equal(normalizeRussianNumerals("тысяча миллион"), "1000 1000000");
   });
 
   it("does not change words that merely contain a numeral", () => {
     assert.equal(normalizeRussianNumerals("трибуна и семья"), "трибуна и семья");
+    assert.equal(normalizeRussianNumerals("я люблю свою семью"), "я люблю свою семью");
   });
 });

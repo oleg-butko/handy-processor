@@ -41,34 +41,86 @@ function tokenizeWords(text: string): WordToken[] {
   return tokens;
 }
 
-function canAppend(
-  entries: readonly RussianNumeralEntry[],
-  candidate: RussianNumeralEntry,
-): boolean {
-  if (entries.length === 0) {
-    return true;
+function parseSmallGroup(entries: readonly RussianNumeralEntry[]): bigint | undefined {
+  if (entries.length === 0 || entries.some((entry) => entry.kind === "scale")) {
+    return undefined;
   }
 
-  const first = entries[0];
-  const previous = entries.at(-1);
-
-  if (first === undefined || previous === undefined || first.value === 0) {
-    return false;
+  if (entries.length === 1) {
+    return BigInt(entries[0]?.value ?? 0);
   }
 
-  if (candidate.kind === "hundred" || candidate.value === 0) {
-    return false;
+  const [first, second, third] = entries;
+  if (first === undefined || second === undefined || first.value === 0 || second.value === 0) {
+    return undefined;
   }
 
-  if (previous.kind === "hundred") {
-    return candidate.kind === "teen" || candidate.kind === "ten" || candidate.kind === "unit";
+  if (entries.length === 2) {
+    const followsHundred =
+      first.kind === "hundred" &&
+      (second.kind === "teen" || second.kind === "ten" || second.kind === "unit");
+    const followsTen = first.kind === "ten" && second.kind === "unit";
+
+    return followsHundred || followsTen
+      ? BigInt(first.value + second.value)
+      : undefined;
   }
 
-  return previous.kind === "ten" && candidate.kind === "unit";
+  if (
+    entries.length === 3 &&
+    first.kind === "hundred" &&
+    second.kind === "ten" &&
+    third?.kind === "unit" &&
+    third.value !== 0
+  ) {
+    return BigInt(first.value + second.value + third.value);
+  }
+
+  return undefined;
 }
 
-function parseEntries(entries: readonly RussianNumeralEntry[]): string {
-  return entries.reduce((total, entry) => total + entry.value, 0).toString();
+function parseEntries(entries: readonly RussianNumeralEntry[]): bigint | undefined {
+  const hasScale = entries.some((entry) => entry.kind === "scale");
+  if (!hasScale) {
+    return parseSmallGroup(entries);
+  }
+
+  let total = 0n;
+  let previousScale: bigint | undefined;
+  let groupStart = 0;
+
+  for (let index = 0; index < entries.length; index += 1) {
+    const scale = entries[index];
+    if (scale?.kind !== "scale") {
+      continue;
+    }
+
+    const scaleValue = BigInt(scale.value);
+    if (previousScale !== undefined && scaleValue >= previousScale) {
+      return undefined;
+    }
+
+    const groupEntries = entries.slice(groupStart, index);
+    if (groupEntries.length === 0 && index > 0) {
+      return undefined;
+    }
+    const groupValue = groupEntries.length === 0 ? 1n : parseSmallGroup(groupEntries);
+    if (groupValue === undefined || groupValue === 0n) {
+      return undefined;
+    }
+
+    total += groupValue * scaleValue;
+    previousScale = scaleValue;
+    groupStart = index + 1;
+  }
+
+  const trailingEntries = entries.slice(groupStart);
+  if (trailingEntries.length === 0) {
+    return total;
+  }
+
+  const trailingValue = parseSmallGroup(trailingEntries);
+  return trailingValue === undefined ? undefined : total + trailingValue;
 }
 
 function findReplacements(text: string, tokens: readonly WordToken[]): Replacement[] {
@@ -83,6 +135,7 @@ function findReplacements(text: string, tokens: readonly WordToken[]): Replaceme
     }
 
     const entries: RussianNumeralEntry[] = [firstToken.entry];
+    const numeralTokens: WordToken[] = [firstToken];
     let lastToken = firstToken;
     let nextIndex = index + 1;
 
@@ -93,28 +146,42 @@ function findReplacements(text: string, tokens: readonly WordToken[]): Replaceme
       }
 
       const separator = text.slice(lastToken.end, nextToken.start);
-      if (!WHITESPACE_PATTERN.test(separator) || !canAppend(entries, nextToken.entry)) {
+      if (!WHITESPACE_PATTERN.test(separator)) {
         break;
       }
 
       entries.push(nextToken.entry);
+      numeralTokens.push(nextToken);
       lastToken = nextToken;
       nextIndex += 1;
     }
 
+    let acceptedLength = entries.length;
+    let value = parseEntries(entries);
+    while (value === undefined && acceptedLength > 1) {
+      acceptedLength -= 1;
+      value = parseEntries(entries.slice(0, acceptedLength));
+    }
+
+    const acceptedLastToken = numeralTokens[acceptedLength - 1];
+    if (value === undefined || acceptedLastToken === undefined) {
+      index += 1;
+      continue;
+    }
+
     replacements.push({
       start: firstToken.start,
-      end: lastToken.end,
-      value: parseEntries(entries),
+      end: acceptedLastToken.end,
+      value: value.toString(),
     });
-    index = nextIndex;
+    index += acceptedLength;
   }
 
   return replacements;
 }
 
 /**
- * Replace unambiguous Russian cardinal numerals from zero through 999.
+ * Replace supported Russian cardinal numerals using scales through trillion.
  *
  * Input is expected to be lowercase. Punctuation and all non-numeral text are
  * preserved exactly.

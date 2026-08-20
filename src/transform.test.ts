@@ -28,4 +28,11 @@ describe("transformTranscription", () => {
       "мне нужно 22 файла",
     );
   });
+
+  it("normalizes inflected numbers with scales", () => {
+    assert.equal(
+      transformTranscription("НЕ ХВАТАЕТ ДВУХ ТЫСЯЧ ДВАДЦАТИ ДВУХ ФАЙЛОВ."),
+      "не хватает 2022 файлов",
+    );
+  });
 });

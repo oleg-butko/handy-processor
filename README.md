@@ -4,7 +4,8 @@ A small OpenAI-compatible HTTP server for Handy's experimental
 post-processing feature. It currently:
 
 1. converts the transcription to lowercase; and
-2. converts simple Russian cardinal numerals through 999 to digits; and
+2. converts supported Russian cardinal numerals, including common case forms
+   and scales through trillion, to digits; and
 3. removes a period only when it is the final character (ignoring trailing
    whitespace).
 
@@ -106,9 +107,23 @@ npm run generate:numerals
 npm run check:numerals
 ```
 
+To validate the curated word forms with `pymorphy3`, create a development-only
+virtual environment and run:
+
+```bash
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements-generator.txt
+npm run validate:numerals-morphology
+```
+
+On Windows, use `py -m venv .venv`, activate `.venv\Scripts\Activate.ps1`,
+install the same requirements, and invoke the generator directly with
+`py scripts/generate_russian_numerals.py --check --validate-morphology`.
+
 Python is not used by the running server or required by the SEA executable.
 See [the research and implementation plan](docs/russian-number-normalization.md)
-for the current scope and planned morphology support.
+for the current scope and remaining normalization stages.
 
 On Windows PowerShell, a quick live check is:
 
