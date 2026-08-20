@@ -1,3 +1,5 @@
+import { normalizeRussianNumerals } from "./russian-numerals.js";
+
 /**
  * Apply the local transcription transformations.
  *
@@ -5,5 +7,6 @@
  * sentences and other final punctuation are preserved.
  */
 export function transformTranscription(text: string): string {
-  return text.toLowerCase().replace(/\.(\s*)$/u, "$1");
+  const lowercased = text.toLowerCase();
+  return normalizeRussianNumerals(lowercased).replace(/\.(\s*)$/u, "$1");
 }

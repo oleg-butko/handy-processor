@@ -9,6 +9,8 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "generate:numerals": "python3 scripts/generate_russian_numerals.py",
+    "check:numerals": "python3 scripts/generate_russian_numerals.py --check",
     "dev": "tsx watch src/server.ts",
     "start": "node dist/server.js",
     "test": "npm run build && node --test dist/*.test.js",

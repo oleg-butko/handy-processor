@@ -4,10 +4,12 @@ A small OpenAI-compatible HTTP server for Handy's experimental
 post-processing feature. It currently:
 
 1. converts the transcription to lowercase; and
-2. removes a period only when it is the final character (ignoring trailing
+2. converts simple Russian cardinal numerals through 999 to digits; and
+3. removes a period only when it is the final character (ignoring trailing
    whitespace).
 
-For example, `HELLO. THIS IS HANDY.` becomes `hello. this is handy`.
+For example, `МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.` becomes
+`мне нужно 22 файла`.
 
 The server uses only Node.js built-ins at runtime and listens on
 `127.0.0.1:11434` by default.
@@ -95,6 +97,18 @@ Run the automated tests with:
 ```bash
 npm test
 ```
+
+The Russian numeral dictionary is generated at development time and checked
+into Git. Regenerate or verify it with Python 3:
+
+```bash
+npm run generate:numerals
+npm run check:numerals
+```
+
+Python is not used by the running server or required by the SEA executable.
+See [the research and implementation plan](docs/russian-number-normalization.md)
+for the current scope and planned morphology support.
 
 On Windows PowerShell, a quick live check is:
 

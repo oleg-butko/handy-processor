@@ -21,4 +21,11 @@ describe("transformTranscription", () => {
   it("does not remove other final punctuation", () => {
     assert.equal(transformTranscription("IS THIS OK?"), "is this ok?");
   });
+
+  it("normalizes simple Russian numerals as part of the transformation", () => {
+    assert.equal(
+      transformTranscription("МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА."),
+      "мне нужно 22 файла",
+    );
+  });
 });
