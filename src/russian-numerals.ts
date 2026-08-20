@@ -24,6 +24,16 @@ const NUMERAL_DICTIONARY = RUSSIAN_NUMERAL_WORDS as Readonly<
   Record<string, RussianNumeralEntry>
 >;
 const NUMERAL_DICTIONARY_ENTRIES = Object.entries(NUMERAL_DICTIONARY);
+const SMALL_GROUP_MAX_TOKENS = 3;
+const SCALE_COUNT = new Set(
+  NUMERAL_DICTIONARY_ENTRIES
+    .filter(([, entry]) => entry.kind === "scale")
+    .map(([, entry]) => entry.canonical),
+).size;
+// A valid span contains at most one three-token group before each scale and
+// one final three-token group. Capping the lookahead keeps invalid input O(n).
+const NUMERAL_SPAN_MAX_TOKENS =
+  SCALE_COUNT * (SMALL_GROUP_MAX_TOKENS + 1) + SMALL_GROUP_MAX_TOKENS;
 
 function lookupNumeral(word: string): RussianNumeralEntry | undefined {
   return NUMERAL_DICTIONARY[word.replaceAll("ё", "е")];
@@ -268,7 +278,15 @@ function parseCandidate(
 
   const containsFuzzyMatch = tokens.some((token) => token.match === "fuzzy");
   const containsExactMatch = tokens.some((token) => token.match === "exact");
-  return containsFuzzyMatch && !containsExactMatch ? undefined : value;
+  const containsAmbiguousForm = tokens.some(
+    (token) => token.entry?.ambiguous === true,
+  );
+
+  if (containsFuzzyMatch && !containsExactMatch) {
+    return undefined;
+  }
+
+  return containsAmbiguousForm && tokens.length === 1 ? undefined : value;
 }
 
 function findReplacements(text: string, tokens: readonly WordToken[]): Replacement[] {
@@ -287,7 +305,10 @@ function findReplacements(text: string, tokens: readonly WordToken[]): Replaceme
     let lastToken = firstToken;
     let nextIndex = index + 1;
 
-    while (nextIndex < tokens.length) {
+    while (
+      nextIndex < tokens.length &&
+      entries.length < NUMERAL_SPAN_MAX_TOKENS
+    ) {
       const nextToken = tokens[nextIndex];
       if (nextToken?.entry === undefined) {
         break;

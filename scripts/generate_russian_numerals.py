@@ -40,8 +40,8 @@ def numeral(
 
 
 # This is an intentionally reviewed allowlist rather than every parse returned
-# by a morphology engine. In particular, "семью" is not included: besides the
-# instrumental form of seven it is the very common accusative form of "семья".
+# by a morphology engine. Homonyms that are unsafe without numeric context are
+# listed separately in AMBIGUOUS_FORMS.
 NUMERALS = (
     numeral(
         "ноль",
@@ -68,7 +68,7 @@ NUMERALS = (
     numeral("четыре", 4, "unit", "четырех", "четырем", "четырьмя"),
     numeral("пять", 5, "unit", "пяти", "пятью"),
     numeral("шесть", 6, "unit", "шести", "шестью"),
-    numeral("семь", 7, "unit", "семи"),
+    numeral("семь", 7, "unit", "семи", "семью"),
     numeral("восемь", 8, "unit", "восьми", "восемью"),
     numeral("девять", 9, "unit", "девяти", "девятью"),
     numeral("десять", 10, "teen", "десяти", "десятью"),
@@ -104,6 +104,8 @@ NUMERALS = (
     numeral("триллион", 1_000_000_000_000, "scale", "триллиона", "триллионов", "триллиону", "триллионам", "триллионом", "триллионами", "триллионе", "триллионах"),
 )
 
+AMBIGUOUS_FORMS = frozenset({"одно", "одни", "трем", "семью", "сорока"})
+
 
 def normalize_word(word: str) -> str:
     return word.lower().replace("ё", "е")
@@ -123,6 +125,13 @@ def build_dictionary() -> dict[str, NumeralSpec]:
                     f"form {word!r} maps to both {previous.value} and {spec.value}"
                 )
             entries[word] = spec
+
+    missing_ambiguous_forms = AMBIGUOUS_FORMS.difference(entries)
+    if missing_ambiguous_forms:
+        raise ValueError(
+            "ambiguous forms are missing from the dictionary: "
+            + ", ".join(sorted(missing_ambiguous_forms))
+        )
 
     return entries
 
@@ -161,6 +170,7 @@ def render() -> str:
         "  readonly value: number;",
         "  readonly kind: RussianNumeralKind;",
         "  readonly canonical: string;",
+        "  readonly ambiguous?: true;",
         "}",
         "",
         "export const RUSSIAN_NUMERAL_WORDS = {",
@@ -169,9 +179,10 @@ def render() -> str:
     for word, spec in sorted(build_dictionary().items()):
         encoded_word = json.dumps(word, ensure_ascii=False)
         canonical = json.dumps(spec.canonical, ensure_ascii=False)
+        ambiguous = ", ambiguous: true" if word in AMBIGUOUS_FORMS else ""
         lines.append(
             f'  {encoded_word}: {{ value: {spec.value}, kind: "{spec.kind}", '
-            f"canonical: {canonical} }},"
+            f"canonical: {canonical}{ambiguous} }},"
         )
 
     lines.extend(

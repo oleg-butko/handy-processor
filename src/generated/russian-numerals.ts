@@ -7,6 +7,7 @@ export interface RussianNumeralEntry {
   readonly value: number;
   readonly kind: RussianNumeralKind;
   readonly canonical: string;
+  readonly ambiguous?: true;
 }
 
 export const RUSSIAN_NUMERAL_WORDS = {
@@ -93,11 +94,11 @@ export const RUSSIAN_NUMERAL_WORDS = {
   "одиннадцать": { value: 11, kind: "teen", canonical: "одиннадцать" },
   "одиннадцатью": { value: 11, kind: "teen", canonical: "одиннадцать" },
   "одна": { value: 1, kind: "unit", canonical: "один" },
-  "одни": { value: 1, kind: "unit", canonical: "один" },
+  "одни": { value: 1, kind: "unit", canonical: "один", ambiguous: true },
   "одним": { value: 1, kind: "unit", canonical: "один" },
   "одними": { value: 1, kind: "unit", canonical: "один" },
   "одних": { value: 1, kind: "unit", canonical: "один" },
-  "одно": { value: 1, kind: "unit", canonical: "один" },
+  "одно": { value: 1, kind: "unit", canonical: "один", ambiguous: true },
   "одного": { value: 1, kind: "unit", canonical: "один" },
   "одной": { value: 1, kind: "unit", canonical: "один" },
   "одному": { value: 1, kind: "unit", canonical: "один" },
@@ -127,13 +128,14 @@ export const RUSSIAN_NUMERAL_WORDS = {
   "семь": { value: 7, kind: "unit", canonical: "семь" },
   "семьдесят": { value: 70, kind: "ten", canonical: "семьдесят" },
   "семьсот": { value: 700, kind: "hundred", canonical: "семьсот" },
+  "семью": { value: 7, kind: "unit", canonical: "семь", ambiguous: true },
   "семьюдесятью": { value: 70, kind: "ten", canonical: "семьдесят" },
   "семьюстами": { value: 700, kind: "hundred", canonical: "семьсот" },
   "сорок": { value: 40, kind: "ten", canonical: "сорок" },
-  "сорока": { value: 40, kind: "ten", canonical: "сорок" },
+  "сорока": { value: 40, kind: "ten", canonical: "сорок", ambiguous: true },
   "ста": { value: 100, kind: "hundred", canonical: "сто" },
   "сто": { value: 100, kind: "hundred", canonical: "сто" },
-  "трем": { value: 3, kind: "unit", canonical: "три" },
+  "трем": { value: 3, kind: "unit", canonical: "три", ambiguous: true },
   "тремстам": { value: 300, kind: "hundred", canonical: "триста" },
   "тремя": { value: 3, kind: "unit", canonical: "три" },
   "тремястами": { value: 300, kind: "hundred", canonical: "триста" },

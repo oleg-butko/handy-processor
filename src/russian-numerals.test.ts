@@ -4,7 +4,7 @@ import { normalizeRussianNumerals } from "./russian-numerals.js";
 
 describe("normalizeRussianNumerals", () => {
   it("converts units, gender forms, and zero", () => {
-    assert.equal(normalizeRussianNumerals("ноль один одна одно два две"), "0 1 1 1 2 2");
+    assert.equal(normalizeRussianNumerals("ноль один одна два две"), "0 1 1 2 2");
   });
 
   it("converts compound numbers through 999", () => {
@@ -17,6 +17,21 @@ describe("normalizeRussianNumerals", () => {
     assert.equal(normalizeRussianNumerals("двадцати двух"), "22");
     assert.equal(normalizeRussianNumerals("двумястами двадцатью двумя"), "222");
     assert.equal(normalizeRussianNumerals("трёхсот сорока пяти"), "345");
+  });
+
+  it("uses ambiguous forms only inside a valid compound number", () => {
+    assert.equal(normalizeRussianNumerals("сто одно"), "101");
+    assert.equal(normalizeRussianNumerals("сорока двух"), "42");
+    assert.equal(normalizeRussianNumerals("трем тысячам"), "3000");
+    assert.equal(normalizeRussianNumerals("семью тысячами"), "7000");
+  });
+
+  it("preserves ambiguous forms without numeric context", () => {
+    assert.equal(normalizeRussianNumerals("сорока сидит на ветке"), "сорока сидит на ветке");
+    assert.equal(normalizeRussianNumerals("мы трем сыр"), "мы трем сыр");
+    assert.equal(normalizeRussianNumerals("вокруг одни проблемы"), "вокруг одни проблемы");
+    assert.equal(normalizeRussianNumerals("это одно и то же"), "это одно и то же");
+    assert.equal(normalizeRussianNumerals("я люблю свою семью"), "я люблю свою семью");
   });
 
   it("converts thousands and millions", () => {
@@ -71,8 +86,17 @@ describe("normalizeRussianNumerals", () => {
     assert.equal(normalizeRussianNumerals("тысяча миллион"), "1000 1000000");
   });
 
+  it(
+    "handles long invalid numeral sequences in bounded time",
+    { timeout: 2_000 },
+    () => {
+      const input = Array<string>(2_000).fill("один").join(" ");
+      const expected = Array<string>(2_000).fill("1").join(" ");
+      assert.equal(normalizeRussianNumerals(input), expected);
+    },
+  );
+
   it("does not change words that merely contain a numeral", () => {
     assert.equal(normalizeRussianNumerals("трибуна и семья"), "трибуна и семья");
-    assert.equal(normalizeRussianNumerals("я люблю свою семью"), "я люблю свою семью");
   });
 });
