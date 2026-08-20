@@ -5,7 +5,8 @@ post-processing feature. It currently:
 
 1. converts the transcription to lowercase; and
 2. converts supported Russian cardinal numerals, including common case forms
-   and scales through trillion, to digits; and
+   and scales through trillion, to digits, with conservative one-edit typo
+   correction inside confirmed numeric phrases; and
 3. removes a period only when it is the final character (ignoring trailing
    whitespace).
 
@@ -124,6 +125,8 @@ install the same requirements, and invoke the generator directly with
 Python is not used by the running server or required by the SEA executable.
 See [the research and implementation plan](docs/russian-number-normalization.md)
 for the current scope and remaining normalization stages.
+Development environment fixes are collected in
+[the troubleshooting notes](docs/troubleshooting.md).
 
 On Windows PowerShell, a quick live check is:
 

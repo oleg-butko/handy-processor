@@ -38,6 +38,21 @@ describe("normalizeRussianNumerals", () => {
     );
   });
 
+  it("corrects one unambiguous edit next to an exact numeral", () => {
+    assert.equal(normalizeRussianNumerals("двацать два"), "22");
+    assert.equal(normalizeRussianNumerals("двадццать два"), "22");
+    assert.equal(normalizeRussianNumerals("дважцать два"), "22");
+    assert.equal(normalizeRussianNumerals("двацдать два"), "22");
+    assert.equal(normalizeRussianNumerals("два миллиноа"), "2000000");
+  });
+
+  it("does not fuzzy-correct words without safe numeric context", () => {
+    assert.equal(normalizeRussianNumerals("двацать файлов"), "двацать файлов");
+    assert.equal(normalizeRussianNumerals("двацать, два"), "двацать, 2");
+    assert.equal(normalizeRussianNumerals("пять тесть"), "5 тесть");
+    assert.equal(normalizeRussianNumerals("осемнадцати двух"), "осемнадцати 2");
+  });
+
   it("replaces numeral spans inside ordinary text", () => {
     assert.equal(
       normalizeRussianNumerals("мне нужно двадцать два файла и три каталога"),

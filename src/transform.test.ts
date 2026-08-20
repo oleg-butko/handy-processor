@@ -35,4 +35,11 @@ describe("transformTranscription", () => {
       "не хватает 2022 файлов",
     );
   });
+
+  it("corrects a conservative numeral typo", () => {
+    assert.equal(
+      transformTranscription("МНЕ НУЖНО ДВАЦАТЬ ДВА ФАЙЛА."),
+      "мне нужно 22 файла",
+    );
+  });
 });

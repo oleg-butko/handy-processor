@@ -6,7 +6,9 @@ import {
 interface WordToken {
   readonly start: number;
   readonly end: number;
+  readonly word: string;
   readonly entry: RussianNumeralEntry | undefined;
+  readonly match: "exact" | "fuzzy" | undefined;
 }
 
 interface Replacement {
@@ -17,11 +19,14 @@ interface Replacement {
 
 const WORD_PATTERN = /\p{L}+/gu;
 const WHITESPACE_PATTERN = /^\s+$/u;
+const MIN_FUZZY_WORD_LENGTH = 5;
+const NUMERAL_DICTIONARY = RUSSIAN_NUMERAL_WORDS as Readonly<
+  Record<string, RussianNumeralEntry>
+>;
+const NUMERAL_DICTIONARY_ENTRIES = Object.entries(NUMERAL_DICTIONARY);
 
 function lookupNumeral(word: string): RussianNumeralEntry | undefined {
-  return (RUSSIAN_NUMERAL_WORDS as Readonly<Record<string, RussianNumeralEntry>>)[
-    word.replaceAll("ё", "е")
-  ];
+  return NUMERAL_DICTIONARY[word.replaceAll("ё", "е")];
 }
 
 function tokenizeWords(text: string): WordToken[] {
@@ -30,15 +35,144 @@ function tokenizeWords(text: string): WordToken[] {
   for (const match of text.matchAll(WORD_PATTERN)) {
     const start = match.index;
     const word = match[0];
+    const entry = lookupNumeral(word);
 
     tokens.push({
       start,
       end: start + word.length,
-      entry: lookupNumeral(word),
+      word,
+      entry,
+      match: entry === undefined ? undefined : "exact",
     });
   }
 
   return tokens;
+}
+
+function isOneInsertionAway(shorter: string, longer: string): boolean {
+  let shorterIndex = 0;
+  let longerIndex = 0;
+  let skipped = false;
+
+  while (shorterIndex < shorter.length && longerIndex < longer.length) {
+    if (shorter[shorterIndex] === longer[longerIndex]) {
+      shorterIndex += 1;
+      longerIndex += 1;
+      continue;
+    }
+
+    if (skipped) {
+      return false;
+    }
+
+    skipped = true;
+    longerIndex += 1;
+  }
+
+  return true;
+}
+
+function isOneEditAway(source: string, target: string): boolean {
+  const lengthDifference = source.length - target.length;
+  if (Math.abs(lengthDifference) > 1) {
+    return false;
+  }
+
+  if (lengthDifference === -1) {
+    return isOneInsertionAway(source, target);
+  }
+
+  if (lengthDifference === 1) {
+    return isOneInsertionAway(target, source);
+  }
+
+  const mismatches: number[] = [];
+  for (let index = 0; index < source.length; index += 1) {
+    if (source[index] !== target[index]) {
+      mismatches.push(index);
+      if (mismatches.length > 2) {
+        return false;
+      }
+    }
+  }
+
+  if (mismatches.length === 1) {
+    return true;
+  }
+
+  if (mismatches.length !== 2) {
+    return false;
+  }
+
+  const [first, second] = mismatches;
+  return (
+    first !== undefined &&
+    second === first + 1 &&
+    source[first] === target[second] &&
+    source[second] === target[first]
+  );
+}
+
+function findUniqueFuzzyNumeral(word: string): RussianNumeralEntry | undefined {
+  const normalizedWord = word.replaceAll("ё", "е");
+  if (normalizedWord.length < MIN_FUZZY_WORD_LENGTH) {
+    return undefined;
+  }
+
+  let result: RussianNumeralEntry | undefined;
+  let resultIdentity: string | undefined;
+
+  for (const [candidate, entry] of NUMERAL_DICTIONARY_ENTRIES) {
+    if (!isOneEditAway(normalizedWord, candidate)) {
+      continue;
+    }
+
+    const identity = `${entry.kind}:${entry.value}:${entry.canonical}`;
+    if (resultIdentity !== undefined && identity !== resultIdentity) {
+      return undefined;
+    }
+
+    result = entry;
+    resultIdentity = identity;
+  }
+
+  return result;
+}
+
+function hasExactWhitespaceNeighbor(
+  text: string,
+  tokens: readonly WordToken[],
+  index: number,
+): boolean {
+  const token = tokens[index];
+  if (token === undefined) {
+    return false;
+  }
+
+  const previous = tokens[index - 1];
+  if (
+    previous?.match === "exact" &&
+    WHITESPACE_PATTERN.test(text.slice(previous.end, token.start))
+  ) {
+    return true;
+  }
+
+  const next = tokens[index + 1];
+  return (
+    next?.match === "exact" &&
+    WHITESPACE_PATTERN.test(text.slice(token.end, next.start))
+  );
+}
+
+function addFuzzyMatches(text: string, tokens: readonly WordToken[]): WordToken[] {
+  return tokens.map((token, index) => {
+    if (token.entry !== undefined || !hasExactWhitespaceNeighbor(text, tokens, index)) {
+      return token;
+    }
+
+    const entry = findUniqueFuzzyNumeral(token.word);
+    return entry === undefined ? token : { ...token, entry, match: "fuzzy" };
+  });
 }
 
 function parseSmallGroup(entries: readonly RussianNumeralEntry[]): bigint | undefined {
@@ -123,6 +257,20 @@ function parseEntries(entries: readonly RussianNumeralEntry[]): bigint | undefin
   return trailingValue === undefined ? undefined : total + trailingValue;
 }
 
+function parseCandidate(
+  entries: readonly RussianNumeralEntry[],
+  tokens: readonly WordToken[],
+): bigint | undefined {
+  const value = parseEntries(entries);
+  if (value === undefined) {
+    return undefined;
+  }
+
+  const containsFuzzyMatch = tokens.some((token) => token.match === "fuzzy");
+  const containsExactMatch = tokens.some((token) => token.match === "exact");
+  return containsFuzzyMatch && !containsExactMatch ? undefined : value;
+}
+
 function findReplacements(text: string, tokens: readonly WordToken[]): Replacement[] {
   const replacements: Replacement[] = [];
   let index = 0;
@@ -157,10 +305,13 @@ function findReplacements(text: string, tokens: readonly WordToken[]): Replaceme
     }
 
     let acceptedLength = entries.length;
-    let value = parseEntries(entries);
+    let value = parseCandidate(entries, numeralTokens);
     while (value === undefined && acceptedLength > 1) {
       acceptedLength -= 1;
-      value = parseEntries(entries.slice(0, acceptedLength));
+      value = parseCandidate(
+        entries.slice(0, acceptedLength),
+        numeralTokens.slice(0, acceptedLength),
+      );
     }
 
     const acceptedLastToken = numeralTokens[acceptedLength - 1];
@@ -187,7 +338,8 @@ function findReplacements(text: string, tokens: readonly WordToken[]): Replaceme
  * preserved exactly.
  */
 export function normalizeRussianNumerals(text: string): string {
-  const replacements = findReplacements(text, tokenizeWords(text));
+  const tokens = addFuzzyMatches(text, tokenizeWords(text));
+  const replacements = findReplacements(text, tokens);
   if (replacements.length === 0) {
     return text;
   }
