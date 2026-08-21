@@ -5,21 +5,40 @@
   "description": "A tiny OpenAI-compatible post-processing server for Handy transcriptions",
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": ">=24.8"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "npm run build:ui && npm run build:server",
+    "build:server": "tsc -p tsconfig.json",
+    "build:ui": "vite build",
+    "bundle:sea:node26": "npm run build:ui && esbuild src/server.ts --bundle --platform=node --target=node26 --format=esm --outfile=sea-build/handy-processor.mjs",
+    "prepare:sea:node26": "node scripts/create-sea-config.mjs",
+    "build:sea:node26": "npm run bundle:sea:node26 && npm run prepare:sea:node26 && node --build-sea sea-build/sea-config.node26.generated.json && node scripts/copy-sea-runtime-files.mjs",
     "generate:numerals": "python3 scripts/generate_russian_numerals.py",
     "check:numerals": "python3 scripts/generate_russian_numerals.py --check",
     "validate:numerals-morphology": "python3 scripts/generate_russian_numerals.py --check --validate-morphology",
-    "dev": "tsx watch src/server.ts",
+    "dev": "npm run build:ui && tsx watch src/server.ts",
+    "dev:ui": "vite",
     "start": "node dist/server.js",
     "test": "npm run build && node --test dist/*.test.js",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "npm run typecheck:server && npm run typecheck:ui",
+    "typecheck:server": "tsc -p tsconfig.json --noEmit",
+    "typecheck:ui": "tsc -p ui/tsconfig.json --noEmit"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "esbuild": "^0.28.2",
     "tsx": "^4.20.0",
-    "typescript": "^5.9.0"
+    "typescript": "^5.9.0",
+    "vite": "^8.2.2"
+  },
+  "dependencies": {
+    "@mantine/core": "^8.3.16",
+    "@mantine/hooks": "^8.3.16",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   }
 }

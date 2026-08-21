@@ -2,8 +2,25 @@ import assert from "node:assert/strict";
 import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
 import { after, before, describe, it } from "node:test";
-import { handleRequest, MODEL_ID } from "./app.js";
+import { createRequestHandler, MODEL_ID } from "./app.js";
+import { TransformationLog } from "./transformation-log.js";
+import type { WebUiAssets } from "./web-ui-assets.js";
 
+const transformationLog = new TransformationLog(":memory:");
+const webUiAssets: WebUiAssets = {
+  get(path) {
+    return path === "/"
+      ? {
+          body: Buffer.from("<!doctype html><title>Handy Processor</title>"),
+          contentType: "text/html; charset=utf-8",
+        }
+      : undefined;
+  },
+};
+const handleRequest = createRequestHandler({
+  transformationHistory: transformationLog,
+  webUiAssets,
+});
 const server = createServer((request, response) => {
   void handleRequest(request, response);
 });
@@ -20,9 +37,17 @@ after(async () => {
   await new Promise<void>((resolve, reject) => {
     server.close((error) => (error ? reject(error) : resolve()));
   });
+  transformationLog.close();
 });
 
 describe("OpenAI-compatible API", () => {
+  it("serves the browser UI", async () => {
+    const response = await fetch(`${baseUrl}/`);
+
+    assert.equal(response.status, 200);
+    assert.match(await response.text(), /Handy Processor/u);
+  });
+
   it("lists the local model", async () => {
     const response = await fetch(`${baseUrl}/v1/models`);
     const body = (await response.json()) as {
@@ -33,13 +58,14 @@ describe("OpenAI-compatible API", () => {
     assert.equal(body.data[0]?.id, MODEL_ID);
   });
 
-  it("processes the last user message", async () => {
+  it("processes and logs the last user message", async () => {
+    const originalText = "МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.";
     const response = await fetch(`${baseUrl}/v1/chat/completions`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         model: MODEL_ID,
-        messages: [{ role: "user", content: "THIS IS A TEST." }],
+        messages: [{ role: "user", content: originalText }],
         stream: false,
         reasoning_effort: "none",
       }),
@@ -49,7 +75,31 @@ describe("OpenAI-compatible API", () => {
     };
 
     assert.equal(response.status, 200);
-    assert.equal(body.choices[0]?.message.content, "this is a test");
+    assert.equal(body.choices[0]?.message.content, "мне нужно 22 файла");
+
+    const historyResponse = await fetch(
+      `${baseUrl}/api/transformations?page=1&pageSize=1`,
+    );
+    const history = (await historyResponse.json()) as {
+      items: Array<{ originalText: string; transformedText: string }>;
+      pagination: { total: number };
+    };
+
+    assert.equal(historyResponse.status, 200);
+    assert.equal(history.items[0]?.originalText, originalText);
+    assert.equal(history.items[0]?.transformedText, "мне нужно 22 файла");
+    assert.equal(history.pagination.total, 1);
+  });
+
+  it("validates history pagination", async () => {
+    const response = await fetch(`${baseUrl}/api/transformations?page=0`);
+    assert.equal(response.status, 400);
+  });
+
+  it("does not serve the SPA for unknown API routes", async () => {
+    const response = await fetch(`${baseUrl}/v1/unknown`);
+    assert.equal(response.status, 404);
+    assert.match(response.headers.get("content-type") ?? "", /application\/json/u);
   });
 
   it("returns an OpenAI-style validation error", async () => {

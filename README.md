@@ -8,22 +8,27 @@ post-processing feature. It currently:
    and scales through trillion, to digits, with conservative one-edit typo
    correction inside confirmed numeric phrases; and
 3. removes a period only when it is the final character (ignoring trailing
-   whitespace).
+   whitespace);
+4. stores each transformation in a local SQLite database; and
+5. shows the paginated history in a React + Mantine web UI.
 
 For example, `МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.` becomes
 `мне нужно 22 файла`.
 
 The server uses only Node.js built-ins at runtime and listens on
-`127.0.0.1:11434` by default.
+`127.0.0.1:11434` by default. It prints the browser URL when it starts.
 
 ## Run it
 
-Install Node.js 20 or newer, then run:
+Install Node.js 24.8 or newer, then run:
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
+
+Open the URL printed by the server, normally
+`http://localhost:11434/`.
 
 For a compiled production-style run:
 
@@ -32,17 +37,23 @@ npm run build
 npm start
 ```
 
+With Node.js 26, build a SEA executable with embedded UI assets:
+
+```bash
+npm run build:sea:node26
+```
+
+See [the Windows Node.js 26 SEA guide](docs/windows-sea-node26.md) for native
+and cross-build instructions.
+
 The same commands work in Windows PowerShell. Keep that terminal open while
 using Handy. If PowerShell's execution policy blocks `npm.ps1`, run the
 equivalent `npm.cmd install` and `npm.cmd run dev` commands.
 
-Optional environment variables:
-
-- `HOST` changes the bind address (default: `127.0.0.1`).
-- `PORT` changes the port (default: `11434`).
-
-Keeping the default host makes the server accessible only from the same
-computer.
+The port is read from `config.json` in the runtime directory. The server
+always binds to `127.0.0.1`, because the UI has no authentication. The SQLite
+database is stored as `handy-processor.sqlite3` next to that config. In a SEA
+build both files are next to the executable.
 
 ## Configure Handy
 
@@ -100,6 +111,9 @@ Run the automated tests with:
 npm test
 ```
 
+See [the Web UI and storage architecture](docs/web-ui-and-storage.md) for the
+config format, SQLite schema and paginated API.
+
 The Russian numeral dictionary is generated at development time and checked
 into Git. Regenerate or verify it with Python 3:
 
@@ -150,6 +164,9 @@ Invoke-RestMethod `
 - `GET /v1/models` — lets Handy discover the local model.
 - `POST /v1/chat/completions` — accepts Handy's OpenAI-compatible request and
   returns the transformed text in `choices[0].message.content`.
+- `GET /` — serves the local React/Mantine history UI.
+- `GET /api/transformations` — returns the transformation history with
+  `page`/`pageSize` pagination.
 
 Unknown OpenAI-compatible fields such as `reasoning_effort` are intentionally
 ignored. This matches the request currently sent by Handy's Custom provider.

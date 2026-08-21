@@ -1,6 +1,6 @@
 # Сборка Windows EXE через SEA в Node.js 26
 
-Актуально для `handy-processor` на 18 августа 2026 года. Проверенная версия
+Актуально для `handy-processor` на 21 августа 2026 года. Проверенная версия
 Node.js — `26.7.0`.
 
 ## Результат
@@ -16,6 +16,10 @@ Node.js 26 может самостоятельно создать автоном
 
 Для ежедневной разработки SEA не нужен: сервер по-прежнему удобнее запускать
 через `npm run dev`. SEA следует собирать как релизный артефакт.
+
+React/Mantine UI встраивается в EXE как SEA assets. Изменяемые `config.json` и
+`handy-processor.sqlite3` находятся рядом с EXE; база создаётся при первом
+запуске.
 
 Node.js 26 сейчас имеет статус Current, а не LTS. Для внутреннего применения и
 тестирования это практичный вариант. Перед публичным production-релизом нужно
@@ -99,54 +103,28 @@ nvm-windows и POSIX NVM — разные проекты. У nvm-windows обы�
 npm ci
 ```
 
-Один раз добавить esbuild как прямую dev-зависимость:
-
-```powershell
-npm install --save-dev esbuild
-```
-
-После этого следует закоммитить изменения `package.json` и
-`package-lock.json`. `postject` для Node.js 26 не нужен.
+React, Mantine, Vite и esbuild уже зафиксированы в `package-lock.json`.
+`postject` для Node.js 26 не нужен.
 
 ### 2. Собрать приложение в один ESM-файл
 
-Проект уже использует ESM, а Node.js 26 SEA поддерживает
-`"mainFormat": "module"`, поэтому можно сохранить этот формат:
+Собрать React UI и единый ESM backend bundle:
 
 ```powershell
-npx esbuild src/server.ts `
-  --bundle `
-  --platform=node `
-  --target=node26 `
-  --format=esm `
-  --outfile=sea-build/handy-processor.mjs
+npm run bundle:sea:node26
 
 node --check sea-build/handy-processor.mjs
 ```
 
 Несмотря на поддержку ESM, bundling всё ещё необходим. SEA содержит один
 основной скрипт; локальные модули и npm-пакеты не загружаются из файловой
-системы автоматически. esbuild включает `app.ts` и `transform.ts` в итоговый
-`.mjs`, оставляя встроенные `node:`-модули частью runtime.
-
-Если предпочтительнее максимально консервативная сборка, можно оставить
-CommonJS:
-
-```powershell
-npx esbuild src/server.ts `
-  --bundle `
-  --platform=node `
-  --target=node26 `
-  --format=cjs `
-  --outfile=sea-build/handy-processor.cjs
-```
-
-Тогда в конфигурации ниже нужно указать `.cjs` и
-`"mainFormat": "commonjs"`.
+системы автоматически. esbuild включает backend-код и сгенерированный словарь
+в итоговый `.mjs`, оставляя встроенные `node:`-модули, включая `node:sqlite`,
+частью runtime. Vite отдельно создаёт UI assets в `web-dist`.
 
 ### 3. Создать конфигурацию Node.js 26 SEA
 
-Создать в корне проекта `sea-config.node26.json`:
+Конфигурация `sea-config.node26.json` уже находится в корне проекта:
 
 ```json
 {
@@ -168,23 +146,30 @@ npx esbuild src/server.ts `
 - `useCodeCache: false` сохраняет совместимость с cross-build и динамическими
   импортами;
 - `execArgvExtension: "none"` запрещает внешнему `NODE_OPTIONS` изменять
-  параметры встроенного Node.js runtime. На `HOST` и `PORT` это не влияет:
-  приложение продолжает читать их как обычные переменные окружения.
+  параметры встроенного Node.js runtime. Порт читается из соседнего
+  `config.json` и от `NODE_OPTIONS` не зависит.
+
+`npm run prepare:sea:node26` создаёт
+`sea-build/sea-config.node26.generated.json` и автоматически добавляет в него
+все файлы из `web-dist` как SEA assets. Поэтому конфигурацию не нужно вручную
+обновлять при добавлении UI chunks, изображений или шрифтов.
 
 ### 4. Создать готовый EXE одной командой
 
 ```powershell
-node --build-sea sea-config.node26.json
+npm run build:sea:node26
 ```
 
 Результат:
 
 ```text
 sea-build\handy-processor.exe
+sea-build\config.json
 ```
 
-Эта команда заменяет генерацию blob, копирование `node.exe`, удаление старой
-подписи и запуск `postject` из инструкции для Node.js 24.
+Команда собирает UI и backend, создаёт EXE и копирует рядом стартовый конфиг.
+`handy-processor.sqlite3` появится там же при первом запуске. Папка должна быть
+доступна для записи.
 
 ### 5. Проверить EXE
 
@@ -197,11 +182,12 @@ try {
   Start-Sleep -Seconds 1
 
   Invoke-RestMethod "http://127.0.0.1:11434/health"
+  Invoke-WebRequest "http://127.0.0.1:11434/"
 
   $body = @{
     model = "handy-basic-transformer"
     messages = @(
-      @{ role = "user"; content = "NODE 26 SEA TEST." }
+      @{ role = "user"; content = "МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА." }
     )
     stream = $false
   } | ConvertTo-Json -Depth 4
@@ -221,7 +207,13 @@ try {
 Ожидаемый результат:
 
 ```text
-node 26 sea test
+мне нужно 22 файла
+```
+
+Историю можно проверить через UI по адресу `http://localhost:11434/` или API:
+
+```powershell
+Invoke-RestMethod "http://127.0.0.1:11434/api/transformations?page=1&pageSize=10"
 ```
 
 После локальной проверки EXE нужно проверить на минимальной поддерживаемой
@@ -237,10 +229,10 @@ node 26 sea test
 - Model: `handy-basic-transformer`;
 - prompt: ровно `${output}`.
 
-Другой порт можно задать перед запуском:
+Другой порт задаётся в конфиге рядом с EXE:
 
 ```powershell
-$env:PORT = "12434"
+'{"port":12434}' | Set-Content .\sea-build\config.json -Encoding ascii
 .\sea-build\handy-processor.exe
 ```
 
@@ -265,18 +257,9 @@ signtool verify /pa /v sea-build/handy-processor.exe
 Пароль PFX нельзя сохранять в репозитории. Неподписанный EXE работает, но
 SmartScreen или антивирус могут показать предупреждение.
 
-## Удобный npm workflow
+## npm workflow
 
-После успешной ручной проверки можно добавить в `package.json`:
-
-```json
-{
-  "scripts": {
-    "bundle:sea:node26": "esbuild src/server.ts --bundle --platform=node --target=node26 --format=esm --outfile=sea-build/handy-processor.mjs",
-    "build:sea:node26": "npm run bundle:sea:node26 && node --build-sea sea-config.node26.json"
-  }
-}
-```
+Команды сборки уже добавлены в `package.json`.
 
 В Windows с активной Node.js 26:
 
@@ -305,7 +288,8 @@ Node.js 26 упрощает и cross-build: поле `executable` указыва
 
 Порядок действий:
 
-1. Через Node.js 26 собрать единый `.mjs` или `.cjs`.
+1. Через Node.js 26 собрать UI и единый `.mjs` командой
+   `npm run bundle:sea:node26`.
 2. Скачать официальный Windows x64 archive той же **точной** версии, например
    `26.7.0`.
 3. Проверить SHA-256 архива по официальному `SHASUMS256.txt`.
@@ -314,26 +298,18 @@ Node.js 26 упрощает и cross-build: поле `executable` указыва
 6. Запустить Linux Node.js той же версии с `--build-sea`.
 7. Перенести результат на Windows, протестировать и подписать.
 
-Пример отдельной конфигурации `sea-config.node26.windows.json`:
+Создать конфигурацию с Windows `node.exe` и всеми UI assets:
 
-```json
-{
-  "main": "sea-build/handy-processor.mjs",
-  "mainFormat": "module",
-  "executable": "sea-build/node-v26.7.0-win-x64/node.exe",
-  "output": "sea-build/handy-processor.exe",
-  "disableExperimentalSEAWarning": true,
-  "useSnapshot": false,
-  "useCodeCache": false,
-  "execArgvExtension": "none"
-}
+```bash
+node scripts/create-sea-config.mjs sea-build/node-v26.7.0-win-x64/node.exe
 ```
 
 Сборка без переключения default:
 
 ```bash
 . /home/user1/.nvm/nvm.sh
-nvm exec 26 node --build-sea sea-config.node26.windows.json
+nvm exec 26 node --build-sea sea-build/sea-config.node26.generated.json
+node scripts/copy-sea-runtime-files.mjs
 ```
 
 Версия Linux Node.js, выполняющей команду, должна совпадать с версией целевой
@@ -349,17 +325,19 @@ VM или Windows CI runner остаётся более простым и над
 Через установленную Node.js `26.7.0` выполнено:
 
 ```bash
-nvm exec 26 node --build-sea /tmp/handy-processor-sea-node26.json
-nvm exec 26 node --build-sea /tmp/handy-processor-sea-node26-esm.json
+nvm exec 26 npm run build:sea:node26
+./sea-build/handy-processor.exe
 ```
 
 Результат проверки:
 
-- успешно созданы CommonJS- и ESM-варианты автономного Linux x64 SEA;
-- каждый SEA имеет размер 142 МБ и запускается напрямую как executable;
+- успешно создан автономный ESM Linux x64 SEA размером 142 МБ;
+- executable прочитал `config.json` и создал SQLite рядом с собой;
+- встроенные React/Mantine HTML, JavaScript и CSS доступны из браузера;
 - `GET /health` вернул `{"status":"ok"}`;
-- запрос к ESM SEA преобразовал `NODE 26 ESM SEA TEST.` в
-  `node 26 esm sea test`;
+- запрос преобразовал `МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.` в
+  `мне нужно 22 файла`;
+- `/api/transformations` вернул сохранённую запись;
 - NVM default после сборки остался `24.19.0`.
 
 Это подтверждает совместимость кода сервера с нативным `--build-sea`. Windows

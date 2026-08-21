@@ -1,11 +1,25 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { transformTranscription } from "./transform.js";
+import type { TransformationPage } from "./transformation-log.js";
+import type { WebAsset, WebUiAssets } from "./web-ui-assets.js";
 
 export const MODEL_ID = "handy-basic-transformer";
 
 const MAX_REQUEST_BYTES = 1024 * 1024;
+const DEFAULT_PAGE_SIZE = 10;
+const MAX_PAGE_SIZE = 100;
 
 type JsonObject = Record<string, unknown>;
+
+export interface TransformationHistory {
+  add(originalText: string, transformedText: string): void;
+  list(page: number, pageSize: number): TransformationPage;
+}
+
+export interface AppDependencies {
+  readonly transformationHistory: TransformationHistory;
+  readonly webUiAssets: WebUiAssets;
+}
 
 class HttpError extends Error {
   constructor(
@@ -26,6 +40,16 @@ function sendJson(
     "cache-control": "no-store",
   });
   response.end(JSON.stringify(body));
+}
+
+function sendAsset(response: ServerResponse, asset: WebAsset): void {
+  response.writeHead(200, {
+    "content-type": asset.contentType,
+    "content-length": asset.body.byteLength,
+    "cache-control": "no-cache",
+    "x-content-type-options": "nosniff",
+  });
+  response.end(asset.body);
 }
 
 function sendError(response: ServerResponse, status: number, message: string) {
@@ -96,79 +120,163 @@ function getLastUserMessage(body: JsonObject): string {
   );
 }
 
-function getPath(request: IncomingMessage): string {
+function getRequestUrl(request: IncomingMessage): URL {
   try {
-    return new URL(request.url ?? "/", "http://localhost").pathname.replace(
-      /\/$/u,
-      "",
-    );
+    return new URL(request.url ?? "/", "http://localhost");
   } catch {
-    return request.url ?? "/";
+    throw new HttpError(400, "Request URL is invalid");
   }
 }
 
-export async function handleRequest(
-  request: IncomingMessage,
-  response: ServerResponse,
-): Promise<void> {
-  const path = getPath(request) || "/";
+function normalizePath(pathname: string): string {
+  return pathname.replace(/\/$/u, "") || "/";
+}
 
-  try {
-    if (request.method === "GET" && path === "/health") {
-      sendJson(response, 200, { status: "ok" });
-      return;
-    }
+function isApiPath(path: string): boolean {
+  return (
+    path === "/api" ||
+    path.startsWith("/api/") ||
+    path === "/v1" ||
+    path.startsWith("/v1/")
+  );
+}
 
-    if (request.method === "GET" && path === "/v1/models") {
-      sendJson(response, 200, {
-        object: "list",
-        data: [
-          {
-            id: MODEL_ID,
-            object: "model",
-            created: 0,
-            owned_by: "local",
-          },
-        ],
-      });
-      return;
-    }
-
-    if (request.method === "POST" && path === "/v1/chat/completions") {
-      const body = await readJson(request);
-      const input = getLastUserMessage(body);
-      const content = transformTranscription(input);
-      const model = typeof body.model === "string" ? body.model : MODEL_ID;
-
-      sendJson(response, 200, {
-        id: `chatcmpl-local-${Date.now()}`,
-        object: "chat.completion",
-        created: Math.floor(Date.now() / 1000),
-        model,
-        choices: [
-          {
-            index: 0,
-            message: { role: "assistant", content },
-            finish_reason: "stop",
-          },
-        ],
-        usage: {
-          prompt_tokens: 0,
-          completion_tokens: 0,
-          total_tokens: 0,
-        },
-      });
-      return;
-    }
-
-    sendError(response, 404, "Endpoint not found");
-  } catch (error) {
-    if (error instanceof HttpError) {
-      sendError(response, error.status, error.message);
-      return;
-    }
-
-    console.error("Unexpected request error", error);
-    sendError(response, 500, "Internal server error");
+function readPositiveInteger(
+  parameters: URLSearchParams,
+  name: string,
+  defaultValue: number,
+  maximum?: number,
+): number {
+  const rawValue = parameters.get(name);
+  if (rawValue === null) {
+    return defaultValue;
   }
+
+  const value = Number(rawValue);
+  if (
+    !Number.isSafeInteger(value) ||
+    value < 1 ||
+    (maximum !== undefined && value > maximum)
+  ) {
+    const range =
+      maximum === undefined ? "a positive integer" : `from 1 to ${maximum}`;
+    throw new HttpError(400, `'${name}' must be ${range}`);
+  }
+
+  return value;
+}
+
+function getTransformationPage(
+  history: TransformationHistory,
+  parameters: URLSearchParams,
+): object {
+  const page = readPositiveInteger(parameters, "page", 1);
+  const pageSize = readPositiveInteger(
+    parameters,
+    "pageSize",
+    DEFAULT_PAGE_SIZE,
+    MAX_PAGE_SIZE,
+  );
+  const result = history.list(page, pageSize);
+
+  return {
+    items: result.items,
+    pagination: {
+      page,
+      pageSize,
+      total: result.total,
+      totalPages: Math.ceil(result.total / pageSize),
+    },
+  };
+}
+
+export function createRequestHandler({
+  transformationHistory,
+  webUiAssets,
+}: AppDependencies) {
+  return async function handleRequest(
+    request: IncomingMessage,
+    response: ServerResponse,
+  ): Promise<void> {
+    try {
+      const url = getRequestUrl(request);
+      const path = normalizePath(url.pathname);
+
+      if (request.method === "GET" && path === "/health") {
+        sendJson(response, 200, { status: "ok" });
+        return;
+      }
+
+      if (request.method === "GET" && path === "/v1/models") {
+        sendJson(response, 200, {
+          object: "list",
+          data: [
+            {
+              id: MODEL_ID,
+              object: "model",
+              created: 0,
+              owned_by: "local",
+            },
+          ],
+        });
+        return;
+      }
+
+      if (request.method === "POST" && path === "/v1/chat/completions") {
+        const body = await readJson(request);
+        const input = getLastUserMessage(body);
+        const content = transformTranscription(input);
+        const model = typeof body.model === "string" ? body.model : MODEL_ID;
+
+        transformationHistory.add(input, content);
+
+        sendJson(response, 200, {
+          id: `chatcmpl-local-${Date.now()}`,
+          object: "chat.completion",
+          created: Math.floor(Date.now() / 1000),
+          model,
+          choices: [
+            {
+              index: 0,
+              message: { role: "assistant", content },
+              finish_reason: "stop",
+            },
+          ],
+          usage: {
+            prompt_tokens: 0,
+            completion_tokens: 0,
+            total_tokens: 0,
+          },
+        });
+        return;
+      }
+
+      if (request.method === "GET" && path === "/api/transformations") {
+        sendJson(
+          response,
+          200,
+          getTransformationPage(transformationHistory, url.searchParams),
+        );
+        return;
+      }
+
+      if (request.method === "GET" && !isApiPath(path)) {
+        const asset = webUiAssets.get(path);
+        if (asset !== undefined) {
+          sendAsset(response, asset);
+          return;
+        }
+      }
+
+      sendError(response, 404, "Endpoint not found");
+    } catch (error) {
+      if (error instanceof HttpError) {
+        sendError(response, error.status, error.message);
+        return;
+      }
+
+      console.error("Unexpected request error", error);
+      sendError(response, 500, "Internal server error");
+    }
+  };
 }
