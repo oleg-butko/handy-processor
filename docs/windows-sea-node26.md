@@ -21,6 +21,9 @@ React/Mantine UI встраивается в EXE как SEA assets. Изменя
 `handy-processor.sqlite3` находятся рядом с EXE; база создаётся при первом
 запуске.
 
+Для фоновой работы доступен опциональный Tauri tray launcher. Полная сборка
+двух EXE и их поведение описаны в [Windows tray launcher](windows-launcher.md).
+
 Node.js 26 сейчас имеет статус Current, а не LTS. Для внутреннего применения и
 тестирования это практичный вариант. Перед публичным production-релизом нужно
 либо принять использование Current-ветки, либо дождаться перехода Node.js 26 в
@@ -265,6 +268,13 @@ SmartScreen или антивирус могут показать предупр
 
 ```powershell
 npm run build:sea:node26
+```
+
+Собрать server SEA вместе с tray launcher в готовый portable-каталог:
+
+```powershell
+npm run install:launcher
+npm run build:windows:portable
 ```
 
 В Debian без изменения NVM default:

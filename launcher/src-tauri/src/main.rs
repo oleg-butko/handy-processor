@@ -21,6 +21,14 @@ const MENU_DATA: &str = "data";
 const MENU_RESTART: &str = "restart";
 const MENU_EXIT: &str = "exit";
 
+fn show_action_error(app: &AppHandle, action: &str, error: impl std::fmt::Display) {
+    app.dialog()
+        .message(format!("{action}.\n\n{error}"))
+        .title("Handy Processor")
+        .kind(MessageDialogKind::Error)
+        .show(|_| {});
+}
+
 fn show_main_window(app: &AppHandle) {
     let Some(window) = app.get_webview_window(MAIN_WINDOW) else {
         return;
@@ -77,6 +85,9 @@ fn create_tray(app: &App, paths: RuntimePaths, supervisor: Supervisor) -> tauri:
                     button: MouseButton::Left,
                     button_state: MouseButtonState::Up,
                     ..
+                } | TrayIconEvent::DoubleClick {
+                    button: MouseButton::Left,
+                    ..
                 }
             ) {
                 show_main_window(tray.app_handle());
@@ -86,12 +97,12 @@ fn create_tray(app: &App, paths: RuntimePaths, supervisor: Supervisor) -> tauri:
             MENU_SHOW => show_main_window(app),
             MENU_BROWSER => {
                 if let Err(error) = app.opener().open_url(menu_paths.web_url(), None::<&str>) {
-                    eprintln!("Cannot open browser: {error}");
+                    show_action_error(app, "Не удалось открыть браузер", error);
                 }
             }
             MENU_COPY_API => {
                 if let Err(error) = app.clipboard().write_text(menu_paths.api_url()) {
-                    eprintln!("Cannot copy API URL: {error}");
+                    show_action_error(app, "Не удалось скопировать API URL", error);
                 }
             }
             MENU_DATA => {
@@ -99,7 +110,7 @@ fn create_tray(app: &App, paths: RuntimePaths, supervisor: Supervisor) -> tauri:
                     menu_paths.directory.to_string_lossy().into_owned(),
                     None::<&str>,
                 ) {
-                    eprintln!("Cannot open data directory: {error}");
+                    show_action_error(app, "Не удалось открыть папку данных", error);
                 }
             }
             MENU_RESTART => {
@@ -111,7 +122,11 @@ fn create_tray(app: &App, paths: RuntimePaths, supervisor: Supervisor) -> tauri:
                             let _ = window.eval("window.location.reload()");
                         }
                     }
-                    Err(error) => eprintln!("Cannot restart server: {error:#}"),
+                    Err(error) => show_action_error(
+                        &restart_app,
+                        "Не удалось перезапустить сервер",
+                        format!("{error:#}"),
+                    ),
                 });
             }
             MENU_EXIT => app.exit(0),

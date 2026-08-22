@@ -125,9 +125,9 @@ React assets остаются встроенными в SEA. Иконки лау
 - [x] Этап 3 — реализовать supervisor, localhost readiness, tray, окно,
   single-instance и корректное завершение.
   Коммит: `feat(launcher): manage server from system tray`.
-- [ ] Этап 4 — добавить portable packaging, Windows-инструкцию и итоговые
+- [x] Этап 4 — добавить portable packaging, Windows-инструкцию и итоговые
   проверки.
-  Коммит: `docs(launcher): add Windows build and usage guide`.
+  Коммит: `build(launcher): add portable Windows release`.
 
 ## Проверки
 
@@ -147,6 +147,11 @@ React assets остаются встроенными в SEA. Иконки лау
 - запуск при свободном порте и подключение к уже работающему серверу;
 - close/minimize-to-tray, повторный запуск и tray Exit;
 - восстановление после раннего завершения sidecar.
+
+Автоматические Debian-проверки и Windows-target type-check выполнены. Пункты,
+зависящие от WebView2, notification area и реального PE linking, остаются
+обязательным ручным smoke test на Windows build-машине по инструкции
+`docs/windows-launcher.md`.
 
 ## Риски и ограничения
 

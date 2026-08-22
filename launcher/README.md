@@ -2,7 +2,8 @@
 
 Опциональная Tauri-оболочка для запуска Handy Processor в system tray. Сам
 Node SEA остаётся самостоятельным приложением и может запускаться без этого
-лаунчера.
+лаунчера. Полная Windows-инструкция находится в
+[`docs/windows-launcher.md`](../docs/windows-launcher.md).
 
 ## Подготовка sidecar
 
@@ -26,8 +27,12 @@ node scripts/stage-launcher-sidecar.mjs `
 
 ```powershell
 npm run install:launcher
+npm run test:launcher
 npm run check:launcher
 ```
 
-Полная инструкция по сборке Windows portable release будет добавлена после
-реализации tray и управления процессом.
+Готовый portable-каталог из корня репозитория:
+
+```powershell
+npm run build:windows:portable
+```

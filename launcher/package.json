@@ -10,6 +10,7 @@
     "clippy": "cargo clippy --manifest-path src-tauri/Cargo.toml --no-default-features --lib -- -D warnings",
     "format": "cargo fmt --manifest-path src-tauri/Cargo.toml",
     "format:check": "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "build:portable": "tauri build --no-bundle",
     "build": "tauri build"
   },
   "devDependencies": {

@@ -15,3 +15,4 @@ launcher/src-tauri/target/
 launcher/src-tauri/gen/
 launcher/src-tauri/binaries/*
 !launcher/src-tauri/binaries/.gitkeep
+release/
