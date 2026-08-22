@@ -1,4 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
+import { APP_VERSION, SERVICE_ID } from "./build-info.js";
 import { transformTranscription } from "./transform.js";
 import type { TransformationPage } from "./transformation-log.js";
 import type { WebAsset, WebUiAssets } from "./web-ui-assets.js";
@@ -203,7 +204,12 @@ export function createRequestHandler({
       const path = normalizePath(url.pathname);
 
       if (request.method === "GET" && path === "/health") {
-        sendJson(response, 200, { status: "ok" });
+        sendJson(response, 200, {
+          status: "ok",
+          service: SERVICE_ID,
+          version: APP_VERSION,
+          pid: process.pid,
+        });
         return;
       }
 

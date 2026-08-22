@@ -116,7 +116,7 @@ React assets остаются встроенными в SEA. Иконки лау
 
 - [x] Этап 0 — сохранить архитектуру и план.
   Коммит: `docs: plan optional Tauri launcher`.
-- [ ] Этап 1 — добавить идентифицируемый health response, управляемый stdin
+- [x] Этап 1 — добавить идентифицируемый health response, управляемый stdin
   lifecycle и тесты, не меняя standalone-поведение.
   Коммит: `feat(server): add managed launcher lifecycle`.
 - [ ] Этап 2 — создать Tauri scaffold, staging sidecar и воспроизводимые build

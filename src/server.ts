@@ -8,6 +8,11 @@ import {
   loadRuntimeConfig,
   resolveRuntimeDirectory,
 } from "./runtime-config.js";
+import {
+  isManagedProcess,
+  monitorManagedInput,
+  type ManagedInputMonitor,
+} from "./managed-lifecycle.js";
 import { TransformationLog } from "./transformation-log.js";
 import { loadWebUiAssets } from "./web-ui-assets.js";
 
@@ -27,6 +32,41 @@ const server = createServer((request, response) => {
   void handleRequest(request, response);
 });
 
+let managedInput: ManagedInputMonitor | undefined;
+let stopping = false;
+let storageClosed = false;
+
+function closeStorage(): void {
+  if (storageClosed) {
+    return;
+  }
+
+  storageClosed = true;
+  transformationLog.close();
+}
+
+function requestShutdown(reason: string): void {
+  if (stopping) {
+    return;
+  }
+
+  stopping = true;
+  managedInput?.stop();
+  console.log(`Stopping Handy Processor: ${reason}`);
+
+  server.close((error) => {
+    closeStorage();
+    if (error) {
+      console.error("Failed to stop server cleanly", error);
+      process.exitCode = 1;
+    }
+  });
+}
+
+if (isManagedProcess()) {
+  managedInput = monitorManagedInput(process.stdin, requestShutdown);
+}
+
 server.listen(config.port, host, () => {
   console.log(`Handy Processor is running.`);
   console.log(`Web UI: http://localhost:${config.port}/`);
@@ -34,16 +74,18 @@ server.listen(config.port, host, () => {
   console.log(`Model: ${MODEL_ID}`);
   console.log(`Config: ${join(runtimeDirectory, CONFIG_FILE_NAME)}`);
   console.log(`Database: ${join(runtimeDirectory, DATABASE_FILE_NAME)}`);
+  console.log(`Mode: ${managedInput === undefined ? "standalone" : "managed"}`);
+});
+
+server.once("error", (error) => {
+  managedInput?.stop();
+  closeStorage();
+  console.error("Failed to start Handy Processor", error);
+  process.exitCode = 1;
 });
 
 for (const signal of ["SIGINT", "SIGTERM"] as const) {
   process.once(signal, () => {
-    server.close((error) => {
-      transformationLog.close();
-      if (error) {
-        console.error("Failed to stop server cleanly", error);
-        process.exitCode = 1;
-      }
-    });
+    requestShutdown(`received ${signal}`);
   });
 }

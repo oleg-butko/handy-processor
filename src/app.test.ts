@@ -3,6 +3,7 @@ import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
 import { after, before, describe, it } from "node:test";
 import { createRequestHandler, MODEL_ID } from "./app.js";
+import { APP_VERSION, SERVICE_ID } from "./build-info.js";
 import { TransformationLog } from "./transformation-log.js";
 import type { WebUiAssets } from "./web-ui-assets.js";
 
@@ -41,6 +42,19 @@ after(async () => {
 });
 
 describe("OpenAI-compatible API", () => {
+  it("identifies the running service", async () => {
+    const response = await fetch(`${baseUrl}/health`);
+    const body = (await response.json()) as Record<string, unknown>;
+
+    assert.equal(response.status, 200);
+    assert.deepEqual(body, {
+      status: "ok",
+      service: SERVICE_ID,
+      version: APP_VERSION,
+      pid: process.pid,
+    });
+  });
+
   it("serves the browser UI", async () => {
     const response = await fetch(`${baseUrl}/`);
 
