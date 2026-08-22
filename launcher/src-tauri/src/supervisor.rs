@@ -99,9 +99,12 @@ impl Supervisor {
     }
 
     fn start_monitor(&self) {
-        let state = Arc::clone(&self.state);
+        let state = Arc::downgrade(&self.state);
         thread::spawn(move || loop {
             thread::sleep(Duration::from_secs(1));
+            let Some(state) = state.upgrade() else {
+                break;
+            };
             let mut state = state.lock().expect("supervisor mutex poisoned");
             if state.exiting {
                 break;
@@ -206,10 +209,32 @@ fn stop_child(child: &mut Child) {
     let _ = child.wait();
 }
 
-#[cfg(all(test, unix))]
+#[cfg(test)]
 mod tests {
     use super::*;
 
+    #[test]
+    fn monitor_does_not_keep_the_supervisor_state_alive() {
+        let supervisor = Supervisor {
+            paths: RuntimePaths {
+                directory: "data".into(),
+                sidecar: "server.exe".into(),
+                port: 11_434,
+            },
+            state: Arc::new(Mutex::new(State {
+                mode: ServerMode::External,
+                exiting: false,
+            })),
+        };
+        let state = Arc::downgrade(&supervisor.state);
+
+        supervisor.start_monitor();
+        drop(supervisor);
+
+        assert!(state.upgrade().is_none());
+    }
+
+    #[cfg(unix)]
     #[test]
     fn graceful_stop_sends_the_managed_shutdown_command() {
         let mut child = Command::new("sh")

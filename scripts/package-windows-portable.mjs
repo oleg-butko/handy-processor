@@ -34,20 +34,11 @@ function requirePortableExecutable(path, description) {
 }
 
 function findLauncherExecutable() {
-  const releaseDirectory = resolve(
+  const launcher = resolve(
     projectRoot,
-    "launcher/src-tauri/target/release",
+    "launcher/src-tauri/target/release/HandyProcessor.exe",
   );
-  const candidates = [
-    resolve(releaseDirectory, "HandyProcessor.exe"),
-    resolve(releaseDirectory, "handy-processor-launcher.exe"),
-  ];
-  const launcher = candidates.find(existsSync);
-  if (launcher === undefined) {
-    throw new Error(
-      `Launcher executable not found. Checked: ${candidates.join(", ")}`,
-    );
-  }
+  requireFile(launcher, "Launcher build output");
   return launcher;
 }
 

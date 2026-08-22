@@ -140,17 +140,25 @@ fn create_tray(app: &App, paths: RuntimePaths, supervisor: Supervisor) -> tauri:
 fn initialize_app(app: &mut App) -> anyhow::Result<()> {
     let paths = RuntimePaths::discover()?;
     let supervisor = Supervisor::initialize(paths.clone())?;
-    let web_url = tauri::Url::parse(&paths.web_url())?;
-    let window = WebviewWindowBuilder::new(app, MAIN_WINDOW, WebviewUrl::External(web_url))
-        .title("Handy Processor")
-        .inner_size(1100.0, 760.0)
-        .min_inner_size(720.0, 480.0)
-        .visible(false)
-        .center()
-        .build()?;
+    let desktop_result = (|| -> anyhow::Result<()> {
+        let web_url = tauri::Url::parse(&paths.web_url())?;
+        let window = WebviewWindowBuilder::new(app, MAIN_WINDOW, WebviewUrl::External(web_url))
+            .title("Handy Processor")
+            .inner_size(1100.0, 760.0)
+            .min_inner_size(720.0, 480.0)
+            .visible(false)
+            .center()
+            .build()?;
 
-    configure_window(&window);
-    create_tray(app, paths, supervisor.clone())?;
+        configure_window(&window);
+        create_tray(app, paths, supervisor.clone())?;
+        Ok(())
+    })();
+    if let Err(error) = desktop_result {
+        supervisor.shutdown();
+        return Err(error);
+    }
+
     app.manage(supervisor);
     Ok(())
 }
