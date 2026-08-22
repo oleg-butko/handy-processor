@@ -119,7 +119,7 @@ React assets остаются встроенными в SEA. Иконки лау
 - [x] Этап 1 — добавить идентифицируемый health response, управляемый stdin
   lifecycle и тесты, не меняя standalone-поведение.
   Коммит: `feat(server): add managed launcher lifecycle`.
-- [ ] Этап 2 — создать Tauri scaffold, staging sidecar и воспроизводимые build
+- [x] Этап 2 — создать Tauri scaffold, staging sidecar и воспроизводимые build
   commands.
   Коммит: `build(launcher): scaffold Tauri sidecar app`.
 - [ ] Этап 3 — реализовать supervisor, localhost readiness, tray, окно,

@@ -8,3 +8,10 @@ __pycache__/
 *.sqlite3-journal
 *.log
 .env
+
+# Optional Tauri launcher
+launcher/node_modules/
+launcher/src-tauri/target/
+launcher/src-tauri/gen/
+launcher/src-tauri/binaries/*
+!launcher/src-tauri/binaries/.gitkeep
