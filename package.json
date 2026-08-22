@@ -17,6 +17,7 @@
     "stage:launcher:sidecar": "node scripts/stage-launcher-sidecar.mjs",
     "install:launcher": "npm --prefix launcher ci",
     "check:launcher": "npm --prefix launcher run check",
+    "test:launcher": "npm --prefix launcher test",
     "generate:numerals": "python3 scripts/generate_russian_numerals.py",
     "check:numerals": "python3 scripts/generate_russian_numerals.py --check",
     "validate:numerals-morphology": "python3 scripts/generate_russian_numerals.py --check --validate-morphology",

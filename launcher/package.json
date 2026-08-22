@@ -6,7 +6,8 @@
   "scripts": {
     "tauri": "tauri",
     "check": "cargo check --manifest-path src-tauri/Cargo.toml",
-    "test": "cargo test --manifest-path src-tauri/Cargo.toml",
+    "test": "cargo test --manifest-path src-tauri/Cargo.toml --no-default-features --lib",
+    "clippy": "cargo clippy --manifest-path src-tauri/Cargo.toml --no-default-features --lib -- -D warnings",
     "format": "cargo fmt --manifest-path src-tauri/Cargo.toml",
     "format:check": "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
     "build": "tauri build"

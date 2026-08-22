@@ -122,7 +122,7 @@ React assets остаются встроенными в SEA. Иконки лау
 - [x] Этап 2 — создать Tauri scaffold, staging sidecar и воспроизводимые build
   commands.
   Коммит: `build(launcher): scaffold Tauri sidecar app`.
-- [ ] Этап 3 — реализовать supervisor, localhost readiness, tray, окно,
+- [x] Этап 3 — реализовать supervisor, localhost readiness, tray, окно,
   single-instance и корректное завершение.
   Коммит: `feat(launcher): manage server from system tray`.
 - [ ] Этап 4 — добавить portable packaging, Windows-инструкцию и итоговые
