@@ -1,10 +1,8 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { APP_VERSION, SERVICE_ID } from "./build-info.js";
+import type { EditorSessionRegistry } from "./editor-sessions.js";
 import type { RuleSettings } from "./rule-settings.js";
-import {
-  EXTERNAL_TRANSFORMATION_CONTEXT,
-  type TransformationContext,
-} from "./transformation-context.js";
+import type { TransformationContext } from "./transformation-context.js";
 import { transformTranscription } from "./transform.js";
 import type { AppliedTransformationRule } from "./transformation-rules.js";
 import type { TransformationPage } from "./transformation-log.js";
@@ -31,6 +29,7 @@ export interface TransformationHistory {
 export interface AppDependencies {
   readonly transformationHistory: TransformationHistory;
   readonly ruleSettings: RuleSettings;
+  readonly editorSessions: EditorSessionRegistry;
   readonly webUiAssets: WebUiAssets;
 }
 
@@ -153,6 +152,31 @@ function decodeRuleId(path: string): string {
   }
 }
 
+function decodeEditorSessionId(path: string): string {
+  try {
+    return decodeURIComponent(path.slice("/api/editor/sessions/".length));
+  } catch {
+    throw new HttpError(400, "Editor session id is invalid");
+  }
+}
+
+function validateEditorSessionId(sessionId: string): void {
+  if (!/^[A-Za-z0-9_-]{1,128}$/u.test(sessionId)) {
+    throw new HttpError(400, "Editor session id is invalid");
+  }
+}
+
+function readEditorOffset(
+  body: JsonObject,
+  name: "selectionStart" | "selectionEnd" | "documentRevision",
+): number {
+  const value = body[name];
+  if (!Number.isSafeInteger(value) || (value as number) < 0) {
+    throw new HttpError(400, `The '${name}' field must be a non-negative integer`);
+  }
+  return value as number;
+}
+
 function isApiPath(path: string): boolean {
   return (
     path === "/api" ||
@@ -214,6 +238,7 @@ function getTransformationPage(
 export function createRequestHandler({
   transformationHistory,
   ruleSettings,
+  editorSessions,
   webUiAssets,
 }: AppDependencies) {
   return async function handleRequest(
@@ -252,7 +277,7 @@ export function createRequestHandler({
       if (request.method === "POST" && path === "/v1/chat/completions") {
         const body = await readJson(request);
         const input = getLastUserMessage(body);
-        const context = EXTERNAL_TRANSFORMATION_CONTEXT;
+        const context = editorSessions.currentContext();
         const transformation = transformTranscription(
           input,
           ruleSettings.enabledRuleIds(),
@@ -300,6 +325,55 @@ export function createRequestHandler({
 
       if (request.method === "GET" && path === "/api/rules") {
         sendJson(response, 200, { items: ruleSettings.list() });
+        return;
+      }
+
+      if (
+        request.method === "PUT" &&
+        path.startsWith("/api/editor/sessions/")
+      ) {
+        const sessionId = decodeEditorSessionId(path);
+        validateEditorSessionId(sessionId);
+        const body = await readJson(request);
+        if (typeof body.documentText !== "string") {
+          throw new HttpError(400, "The 'documentText' field must be a string");
+        }
+        if (typeof body.active !== "boolean") {
+          throw new HttpError(400, "The 'active' field must be a boolean");
+        }
+        const documentRevision = readEditorOffset(body, "documentRevision");
+        const selectionStart = readEditorOffset(body, "selectionStart");
+        const selectionEnd = readEditorOffset(body, "selectionEnd");
+        if (
+          selectionStart > selectionEnd ||
+          selectionEnd > body.documentText.length
+        ) {
+          throw new HttpError(400, "Editor selection is outside the document");
+        }
+
+        const result = editorSessions.update(sessionId, {
+          documentText: body.documentText,
+          documentRevision,
+          selectionStart,
+          selectionEnd,
+          active: body.active,
+        });
+        if (!result.ok) {
+          throw new HttpError(409, "Editor session revision is stale");
+        }
+        sendJson(response, 200, result.state);
+        return;
+      }
+
+      if (
+        request.method === "DELETE" &&
+        path.startsWith("/api/editor/sessions/")
+      ) {
+        const sessionId = decodeEditorSessionId(path);
+        validateEditorSessionId(sessionId);
+        editorSessions.remove(sessionId);
+        response.writeHead(204, { "cache-control": "no-store" });
+        response.end();
         return;
       }
 

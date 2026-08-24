@@ -4,6 +4,7 @@ import type { AddressInfo } from "node:net";
 import { after, before, describe, it } from "node:test";
 import { createRequestHandler, MODEL_ID } from "./app.js";
 import { APP_VERSION, SERVICE_ID } from "./build-info.js";
+import { EditorSessionRegistry } from "./editor-sessions.js";
 import { RuleSettings } from "./rule-settings.js";
 import { TRANSFORMATION_RULE_IDS } from "./transformation-rules.js";
 import { TransformationLog } from "./transformation-log.js";
@@ -11,6 +12,7 @@ import type { WebUiAssets } from "./web-ui-assets.js";
 
 const transformationLog = new TransformationLog(":memory:");
 const ruleSettings = new RuleSettings(transformationLog);
+const editorSessions = new EditorSessionRegistry();
 const webUiAssets: WebUiAssets = {
   get(path) {
     return path === "/"
@@ -24,6 +26,7 @@ const webUiAssets: WebUiAssets = {
 const handleRequest = createRequestHandler({
   transformationHistory: transformationLog,
   ruleSettings,
+  editorSessions,
   webUiAssets,
 });
 const server = createServer((request, response) => {
@@ -200,6 +203,73 @@ describe("OpenAI-compatible API", () => {
   it("validates history pagination", async () => {
     const response = await fetch(`${baseUrl}/api/transformations?page=0`);
     assert.equal(response.status, 400);
+  });
+
+  it("uses a fresh active editor session as transformation context", async () => {
+    const sessionResponse = await fetch(
+      `${baseUrl}/api/editor/sessions/test-session`,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          documentText: "Первое предложение. ",
+          documentRevision: 1,
+          selectionStart: 20,
+          selectionEnd: 20,
+          active: true,
+        }),
+      },
+    );
+    assert.equal(sessionResponse.status, 200);
+    const session = (await sessionResponse.json()) as {
+      sentencePosition: string;
+    };
+    assert.equal(session.sentencePosition, "start");
+
+    const transformResponse = await fetch(`${baseUrl}/v1/chat/completions`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        messages: [{ role: "user", content: "НОВЫЙ ТЕКСТ." }],
+      }),
+    });
+    assert.equal(transformResponse.status, 200);
+
+    const historyResponse = await fetch(
+      `${baseUrl}/api/transformations?page=1&pageSize=1`,
+    );
+    const history = (await historyResponse.json()) as {
+      items: Array<{
+        source: string;
+        context: { editor: { sentencePosition: string } };
+      }>;
+    };
+    assert.equal(history.items[0]?.source, "voice-editor");
+    assert.equal(history.items[0]?.context.editor.sentencePosition, "start");
+
+    const deleteResponse = await fetch(
+      `${baseUrl}/api/editor/sessions/test-session`,
+      { method: "DELETE" },
+    );
+    assert.equal(deleteResponse.status, 204);
+  });
+
+  it("validates editor session state", async () => {
+    const invalidSelection = await fetch(
+      `${baseUrl}/api/editor/sessions/test-session`,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          documentText: "Короткий текст",
+          documentRevision: 2,
+          selectionStart: 0,
+          selectionEnd: 100,
+          active: true,
+        }),
+      },
+    );
+    assert.equal(invalidSelection.status, 400);
   });
 
   it("does not serve the SPA for unknown API routes", async () => {

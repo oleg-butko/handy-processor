@@ -1,6 +1,7 @@
 import { createServer } from "node:http";
 import { join } from "node:path";
 import { createRequestHandler, MODEL_ID } from "./app.js";
+import { EditorSessionRegistry } from "./editor-sessions.js";
 import {
   CONFIG_FILE_NAME,
   DATABASE_FILE_NAME,
@@ -24,10 +25,12 @@ const transformationLog = new TransformationLog(
   getDatabasePath(runtimeDirectory),
 );
 const ruleSettings = new RuleSettings(transformationLog);
+const editorSessions = new EditorSessionRegistry();
 const webUiAssets = loadWebUiAssets(join(process.cwd(), "web-dist"));
 const handleRequest = createRequestHandler({
   transformationHistory: transformationLog,
   ruleSettings,
+  editorSessions,
   webUiAssets,
 });
 
