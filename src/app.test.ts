@@ -102,6 +102,8 @@ describe("OpenAI-compatible API", () => {
       items: Array<{
         originalText: string;
         transformedText: string;
+        source: string;
+        context: unknown;
         appliedRules: Array<{ id: string; changed: boolean }>;
       }>;
       pagination: { total: number };
@@ -110,6 +112,8 @@ describe("OpenAI-compatible API", () => {
     assert.equal(historyResponse.status, 200);
     assert.equal(history.items[0]?.originalText, originalText);
     assert.equal(history.items[0]?.transformedText, "мне нужно 22 файла");
+    assert.equal(history.items[0]?.source, "external");
+    assert.equal(history.items[0]?.context, null);
     assert.deepEqual(
       history.items[0]?.appliedRules.map((rule) => rule.id),
       [

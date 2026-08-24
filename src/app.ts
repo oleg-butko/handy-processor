@@ -1,6 +1,10 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { APP_VERSION, SERVICE_ID } from "./build-info.js";
 import type { RuleSettings } from "./rule-settings.js";
+import {
+  EXTERNAL_TRANSFORMATION_CONTEXT,
+  type TransformationContext,
+} from "./transformation-context.js";
 import { transformTranscription } from "./transform.js";
 import type { AppliedTransformationRule } from "./transformation-rules.js";
 import type { TransformationPage } from "./transformation-log.js";
@@ -19,6 +23,7 @@ export interface TransformationHistory {
     originalText: string,
     transformedText: string,
     appliedRules: readonly AppliedTransformationRule[],
+    context: TransformationContext,
   ): void;
   list(page: number, pageSize: number): TransformationPage;
 }
@@ -247,9 +252,11 @@ export function createRequestHandler({
       if (request.method === "POST" && path === "/v1/chat/completions") {
         const body = await readJson(request);
         const input = getLastUserMessage(body);
+        const context = EXTERNAL_TRANSFORMATION_CONTEXT;
         const transformation = transformTranscription(
           input,
           ruleSettings.enabledRuleIds(),
+          context,
         );
         const content = transformation.text;
         const model = typeof body.model === "string" ? body.model : MODEL_ID;
@@ -258,6 +265,7 @@ export function createRequestHandler({
           input,
           content,
           transformation.appliedRules,
+          context,
         );
 
         sendJson(response, 200, {

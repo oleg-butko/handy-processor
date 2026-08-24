@@ -1,5 +1,12 @@
 import { DatabaseSync, type StatementSync } from "node:sqlite";
 import type { StoredRuleSetting } from "./rule-settings.js";
+import {
+  TRANSFORMATION_SOURCES,
+  toStoredTransformationContext,
+  type StoredTransformationContext,
+  type TransformationContext,
+  type TransformationSource,
+} from "./transformation-context.js";
 import type {
   AppliedTransformationRule,
   TransformationRuleId,
@@ -11,6 +18,8 @@ export interface TransformationRecord {
   readonly transformedText: string;
   readonly createdAt: string;
   readonly appliedRules: readonly AppliedTransformationRule[] | null;
+  readonly source: TransformationSource;
+  readonly context: StoredTransformationContext | null;
 }
 
 export interface TransformationPage {
@@ -24,6 +33,8 @@ interface TransformationRow {
   readonly transformed_text: string;
   readonly created_at: string;
   readonly rules_snapshot: string | null;
+  readonly source: string;
+  readonly context_snapshot: string | null;
 }
 
 interface RuleSettingRow {
@@ -32,11 +43,11 @@ interface RuleSettingRow {
 }
 
 interface StoredRuleSnapshot {
-  readonly pipelineVersion: 1;
+  readonly pipelineVersion: 2;
   readonly applied: readonly AppliedTransformationRule[];
 }
 
-const SCHEMA_VERSION = 2;
+const SCHEMA_VERSION = 3;
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -50,11 +61,31 @@ function parseRuleSnapshot(
   }
 
   const snapshot: unknown = JSON.parse(value);
-  if (
-    !isObject(snapshot) ||
-    snapshot.pipelineVersion !== 1 ||
-    !Array.isArray(snapshot.applied)
-  ) {
+  if (!isObject(snapshot) || !Array.isArray(snapshot.applied)) {
+    throw new Error("Transformation contains an invalid rule snapshot");
+  }
+
+  if (snapshot.pipelineVersion === 1) {
+    return snapshot.applied.map((rule) => {
+      if (
+        !isObject(rule) ||
+        typeof rule.id !== "string" ||
+        !Number.isSafeInteger(rule.version) ||
+        typeof rule.changed !== "boolean"
+      ) {
+        throw new Error("Transformation contains an invalid applied rule");
+      }
+
+      return {
+        id: rule.id as TransformationRuleId,
+        version: rule.version as number,
+        outcome: rule.changed ? "changed" : "unchanged",
+        changed: rule.changed,
+      };
+    });
+  }
+
+  if (snapshot.pipelineVersion !== 2) {
     throw new Error("Transformation contains an invalid rule snapshot");
   }
 
@@ -63,6 +94,10 @@ function parseRuleSnapshot(
       !isObject(rule) ||
       typeof rule.id !== "string" ||
       !Number.isSafeInteger(rule.version) ||
+      !["changed", "unchanged", "skipped"].includes(
+        String(rule.outcome),
+      ) ||
+      (rule.reason !== undefined && typeof rule.reason !== "string") ||
       typeof rule.changed !== "boolean"
     ) {
       throw new Error("Transformation contains an invalid applied rule");
@@ -76,10 +111,42 @@ function serializeRuleSnapshot(
   appliedRules: readonly AppliedTransformationRule[],
 ): string {
   const snapshot: StoredRuleSnapshot = {
-    pipelineVersion: 1,
+    pipelineVersion: 2,
     applied: appliedRules,
   };
   return JSON.stringify(snapshot);
+}
+
+function parseSource(value: string): TransformationSource {
+  if (
+    value !== TRANSFORMATION_SOURCES.external &&
+    value !== TRANSFORMATION_SOURCES.voiceEditor
+  ) {
+    throw new Error("Transformation contains an invalid source");
+  }
+  return value;
+}
+
+function parseContextSnapshot(
+  value: string | null,
+): StoredTransformationContext | null {
+  if (value === null) {
+    return null;
+  }
+
+  const snapshot: unknown = JSON.parse(value);
+  if (
+    !isObject(snapshot) ||
+    snapshot.schemaVersion !== 1 ||
+    !isObject(snapshot.editor) ||
+    !["start", "middle", "unknown"].includes(
+      String(snapshot.editor.sentencePosition),
+    )
+  ) {
+    throw new Error("Transformation contains an invalid context snapshot");
+  }
+
+  return snapshot as unknown as StoredTransformationContext;
 }
 
 function migrate(database: DatabaseSync): void {
@@ -125,6 +192,18 @@ function migrate(database: DatabaseSync): void {
       COMMIT;
     `);
   }
+
+  if (version < 3) {
+    database.exec(`
+      BEGIN;
+      ALTER TABLE transformations ADD COLUMN source TEXT NOT NULL
+        DEFAULT 'external'
+        CHECK (source IN ('external', 'voice-editor'));
+      ALTER TABLE transformations ADD COLUMN context_snapshot TEXT;
+      PRAGMA user_version = 3;
+      COMMIT;
+    `);
+  }
 }
 
 export class TransformationLog {
@@ -147,14 +226,17 @@ export class TransformationLog {
       INSERT INTO transformations (
         original_text,
         transformed_text,
-        rules_snapshot
-      ) VALUES (?, ?, ?)
+        rules_snapshot,
+        source,
+        context_snapshot
+      ) VALUES (?, ?, ?, ?, ?)
     `);
     this.#count = this.#database.prepare(
       "SELECT COUNT(*) AS total FROM transformations",
     );
     this.#list = this.#database.prepare(`
-      SELECT id, original_text, transformed_text, created_at, rules_snapshot
+      SELECT id, original_text, transformed_text, created_at, rules_snapshot,
+        source, context_snapshot
       FROM transformations
       ORDER BY id DESC
       LIMIT ? OFFSET ?
@@ -176,11 +258,15 @@ export class TransformationLog {
     originalText: string,
     transformedText: string,
     appliedRules: readonly AppliedTransformationRule[],
+    context: TransformationContext,
   ): void {
+    const storedContext = toStoredTransformationContext(context);
     this.#insert.run(
       originalText,
       transformedText,
       serializeRuleSnapshot(appliedRules),
+      context.source,
+      storedContext === null ? null : JSON.stringify(storedContext),
     );
   }
 
@@ -197,6 +283,8 @@ export class TransformationLog {
         transformedText: row.transformed_text,
         createdAt: row.created_at,
         appliedRules: parseRuleSnapshot(row.rules_snapshot),
+        source: parseSource(row.source),
+        context: parseContextSnapshot(row.context_snapshot),
       })),
     };
   }

@@ -27,8 +27,30 @@ export type TransformationContext =
   | ExternalTransformationContext
   | VoiceEditorTransformationContext;
 
+export interface StoredTransformationContext {
+  readonly schemaVersion: 1;
+  readonly editor: {
+    readonly sentencePosition: SentencePosition;
+  };
+}
+
 export const EXTERNAL_TRANSFORMATION_CONTEXT: ExternalTransformationContext =
   Object.freeze({ source: TRANSFORMATION_SOURCES.external });
+
+export function toStoredTransformationContext(
+  context: TransformationContext,
+): StoredTransformationContext | null {
+  if (context.source === TRANSFORMATION_SOURCES.external) {
+    return null;
+  }
+
+  return {
+    schemaVersion: 1,
+    editor: {
+      sentencePosition: context.editor.sentencePosition,
+    },
+  };
+}
 
 const SENTENCE_TERMINATORS = /[.!?…]$/u;
 const TRAILING_CLOSERS = /[\s\u00a0"'»”’）)\]}]+$/gu;
