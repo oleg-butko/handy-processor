@@ -235,6 +235,10 @@ describe("OpenAI-compatible API", () => {
       }),
     });
     assert.equal(transformResponse.status, 200);
+    const transformation = (await transformResponse.json()) as {
+      choices: Array<{ message: { content: string } }>;
+    };
+    assert.equal(transformation.choices[0]?.message.content, "НОВЫЙ ТЕКСТ");
 
     const historyResponse = await fetch(
       `${baseUrl}/api/transformations?page=1&pageSize=1`,
@@ -247,6 +251,37 @@ describe("OpenAI-compatible API", () => {
     };
     assert.equal(history.items[0]?.source, "voice-editor");
     assert.equal(history.items[0]?.context.editor.sentencePosition, "start");
+
+    const middleSessionResponse = await fetch(
+      `${baseUrl}/api/editor/sessions/test-session`,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          documentText: "Первое предложение",
+          documentRevision: 2,
+          selectionStart: 7,
+          selectionEnd: 7,
+          active: true,
+        }),
+      },
+    );
+    assert.equal(middleSessionResponse.status, 200);
+
+    const middleTransformResponse = await fetch(
+      `${baseUrl}/v1/chat/completions`,
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          messages: [{ role: "user", content: "НОВЫЙ ТЕКСТ." }],
+        }),
+      },
+    );
+    const middleTransformation = (await middleTransformResponse.json()) as {
+      choices: Array<{ message: { content: string } }>;
+    };
+    assert.equal(middleTransformation.choices[0]?.message.content, "новый текст");
 
     const deleteResponse = await fetch(
       `${baseUrl}/api/editor/sessions/test-session`,

@@ -114,7 +114,7 @@ function AppContent() {
           </Badge>
         </Group>
 
-        <Tabs defaultValue="editor" keepMounted={false}>
+        <Tabs defaultValue="editor" keepMounted>
           <Tabs.List>
             <Tabs.Tab value="editor">Голосовой редактор</Tabs.Tab>
             <Tabs.Tab value="history">История</Tabs.Tab>

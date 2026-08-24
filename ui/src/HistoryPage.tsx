@@ -115,7 +115,10 @@ function ContextBadges({ item }: { readonly item: TransformationRecord }) {
       <Badge color="violet" variant="light">
         Голосовой редактор
       </Badge>
-      <Badge color={position === "unknown" ? "orange" : "blue"} variant="outline">
+      <Badge
+        color={position === "start" || position === "middle" ? "blue" : "orange"}
+        variant="outline"
+      >
         {positionLabel}
       </Badge>
     </Group>

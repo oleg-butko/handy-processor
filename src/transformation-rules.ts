@@ -82,8 +82,8 @@ export const TRANSFORMATION_RULES: readonly TransformationRule[] = [
     category: "voice-editor",
     sources: [TRANSFORMATION_SOURCES.voiceEditor],
     example: {
-      input: "Предложение с ВСТАВКОЙ внутри",
-      output: "Предложение с вставкой внутри",
+      input: "НОВАЯ ВСТАВКА",
+      output: "новая вставка",
     },
     when: (context) => {
       if (context.source !== TRANSFORMATION_SOURCES.voiceEditor) {

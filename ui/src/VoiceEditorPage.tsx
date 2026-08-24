@@ -41,6 +41,7 @@ export function VoiceEditorPage() {
   const editorRef = useRef<PlainTextEditorHandle>(null);
   const sessionIdRef = useRef(createSessionId());
   const sessionRevisionRef = useRef(0);
+  const sessionRequestIdRef = useRef(0);
   const stateRef = useRef<LocalEditorState | undefined>(undefined);
   const sessionSyncTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
@@ -98,6 +99,8 @@ export function VoiceEditorPage() {
     if (state === undefined) {
       return;
     }
+    const requestId = sessionRequestIdRef.current + 1;
+    sessionRequestIdRef.current = requestId;
 
     try {
       const response = await fetch(
@@ -118,15 +121,20 @@ export function VoiceEditorPage() {
         throw new Error(`Сервер вернул HTTP ${response.status}`);
       }
       const session = (await response.json()) as EditorSessionState;
-      if (session.sessionId === sessionIdRef.current) {
+      if (
+        requestId === sessionRequestIdRef.current &&
+        session.sessionId === sessionIdRef.current
+      ) {
         setSessionError(undefined);
       }
     } catch (error) {
-      setSessionError(
-        error instanceof Error
-          ? error.message
-          : "Не удалось синхронизировать контекст",
-      );
+      if (requestId === sessionRequestIdRef.current) {
+        setSessionError(
+          error instanceof Error
+            ? error.message
+            : "Не удалось синхронизировать контекст",
+        );
+      }
     }
   }, []);
 
