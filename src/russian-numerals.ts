@@ -36,7 +36,7 @@ const NUMERAL_SPAN_MAX_TOKENS =
   SCALE_COUNT * (SMALL_GROUP_MAX_TOKENS + 1) + SMALL_GROUP_MAX_TOKENS;
 
 function lookupNumeral(word: string): RussianNumeralEntry | undefined {
-  return NUMERAL_DICTIONARY[word.replaceAll("ё", "е")];
+  return NUMERAL_DICTIONARY[word.toLowerCase().replaceAll("ё", "е")];
 }
 
 function tokenizeWords(text: string): WordToken[] {
@@ -124,7 +124,7 @@ function isOneEditAway(source: string, target: string): boolean {
 }
 
 function findUniqueFuzzyNumeral(word: string): RussianNumeralEntry | undefined {
-  const normalizedWord = word.replaceAll("ё", "е");
+  const normalizedWord = word.toLowerCase().replaceAll("ё", "е");
   if (normalizedWord.length < MIN_FUZZY_WORD_LENGTH) {
     return undefined;
   }
@@ -355,8 +355,8 @@ function findReplacements(text: string, tokens: readonly WordToken[]): Replaceme
 /**
  * Replace supported Russian cardinal numerals using scales through trillion.
  *
- * Input is expected to be lowercase. Punctuation and all non-numeral text are
- * preserved exactly.
+ * Matching is case-insensitive. Punctuation, letter casing outside replaced
+ * numeral spans and all other text are preserved exactly.
  */
 export function normalizeRussianNumerals(text: string): string {
   const tokens = addFuzzyMatches(text, tokenizeWords(text));

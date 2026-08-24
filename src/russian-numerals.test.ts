@@ -3,6 +3,13 @@ import { describe, it } from "node:test";
 import { normalizeRussianNumerals } from "./russian-numerals.js";
 
 describe("normalizeRussianNumerals", () => {
+  it("matches uppercase numerals without changing surrounding casing", () => {
+    assert.equal(
+      normalizeRussianNumerals("МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА"),
+      "МНЕ НУЖНО 22 ФАЙЛА",
+    );
+  });
+
   it("converts units, gender forms, and zero", () => {
     assert.equal(normalizeRussianNumerals("ноль один одна два две"), "0 1 1 2 2");
   });

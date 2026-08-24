@@ -231,7 +231,7 @@ export function createRequestHandler({
       if (request.method === "POST" && path === "/v1/chat/completions") {
         const body = await readJson(request);
         const input = getLastUserMessage(body);
-        const content = transformTranscription(input);
+        const content = transformTranscription(input).text;
         const model = typeof body.model === "string" ? body.model : MODEL_ID;
 
         transformationHistory.add(input, content);

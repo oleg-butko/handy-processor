@@ -1,12 +1,15 @@
-import { normalizeRussianNumerals } from "./russian-numerals.js";
+import {
+  applyTransformationRules,
+  type TransformationResult,
+  type TransformationRuleId,
+} from "./transformation-rules.js";
 
 /**
- * Apply the local transcription transformations.
- *
- * Only a period at the end of the complete input is removed. Periods between
- * sentences and other final punctuation are preserved.
+ * Apply enabled local transcription rules in registry order.
  */
-export function transformTranscription(text: string): string {
-  const lowercased = text.toLowerCase();
-  return normalizeRussianNumerals(lowercased).replace(/\.(\s*)$/u, "$1");
+export function transformTranscription(
+  text: string,
+  enabledRuleIds?: ReadonlySet<TransformationRuleId>,
+): TransformationResult {
+  return applyTransformationRules(text, enabledRuleIds);
 }
