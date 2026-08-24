@@ -94,5 +94,36 @@ describe("EditorSessionRegistry", () => {
     assert.deepEqual(registry.currentContext(), {
       source: TRANSFORMATION_SOURCES.external,
     });
+    assert.deepEqual(update(registry), {
+      ok: false,
+      reason: "stale-revision",
+    });
+    assert.equal(update(registry, { documentRevision: 2 }).ok, true);
+  });
+
+  it("rejects a delayed active update after a newer blur update", () => {
+    const registry = new EditorSessionRegistry();
+    assert.equal(update(registry).ok, true);
+    assert.equal(
+      update(registry, { documentRevision: 2, active: false }).ok,
+      true,
+    );
+    assert.deepEqual(update(registry), {
+      ok: false,
+      reason: "stale-revision",
+    });
+    assert.deepEqual(registry.currentContext(), {
+      source: TRANSFORMATION_SOURCES.external,
+    });
+  });
+
+  it("uses a client revision when deletion arrives before an update", () => {
+    const registry = new EditorSessionRegistry();
+    registry.remove("session-1", 3);
+    assert.deepEqual(update(registry, { documentRevision: 3 }), {
+      ok: false,
+      reason: "stale-revision",
+    });
+    assert.equal(update(registry, { documentRevision: 4 }).ok, true);
   });
 });

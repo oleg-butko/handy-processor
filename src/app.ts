@@ -220,6 +220,21 @@ function readPositiveInteger(
   return value;
 }
 
+function readOptionalNonNegativeInteger(
+  parameters: URLSearchParams,
+  name: string,
+): number | undefined {
+  const rawValue = parameters.get(name);
+  if (rawValue === null) {
+    return undefined;
+  }
+  const value = Number(rawValue);
+  if (!Number.isSafeInteger(value) || value < 0) {
+    throw new HttpError(400, `'${name}' must be a non-negative integer`);
+  }
+  return value;
+}
+
 function getTransformationPage(
   history: TransformationHistory,
   parameters: URLSearchParams,
@@ -395,7 +410,13 @@ export function createRequestHandler({
       ) {
         const sessionId = decodeEditorSessionId(path);
         validateEditorSessionId(sessionId);
-        editorSessions.remove(sessionId);
+        editorSessions.remove(
+          sessionId,
+          readOptionalNonNegativeInteger(
+            url.searchParams,
+            "documentRevision",
+          ),
+        );
         response.writeHead(204, { "cache-control": "no-store" });
         response.end();
         return;

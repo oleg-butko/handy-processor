@@ -213,6 +213,7 @@ export function VoiceEditorPage() {
       }
       const state = { ...previous, active };
       stateRef.current = state;
+      sessionRevisionRef.current += 1;
       setEditorState(state);
       void publishSession();
     },
@@ -244,7 +245,7 @@ export function VoiceEditorPage() {
         }
       }
       void fetch(
-        `/api/editor/sessions/${encodeURIComponent(sessionIdRef.current)}`,
+        `/api/editor/sessions/${encodeURIComponent(sessionIdRef.current)}?documentRevision=${sessionRevisionRef.current}`,
         { method: "DELETE", keepalive: true },
       );
     };

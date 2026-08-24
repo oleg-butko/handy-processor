@@ -37,6 +37,10 @@ export type EditorSessionUpdateResult =
 
 export class EditorSessionRegistry {
   readonly #sessions = new Map<string, MutableEditorSession>();
+  readonly #removedSessions = new Map<
+    string,
+    { readonly documentRevision: number; readonly removedAt: number }
+  >();
   readonly #ttlMs: number;
   readonly #now: () => number;
 
@@ -57,6 +61,15 @@ export class EditorSessionRegistry {
   ): EditorSessionUpdateResult {
     const now = this.#now();
     this.#removeExpired(now);
+
+    const removed = this.#removedSessions.get(sessionId);
+    if (
+      removed !== undefined &&
+      update.documentRevision <= removed.documentRevision
+    ) {
+      return { ok: false, reason: "stale-revision" };
+    }
+    this.#removedSessions.delete(sessionId);
 
     const existing = this.#sessions.get(sessionId);
     if (
@@ -85,7 +98,20 @@ export class EditorSessionRegistry {
     return { ok: true, state: this.#toState(session) };
   }
 
-  remove(sessionId: string): void {
+  remove(sessionId: string, knownRevision?: number): void {
+    const now = this.#now();
+    this.#removeExpired(now);
+    const session = this.#sessions.get(sessionId);
+    const documentRevision = Math.max(
+      session?.documentRevision ?? -1,
+      knownRevision ?? -1,
+    );
+    if (documentRevision >= 0) {
+      this.#removedSessions.set(sessionId, {
+        documentRevision,
+        removedAt: now,
+      });
+    }
     this.#sessions.delete(sessionId);
   }
 
@@ -123,6 +149,11 @@ export class EditorSessionRegistry {
     for (const [sessionId, session] of this.#sessions) {
       if (now - session.updatedAt >= this.#ttlMs) {
         this.#sessions.delete(sessionId);
+      }
+    }
+    for (const [sessionId, removed] of this.#removedSessions) {
+      if (now - removed.removedAt >= this.#ttlMs) {
+        this.#removedSessions.delete(sessionId);
       }
     }
   }
