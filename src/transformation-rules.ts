@@ -1,4 +1,8 @@
 import { normalizeRussianNumerals } from "./russian-numerals.js";
+import {
+  EXTERNAL_TRANSFORMATION_CONTEXT,
+  type TransformationContext,
+} from "./transformation-context.js";
 
 export const TRANSFORMATION_RULE_IDS = {
   lowercase: "case.lowercase",
@@ -21,13 +25,18 @@ export interface TransformationRule {
   readonly description: string;
   readonly defaultEnabled: boolean;
   readonly example: TransformationRuleExample;
-  apply(text: string): string;
+  apply(text: string, context: TransformationContext): string;
 }
+
+export type TransformationRuleOutcome = "changed" | "unchanged" | "skipped";
 
 export interface AppliedTransformationRule {
   readonly id: TransformationRuleId;
   readonly version: number;
+  readonly outcome: TransformationRuleOutcome;
+  /** Kept in the public response while older UI versions still consume it. */
   readonly changed: boolean;
+  readonly reason?: string;
 }
 
 export interface TransformationResult {
@@ -91,6 +100,7 @@ export function applyTransformationRules(
   text: string,
   enabledRuleIds: ReadonlySet<TransformationRuleId> =
     DEFAULT_ENABLED_RULE_IDS,
+  context: TransformationContext = EXTERNAL_TRANSFORMATION_CONTEXT,
 ): TransformationResult {
   let transformedText = text;
   const appliedRules: AppliedTransformationRule[] = [];
@@ -101,11 +111,13 @@ export function applyTransformationRules(
     }
 
     const previousText = transformedText;
-    transformedText = rule.apply(previousText);
+    transformedText = rule.apply(previousText, context);
+    const changed = transformedText !== previousText;
     appliedRules.push({
       id: rule.id,
       version: rule.version,
-      changed: transformedText !== previousText,
+      outcome: changed ? "changed" : "unchanged",
+      changed,
     });
   }
 

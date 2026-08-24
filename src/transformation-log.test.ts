@@ -11,6 +11,7 @@ const lowercaseApplied = [
   {
     id: TRANSFORMATION_RULE_IDS.lowercase,
     version: 1,
+    outcome: "changed",
     changed: true,
   },
 ] as const;

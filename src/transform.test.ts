@@ -87,11 +87,13 @@ describe("transformTranscription", () => {
         {
           id: TRANSFORMATION_RULE_IDS.lowercase,
           version: 1,
+          outcome: "unchanged",
           changed: false,
         },
         {
           id: TRANSFORMATION_RULE_IDS.removeFinalPeriod,
           version: 1,
+          outcome: "unchanged",
           changed: false,
         },
       ],
