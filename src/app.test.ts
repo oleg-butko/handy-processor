@@ -4,10 +4,13 @@ import type { AddressInfo } from "node:net";
 import { after, before, describe, it } from "node:test";
 import { createRequestHandler, MODEL_ID } from "./app.js";
 import { APP_VERSION, SERVICE_ID } from "./build-info.js";
+import { RuleSettings } from "./rule-settings.js";
+import { TRANSFORMATION_RULE_IDS } from "./transformation-rules.js";
 import { TransformationLog } from "./transformation-log.js";
 import type { WebUiAssets } from "./web-ui-assets.js";
 
 const transformationLog = new TransformationLog(":memory:");
+const ruleSettings = new RuleSettings(transformationLog);
 const webUiAssets: WebUiAssets = {
   get(path) {
     return path === "/"
@@ -20,6 +23,7 @@ const webUiAssets: WebUiAssets = {
 };
 const handleRequest = createRequestHandler({
   transformationHistory: transformationLog,
+  ruleSettings,
   webUiAssets,
 });
 const server = createServer((request, response) => {
@@ -95,14 +99,98 @@ describe("OpenAI-compatible API", () => {
       `${baseUrl}/api/transformations?page=1&pageSize=1`,
     );
     const history = (await historyResponse.json()) as {
-      items: Array<{ originalText: string; transformedText: string }>;
+      items: Array<{
+        originalText: string;
+        transformedText: string;
+        appliedRules: Array<{ id: string; changed: boolean }>;
+      }>;
       pagination: { total: number };
     };
 
     assert.equal(historyResponse.status, 200);
     assert.equal(history.items[0]?.originalText, originalText);
     assert.equal(history.items[0]?.transformedText, "мне нужно 22 файла");
+    assert.deepEqual(
+      history.items[0]?.appliedRules.map((rule) => rule.id),
+      [
+        TRANSFORMATION_RULE_IDS.lowercase,
+        TRANSFORMATION_RULE_IDS.russianNumerals,
+        TRANSFORMATION_RULE_IDS.removeFinalPeriod,
+      ],
+    );
     assert.equal(history.pagination.total, 1);
+  });
+
+  it("lists and updates rules used by subsequent transformations", async () => {
+    const rulesResponse = await fetch(`${baseUrl}/api/rules`);
+    const rules = (await rulesResponse.json()) as {
+      items: Array<{ id: string; enabled: boolean }>;
+    };
+    assert.equal(rulesResponse.status, 200);
+    assert.equal(rules.items.length, 3);
+
+    const updateResponse = await fetch(
+      `${baseUrl}/api/rules/${TRANSFORMATION_RULE_IDS.lowercase}`,
+      {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ enabled: false }),
+      },
+    );
+    assert.equal(updateResponse.status, 200);
+
+    const transformResponse = await fetch(`${baseUrl}/v1/chat/completions`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        messages: [
+          {
+            role: "user",
+            content: "МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.",
+          },
+        ],
+      }),
+    });
+    const transformation = (await transformResponse.json()) as {
+      choices: Array<{ message: { content: string } }>;
+    };
+    assert.equal(
+      transformation.choices[0]?.message.content,
+      "МНЕ НУЖНО 22 ФАЙЛА",
+    );
+
+    const historyResponse = await fetch(
+      `${baseUrl}/api/transformations?page=1&pageSize=1`,
+    );
+    const history = (await historyResponse.json()) as {
+      items: Array<{ appliedRules: Array<{ id: string }> }>;
+    };
+    assert.deepEqual(
+      history.items[0]?.appliedRules.map((rule) => rule.id),
+      [
+        TRANSFORMATION_RULE_IDS.russianNumerals,
+        TRANSFORMATION_RULE_IDS.removeFinalPeriod,
+      ],
+    );
+  });
+
+  it("validates rule updates", async () => {
+    const invalidValue = await fetch(
+      `${baseUrl}/api/rules/${TRANSFORMATION_RULE_IDS.lowercase}`,
+      {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ enabled: "yes" }),
+      },
+    );
+    assert.equal(invalidValue.status, 400);
+
+    const unknownRule = await fetch(`${baseUrl}/api/rules/unknown.rule`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ enabled: true }),
+    });
+    assert.equal(unknownRule.status, 404);
   });
 
   it("validates history pagination", async () => {

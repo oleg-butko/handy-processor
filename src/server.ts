@@ -13,6 +13,7 @@ import {
   monitorManagedInput,
   type ManagedInputMonitor,
 } from "./managed-lifecycle.js";
+import { RuleSettings } from "./rule-settings.js";
 import { TransformationLog } from "./transformation-log.js";
 import { loadWebUiAssets } from "./web-ui-assets.js";
 
@@ -22,9 +23,11 @@ const config = loadRuntimeConfig(runtimeDirectory);
 const transformationLog = new TransformationLog(
   getDatabasePath(runtimeDirectory),
 );
+const ruleSettings = new RuleSettings(transformationLog);
 const webUiAssets = loadWebUiAssets(join(process.cwd(), "web-dist"));
 const handleRequest = createRequestHandler({
   transformationHistory: transformationLog,
+  ruleSettings,
   webUiAssets,
 });
 

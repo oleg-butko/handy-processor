@@ -1,6 +1,8 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { APP_VERSION, SERVICE_ID } from "./build-info.js";
+import type { RuleSettings } from "./rule-settings.js";
 import { transformTranscription } from "./transform.js";
+import type { AppliedTransformationRule } from "./transformation-rules.js";
 import type { TransformationPage } from "./transformation-log.js";
 import type { WebAsset, WebUiAssets } from "./web-ui-assets.js";
 
@@ -13,12 +15,17 @@ const MAX_PAGE_SIZE = 100;
 type JsonObject = Record<string, unknown>;
 
 export interface TransformationHistory {
-  add(originalText: string, transformedText: string): void;
+  add(
+    originalText: string,
+    transformedText: string,
+    appliedRules: readonly AppliedTransformationRule[],
+  ): void;
   list(page: number, pageSize: number): TransformationPage;
 }
 
 export interface AppDependencies {
   readonly transformationHistory: TransformationHistory;
+  readonly ruleSettings: RuleSettings;
   readonly webUiAssets: WebUiAssets;
 }
 
@@ -133,6 +140,14 @@ function normalizePath(pathname: string): string {
   return pathname.replace(/\/$/u, "") || "/";
 }
 
+function decodeRuleId(path: string): string {
+  try {
+    return decodeURIComponent(path.slice("/api/rules/".length));
+  } catch {
+    throw new HttpError(400, "Transformation rule id is invalid");
+  }
+}
+
 function isApiPath(path: string): boolean {
   return (
     path === "/api" ||
@@ -193,6 +208,7 @@ function getTransformationPage(
 
 export function createRequestHandler({
   transformationHistory,
+  ruleSettings,
   webUiAssets,
 }: AppDependencies) {
   return async function handleRequest(
@@ -231,10 +247,18 @@ export function createRequestHandler({
       if (request.method === "POST" && path === "/v1/chat/completions") {
         const body = await readJson(request);
         const input = getLastUserMessage(body);
-        const content = transformTranscription(input).text;
+        const transformation = transformTranscription(
+          input,
+          ruleSettings.enabledRuleIds(),
+        );
+        const content = transformation.text;
         const model = typeof body.model === "string" ? body.model : MODEL_ID;
 
-        transformationHistory.add(input, content);
+        transformationHistory.add(
+          input,
+          content,
+          transformation.appliedRules,
+        );
 
         sendJson(response, 200, {
           id: `chatcmpl-local-${Date.now()}`,
@@ -263,6 +287,26 @@ export function createRequestHandler({
           200,
           getTransformationPage(transformationHistory, url.searchParams),
         );
+        return;
+      }
+
+      if (request.method === "GET" && path === "/api/rules") {
+        sendJson(response, 200, { items: ruleSettings.list() });
+        return;
+      }
+
+      if (request.method === "PATCH" && path.startsWith("/api/rules/")) {
+        const body = await readJson(request);
+        if (typeof body.enabled !== "boolean") {
+          throw new HttpError(400, "The 'enabled' field must be a boolean");
+        }
+
+        const rule = ruleSettings.setEnabled(decodeRuleId(path), body.enabled);
+        if (rule === undefined) {
+          throw new HttpError(404, "Transformation rule not found");
+        }
+
+        sendJson(response, 200, rule);
         return;
       }
 
