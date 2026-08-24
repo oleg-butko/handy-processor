@@ -10,7 +10,9 @@ post-processing feature. It currently:
 3. optionally removes a period only when it is the final character (ignoring trailing
    whitespace);
 4. stores each transformation in a local SQLite database; and
-5. shows the paginated history and configurable rule list in a React + Mantine
+5. provides a context-aware voice editor with undo, redo and SQLite draft
+   autosave; and
+6. shows the paginated history and configurable rule list in a React + Mantine
    web UI.
 
 For example, `МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.` becomes
@@ -32,6 +34,12 @@ npm run dev
 
 Open the URL printed by the server, normally
 `http://localhost:11434/`.
+
+The **Голосовой редактор** tab uses CodeMirror for plain-text editing. Click
+inside it before starting Handy post-processing so the server can use the
+current document and cursor position. See the
+[voice editor guide](docs/voice-editor.md) for contextual casing, undo/redo and
+focus limitations.
 
 For a compiled production-style run:
 
@@ -173,6 +181,9 @@ Invoke-RestMethod `
 - `GET /api/rules` — returns the transformation rule catalog and current state.
 - `PATCH /api/rules/:ruleId` — enables or disables a rule for subsequent
   transformations.
+- `GET/PUT /api/editor/draft` — loads or saves the editor draft.
+- `PUT/DELETE /api/editor/sessions/:sessionId` — updates or removes ephemeral
+  cursor context used by voice-editor rules.
 
 Unknown OpenAI-compatible fields such as `reasoning_effort` are intentionally
 ignored. This matches the request currently sent by Handy's Custom provider.

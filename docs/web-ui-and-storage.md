@@ -15,7 +15,9 @@ Node HTTP server -> transformer -> SQLite
        |                          |
        | GET /api/*              |
        v                          v
-React + Mantine SPA <-------- history and rule settings
+React + Mantine + CodeMirror SPA
+       ├───────────────► editor context in memory
+       └───────────────► history, draft and rule settings
 ```
 
 Backend, хранилище и UI разделены контрактами. Следующие страницы смогут
@@ -58,11 +60,16 @@ handy-processor.sqlite3
 - UTC-время создания;
 - автоинкрементный идентификатор.
 - JSON-снимок правил, запущенных для этой трансформации.
+- источник `external` или `voice-editor`;
+- компактный JSON-снимок контекста редактора.
 
 Таблица `rule_settings` хранит пользовательские переключатели правил. Значения
 применяются без перезапуска сервера. Каталог, порядок, описания и значения по
 умолчанию остаются в реестре TypeScript, поэтому добавление правила не требует
 изменения схемы БД.
+
+Таблица `editor_draft` хранит один автоматически сохраняемый документ и
+монотонную ревизию сохранения. Undo-история остаётся только в памяти браузера.
 
 Запись создаётся только для успешно обработанного запроса
 `POST /v1/chat/completions`.
@@ -90,16 +97,25 @@ GET /api/transformations?page=1&pageSize=10
       "originalText": "МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.",
       "transformedText": "мне нужно 22 файла",
       "createdAt": "2026-08-21T10:54:12.883Z",
+      "source": "external",
+      "context": null,
       "appliedRules": [
-        { "id": "case.lowercase", "version": 1, "changed": true },
+        {
+          "id": "case.lowercase",
+          "version": 1,
+          "outcome": "changed",
+          "changed": true
+        },
         {
           "id": "numbers.ru-cardinals-to-digits",
           "version": 1,
+          "outcome": "changed",
           "changed": true
         },
         {
           "id": "punctuation.remove-final-period",
           "version": 1,
+          "outcome": "changed",
           "changed": true
         }
       ]
@@ -115,6 +131,7 @@ GET /api/transformations?page=1&pageSize=10
 ```
 
 Для записей, созданных до появления правил, `appliedRules` равен `null`.
+Старые записи после миграции получают источник `external` и `context: null`.
 
 ## API правил
 
@@ -126,6 +143,20 @@ PATCH /api/rules/:ruleId
 `GET` возвращает метаданные, пример и текущее состояние каждого правила.
 `PATCH` принимает JSON вида `{ "enabled": false }`. Подробнее см.
 [описание правил трансформации](transformation-rules.md).
+
+## API голосового редактора
+
+```http
+GET /api/editor/draft
+PUT /api/editor/draft
+PUT /api/editor/sessions/:sessionId
+DELETE /api/editor/sessions/:sessionId
+```
+
+Черновик хранится в SQLite. Сессии, полный текст для вычисления контекста и
+позиция курсора хранятся только в памяти и автоматически истекают. Подробный
+контракт и пользовательский сценарий описаны в
+[документации голосового редактора](voice-editor.md).
 
 ## Разработка UI
 
