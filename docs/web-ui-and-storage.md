@@ -13,9 +13,9 @@ Handy
   v
 Node HTTP server -> transformer -> SQLite
        |                          |
-       | GET /api/transformations|
+       | GET /api/*              |
        v                          v
-React + Mantine SPA <-------- paginated history
+React + Mantine SPA <-------- history and rule settings
 ```
 
 Backend, хранилище и UI разделены контрактами. Следующие страницы смогут
@@ -57,6 +57,12 @@ handy-processor.sqlite3
 - результат трансформации;
 - UTC-время создания;
 - автоинкрементный идентификатор.
+- JSON-снимок правил, запущенных для этой трансформации.
+
+Таблица `rule_settings` хранит пользовательские переключатели правил. Значения
+применяются без перезапуска сервера. Каталог, порядок, описания и значения по
+умолчанию остаются в реестре TypeScript, поэтому добавление правила не требует
+изменения схемы БД.
 
 Запись создаётся только для успешно обработанного запроса
 `POST /v1/chat/completions`.
@@ -83,7 +89,20 @@ GET /api/transformations?page=1&pageSize=10
       "id": 42,
       "originalText": "МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.",
       "transformedText": "мне нужно 22 файла",
-      "createdAt": "2026-08-21T10:54:12.883Z"
+      "createdAt": "2026-08-21T10:54:12.883Z",
+      "appliedRules": [
+        { "id": "case.lowercase", "version": 1, "changed": true },
+        {
+          "id": "numbers.ru-cardinals-to-digits",
+          "version": 1,
+          "changed": true
+        },
+        {
+          "id": "punctuation.remove-final-period",
+          "version": 1,
+          "changed": true
+        }
+      ]
     }
   ],
   "pagination": {
@@ -94,6 +113,19 @@ GET /api/transformations?page=1&pageSize=10
   }
 }
 ```
+
+Для записей, созданных до появления правил, `appliedRules` равен `null`.
+
+## API правил
+
+```http
+GET /api/rules
+PATCH /api/rules/:ruleId
+```
+
+`GET` возвращает метаданные, пример и текущее состояние каждого правила.
+`PATCH` принимает JSON вида `{ "enabled": false }`. Подробнее см.
+[описание правил трансформации](transformation-rules.md).
 
 ## Разработка UI
 

@@ -11,6 +11,7 @@
 ## Архитектура и исследования
 
 - [Web UI и локальное хранение](web-ui-and-storage.md)
+- [Правила трансформации](transformation-rules.md)
 - [Нормализация русских числительных](russian-number-normalization.md)
 
 ## Завершённые планы

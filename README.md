@@ -3,14 +3,15 @@
 A small OpenAI-compatible HTTP server for Handy's experimental
 post-processing feature. It currently:
 
-1. converts the transcription to lowercase; and
-2. converts supported Russian cardinal numerals, including common case forms
+1. optionally converts the transcription to lowercase; and
+2. optionally converts supported Russian cardinal numerals, including common case forms
    and scales through trillion, to digits, with conservative one-edit typo
    correction inside confirmed numeric phrases; and
-3. removes a period only when it is the final character (ignoring trailing
+3. optionally removes a period only when it is the final character (ignoring trailing
    whitespace);
 4. stores each transformation in a local SQLite database; and
-5. shows the paginated history in a React + Mantine web UI.
+5. shows the paginated history and configurable rule list in a React + Mantine
+   web UI.
 
 For example, `МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.` becomes
 `мне нужно 22 файла`.
@@ -169,6 +170,9 @@ Invoke-RestMethod `
 - `GET /` — serves the local React/Mantine history UI.
 - `GET /api/transformations` — returns the transformation history with
   `page`/`pageSize` pagination.
+- `GET /api/rules` — returns the transformation rule catalog and current state.
+- `PATCH /api/rules/:ruleId` — enables or disables a rule for subsequent
+  transformations.
 
 Unknown OpenAI-compatible fields such as `reasoning_effort` are intentionally
 ignored. This matches the request currently sent by Handy's Custom provider.
