@@ -17,6 +17,8 @@ For example, `МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.` becomes
 
 The server uses only Node.js built-ins at runtime and listens on
 `127.0.0.1:11434` by default. It prints the browser URL when it starts.
+See the [documentation index](docs/README.md) for build guides, architecture
+notes and completed plans.
 
 ## Run it
 
@@ -43,8 +45,8 @@ With Node.js 26, build a SEA executable with embedded UI assets:
 npm run build:sea:node26
 ```
 
-See [the Windows Node.js 26 SEA guide](docs/windows-sea-node26.md) for native
-and cross-build instructions.
+See [the Windows Node.js 26 SEA guide](docs/instructions/windows-sea-node26.md)
+for native and cross-build instructions.
 
 The same commands work in Windows PowerShell. Keep that terminal open while
 using Handy. If PowerShell's execution policy blocks `npm.ps1`, run the
@@ -140,7 +142,7 @@ Python is not used by the running server or required by the SEA executable.
 See [the research and implementation plan](docs/russian-number-normalization.md)
 for the current scope and remaining normalization stages.
 Development environment fixes are collected in
-[the troubleshooting notes](docs/troubleshooting.md).
+[the troubleshooting notes](docs/instructions/troubleshooting.md).
 
 On Windows PowerShell, a quick live check is:
 

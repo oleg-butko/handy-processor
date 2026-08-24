@@ -148,15 +148,15 @@ React assets остаются встроенными в SEA. Иконки лау
 - close/minimize-to-tray, повторный запуск и tray Exit;
 - восстановление после раннего завершения sidecar.
 
-Автоматические Debian-проверки и Windows-target type-check выполнены. Пункты,
-зависящие от WebView2, notification area и реального PE linking, остаются
-обязательным ручным smoke test на Windows build-машине по инструкции
-`docs/windows-launcher.md`.
+Автоматические Debian-проверки, Windows-target type-check и ручной smoke test
+на Windows выполнены успешно. Для последующих релизов Windows-проверку следует
+повторять по инструкции `../instructions/windows-launcher.md`.
 
 ## Риски и ограничения
 
-- Native Windows и WebView2 поведение окончательно проверяется в Windows build
-  environment; Debian-проверка покрывает Rust logic, но не Win32 UX.
+- Native Windows, WebView2, tray и managed sidecar проверены на Windows.
+  Debian-проверка по-прежнему покрывает Rust logic, но не заменяет Windows
+  smoke test перед новым релизом.
 - Порт может быть занят посторонним процессом. Лаунчер обязан проверять поля
   `service` и `version`, а не только HTTP 200.
 - Tauri сам по себе не предоставляет полный supervisor для долгоживущего

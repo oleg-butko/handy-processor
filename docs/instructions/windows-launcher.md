@@ -1,6 +1,8 @@
 # Windows tray launcher и portable release
 
-Актуально для `handy-processor` на 21 августа 2026 года.
+Актуально для `handy-processor` на 23 августа 2026 года. Portable-сборка,
+WebView2-интерфейс, system tray и управление server sidecar проверены на
+Windows.
 
 ## Что получается
 

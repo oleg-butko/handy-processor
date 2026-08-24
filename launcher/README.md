@@ -3,7 +3,7 @@
 Опциональная Tauri-оболочка для запуска Handy Processor в system tray. Сам
 Node SEA остаётся самостоятельным приложением и может запускаться без этого
 лаунчера. Полная Windows-инструкция находится в
-[`docs/windows-launcher.md`](../docs/windows-launcher.md).
+[`docs/instructions/windows-launcher.md`](../docs/instructions/windows-launcher.md).
 
 ## Подготовка sidecar
 
