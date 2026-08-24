@@ -18,3 +18,4 @@
 ## Завершённые планы
 
 - [Опциональный Tauri-лаунчер](done/launcher-implementation-plan.md)
+- [Голосовой редактор](done/voice-editor-implementation-plan.md)
