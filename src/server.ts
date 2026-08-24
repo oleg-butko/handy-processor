@@ -31,6 +31,7 @@ const handleRequest = createRequestHandler({
   transformationHistory: transformationLog,
   ruleSettings,
   editorSessions,
+  editorDraftStorage: transformationLog,
   webUiAssets,
 });
 

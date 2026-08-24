@@ -27,6 +27,7 @@ const handleRequest = createRequestHandler({
   transformationHistory: transformationLog,
   ruleSettings,
   editorSessions,
+  editorDraftStorage: transformationLog,
   webUiAssets,
 });
 const server = createServer((request, response) => {
@@ -270,6 +271,35 @@ describe("OpenAI-compatible API", () => {
       },
     );
     assert.equal(invalidSelection.status, 400);
+  });
+
+  it("loads and saves the voice editor draft", async () => {
+    const initialResponse = await fetch(`${baseUrl}/api/editor/draft`);
+    const initial = (await initialResponse.json()) as {
+      content: string;
+      revision: number;
+    };
+    assert.equal(initialResponse.status, 200);
+    assert.equal(initial.content, "");
+    assert.equal(initial.revision, 0);
+
+    const saveResponse = await fetch(`${baseUrl}/api/editor/draft`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ content: "Сохранённый текст" }),
+    });
+    const saved = (await saveResponse.json()) as {
+      content: string;
+      revision: number;
+      updatedAt: string;
+    };
+    assert.equal(saveResponse.status, 200);
+    assert.equal(saved.content, "Сохранённый текст");
+    assert.equal(saved.revision, 1);
+    assert.match(saved.updatedAt, /^\d{4}-\d{2}-\d{2}T/u);
+
+    const reloadResponse = await fetch(`${baseUrl}/api/editor/draft`);
+    assert.deepEqual(await reloadResponse.json(), saved);
   });
 
   it("does not serve the SPA for unknown API routes", async () => {

@@ -27,6 +27,12 @@ export interface TransformationPage {
   readonly total: number;
 }
 
+export interface EditorDraft {
+  readonly content: string;
+  readonly revision: number;
+  readonly updatedAt: string | null;
+}
+
 interface TransformationRow {
   readonly id: number;
   readonly original_text: string;
@@ -42,12 +48,18 @@ interface RuleSettingRow {
   readonly enabled: number;
 }
 
+interface EditorDraftRow {
+  readonly content: string;
+  readonly revision: number;
+  readonly updated_at: string;
+}
+
 interface StoredRuleSnapshot {
   readonly pipelineVersion: 2;
   readonly applied: readonly AppliedTransformationRule[];
 }
 
-const SCHEMA_VERSION = 3;
+const SCHEMA_VERSION = 4;
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -204,6 +216,22 @@ function migrate(database: DatabaseSync): void {
       COMMIT;
     `);
   }
+
+  if (version < 4) {
+    database.exec(`
+      BEGIN;
+      CREATE TABLE editor_draft (
+        id INTEGER PRIMARY KEY CHECK (id = 1),
+        content TEXT NOT NULL,
+        revision INTEGER NOT NULL CHECK (revision >= 1),
+        updated_at TEXT NOT NULL DEFAULT (
+          strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+        )
+      ) STRICT;
+      PRAGMA user_version = 4;
+      COMMIT;
+    `);
+  }
 }
 
 export class TransformationLog {
@@ -213,6 +241,8 @@ export class TransformationLog {
   readonly #list: StatementSync;
   readonly #listRuleSettings: StatementSync;
   readonly #setRuleEnabled: StatementSync;
+  readonly #getEditorDraft: StatementSync;
+  readonly #saveEditorDraft: StatementSync;
 
   constructor(databasePath: string) {
     this.#database = new DatabaseSync(databasePath, { timeout: 5_000 });
@@ -251,6 +281,20 @@ export class TransformationLog {
       ON CONFLICT (rule_id) DO UPDATE SET
         enabled = excluded.enabled,
         updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+    `);
+    this.#getEditorDraft = this.#database.prepare(`
+      SELECT content, revision, updated_at
+      FROM editor_draft
+      WHERE id = 1
+    `);
+    this.#saveEditorDraft = this.#database.prepare(`
+      INSERT INTO editor_draft (id, content, revision)
+      VALUES (1, ?, 1)
+      ON CONFLICT (id) DO UPDATE SET
+        content = excluded.content,
+        revision = editor_draft.revision + 1,
+        updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+      RETURNING content, revision, updated_at
     `);
   }
 
@@ -299,6 +343,31 @@ export class TransformationLog {
 
   setRuleEnabled(ruleId: TransformationRuleId, enabled: boolean): void {
     this.#setRuleEnabled.run(ruleId, enabled ? 1 : 0);
+  }
+
+  loadEditorDraft(): EditorDraft {
+    const row = this.#getEditorDraft.get() as EditorDraftRow | undefined;
+    return row === undefined
+      ? { content: "", revision: 0, updatedAt: null }
+      : {
+          content: row.content,
+          revision: row.revision,
+          updatedAt: row.updated_at,
+        };
+  }
+
+  saveEditorDraft(content: string): EditorDraft {
+    const row = this.#saveEditorDraft.get(content) as
+      | EditorDraftRow
+      | undefined;
+    if (row === undefined) {
+      throw new Error("Failed to save editor draft");
+    }
+    return {
+      content: row.content,
+      revision: row.revision,
+      updatedAt: row.updated_at,
+    };
   }
 
   close(): void {

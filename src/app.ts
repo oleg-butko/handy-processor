@@ -5,7 +5,10 @@ import type { RuleSettings } from "./rule-settings.js";
 import type { TransformationContext } from "./transformation-context.js";
 import { transformTranscription } from "./transform.js";
 import type { AppliedTransformationRule } from "./transformation-rules.js";
-import type { TransformationPage } from "./transformation-log.js";
+import type {
+  EditorDraft,
+  TransformationPage,
+} from "./transformation-log.js";
 import type { WebAsset, WebUiAssets } from "./web-ui-assets.js";
 
 export const MODEL_ID = "handy-basic-transformer";
@@ -26,10 +29,16 @@ export interface TransformationHistory {
   list(page: number, pageSize: number): TransformationPage;
 }
 
+export interface EditorDraftStorage {
+  loadEditorDraft(): EditorDraft;
+  saveEditorDraft(content: string): EditorDraft;
+}
+
 export interface AppDependencies {
   readonly transformationHistory: TransformationHistory;
   readonly ruleSettings: RuleSettings;
   readonly editorSessions: EditorSessionRegistry;
+  readonly editorDraftStorage: EditorDraftStorage;
   readonly webUiAssets: WebUiAssets;
 }
 
@@ -239,6 +248,7 @@ export function createRequestHandler({
   transformationHistory,
   ruleSettings,
   editorSessions,
+  editorDraftStorage,
   webUiAssets,
 }: AppDependencies) {
   return async function handleRequest(
@@ -325,6 +335,20 @@ export function createRequestHandler({
 
       if (request.method === "GET" && path === "/api/rules") {
         sendJson(response, 200, { items: ruleSettings.list() });
+        return;
+      }
+
+      if (request.method === "GET" && path === "/api/editor/draft") {
+        sendJson(response, 200, editorDraftStorage.loadEditorDraft());
+        return;
+      }
+
+      if (request.method === "PUT" && path === "/api/editor/draft") {
+        const body = await readJson(request);
+        if (typeof body.content !== "string") {
+          throw new HttpError(400, "The 'content' field must be a string");
+        }
+        sendJson(response, 200, editorDraftStorage.saveEditorDraft(body.content));
         return;
       }
 

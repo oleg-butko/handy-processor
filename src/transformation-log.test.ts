@@ -149,4 +149,23 @@ describe("TransformationLog", () => {
       rmSync(directory, { recursive: true, force: true });
     }
   });
+
+  it("persists one editor draft with a monotonic revision", () => {
+    const log = new TransformationLog(":memory:");
+    try {
+      assert.deepEqual(log.loadEditorDraft(), {
+        content: "",
+        revision: 0,
+        updatedAt: null,
+      });
+
+      const first = log.saveEditorDraft("Первый вариант");
+      const second = log.saveEditorDraft("Второй вариант");
+      assert.equal(first.revision, 1);
+      assert.equal(second.revision, 2);
+      assert.equal(log.loadEditorDraft().content, "Второй вариант");
+    } finally {
+      log.close();
+    }
+  });
 });
