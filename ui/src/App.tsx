@@ -11,6 +11,7 @@ import {
 import { useCallback, useEffect, useState } from "react";
 import { HistoryPage } from "./HistoryPage.js";
 import { RulesPage } from "./RulesPage.js";
+import { VoiceEditorPage } from "./VoiceEditorPage.js";
 import type {
   RulesResponse,
   TransformationRuleState,
@@ -113,12 +114,16 @@ function AppContent() {
           </Badge>
         </Group>
 
-        <Tabs defaultValue="history" keepMounted={false}>
+        <Tabs defaultValue="editor" keepMounted={false}>
           <Tabs.List>
+            <Tabs.Tab value="editor">Голосовой редактор</Tabs.Tab>
             <Tabs.Tab value="history">История</Tabs.Tab>
             <Tabs.Tab value="rules">Список правил</Tabs.Tab>
           </Tabs.List>
 
+          <Tabs.Panel value="editor">
+            <VoiceEditorPage />
+          </Tabs.Panel>
           <Tabs.Panel value="history">
             <HistoryPage rules={rules} />
           </Tabs.Panel>

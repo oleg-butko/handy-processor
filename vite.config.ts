@@ -9,6 +9,7 @@ export default defineConfig({
     outDir: resolve(import.meta.dirname, "web-dist"),
     emptyOutDir: true,
     cssCodeSplit: false,
+    chunkSizeWarningLimit: 700,
     rollupOptions: {
       output: {
         entryFileNames: "assets/app.js",

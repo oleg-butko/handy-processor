@@ -43,3 +43,59 @@ body {
   background: light-dark(var(--mantine-color-cyan-0), rgba(21, 170, 191, 0.08));
   border-color: light-dark(var(--mantine-color-cyan-2), var(--mantine-color-cyan-9));
 }
+
+.voice-editor-shell {
+  overflow: hidden;
+}
+
+.voice-editor-toolbar,
+.voice-editor-footer {
+  background: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
+}
+
+.voice-editor-toolbar {
+  border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+}
+
+.voice-editor-footer {
+  border-top: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+}
+
+.voice-editor-field .cm-editor {
+  min-height: 420px;
+  color: var(--mantine-color-text);
+  background: var(--mantine-color-body);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+}
+
+.voice-editor-field .cm-editor.cm-focused {
+  outline: 2px solid var(--mantine-color-cyan-5);
+  outline-offset: -2px;
+}
+
+.voice-editor-field .cm-scroller {
+  min-height: 420px;
+  max-height: 65vh;
+  overflow: auto;
+}
+
+.voice-editor-field .cm-content {
+  min-height: 420px;
+  padding: 18px 20px;
+  caret-color: var(--mantine-color-cyan-6);
+  line-height: 1.7;
+}
+
+.voice-editor-field .cm-line {
+  padding: 0;
+}
+
+.voice-editor-field .cm-cursor {
+  border-left-color: var(--mantine-color-cyan-6);
+}
+
+.voice-editor-field .cm-selectionBackground,
+.voice-editor-field .cm-content ::selection {
+  background: light-dark(var(--mantine-color-cyan-2), var(--mantine-color-cyan-9)) !important;
+}

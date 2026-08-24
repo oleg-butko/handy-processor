@@ -2,6 +2,8 @@ export interface AppliedRuleRecord {
   readonly id: string;
   readonly version: number;
   readonly changed: boolean;
+  readonly outcome: "changed" | "unchanged" | "skipped";
+  readonly reason?: string;
 }
 
 export interface TransformationRecord {
@@ -10,6 +12,13 @@ export interface TransformationRecord {
   readonly transformedText: string;
   readonly createdAt: string;
   readonly appliedRules: readonly AppliedRuleRecord[] | null;
+  readonly source: "external" | "voice-editor";
+  readonly context: {
+    readonly schemaVersion: 1;
+    readonly editor: {
+      readonly sentencePosition: "start" | "middle" | "unknown";
+    };
+  } | null;
 }
 
 export interface HistoryResponse {
@@ -29,6 +38,8 @@ export interface TransformationRuleState {
   readonly description: string;
   readonly defaultEnabled: boolean;
   readonly enabled: boolean;
+  readonly category: "common" | "voice-editor";
+  readonly sources: readonly ("external" | "voice-editor")[];
   readonly example: {
     readonly input: string;
     readonly output: string;
@@ -37,4 +48,20 @@ export interface TransformationRuleState {
 
 export interface RulesResponse {
   readonly items: readonly TransformationRuleState[];
+}
+
+export interface EditorDraft {
+  readonly content: string;
+  readonly revision: number;
+  readonly updatedAt: string | null;
+}
+
+export interface EditorSessionState {
+  readonly sessionId: string;
+  readonly documentRevision: number;
+  readonly selectionStart: number;
+  readonly selectionEnd: number;
+  readonly active: boolean;
+  readonly expiresAt: number;
+  readonly sentencePosition: "start" | "middle" | "unknown";
 }

@@ -24,6 +24,83 @@ interface RulesPageProps {
   readonly onToggle: (ruleId: string, enabled: boolean) => void;
 }
 
+function RuleCard({
+  rule,
+  pending,
+  onToggle,
+}: {
+  readonly rule: TransformationRuleState;
+  readonly pending: boolean;
+  readonly onToggle: (ruleId: string, enabled: boolean) => void;
+}) {
+  return (
+    <Card withBorder radius="lg" padding="lg" shadow="xs">
+      <Stack gap="md">
+        <Group justify="space-between" align="flex-start" wrap="nowrap">
+          <Checkbox
+            aria-label={`${rule.enabled ? "Выключить" : "Включить"} правило «${rule.title}»`}
+            checked={rule.enabled}
+            disabled={pending}
+            mt={4}
+            size="md"
+            onChange={(event) =>
+              onToggle(rule.id, event.currentTarget.checked)
+            }
+          />
+          <Stack gap={4} className="rule-summary">
+            <Group gap="sm">
+              <Text fw={700}>{rule.title}</Text>
+              <Badge color="blue" variant="outline">
+                {rule.sources.length === 2
+                  ? "Везде"
+                  : rule.sources[0] === "voice-editor"
+                    ? "Редактор"
+                    : "Внешний ввод"}
+              </Badge>
+              <Badge
+                color={rule.enabled ? "teal" : "gray"}
+                variant={rule.enabled ? "light" : "outline"}
+              >
+                {pending
+                  ? "Сохранение…"
+                  : rule.enabled
+                    ? "Включено"
+                    : "Выключено"}
+              </Badge>
+            </Group>
+            <Text c="dimmed" size="sm">
+              {rule.description}
+            </Text>
+          </Stack>
+        </Group>
+
+        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
+          <Stack gap={5}>
+            <Text c="dimmed" fw={700} size="xs" tt="uppercase">
+              До
+            </Text>
+            <Paper className="rule-example" p="sm" radius="md">
+              <Text size="sm">{rule.example.input}</Text>
+            </Paper>
+          </Stack>
+          <Stack gap={5}>
+            <Text c="cyan.8" fw={700} size="xs" tt="uppercase">
+              После
+            </Text>
+            <Paper
+              className="rule-example rule-example-result"
+              p="sm"
+              radius="md"
+            >
+              <Text size="sm">{rule.example.output}</Text>
+            </Paper>
+          </Stack>
+        </SimpleGrid>
+      </Stack>
+    </Card>
+  );
+}
+
 export function RulesPage({
   rules,
   loading,
@@ -32,6 +109,19 @@ export function RulesPage({
   onReload,
   onToggle,
 }: RulesPageProps) {
+  const groups = [
+    {
+      category: "common" as const,
+      title: "Общие правила",
+      description: "Обычные преобразования текста и внешней вставки.",
+    },
+    {
+      category: "voice-editor" as const,
+      title: "Правила голосового редактора",
+      description: "Учитывают позицию курсора и контекст документа.",
+    },
+  ];
+
   return (
     <Stack gap="xl" pt="xl">
       <Stack gap={4}>
@@ -62,67 +152,34 @@ export function RulesPage({
         </Center>
       ) : null}
 
-      <Stack gap="md" opacity={loading ? 0.65 : 1}>
-        {rules.map((rule) => {
-          const pending = pendingRuleIds.has(rule.id);
+      <Stack gap="xl" opacity={loading ? 0.65 : 1}>
+        {groups.map((group) => {
+          const groupedRules = rules.filter(
+            (rule) => rule.category === group.category,
+          );
+          if (groupedRules.length === 0) {
+            return null;
+          }
           return (
-            <Card key={rule.id} withBorder radius="lg" padding="lg" shadow="xs">
-              <Stack gap="md">
-                <Group justify="space-between" align="flex-start" wrap="nowrap">
-                  <Checkbox
-                    aria-label={`${rule.enabled ? "Выключить" : "Включить"} правило «${rule.title}»`}
-                    checked={rule.enabled}
-                    disabled={pending}
-                    mt={4}
-                    size="md"
-                    onChange={(event) =>
-                      onToggle(rule.id, event.currentTarget.checked)
-                    }
-                  />
-                  <Stack gap={4} className="rule-summary">
-                    <Group gap="sm">
-                      <Text fw={700}>{rule.title}</Text>
-                      <Badge
-                        color={rule.enabled ? "teal" : "gray"}
-                        variant={rule.enabled ? "light" : "outline"}
-                      >
-                        {pending
-                          ? "Сохранение…"
-                          : rule.enabled
-                            ? "Включено"
-                            : "Выключено"}
-                      </Badge>
-                    </Group>
-                    <Text c="dimmed" size="sm">
-                      {rule.description}
-                    </Text>
-                  </Stack>
-                </Group>
-
-                <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
-                  <Stack gap={5}>
-                    <Text c="dimmed" fw={700} size="xs" tt="uppercase">
-                      До
-                    </Text>
-                    <Paper className="rule-example" p="sm" radius="md">
-                      <Text size="sm">{rule.example.input}</Text>
-                    </Paper>
-                  </Stack>
-                  <Stack gap={5}>
-                    <Text c="cyan.8" fw={700} size="xs" tt="uppercase">
-                      После
-                    </Text>
-                    <Paper
-                      className="rule-example rule-example-result"
-                      p="sm"
-                      radius="md"
-                    >
-                      <Text size="sm">{rule.example.output}</Text>
-                    </Paper>
-                  </Stack>
-                </SimpleGrid>
+            <Stack gap="md" key={group.category}>
+              <Stack gap={2}>
+                <Title order={3}>{group.title}</Title>
+                <Text c="dimmed" size="sm">
+                  {group.description}
+                </Text>
               </Stack>
-            </Card>
+              {groupedRules.map((rule) => {
+                const pending = pendingRuleIds.has(rule.id);
+                return (
+                  <RuleCard
+                    key={rule.id}
+                    rule={rule}
+                    pending={pending}
+                    onToggle={onToggle}
+                  />
+                );
+              })}
+            </Stack>
           );
         })}
       </Stack>
