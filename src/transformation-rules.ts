@@ -55,9 +55,9 @@ export const TRANSFORMATION_RULES: readonly TransformationRule[] = [
   {
     id: TRANSFORMATION_RULE_IDS.russianNumerals,
     version: 1,
-    title: "Русские числительные",
+    title: "Русские числительные → цифры",
     description:
-      "Заменяет поддерживаемые русские количественные числительные цифрами.",
+      "Заменяет русские количественные числительные цифрами, учитывая поддерживаемые падежи и небольшие ошибки распознавания.",
     defaultEnabled: true,
     example: {
       input: "Мне нужно двадцать два файла",

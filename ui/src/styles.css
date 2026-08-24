@@ -29,3 +29,17 @@ body {
   overflow-wrap: anywhere;
   line-height: 1.6;
 }
+
+.rule-summary {
+  flex: 1;
+}
+
+.rule-example {
+  background: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
+  border: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+}
+
+.rule-example-result {
+  background: light-dark(var(--mantine-color-cyan-0), rgba(21, 170, 191, 0.08));
+  border-color: light-dark(var(--mantine-color-cyan-2), var(--mantine-color-cyan-9));
+}
