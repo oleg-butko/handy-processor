@@ -1,10 +1,30 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
+import {
+  TRANSFORMATION_SOURCES,
+  type SentencePosition,
+  type VoiceEditorTransformationContext,
+} from "./transformation-context.js";
 import { transformTranscription } from "./transform.js";
 import { TRANSFORMATION_RULE_IDS } from "./transformation-rules.js";
 
 function transform(text: string): string {
   return transformTranscription(text).text;
+}
+
+function editorContext(
+  sentencePosition: SentencePosition,
+): VoiceEditorTransformationContext {
+  return {
+    source: TRANSFORMATION_SOURCES.voiceEditor,
+    editor: {
+      sessionId: "test-session",
+      documentRevision: 1,
+      selectionStart: 5,
+      selectionEnd: 5,
+      sentencePosition,
+    },
+  };
 }
 
 describe("transformTranscription", () => {
@@ -103,5 +123,69 @@ describe("transformTranscription", () => {
   it("leaves text unchanged when every rule is disabled", () => {
     const result = transformTranscription("НЕ МЕНЯЙ МЕНЯ.", new Set());
     assert.deepEqual(result, { text: "НЕ МЕНЯЙ МЕНЯ.", appliedRules: [] });
+  });
+
+  it("lowercases voice editor input only inside a sentence", () => {
+    const result = transformTranscription(
+      "НОВОЕ СЛОВО.",
+      undefined,
+      editorContext("middle"),
+    );
+
+    assert.equal(result.text, "новое слово");
+    assert.equal(
+      result.appliedRules.some(
+        (rule) =>
+          rule.id ===
+            TRANSFORMATION_RULE_IDS.editorLowercaseInsideSentence &&
+          rule.outcome === "changed",
+      ),
+      true,
+    );
+    assert.equal(
+      result.appliedRules.some(
+        (rule) => rule.id === TRANSFORMATION_RULE_IDS.lowercase,
+      ),
+      false,
+    );
+  });
+
+  it("preserves voice editor casing at the start of a sentence", () => {
+    const result = transformTranscription(
+      "НОВОЕ СЛОВО.",
+      undefined,
+      editorContext("start"),
+    );
+
+    assert.equal(result.text, "НОВОЕ СЛОВО");
+    assert.deepEqual(
+      result.appliedRules.find(
+        (rule) =>
+          rule.id === TRANSFORMATION_RULE_IDS.editorLowercaseInsideSentence,
+      ),
+      {
+        id: TRANSFORMATION_RULE_IDS.editorLowercaseInsideSentence,
+        version: 1,
+        outcome: "skipped",
+        changed: false,
+        reason: "sentence-start",
+      },
+    );
+  });
+
+  it("skips contextual casing when editor context is unknown", () => {
+    const result = transformTranscription(
+      "НОВОЕ СЛОВО",
+      undefined,
+      editorContext("unknown"),
+    );
+    assert.equal(result.text, "НОВОЕ СЛОВО");
+    assert.equal(
+      result.appliedRules.find(
+        (rule) =>
+          rule.id === TRANSFORMATION_RULE_IDS.editorLowercaseInsideSentence,
+      )?.reason,
+      "context-unknown",
+    );
   });
 });

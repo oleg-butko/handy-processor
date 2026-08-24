@@ -1,11 +1,14 @@
 import { normalizeRussianNumerals } from "./russian-numerals.js";
 import {
   EXTERNAL_TRANSFORMATION_CONTEXT,
+  TRANSFORMATION_SOURCES,
   type TransformationContext,
+  type TransformationSource,
 } from "./transformation-context.js";
 
 export const TRANSFORMATION_RULE_IDS = {
   lowercase: "case.lowercase",
+  editorLowercaseInsideSentence: "editor.case.lowercase-inside-sentence",
   russianNumerals: "numbers.ru-cardinals-to-digits",
   removeFinalPeriod: "punctuation.remove-final-period",
 } as const;
@@ -24,7 +27,12 @@ export interface TransformationRule {
   readonly title: string;
   readonly description: string;
   readonly defaultEnabled: boolean;
+  readonly category: "common" | "voice-editor";
+  readonly sources: readonly TransformationSource[];
   readonly example: TransformationRuleExample;
+  readonly when?: (context: TransformationContext) =>
+    | { readonly apply: true }
+    | { readonly apply: false; readonly reason: string };
   apply(text: string, context: TransformationContext): string;
 }
 
@@ -52,12 +60,42 @@ export const TRANSFORMATION_RULES: readonly TransformationRule[] = [
   {
     id: TRANSFORMATION_RULE_IDS.lowercase,
     version: 1,
-    title: "Нижний регистр",
-    description: "Переводит все буквы текста в нижний регистр.",
+    title: "Нижний регистр для внешнего ввода",
+    description:
+      "Переводит все буквы текста в нижний регистр при вставке вне голосового редактора.",
     defaultEnabled: true,
+    category: "common",
+    sources: [TRANSFORMATION_SOURCES.external],
     example: {
       input: "Привет, МИР.",
       output: "привет, мир.",
+    },
+    apply: (text) => text.toLowerCase(),
+  },
+  {
+    id: TRANSFORMATION_RULE_IDS.editorLowercaseInsideSentence,
+    version: 1,
+    title: "Нижний регистр внутри предложения",
+    description:
+      "В голосовом редакторе переводит вставляемый текст в нижний регистр только в середине предложения.",
+    defaultEnabled: true,
+    category: "voice-editor",
+    sources: [TRANSFORMATION_SOURCES.voiceEditor],
+    example: {
+      input: "Предложение с ВСТАВКОЙ внутри",
+      output: "Предложение с вставкой внутри",
+    },
+    when: (context) => {
+      if (context.source !== TRANSFORMATION_SOURCES.voiceEditor) {
+        return { apply: false, reason: "source-not-supported" };
+      }
+      if (context.editor.sentencePosition === "start") {
+        return { apply: false, reason: "sentence-start" };
+      }
+      if (context.editor.sentencePosition === "unknown") {
+        return { apply: false, reason: "context-unknown" };
+      }
+      return { apply: true };
     },
     apply: (text) => text.toLowerCase(),
   },
@@ -68,6 +106,11 @@ export const TRANSFORMATION_RULES: readonly TransformationRule[] = [
     description:
       "Заменяет русские количественные числительные цифрами, учитывая поддерживаемые падежи и небольшие ошибки распознавания.",
     defaultEnabled: true,
+    category: "common",
+    sources: [
+      TRANSFORMATION_SOURCES.external,
+      TRANSFORMATION_SOURCES.voiceEditor,
+    ],
     example: {
       input: "Мне нужно двадцать два файла",
       output: "Мне нужно 22 файла",
@@ -81,6 +124,11 @@ export const TRANSFORMATION_RULES: readonly TransformationRule[] = [
     description:
       "Удаляет точку только в конце текста, сохраняя остальные знаки препинания.",
     defaultEnabled: true,
+    category: "common",
+    sources: [
+      TRANSFORMATION_SOURCES.external,
+      TRANSFORMATION_SOURCES.voiceEditor,
+    ],
     example: {
       input: "Текст готов.",
       output: "Текст готов",
@@ -107,6 +155,22 @@ export function applyTransformationRules(
 
   for (const rule of TRANSFORMATION_RULES) {
     if (!enabledRuleIds.has(rule.id)) {
+      continue;
+    }
+
+    if (!rule.sources.includes(context.source)) {
+      continue;
+    }
+
+    const condition = rule.when?.(context);
+    if (condition?.apply === false) {
+      appliedRules.push({
+        id: rule.id,
+        version: rule.version,
+        outcome: "skipped",
+        changed: false,
+        reason: condition.reason,
+      });
       continue;
     }
 

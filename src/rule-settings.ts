@@ -4,6 +4,7 @@ import {
   type TransformationRuleExample,
   type TransformationRuleId,
 } from "./transformation-rules.js";
+import type { TransformationSource } from "./transformation-context.js";
 
 export interface StoredRuleSetting {
   readonly ruleId: string;
@@ -22,6 +23,8 @@ export interface TransformationRuleState {
   readonly description: string;
   readonly defaultEnabled: boolean;
   readonly enabled: boolean;
+  readonly category: "common" | "voice-editor";
+  readonly sources: readonly TransformationSource[];
   readonly example: TransformationRuleExample;
 }
 
@@ -36,6 +39,8 @@ function toState(
     description: rule.description,
     defaultEnabled: rule.defaultEnabled,
     enabled: overrides.get(rule.id) ?? rule.defaultEnabled,
+    category: rule.category,
+    sources: rule.sources,
     example: rule.example,
   };
 }
