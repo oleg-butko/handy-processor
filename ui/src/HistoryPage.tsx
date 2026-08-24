@@ -23,6 +23,12 @@ import type {
 
 const PAGE_SIZE = 10;
 
+const RULE_REASON_LABELS: Readonly<Record<string, string>> = {
+  "sentence-start": "Пропущено: курсор находился в начале предложения",
+  "context-unknown": "Пропущено: контекст редактора неизвестен",
+  "source-not-supported": "Пропущено: правило не применяется к этому источнику",
+};
+
 function formatDate(value: string): string {
   const date = new Date(value);
   return Number.isNaN(date.getTime())
@@ -58,23 +64,60 @@ function AppliedRules({
 
   return (
     <Group gap="xs">
-      {item.appliedRules.map((rule) => (
-        <Tooltip
-          key={`${rule.id}:${rule.version}`}
-          label={
-            rule.changed
-              ? "Правило изменило текст"
-              : "Правило было включено, но изменений не потребовалось"
-          }
-        >
-          <Badge
-            color={rule.changed ? "cyan" : "gray"}
-            variant={rule.changed ? "light" : "outline"}
-          >
-            {ruleTitles.get(rule.id) ?? rule.id}
-          </Badge>
-        </Tooltip>
-      ))}
+      {item.appliedRules.map((rule) => {
+        const skipped = rule.outcome === "skipped";
+        const label = skipped
+          ? (RULE_REASON_LABELS[rule.reason ?? ""] ?? "Пропущено по условию")
+          : rule.outcome === "changed"
+            ? "Правило изменило текст"
+            : "Правило было выполнено, но изменений не потребовалось";
+        return (
+          <Tooltip key={`${rule.id}:${rule.version}`} label={label}>
+            <Badge
+              color={
+                rule.outcome === "changed"
+                  ? "cyan"
+                  : skipped
+                    ? "orange"
+                    : "gray"
+              }
+              variant={rule.outcome === "changed" ? "light" : "outline"}
+            >
+              {ruleTitles.get(rule.id) ?? rule.id}
+              {skipped ? " · пропущено" : ""}
+            </Badge>
+          </Tooltip>
+        );
+      })}
+    </Group>
+  );
+}
+
+function ContextBadges({ item }: { readonly item: TransformationRecord }) {
+  if (item.source === "external") {
+    return (
+      <Badge color="gray" variant="outline">
+        Внешний ввод
+      </Badge>
+    );
+  }
+
+  const position = item.context?.editor.sentencePosition;
+  const positionLabel =
+    position === "start"
+      ? "Начало предложения"
+      : position === "middle"
+        ? "Середина предложения"
+        : "Контекст неизвестен";
+
+  return (
+    <Group gap="xs">
+      <Badge color="violet" variant="light">
+        Голосовой редактор
+      </Badge>
+      <Badge color={position === "unknown" ? "orange" : "blue"} variant="outline">
+        {positionLabel}
+      </Badge>
     </Group>
   );
 }
@@ -89,10 +132,13 @@ function TransformationCard({
   return (
     <Card withBorder radius="lg" padding="lg" shadow="xs">
       <Stack gap="md">
-        <Group justify="space-between" align="center">
-          <Badge variant="light" color="gray">
-            #{item.id}
-          </Badge>
+        <Group justify="space-between" align="center" wrap="wrap">
+          <Group gap="xs">
+            <Badge variant="light" color="gray">
+              #{item.id}
+            </Badge>
+            <ContextBadges item={item} />
+          </Group>
           <Text c="dimmed" size="xs">
             {formatDate(item.createdAt)}
           </Text>
