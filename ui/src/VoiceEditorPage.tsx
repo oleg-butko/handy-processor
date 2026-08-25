@@ -1,6 +1,5 @@
 import {
   Alert,
-  Badge,
   Button,
   Center,
   Group,
@@ -16,7 +15,11 @@ import {
   type PlainTextEditorHandle,
   type PlainTextEditorState,
 } from "./PlainTextEditor.js";
-import type { EditorDraft, EditorSessionState } from "./types.js";
+import type {
+  EditorDraft,
+  EditorFontSize,
+  EditorSessionState,
+} from "./types.js";
 
 const SESSION_HEARTBEAT_MS = 5_000;
 const SESSION_SYNC_DELAY_MS = 75;
@@ -37,7 +40,11 @@ function countWords(text: string): number {
   return trimmed === "" ? 0 : trimmed.split(/\s+/u).length;
 }
 
-export function VoiceEditorPage() {
+export function VoiceEditorPage({
+  editorFontSize,
+}: {
+  readonly editorFontSize: EditorFontSize;
+}) {
   const editorRef = useRef<PlainTextEditorHandle>(null);
   const sessionIdRef = useRef(createSessionId());
   const sessionRevisionRef = useRef(0);
@@ -50,6 +57,7 @@ export function VoiceEditorPage() {
     undefined,
   );
   const latestSaveRef = useRef(0);
+  const saveQueueRef = useRef<Promise<void>>(Promise.resolve());
   const [draft, setDraft] = useState<EditorDraft>();
   const [loadError, setLoadError] = useState<string>();
   const [sessionError, setSessionError] = useState<string>();
@@ -148,8 +156,8 @@ export function VoiceEditorPage() {
     }, SESSION_SYNC_DELAY_MS);
   }, [publishSession]);
 
-  const saveDraft = useCallback(async (content: string, saveId: number) => {
-    try {
+  const enqueueDraftSave = useCallback((content: string, saveId: number) => {
+    const operation = saveQueueRef.current.then(async () => {
       const response = await fetch("/api/editor/draft", {
         method: "PUT",
         headers: { "content-type": "application/json" },
@@ -164,11 +172,13 @@ export function VoiceEditorPage() {
         // and discard the user's in-memory undo history after every save.
         setSaveState("saved");
       }
-    } catch {
+    });
+
+    saveQueueRef.current = operation.catch(() => {
       if (saveId === latestSaveRef.current) {
         setSaveState("error");
       }
-    }
+    });
   }, []);
 
   const scheduleDraftSave = useCallback(
@@ -181,10 +191,10 @@ export function VoiceEditorPage() {
       latestSaveRef.current = saveId;
       draftSaveTimerRef.current = setTimeout(() => {
         draftSaveTimerRef.current = undefined;
-        void saveDraft(content, saveId);
+        enqueueDraftSave(content, saveId);
       }, DRAFT_SAVE_DELAY_MS);
     },
-    [saveDraft],
+    [enqueueDraftSave],
   );
 
   const handleStateChange = useCallback(
@@ -277,23 +287,30 @@ export function VoiceEditorPage() {
   const statusText = sessionError
     ? "Контекст недоступен"
     : editorState.active
-      ? "Готов к голосовому вводу"
-      : "Нажмите в поле для голосового ввода";
+      ? "Контекст редактора активен"
+      : "Нажмите в поле, чтобы активировать контекст";
 
   return (
-    <Stack gap="lg" pt="xl">
-      <Group justify="space-between" align="flex-end">
-        <Stack gap={4}>
-          <Title order={2}>Голосовой редактор</Title>
-          <Text c="dimmed">
-            Диктуйте через shortcut post-processing Handy и редактируйте текст
-            вручную.
+    <Stack gap="md" pt="md">
+      <Stack gap={3}>
+        <Title order={2}>Голосовой редактор</Title>
+        <Text c="dimmed" size="sm">
+          Диктуйте через shortcut post-processing Handy и редактируйте текст
+          вручную.
+        </Text>
+        <Group
+          aria-live="polite"
+          className="voice-editor-status"
+          data-status={statusColor}
+          gap={6}
+          wrap="nowrap"
+        >
+          <span aria-hidden="true" className="voice-editor-status-dot" />
+          <Text c={statusColor} size="xs">
+            {statusText}
           </Text>
-        </Stack>
-        <Badge color={statusColor} variant="dot" size="lg">
-          {statusText}
-        </Badge>
-      </Group>
+        </Group>
+      </Stack>
 
       {sessionError ? (
         <Alert color="red" title="Контекстные правила временно недоступны">
@@ -301,9 +318,19 @@ export function VoiceEditorPage() {
         </Alert>
       ) : null}
 
-      <Paper withBorder radius="lg" shadow="xs" className="voice-editor-shell">
-        <Group className="voice-editor-toolbar" justify="space-between" p="sm">
-          <Group gap="xs">
+      <Paper
+        withBorder
+        radius="md"
+        className="voice-editor-shell"
+        data-editor-font-size={editorFontSize}
+      >
+        <Group
+          className="voice-editor-toolbar"
+          justify="space-between"
+          p="xs"
+          wrap="nowrap"
+        >
+          <Group gap={6} wrap="nowrap">
             <Button
               size="xs"
               variant="light"
@@ -348,7 +375,12 @@ export function VoiceEditorPage() {
           onFocusChange={handleFocusChange}
         />
 
-        <Group className="voice-editor-footer" justify="space-between" p="sm">
+        <Group
+          className="voice-editor-footer"
+          justify="space-between"
+          p="xs"
+          wrap="nowrap"
+        >
           <Text c="dimmed" size="xs">
             Ctrl+Z — отменить · Ctrl+Y или Ctrl+Shift+Z — повторить
           </Text>

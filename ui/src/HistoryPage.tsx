@@ -48,7 +48,7 @@ function AppliedRules({
 }) {
   if (item.appliedRules === null) {
     return (
-      <Badge color="gray" variant="outline">
+      <Badge color="gray" size="sm" variant="outline">
         Правила не записывались
       </Badge>
     );
@@ -56,14 +56,14 @@ function AppliedRules({
 
   if (item.appliedRules.length === 0) {
     return (
-      <Badge color="gray" variant="outline">
+      <Badge color="gray" size="sm" variant="outline">
         Все правила были выключены
       </Badge>
     );
   }
 
   return (
-    <Group gap="xs">
+    <Group gap={6}>
       {item.appliedRules.map((rule) => {
         const skipped = rule.outcome === "skipped";
         const label = skipped
@@ -74,6 +74,7 @@ function AppliedRules({
         return (
           <Tooltip key={`${rule.id}:${rule.version}`} label={label}>
             <Badge
+              size="sm"
               color={
                 rule.outcome === "changed"
                   ? "cyan"
@@ -96,7 +97,7 @@ function AppliedRules({
 function ContextBadges({ item }: { readonly item: TransformationRecord }) {
   if (item.source === "external") {
     return (
-      <Badge color="gray" variant="outline">
+      <Badge color="gray" size="sm" variant="outline">
         Внешний ввод
       </Badge>
     );
@@ -111,12 +112,13 @@ function ContextBadges({ item }: { readonly item: TransformationRecord }) {
         : "Контекст неизвестен";
 
   return (
-    <Group gap="xs">
-      <Badge color="violet" variant="light">
+    <Group gap={6}>
+      <Badge color="violet" size="sm" variant="light">
         Голосовой редактор
       </Badge>
       <Badge
         color={position === "start" || position === "middle" ? "blue" : "orange"}
+        size="sm"
         variant="outline"
       >
         {positionLabel}
@@ -133,11 +135,11 @@ function TransformationCard({
   readonly ruleTitles: ReadonlyMap<string, string>;
 }) {
   return (
-    <Card withBorder radius="lg" padding="lg" shadow="xs">
-      <Stack gap="md">
+    <Card withBorder radius="md" padding="sm">
+      <Stack gap="sm">
         <Group justify="space-between" align="center" wrap="wrap">
           <Group gap="xs">
-            <Badge variant="light" color="gray">
+            <Badge size="sm" variant="light" color="gray">
               #{item.id}
             </Badge>
             <ContextBadges item={item} />
@@ -147,36 +149,36 @@ function TransformationCard({
           </Text>
         </Group>
 
-        <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg">
-          <Stack gap={6}>
+        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="sm">
+          <Stack gap={4}>
             <Text c="dimmed" fw={700} size="xs" tt="uppercase">
               Исходный текст
             </Text>
-            <Paper className="text-panel" p="md" radius="md">
-              <Text component="div" className="log-text">
+            <Paper className="text-panel" p="xs" radius="sm">
+              <Text component="div" className="log-text" size="sm">
                 {item.originalText}
               </Text>
             </Paper>
           </Stack>
 
-          <Stack gap={6}>
+          <Stack gap={4}>
             <Text c="cyan.8" fw={700} size="xs" tt="uppercase">
               Результат
             </Text>
-            <Paper className="text-panel text-panel-result" p="md" radius="md">
-              <Text component="div" className="log-text">
+            <Paper className="text-panel text-panel-result" p="xs" radius="sm">
+              <Text component="div" className="log-text" size="sm">
                 {item.transformedText}
               </Text>
             </Paper>
           </Stack>
         </SimpleGrid>
 
-        <Stack gap={6}>
+        <Group gap={6} align="center">
           <Text c="dimmed" fw={700} size="xs" tt="uppercase">
             Применённые правила
           </Text>
           <AppliedRules item={item} ruleTitles={ruleTitles} />
-        </Stack>
+        </Group>
       </Stack>
     </Card>
   );
@@ -234,13 +236,16 @@ export function HistoryPage({
   }, [loadHistory, refreshToken]);
 
   return (
-    <Stack gap="xl" pt="xl">
+    <Stack gap="md" pt="md">
       <Group justify="space-between" align="flex-end">
         <Stack gap={4}>
           <Title order={2}>История преобразований</Title>
-          <Text c="dimmed">Сначала показаны самые свежие записи</Text>
+          <Text c="dimmed" size="sm">
+            Сначала показаны самые свежие записи
+          </Text>
         </Stack>
         <Button
+          size="xs"
           variant="light"
           loading={loading}
           onClick={() => setRefreshToken((value) => value + 1)}
@@ -262,7 +267,7 @@ export function HistoryPage({
       ) : null}
 
       {!loading && history?.items.length === 0 ? (
-        <Paper withBorder radius="lg" p={48} ta="center">
+        <Paper withBorder radius="md" p={32} ta="center">
           <Title order={3}>История пока пуста</Title>
           <Text c="dimmed" mt="xs">
             Записи появятся после первой post-processing трансформации Handy.
@@ -271,7 +276,7 @@ export function HistoryPage({
       ) : null}
 
       {history?.items.length ? (
-        <Stack gap="md" opacity={loading ? 0.55 : 1}>
+        <Stack gap="sm" opacity={loading ? 0.55 : 1}>
           {history.items.map((item) => (
             <TransformationCard
               item={item}

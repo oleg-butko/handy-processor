@@ -1,5 +1,4 @@
 :root {
-  color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -14,7 +13,7 @@ body {
 }
 
 .text-panel {
-  min-height: 96px;
+  min-height: 44px;
   background: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
   border: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
 }
@@ -27,7 +26,7 @@ body {
 .log-text {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  line-height: 1.6;
+  line-height: 1.45;
 }
 
 .rule-summary {
@@ -45,7 +44,16 @@ body {
 }
 
 .voice-editor-shell {
+  --editor-font-size: 1rem;
   overflow: hidden;
+}
+
+.voice-editor-shell[data-editor-font-size="small"] {
+  --editor-font-size: 0.875rem;
+}
+
+.voice-editor-shell[data-editor-font-size="large"] {
+  --editor-font-size: 1.1875rem;
 }
 
 .voice-editor-toolbar,
@@ -62,11 +70,11 @@ body {
 }
 
 .voice-editor-field .cm-editor {
-  min-height: 420px;
+  height: clamp(310px, 52vh, 420px);
   color: var(--mantine-color-text);
   background: var(--mantine-color-body);
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-  font-size: 1rem;
+  font-family: var(--mantine-font-family);
+  font-size: var(--editor-font-size);
 }
 
 .voice-editor-field .cm-editor.cm-focused {
@@ -75,16 +83,15 @@ body {
 }
 
 .voice-editor-field .cm-scroller {
-  min-height: 420px;
-  max-height: 65vh;
+  height: 100%;
   overflow: auto;
 }
 
 .voice-editor-field .cm-content {
-  min-height: 420px;
-  padding: 18px 20px;
+  min-height: 100%;
+  padding: 14px 16px;
   caret-color: var(--mantine-color-cyan-6);
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .voice-editor-field .cm-line {
@@ -98,4 +105,39 @@ body {
 .voice-editor-field .cm-selectionBackground,
 .voice-editor-field .cm-content ::selection {
   background: light-dark(var(--mantine-color-cyan-2), var(--mantine-color-cyan-9)) !important;
+}
+
+.voice-editor-status {
+  min-height: 18px;
+}
+
+.voice-editor-status-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--mantine-color-gray-6);
+}
+
+.voice-editor-status[data-status="teal"] .voice-editor-status-dot {
+  background: var(--mantine-color-teal-6);
+}
+
+.voice-editor-status[data-status="red"] .voice-editor-status-dot {
+  background: var(--mantine-color-red-6);
+}
+
+@media (max-width: 52em) {
+  .app-title {
+    align-items: baseline;
+  }
+
+  .settings-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .voice-editor-field .cm-editor {
+    height: clamp(300px, 56vh, 380px);
+  }
 }

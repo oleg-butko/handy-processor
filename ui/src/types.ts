@@ -65,3 +65,5 @@ export interface EditorSessionState {
   readonly expiresAt: number;
   readonly sentencePosition: "start" | "middle" | "unknown";
 }
+
+export type EditorFontSize = "small" | "medium" | "large";

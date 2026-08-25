@@ -7,12 +7,16 @@ import {
   Tabs,
   Title,
   createTheme,
+  useMantineColorScheme,
 } from "@mantine/core";
+import { useLocalStorage } from "@mantine/hooks";
 import { useCallback, useEffect, useState } from "react";
 import { HistoryPage } from "./HistoryPage.js";
 import { RulesPage } from "./RulesPage.js";
+import { SettingsPage } from "./SettingsPage.js";
 import { VoiceEditorPage } from "./VoiceEditorPage.js";
 import type {
+  EditorFontSize,
   RulesResponse,
   TransformationRuleState,
 } from "./types.js";
@@ -28,6 +32,17 @@ const theme = createTheme({
 });
 
 function AppContent() {
+  const { colorScheme, setColorScheme } = useMantineColorScheme({
+    keepTransitions: true,
+  });
+  const [editorFontSize, setEditorFontSize] = useLocalStorage<EditorFontSize>({
+    key: "handy-processor-editor-font-size",
+    defaultValue: "medium",
+    getInitialValueInEffect: false,
+    serialize: (value) => value,
+    deserialize: (value) =>
+      value === "small" || value === "large" ? value : "medium",
+  });
   const [rules, setRules] = useState<readonly TransformationRuleState[]>([]);
   const [rulesLoading, setRulesLoading] = useState(true);
   const [rulesError, setRulesError] = useState<string>();
@@ -105,9 +120,13 @@ function AppContent() {
   }, []);
 
   return (
-    <Container size="lg" py={{ base: "xl", md: 48 }}>
-      <Stack gap="xl">
-        <Group gap="sm">
+    <Container
+      className="app-container"
+      size="lg"
+      py={{ base: "md", md: "xl" }}
+    >
+      <Stack gap="lg">
+        <Group className="app-title" gap="sm">
           <Title order={1}>Handy Processor</Title>
           <Badge color="teal" variant="dot">
             localhost
@@ -119,10 +138,11 @@ function AppContent() {
             <Tabs.Tab value="editor">Голосовой редактор</Tabs.Tab>
             <Tabs.Tab value="history">История</Tabs.Tab>
             <Tabs.Tab value="rules">Список правил</Tabs.Tab>
+            <Tabs.Tab value="settings">Настройки</Tabs.Tab>
           </Tabs.List>
 
           <Tabs.Panel value="editor">
-            <VoiceEditorPage />
+            <VoiceEditorPage editorFontSize={editorFontSize} />
           </Tabs.Panel>
           <Tabs.Panel value="history">
             <HistoryPage rules={rules} />
@@ -137,6 +157,14 @@ function AppContent() {
               onToggle={(ruleId, enabled) => {
                 void updateRule(ruleId, enabled);
               }}
+            />
+          </Tabs.Panel>
+          <Tabs.Panel value="settings">
+            <SettingsPage
+              colorScheme={colorScheme}
+              editorFontSize={editorFontSize}
+              onColorSchemeChange={setColorScheme}
+              onEditorFontSizeChange={setEditorFontSize}
             />
           </Tabs.Panel>
         </Tabs>

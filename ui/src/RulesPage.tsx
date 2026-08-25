@@ -34,23 +34,23 @@ function RuleCard({
   readonly onToggle: (ruleId: string, enabled: boolean) => void;
 }) {
   return (
-    <Card withBorder radius="lg" padding="lg" shadow="xs">
-      <Stack gap="md">
+    <Card withBorder radius="md" padding="md">
+      <Stack gap="sm">
         <Group justify="space-between" align="flex-start" wrap="nowrap">
           <Checkbox
             aria-label={`${rule.enabled ? "Выключить" : "Включить"} правило «${rule.title}»`}
             checked={rule.enabled}
             disabled={pending}
-            mt={4}
-            size="md"
+            mt={2}
+            size="sm"
             onChange={(event) =>
               onToggle(rule.id, event.currentTarget.checked)
             }
           />
           <Stack gap={4} className="rule-summary">
-            <Group gap="sm">
+            <Group gap={6}>
               <Text fw={700}>{rule.title}</Text>
-              <Badge color="blue" variant="outline">
+              <Badge color="blue" size="sm" variant="outline">
                 {rule.sources.length === 2
                   ? "Везде"
                   : rule.sources[0] === "voice-editor"
@@ -59,6 +59,7 @@ function RuleCard({
               </Badge>
               <Badge
                 color={rule.enabled ? "teal" : "gray"}
+                size="sm"
                 variant={rule.enabled ? "light" : "outline"}
               >
                 {pending
@@ -74,23 +75,23 @@ function RuleCard({
           </Stack>
         </Group>
 
-        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
-          <Stack gap={5}>
+        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="sm">
+          <Stack gap={4}>
             <Text c="dimmed" fw={700} size="xs" tt="uppercase">
               До
             </Text>
-            <Paper className="rule-example" p="sm" radius="md">
+            <Paper className="rule-example" p="xs" radius="sm">
               <Text size="sm">{rule.example.input}</Text>
             </Paper>
           </Stack>
-          <Stack gap={5}>
+          <Stack gap={4}>
             <Text c="cyan.8" fw={700} size="xs" tt="uppercase">
               После
             </Text>
             <Paper
               className="rule-example rule-example-result"
-              p="sm"
-              radius="md"
+              p="xs"
+              radius="sm"
             >
               <Text size="sm">{rule.example.output}</Text>
             </Paper>
@@ -123,10 +124,10 @@ export function RulesPage({
   ];
 
   return (
-    <Stack gap="xl" pt="xl">
+    <Stack gap="md" pt="md">
       <Stack gap={4}>
         <Title order={2}>Список правил</Title>
-        <Text c="dimmed">
+        <Text c="dimmed" size="sm">
           Изменения применяются только к новым трансформациям. Существующая
           история не пересчитывается.
         </Text>
@@ -152,7 +153,7 @@ export function RulesPage({
         </Center>
       ) : null}
 
-      <Stack gap="xl" opacity={loading ? 0.65 : 1}>
+      <Stack gap="lg" opacity={loading ? 0.65 : 1}>
         {groups.map((group) => {
           const groupedRules = rules.filter(
             (rule) => rule.category === group.category,
@@ -161,7 +162,7 @@ export function RulesPage({
             return null;
           }
           return (
-            <Stack gap="md" key={group.category}>
+            <Stack gap="sm" key={group.category}>
               <Stack gap={2}>
                 <Title order={3}>{group.title}</Title>
                 <Text c="dimmed" size="sm">
