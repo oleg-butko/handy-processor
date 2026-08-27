@@ -4,6 +4,7 @@
 
 - [Ручное тестирование в Debian](instructions/debian-manual-testing.md)
 - [Создание ZIP-архива с исходниками](instructions/source-archive.md)
+- [Обновление исходников в Windows из ZIP](instructions/windows-source-update.md)
 - [Windows tray launcher и portable release](instructions/windows-launcher.md)
 - [Сборка Windows SEA на Node.js 26](instructions/windows-sea-node26.md)
 - [Сборка Windows SEA на Node.js 24](instructions/windows-sea.md) — историческая

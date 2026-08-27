@@ -22,3 +22,6 @@ archive/handy-processor-sources-YYYYMMDD-HHMMSS.zip
 
 Для команды нужен Python 3. Дополнительные Python-пакеты и системная утилита
 `zip` не требуются.
+
+Распаковать новый архив поверх Windows-каталога с сохранением зависимостей
+можно по [инструкции обновления исходников](windows-source-update.md).

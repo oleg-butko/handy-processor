@@ -42,6 +42,7 @@ SOURCE_FILES = (
     "requirements-generator.txt",
     "sea-config.node26.json",
     "tsconfig.json",
+    "unpack-sources.config.json",
     "vite.config.ts",
 )
 
