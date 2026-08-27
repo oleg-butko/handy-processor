@@ -102,8 +102,11 @@ body {
   border-left-color: var(--mantine-color-cyan-6);
 }
 
-.voice-editor-field .cm-selectionBackground,
-.voice-editor-field .cm-content ::selection {
+.voice-editor-field .cm-selectionBackground {
+  background: light-dark(var(--mantine-color-cyan-1), rgba(21, 170, 191, 0.22)) !important;
+}
+
+.voice-editor-field .cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground {
   background: light-dark(var(--mantine-color-cyan-2), var(--mantine-color-cyan-9)) !important;
 }
 

@@ -8,7 +8,7 @@ import {
   undoDepth,
 } from "@codemirror/commands";
 import { EditorState } from "@codemirror/state";
-import { EditorView, keymap } from "@codemirror/view";
+import { EditorView, drawSelection, keymap } from "@codemirror/view";
 import {
   forwardRef,
   useEffect,
@@ -72,6 +72,7 @@ export const PlainTextEditor = forwardRef<
         doc: initialValue,
         extensions: [
           history(),
+          drawSelection(),
           keymap.of([...defaultKeymap, ...historyKeymap]),
           EditorView.lineWrapping,
           EditorView.contentAttributes.of({
