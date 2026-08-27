@@ -14,4 +14,18 @@ describe("Web UI assets", () => {
       assets.get("/")?.body.toString("utf8"),
     );
   });
+
+  it("keeps CodeMirror selection colors valid after CSS minification", () => {
+    const assets = loadWebUiAssets(join(process.cwd(), "web-dist"));
+    const css = assets.get("/assets/style.css")?.body.toString("utf8") ?? "";
+
+    assert.match(
+      css,
+      /\.voice-editor-field \.cm-selectionBackground\{background-color:[^}]+!important\}/u,
+    );
+    assert.match(
+      css,
+      /\.cm-selectionLayer \.cm-selectionBackground\{background-color:[^}]+!important\}/u,
+    );
+  });
 });

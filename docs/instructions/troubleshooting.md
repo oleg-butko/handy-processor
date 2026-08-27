@@ -56,3 +56,25 @@ npm run generate:numerals
 npm run check:numerals
 npm run validate:numerals-morphology
 ```
+
+## Выделение текста CodeMirror оставалось прозрачным
+
+### Симптомы
+
+`Shift+Left`, двойной клик и мышь меняли диапазон выделения, но визуальной
+подсветки не было ни в браузере, ни в Tauri WebView.
+
+### Причина
+
+Vite 8 преобразовал `light-dark(...)` в пару внутренних переменных Lightning
+CSS. Их определения не попали в итоговый bundle, поэтому более специфичное
+правило `.cm-selectionBackground` становилось недействительным во время
+вычисления и давало прозрачный фон. Сам CodeMirror при этом корректно создавал
+selection-layer и прямоугольник нужного размера.
+
+### Решение
+
+Для selection-layer используется обычный совместимый `rgba(...)` через
+`background-color`, без `light-dark()` и theme-переменных. Тест production CSS
+проверяет, что после минификации оба правила выделения сохранили валидный
+`background-color`.
