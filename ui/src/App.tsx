@@ -1,11 +1,7 @@
 import {
-  Badge,
   Container,
-  Group,
   MantineProvider,
-  Stack,
   Tabs,
-  Title,
   createTheme,
   useMantineColorScheme,
 } from "@mantine/core";
@@ -120,55 +116,42 @@ function AppContent() {
   }, []);
 
   return (
-    <Container
-      className="app-container"
-      size="lg"
-      py={{ base: "md", md: "xl" }}
-    >
-      <Stack gap="lg">
-        <Group className="app-title" gap="sm">
-          <Title order={1}>Handy Processor</Title>
-          <Badge color="teal" variant="dot">
-            localhost
-          </Badge>
-        </Group>
+    <Container className="app-container" size="lg" py={0}>
+      <Tabs defaultValue="editor" keepMounted>
+        <Tabs.List>
+          <Tabs.Tab value="editor">Голосовой редактор</Tabs.Tab>
+          <Tabs.Tab value="history">История</Tabs.Tab>
+          <Tabs.Tab value="rules">Список правил</Tabs.Tab>
+          <Tabs.Tab value="settings">Настройки</Tabs.Tab>
+        </Tabs.List>
 
-        <Tabs defaultValue="editor" keepMounted>
-          <Tabs.List>
-            <Tabs.Tab value="editor">Голосовой редактор</Tabs.Tab>
-            <Tabs.Tab value="history">История</Tabs.Tab>
-            <Tabs.Tab value="rules">Список правил</Tabs.Tab>
-            <Tabs.Tab value="settings">Настройки</Tabs.Tab>
-          </Tabs.List>
-
-          <Tabs.Panel value="editor">
-            <VoiceEditorPage editorFontSize={editorFontSize} />
-          </Tabs.Panel>
-          <Tabs.Panel value="history">
-            <HistoryPage rules={rules} />
-          </Tabs.Panel>
-          <Tabs.Panel value="rules">
-            <RulesPage
-              rules={rules}
-              loading={rulesLoading}
-              error={rulesError}
-              pendingRuleIds={pendingRuleIds}
-              onReload={() => setRulesRefreshToken((value) => value + 1)}
-              onToggle={(ruleId, enabled) => {
-                void updateRule(ruleId, enabled);
-              }}
-            />
-          </Tabs.Panel>
-          <Tabs.Panel value="settings">
-            <SettingsPage
-              colorScheme={colorScheme}
-              editorFontSize={editorFontSize}
-              onColorSchemeChange={setColorScheme}
-              onEditorFontSizeChange={setEditorFontSize}
-            />
-          </Tabs.Panel>
-        </Tabs>
-      </Stack>
+        <Tabs.Panel value="editor">
+          <VoiceEditorPage editorFontSize={editorFontSize} />
+        </Tabs.Panel>
+        <Tabs.Panel value="history">
+          <HistoryPage rules={rules} />
+        </Tabs.Panel>
+        <Tabs.Panel value="rules">
+          <RulesPage
+            rules={rules}
+            loading={rulesLoading}
+            error={rulesError}
+            pendingRuleIds={pendingRuleIds}
+            onReload={() => setRulesRefreshToken((value) => value + 1)}
+            onToggle={(ruleId, enabled) => {
+              void updateRule(ruleId, enabled);
+            }}
+          />
+        </Tabs.Panel>
+        <Tabs.Panel value="settings">
+          <SettingsPage
+            colorScheme={colorScheme}
+            editorFontSize={editorFontSize}
+            onColorSchemeChange={setColorScheme}
+            onEditorFontSizeChange={setEditorFontSize}
+          />
+        </Tabs.Panel>
+      </Tabs>
     </Container>
   );
 }

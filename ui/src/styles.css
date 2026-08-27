@@ -128,10 +128,6 @@ body {
 }
 
 @media (max-width: 52em) {
-  .app-title {
-    align-items: baseline;
-  }
-
   .settings-row {
     align-items: flex-start;
     flex-direction: column;
