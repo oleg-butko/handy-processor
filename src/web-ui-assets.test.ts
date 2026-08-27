@@ -28,4 +28,11 @@ describe("Web UI assets", () => {
       /\.cm-selectionLayer \.cm-selectionBackground\{background-color:[^}]+!important\}/u,
     );
   });
+
+  it("does not emit unresolved Lightning CSS color-scheme variables", () => {
+    const assets = loadWebUiAssets(join(process.cwd(), "web-dist"));
+    const css = assets.get("/assets/style.css")?.body.toString("utf8") ?? "";
+
+    assert.doesNotMatch(css, /--lightningcss-(?:light|dark)/u);
+  });
 });

@@ -1,6 +1,17 @@
 :root {
+  --hp-muted-surface: var(--mantine-color-gray-0);
+  --hp-muted-border: var(--mantine-color-gray-2);
+  --hp-result-surface: var(--mantine-color-cyan-0);
+  --hp-result-border: var(--mantine-color-cyan-2);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+}
+
+:root[data-mantine-color-scheme="dark"] {
+  --hp-muted-surface: var(--mantine-color-dark-7);
+  --hp-muted-border: var(--mantine-color-dark-5);
+  --hp-result-surface: rgba(21, 170, 191, 0.08);
+  --hp-result-border: var(--mantine-color-cyan-9);
 }
 
 body {
@@ -14,13 +25,13 @@ body {
 
 .text-panel {
   min-height: 44px;
-  background: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
-  border: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+  background: var(--hp-muted-surface);
+  border: 1px solid var(--hp-muted-border);
 }
 
 .text-panel-result {
-  background: light-dark(var(--mantine-color-cyan-0), rgba(21, 170, 191, 0.08));
-  border-color: light-dark(var(--mantine-color-cyan-2), var(--mantine-color-cyan-9));
+  background: var(--hp-result-surface);
+  border-color: var(--hp-result-border);
 }
 
 .log-text {
@@ -34,13 +45,13 @@ body {
 }
 
 .rule-example {
-  background: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
-  border: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+  background: var(--hp-muted-surface);
+  border: 1px solid var(--hp-muted-border);
 }
 
 .rule-example-result {
-  background: light-dark(var(--mantine-color-cyan-0), rgba(21, 170, 191, 0.08));
-  border-color: light-dark(var(--mantine-color-cyan-2), var(--mantine-color-cyan-9));
+  background: var(--hp-result-surface);
+  border-color: var(--hp-result-border);
 }
 
 .voice-editor-shell {
@@ -58,15 +69,15 @@ body {
 
 .voice-editor-toolbar,
 .voice-editor-footer {
-  background: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-7));
+  background: var(--hp-muted-surface);
 }
 
 .voice-editor-toolbar {
-  border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+  border-bottom: 1px solid var(--hp-muted-border);
 }
 
 .voice-editor-footer {
-  border-top: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+  border-top: 1px solid var(--hp-muted-border);
 }
 
 .voice-editor-field .cm-editor {
