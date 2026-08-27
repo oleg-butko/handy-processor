@@ -21,6 +21,7 @@ const MENU_COPY_API: &str = "copy-api";
 const MENU_DATA: &str = "data";
 const MENU_RESTART: &str = "restart";
 const MENU_EXIT: &str = "exit";
+const DISPLAY_VERSION: &str = env!("HANDY_PROCESSOR_DISPLAY_VERSION");
 
 fn show_action_error(app: &AppHandle, action: &str, error: impl std::fmt::Display) {
     app.dialog()
@@ -144,7 +145,7 @@ fn initialize_app(app: &mut App) -> anyhow::Result<()> {
     let desktop_result = (|| -> anyhow::Result<()> {
         let web_url = tauri::Url::parse(&paths.web_url())?;
         let window = WebviewWindowBuilder::new(app, MAIN_WINDOW, WebviewUrl::External(web_url))
-            .title("Handy Processor")
+            .title(format!("Handy Processor v{DISPLAY_VERSION}"))
             .inner_size(1100.0, 760.0)
             .min_inner_size(720.0, 480.0)
             .visible(false)

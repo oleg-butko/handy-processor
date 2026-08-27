@@ -43,6 +43,7 @@ SOURCE_FILES = (
     "sea-config.node26.json",
     "tsconfig.json",
     "unpack-sources.config.json",
+    "version-major.txt",
     "vite.config.ts",
 )
 

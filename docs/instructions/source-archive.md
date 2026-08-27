@@ -15,6 +15,9 @@ archive/handy-processor-sources-YYYYMMDD-HHMMSS.zip
 Используется жёсткий белый список исходных каталогов и файлов. В архив не
 попадают `.git`, `node_modules`, `dist`, `web-dist`, `sea-build`, Rust
 `target`, launcher sidecar binaries, SQLite-базы и ранее созданные архивы.
+Файл ручной major-версии `version-major.txt` входит в архив; при сборке без
+сохранённого `.git` номер коммита нужно передать через
+`HANDY_PROCESSOR_BUILD_NUMBER`.
 
 Перед завершением команда сравнивает фактическое содержимое ZIP с собранным
 манифестом и проверяет целостность каждого файла. Если обязательный исходный
