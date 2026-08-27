@@ -21,6 +21,7 @@
     "package:windows:portable": "node scripts/package-windows-portable.mjs",
     "build:windows:portable": "npm run build:sea:node26 && npm run stage:launcher:sidecar && npm --prefix launcher run build:portable && npm run package:windows:portable",
     "test:packaging": "node --test scripts/package-windows-portable.test.mjs",
+    "archive:sources": "python3 scripts/create_source_archive.py",
     "generate:numerals": "python3 scripts/generate_russian_numerals.py",
     "check:numerals": "python3 scripts/generate_russian_numerals.py --check",
     "validate:numerals-morphology": "python3 scripts/generate_russian_numerals.py --check --validate-morphology",
