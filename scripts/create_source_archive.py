@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import os
+import subprocess
 from datetime import datetime
 from pathlib import Path, PurePosixPath
 from zipfile import ZIP_DEFLATED, ZipFile
@@ -11,6 +12,8 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 ARCHIVE_DIRECTORY = PROJECT_ROOT / "archive"
+BUILD_NUMBER_ENV = "HANDY_PROCESSOR_BUILD_NUMBER"
+BUILD_NUMBER_FILE = "version-build.txt"
 
 SOURCE_DIRECTORIES = (
     "docs",
@@ -100,7 +103,51 @@ def choose_destination() -> Path:
     return destination
 
 
-def validate_archive(path: Path, expected_names: set[str]) -> None:
+def parse_build_number(value: str, source: str) -> str:
+    normalized = value.strip()
+    if not normalized.isascii() or not normalized.isdecimal():
+        raise RuntimeError(
+            f"Build number from {source} must be a non-negative integer"
+        )
+    return str(int(normalized))
+
+
+def resolve_build_number() -> str:
+    configured = os.environ.get(BUILD_NUMBER_ENV)
+    if configured is not None:
+        return parse_build_number(configured, BUILD_NUMBER_ENV)
+
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(PROJECT_ROOT), "rev-list", "--count", "HEAD"],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+    except OSError:
+        result = None
+
+    if result is not None and result.returncode == 0:
+        return parse_build_number(result.stdout, "Git")
+
+    archived_path = PROJECT_ROOT / BUILD_NUMBER_FILE
+    if archived_path.is_file():
+        return parse_build_number(
+            archived_path.read_text(encoding="utf-8"), BUILD_NUMBER_FILE
+        )
+
+    git_error = "Git is unavailable"
+    if result is not None and result.stderr.strip():
+        git_error = result.stderr.strip()
+    raise RuntimeError(
+        f"Cannot determine build number: {git_error}; "
+        f"{BUILD_NUMBER_FILE} is missing; set {BUILD_NUMBER_ENV} explicitly"
+    )
+
+
+def validate_archive(
+    path: Path, expected_names: set[str], generated_files: dict[str, bytes]
+) -> None:
     with ZipFile(path, "r") as archive:
         actual_names = archive.namelist()
         if len(actual_names) != len(set(actual_names)):
@@ -119,10 +166,22 @@ def validate_archive(path: Path, expected_names: set[str]) -> None:
         bad_file = archive.testzip()
         if bad_file is not None:
             raise RuntimeError(f"Archive integrity check failed for {bad_file}")
+        for name, expected_content in generated_files.items():
+            if archive.read(name) != expected_content:
+                raise RuntimeError(f"Generated archive entry is invalid: {name}")
 
 
 def create_source_archive() -> Path:
     entries = collect_sources()
+    generated_files = {
+        BUILD_NUMBER_FILE: f"{resolve_build_number()}\n".encode("ascii"),
+    }
+    physical_names = {name for _, name in entries}
+    duplicate_names = physical_names.intersection(generated_files)
+    if duplicate_names:
+        raise RuntimeError(
+            f"Generated archive entries duplicate source paths: {sorted(duplicate_names)}"
+        )
     ARCHIVE_DIRECTORY.mkdir(parents=True, exist_ok=True)
     destination = choose_destination()
     temporary = destination.with_name(f".{destination.name}.tmp-{os.getpid()}")
@@ -136,8 +195,14 @@ def create_source_archive() -> Path:
         ) as archive:
             for source, name in entries:
                 archive.write(source, arcname=name)
+            for name, content in sorted(generated_files.items()):
+                archive.writestr(name, content)
 
-        validate_archive(temporary, {name for _, name in entries})
+        validate_archive(
+            temporary,
+            physical_names.union(generated_files),
+            generated_files,
+        )
         temporary.replace(destination)
     except BaseException:
         temporary.unlink(missing_ok=True)

@@ -17,3 +17,6 @@ launcher/src-tauri/binaries/*
 !launcher/src-tauri/binaries/.gitkeep
 release/
 archive/
+
+# Generated inside source archives for builds without Git metadata
+version-build.txt

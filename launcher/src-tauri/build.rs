@@ -5,6 +5,7 @@ use std::{
 };
 
 const BUILD_NUMBER_ENV: &str = "HANDY_PROCESSOR_BUILD_NUMBER";
+const BUILD_NUMBER_FILE: &str = "version-build.txt";
 
 fn main() {
     let project_root = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../..");
@@ -18,7 +19,9 @@ fn main() {
 
 fn display_version(project_root: &Path) -> String {
     let major_path = project_root.join("version-major.txt");
+    let build_path = project_root.join(BUILD_NUMBER_FILE);
     println!("cargo:rerun-if-changed={}", major_path.display());
+    println!("cargo:rerun-if-changed={}", build_path.display());
     println!("cargo:rerun-if-env-changed={BUILD_NUMBER_ENV}");
     watch_git_head(project_root);
 
@@ -28,7 +31,14 @@ fn display_version(project_root: &Path) -> String {
     let build = env::var(BUILD_NUMBER_ENV)
         .ok()
         .map(|value| parse_number(value.trim(), BUILD_NUMBER_ENV))
-        .unwrap_or_else(|| git_commit_count(project_root));
+        .unwrap_or_else(|| match git_commit_count(project_root) {
+            Ok(value) => value,
+            Err(git_error) => archived_build_number(&build_path).unwrap_or_else(|file_error| {
+                panic!(
+                    "failed to determine the build number from Git ({git_error}) and {BUILD_NUMBER_FILE} ({file_error}). Set {BUILD_NUMBER_ENV} explicitly"
+                )
+            }),
+        });
 
     format!("{major}.{build}")
 }
@@ -39,7 +49,7 @@ fn parse_number(value: &str, name: &str) -> u64 {
         .unwrap_or_else(|_| panic!("{name} must be a non-negative integer, got {value:?}"))
 }
 
-fn git_commit_count(project_root: &Path) -> u64 {
+fn git_commit_count(project_root: &Path) -> Result<u64, String> {
     let output = Command::new("git")
         .arg("-C")
         .arg(project_root)
@@ -49,20 +59,20 @@ fn git_commit_count(project_root: &Path) -> u64 {
     match output {
         Ok(output) if output.status.success() => {
             let value = String::from_utf8(output.stdout)
-                .unwrap_or_else(|error| panic!("git commit count is not UTF-8: {error}"));
-            parse_number(value.trim(), "git commit count")
+                .map_err(|error| format!("git commit count is not UTF-8: {error}"))?;
+            Ok(parse_number(value.trim(), "git commit count"))
         }
         Ok(output) => {
             let error = String::from_utf8_lossy(&output.stderr);
-            panic!(
-                "failed to determine the build number from Git: {}. Set {BUILD_NUMBER_ENV} to build without Git",
-                error.trim()
-            );
+            Err(error.trim().to_owned())
         }
-        Err(error) => panic!(
-            "failed to run Git for the build number: {error}. Set {BUILD_NUMBER_ENV} to build without Git"
-        ),
+        Err(error) => Err(format!("failed to run Git: {error}")),
     }
+}
+
+fn archived_build_number(path: &Path) -> Result<u64, String> {
+    let value = fs::read_to_string(path).map_err(|error| error.to_string())?;
+    Ok(parse_number(value.trim(), BUILD_NUMBER_FILE))
 }
 
 fn watch_git_head(project_root: &Path) {
