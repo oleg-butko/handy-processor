@@ -91,6 +91,7 @@ npm run check:launcher
 - в notification area появляется иконка Handy Processor;
 - левый или двойной клик показывает окно с localhost UI;
 - закрытие и сворачивание окна скрывают его и убирают из taskbar;
+- после перезапуска восстанавливаются последние размер и положение окна;
 - правый клик открывает native menu;
 - повторный запуск EXE не создаёт второй tray icon, а показывает первое окно;
 - пункт **Выход** корректно останавливает только тот сервер, который запустил
@@ -175,4 +176,5 @@ Node.js. Portable-каталог можно упаковать стандарт�
 - [Tauri: System Tray](https://v2.tauri.app/learn/system-tray/)
 - [Tauri: Embedding External Binaries](https://v2.tauri.app/develop/sidecar/)
 - [Tauri: Windows prerequisites](https://v2.tauri.app/start/prerequisites/#windows)
+- [Tauri: Window State](https://v2.tauri.app/plugin/window-state/)
 - [Microsoft: Process Creation Flags](https://learn.microsoft.com/en-us/windows/win32/procthread/process-creation-flags)
