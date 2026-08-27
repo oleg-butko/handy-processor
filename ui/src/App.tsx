@@ -6,28 +6,68 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { useLocalStorage } from "@mantine/hooks";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { HistoryPage } from "./HistoryPage.js";
 import { RulesPage } from "./RulesPage.js";
 import { SettingsPage } from "./SettingsPage.js";
 import { VoiceEditorPage } from "./VoiceEditorPage.js";
 import type {
   EditorFontSize,
+  FontSizePreference,
   RulesResponse,
   TransformationRuleState,
+  UiFontSize,
 } from "./types.js";
 
-const theme = createTheme({
-  primaryColor: "cyan",
-  defaultRadius: "md",
-  fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
-  headings: {
-    fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
-    fontWeight: "700",
-  },
-});
+const FONT_FAMILY = "Inter, ui-sans-serif, system-ui, sans-serif";
+const FONT_SCALE: Readonly<Record<UiFontSize, number>> = {
+  small: 0.875,
+  medium: 1,
+  large: 1.125,
+};
 
-function AppContent() {
+function scaledRem(pixels: number, preference: UiFontSize): string {
+  return `${(pixels * FONT_SCALE[preference]) / 16}rem`;
+}
+
+function createAppTheme(preference: UiFontSize) {
+  return createTheme({
+    primaryColor: "cyan",
+    defaultRadius: "md",
+    fontFamily: FONT_FAMILY,
+    fontSizes: {
+      xs: scaledRem(12, preference),
+      sm: scaledRem(14, preference),
+      md: scaledRem(16, preference),
+      lg: scaledRem(18, preference),
+      xl: scaledRem(20, preference),
+    },
+    headings: {
+      fontFamily: FONT_FAMILY,
+      fontWeight: "700",
+      sizes: {
+        h1: { fontSize: scaledRem(34, preference) },
+        h2: { fontSize: scaledRem(26, preference) },
+        h3: { fontSize: scaledRem(22, preference) },
+        h4: { fontSize: scaledRem(18, preference) },
+        h5: { fontSize: scaledRem(16, preference) },
+        h6: { fontSize: scaledRem(14, preference) },
+      },
+    },
+  });
+}
+
+function deserializeFontSize(value: string | undefined): FontSizePreference {
+  return value === "small" || value === "large" ? value : "medium";
+}
+
+function AppContent({
+  uiFontSize,
+  onUiFontSizeChange,
+}: {
+  readonly uiFontSize: UiFontSize;
+  readonly onUiFontSizeChange: (value: UiFontSize) => void;
+}) {
   const { colorScheme, setColorScheme } = useMantineColorScheme({
     keepTransitions: true,
   });
@@ -36,8 +76,7 @@ function AppContent() {
     defaultValue: "medium",
     getInitialValueInEffect: false,
     serialize: (value) => value,
-    deserialize: (value) =>
-      value === "small" || value === "large" ? value : "medium",
+    deserialize: deserializeFontSize,
   });
   const [rules, setRules] = useState<readonly TransformationRuleState[]>([]);
   const [rulesLoading, setRulesLoading] = useState(true);
@@ -147,8 +186,10 @@ function AppContent() {
           <SettingsPage
             colorScheme={colorScheme}
             editorFontSize={editorFontSize}
+            uiFontSize={uiFontSize}
             onColorSchemeChange={setColorScheme}
             onEditorFontSizeChange={setEditorFontSize}
+            onUiFontSizeChange={onUiFontSizeChange}
           />
         </Tabs.Panel>
       </Tabs>
@@ -157,9 +198,21 @@ function AppContent() {
 }
 
 export function App() {
+  const [uiFontSize, setUiFontSize] = useLocalStorage<UiFontSize>({
+    key: "handy-processor-ui-font-size",
+    defaultValue: "medium",
+    getInitialValueInEffect: false,
+    serialize: (value) => value,
+    deserialize: deserializeFontSize,
+  });
+  const theme = useMemo(() => createAppTheme(uiFontSize), [uiFontSize]);
+
   return (
     <MantineProvider theme={theme} defaultColorScheme="auto">
-      <AppContent />
+      <AppContent
+        uiFontSize={uiFontSize}
+        onUiFontSizeChange={setUiFontSize}
+      />
     </MantineProvider>
   );
 }

@@ -7,20 +7,24 @@ import {
   Title,
   type MantineColorScheme,
 } from "@mantine/core";
-import type { EditorFontSize } from "./types.js";
+import type { EditorFontSize, UiFontSize } from "./types.js";
 
 interface SettingsPageProps {
   readonly colorScheme: MantineColorScheme;
   readonly editorFontSize: EditorFontSize;
+  readonly uiFontSize: UiFontSize;
   readonly onColorSchemeChange: (value: MantineColorScheme) => void;
   readonly onEditorFontSizeChange: (value: EditorFontSize) => void;
+  readonly onUiFontSizeChange: (value: UiFontSize) => void;
 }
 
 export function SettingsPage({
   colorScheme,
   editorFontSize,
+  uiFontSize,
   onColorSchemeChange,
   onEditorFontSizeChange,
+  onUiFontSizeChange,
 }: SettingsPageProps) {
   return (
     <Stack gap="md" pt="md">
@@ -56,6 +60,30 @@ export function SettingsPage({
               onChange={(value) =>
                 onColorSchemeChange(value as MantineColorScheme)
               }
+            />
+          </Group>
+
+          <Group
+            className="settings-row"
+            justify="space-between"
+            align="center"
+            wrap="nowrap"
+          >
+            <Stack gap={2}>
+              <Text fw={600}>Размер текста интерфейса</Text>
+              <Text c="dimmed" size="xs">
+                Меняет текст вкладок, кнопок, карточек и заголовков.
+              </Text>
+            </Stack>
+            <SegmentedControl
+              size="xs"
+              value={uiFontSize}
+              data={[
+                { value: "small", label: "Мелкий" },
+                { value: "medium", label: "Обычный" },
+                { value: "large", label: "Крупный" },
+              ]}
+              onChange={(value) => onUiFontSizeChange(value as UiFontSize)}
             />
           </Group>
 

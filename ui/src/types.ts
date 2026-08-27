@@ -66,4 +66,6 @@ export interface EditorSessionState {
   readonly sentencePosition: "start" | "middle" | "unknown";
 }
 
-export type EditorFontSize = "small" | "medium" | "large";
+export type FontSizePreference = "small" | "medium" | "large";
+export type EditorFontSize = FontSizePreference;
+export type UiFontSize = FontSizePreference;
