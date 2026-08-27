@@ -12,6 +12,30 @@ const outputDirectory = resolve(root, "sea-build");
 const sourceConfigPath = resolve(root, "sea-config.node26.json");
 const outputConfigPath = resolve(outputDirectory, "sea-config.node26.generated.json");
 
+function parseArguments(arguments_) {
+  let executable;
+  let output;
+
+  for (let index = 0; index < arguments_.length; index += 1) {
+    const argument = arguments_[index];
+    if (argument === "--output") {
+      output = arguments_[index + 1];
+      if (!output || output.startsWith("--")) {
+        throw new Error("--output requires a path");
+      }
+      index += 1;
+    } else if (argument.startsWith("--")) {
+      throw new Error(`Unknown option: ${argument}`);
+    } else if (executable === undefined) {
+      executable = argument;
+    } else {
+      throw new Error(`Unexpected argument: ${argument}`);
+    }
+  }
+
+  return { executable, output };
+}
+
 function collectFiles(directory, current = directory) {
   const files = [];
   for (const entry of readdirSync(current, { withFileTypes: true })) {
@@ -26,7 +50,7 @@ function collectFiles(directory, current = directory) {
 }
 
 const sourceConfig = JSON.parse(readFileSync(sourceConfigPath, "utf8"));
-const executable = process.argv[2];
+const { executable, output } = parseArguments(process.argv.slice(2));
 const assets = Object.fromEntries(
   collectFiles(webDirectory).sort().map((fileName) => [
     `web/${fileName}`,
@@ -35,6 +59,7 @@ const assets = Object.fromEntries(
 );
 const generatedConfig = {
   ...sourceConfig,
+  ...(output ? { output } : {}),
   ...(executable ? { executable } : {}),
   assets,
 };

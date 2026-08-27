@@ -36,3 +36,17 @@ npm run check:launcher
 ```powershell
 npm run build:windows:portable
 ```
+
+## Сборка в Debian x64
+
+После установки системных зависимостей Tauri и переключения на Node.js 26:
+
+```bash
+npm run install:launcher
+npm run build:linux:launcher
+npm run start:linux:launcher
+```
+
+Команда собирает Linux SEA и release launcher, затем кладёт `config.json`
+рядом с `HandyProcessor` и `handy-processor-server` в
+`launcher/src-tauri/target/release/`.

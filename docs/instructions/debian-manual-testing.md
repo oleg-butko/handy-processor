@@ -4,8 +4,9 @@
 трансформации текста. Для обычной проверки в Debian launcher не нужен:
 браузер открывает тот же интерфейс, который на Windows показывает Tauri.
 
-Tray launcher остаётся отдельной опциональной оболочкой. Его переносимую
-Windows-сборку и поведение tray необходимо проверять на Windows по инструкции
+Tray launcher остаётся отдельной опциональной оболочкой. В Debian его можно
+собрать и проверить нативно; специфичное для WebView2 и Windows поведение всё
+равно необходимо проверять по инструкции
 [Windows tray launcher и portable release](windows-launcher.md).
 
 ## Требования
@@ -15,6 +16,23 @@ Windows-сборку и поведение tray необходимо прове�
 - Python 3 только для форматирования JSON (часть `| python3 -m json.tool`
   можно убрать);
 - любой современный браузер.
+
+Для сборки launcher дополнительно нужны Rust и системные зависимости Tauri:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y \
+  pkg-config \
+  libwebkit2gtk-4.1-dev \
+  build-essential \
+  curl \
+  wget \
+  file \
+  libxdo-dev \
+  libssl-dev \
+  libayatana-appindicator3-dev \
+  librsvg2-dev
+```
 
 Если Node.js установлен через NVM, в начале нового терминала загрузите NVM и
 проверьте активную версию:
@@ -151,6 +169,7 @@ xdg-open http://127.0.0.1:11434/
    - старая запись истории не изменяется.
 4. **Настройки**
    - светлая, тёмная и системная темы переключаются сразу;
+   - отдельно меняется размер текста основного интерфейса;
    - меняется размер шрифта рабочего текста редактора;
    - после обновления страницы выбранные параметры сохраняются.
 
@@ -187,20 +206,41 @@ TypeScript. После изменения React или CSS нужно отдел
 нет proxy к backend, поэтому для полноценной ручной проверки API удобнее
 использовать `npm run build` и `npm start`.
 
-## Что можно проверить у launcher в Debian
+## Сборка и проверка launcher в Debian x64
 
-Если установлены Rust и системные зависимости Tauri, platform-independent
-логику launcher можно проверить командами:
+Для SEA-сборки переключитесь на Node.js 26, затем установите npm-зависимости
+launcher и выполните одну сборочную команду:
 
 ```bash
+. "$HOME/.nvm/nvm.sh"
+nvm use 26
 npm run install:launcher
+npm run build:linux:launcher
+```
+
+Результат находится в одном каталоге:
+
+```text
+launcher/src-tauri/target/release/HandyProcessor
+launcher/src-tauri/target/release/handy-processor-server
+launcher/src-tauri/target/release/config.json
+```
+
+Запуск из графической сессии Debian:
+
+```bash
+npm run start:linux:launcher
+```
+
+Можно также отдельно выполнить проверки:
+
+```bash
 npm run test:launcher
 npm run check:launcher
 ```
 
-Эти проверки покрывают supervisor, graceful shutdown, health probe и работу с
-runtime-путями. Они не проверяют Windows WebView2, скрытие окна в tray,
-контекстное меню и отсутствие console window. Для итоговой проверки launcher
+В Debian проверяются WebKitGTK-окно, tray, меню и lifecycle sidecar. Отсутствие
+Windows console window и поведение WebView2 здесь проверить нельзя; для этого
 используйте Windows portable build.
 
 ## Проверка с Handy
