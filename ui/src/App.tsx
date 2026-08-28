@@ -3,10 +3,15 @@ import {
   MantineProvider,
   Tabs,
   createTheme,
-  useMantineColorScheme,
 } from "@mantine/core";
 import { useLocalStorage } from "@mantine/hooks";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from "react";
 import { HistoryPage } from "./HistoryPage.js";
 import { RulesPage } from "./RulesPage.js";
 import { SettingsPage } from "./SettingsPage.js";
@@ -15,6 +20,7 @@ import type {
   EditorFontSize,
   FontSizePreference,
   RulesResponse,
+  ThemePreference,
   TransformationRuleState,
   UiFontSize,
 } from "./types.js";
@@ -68,20 +74,27 @@ function deserializeHistoryLimit(value: string | undefined): number {
     : 100;
 }
 
+function deserializeTheme(value: string | undefined): ThemePreference {
+  return value === "soft-light" || value === "soft-dark" || value === "dark"
+    ? value
+    : "light";
+}
+
 function AppContent({
   uiFontSize,
   onUiFontSizeChange,
   historyLimit,
   onHistoryLimitChange,
+  themePreference,
+  onThemePreferenceChange,
 }: {
   readonly uiFontSize: UiFontSize;
   readonly onUiFontSizeChange: (value: UiFontSize) => void;
   readonly historyLimit: number;
   readonly onHistoryLimitChange: (value: number) => void;
+  readonly themePreference: ThemePreference;
+  readonly onThemePreferenceChange: (value: ThemePreference) => void;
 }) {
-  const { colorScheme, setColorScheme } = useMantineColorScheme({
-    keepTransitions: true,
-  });
   const [editorFontSize, setEditorFontSize] = useLocalStorage<EditorFontSize>({
     key: "handy-processor-editor-font-size",
     defaultValue: "medium",
@@ -198,14 +211,14 @@ function AppContent({
         </Tabs.Panel>
         <Tabs.Panel className="app-tab-panel" value="settings">
           <SettingsPage
-            colorScheme={colorScheme}
             editorFontSize={editorFontSize}
             uiFontSize={uiFontSize}
             historyLimit={historyLimit}
-            onColorSchemeChange={setColorScheme}
+            themePreference={themePreference}
             onEditorFontSizeChange={setEditorFontSize}
             onUiFontSizeChange={onUiFontSizeChange}
             onHistoryLimitChange={onHistoryLimitChange}
+            onThemePreferenceChange={onThemePreferenceChange}
           />
         </Tabs.Panel>
       </Tabs>
@@ -228,15 +241,37 @@ export function App() {
     serialize: String,
     deserialize: deserializeHistoryLimit,
   });
+  const [themePreference, setThemePreference] =
+    useLocalStorage<ThemePreference>({
+      key: "handy-processor-theme",
+      defaultValue: "light",
+      getInitialValueInEffect: false,
+      serialize: String,
+      deserialize: deserializeTheme,
+    });
   const theme = useMemo(() => createAppTheme(uiFontSize), [uiFontSize]);
+  const colorScheme =
+    themePreference === "dark" || themePreference === "soft-dark"
+      ? "dark"
+      : "light";
+
+  useLayoutEffect(() => {
+    document.documentElement.dataset.hpTheme = themePreference;
+  }, [themePreference]);
 
   return (
-    <MantineProvider theme={theme} defaultColorScheme="auto">
+    <MantineProvider
+      defaultColorScheme="light"
+      forceColorScheme={colorScheme}
+      theme={theme}
+    >
       <AppContent
         uiFontSize={uiFontSize}
         historyLimit={historyLimit}
+        themePreference={themePreference}
         onUiFontSizeChange={setUiFontSize}
         onHistoryLimitChange={setHistoryLimit}
+        onThemePreferenceChange={setThemePreference}
       />
     </MantineProvider>
   );

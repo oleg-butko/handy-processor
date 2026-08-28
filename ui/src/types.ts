@@ -88,3 +88,4 @@ export interface EditorSessionState {
 export type FontSizePreference = "small" | "medium" | "large";
 export type EditorFontSize = FontSizePreference;
 export type UiFontSize = FontSizePreference;
+export type ThemePreference = "light" | "soft-light" | "soft-dark" | "dark";

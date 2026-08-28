@@ -6,30 +6,33 @@ import {
   Stack,
   Text,
   Title,
-  type MantineColorScheme,
 } from "@mantine/core";
-import type { EditorFontSize, UiFontSize } from "./types.js";
+import type {
+  EditorFontSize,
+  ThemePreference,
+  UiFontSize,
+} from "./types.js";
 
 interface SettingsPageProps {
-  readonly colorScheme: MantineColorScheme;
   readonly editorFontSize: EditorFontSize;
   readonly uiFontSize: UiFontSize;
   readonly historyLimit: number;
-  readonly onColorSchemeChange: (value: MantineColorScheme) => void;
+  readonly themePreference: ThemePreference;
   readonly onEditorFontSizeChange: (value: EditorFontSize) => void;
   readonly onUiFontSizeChange: (value: UiFontSize) => void;
   readonly onHistoryLimitChange: (value: number) => void;
+  readonly onThemePreferenceChange: (value: ThemePreference) => void;
 }
 
 export function SettingsPage({
-  colorScheme,
   editorFontSize,
   uiFontSize,
   historyLimit,
-  onColorSchemeChange,
+  themePreference,
   onEditorFontSizeChange,
   onUiFontSizeChange,
   onHistoryLimitChange,
+  onThemePreferenceChange,
 }: SettingsPageProps) {
   return (
     <Stack gap="md" pt="md">
@@ -51,19 +54,20 @@ export function SettingsPage({
             <Stack gap={2}>
               <Text fw={600}>Тема</Text>
               <Text c="dimmed" size="xs">
-                Можно следовать настройке Windows или выбрать тему явно.
+                Четыре фиксированных уровня яркости интерфейса.
               </Text>
             </Stack>
             <SegmentedControl
               size="xs"
-              value={colorScheme}
+              value={themePreference}
               data={[
-                { value: "auto", label: "Системная" },
                 { value: "light", label: "Светлая" },
+                { value: "soft-light", label: "Светлая 2" },
+                { value: "soft-dark", label: "Тёмная 2" },
                 { value: "dark", label: "Тёмная" },
               ]}
               onChange={(value) =>
-                onColorSchemeChange(value as MantineColorScheme)
+                onThemePreferenceChange(value as ThemePreference)
               }
             />
           </Group>
