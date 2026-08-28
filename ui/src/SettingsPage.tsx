@@ -1,6 +1,7 @@
 import {
   Card,
   Group,
+  NumberInput,
   SegmentedControl,
   Stack,
   Text,
@@ -13,18 +14,22 @@ interface SettingsPageProps {
   readonly colorScheme: MantineColorScheme;
   readonly editorFontSize: EditorFontSize;
   readonly uiFontSize: UiFontSize;
+  readonly historyLimit: number;
   readonly onColorSchemeChange: (value: MantineColorScheme) => void;
   readonly onEditorFontSizeChange: (value: EditorFontSize) => void;
   readonly onUiFontSizeChange: (value: UiFontSize) => void;
+  readonly onHistoryLimitChange: (value: number) => void;
 }
 
 export function SettingsPage({
   colorScheme,
   editorFontSize,
   uiFontSize,
+  historyLimit,
   onColorSchemeChange,
   onEditorFontSizeChange,
   onUiFontSizeChange,
+  onHistoryLimitChange,
 }: SettingsPageProps) {
   return (
     <Stack gap="md" pt="md">
@@ -60,6 +65,35 @@ export function SettingsPage({
               onChange={(value) =>
                 onColorSchemeChange(value as MantineColorScheme)
               }
+            />
+          </Group>
+
+          <Group
+            className="settings-row"
+            justify="space-between"
+            align="center"
+            wrap="nowrap"
+          >
+            <Stack gap={2}>
+              <Text fw={600}>История отмены и повтора</Text>
+              <Text c="dimmed" size="xs">
+                Сколько последних изменений хранить для каждой заметки.
+              </Text>
+            </Stack>
+            <NumberInput
+              aria-label="Количество изменений undo и redo"
+              allowDecimal={false}
+              allowNegative={false}
+              clampBehavior="strict"
+              max={1000}
+              min={10}
+              size="xs"
+              step={10}
+              value={historyLimit}
+              w={110}
+              onChange={(value) => {
+                if (typeof value === "number") onHistoryLimitChange(value);
+              }}
             />
           </Group>
 

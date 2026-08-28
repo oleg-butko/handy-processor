@@ -61,12 +61,23 @@ function deserializeFontSize(value: string | undefined): FontSizePreference {
   return value === "small" || value === "large" ? value : "medium";
 }
 
+function deserializeHistoryLimit(value: string | undefined): number {
+  const parsed = Number(value);
+  return Number.isSafeInteger(parsed) && parsed >= 10 && parsed <= 1_000
+    ? parsed
+    : 100;
+}
+
 function AppContent({
   uiFontSize,
   onUiFontSizeChange,
+  historyLimit,
+  onHistoryLimitChange,
 }: {
   readonly uiFontSize: UiFontSize;
   readonly onUiFontSizeChange: (value: UiFontSize) => void;
+  readonly historyLimit: number;
+  readonly onHistoryLimitChange: (value: number) => void;
 }) {
   const { colorScheme, setColorScheme } = useMantineColorScheme({
     keepTransitions: true,
@@ -165,7 +176,10 @@ function AppContent({
         </Tabs.List>
 
         <Tabs.Panel className="app-tab-panel voice-editor-panel" value="editor">
-          <VoiceEditorPage editorFontSize={editorFontSize} />
+          <VoiceEditorPage
+            editorFontSize={editorFontSize}
+            historyLimit={historyLimit}
+          />
         </Tabs.Panel>
         <Tabs.Panel className="app-tab-panel" value="history">
           <HistoryPage rules={rules} />
@@ -187,9 +201,11 @@ function AppContent({
             colorScheme={colorScheme}
             editorFontSize={editorFontSize}
             uiFontSize={uiFontSize}
+            historyLimit={historyLimit}
             onColorSchemeChange={setColorScheme}
             onEditorFontSizeChange={setEditorFontSize}
             onUiFontSizeChange={onUiFontSizeChange}
+            onHistoryLimitChange={onHistoryLimitChange}
           />
         </Tabs.Panel>
       </Tabs>
@@ -205,13 +221,22 @@ export function App() {
     serialize: (value) => value,
     deserialize: deserializeFontSize,
   });
+  const [historyLimit, setHistoryLimit] = useLocalStorage<number>({
+    key: "handy-processor-editor-history-limit",
+    defaultValue: 100,
+    getInitialValueInEffect: false,
+    serialize: String,
+    deserialize: deserializeHistoryLimit,
+  });
   const theme = useMemo(() => createAppTheme(uiFontSize), [uiFontSize]);
 
   return (
     <MantineProvider theme={theme} defaultColorScheme="auto">
       <AppContent
         uiFontSize={uiFontSize}
+        historyLimit={historyLimit}
         onUiFontSizeChange={setUiFontSize}
+        onHistoryLimitChange={setHistoryLimit}
       />
     </MantineProvider>
   );

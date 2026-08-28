@@ -115,6 +115,17 @@ body {
   border-top: 1px solid var(--hp-muted-border);
 }
 
+.editor-notes-bar {
+  min-height: 42px;
+  flex: 0 0 42px;
+  background: var(--hp-muted-surface);
+}
+
+.editor-note-select {
+  min-width: 0;
+  flex: 1;
+}
+
 .voice-editor-field {
   min-height: 0;
   flex: 1;

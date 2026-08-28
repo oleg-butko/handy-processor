@@ -52,8 +52,27 @@ export interface RulesResponse {
 
 export interface EditorDraft {
   readonly content: string;
+  readonly state: unknown | null;
+  readonly currentNoteId: number | null;
   readonly revision: number;
   readonly updatedAt: string | null;
+}
+
+export interface EditorNoteSummary {
+  readonly id: number;
+  readonly name: string;
+  readonly updatedAt: string;
+}
+
+export interface EditorNote extends EditorNoteSummary {
+  readonly content: string;
+  readonly state: unknown | null;
+  readonly revision: number;
+  readonly createdAt: string;
+}
+
+export interface EditorNotesResponse {
+  readonly items: readonly EditorNoteSummary[];
 }
 
 export interface EditorSessionState {

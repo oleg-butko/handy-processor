@@ -10,23 +10,34 @@ import {
   Title,
 } from "@mantine/core";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { EditorNotesBar } from "./EditorNotesBar.js";
 import {
   PlainTextEditor,
+  type EditorDocumentSnapshot,
   type PlainTextEditorHandle,
   type PlainTextEditorState,
 } from "./PlainTextEditor.js";
 import type {
   EditorDraft,
   EditorFontSize,
+  EditorNote,
+  EditorNoteSummary,
+  EditorNotesResponse,
   EditorSessionState,
 } from "./types.js";
 
 const SESSION_HEARTBEAT_MS = 5_000;
 const SESSION_SYNC_DELAY_MS = 75;
-const DRAFT_SAVE_DELAY_MS = 600;
+const EDITOR_SAVE_DELAY_MS = 600;
 
 interface LocalEditorState extends PlainTextEditorState {
   readonly active: boolean;
+}
+
+interface PendingEditorSave extends EditorDocumentSnapshot {
+  readonly noteId: number | null;
+  readonly saveNote: boolean;
+  readonly saveId: number;
 }
 
 function createSessionId(): string {
@@ -40,25 +51,43 @@ function countWords(text: string): number {
   return trimmed === "" ? 0 : trimmed.split(/\s+/u).length;
 }
 
+function sortNotes(notes: readonly EditorNoteSummary[]): EditorNoteSummary[] {
+  return [...notes].sort(
+    (left, right) =>
+      Date.parse(right.updatedAt) - Date.parse(left.updatedAt) ||
+      right.id - left.id,
+  );
+}
+
 export function VoiceEditorPage({
   editorFontSize,
+  historyLimit,
 }: {
   readonly editorFontSize: EditorFontSize;
+  readonly historyLimit: number;
 }) {
   const editorRef = useRef<PlainTextEditorHandle>(null);
   const sessionIdRef = useRef(createSessionId());
   const sessionRevisionRef = useRef(0);
   const sessionRequestIdRef = useRef(0);
   const stateRef = useRef<LocalEditorState | undefined>(undefined);
+  const currentNoteIdRef = useRef<number | null>(null);
+  const notesBusyRef = useRef(false);
+  const suppressAutosaveRef = useRef(false);
   const sessionSyncTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
-  const draftSaveTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(
+  const editorSaveTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
+  const pendingSaveRef = useRef<PendingEditorSave | undefined>(undefined);
   const latestSaveRef = useRef(0);
   const saveQueueRef = useRef<Promise<void>>(Promise.resolve());
   const [draft, setDraft] = useState<EditorDraft>();
+  const [notes, setNotes] = useState<readonly EditorNoteSummary[]>([]);
+  const [currentNoteId, setCurrentNoteId] = useState<number | null>(null);
+  const [notesBusy, setNotesBusy] = useState(false);
+  const [noteError, setNoteError] = useState<string>();
   const [loadError, setLoadError] = useState<string>();
   const [sessionError, setSessionError] = useState<string>();
   const [saveState, setSaveState] = useState<"saved" | "saving" | "error">(
@@ -70,16 +99,29 @@ export function VoiceEditorPage({
     const controller = new AbortController();
     void (async () => {
       try {
-        const response = await fetch("/api/editor/draft", {
-          signal: controller.signal,
-        });
-        if (!response.ok) {
-          throw new Error(`Сервер вернул HTTP ${response.status}`);
+        const [draftResponse, notesResponse] = await Promise.all([
+          fetch("/api/editor/draft", { signal: controller.signal }),
+          fetch("/api/editor/notes", { signal: controller.signal }),
+        ]);
+        if (!draftResponse.ok || !notesResponse.ok) {
+          throw new Error(
+            `Сервер вернул HTTP ${!draftResponse.ok ? draftResponse.status : notesResponse.status}`,
+          );
         }
-        const loaded = (await response.json()) as EditorDraft;
+        const loaded = (await draftResponse.json()) as EditorDraft;
+        const loadedNotes = (await notesResponse.json()) as EditorNotesResponse;
+        const validCurrentNoteId = loadedNotes.items.some(
+          (note) => note.id === loaded.currentNoteId,
+        )
+          ? loaded.currentNoteId
+          : null;
+        currentNoteIdRef.current = validCurrentNoteId;
+        setCurrentNoteId(validCurrentNoteId);
+        setNotes(sortNotes(loadedNotes.items));
         setDraft(loaded);
         const initial: LocalEditorState = {
           documentText: loaded.content,
+          serializedState: loaded.state,
           selectionStart: 0,
           selectionEnd: 0,
           undoDepth: 0,
@@ -104,12 +146,9 @@ export function VoiceEditorPage({
 
   const publishSession = useCallback(async () => {
     const state = stateRef.current;
-    if (state === undefined) {
-      return;
-    }
+    if (state === undefined) return;
     const requestId = sessionRequestIdRef.current + 1;
     sessionRequestIdRef.current = requestId;
-
     try {
       const response = await fetch(
         `/api/editor/sessions/${encodeURIComponent(sessionIdRef.current)}`,
@@ -125,9 +164,7 @@ export function VoiceEditorPage({
           }),
         },
       );
-      if (!response.ok) {
-        throw new Error(`Сервер вернул HTTP ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`Сервер вернул HTTP ${response.status}`);
       const session = (await response.json()) as EditorSessionState;
       if (
         requestId === sessionRequestIdRef.current &&
@@ -156,45 +193,113 @@ export function VoiceEditorPage({
     }, SESSION_SYNC_DELAY_MS);
   }, [publishSession]);
 
-  const enqueueDraftSave = useCallback((content: string, saveId: number) => {
-    const operation = saveQueueRef.current.then(async () => {
-      const response = await fetch("/api/editor/draft", {
-        method: "PUT",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ content }),
-      });
-      if (!response.ok) {
-        throw new Error(`Сервер вернул HTTP ${response.status}`);
-      }
-      await response.json();
-      if (saveId === latestSaveRef.current) {
-        // Keep the initial value stable: replacing it would recreate CodeMirror
-        // and discard the user's in-memory undo history after every save.
-        setSaveState("saved");
-      }
-    });
-
-    saveQueueRef.current = operation.catch(() => {
-      if (saveId === latestSaveRef.current) {
-        setSaveState("error");
-      }
-    });
+  const updateNoteSummary = useCallback((note: EditorNote) => {
+    setNotes((current) =>
+      sortNotes([
+        { id: note.id, name: note.name, updatedAt: note.updatedAt },
+        ...current.filter((item) => item.id !== note.id),
+      ]),
+    );
   }, []);
 
-  const scheduleDraftSave = useCallback(
-    (content: string) => {
-      if (draftSaveTimerRef.current !== undefined) {
-        clearTimeout(draftSaveTimerRef.current);
-      }
-      setSaveState("saving");
+  const enqueueEditorSave = useCallback(
+    (pending: PendingEditorSave): Promise<void> => {
+      const operation = saveQueueRef.current.then(async () => {
+        if (pending.saveNote && pending.noteId !== null) {
+          const noteResponse = await fetch(`/api/editor/notes/${pending.noteId}`, {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ content: pending.content, state: pending.state }),
+          });
+          if (!noteResponse.ok) {
+            throw new Error(`Сервер вернул HTTP ${noteResponse.status}`);
+          }
+          updateNoteSummary((await noteResponse.json()) as EditorNote);
+        }
+        const draftResponse = await fetch("/api/editor/draft", {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            content: pending.content,
+            state: pending.state,
+            currentNoteId: pending.noteId,
+          }),
+        });
+        if (!draftResponse.ok) {
+          throw new Error(`Сервер вернул HTTP ${draftResponse.status}`);
+        }
+        await draftResponse.json();
+        if (pending.saveId === latestSaveRef.current) setSaveState("saved");
+      });
+      const reportedOperation = operation.catch((error: unknown) => {
+        if (pending.saveId === latestSaveRef.current) {
+          setSaveState("error");
+          setNoteError(
+            error instanceof Error ? error.message : "Не удалось сохранить",
+          );
+        }
+        throw error;
+      });
+      saveQueueRef.current = reportedOperation.catch(() => {});
+      return reportedOperation;
+    },
+    [updateNoteSummary],
+  );
+
+  const createPendingSave = useCallback(
+    (
+      snapshot: EditorDocumentSnapshot,
+      noteId: number | null,
+      saveNote: boolean,
+    ): PendingEditorSave => {
       const saveId = latestSaveRef.current + 1;
       latestSaveRef.current = saveId;
-      draftSaveTimerRef.current = setTimeout(() => {
-        draftSaveTimerRef.current = undefined;
-        enqueueDraftSave(content, saveId);
-      }, DRAFT_SAVE_DELAY_MS);
+      return { ...snapshot, noteId, saveNote, saveId };
     },
-    [enqueueDraftSave],
+    [],
+  );
+
+  const scheduleEditorSave = useCallback(
+    (snapshot: EditorDocumentSnapshot) => {
+      if (editorSaveTimerRef.current !== undefined) {
+        clearTimeout(editorSaveTimerRef.current);
+      }
+      setSaveState("saving");
+      const noteId = currentNoteIdRef.current;
+      pendingSaveRef.current = createPendingSave(
+        snapshot,
+        noteId,
+        noteId !== null,
+      );
+      editorSaveTimerRef.current = setTimeout(() => {
+        editorSaveTimerRef.current = undefined;
+        const pending = pendingSaveRef.current;
+        pendingSaveRef.current = undefined;
+        if (pending !== undefined) {
+          void enqueueEditorSave(pending).catch(() => {});
+        }
+      }, EDITOR_SAVE_DELAY_MS);
+    },
+    [createPendingSave, enqueueEditorSave],
+  );
+
+  const flushScheduledSave = useCallback(async () => {
+    if (editorSaveTimerRef.current !== undefined) {
+      clearTimeout(editorSaveTimerRef.current);
+      editorSaveTimerRef.current = undefined;
+    }
+    const pending = pendingSaveRef.current;
+    pendingSaveRef.current = undefined;
+    if (pending !== undefined) await enqueueEditorSave(pending);
+    else await saveQueueRef.current;
+  }, [enqueueEditorSave]);
+
+  const saveWorkspace = useCallback(
+    (snapshot: EditorDocumentSnapshot, noteId: number | null) => {
+      setSaveState("saving");
+      return enqueueEditorSave(createPendingSave(snapshot, noteId, false));
+    },
+    [createPendingSave, enqueueEditorSave],
   );
 
   const handleStateChange = useCallback(
@@ -208,19 +313,23 @@ export function VoiceEditorPage({
       sessionRevisionRef.current += 1;
       setEditorState(state);
       scheduleSessionSync();
-      if (previous?.documentText !== next.documentText) {
-        scheduleDraftSave(next.documentText);
+      if (
+        previous?.documentText !== next.documentText &&
+        !suppressAutosaveRef.current
+      ) {
+        scheduleEditorSave({
+          content: next.documentText,
+          state: next.serializedState,
+        });
       }
     },
-    [scheduleDraftSave, scheduleSessionSync],
+    [scheduleEditorSave, scheduleSessionSync],
   );
 
   const handleFocusChange = useCallback(
     (active: boolean) => {
       const previous = stateRef.current;
-      if (previous === undefined || previous.active === active) {
-        return;
-      }
+      if (previous === undefined || previous.active === active) return;
       const state = { ...previous, active };
       stateRef.current = state;
       sessionRevisionRef.current += 1;
@@ -230,29 +339,104 @@ export function VoiceEditorPage({
     [publishSession],
   );
 
+  const selectNote = useCallback(
+    async (noteId: number) => {
+      if (noteId === currentNoteIdRef.current || notesBusyRef.current) return;
+      notesBusyRef.current = true;
+      setNotesBusy(true);
+      setNoteError(undefined);
+      try {
+        await flushScheduledSave();
+        const response = await fetch(`/api/editor/notes/${noteId}`);
+        if (!response.ok) throw new Error(`Сервер вернул HTTP ${response.status}`);
+        const note = (await response.json()) as EditorNote;
+        currentNoteIdRef.current = note.id;
+        setCurrentNoteId(note.id);
+        suppressAutosaveRef.current = true;
+        editorRef.current?.replace({ content: note.content, state: note.state });
+        suppressAutosaveRef.current = false;
+        const snapshot = editorRef.current?.snapshot();
+        if (snapshot !== undefined) await saveWorkspace(snapshot, note.id);
+      } catch (error) {
+        suppressAutosaveRef.current = false;
+        setNoteError(
+          error instanceof Error ? error.message : "Не удалось открыть заметку",
+        );
+      } finally {
+        notesBusyRef.current = false;
+        setNotesBusy(false);
+      }
+    },
+    [flushScheduledSave, saveWorkspace],
+  );
+
+  const saveAs = useCallback(async (name: string): Promise<boolean> => {
+    const snapshot = editorRef.current?.snapshot();
+    if (snapshot === undefined || notesBusyRef.current) return false;
+    notesBusyRef.current = true;
+    setNotesBusy(true);
+    setNoteError(undefined);
+    try {
+      await flushScheduledSave();
+      const response = await fetch("/api/editor/notes", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ name, ...snapshot }),
+      });
+      if (!response.ok) throw new Error(`Сервер вернул HTTP ${response.status}`);
+      const note = (await response.json()) as EditorNote;
+      currentNoteIdRef.current = note.id;
+      setCurrentNoteId(note.id);
+      updateNoteSummary(note);
+      await saveWorkspace(snapshot, note.id);
+      return true;
+    } catch (error) {
+      setNoteError(
+        error instanceof Error ? error.message : "Не удалось создать заметку",
+      );
+      return false;
+    } finally {
+      notesBusyRef.current = false;
+      setNotesBusy(false);
+    }
+  }, [flushScheduledSave, saveWorkspace, updateNoteSummary]);
+
   useEffect(() => {
     const interval = setInterval(() => {
-      if (stateRef.current?.active) {
-        void publishSession();
-      }
+      if (stateRef.current?.active) void publishSession();
     }, SESSION_HEARTBEAT_MS);
-
     return () => {
       clearInterval(interval);
       if (sessionSyncTimerRef.current !== undefined) {
         clearTimeout(sessionSyncTimerRef.current);
       }
-      if (draftSaveTimerRef.current !== undefined) {
-        clearTimeout(draftSaveTimerRef.current);
-        const content = stateRef.current?.documentText;
-        if (content !== undefined) {
-          void fetch("/api/editor/draft", {
+      if (editorSaveTimerRef.current !== undefined) {
+        clearTimeout(editorSaveTimerRef.current);
+      }
+      const pending = pendingSaveRef.current;
+      if (pending !== undefined) {
+        const body = JSON.stringify({
+          content: pending.content,
+          state: pending.state,
+        });
+        if (pending.saveNote && pending.noteId !== null) {
+          void fetch(`/api/editor/notes/${pending.noteId}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify({ content }),
+            body,
             keepalive: true,
           });
         }
+        void fetch("/api/editor/draft", {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            content: pending.content,
+            state: pending.state,
+            currentNoteId: pending.noteId,
+          }),
+          keepalive: true,
+        });
       }
       void fetch(
         `/api/editor/sessions/${encodeURIComponent(sessionIdRef.current)}?documentRevision=${sessionRevisionRef.current}`,
@@ -270,7 +454,6 @@ export function VoiceEditorPage({
       </Stack>
     );
   }
-
   if (draft === undefined || editorState === undefined) {
     return (
       <Center py={100}>
@@ -291,7 +474,7 @@ export function VoiceEditorPage({
       : "Нажмите в поле, чтобы активировать контекст";
 
   return (
-    <Stack className="voice-editor-page" gap="md" pt="md">
+    <Stack className="voice-editor-page" gap="sm" pt="md">
       <Stack gap={3}>
         <Title order={2}>Голосовой редактор</Title>
         <Text c="dimmed" size="sm">
@@ -370,6 +553,8 @@ export function VoiceEditorPage({
 
         <PlainTextEditor
           ref={editorRef}
+          historyLimit={historyLimit}
+          initialState={draft.state}
           initialValue={draft.content}
           onStateChange={handleStateChange}
           onFocusChange={handleFocusChange}
@@ -390,6 +575,15 @@ export function VoiceEditorPage({
           </Text>
         </Group>
       </Paper>
+
+      <EditorNotesBar
+        busy={notesBusy}
+        currentNoteId={currentNoteId}
+        error={noteError}
+        notes={notes}
+        onSaveAs={saveAs}
+        onSelect={(noteId) => void selectNote(noteId)}
+      />
     </Stack>
   );
 }
