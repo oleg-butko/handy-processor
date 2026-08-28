@@ -17,7 +17,7 @@ Node HTTP server -> transformer -> SQLite
        v                          v
 React + Mantine + CodeMirror SPA
        ├───────────────► editor context in memory
-       └───────────────► history, draft and rule settings
+       └───────────────► history, draft, notes and rule settings
 ```
 
 Backend, хранилище и UI разделены контрактами. Следующие страницы смогут
@@ -68,8 +68,10 @@ handy-processor.sqlite3
 умолчанию остаются в реестре TypeScript, поэтому добавление правила не требует
 изменения схемы БД.
 
-Таблица `editor_draft` хранит один автоматически сохраняемый документ и
-монотонную ревизию сохранения. Undo-история остаётся только в памяти браузера.
+Таблица `editor_draft` хранит автоматически сохраняемое рабочее состояние:
+текст, снимок CodeMirror с undo/redo, выбранную заметку и монотонную ревизию.
+Таблица `editor_notes` хранит именованные заметки, их текст, снимок undo/redo,
+время создания, время изменения и отдельную ревизию.
 
 Запись создаётся только для успешно обработанного запроса
 `POST /v1/chat/completions`.
@@ -149,13 +151,17 @@ PATCH /api/rules/:ruleId
 ```http
 GET /api/editor/draft
 PUT /api/editor/draft
+GET /api/editor/notes
+POST /api/editor/notes
+GET /api/editor/notes/:noteId
+PUT /api/editor/notes/:noteId
 PUT /api/editor/sessions/:sessionId
 DELETE /api/editor/sessions/:sessionId
 ```
 
-Черновик хранится в SQLite. Сессии, полный текст для вычисления контекста и
-позиция курсора хранятся только в памяти и автоматически истекают. Подробный
-контракт и пользовательский сценарий описаны в
+Рабочий документ и именованные заметки вместе с undo/redo хранятся в SQLite.
+Активные контекстные сессии и позиция курсора хранятся только в памяти и
+автоматически истекают. Подробный контракт и пользовательский сценарий описаны в
 [документации голосового редактора](voice-editor.md).
 
 ## Разработка UI

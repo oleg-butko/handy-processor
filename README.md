@@ -10,8 +10,8 @@ post-processing feature. It currently:
 3. optionally removes a period only when it is the final character (ignoring trailing
    whitespace);
 4. stores each transformation in a local SQLite database; and
-5. provides a context-aware voice editor with undo, redo and SQLite draft
-   autosave; and
+5. provides a context-aware voice editor with named SQLite notes and
+   persistent undo/redo history; and
 6. shows the paginated history and configurable rule list in a React + Mantine
    web UI.
 
