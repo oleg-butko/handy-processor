@@ -134,10 +134,7 @@ export const PlainTextEditor = forwardRef<
       return;
     }
 
-    const extensions = [
-      historyCompartmentRef.current.of(
-        history({ minDepth: historyLimitRef.current }),
-      ),
+    const baseExtensions = [
       drawSelection(),
       keymap.of([...defaultKeymap, ...historyKeymap]),
       EditorView.lineWrapping,
@@ -162,6 +159,12 @@ export const PlainTextEditor = forwardRef<
         callbacksRef.current.onStateChange(describeState(update.state));
       }),
     ];
+    const extensions = () => [
+      historyCompartmentRef.current.of(
+        history({ minDepth: historyLimitRef.current }),
+      ),
+      ...baseExtensions,
+    ];
     const createState = (snapshot: EditorDocumentSnapshot): EditorState => {
       const saved = snapshot.state;
       if (
@@ -173,7 +176,7 @@ export const PlainTextEditor = forwardRef<
         try {
           const state = EditorState.fromJSON(
             (saved as Record<string, unknown>).editor,
-            { extensions },
+            { extensions: extensions() },
             { history: historyField },
           );
           if (state.doc.toString() === snapshot.content) {
@@ -183,7 +186,10 @@ export const PlainTextEditor = forwardRef<
           // Fall back to the separately stored text when history is corrupted.
         }
       }
-      return EditorState.create({ doc: snapshot.content, extensions });
+      return EditorState.create({
+        doc: snapshot.content,
+        extensions: extensions(),
+      });
     };
     createStateRef.current = createState;
 
