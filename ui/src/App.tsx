@@ -156,7 +156,7 @@ function AppContent({
 
   return (
     <Container className="app-container" size="lg" py={0}>
-      <Tabs defaultValue="editor" keepMounted>
+      <Tabs className="app-tabs" defaultValue="editor" keepMounted>
         <Tabs.List>
           <Tabs.Tab value="editor">Голосовой редактор</Tabs.Tab>
           <Tabs.Tab value="history">История</Tabs.Tab>
@@ -164,13 +164,13 @@ function AppContent({
           <Tabs.Tab value="settings">Настройки</Tabs.Tab>
         </Tabs.List>
 
-        <Tabs.Panel value="editor">
+        <Tabs.Panel className="app-tab-panel voice-editor-panel" value="editor">
           <VoiceEditorPage editorFontSize={editorFontSize} />
         </Tabs.Panel>
-        <Tabs.Panel value="history">
+        <Tabs.Panel className="app-tab-panel" value="history">
           <HistoryPage rules={rules} />
         </Tabs.Panel>
-        <Tabs.Panel value="rules">
+        <Tabs.Panel className="app-tab-panel" value="rules">
           <RulesPage
             rules={rules}
             loading={rulesLoading}
@@ -182,7 +182,7 @@ function AppContent({
             }}
           />
         </Tabs.Panel>
-        <Tabs.Panel value="settings">
+        <Tabs.Panel className="app-tab-panel" value="settings">
           <SettingsPage
             colorScheme={colorScheme}
             editorFontSize={editorFontSize}

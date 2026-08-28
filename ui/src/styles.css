@@ -7,6 +7,12 @@
   text-rendering: optimizeLegibility;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 :root[data-mantine-color-scheme="dark"] {
   --hp-muted-surface: var(--mantine-color-dark-7);
   --hp-muted-border: var(--mantine-color-dark-5);
@@ -21,6 +27,31 @@ body {
   background:
     radial-gradient(circle at 15% 0%, rgba(21, 170, 191, 0.12), transparent 32rem),
     var(--mantine-color-body);
+}
+
+.app-container {
+  height: 100dvh;
+}
+
+.app-tabs {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.app-tab-panel {
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+}
+
+.voice-editor-panel {
+  overflow: hidden;
+}
+
+.voice-editor-page {
+  height: 100%;
+  min-height: 0;
 }
 
 .text-panel {
@@ -56,6 +87,10 @@ body {
 
 .voice-editor-shell {
   --editor-font-size: 1rem;
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
   overflow: hidden;
 }
 
@@ -80,8 +115,14 @@ body {
   border-top: 1px solid var(--hp-muted-border);
 }
 
+.voice-editor-field {
+  min-height: 0;
+  flex: 1;
+}
+
 .voice-editor-field .cm-editor {
-  height: clamp(310px, 52vh, 420px);
+  height: 100%;
+  min-height: 220px;
   color: var(--mantine-color-text);
   background: var(--mantine-color-body);
   font-family: var(--mantine-font-family);
@@ -147,7 +188,4 @@ body {
     flex-direction: column;
   }
 
-  .voice-editor-field .cm-editor {
-    height: clamp(300px, 56vh, 380px);
-  }
 }

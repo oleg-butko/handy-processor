@@ -291,7 +291,7 @@ export function VoiceEditorPage({
       : "Нажмите в поле, чтобы активировать контекст";
 
   return (
-    <Stack gap="md" pt="md">
+    <Stack className="voice-editor-page" gap="md" pt="md">
       <Stack gap={3}>
         <Title order={2}>Голосовой редактор</Title>
         <Text c="dimmed" size="sm">
