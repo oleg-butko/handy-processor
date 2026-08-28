@@ -73,6 +73,7 @@ export function VoiceEditorPage({
   const stateRef = useRef<LocalEditorState | undefined>(undefined);
   const currentNoteIdRef = useRef<number | null>(null);
   const notesBusyRef = useRef(false);
+  const previousHistoryLimitRef = useRef(historyLimit);
   const suppressAutosaveRef = useRef(false);
   const sessionSyncTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
@@ -282,6 +283,20 @@ export function VoiceEditorPage({
     },
     [createPendingSave, enqueueEditorSave],
   );
+
+  useEffect(() => {
+    if (previousHistoryLimitRef.current === historyLimit) {
+      return;
+    }
+    previousHistoryLimitRef.current = historyLimit;
+    const timer = setTimeout(() => {
+      const snapshot = editorRef.current?.snapshot();
+      if (snapshot !== undefined) {
+        scheduleEditorSave(snapshot);
+      }
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [historyLimit, scheduleEditorSave]);
 
   const flushScheduledSave = useCallback(async () => {
     if (editorSaveTimerRef.current !== undefined) {

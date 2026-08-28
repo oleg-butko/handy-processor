@@ -8,7 +8,7 @@ import {
   undo,
   undoDepth,
 } from "@codemirror/commands";
-import { Compartment, EditorState } from "@codemirror/state";
+import { EditorState } from "@codemirror/state";
 import { EditorView, drawSelection, keymap } from "@codemirror/view";
 import {
   forwardRef,
@@ -59,32 +59,41 @@ export const PlainTextEditor = forwardRef<
   const viewRef = useRef<EditorView | null>(null);
   const callbacksRef = useRef({ onStateChange, onFocusChange });
   const historyLimitRef = useRef(historyLimit);
-  const historyCompartmentRef = useRef(new Compartment());
   const createStateRef = useRef<
     ((snapshot: EditorDocumentSnapshot) => EditorState) | undefined
   >(undefined);
   callbacksRef.current = { onStateChange, onFocusChange };
   historyLimitRef.current = historyLimit;
 
-  function serializeState(state: EditorState): unknown {
-    const editor = state.toJSON({ history: historyField }) as Record<
-      string,
-      unknown
-    >;
+  function limitEditorHistory(value: unknown): unknown {
+    if (typeof value !== "object" || value === null || Array.isArray(value)) {
+      return value;
+    }
+    const editor = { ...(value as Record<string, unknown>) };
     const savedHistory = editor.history;
     if (
       typeof savedHistory === "object" &&
       savedHistory !== null &&
       !Array.isArray(savedHistory)
     ) {
-      const historyRecord = savedHistory as Record<string, unknown>;
+      const historyRecord = {
+        ...(savedHistory as Record<string, unknown>),
+      };
       for (const branch of ["done", "undone"] as const) {
         const events = historyRecord[branch];
         if (Array.isArray(events)) {
           historyRecord[branch] = events.slice(-historyLimitRef.current);
         }
       }
+      editor.history = historyRecord;
     }
+    return editor;
+  }
+
+  function serializeState(state: EditorState): unknown {
+    const editor = limitEditorHistory(
+      state.toJSON({ history: historyField }),
+    );
     return { schemaVersion: 1, editor };
   }
 
@@ -160,9 +169,7 @@ export const PlainTextEditor = forwardRef<
       }),
     ];
     const extensions = () => [
-      historyCompartmentRef.current.of(
-        history({ minDepth: historyLimitRef.current }),
-      ),
+      history({ minDepth: historyLimitRef.current }),
       ...baseExtensions,
     ];
     const createState = (snapshot: EditorDocumentSnapshot): EditorState => {
@@ -175,7 +182,9 @@ export const PlainTextEditor = forwardRef<
       ) {
         try {
           const state = EditorState.fromJSON(
-            (saved as Record<string, unknown>).editor,
+            limitEditorHistory(
+              (saved as Record<string, unknown>).editor,
+            ),
             { extensions: extensions() },
             { history: historyField },
           );
@@ -213,12 +222,14 @@ export const PlainTextEditor = forwardRef<
 
   useEffect(() => {
     const view = viewRef.current;
-    if (view !== null) {
-      view.dispatch({
-        effects: historyCompartmentRef.current.reconfigure(
-          history({ minDepth: historyLimit }),
-        ),
+    const createState = createStateRef.current;
+    if (view !== null && createState !== undefined) {
+      const state = createState({
+        content: view.state.doc.toString(),
+        state: serializeState(view.state),
       });
+      view.setState(state);
+      callbacksRef.current.onStateChange(describeState(state));
     }
   }, [historyLimit]);
 
