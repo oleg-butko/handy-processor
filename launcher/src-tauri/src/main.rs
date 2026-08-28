@@ -41,6 +41,20 @@ fn show_main_window(app: &AppHandle) {
     let _ = window.set_focus();
 }
 
+fn toggle_main_window(app: &AppHandle) {
+    let Some(window) = app.get_webview_window(MAIN_WINDOW) else {
+        return;
+    };
+
+    let visible = window.is_visible().unwrap_or(false);
+    let minimized = window.is_minimized().unwrap_or(false);
+    if visible && !minimized {
+        let _ = window.hide();
+    } else {
+        show_main_window(app);
+    }
+}
+
 fn configure_window(window: &WebviewWindow) {
     let managed_window = window.clone();
     window.on_window_event(move |event| match event {
@@ -80,20 +94,17 @@ fn create_tray(app: &App, paths: RuntimePaths, supervisor: Supervisor) -> tauri:
         .tooltip("Handy Processor")
         .menu(&menu)
         .show_menu_on_left_click(false)
-        .on_tray_icon_event(|tray, event| {
-            if matches!(
-                event,
-                TrayIconEvent::Click {
-                    button: MouseButton::Left,
-                    button_state: MouseButtonState::Up,
-                    ..
-                } | TrayIconEvent::DoubleClick {
-                    button: MouseButton::Left,
-                    ..
-                }
-            ) {
-                show_main_window(tray.app_handle());
-            }
+        .on_tray_icon_event(|tray, event| match event {
+            TrayIconEvent::Click {
+                button: MouseButton::Left,
+                button_state: MouseButtonState::Up,
+                ..
+            } => toggle_main_window(tray.app_handle()),
+            TrayIconEvent::DoubleClick {
+                button: MouseButton::Left,
+                ..
+            } => show_main_window(tray.app_handle()),
+            _ => {}
         })
         .on_menu_event(move |app, event| match event.id().as_ref() {
             MENU_SHOW => show_main_window(app),
