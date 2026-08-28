@@ -29,8 +29,23 @@ export interface TransformationPage {
 
 export interface EditorDraft {
   readonly content: string;
+  readonly state: unknown | null;
+  readonly currentNoteId: number | null;
   readonly revision: number;
   readonly updatedAt: string | null;
+}
+
+export interface EditorNoteSummary {
+  readonly id: number;
+  readonly name: string;
+  readonly updatedAt: string;
+}
+
+export interface EditorNote extends EditorNoteSummary {
+  readonly content: string;
+  readonly state: unknown | null;
+  readonly revision: number;
+  readonly createdAt: string;
 }
 
 interface TransformationRow {
@@ -50,7 +65,19 @@ interface RuleSettingRow {
 
 interface EditorDraftRow {
   readonly content: string;
+  readonly state_snapshot: string | null;
+  readonly current_note_id: number | null;
   readonly revision: number;
+  readonly updated_at: string;
+}
+
+interface EditorNoteRow {
+  readonly id: number;
+  readonly name: string;
+  readonly content: string;
+  readonly state_snapshot: string | null;
+  readonly revision: number;
+  readonly created_at: string;
   readonly updated_at: string;
 }
 
@@ -59,7 +86,7 @@ interface StoredRuleSnapshot {
   readonly applied: readonly AppliedTransformationRule[];
 }
 
-const SCHEMA_VERSION = 4;
+const SCHEMA_VERSION = 5;
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -161,6 +188,26 @@ function parseContextSnapshot(
   return snapshot as unknown as StoredTransformationContext;
 }
 
+function parseEditorState(value: string | null): unknown | null {
+  return value === null ? null : (JSON.parse(value) as unknown);
+}
+
+function serializeEditorState(value: unknown | null): string | null {
+  return value === null ? null : JSON.stringify(value);
+}
+
+function toEditorNote(row: EditorNoteRow): EditorNote {
+  return {
+    id: row.id,
+    name: row.name,
+    content: row.content,
+    state: parseEditorState(row.state_snapshot),
+    revision: row.revision,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+  };
+}
+
 function migrate(database: DatabaseSync): void {
   const versionRow = database.prepare("PRAGMA user_version").get() as
     | { user_version: number }
@@ -232,6 +279,32 @@ function migrate(database: DatabaseSync): void {
       COMMIT;
     `);
   }
+
+
+  if (version < 5) {
+    database.exec(`
+      BEGIN;
+      CREATE TABLE editor_notes (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL CHECK (
+          length(trim(name)) BETWEEN 1 AND 100
+        ),
+        content TEXT NOT NULL,
+        state_snapshot TEXT,
+        revision INTEGER NOT NULL CHECK (revision >= 1),
+        created_at TEXT NOT NULL DEFAULT (
+          strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+        ),
+        updated_at TEXT NOT NULL DEFAULT (
+          strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+        )
+      ) STRICT;
+      ALTER TABLE editor_draft ADD COLUMN state_snapshot TEXT;
+      ALTER TABLE editor_draft ADD COLUMN current_note_id INTEGER;
+      PRAGMA user_version = 5;
+      COMMIT;
+    `);
+  }
 }
 
 export class TransformationLog {
@@ -243,6 +316,10 @@ export class TransformationLog {
   readonly #setRuleEnabled: StatementSync;
   readonly #getEditorDraft: StatementSync;
   readonly #saveEditorDraft: StatementSync;
+  readonly #listEditorNotes: StatementSync;
+  readonly #getEditorNote: StatementSync;
+  readonly #createEditorNote: StatementSync;
+  readonly #saveEditorNote: StatementSync;
 
   constructor(databasePath: string) {
     this.#database = new DatabaseSync(databasePath, { timeout: 5_000 });
@@ -283,18 +360,45 @@ export class TransformationLog {
         updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
     `);
     this.#getEditorDraft = this.#database.prepare(`
-      SELECT content, revision, updated_at
+      SELECT content, state_snapshot, current_note_id, revision, updated_at
       FROM editor_draft
       WHERE id = 1
     `);
     this.#saveEditorDraft = this.#database.prepare(`
-      INSERT INTO editor_draft (id, content, revision)
-      VALUES (1, ?, 1)
+      INSERT INTO editor_draft (
+        id, content, state_snapshot, current_note_id, revision
+      ) VALUES (1, ?, ?, ?, 1)
       ON CONFLICT (id) DO UPDATE SET
         content = excluded.content,
+        state_snapshot = excluded.state_snapshot,
+        current_note_id = excluded.current_note_id,
         revision = editor_draft.revision + 1,
         updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
-      RETURNING content, revision, updated_at
+      RETURNING content, state_snapshot, current_note_id, revision, updated_at
+    `);
+    this.#listEditorNotes = this.#database.prepare(`
+      SELECT id, name, updated_at
+      FROM editor_notes
+      ORDER BY updated_at DESC, id DESC
+    `);
+    this.#getEditorNote = this.#database.prepare(`
+      SELECT id, name, content, state_snapshot, revision, created_at, updated_at
+      FROM editor_notes
+      WHERE id = ?
+    `);
+    this.#createEditorNote = this.#database.prepare(`
+      INSERT INTO editor_notes (name, content, state_snapshot, revision)
+      VALUES (?, ?, ?, 1)
+      RETURNING id, name, content, state_snapshot, revision, created_at, updated_at
+    `);
+    this.#saveEditorNote = this.#database.prepare(`
+      UPDATE editor_notes SET
+        content = ?,
+        state_snapshot = ?,
+        revision = revision + 1,
+        updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+      WHERE id = ?
+      RETURNING id, name, content, state_snapshot, revision, created_at, updated_at
     `);
   }
 
@@ -348,16 +452,32 @@ export class TransformationLog {
   loadEditorDraft(): EditorDraft {
     const row = this.#getEditorDraft.get() as EditorDraftRow | undefined;
     return row === undefined
-      ? { content: "", revision: 0, updatedAt: null }
+      ? {
+          content: "",
+          state: null,
+          currentNoteId: null,
+          revision: 0,
+          updatedAt: null,
+        }
       : {
           content: row.content,
+          state: parseEditorState(row.state_snapshot),
+          currentNoteId: row.current_note_id,
           revision: row.revision,
           updatedAt: row.updated_at,
         };
   }
 
-  saveEditorDraft(content: string): EditorDraft {
-    const row = this.#saveEditorDraft.get(content) as
+  saveEditorDraft(
+    content: string,
+    state: unknown | null,
+    currentNoteId: number | null,
+  ): EditorDraft {
+    const row = this.#saveEditorDraft.get(
+      content,
+      serializeEditorState(state),
+      currentNoteId,
+    ) as
       | EditorDraftRow
       | undefined;
     if (row === undefined) {
@@ -365,9 +485,56 @@ export class TransformationLog {
     }
     return {
       content: row.content,
+      state: parseEditorState(row.state_snapshot),
+      currentNoteId: row.current_note_id,
       revision: row.revision,
       updatedAt: row.updated_at,
     };
+  }
+
+  listEditorNotes(): readonly EditorNoteSummary[] {
+    const rows = this.#listEditorNotes.all() as unknown as Array<
+      Pick<EditorNoteRow, "id" | "name" | "updated_at">
+    >;
+    return rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+      updatedAt: row.updated_at,
+    }));
+  }
+
+  loadEditorNote(id: number): EditorNote | null {
+    const row = this.#getEditorNote.get(id) as EditorNoteRow | undefined;
+    return row === undefined ? null : toEditorNote(row);
+  }
+
+  createEditorNote(
+    name: string,
+    content: string,
+    state: unknown | null,
+  ): EditorNote {
+    const row = this.#createEditorNote.get(
+      name,
+      content,
+      serializeEditorState(state),
+    ) as EditorNoteRow | undefined;
+    if (row === undefined) {
+      throw new Error("Failed to create editor note");
+    }
+    return toEditorNote(row);
+  }
+
+  saveEditorNote(
+    id: number,
+    content: string,
+    state: unknown | null,
+  ): EditorNote | null {
+    const row = this.#saveEditorNote.get(
+      content,
+      serializeEditorState(state),
+      id,
+    ) as EditorNoteRow | undefined;
+    return row === undefined ? null : toEditorNote(row);
   }
 
   close(): void {

@@ -7,6 +7,8 @@ import { transformTranscription } from "./transform.js";
 import type { AppliedTransformationRule } from "./transformation-rules.js";
 import type {
   EditorDraft,
+  EditorNote,
+  EditorNoteSummary,
   TransformationPage,
 } from "./transformation-log.js";
 import type { WebAsset, WebUiAssets } from "./web-ui-assets.js";
@@ -31,7 +33,23 @@ export interface TransformationHistory {
 
 export interface EditorDraftStorage {
   loadEditorDraft(): EditorDraft;
-  saveEditorDraft(content: string): EditorDraft;
+  saveEditorDraft(
+    content: string,
+    state: unknown | null,
+    currentNoteId: number | null,
+  ): EditorDraft;
+  listEditorNotes(): readonly EditorNoteSummary[];
+  loadEditorNote(id: number): EditorNote | null;
+  createEditorNote(
+    name: string,
+    content: string,
+    state: unknown | null,
+  ): EditorNote;
+  saveEditorNote(
+    id: number,
+    content: string,
+    state: unknown | null,
+  ): EditorNote | null;
 }
 
 export interface AppDependencies {
@@ -167,6 +185,50 @@ function decodeEditorSessionId(path: string): string {
   } catch {
     throw new HttpError(400, "Editor session id is invalid");
   }
+}
+
+function readEditorNoteId(path: string): number {
+  const value = Number(path.slice("/api/editor/notes/".length));
+  if (!Number.isSafeInteger(value) || value < 1) {
+    throw new HttpError(400, "Editor note id is invalid");
+  }
+  return value;
+}
+
+function readEditorState(body: JsonObject): unknown | null {
+  const value = body.state;
+  if (value === undefined || value === null) {
+    return null;
+  }
+  if (!isObject(value)) {
+    throw new HttpError(400, "The 'state' field must be an object or null");
+  }
+  return value;
+}
+
+function readCurrentNoteId(body: JsonObject): number | null {
+  const value = body.currentNoteId;
+  if (value === undefined || value === null) {
+    return null;
+  }
+  if (!Number.isSafeInteger(value) || (value as number) < 1) {
+    throw new HttpError(
+      400,
+      "The 'currentNoteId' field must be a positive integer or null",
+    );
+  }
+  return value as number;
+}
+
+function readEditorNoteName(body: JsonObject): string {
+  if (typeof body.name !== "string") {
+    throw new HttpError(400, "The 'name' field must be a string");
+  }
+  const value = body.name.trim();
+  if (value.length < 1 || value.length > 100) {
+    throw new HttpError(400, "The 'name' field must contain 1 to 100 characters");
+  }
+  return value;
 }
 
 function validateEditorSessionId(sessionId: string): void {
@@ -363,7 +425,67 @@ export function createRequestHandler({
         if (typeof body.content !== "string") {
           throw new HttpError(400, "The 'content' field must be a string");
         }
-        sendJson(response, 200, editorDraftStorage.saveEditorDraft(body.content));
+        sendJson(
+          response,
+          200,
+          editorDraftStorage.saveEditorDraft(
+            body.content,
+            readEditorState(body),
+            readCurrentNoteId(body),
+          ),
+        );
+        return;
+      }
+
+      if (request.method === "GET" && path === "/api/editor/notes") {
+        sendJson(response, 200, { items: editorDraftStorage.listEditorNotes() });
+        return;
+      }
+
+      if (request.method === "POST" && path === "/api/editor/notes") {
+        const body = await readJson(request);
+        if (typeof body.content !== "string") {
+          throw new HttpError(400, "The 'content' field must be a string");
+        }
+        sendJson(
+          response,
+          201,
+          editorDraftStorage.createEditorNote(
+            readEditorNoteName(body),
+            body.content,
+            readEditorState(body),
+          ),
+        );
+        return;
+      }
+
+      if (
+        path.startsWith("/api/editor/notes/") &&
+        (request.method === "GET" || request.method === "PUT")
+      ) {
+        const noteId = readEditorNoteId(path);
+        if (request.method === "GET") {
+          const note = editorDraftStorage.loadEditorNote(noteId);
+          if (note === null) {
+            throw new HttpError(404, "Editor note was not found");
+          }
+          sendJson(response, 200, note);
+          return;
+        }
+
+        const body = await readJson(request);
+        if (typeof body.content !== "string") {
+          throw new HttpError(400, "The 'content' field must be a string");
+        }
+        const note = editorDraftStorage.saveEditorNote(
+          noteId,
+          body.content,
+          readEditorState(body),
+        );
+        if (note === null) {
+          throw new HttpError(404, "Editor note was not found");
+        }
+        sendJson(response, 200, note);
         return;
       }
 

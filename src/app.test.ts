@@ -312,11 +312,15 @@ describe("OpenAI-compatible API", () => {
     const initialResponse = await fetch(`${baseUrl}/api/editor/draft`);
     const initial = (await initialResponse.json()) as {
       content: string;
+      state: unknown;
+      currentNoteId: number | null;
       revision: number;
     };
     assert.equal(initialResponse.status, 200);
     assert.equal(initial.content, "");
     assert.equal(initial.revision, 0);
+    assert.equal(initial.state, null);
+    assert.equal(initial.currentNoteId, null);
 
     const saveResponse = await fetch(`${baseUrl}/api/editor/draft`, {
       method: "PUT",
@@ -335,6 +339,63 @@ describe("OpenAI-compatible API", () => {
 
     const reloadResponse = await fetch(`${baseUrl}/api/editor/draft`);
     assert.deepEqual(await reloadResponse.json(), saved);
+  });
+
+  it("creates and updates voice editor notes", async () => {
+    const state = { schemaVersion: 1, editor: { doc: "Текст заметки" } };
+    const createResponse = await fetch(`${baseUrl}/api/editor/notes`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        name: "  Рабочая заметка  ",
+        content: "Текст заметки",
+        state,
+      }),
+    });
+    const created = (await createResponse.json()) as {
+      id: number;
+      name: string;
+      revision: number;
+    };
+    assert.equal(createResponse.status, 201);
+    assert.equal(created.name, "Рабочая заметка");
+    assert.equal(created.revision, 1);
+
+    const listResponse = await fetch(`${baseUrl}/api/editor/notes`);
+    const list = (await listResponse.json()) as {
+      items: Array<{ id: number; name: string }>;
+    };
+    assert.equal(listResponse.status, 200);
+    assert.equal(list.items[0]?.id, created.id);
+
+    const updateResponse = await fetch(
+      `${baseUrl}/api/editor/notes/${created.id}`,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ content: "Новый текст", state: null }),
+      },
+    );
+    const updated = (await updateResponse.json()) as {
+      id: number;
+      name: string;
+      content: string;
+      state: unknown;
+      revision: number;
+      createdAt: string;
+      updatedAt: string;
+    };
+    assert.equal(updateResponse.status, 200);
+    assert.equal(updated.content, "Новый текст");
+    assert.equal(updated.revision, 2);
+
+    const loadResponse = await fetch(
+      `${baseUrl}/api/editor/notes/${created.id}`,
+    );
+    assert.deepEqual(await loadResponse.json(), updated);
+
+    const missingResponse = await fetch(`${baseUrl}/api/editor/notes/999999`);
+    assert.equal(missingResponse.status, 404);
   });
 
   it("does not serve the SPA for unknown API routes", async () => {

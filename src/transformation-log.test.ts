@@ -155,15 +155,53 @@ describe("TransformationLog", () => {
     try {
       assert.deepEqual(log.loadEditorDraft(), {
         content: "",
+        state: null,
+        currentNoteId: null,
         revision: 0,
         updatedAt: null,
       });
 
-      const first = log.saveEditorDraft("Первый вариант");
-      const second = log.saveEditorDraft("Второй вариант");
+      const first = log.saveEditorDraft("Первый вариант", null, null);
+      const state = { schemaVersion: 1, editor: { doc: "Второй вариант" } };
+      const second = log.saveEditorDraft("Второй вариант", state, 42);
       assert.equal(first.revision, 1);
       assert.equal(second.revision, 2);
-      assert.equal(log.loadEditorDraft().content, "Второй вариант");
+      assert.deepEqual(log.loadEditorDraft(), second);
+      assert.equal(second.content, "Второй вариант");
+      assert.deepEqual(second.state, state);
+      assert.equal(second.currentNoteId, 42);
+    } finally {
+      log.close();
+    }
+  });
+
+  it("creates, lists, loads, and updates editor notes", () => {
+    const log = new TransformationLog(":memory:");
+    try {
+      const firstState = { schemaVersion: 1, editor: { doc: "Первая" } };
+      const created = log.createEditorNote("Первая заметка", "Первая", firstState);
+      assert.equal(created.name, "Первая заметка");
+      assert.deepEqual(created.state, firstState);
+      assert.equal(created.revision, 1);
+
+      const second = log.createEditorNote("Вторая заметка", "Вторая", null);
+      assert.deepEqual(
+        log.listEditorNotes().map((note) => note.id),
+        [second.id, created.id],
+      );
+      assert.deepEqual(log.loadEditorNote(created.id), created);
+
+      const updatedState = { schemaVersion: 1, editor: { doc: "Обновлена" } };
+      const updated = log.saveEditorNote(
+        created.id,
+        "Обновлена",
+        updatedState,
+      );
+      assert.equal(updated?.revision, 2);
+      assert.equal(updated?.content, "Обновлена");
+      assert.deepEqual(updated?.state, updatedState);
+      assert.equal(log.saveEditorNote(999, "Нет", null), null);
+      assert.equal(log.loadEditorNote(999), null);
     } finally {
       log.close();
     }
