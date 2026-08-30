@@ -4,6 +4,7 @@ import {
   Button,
   Card,
   Group,
+  Modal,
   NumberInput,
   SegmentedControl,
   Stack,
@@ -50,6 +51,8 @@ export function SettingsPage({
   const [historySettingsLoading, setHistorySettingsLoading] = useState(true);
   const [historySettingsSaving, setHistorySettingsSaving] = useState(false);
   const [historySettingsError, setHistorySettingsError] = useState<string>();
+  const [historyLimitConfirmationOpened, setHistoryLimitConfirmationOpened] =
+    useState(false);
   const [exportingHistory, setExportingHistory] = useState(false);
   const [exportError, setExportError] = useState<string>();
 
@@ -103,7 +106,9 @@ export function SettingsPage({
       const settings = (await response.json()) as TransformationHistorySettings;
       setTransformationHistoryLimit(settings.maxEntries);
       setSavedTransformationHistoryLimit(settings.maxEntries);
+      setHistoryLimitConfirmationOpened(false);
     } catch (requestError) {
+      setHistoryLimitConfirmationOpened(false);
       setHistorySettingsError(
         requestError instanceof Error
           ? requestError.message
@@ -127,8 +132,14 @@ export function SettingsPage({
       const link = document.createElement("a");
       link.href = blobUrl;
       link.download = `handy-processor-history-${new Date().toISOString().slice(0, 10)}.txt`;
-      link.click();
-      setTimeout(() => URL.revokeObjectURL(blobUrl), 0);
+      link.hidden = true;
+      document.body.append(link);
+      try {
+        link.click();
+      } finally {
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 1_000);
+      }
     } catch (requestError) {
       setExportError(
         requestError instanceof Error
@@ -143,9 +154,10 @@ export function SettingsPage({
   return (
     <Stack gap="md" pt="md">
       <Stack gap={2}>
-        <Title order={2}>Настройки интерфейса</Title>
+        <Title order={2}>Настройки</Title>
         <Text c="dimmed" size="sm">
-          Сохраняются локально для этого браузера или окна приложения.
+          Интерфейс сохраняется локально в окне приложения, а параметры истории
+          — в SQLite рядом с executable.
         </Text>
       </Stack>
 
@@ -300,7 +312,15 @@ export function SettingsPage({
                 transformationHistoryLimit === savedTransformationHistoryLimit
               }
               loading={historySettingsSaving}
-              onClick={() => void saveTransformationHistoryLimit()}
+              onClick={() => {
+                if (
+                  transformationHistoryLimit < savedTransformationHistoryLimit
+                ) {
+                  setHistoryLimitConfirmationOpened(true);
+                } else {
+                  void saveTransformationHistoryLimit();
+                }
+              }}
             >
               Сохранить
             </Button>
@@ -337,6 +357,41 @@ export function SettingsPage({
           </Group>
         </Stack>
       </Card>
+
+      <Modal
+        centered
+        opened={historyLimitConfirmationOpened}
+        size="sm"
+        title="Уменьшить лимит истории?"
+        onClose={() => setHistoryLimitConfirmationOpened(false)}
+      >
+        <Stack gap="md">
+          <Text size="sm">
+            Лимит уменьшится с{" "}
+            {savedTransformationHistoryLimit.toLocaleString("ru-RU")} до{" "}
+            {transformationHistoryLimit.toLocaleString("ru-RU")} записей. Самые
+            старые записи сверх нового лимита будут сразу удалены.
+          </Text>
+          <Text c="red" size="sm">
+            Это действие нельзя отменить.
+          </Text>
+          <Group justify="flex-end">
+            <Button
+              variant="default"
+              onClick={() => setHistoryLimitConfirmationOpened(false)}
+            >
+              Отмена
+            </Button>
+            <Button
+              color="red"
+              loading={historySettingsSaving}
+              onClick={() => void saveTransformationHistoryLimit()}
+            >
+              Уменьшить и удалить старые записи
+            </Button>
+          </Group>
+        </Stack>
+      </Modal>
     </Stack>
   );
 }
