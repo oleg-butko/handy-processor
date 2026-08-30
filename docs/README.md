@@ -22,3 +22,4 @@
 
 - [Опциональный Tauri-лаунчер](done/launcher-implementation-plan.md)
 - [Голосовой редактор](done/voice-editor-implementation-plan.md)
+- [Управление заметками и историей](done/history-and-note-management-plan.md)

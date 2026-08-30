@@ -9,7 +9,8 @@ post-processing feature. It currently:
    correction inside confirmed numeric phrases; and
 3. optionally removes a period only when it is the final character (ignoring trailing
    whitespace);
-4. stores each transformation in a local SQLite database; and
+4. stores each transformation in a size-limited local SQLite history that can
+   be exported as text; and
 5. provides a context-aware voice editor with named SQLite notes and
    persistent undo/redo history; and
 6. shows the paginated history and configurable rule list in a React + Mantine
@@ -178,10 +179,16 @@ Invoke-RestMethod `
 - `GET /` — serves the local React/Mantine history UI.
 - `GET /api/transformations` — returns the transformation history with
   `page`/`pageSize` pagination.
+- `GET /api/transformations/export` — downloads source/result pairs as UTF-8
+  text.
+- `GET/PATCH /api/settings/history` — reads or changes the SQLite history
+  retention limit (50,000 by default).
 - `GET /api/rules` — returns the transformation rule catalog and current state.
 - `PATCH /api/rules/:ruleId` — enables or disables a rule for subsequent
   transformations.
 - `GET/PUT /api/editor/draft` — loads or saves the editor draft.
+- `GET/POST /api/editor/notes` and `GET/PUT/PATCH/DELETE
+  /api/editor/notes/:noteId` — manage named notes and their undo/redo state.
 - `PUT/DELETE /api/editor/sessions/:sessionId` — updates or removes ephemeral
   cursor context used by voice-editor rules.
 
