@@ -75,6 +75,10 @@ describe("TransformationLog", () => {
         log.list(1, 10).items.map((item) => item.originalText),
         ["FOURTH", "THIRD"],
       );
+      assert.deepEqual(Array.from(log.iterateTextPairs()), [
+        { originalText: "FOURTH", transformedText: "fourth" },
+        { originalText: "THIRD", transformedText: "third" },
+      ]);
       assert.throws(() => log.setTransformationHistoryLimit(0), RangeError);
     } finally {
       log.close();

@@ -27,6 +27,11 @@ export interface TransformationPage {
   readonly total: number;
 }
 
+export interface TransformationTextPair {
+  readonly originalText: string;
+  readonly transformedText: string;
+}
+
 export const DEFAULT_TRANSFORMATION_HISTORY_LIMIT = 50_000;
 export const MAX_TRANSFORMATION_HISTORY_LIMIT = 1_000_000;
 
@@ -59,6 +64,11 @@ interface TransformationRow {
   readonly rules_snapshot: string | null;
   readonly source: string;
   readonly context_snapshot: string | null;
+}
+
+interface TransformationTextPairRow {
+  readonly original_text: string;
+  readonly transformed_text: string;
 }
 
 interface RuleSettingRow {
@@ -343,6 +353,7 @@ export class TransformationLog {
   readonly #insert: StatementSync;
   readonly #count: StatementSync;
   readonly #list: StatementSync;
+  readonly #listTextPairs: StatementSync;
   readonly #getAppSetting: StatementSync;
   readonly #setAppSetting: StatementSync;
   readonly #pruneTransformations: StatementSync;
@@ -384,6 +395,11 @@ export class TransformationLog {
       FROM transformations
       ORDER BY id DESC
       LIMIT ? OFFSET ?
+    `);
+    this.#listTextPairs = this.#database.prepare(`
+      SELECT original_text, transformed_text
+      FROM transformations
+      ORDER BY id DESC
     `);
     this.#getAppSetting = this.#database.prepare(`
       SELECT value
@@ -516,6 +532,16 @@ export class TransformationLog {
         context: parseContextSnapshot(row.context_snapshot),
       })),
     };
+  }
+
+  *iterateTextPairs(): IterableIterator<TransformationTextPair> {
+    const rows = this.#listTextPairs.iterate() as Iterable<TransformationTextPairRow>;
+    for (const row of rows) {
+      yield {
+        originalText: row.original_text,
+        transformedText: row.transformed_text,
+      };
+    }
   }
 
   getTransformationHistoryLimit(): number {

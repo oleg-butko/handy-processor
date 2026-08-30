@@ -8,6 +8,7 @@ import { EditorSessionRegistry } from "./editor-sessions.js";
 import { RuleSettings } from "./rule-settings.js";
 import { TRANSFORMATION_RULE_IDS } from "./transformation-rules.js";
 import { TransformationLog } from "./transformation-log.js";
+import { EXTERNAL_TRANSFORMATION_CONTEXT } from "./transformation-context.js";
 import type { WebUiAssets } from "./web-ui-assets.js";
 
 const transformationLog = new TransformationLog(":memory:");
@@ -238,6 +239,53 @@ describe("OpenAI-compatible API", () => {
       body: JSON.stringify({ maxEntries: 50_000 }),
     });
     assert.equal(restoreResponse.status, 200);
+  });
+
+  it("exports only source and transformed text in newest-first order", async () => {
+    transformationLog.setTransformationHistoryLimit(2);
+    try {
+      transformationLog.add(
+        "ПЕРВЫЙ ИСХОДНЫЙ",
+        "первый результат",
+        [],
+        EXTERNAL_TRANSFORMATION_CONTEXT,
+      );
+      transformationLog.add(
+        "ВТОРОЙ ИСХОДНЫЙ",
+        "второй результат",
+        [],
+        EXTERNAL_TRANSFORMATION_CONTEXT,
+      );
+
+      const response = await fetch(`${baseUrl}/api/transformations/export`);
+      assert.equal(response.status, 200);
+      assert.match(response.headers.get("content-type") ?? "", /^text\/plain/u);
+      assert.match(
+        response.headers.get("content-disposition") ?? "",
+        /^attachment; filename="handy-processor-history-\d{4}-\d{2}-\d{2}\.txt"$/u,
+      );
+      assert.equal(
+        await response.text(),
+        [
+          "ВТОРОЙ ИСХОДНЫЙ",
+          "",
+          "--- РЕЗУЛЬТАТ ---",
+          "",
+          "второй результат",
+          "",
+          "==============================",
+          "",
+          "ПЕРВЫЙ ИСХОДНЫЙ",
+          "",
+          "--- РЕЗУЛЬТАТ ---",
+          "",
+          "первый результат",
+          "",
+        ].join("\n"),
+      );
+    } finally {
+      transformationLog.setTransformationHistoryLimit(50_000);
+    }
   });
 
   it("uses a fresh active editor session as transformation context", async () => {

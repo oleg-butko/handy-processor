@@ -10,6 +10,7 @@ import type {
   EditorNote,
   EditorNoteSummary,
   TransformationPage,
+  TransformationTextPair,
 } from "./transformation-log.js";
 import { MAX_TRANSFORMATION_HISTORY_LIMIT } from "./transformation-log.js";
 import type { WebAsset, WebUiAssets } from "./web-ui-assets.js";
@@ -19,6 +20,8 @@ export const MODEL_ID = "handy-basic-transformer";
 const MAX_REQUEST_BYTES = 1024 * 1024;
 const DEFAULT_PAGE_SIZE = 10;
 const MAX_PAGE_SIZE = 100;
+const EXPORT_RESULT_SEPARATOR = "--- РЕЗУЛЬТАТ ---";
+const EXPORT_RECORD_SEPARATOR = "==============================";
 
 type JsonObject = Record<string, unknown>;
 
@@ -30,6 +33,7 @@ export interface TransformationHistory {
     context: TransformationContext,
   ): void;
   list(page: number, pageSize: number): TransformationPage;
+  iterateTextPairs(): Iterable<TransformationTextPair>;
   getTransformationHistoryLimit(): number;
   setTransformationHistoryLimit(value: number): void;
 }
@@ -94,6 +98,63 @@ function sendAsset(response: ServerResponse, asset: WebAsset): void {
     "x-content-type-options": "nosniff",
   });
   response.end(asset.body);
+}
+
+async function writeResponseChunk(
+  response: ServerResponse,
+  chunk: string,
+): Promise<void> {
+  if (response.write(chunk)) {
+    return;
+  }
+
+  await new Promise<void>((resolve, reject) => {
+    const cleanup = () => {
+      response.off("drain", onDrain);
+      response.off("error", onError);
+      response.off("close", onClose);
+    };
+    const onDrain = () => {
+      cleanup();
+      resolve();
+    };
+    const onError = (error: Error) => {
+      cleanup();
+      reject(error);
+    };
+    const onClose = () => {
+      cleanup();
+      reject(new Error("Client closed the export connection"));
+    };
+
+    response.once("drain", onDrain);
+    response.once("error", onError);
+    response.once("close", onClose);
+  });
+}
+
+async function sendTransformationExport(
+  response: ServerResponse,
+  records: Iterable<TransformationTextPair>,
+): Promise<void> {
+  const date = new Date().toISOString().slice(0, 10);
+  response.writeHead(200, {
+    "content-type": "text/plain; charset=utf-8",
+    "content-disposition": `attachment; filename="handy-processor-history-${date}.txt"`,
+    "cache-control": "no-store",
+    "x-content-type-options": "nosniff",
+  });
+
+  let first = true;
+  for (const record of records) {
+    const prefix = first ? "" : `\n${EXPORT_RECORD_SEPARATOR}\n\n`;
+    await writeResponseChunk(
+      response,
+      `${prefix}${record.originalText}\n\n${EXPORT_RESULT_SEPARATOR}\n\n${record.transformedText}\n`,
+    );
+    first = false;
+  }
+  response.end();
 }
 
 function sendError(response: ServerResponse, status: number, message: string) {
@@ -430,6 +491,14 @@ export function createRequestHandler({
         return;
       }
 
+      if (request.method === "GET" && path === "/api/transformations/export") {
+        await sendTransformationExport(
+          response,
+          transformationHistory.iterateTextPairs(),
+        );
+        return;
+      }
+
       if (path === "/api/settings/history") {
         if (request.method === "GET") {
           sendJson(response, 200, {
@@ -629,6 +698,12 @@ export function createRequestHandler({
 
       sendError(response, 404, "Endpoint not found");
     } catch (error) {
+      if (response.headersSent) {
+        if (!response.destroyed) {
+          response.destroy(error instanceof Error ? error : undefined);
+        }
+        return;
+      }
       if (error instanceof HttpError) {
         sendError(response, error.status, error.message);
         return;

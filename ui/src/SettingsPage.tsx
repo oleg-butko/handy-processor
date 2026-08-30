@@ -1,5 +1,6 @@
 import {
   Alert,
+  Badge,
   Button,
   Card,
   Group,
@@ -49,6 +50,8 @@ export function SettingsPage({
   const [historySettingsLoading, setHistorySettingsLoading] = useState(true);
   const [historySettingsSaving, setHistorySettingsSaving] = useState(false);
   const [historySettingsError, setHistorySettingsError] = useState<string>();
+  const [exportingHistory, setExportingHistory] = useState(false);
+  const [exportError, setExportError] = useState<string>();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -108,6 +111,32 @@ export function SettingsPage({
       );
     } finally {
       setHistorySettingsSaving(false);
+    }
+  }
+
+  async function exportTransformationHistory(): Promise<void> {
+    setExportingHistory(true);
+    setExportError(undefined);
+    try {
+      const response = await fetch("/api/transformations/export");
+      if (!response.ok) {
+        throw new Error(`Сервер вернул HTTP ${response.status}`);
+      }
+
+      const blobUrl = URL.createObjectURL(await response.blob());
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = `handy-processor-history-${new Date().toISOString().slice(0, 10)}.txt`;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 0);
+    } catch (requestError) {
+      setExportError(
+        requestError instanceof Error
+          ? requestError.message
+          : "Не удалось экспортировать историю",
+      );
+    } finally {
+      setExportingHistory(false);
     }
   }
 
@@ -274,6 +303,36 @@ export function SettingsPage({
               onClick={() => void saveTransformationHistoryLimit()}
             >
               Сохранить
+            </Button>
+          </Group>
+        </Stack>
+      </Card>
+
+      <Card className="hp-surface" withBorder radius="md" padding="md">
+        <Stack gap="sm">
+          <Group gap="xs">
+            <Text fw={600}>Экспортировать историю как текстовый файл</Text>
+            <Badge color="orange" size="sm" variant="light">
+              Экспериментально
+            </Badge>
+          </Group>
+          <Text c="dimmed" size="xs">
+            В файл попадут только исходный текст и результат. Между ними будет
+            строка «--- РЕЗУЛЬТАТ ---»; служебные данные и правила не
+            экспортируются.
+          </Text>
+          {exportError ? (
+            <Alert color="red" title="Не удалось экспортировать историю">
+              {exportError}
+            </Alert>
+          ) : null}
+          <Group>
+            <Button
+              loading={exportingHistory}
+              variant="light"
+              onClick={() => void exportTransformationHistory()}
+            >
+              Скачать текстовый файл
             </Button>
           </Group>
         </Stack>
