@@ -50,6 +50,8 @@ export interface EditorDraftStorage {
     content: string,
     state: unknown | null,
   ): EditorNote | null;
+  renameEditorNote(id: number, name: string): EditorNote | null;
+  deleteEditorNote(id: number): boolean;
 }
 
 export interface AppDependencies {
@@ -461,7 +463,10 @@ export function createRequestHandler({
 
       if (
         path.startsWith("/api/editor/notes/") &&
-        (request.method === "GET" || request.method === "PUT")
+        (request.method === "GET" ||
+          request.method === "PUT" ||
+          request.method === "PATCH" ||
+          request.method === "DELETE")
       ) {
         const noteId = readEditorNoteId(path);
         if (request.method === "GET") {
@@ -473,7 +478,28 @@ export function createRequestHandler({
           return;
         }
 
+        if (request.method === "DELETE") {
+          if (!editorDraftStorage.deleteEditorNote(noteId)) {
+            throw new HttpError(404, "Editor note was not found");
+          }
+          response.writeHead(204, { "cache-control": "no-store" });
+          response.end();
+          return;
+        }
+
         const body = await readJson(request);
+        if (request.method === "PATCH") {
+          const note = editorDraftStorage.renameEditorNote(
+            noteId,
+            readEditorNoteName(body),
+          );
+          if (note === null) {
+            throw new HttpError(404, "Editor note was not found");
+          }
+          sendJson(response, 200, note);
+          return;
+        }
+
         if (typeof body.content !== "string") {
           throw new HttpError(400, "The 'content' field must be a string");
         }

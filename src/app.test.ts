@@ -389,13 +389,63 @@ describe("OpenAI-compatible API", () => {
     assert.equal(updated.content, "Новый текст");
     assert.equal(updated.revision, 2);
 
+    const renameResponse = await fetch(
+      `${baseUrl}/api/editor/notes/${created.id}`,
+      {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ name: "  Переименованная заметка  " }),
+      },
+    );
+    const renamed = (await renameResponse.json()) as {
+      id: number;
+      name: string;
+      content: string;
+      revision: number;
+      updatedAt: string;
+    };
+    assert.equal(renameResponse.status, 200);
+    assert.equal(renamed.name, "Переименованная заметка");
+    assert.equal(renamed.content, "Новый текст");
+    assert.equal(renamed.revision, 2);
+
     const loadResponse = await fetch(
       `${baseUrl}/api/editor/notes/${created.id}`,
     );
-    assert.deepEqual(await loadResponse.json(), updated);
+    assert.deepEqual(await loadResponse.json(), {
+      ...updated,
+      name: "Переименованная заметка",
+      updatedAt: renamed.updatedAt,
+    });
+
+    const invalidRenameResponse = await fetch(
+      `${baseUrl}/api/editor/notes/${created.id}`,
+      {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ name: "   " }),
+      },
+    );
+    assert.equal(invalidRenameResponse.status, 400);
+
+    const deleteResponse = await fetch(
+      `${baseUrl}/api/editor/notes/${created.id}`,
+      { method: "DELETE" },
+    );
+    assert.equal(deleteResponse.status, 204);
+
+    const deletedResponse = await fetch(
+      `${baseUrl}/api/editor/notes/${created.id}`,
+    );
+    assert.equal(deletedResponse.status, 404);
 
     const missingResponse = await fetch(`${baseUrl}/api/editor/notes/999999`);
     assert.equal(missingResponse.status, 404);
+    const missingDeleteResponse = await fetch(
+      `${baseUrl}/api/editor/notes/999999`,
+      { method: "DELETE" },
+    );
+    assert.equal(missingDeleteResponse.status, 404);
   });
 
   it("does not serve the SPA for unknown API routes", async () => {

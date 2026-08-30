@@ -202,6 +202,19 @@ describe("TransformationLog", () => {
       assert.deepEqual(updated?.state, updatedState);
       assert.equal(log.saveEditorNote(999, "Нет", null), null);
       assert.equal(log.loadEditorNote(999), null);
+
+      const renamed = log.renameEditorNote(created.id, "Новое имя");
+      assert.equal(renamed?.name, "Новое имя");
+      assert.equal(renamed?.content, "Обновлена");
+      assert.equal(renamed?.revision, 2);
+      assert.equal(log.renameEditorNote(999, "Нет"), null);
+
+      log.saveEditorDraft("Обновлена", updatedState, created.id);
+      assert.equal(log.deleteEditorNote(created.id), true);
+      assert.equal(log.loadEditorNote(created.id), null);
+      assert.equal(log.loadEditorDraft().currentNoteId, null);
+      assert.equal(log.loadEditorDraft().content, "Обновлена");
+      assert.equal(log.deleteEditorNote(created.id), false);
     } finally {
       log.close();
     }

@@ -416,6 +416,66 @@ export function VoiceEditorPage({
     }
   }, [flushScheduledSave, saveWorkspace, updateNoteSummary]);
 
+  const renameCurrentNote = useCallback(
+    async (name: string): Promise<boolean> => {
+      const noteId = currentNoteIdRef.current;
+      if (noteId === null || notesBusyRef.current) return false;
+      notesBusyRef.current = true;
+      setNotesBusy(true);
+      setNoteError(undefined);
+      try {
+        await flushScheduledSave();
+        const response = await fetch(`/api/editor/notes/${noteId}`, {
+          method: "PATCH",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ name }),
+        });
+        if (!response.ok) throw new Error(`Сервер вернул HTTP ${response.status}`);
+        updateNoteSummary((await response.json()) as EditorNote);
+        return true;
+      } catch (error) {
+        setNoteError(
+          error instanceof Error
+            ? error.message
+            : "Не удалось переименовать заметку",
+        );
+        return false;
+      } finally {
+        notesBusyRef.current = false;
+        setNotesBusy(false);
+      }
+    },
+    [flushScheduledSave, updateNoteSummary],
+  );
+
+  const deleteCurrentNote = useCallback(async (): Promise<boolean> => {
+    const noteId = currentNoteIdRef.current;
+    if (noteId === null || notesBusyRef.current) return false;
+    notesBusyRef.current = true;
+    setNotesBusy(true);
+    setNoteError(undefined);
+    try {
+      await flushScheduledSave();
+      const response = await fetch(`/api/editor/notes/${noteId}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) throw new Error(`Сервер вернул HTTP ${response.status}`);
+      currentNoteIdRef.current = null;
+      setCurrentNoteId(null);
+      setNotes((current) => current.filter((note) => note.id !== noteId));
+      setSaveState("saved");
+      return true;
+    } catch (error) {
+      setNoteError(
+        error instanceof Error ? error.message : "Не удалось удалить заметку",
+      );
+      return false;
+    } finally {
+      notesBusyRef.current = false;
+      setNotesBusy(false);
+    }
+  }, [flushScheduledSave]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (stateRef.current?.active) void publishSession();
@@ -596,6 +656,8 @@ export function VoiceEditorPage({
         currentNoteId={currentNoteId}
         error={noteError}
         notes={notes}
+        onDelete={deleteCurrentNote}
+        onRename={renameCurrentNote}
         onSaveAs={saveAs}
         onSelect={(noteId) => void selectNote(noteId)}
       />

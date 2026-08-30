@@ -320,6 +320,9 @@ export class TransformationLog {
   readonly #getEditorNote: StatementSync;
   readonly #createEditorNote: StatementSync;
   readonly #saveEditorNote: StatementSync;
+  readonly #renameEditorNote: StatementSync;
+  readonly #deleteEditorNote: StatementSync;
+  readonly #clearDeletedDraftNote: StatementSync;
 
   constructor(databasePath: string) {
     this.#database = new DatabaseSync(databasePath, { timeout: 5_000 });
@@ -399,6 +402,21 @@ export class TransformationLog {
         updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
       WHERE id = ?
       RETURNING id, name, content, state_snapshot, revision, created_at, updated_at
+    `);
+    this.#renameEditorNote = this.#database.prepare(`
+      UPDATE editor_notes SET
+        name = ?,
+        updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+      WHERE id = ?
+      RETURNING id, name, content, state_snapshot, revision, created_at, updated_at
+    `);
+    this.#deleteEditorNote = this.#database.prepare(`
+      DELETE FROM editor_notes
+      WHERE id = ?
+    `);
+    this.#clearDeletedDraftNote = this.#database.prepare(`
+      UPDATE editor_draft SET current_note_id = NULL
+      WHERE current_note_id = ?
     `);
   }
 
@@ -535,6 +553,30 @@ export class TransformationLog {
       id,
     ) as EditorNoteRow | undefined;
     return row === undefined ? null : toEditorNote(row);
+  }
+
+  renameEditorNote(id: number, name: string): EditorNote | null {
+    const row = this.#renameEditorNote.get(name, id) as
+      | EditorNoteRow
+      | undefined;
+    return row === undefined ? null : toEditorNote(row);
+  }
+
+  deleteEditorNote(id: number): boolean {
+    this.#database.exec("BEGIN IMMEDIATE");
+    try {
+      const result = this.#deleteEditorNote.run(id);
+      if (result.changes === 0) {
+        this.#database.exec("ROLLBACK");
+        return false;
+      }
+      this.#clearDeletedDraftNote.run(id);
+      this.#database.exec("COMMIT");
+      return true;
+    } catch (error) {
+      this.#database.exec("ROLLBACK");
+      throw error;
+    }
   }
 
   close(): void {
