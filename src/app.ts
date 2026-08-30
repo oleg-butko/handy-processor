@@ -11,6 +11,7 @@ import type {
   EditorNoteSummary,
   TransformationPage,
 } from "./transformation-log.js";
+import { MAX_TRANSFORMATION_HISTORY_LIMIT } from "./transformation-log.js";
 import type { WebAsset, WebUiAssets } from "./web-ui-assets.js";
 
 export const MODEL_ID = "handy-basic-transformer";
@@ -29,6 +30,8 @@ export interface TransformationHistory {
     context: TransformationContext,
   ): void;
   list(page: number, pageSize: number): TransformationPage;
+  getTransformationHistoryLimit(): number;
+  setTransformationHistoryLimit(value: number): void;
 }
 
 export interface EditorDraftStorage {
@@ -299,6 +302,21 @@ function readOptionalNonNegativeInteger(
   return value;
 }
 
+function readTransformationHistoryLimit(body: JsonObject): number {
+  const value = body.maxEntries;
+  if (
+    !Number.isSafeInteger(value) ||
+    (value as number) < 1 ||
+    (value as number) > MAX_TRANSFORMATION_HISTORY_LIMIT
+  ) {
+    throw new HttpError(
+      400,
+      `The 'maxEntries' field must be an integer from 1 to ${MAX_TRANSFORMATION_HISTORY_LIMIT}`,
+    );
+  }
+  return value as number;
+}
+
 function getTransformationPage(
   history: TransformationHistory,
   parameters: URLSearchParams,
@@ -410,6 +428,22 @@ export function createRequestHandler({
           getTransformationPage(transformationHistory, url.searchParams),
         );
         return;
+      }
+
+      if (path === "/api/settings/history") {
+        if (request.method === "GET") {
+          sendJson(response, 200, {
+            maxEntries: transformationHistory.getTransformationHistoryLimit(),
+          });
+          return;
+        }
+        if (request.method === "PATCH") {
+          const body = await readJson(request);
+          const maxEntries = readTransformationHistoryLimit(body);
+          transformationHistory.setTransformationHistoryLimit(maxEntries);
+          sendJson(response, 200, { maxEntries });
+          return;
+        }
       }
 
       if (request.method === "GET" && path === "/api/rules") {

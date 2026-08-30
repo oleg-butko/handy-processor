@@ -27,6 +27,9 @@ export interface TransformationPage {
   readonly total: number;
 }
 
+export const DEFAULT_TRANSFORMATION_HISTORY_LIMIT = 50_000;
+export const MAX_TRANSFORMATION_HISTORY_LIMIT = 1_000_000;
+
 export interface EditorDraft {
   readonly content: string;
   readonly state: unknown | null;
@@ -86,7 +89,20 @@ interface StoredRuleSnapshot {
   readonly applied: readonly AppliedTransformationRule[];
 }
 
-const SCHEMA_VERSION = 5;
+const SCHEMA_VERSION = 6;
+const TRANSFORMATION_HISTORY_LIMIT_KEY = "transformation_history_limit";
+
+function validateTransformationHistoryLimit(value: number): void {
+  if (
+    !Number.isSafeInteger(value) ||
+    value < 1 ||
+    value > MAX_TRANSFORMATION_HISTORY_LIMIT
+  ) {
+    throw new RangeError(
+      `Transformation history limit must be an integer from 1 to ${MAX_TRANSFORMATION_HISTORY_LIMIT}`,
+    );
+  }
+}
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -305,6 +321,21 @@ function migrate(database: DatabaseSync): void {
       COMMIT;
     `);
   }
+
+  if (version < 6) {
+    database.exec(`
+      BEGIN;
+      CREATE TABLE app_settings (
+        setting_key TEXT PRIMARY KEY,
+        value TEXT NOT NULL,
+        updated_at TEXT NOT NULL DEFAULT (
+          strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+        )
+      ) STRICT;
+      PRAGMA user_version = 6;
+      COMMIT;
+    `);
+  }
 }
 
 export class TransformationLog {
@@ -312,6 +343,9 @@ export class TransformationLog {
   readonly #insert: StatementSync;
   readonly #count: StatementSync;
   readonly #list: StatementSync;
+  readonly #getAppSetting: StatementSync;
+  readonly #setAppSetting: StatementSync;
+  readonly #pruneTransformations: StatementSync;
   readonly #listRuleSettings: StatementSync;
   readonly #setRuleEnabled: StatementSync;
   readonly #getEditorDraft: StatementSync;
@@ -350,6 +384,27 @@ export class TransformationLog {
       FROM transformations
       ORDER BY id DESC
       LIMIT ? OFFSET ?
+    `);
+    this.#getAppSetting = this.#database.prepare(`
+      SELECT value
+      FROM app_settings
+      WHERE setting_key = ?
+    `);
+    this.#setAppSetting = this.#database.prepare(`
+      INSERT INTO app_settings (setting_key, value)
+      VALUES (?, ?)
+      ON CONFLICT (setting_key) DO UPDATE SET
+        value = excluded.value,
+        updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+    `);
+    this.#pruneTransformations = this.#database.prepare(`
+      DELETE FROM transformations
+      WHERE id <= COALESCE((
+        SELECT id
+        FROM transformations
+        ORDER BY id DESC
+        LIMIT 1 OFFSET ?
+      ), 0)
     `);
     this.#listRuleSettings = this.#database.prepare(`
       SELECT rule_id, enabled
@@ -427,13 +482,21 @@ export class TransformationLog {
     context: TransformationContext,
   ): void {
     const storedContext = toStoredTransformationContext(context);
-    this.#insert.run(
-      originalText,
-      transformedText,
-      serializeRuleSnapshot(appliedRules),
-      context.source,
-      storedContext === null ? null : JSON.stringify(storedContext),
-    );
+    this.#database.exec("BEGIN IMMEDIATE");
+    try {
+      this.#insert.run(
+        originalText,
+        transformedText,
+        serializeRuleSnapshot(appliedRules),
+        context.source,
+        storedContext === null ? null : JSON.stringify(storedContext),
+      );
+      this.#pruneTransformations.run(this.getTransformationHistoryLimit());
+      this.#database.exec("COMMIT");
+    } catch (error) {
+      this.#database.exec("ROLLBACK");
+      throw error;
+    }
   }
 
   list(page: number, pageSize: number): TransformationPage {
@@ -453,6 +516,32 @@ export class TransformationLog {
         context: parseContextSnapshot(row.context_snapshot),
       })),
     };
+  }
+
+  getTransformationHistoryLimit(): number {
+    const row = this.#getAppSetting.get(TRANSFORMATION_HISTORY_LIMIT_KEY) as
+      | { value: string }
+      | undefined;
+    if (row === undefined) {
+      return DEFAULT_TRANSFORMATION_HISTORY_LIMIT;
+    }
+
+    const value = Number(row.value);
+    validateTransformationHistoryLimit(value);
+    return value;
+  }
+
+  setTransformationHistoryLimit(value: number): void {
+    validateTransformationHistoryLimit(value);
+    this.#database.exec("BEGIN IMMEDIATE");
+    try {
+      this.#setAppSetting.run(TRANSFORMATION_HISTORY_LIMIT_KEY, String(value));
+      this.#pruneTransformations.run(value);
+      this.#database.exec("COMMIT");
+    } catch (error) {
+      this.#database.exec("ROLLBACK");
+      throw error;
+    }
   }
 
   listRuleSettings(): readonly StoredRuleSetting[] {

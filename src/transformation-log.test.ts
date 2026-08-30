@@ -10,7 +10,10 @@ import {
   type VoiceEditorTransformationContext,
 } from "./transformation-context.js";
 import { TRANSFORMATION_RULE_IDS } from "./transformation-rules.js";
-import { TransformationLog } from "./transformation-log.js";
+import {
+  DEFAULT_TRANSFORMATION_HISTORY_LIMIT,
+  TransformationLog,
+} from "./transformation-log.js";
 
 const lowercaseApplied = [
   {
@@ -44,6 +47,35 @@ describe("TransformationLog", () => {
         secondPage.items.map((item) => item.originalText),
         ["FIRST"],
       );
+    } finally {
+      log.close();
+    }
+  });
+
+  it("persists and enforces the transformation history limit", () => {
+    const log = new TransformationLog(":memory:");
+    try {
+      assert.equal(
+        log.getTransformationHistoryLimit(),
+        DEFAULT_TRANSFORMATION_HISTORY_LIMIT,
+      );
+      log.add("FIRST", "first", lowercaseApplied, EXTERNAL_TRANSFORMATION_CONTEXT);
+      log.add("SECOND", "second", lowercaseApplied, EXTERNAL_TRANSFORMATION_CONTEXT);
+      log.add("THIRD", "third", lowercaseApplied, EXTERNAL_TRANSFORMATION_CONTEXT);
+
+      log.setTransformationHistoryLimit(2);
+      assert.equal(log.getTransformationHistoryLimit(), 2);
+      assert.deepEqual(
+        log.list(1, 10).items.map((item) => item.originalText),
+        ["THIRD", "SECOND"],
+      );
+
+      log.add("FOURTH", "fourth", lowercaseApplied, EXTERNAL_TRANSFORMATION_CONTEXT);
+      assert.deepEqual(
+        log.list(1, 10).items.map((item) => item.originalText),
+        ["FOURTH", "THIRD"],
+      );
+      assert.throws(() => log.setTransformationHistoryLimit(0), RangeError);
     } finally {
       log.close();
     }

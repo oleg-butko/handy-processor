@@ -206,6 +206,40 @@ describe("OpenAI-compatible API", () => {
     assert.equal(response.status, 400);
   });
 
+  it("loads, validates, and updates the transformation history limit", async () => {
+    const initialResponse = await fetch(`${baseUrl}/api/settings/history`);
+    assert.equal(initialResponse.status, 200);
+    assert.deepEqual(await initialResponse.json(), { maxEntries: 50_000 });
+
+    const updateResponse = await fetch(`${baseUrl}/api/settings/history`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ maxEntries: 2 }),
+    });
+    assert.equal(updateResponse.status, 200);
+    assert.deepEqual(await updateResponse.json(), { maxEntries: 2 });
+
+    const historyResponse = await fetch(`${baseUrl}/api/transformations`);
+    const history = (await historyResponse.json()) as {
+      pagination: { total: number };
+    };
+    assert.ok(history.pagination.total <= 2);
+
+    const invalidResponse = await fetch(`${baseUrl}/api/settings/history`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ maxEntries: 0 }),
+    });
+    assert.equal(invalidResponse.status, 400);
+
+    const restoreResponse = await fetch(`${baseUrl}/api/settings/history`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ maxEntries: 50_000 }),
+    });
+    assert.equal(restoreResponse.status, 200);
+  });
+
   it("uses a fresh active editor session as transformation context", async () => {
     const sessionResponse = await fetch(
       `${baseUrl}/api/editor/sessions/test-session`,

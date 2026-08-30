@@ -31,6 +31,10 @@ export interface HistoryResponse {
   };
 }
 
+export interface TransformationHistorySettings {
+  readonly maxEntries: number;
+}
+
 export interface TransformationRuleState {
   readonly id: string;
   readonly version: number;
