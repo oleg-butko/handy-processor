@@ -34,7 +34,7 @@ function RuleCard({
   readonly onToggle: (ruleId: string, enabled: boolean) => void;
 }) {
   return (
-    <Card withBorder radius="md" padding="md">
+    <Card className="hp-surface" withBorder radius="md" padding="md">
       <Stack gap="sm">
         <Group justify="space-between" align="flex-start" wrap="nowrap">
           <Checkbox

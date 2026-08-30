@@ -35,4 +35,17 @@ describe("Web UI assets", () => {
 
     assert.doesNotMatch(css, /--lightningcss-(?:light|dark)/u);
   });
+
+  it("keeps dedicated surfaces for both intermediate themes", () => {
+    const assets = loadWebUiAssets(join(process.cwd(), "web-dist"));
+    const css = assets.get("/assets/style.css")?.body.toString("utf8") ?? "";
+
+    assert.match(css, /data-hp-theme=soft-light[^}]+--hp-surface:/u);
+    assert.match(css, /data-hp-theme=soft-dark[^}]+--hp-surface:/u);
+    assert.match(css, /\.hp-surface\{background:var\(--hp-surface\)\}/u);
+    assert.match(
+      css,
+      /\.voice-editor-field \.cm-editor\{[^}]*background:var\(--hp-editor-surface\)/u,
+    );
+  });
 });

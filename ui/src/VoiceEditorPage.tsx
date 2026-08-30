@@ -579,7 +579,7 @@ export function VoiceEditorPage({
       <Paper
         withBorder
         radius="md"
-        className="voice-editor-shell"
+        className="voice-editor-shell hp-surface"
         data-editor-font-size={editorFontSize}
       >
         <Group

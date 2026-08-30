@@ -157,7 +157,7 @@ export function EditorNotesBar({
         </Text>
       ) : null}
 
-      <Paper className="editor-notes-bar" p={6} radius="md" withBorder>
+      <Paper className="editor-notes-bar hp-surface" p={6} radius="md" withBorder>
         <Group gap="xs" h="100%" wrap="nowrap">
           <Select
             aria-label="Сохранённые заметки"

@@ -135,7 +135,7 @@ function TransformationCard({
   readonly ruleTitles: ReadonlyMap<string, string>;
 }) {
   return (
-    <Card withBorder radius="md" padding="sm">
+    <Card className="hp-surface" withBorder radius="md" padding="sm">
       <Stack gap="sm">
         <Group justify="space-between" align="center" wrap="wrap">
           <Group gap="xs">
@@ -267,7 +267,7 @@ export function HistoryPage({
       ) : null}
 
       {!loading && history?.items.length === 0 ? (
-        <Paper withBorder radius="md" p={32} ta="center">
+        <Paper className="hp-surface" withBorder radius="md" p={32} ta="center">
           <Title order={3}>История пока пуста</Title>
           <Text c="dimmed" mt="xs">
             Записи появятся после первой post-processing трансформации Handy.

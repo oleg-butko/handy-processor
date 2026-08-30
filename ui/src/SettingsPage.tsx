@@ -43,7 +43,7 @@ export function SettingsPage({
         </Text>
       </Stack>
 
-      <Card withBorder radius="md" padding="md">
+      <Card className="hp-surface" withBorder radius="md" padding="md">
         <Stack gap="md">
           <Group
             className="settings-row"

@@ -1,4 +1,6 @@
 :root {
+  --hp-surface: var(--mantine-color-body);
+  --hp-editor-surface: var(--mantine-color-body);
   --hp-muted-surface: var(--mantine-color-gray-0);
   --hp-muted-border: var(--mantine-color-gray-2);
   --hp-result-surface: var(--mantine-color-cyan-0);
@@ -25,7 +27,9 @@ body,
   --mantine-color-default: var(--mantine-color-white);
   --mantine-color-default-hover: var(--mantine-color-gray-0);
   --mantine-color-default-border: var(--mantine-color-gray-4);
-  --hp-muted-surface: var(--mantine-color-white);
+  --hp-surface: var(--mantine-color-gray-0);
+  --hp-editor-surface: var(--mantine-color-gray-0);
+  --hp-muted-surface: var(--mantine-color-gray-1);
   --hp-muted-border: var(--mantine-color-gray-3);
 }
 
@@ -39,7 +43,9 @@ body,
   --mantine-color-disabled: #51565d;
   --mantine-color-disabled-color: var(--mantine-color-gray-5);
   --mantine-color-disabled-border: #646b73;
-  --hp-muted-surface: #51565d;
+  --hp-surface: #51565d;
+  --hp-editor-surface: #51565d;
+  --hp-muted-surface: #595e66;
   --hp-muted-border: #676e77;
   --hp-result-surface: rgba(21, 170, 191, 0.16);
   --hp-result-border: var(--mantine-color-cyan-7);
@@ -77,6 +83,10 @@ body {
 .voice-editor-page {
   height: 100%;
   min-height: 0;
+}
+
+.hp-surface {
+  background: var(--hp-surface);
 }
 
 .text-panel {
@@ -160,7 +170,7 @@ body {
   height: 100%;
   min-height: 0;
   color: var(--mantine-color-text);
-  background: var(--mantine-color-body);
+  background: var(--hp-editor-surface);
   font-family: var(--mantine-font-family);
   font-size: var(--editor-font-size);
 }
