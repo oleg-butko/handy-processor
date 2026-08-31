@@ -20,6 +20,7 @@ import type {
 } from "./types.js";
 import {
   isLauncherWebView,
+  reportHistoryExportError,
   saveHistoryExportInLauncher,
 } from "./launcher-bridge.js";
 
@@ -154,10 +155,16 @@ export function SettingsPage({
         setTimeout(() => URL.revokeObjectURL(blobUrl), 1_000);
       }
     } catch (requestError) {
+      let logPath: string | undefined;
+      try {
+        logPath = await reportHistoryExportError(requestError);
+      } catch {
+        // The primary error is still useful when diagnostic logging fails.
+      }
       setExportError(
-        requestError instanceof Error
-          ? requestError.message
-          : "Не удалось экспортировать историю",
+        logPath === undefined
+          ? "Не удалось экспортировать историю"
+          : `Не удалось экспортировать историю. Подробности записаны в ${logPath}`,
       );
     } finally {
       setExportingHistory(false);
@@ -355,9 +362,7 @@ export function SettingsPage({
             экспортируются.
           </Text>
           {exportError ? (
-            <Alert color="red" title="Не удалось экспортировать историю">
-              {exportError}
-            </Alert>
+            <Alert color="red">{exportError}</Alert>
           ) : null}
           {exportResult ? (
             <Alert color="teal" title="Экспорт завершён">

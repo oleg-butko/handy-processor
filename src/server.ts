@@ -1,6 +1,10 @@
 import { createServer } from "node:http";
 import { join } from "node:path";
 import { createRequestHandler, MODEL_ID } from "./app.js";
+import {
+  DIAGNOSTIC_LOG_FILE_NAME,
+  FileDiagnosticLog,
+} from "./diagnostic-log.js";
 import { EditorSessionRegistry } from "./editor-sessions.js";
 import {
   CONFIG_FILE_NAME,
@@ -26,12 +30,14 @@ const transformationLog = new TransformationLog(
 );
 const ruleSettings = new RuleSettings(transformationLog);
 const editorSessions = new EditorSessionRegistry();
+const diagnosticLog = new FileDiagnosticLog(runtimeDirectory);
 const webUiAssets = loadWebUiAssets(join(process.cwd(), "web-dist"));
 const handleRequest = createRequestHandler({
   transformationHistory: transformationLog,
   ruleSettings,
   editorSessions,
   editorDraftStorage: transformationLog,
+  diagnosticLog,
   webUiAssets,
 });
 
@@ -81,6 +87,9 @@ server.listen(config.port, host, () => {
   console.log(`Model: ${MODEL_ID}`);
   console.log(`Config: ${join(runtimeDirectory, CONFIG_FILE_NAME)}`);
   console.log(`Database: ${join(runtimeDirectory, DATABASE_FILE_NAME)}`);
+  console.log(
+    `Diagnostic log: ${join(runtimeDirectory, DIAGNOSTIC_LOG_FILE_NAME)}`,
+  );
   console.log(`Mode: ${managedInput === undefined ? "standalone" : "managed"}`);
 });
 

@@ -68,5 +68,6 @@ describe("Web UI assets", () => {
       ?.body.toString("utf8") ?? "";
 
     assert.match(javascript, /save_history_export/u);
+    assert.match(javascript, /api\/diagnostics\/client-error/u);
   });
 });

@@ -1,5 +1,9 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { APP_VERSION, SERVICE_ID } from "./build-info.js";
+import type {
+  ClientDiagnosticEntry,
+  DiagnosticLog,
+} from "./diagnostic-log.js";
 import type { EditorSessionRegistry } from "./editor-sessions.js";
 import type { RuleSettings } from "./rule-settings.js";
 import type { TransformationContext } from "./transformation-context.js";
@@ -66,6 +70,7 @@ export interface AppDependencies {
   readonly ruleSettings: RuleSettings;
   readonly editorSessions: EditorSessionRegistry;
   readonly editorDraftStorage: EditorDraftStorage;
+  readonly diagnosticLog: DiagnosticLog;
   readonly webUiAssets: WebUiAssets;
 }
 
@@ -378,6 +383,48 @@ function readTransformationHistoryLimit(body: JsonObject): number {
   return value as number;
 }
 
+function readBoundedString(
+  body: JsonObject,
+  name: string,
+  maximumLength: number,
+): string {
+  const value = body[name];
+  if (typeof value !== "string" || value.length > maximumLength) {
+    throw new HttpError(
+      400,
+      `'${name}' must be a string no longer than ${maximumLength} characters`,
+    );
+  }
+  return value;
+}
+
+function readClientDiagnostic(body: JsonObject): ClientDiagnosticEntry {
+  if (body.event !== "history-export") {
+    throw new HttpError(400, "Unsupported diagnostic event");
+  }
+  if (typeof body.launcherBridgeDetected !== "boolean") {
+    throw new HttpError(400, "'launcherBridgeDetected' must be a boolean");
+  }
+  if (
+    !Array.isArray(body.tauriNamespaces) ||
+    body.tauriNamespaces.length > 32 ||
+    body.tauriNamespaces.some(
+      (value) => typeof value !== "string" || value.length > 64,
+    )
+  ) {
+    throw new HttpError(400, "'tauriNamespaces' must be an array of strings");
+  }
+
+  return {
+    event: body.event,
+    message: readBoundedString(body, "message", 4_096),
+    origin: readBoundedString(body, "origin", 512),
+    userAgent: readBoundedString(body, "userAgent", 1_024),
+    launcherBridgeDetected: body.launcherBridgeDetected,
+    tauriNamespaces: body.tauriNamespaces as string[],
+  };
+}
+
 function getTransformationPage(
   history: TransformationHistory,
   parameters: URLSearchParams,
@@ -407,6 +454,7 @@ export function createRequestHandler({
   ruleSettings,
   editorSessions,
   editorDraftStorage,
+  diagnosticLog,
   webUiAssets,
 }: AppDependencies) {
   return async function handleRequest(
@@ -496,6 +544,16 @@ export function createRequestHandler({
           response,
           transformationHistory.iterateTextPairs(),
         );
+        return;
+      }
+
+      if (
+        request.method === "POST" &&
+        path === "/api/diagnostics/client-error"
+      ) {
+        const body = await readJson(request);
+        await diagnosticLog.appendClientError(readClientDiagnostic(body));
+        sendJson(response, 201, { logPath: diagnosticLog.path });
         return;
       }
 

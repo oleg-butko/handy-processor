@@ -4,6 +4,7 @@ import type { AddressInfo } from "node:net";
 import { after, before, describe, it } from "node:test";
 import { createRequestHandler, MODEL_ID } from "./app.js";
 import { APP_VERSION, SERVICE_ID } from "./build-info.js";
+import type { ClientDiagnosticEntry, DiagnosticLog } from "./diagnostic-log.js";
 import { EditorSessionRegistry } from "./editor-sessions.js";
 import { RuleSettings } from "./rule-settings.js";
 import { TRANSFORMATION_RULE_IDS } from "./transformation-rules.js";
@@ -14,6 +15,13 @@ import type { WebUiAssets } from "./web-ui-assets.js";
 const transformationLog = new TransformationLog(":memory:");
 const ruleSettings = new RuleSettings(transformationLog);
 const editorSessions = new EditorSessionRegistry();
+const diagnosticEntries: ClientDiagnosticEntry[] = [];
+const diagnosticLog: DiagnosticLog = {
+  path: "/runtime/handy-processor.log",
+  async appendClientError(entry) {
+    diagnosticEntries.push(entry);
+  },
+};
 const webUiAssets: WebUiAssets = {
   get(path) {
     return path === "/"
@@ -29,6 +37,7 @@ const handleRequest = createRequestHandler({
   ruleSettings,
   editorSessions,
   editorDraftStorage: transformationLog,
+  diagnosticLog,
   webUiAssets,
 });
 const server = createServer((request, response) => {
@@ -286,6 +295,44 @@ describe("OpenAI-compatible API", () => {
     } finally {
       transformationLog.setTransformationHistoryLimit(50_000);
     }
+  });
+
+  it("records bounded client diagnostics without transcription text", async () => {
+    const response = await fetch(`${baseUrl}/api/diagnostics/client-error`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        event: "history-export",
+        message: "Command save_history_export is not allowed",
+        origin: baseUrl,
+        userAgent: "test-webview",
+        launcherBridgeDetected: true,
+        tauriNamespaces: ["core", "event"],
+      }),
+    });
+
+    assert.equal(response.status, 201);
+    assert.deepEqual(await response.json(), {
+      logPath: "/runtime/handy-processor.log",
+    });
+    assert.deepEqual(diagnosticEntries.at(-1), {
+      event: "history-export",
+      message: "Command save_history_export is not allowed",
+      origin: baseUrl,
+      userAgent: "test-webview",
+      launcherBridgeDetected: true,
+      tauriNamespaces: ["core", "event"],
+    });
+
+    const invalidResponse = await fetch(
+      `${baseUrl}/api/diagnostics/client-error`,
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ event: "other", message: "ignored" }),
+      },
+    );
+    assert.equal(invalidResponse.status, 400);
   });
 
   it("uses a fresh active editor session as transformation context", async () => {
