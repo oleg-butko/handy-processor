@@ -49,7 +49,11 @@ describe("Web UI assets", () => {
     );
     assert.match(
       css,
-      /data-hp-theme=soft-light[^}]+--mantine-color-gray-1:#e9ecef/u,
+      /data-hp-theme=soft-light[^}]+--mantine-color-white:#f5f6f7/u,
+    );
+    assert.match(
+      css,
+      /data-hp-theme=soft-light[^}]+\.hp-surface\{background-color:var\(--hp-surface\)\}/u,
     );
     assert.match(
       css,
