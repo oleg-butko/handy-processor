@@ -47,5 +47,13 @@ describe("Web UI assets", () => {
       css,
       /\.voice-editor-field \.cm-editor\{[^}]*background:var\(--hp-editor-surface\)/u,
     );
+    assert.match(
+      css,
+      /data-hp-theme=soft-light[^}]+--mantine-color-gray-1:#e9ecef/u,
+    );
+    assert.match(
+      css,
+      /data-hp-theme=soft-dark[^}]+--mantine-color-dark-8:#464b52/u,
+    );
   });
 });
