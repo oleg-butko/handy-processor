@@ -2,11 +2,13 @@
 
 use std::thread;
 
-use handy_processor_launcher::{runtime::RuntimePaths, supervisor::Supervisor};
+use handy_processor_launcher::{
+    history_export::download_history_export, runtime::RuntimePaths, supervisor::Supervisor,
+};
 use tauri::{
     menu::MenuBuilder,
     tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent},
-    App, AppHandle, Manager, RunEvent, WebviewUrl, WebviewWindow, WebviewWindowBuilder,
+    App, AppHandle, Manager, RunEvent, State, WebviewUrl, WebviewWindow, WebviewWindowBuilder,
     WindowEvent,
 };
 use tauri_plugin_clipboard_manager::ClipboardExt;
@@ -68,6 +70,30 @@ fn configure_window(window: &WebviewWindow) {
         }
         _ => {}
     });
+}
+
+#[tauri::command]
+async fn save_history_export(
+    window: WebviewWindow,
+    paths: State<'_, RuntimePaths>,
+) -> Result<String, String> {
+    if window.label() != MAIN_WINDOW {
+        return Err("history export is available only from the main window".into());
+    }
+    let actual_url = window.url().map_err(|error| error.to_string())?;
+    let expected_url = tauri::Url::parse(&paths.web_url()).map_err(|error| error.to_string())?;
+    if actual_url.origin() != expected_url.origin() {
+        return Err("history export request came from an unexpected origin".into());
+    }
+
+    let paths = paths.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || {
+        download_history_export(&paths.directory, paths.port)
+    })
+    .await
+    .map_err(|error| format!("history export task failed: {error}"))?
+    .map(|path| path.to_string_lossy().into_owned())
+    .map_err(|error| format!("{error:#}"))
 }
 
 fn create_tray(app: &App, paths: RuntimePaths, supervisor: Supervisor) -> tauri::Result<()> {
@@ -164,7 +190,7 @@ fn initialize_app(app: &mut App) -> anyhow::Result<()> {
             .build()?;
 
         configure_window(&window);
-        create_tray(app, paths, supervisor.clone())?;
+        create_tray(app, paths.clone(), supervisor.clone())?;
         Ok(())
     })();
     if let Err(error) = desktop_result {
@@ -172,6 +198,7 @@ fn initialize_app(app: &mut App) -> anyhow::Result<()> {
         return Err(error);
     }
 
+    app.manage(paths);
     app.manage(supervisor);
     Ok(())
 }
@@ -191,6 +218,7 @@ fn main() {
                 .with_state_flags(StateFlags::POSITION | StateFlags::SIZE)
                 .build(),
         )
+        .invoke_handler(tauri::generate_handler![save_history_export])
         .setup(|app| {
             if let Err(error) = initialize_app(app) {
                 let app_handle = app.handle().clone();

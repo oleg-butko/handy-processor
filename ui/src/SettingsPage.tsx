@@ -18,6 +18,10 @@ import type {
   TransformationHistorySettings,
   UiFontSize,
 } from "./types.js";
+import {
+  isLauncherWebView,
+  saveHistoryExportInLauncher,
+} from "./launcher-bridge.js";
 
 const DEFAULT_TRANSFORMATION_HISTORY_LIMIT = 50_000;
 const MAX_TRANSFORMATION_HISTORY_LIMIT = 1_000_000;
@@ -55,6 +59,7 @@ export function SettingsPage({
     useState(false);
   const [exportingHistory, setExportingHistory] = useState(false);
   const [exportError, setExportError] = useState<string>();
+  const [exportResult, setExportResult] = useState<string>();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -122,7 +127,14 @@ export function SettingsPage({
   async function exportTransformationHistory(): Promise<void> {
     setExportingHistory(true);
     setExportError(undefined);
+    setExportResult(undefined);
     try {
+      if (isLauncherWebView()) {
+        const path = await saveHistoryExportInLauncher();
+        setExportResult(`Файл сохранён: ${path}`);
+        return;
+      }
+
       const response = await fetch("/api/transformations/export");
       if (!response.ok) {
         throw new Error(`Сервер вернул HTTP ${response.status}`);
@@ -136,6 +148,7 @@ export function SettingsPage({
       document.body.append(link);
       try {
         link.click();
+        setExportResult("Загрузка файла началась");
       } finally {
         link.remove();
         setTimeout(() => URL.revokeObjectURL(blobUrl), 1_000);
@@ -344,6 +357,11 @@ export function SettingsPage({
           {exportError ? (
             <Alert color="red" title="Не удалось экспортировать историю">
               {exportError}
+            </Alert>
+          ) : null}
+          {exportResult ? (
+            <Alert color="teal" title="Экспорт завершён">
+              {exportResult}
             </Alert>
           ) : null}
           <Group>

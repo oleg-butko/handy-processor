@@ -56,4 +56,13 @@ describe("Web UI assets", () => {
       /data-hp-theme=soft-dark[^}]+--mantine-color-dark-8:#464b52/u,
     );
   });
+
+  it("includes the native launcher history export bridge", () => {
+    const assets = loadWebUiAssets(join(process.cwd(), "web-dist"));
+    const javascript = assets
+      .get("/assets/app.js")
+      ?.body.toString("utf8") ?? "";
+
+    assert.match(javascript, /save_history_export/u);
+  });
 });

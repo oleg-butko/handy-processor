@@ -8,6 +8,7 @@
     "frontendDist": "../fallback"
   },
   "app": {
+    "withGlobalTauri": true,
     "windows": [],
     "security": {
       "csp": null
