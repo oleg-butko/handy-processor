@@ -353,7 +353,6 @@ export class TransformationLog {
   readonly #insert: StatementSync;
   readonly #count: StatementSync;
   readonly #list: StatementSync;
-  readonly #listTextPairs: StatementSync;
   readonly #getAppSetting: StatementSync;
   readonly #setAppSetting: StatementSync;
   readonly #pruneTransformations: StatementSync;
@@ -395,11 +394,6 @@ export class TransformationLog {
       FROM transformations
       ORDER BY id DESC
       LIMIT ? OFFSET ?
-    `);
-    this.#listTextPairs = this.#database.prepare(`
-      SELECT original_text, transformed_text
-      FROM transformations
-      ORDER BY id DESC
     `);
     this.#getAppSetting = this.#database.prepare(`
       SELECT value
@@ -535,7 +529,14 @@ export class TransformationLog {
   }
 
   *iterateTextPairs(): IterableIterator<TransformationTextPair> {
-    const rows = this.#listTextPairs.iterate() as Iterable<TransformationTextPairRow>;
+    // Each export needs its own statement: starting another iterator on a
+    // shared statement invalidates any export waiting for network backpressure.
+    const statement = this.#database.prepare(`
+      SELECT original_text, transformed_text
+      FROM transformations
+      ORDER BY id DESC
+    `);
+    const rows = statement.iterate() as Iterable<TransformationTextPairRow>;
     for (const row of rows) {
       yield {
         originalText: row.original_text,

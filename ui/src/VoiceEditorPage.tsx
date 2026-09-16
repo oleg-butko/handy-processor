@@ -205,7 +205,7 @@ export function VoiceEditorPage({
 
   const enqueueEditorSave = useCallback(
     (pending: PendingEditorSave): Promise<void> => {
-      const operation = saveQueueRef.current.then(async () => {
+      const operation = saveQueueRef.current.catch(() => {}).then(async () => {
         if (pending.saveNote && pending.noteId !== null) {
           const noteResponse = await fetch(`/api/editor/notes/${pending.noteId}`, {
             method: "PUT",
@@ -234,6 +234,8 @@ export function VoiceEditorPage({
       });
       const reportedOperation = operation.catch((error: unknown) => {
         if (pending.saveId === latestSaveRef.current) {
+          // Keep the latest snapshot available for a retry before switching notes.
+          pendingSaveRef.current = pending;
           setSaveState("error");
           setNoteError(
             error instanceof Error ? error.message : "Не удалось сохранить",
@@ -241,7 +243,8 @@ export function VoiceEditorPage({
         }
         throw error;
       });
-      saveQueueRef.current = reportedOperation.catch(() => {});
+      // flushScheduledSave must observe failure before replacing the document.
+      saveQueueRef.current = reportedOperation;
       return reportedOperation;
     },
     [updateNoteSummary],
@@ -592,7 +595,7 @@ export function VoiceEditorPage({
             <Button
               size="xs"
               variant="light"
-              disabled={editorState.undoDepth === 0}
+              disabled={notesBusy || editorState.undoDepth === 0}
               onClick={() => editorRef.current?.undo()}
             >
               Отменить
@@ -600,7 +603,7 @@ export function VoiceEditorPage({
             <Button
               size="xs"
               variant="light"
-              disabled={editorState.redoDepth === 0}
+              disabled={notesBusy || editorState.redoDepth === 0}
               onClick={() => editorRef.current?.redo()}
             >
               Повторить
@@ -628,6 +631,7 @@ export function VoiceEditorPage({
 
         <PlainTextEditor
           ref={editorRef}
+          readOnly={notesBusy}
           historyLimit={historyLimit}
           initialState={draft.state}
           initialValue={draft.content}

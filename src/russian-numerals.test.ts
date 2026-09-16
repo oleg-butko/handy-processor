@@ -3,6 +3,15 @@ import { describe, it } from "node:test";
 import { normalizeRussianNumerals } from "./russian-numerals.js";
 
 describe("normalizeRussianNumerals", () => {
+  it("preserves words inherited from Object.prototype", () => {
+    assert.equal(normalizeRussianNumerals("constructor"), "constructor");
+    assert.equal(
+      normalizeRussianNumerals("Добавь CONSTRUCTOR и двадцать два метода"),
+      "Добавь CONSTRUCTOR и 22 метода",
+    );
+    assert.equal(normalizeRussianNumerals("constructor тысяч"), "constructor 1000");
+  });
+
   it("matches uppercase numerals without changing surrounding casing", () => {
     assert.equal(
       normalizeRussianNumerals("МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА"),

@@ -25,6 +25,25 @@ const lowercaseApplied = [
 ] as const;
 
 describe("TransformationLog", () => {
+  it("keeps overlapping exports independent, including cancellation", () => {
+    const log = new TransformationLog(":memory:");
+    try {
+      for (const text of ["FIRST", "SECOND", "THIRD"]) {
+        log.add(text, text.toLowerCase(), lowercaseApplied, EXTERNAL_TRANSFORMATION_CONTEXT);
+      }
+      const first = log.iterateTextPairs();
+      const second = log.iterateTextPairs();
+      assert.equal(first.next().value?.originalText, "THIRD");
+      assert.equal(second.next().value?.originalText, "THIRD");
+      assert.equal(first.next().value?.originalText, "SECOND");
+      first.return?.();
+      assert.deepEqual(Array.from(second).map((row) => row.originalText), ["SECOND", "FIRST"]);
+      assert.equal(Array.from(log.iterateTextPairs()).length, 3);
+    } finally {
+      log.close();
+    }
+  });
+
   it("returns newest transformations first with pagination", () => {
     const log = new TransformationLog(":memory:");
     try {

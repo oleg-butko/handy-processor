@@ -36,7 +36,10 @@ const NUMERAL_SPAN_MAX_TOKENS =
   SCALE_COUNT * (SMALL_GROUP_MAX_TOKENS + 1) + SMALL_GROUP_MAX_TOKENS;
 
 function lookupNumeral(word: string): RussianNumeralEntry | undefined {
-  return NUMERAL_DICTIONARY[word.toLowerCase().replaceAll("ё", "е")];
+  const normalized = word.toLowerCase().replaceAll("ё", "е");
+  return Object.hasOwn(NUMERAL_DICTIONARY, normalized)
+    ? NUMERAL_DICTIONARY[normalized]
+    : undefined;
 }
 
 function tokenizeWords(text: string): WordToken[] {

@@ -78,3 +78,19 @@ selection-layer и прямоугольник нужного размера.
 `background-color`, без `light-dark()` и theme-переменных. Тест production CSS
 проверяет, что после минификации оба правила выделения сохранили валидный
 `background-color`.
+
+## Тесты Rust-лаунчера завершались с `cargo: not found`
+
+`npm run test:launcher` не доходил до компиляции: в `PATH` среды запуска
+отсутствовал `~/.local/bin`. Rust 1.98.0 уже был установлен, а находящиеся
+в этом каталоге обёртки `cargo` и `rustc` задавали нестандартные
+`CARGO_HOME` и `RUSTUP_HOME` в `~/.local/share/handy-processor-*`.
+
+Достаточно добавить каталог в окружение команды из корня проекта:
+
+```bash
+PATH="$HOME/.local/bin:$PATH" npm run test:launcher
+```
+
+Все 9 тестов прошли. Переустановка Rust и изменение конфигурации оболочки
+не потребовались.

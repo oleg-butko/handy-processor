@@ -8,12 +8,13 @@ import {
   undo,
   undoDepth,
 } from "@codemirror/commands";
-import { EditorState } from "@codemirror/state";
+import { Compartment, EditorState } from "@codemirror/state";
 import { EditorView, drawSelection, keymap } from "@codemirror/view";
 import {
   forwardRef,
   useEffect,
   useImperativeHandle,
+  useLayoutEffect,
   useRef,
 } from "react";
 
@@ -44,6 +45,7 @@ interface PlainTextEditorProps {
   readonly initialValue: string;
   readonly initialState: unknown | null;
   readonly historyLimit: number;
+  readonly readOnly: boolean;
   readonly onStateChange: (state: PlainTextEditorState) => void;
   readonly onFocusChange: (focused: boolean) => void;
 }
@@ -52,18 +54,34 @@ export const PlainTextEditor = forwardRef<
   PlainTextEditorHandle,
   PlainTextEditorProps
 >(function PlainTextEditor(
-  { initialValue, initialState, historyLimit, onStateChange, onFocusChange },
+  { initialValue, initialState, historyLimit, readOnly, onStateChange, onFocusChange },
   forwardedRef,
 ) {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewRef = useRef<EditorView | null>(null);
   const callbacksRef = useRef({ onStateChange, onFocusChange });
   const historyLimitRef = useRef(historyLimit);
+  const readOnlyRef = useRef(readOnly);
+  const editableCompartment = useRef(new Compartment());
   const createStateRef = useRef<
     ((snapshot: EditorDocumentSnapshot) => EditorState) | undefined
   >(undefined);
   callbacksRef.current = { onStateChange, onFocusChange };
   historyLimitRef.current = historyLimit;
+  readOnlyRef.current = readOnly;
+
+  function editingExtensions() {
+    return [
+      EditorState.readOnly.of(readOnlyRef.current),
+      EditorView.editable.of(!readOnlyRef.current),
+    ];
+  }
+
+  useLayoutEffect(() => {
+    viewRef.current?.dispatch({
+      effects: editableCompartment.current.reconfigure(editingExtensions()),
+    });
+  }, [readOnly]);
 
   function limitEditorHistory(value: unknown): unknown {
     if (typeof value !== "object" || value === null || Array.isArray(value)) {
@@ -170,6 +188,7 @@ export const PlainTextEditor = forwardRef<
     ];
     const extensions = () => [
       history({ minDepth: historyLimitRef.current }),
+      editableCompartment.current.of(editingExtensions()),
       ...baseExtensions,
     ];
     const createState = (snapshot: EditorDocumentSnapshot): EditorState => {
