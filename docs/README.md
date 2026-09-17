@@ -16,9 +16,13 @@
 - [Web UI и локальное хранение](web-ui-and-storage.md)
 - [Правила трансформации](transformation-rules.md)
 - [Голосовой редактор](voice-editor.md)
+- [Шаблоны, двойное нажатие и вставка](templates.md)
 - [Нормализация русских числительных](russian-number-normalization.md)
 
 ## Завершённые планы
+
+Реализовано, ожидает ручной проверки на Windows:
+[план шаблонов](templates-implementation-plan.md).
 
 - [Опциональный Tauri-лаунчер](done/launcher-implementation-plan.md)
 - [Голосовой редактор](done/voice-editor-implementation-plan.md)

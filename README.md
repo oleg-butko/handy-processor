@@ -14,7 +14,9 @@ post-processing feature. It currently:
 5. provides a context-aware voice editor with named SQLite notes and
    persistent undo/redo history; and
 6. shows the paginated history and configurable rule list in a React + Mantine
-   web UI.
+   web UI; and
+7. filters three-level text templates, with a Windows double-Win shortcut
+   and clipboard paste back into the originating application.
 
 For example, `МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.` becomes
 `мне нужно 22 файла`.
@@ -41,6 +43,12 @@ inside it before starting Handy post-processing so the server can use the
 current document and cursor position. See the
 [voice editor guide](docs/voice-editor.md) for contextual casing, undo/redo and
 focus limitations.
+
+The **Шаблоны** tab reads UTF-8 `templates.txt` beside `config.json`.
+Use `templates.example.txt` as a starting point. The Windows launcher defaults
+to double Win within 200 ms; while enabled, single Win does not open Start.
+See the [templates guide](docs/templates.md) for filtering, shortcut settings
+and the Windows checks still needed for focus restoration.
 
 For a compiled production-style run:
 
