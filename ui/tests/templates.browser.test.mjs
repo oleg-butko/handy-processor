@@ -92,5 +92,62 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
   assert.equal(await filter.inputValue(), 'сл');
   await page.waitForFunction(() => window.__acked === 1);
   if (process.env.TEMPLATES_SCREENSHOT) await page.screenshot({ path: process.env.TEMPLATES_SCREENSHOT, fullPage: true });
+  await t.test('recording stops when the window loses focus or unloads', async () => {
+    await page.evaluate(() => {
+      const invoke = window.__TAURI__.core.invoke;
+      window.__cancelledRecordings = 0;
+      window.__TAURI__.core.invoke = (command, args) => {
+        if (command === 'record_template_key') return new Promise((_, reject) => { window.__rejectRecording = reject; });
+        if (command === 'cancel_template_recording') {
+          window.__cancelledRecordings++;
+          window.__rejectRecording?.('Запись отменена');
+          return Promise.resolve();
+        }
+        return invoke(command, args);
+      };
+    });
+    for (const event of ['blur', 'pagehide']) {
+      await page.getByRole('button', { name: 'Правый Ctrl × 2', exact: true }).click();
+      await page.getByRole('button', { name: 'Отмена записи', exact: true }).waitFor();
+      const previous = await page.evaluate(() => window.__cancelledRecordings);
+      await page.evaluate(event => window.dispatchEvent(new Event(event)), event);
+      await page.waitForFunction(previous => window.__cancelledRecordings > previous, previous, { timeout: 2000 });
+      await page.getByRole('button', { name: 'Правый Ctrl × 2', exact: true }).waitFor();
+    }
+  });
+  await t.test('changing the source cannot be overwritten by an older tab reload', async () => {
+    const fresh = { path: '/test/new.txt', items: [{ line: 1, levels: ['Новая категория', 'Новая тема', 'Новый ответ'] }], diagnostics: [], error: null, stale: false };
+    const pendingReads = [];
+    await page.route('**/api/templates', async route => {
+      if (route.request().method() === 'PUT') await route.fulfill({ json: fresh });
+      else pendingReads.push(route);
+    });
+    await page.evaluate(() => {
+      const invoke = window.__TAURI__.core.invoke;
+      window.__stateReads = 0;
+      window.__TAURI__.core.invoke = (command, args) => {
+        if (command === 'choose_templates_file') return new Promise(resolve => { window.__chooseFile = () => resolve('/test/new.txt'); });
+        if (command === 'templates_desktop_state') window.__stateReads++;
+        return invoke(command, args);
+      };
+    });
+    await page.getByRole('button', { name: 'Очистить', exact: true }).click();
+    await page.getByRole('button', { name: 'Выбрать файл', exact: true }).click();
+    await page.waitForFunction(() => typeof window.__chooseFile === 'function');
+    await page.getByRole('tab', { name: 'История', exact: true }).click();
+    await page.getByRole('tab', { name: 'Шаблоны', exact: true }).click();
+    await page.waitForFunction(() => window.__stateReads > 0);
+    await page.evaluate(() => window.__chooseFile());
+    await page.getByText('/test/new.txt', { exact: true }).waitFor();
+    const completed = pendingReads.map(route => page.waitForEvent('requestfinished', request => request === route.request()));
+    await Promise.all(pendingReads.map(route => route.fulfill({ json: { path: '/test/templates.txt', items, diagnostics: [], error: null, stale: false } })));
+    await Promise.all(completed);
+    // Wait for the React render caused by the now-finished stale responses.
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    assert.equal(await page.locator('.templates-path').textContent(), '/test/new.txt');
+    await page.getByRole('button', { name: 'Скопировать строку 1', exact: true }).click();
+    await page.waitForFunction(() => window.__copied === 'Новый ответ');
+    await page.unroute('**/api/templates');
+  });
   assert.deepEqual(errors, []);
 });

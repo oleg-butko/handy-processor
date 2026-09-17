@@ -39,10 +39,12 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
   const [acting, setActing] = useState(false);
   const actionRef = useRef(false);
   const requestRef = useRef(0);
+  const changingSourceRef = useRef(false);
   const input = useRef<HTMLInputElement>(null);
   const launcher = isLauncherWebView();
 
   const load = useCallback(async () => {
+    if (changingSourceRef.current) return;
     const id = ++requestRef.current;
     setLoading(true);
     setError(undefined);
@@ -73,10 +75,21 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
   }, [active, activation, launcher]);
 
   useEffect(() => {
-    if (!active && recording) void invokeLauncher("cancel_template_recording").catch(() => {});
+    if (!recording) return;
+    const cancel = () => { void invokeLauncher("cancel_template_recording").catch(() => {}); };
+    if (!active) { cancel(); return; }
+    window.addEventListener("blur", cancel);
+    window.addEventListener("pagehide", cancel);
+    return () => {
+      window.removeEventListener("blur", cancel);
+      window.removeEventListener("pagehide", cancel);
+      cancel();
+    };
   }, [active, recording]);
 
   const chooseFile = async (reset = false) => {
+    if (changingSourceRef.current) return;
+    changingSourceRef.current = true;
     setError(undefined);
     setLoading(true);
     ++requestRef.current;
@@ -88,7 +101,7 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
       if (!response.ok) throw new Error(result.error?.message ?? `HTTP ${response.status}`);
       setDocument(result as TemplateResponse);
     } catch (failure) { setError(String(failure)); }
-    finally { setLoading(false); }
+    finally { changingSourceRef.current = false; setLoading(false); }
   };
 
   const saveSettings = async () => {

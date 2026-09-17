@@ -49,7 +49,7 @@ pub enum HookEvent {
 
 enum Command {
     Settings(TemplateHotkeySettings, Sender<()>),
-    Record(Sender<Result<String, String>>),
+    Record(usize, Sender<Result<String, String>>),
     Cancel,
     Stop,
 }
@@ -91,9 +91,9 @@ impl HotkeyService {
             .map_err(|e| e.to_string())
     }
 
-    pub fn record(&self) -> Result<String, String> {
+    pub fn record(&self, window: usize) -> Result<String, String> {
         let (sender, receiver) = mpsc::channel();
-        self.send(Command::Record(sender))?;
+        self.send(Command::Record(window, sender))?;
         receiver
             .recv_timeout(Duration::from_secs(12))
             .map_err(|e| e.to_string())?
@@ -114,6 +114,7 @@ impl Drop for HotkeyService {
 }
 
 struct Recording {
+    window: usize,
     result: Sender<Result<String, String>>,
     started: Instant,
     key: Option<u16>,
@@ -212,6 +213,16 @@ fn physical_key(event: &KBDLLHOOKSTRUCT) -> u16 {
 }
 
 impl HookContext {
+    fn check_recording_window(&mut self, window: usize) {
+        if self
+            .recording
+            .as_ref()
+            .is_some_and(|rec| rec.window != window)
+        {
+            self.cancel_recording("Запись отменена: окно потеряло фокус");
+        }
+    }
+
     fn cancel_recording(&mut self, message: &str) {
         if let Some(recording) = self.recording.take() {
             let _ = recording.result.send(Err(message.into()));
@@ -232,9 +243,11 @@ impl HookContext {
             .enumerate()
             .any(|(i, held)| i != index && *held);
         self.held[index] = down;
+        let window = unsafe { GetForegroundWindow() }.0 as usize;
+        // UI cancellation is asynchronous, so guard the first foreign key too.
+        self.check_recording_window(window);
         let recording = self.recording.is_some();
         let selected = self.settings.enabled && self.settings.matches(key);
-        let window = unsafe { GetForegroundWindow() }.0 as usize;
 
         if down && !repeat {
             // A combination must never become a double tap on its last key-up.
@@ -382,13 +395,18 @@ unsafe fn run(
                         state.settings = settings;
                         let _ = reply.send(());
                     }
-                    Command::Record(result) => {
+                    Command::Record(window, result) => {
                         state.cancel_recording("Начата новая запись");
-                        state.recording = Some(Recording {
-                            result,
-                            started: Instant::now(),
-                            key: None,
-                        });
+                        if window != 0 && GetForegroundWindow().0 as usize == window {
+                            state.recording = Some(Recording {
+                                window,
+                                result,
+                                started: Instant::now(),
+                                key: None,
+                            });
+                        } else {
+                            let _ = result.send(Err("Запись отменена: окно потеряло фокус".into()));
+                        }
                     }
                     Command::Cancel => state.cancel_recording("Запись отменена"),
                     Command::Stop => {}
@@ -398,6 +416,7 @@ unsafe fn run(
         CONTEXT.with(|context| {
             let mut context = context.borrow_mut();
             let state = context.as_mut().unwrap();
+            state.check_recording_window(GetForegroundWindow().0 as usize);
             if state
                 .recording
                 .as_ref()

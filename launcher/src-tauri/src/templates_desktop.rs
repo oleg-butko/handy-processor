@@ -248,13 +248,14 @@ pub async fn record_template_key(
     }
     #[cfg(windows)]
     {
+        let owner = window.hwnd().map_err(|e| e.to_string())?.0 as usize;
         let state = state.inner().clone();
         tauri::async_runtime::spawn_blocking(move || {
             state
                 .service
                 .as_ref()
                 .ok_or("Перехватчик клавиатуры недоступен")?
-                .record()
+                .record(owner)
         })
         .await
         .map_err(|e| e.to_string())?
