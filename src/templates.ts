@@ -12,7 +12,8 @@ export interface TemplateSettings {
 export class TemplateFile {
   readonly #settings: TemplateSettings;
   readonly #defaultPath: string;
-  #lastGood: { path: string; document: TemplateDocument } | undefined;
+  #revision = 0;
+  #lastGood: { path: string; document: TemplateDocument; revision: number } | undefined;
 
   constructor(runtimeDirectory: string, settings: TemplateSettings) {
     this.#defaultPath = join(runtimeDirectory, "templates.txt");
@@ -62,11 +63,15 @@ export class TemplateFile {
   }
 
   async load(): Promise<TemplateResponse> {
+    const revision = ++this.#revision;
     const path = this.#settings.getTemplatesPath() ?? this.#defaultPath;
     const words = await this.#readWords(path);
     try {
       const document = await this.#read(path);
-      this.#lastGood = { path, document };
+      // A delayed read must not replace a newer successful read or selection.
+      if (revision > (this.#lastGood?.revision ?? 0)) {
+        this.#lastGood = { path, document, revision };
+      }
       return { path, ...document, ...words, stale: false, error: null };
     } catch (error) {
       const document = this.#lastGood?.path === path ? this.#lastGood.document : undefined;
@@ -89,7 +94,7 @@ export class TemplateFile {
     const document = await this.#read(selected);
     const words = await this.#readWords(selected);
     this.#settings.setTemplatesPath(path === null ? null : selected);
-    this.#lastGood = { path: selected, document };
+    this.#lastGood = { path: selected, document, revision: ++this.#revision };
     return { path: selected, ...document, ...words, stale: false, error: null };
   }
 }

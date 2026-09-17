@@ -1,11 +1,67 @@
 import assert from "node:assert/strict";
-import { mkdir, mkdtemp, writeFile, rm } from "node:fs/promises";
+import fs, { mkdir, mkdtemp, writeFile, rename, rm } from "node:fs/promises";
+import { syncBuiltinESMExports } from "node:module";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { it } from "node:test";
 import { filterTemplates, parseTemplates, templateMatches, templatePrefixes } from "./template-model.js";
 import { TemplateFile } from "./templates.js";
 import { TransformationLog } from "./transformation-log.js";
+
+for (const changeSource of [false, true]) {
+  it(`an old file load cannot replace the fallback after ${changeSource ? "source selection" : "a newer load"}`, async (t) => {
+    const directory = await mkdtemp(join(tmpdir(), "handy-templates-race-"));
+    const oldPath = join(directory, "templates.txt");
+    const chosenPath = join(directory, "chosen.txt");
+    let selected: string | null = null;
+    const source = new TemplateFile(directory, {
+      getTemplatesPath: () => selected,
+      setTemplatesPath: (path) => { selected = path; },
+    });
+    let release!: () => void;
+    let started!: () => void;
+    const paused = new Promise<void>((resolve) => { started = resolve; });
+    const resumed = new Promise<void>((resolve) => { release = resolve; });
+    const originalOpen = fs.open;
+    let pauseNextRead = true;
+    let pending: Promise<unknown> | undefined;
+    try {
+      await writeFile(oldPath, "а > б > старый");
+      await writeFile(chosenPath, "а > б > выбранный");
+      t.mock.method(fs, "open", async (...args: Parameters<typeof fs.open>) => {
+        const file = await originalOpen(...args);
+        if (args[0] === oldPath && pauseNextRead) {
+          pauseNextRead = false;
+          started();
+          await resumed;
+        }
+        return file;
+      });
+      syncBuiltinESMExports();
+      pending = source.load();
+      await paused;
+      if (changeSource) await source.select(chosenPath);
+      else {
+        await rename(chosenPath, oldPath);
+        await source.load();
+      }
+      release();
+      await pending;
+      const currentPath = changeSource ? chosenPath : oldPath;
+      await writeFile(currentPath, "частичная запись");
+      const fallback = await source.load();
+      assert.equal(fallback.path, currentPath);
+      assert.equal(fallback.stale, true);
+      assert.equal(fallback.items[0]?.levels[2], "выбранный");
+    } finally {
+      release();
+      await pending;
+      t.mock.restoreAll();
+      syncBuiltinESMExports();
+      await rm(directory, { recursive: true, force: true });
+    }
+  });
+}
 
 it("parses BOM and CRLF, preserving source line numbers and text", () => {
   const result = parseTemplates("\uFEFFПервый > Второй > Текст  с пробелами\r\n\r\nневерно\r\nа > > в\r\nа > б > в > г");
