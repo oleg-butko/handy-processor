@@ -60,9 +60,11 @@ function sortNotes(notes: readonly EditorNoteSummary[]): EditorNoteSummary[] {
 }
 
 export function VoiceEditorPage({
+  active,
   editorFontSize,
   historyLimit,
 }: {
+  readonly active: boolean;
   readonly editorFontSize: EditorFontSize;
   readonly historyLimit: number;
 }) {
@@ -356,6 +358,10 @@ export function VoiceEditorPage({
     },
     [publishSession],
   );
+
+  useEffect(() => {
+    if (!active) handleFocusChange(false);
+  }, [active, handleFocusChange]);
 
   const selectNote = useCallback(
     async (noteId: number) => {

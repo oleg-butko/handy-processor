@@ -37,7 +37,8 @@
     "test": "npm run build && node --test dist/*.test.js && npm run test:packaging",
     "typecheck": "npm run typecheck:server && npm run typecheck:ui",
     "typecheck:server": "tsc -p tsconfig.json --noEmit",
-    "typecheck:ui": "tsc -p ui/tsconfig.json --noEmit"
+    "typecheck:ui": "tsc -p ui/tsconfig.json --noEmit",
+    "test:browser": "npm run build:ui && node --test ui/tests/*.browser.test.mjs"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
@@ -45,6 +46,7 @@
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.1.0",
     "esbuild": "^0.28.2",
+    "playwright": "^1.63.0",
     "tsx": "^4.20.0",
     "typescript": "^5.9.0",
     "vite": "^8.2.2"

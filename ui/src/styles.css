@@ -232,6 +232,15 @@ body {
   min-height: 18px;
 }
 
+.templates-page { padding-bottom: 24px; }
+.templates-hotkey { max-width: 420px; }
+.templates-path { overflow-wrap: anywhere; flex: 1; min-width: 200px; }
+.template-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.template-levels { white-space: pre-wrap; overflow-wrap: anywhere; min-width: 0; line-height: 1.6; }
+.template-separator { color: var(--mantine-color-dimmed); }
+.template-levels mark { background: #ffe08a; color: #332400; border-radius: 2px; }
+.templates-alphabet button { min-width: 28px; }
+
 .voice-editor-status-dot {
   width: 7px;
   height: 7px;

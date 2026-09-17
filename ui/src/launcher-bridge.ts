@@ -1,7 +1,36 @@
 interface TauriGlobal {
+  readonly event?: {
+    listen<T>(event: string, handler: (event: { payload: T }) => void): Promise<() => void>;
+  };
   readonly core?: {
     invoke<T>(command: string, arguments_?: Record<string, unknown>): Promise<T>;
   };
+}
+
+export interface TemplateHotkeySettings {
+  readonly enabled: boolean;
+  readonly key: string;
+  readonly intervalMs: number;
+}
+
+export interface TemplateDesktopState {
+  readonly supported: boolean;
+  readonly settings: TemplateHotkeySettings;
+  readonly error: string | null;
+  readonly canPaste: boolean;
+  readonly activation: number | null;
+}
+
+export function invokeLauncher<T>(command: string, args?: Record<string, unknown>): Promise<T> {
+  const core = window.__TAURI__?.core;
+  if (core === undefined) return Promise.reject(new Error("Нужен desktop-лаунчер"));
+  return core.invoke<T>(command, args);
+}
+
+export async function listenTemplatesActivation(callback: (id: number) => void): Promise<() => void> {
+  const events = window.__TAURI__?.event;
+  if (events === undefined) throw new Error("События лаунчера недоступны");
+  return events.listen<number>("templates-activated", ({ payload }) => callback(payload));
 }
 
 declare global {

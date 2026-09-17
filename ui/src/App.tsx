@@ -16,6 +16,8 @@ import { HistoryPage } from "./HistoryPage.js";
 import { RulesPage } from "./RulesPage.js";
 import { SettingsPage } from "./SettingsPage.js";
 import { VoiceEditorPage } from "./VoiceEditorPage.js";
+import { TemplatesPage } from "./TemplatesPage.js";
+import { invokeLauncher, isLauncherWebView, listenTemplatesActivation, type TemplateDesktopState } from "./launcher-bridge.js";
 import type {
   EditorFontSize,
   FontSizePreference,
@@ -103,6 +105,30 @@ function AppContent({
     deserialize: deserializeFontSize,
   });
   const [rules, setRules] = useState<readonly TransformationRuleState[]>([]);
+  const [activeTab, setActiveTab] = useState<string | null>("editor");
+  const [templatesActivation, setTemplatesActivation] = useState(0);
+
+  useEffect(() => {
+    if (!isLauncherWebView()) return;
+    let disposed = false;
+    let unlisten: (() => void) | undefined;
+    let lastId = 0;
+    const activate = (id: number) => {
+      if (disposed || id <= lastId) return;
+      lastId = id;
+      setActiveTab("templates");
+      setTemplatesActivation(id);
+      void invokeLauncher("ack_templates_activation", { id }).catch(() => {});
+    };
+    void (async () => {
+      const stop = await listenTemplatesActivation(activate);
+      if (disposed) { stop(); return; }
+      unlisten = stop;
+      const state = await invokeLauncher<TemplateDesktopState>("templates_desktop_state");
+      if (state.activation !== null) activate(state.activation);
+    })().catch(() => {});
+    return () => { disposed = true; unlisten?.(); };
+  }, []);
   const [rulesLoading, setRulesLoading] = useState(true);
   const [rulesError, setRulesError] = useState<string>();
   const [rulesRefreshToken, setRulesRefreshToken] = useState(0);
@@ -180,16 +206,18 @@ function AppContent({
 
   return (
     <Container className="app-container" size="lg" py={0}>
-      <Tabs className="app-tabs" defaultValue="editor" keepMounted>
+      <Tabs className="app-tabs" value={activeTab} onChange={setActiveTab} keepMounted>
         <Tabs.List>
           <Tabs.Tab value="editor">Голосовой редактор</Tabs.Tab>
           <Tabs.Tab value="history">История</Tabs.Tab>
           <Tabs.Tab value="rules">Список правил</Tabs.Tab>
+          <Tabs.Tab value="templates">Шаблоны</Tabs.Tab>
           <Tabs.Tab value="settings">Настройки</Tabs.Tab>
         </Tabs.List>
 
         <Tabs.Panel className="app-tab-panel voice-editor-panel" value="editor">
           <VoiceEditorPage
+            active={activeTab === "editor"}
             editorFontSize={editorFontSize}
             historyLimit={historyLimit}
           />
@@ -208,6 +236,9 @@ function AppContent({
               void updateRule(ruleId, enabled);
             }}
           />
+        </Tabs.Panel>
+        <Tabs.Panel className="app-tab-panel" value="templates">
+          <TemplatesPage active={activeTab === "templates"} activation={templatesActivation} />
         </Tabs.Panel>
         <Tabs.Panel className="app-tab-panel" value="settings">
           <SettingsPage
