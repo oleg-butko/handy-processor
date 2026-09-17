@@ -26,25 +26,33 @@ test("creates a portable directory with exactly the required build artifacts", (
     const server = join(directory, "server.exe");
     const config = join(directory, "source-config.json");
     const destination = join(directory, "release");
+    const templatesExample = join(directory, "templates.example.txt");
     writeFileSync(launcher, Buffer.from("MZlauncher"));
     writeFileSync(server, Buffer.from("MZserver"));
     writeFileSync(config, '{"port":11434}\n');
+    writeFileSync(templatesExample, "Категория > Тема > Пример\n");
 
     const files = packageWindowsPortable({
       launcher,
       server,
       config,
       destination,
+      templatesExample,
     });
 
     assert.deepEqual(
       files.map((path) => path.slice(destination.length + 1)),
-      ["HandyProcessor.exe", "handy-processor-server.exe", "config.json"],
+      ["HandyProcessor.exe", "handy-processor-server.exe", "config.json", "templates.example.txt"],
     );
     assert.equal(
       readFileSync(join(destination, "handy-processor-server.exe"), "utf8"),
       "MZserver",
     );
+    writeFileSync(join(destination, "templates.txt"), "Личные > Шаблоны > Мой текст\n");
+    writeFileSync(join(destination, "template-hotkey.json"), '{"enabled":false}');
+    packageWindowsPortable({ launcher, server, config, destination, templatesExample });
+    assert.equal(readFileSync(join(destination, "templates.txt"), "utf8"), "Личные > Шаблоны > Мой текст\n");
+    assert.equal(readFileSync(join(destination, "template-hotkey.json"), "utf8"), '{"enabled":false}');
   });
 });
 

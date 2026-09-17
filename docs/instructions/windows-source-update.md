@@ -59,10 +59,14 @@ py scripts\unpack_source_archive.py --config C:\work\update-config.json
 Скрипт оставляет на исходных местах:
 
 - `.git`, `.env` и runtime `config.json`;
+- `templates.txt` и `template-hotkey.json` в корне;
 - все каталоги `node_modules`;
 - SQLite-базы и журналы;
 - `.venv`, `archive`, `dist`, `web-dist`, `sea-build`, `release`;
 - Rust `target` и каталоги `binaries`.
+
+Файл шаблонов с другим именем храните вне обновляемого каталога или в
+сохраняемом `release/`: произвольные пользовательские имена скрипту неизвестны.
 
 Каталоги исходных ресурсов, например `launcher/src-tauri/icons` и
 `launcher/src-tauri/gen`, обновляются из ZIP.

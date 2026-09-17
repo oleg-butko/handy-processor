@@ -8,6 +8,9 @@ __pycache__/
 *.sqlite3-journal
 *.log
 .env
+templates.txt
+template-hotkey.json
+.template-hotkey.json.*.tmp
 
 # Optional Tauri launcher
 launcher/node_modules/

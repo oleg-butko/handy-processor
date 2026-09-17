@@ -61,10 +61,12 @@ export function packageWindowsPortable({
   server,
   config,
   destination,
+  templatesExample,
 }) {
   requirePortableExecutable(launcher, "Launcher");
   requirePortableExecutable(server, "Server SEA");
   validateConfig(config);
+  if (templatesExample) requireFile(templatesExample, "Templates example");
   mkdirSync(destination, { recursive: true });
 
   const files = [
@@ -72,6 +74,7 @@ export function packageWindowsPortable({
     [server, resolve(destination, "handy-processor-server.exe")],
     [config, resolve(destination, "config.json")],
   ];
+  if (templatesExample) files.push([templatesExample, resolve(destination, "templates.example.txt")]);
   for (const [source, target] of files) {
     copyFileSync(source, target);
   }
@@ -88,6 +91,7 @@ function main() {
     launcher: findLauncherExecutable(),
     server: resolve(projectRoot, "sea-build/handy-processor.exe"),
     config: resolve(projectRoot, "sea-build/config.json"),
+    templatesExample: resolve(projectRoot, "templates.example.txt"),
     destination,
   });
 

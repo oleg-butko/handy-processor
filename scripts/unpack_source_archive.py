@@ -35,7 +35,7 @@ PRESERVED_DIRECTORY_NAMES = frozenset(
         "web-dist",
     }
 )
-PRESERVED_ROOT_FILES = frozenset({".env", "config.json"})
+PRESERVED_ROOT_FILES = frozenset({".env", "config.json", "templates.txt", "template-hotkey.json"})
 PRESERVED_FILE_SUFFIXES = (
     ".log",
     ".sqlite3",

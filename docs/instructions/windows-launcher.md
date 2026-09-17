@@ -17,17 +17,23 @@ desktop:
                     -> handy-processor-server.exe --managed
 ```
 
-Portable-каталог содержит только три поставляемых файла:
+Portable-каталог содержит три обязательных файла и пример шаблонов:
 
 ```text
 HandyProcessor.exe
 handy-processor-server.exe
 config.json
+templates.example.txt
 ```
 
 `handy-processor.sqlite3` создаётся после первого запроса. React/Mantine UI,
 Node.js runtime и SQLite driver встроены в server EXE; отдельные DLL,
 `web-dist`, Node.js и Python на пользовательской машине не нужны.
+
+Для вкладки [«Шаблоны»](../templates.md) создайте собственный `templates.txt`
+рядом с EXE или выберите другой файл в интерфейсе. Windows-лаунчер по умолчанию
+открывает эту вкладку двойным Win (200 мс); одиночный Win при включённой
+привязке не открывает «Пуск». Настройки находятся справа сверху во вкладке.
 
 ## Требования к Windows build-машине
 

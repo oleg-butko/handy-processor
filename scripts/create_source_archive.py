@@ -42,6 +42,7 @@ SOURCE_FILES = (
     "package-lock.json",
     "package.json",
     "README.md",
+    "templates.example.txt",
     "requirements-generator.txt",
     "sea-config.node26.json",
     "tsconfig.json",
