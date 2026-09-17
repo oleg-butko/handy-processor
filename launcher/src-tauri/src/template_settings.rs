@@ -140,7 +140,13 @@ impl TemplateHotkeySettings {
     pub fn save(&self, directory: &Path) -> Result<()> {
         self.validate()?;
         let path = directory.join(SETTINGS_FILE);
-        let temporary = directory.join(format!(".{SETTINGS_FILE}.{}.tmp", std::process::id()));
+        let nonce = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)?
+            .as_nanos();
+        let temporary = directory.join(format!(
+            ".{SETTINGS_FILE}.{}.{nonce}.tmp",
+            std::process::id()
+        ));
         let mut file = fs::OpenOptions::new()
             .write(true)
             .create_new(true)
