@@ -151,8 +151,8 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
             <NumberInput label="Интервал, мс" aria-label="Интервал двойного нажатия" size="xs" min={50} max={2000} step={50} allowDecimal={false} value={settings.intervalMs} w={115} disabled={saving || recording} onChange={(value) => setSettings({ ...settings, intervalMs: Number(value) })} />
             <Button size="xs" loading={saving} disabled={recording || settings.intervalMs < 50 || settings.intervalMs > 2000} onClick={() => void saveSettings()}>Сохранить</Button>
           </Group>
-          <Text size="xs" c="dimmed">Одиночный Win не открывает «Пуск» при включённом хоткее.</Text>
-          {recording ? <Button size="xs" variant="subtle" onClick={() => void invokeLauncher("cancel_template_recording")}>Отмена записи</Button> : null}
+          <Text size="xs" c="dimmed">{settings.key === "Win" || settings.key.startsWith("Meta") ? "Одиночный Win не открывает «Пуск» при включённом хоткее." : "Двойное нажатие одной клавиши, без сочетаний. Обычная клавиша при включённом хоткее перехватывается."}</Text>
+          {recording ? <Button size="xs" variant="subtle" onClick={() => void invokeLauncher("cancel_template_recording").catch((failure) => setError(String(failure)))}>Отмена записи</Button> : null}
           {desktop.error ? <Text c="red" size="xs">{desktop.error}</Text> : null}
         </Stack> : <Text size="xs" c="dimmed">Глобальный хоткей и вставка доступны в Windows-лаунчере.</Text>}
       </Paper>

@@ -38,10 +38,20 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
   page.on('pageerror', error => errors.push(error.message));
   await page.addInitScript(() => {
     window.__copied = '';
+    window.__pasteCalls = [];
+    window.__settings = { enabled: true, key: 'Win', intervalMs: 200 };
+    const state = () => ({ supported: true, settings: window.__settings, error: null, canPaste: true, activation: null });
     window.__TAURI__ = {
       core: { invoke: async (command, args) => {
-        if (command === 'templates_desktop_state') return { supported: true, settings: { enabled: true, key: 'Win', intervalMs: 200 }, error: null, canPaste: true, activation: null };
+        if (command === 'templates_desktop_state') return state();
+        if (command === 'record_template_key') return 'ControlRight';
+        if (command === 'set_template_hotkey') { window.__settings = args.settings; return state(); }
+        if (command === 'ack_templates_activation') window.__acked = args.id;
         if (command === 'copy_template') window.__copied = args.text;
+        if (command === 'paste_template') {
+          window.__pasteCalls.push(args.text);
+          return new Promise(resolve => { window.__finishPaste = () => resolve({ pasted: false, message: 'Скопировано; вставьте вручную. Фокус изменился' }); });
+        }
       } },
       event: { listen: async (_, handler) => { window.__activate = handler; return () => {}; } },
     };
@@ -58,6 +68,18 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
   assert.equal(await page.locator('[data-level="3"]').count(), 0);
   await page.getByRole('button', { name: 'Скопировать строку 1', exact: true }).click();
   await page.waitForFunction(() => window.__copied === 'Готовый ответ');
+  const paste = page.getByRole('button', { name: 'Вставить строку 1', exact: true });
+  await paste.click();
+  await page.waitForFunction(() => window.__pasteCalls.length === 1);
+  assert.equal(await paste.isDisabled(), true);
+  assert.deepEqual(await page.evaluate(() => window.__pasteCalls), ['Готовый ответ']);
+  await page.evaluate(() => window.__finishPaste());
+  await page.getByText('Скопировано; вставьте вручную. Фокус изменился', { exact: true }).waitFor();
+  await page.getByRole('button', { name: 'Win × 2', exact: true }).click();
+  await page.getByRole('button', { name: 'Правый Ctrl × 2', exact: true }).waitFor();
+  await page.getByRole('textbox', { name: 'Интервал двойного нажатия', exact: true }).fill('350');
+  await page.getByRole('button', { name: 'Сохранить', exact: true }).click();
+  await page.waitForFunction(() => window.__settings.key === 'ControlRight' && window.__settings.intervalMs === 350);
   await page.getByRole('button', { name: 'Уровень 2', exact: true }).click();
   assert.equal(await page.locator('.template-row').count(), 0);
   await page.getByRole('button', { name: 'Очистить', exact: true }).click();
@@ -68,5 +90,7 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
   await page.evaluate(() => window.__activate({ payload: 1 }));
   await page.waitForFunction(() => document.querySelector('[role="tab"][aria-selected="true"]')?.textContent === 'Шаблоны');
   assert.equal(await filter.inputValue(), 'сл');
+  await page.waitForFunction(() => window.__acked === 1);
+  if (process.env.TEMPLATES_SCREENSHOT) await page.screenshot({ path: process.env.TEMPLATES_SCREENSHOT, fullPage: true });
   assert.deepEqual(errors, []);
 });

@@ -1,6 +1,8 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use std::thread;
+mod templates_desktop;
+use templates_desktop::*;
 
 use handy_processor_launcher::{
     history_export::download_history_export, runtime::RuntimePaths, supervisor::Supervisor,
@@ -34,6 +36,9 @@ fn show_action_error(app: &AppHandle, action: &str, error: impl std::fmt::Displa
 }
 
 fn show_main_window(app: &AppHandle) {
+    if let Some(state) = app.try_state::<std::sync::Arc<TemplateDesktop>>() {
+        state.clear_target();
+    }
     let Some(window) = app.get_webview_window(MAIN_WINDOW) else {
         return;
     };
@@ -77,14 +82,7 @@ async fn save_history_export(
     window: WebviewWindow,
     paths: State<'_, RuntimePaths>,
 ) -> Result<String, String> {
-    if window.label() != MAIN_WINDOW {
-        return Err("history export is available only from the main window".into());
-    }
-    let actual_url = window.url().map_err(|error| error.to_string())?;
-    let expected_url = tauri::Url::parse(&paths.web_url()).map_err(|error| error.to_string())?;
-    if actual_url.origin() != expected_url.origin() {
-        return Err("history export request came from an unexpected origin".into());
-    }
+    validate_window(&window, &paths)?;
 
     let paths = paths.inner().clone();
     tauri::async_runtime::spawn_blocking(move || {
@@ -94,6 +92,19 @@ async fn save_history_export(
     .map_err(|error| format!("history export task failed: {error}"))?
     .map(|path| path.to_string_lossy().into_owned())
     .map_err(|error| format!("{error:#}"))
+}
+
+fn validate_window(window: &WebviewWindow, paths: &RuntimePaths) -> Result<(), String> {
+    if window.label() != MAIN_WINDOW {
+        return Err("command is available only from the main window".into());
+    }
+    let actual_url = window.url().map_err(|error| error.to_string())?;
+    let expected_url = tauri::Url::parse(&paths.web_url()).map_err(|error| error.to_string())?;
+    if actual_url.origin() != expected_url.origin() {
+        return Err("command came from an unexpected origin".into());
+    }
+
+    Ok(())
 }
 
 fn create_tray(app: &App, paths: RuntimePaths, supervisor: Supervisor) -> tauri::Result<()> {
@@ -198,8 +209,10 @@ fn initialize_app(app: &mut App) -> anyhow::Result<()> {
         return Err(error);
     }
 
+    let directory = paths.directory.clone();
     app.manage(paths);
     app.manage(supervisor);
+    templates_desktop::initialize(app, directory);
     Ok(())
 }
 
@@ -218,7 +231,17 @@ fn main() {
                 .with_state_flags(StateFlags::POSITION | StateFlags::SIZE)
                 .build(),
         )
-        .invoke_handler(tauri::generate_handler![save_history_export])
+        .invoke_handler(tauri::generate_handler![
+            save_history_export,
+            templates_desktop_state,
+            ack_templates_activation,
+            set_template_hotkey,
+            record_template_key,
+            cancel_template_recording,
+            choose_templates_file,
+            copy_template,
+            paste_template
+        ])
         .setup(|app| {
             if let Err(error) = initialize_app(app) {
                 let app_handle = app.handle().clone();
@@ -237,6 +260,9 @@ fn main() {
 
     app.run(|app, event| {
         if matches!(event, RunEvent::ExitRequested { .. }) {
+            if let Some(state) = app.try_state::<std::sync::Arc<TemplateDesktop>>() {
+                state.stop();
+            }
             if let Some(supervisor) = app.try_state::<Supervisor>() {
                 supervisor.shutdown();
             }
