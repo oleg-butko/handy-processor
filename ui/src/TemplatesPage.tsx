@@ -1,4 +1,4 @@
-import { ActionIcon, Alert, Button, Group, NumberInput, Paper, Stack, Switch, Text, TextInput, Title, Tooltip } from "@mantine/core";
+import { ActionIcon, Alert, Button, Group, NumberInput, Paper, Stack, Switch, Text, TextInput, Tooltip } from "@mantine/core";
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { filterTemplates, templateMatches, templatePrefixes, type TemplateResponse } from "../../src/template-model.js";
 import { invokeLauncher, isLauncherWebView, type TemplateDesktopState, type TemplateHotkeySettings } from "./launcher-bridge.js";
@@ -150,13 +150,30 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
     finally { actionRef.current = false; setActing(false); }
   };
 
+  const addWord = (word: string) => {
+    const prefix = query.trimEnd();
+    const next = `${prefix}${prefix && !prefix.endsWith(".") ? "." : ""}${word}.`;
+    setQuery(next);
+    setNotice(undefined);
+    requestAnimationFrame(() => {
+      input.current?.focus(); input.current?.setSelectionRange(next.length, next.length);
+    });
+  };
+
   const prefixes = useMemo(() => templatePrefixes(query), [query]);
   const rows = useMemo(() => filterTemplates(document?.items ?? [], query, levels), [document, query, levels]);
 
   return <Stack pt="md" gap="sm" className="templates-page">
     <Group justify="space-between" align="flex-start">
-      <Stack gap={4}><Title order={2}>Шаблоны</Title><Text size="sm" c="dimmed">Найдите фразу и скопируйте или вставьте третий уровень.</Text></Stack>
-      <Paper withBorder p="sm" radius="md" className="hp-surface templates-hotkey">
+      <Group gap="xs">
+        <Text size="sm">Уровни:</Text>
+        {[0, 1, 2].map((level) => <Button key={level} size="xs" aria-label={`Уровень ${level + 1}`} aria-pressed={levels.includes(level)} variant={levels.includes(level) ? "filled" : "default"} onClick={() => setLevels((current) => current.includes(level) ? current.length > 1 ? current.filter((item) => item !== level) : current : [...current, level].sort())}>{level + 1}</Button>)}
+      </Group>
+      <details className="templates-hotkey" onToggle={(event) => {
+        if (!event.currentTarget.open && recording) void invokeLauncher("cancel_template_recording").catch((failure) => setError(String(failure)));
+      }}>
+        <summary>Хоткей{desktop?.supported ? `: ${desktop.settings.enabled ? `${keyLabel(desktop.settings.key)}, ${desktop.settings.intervalMs} мс` : "выключен"}` : ""}</summary>
+        <Paper withBorder p="sm" mt="xs" radius="md" className="hp-surface">
         {desktop?.supported && settings ? <Stack gap="xs">
           <Switch label="Двойное нажатие" checked={settings.enabled} disabled={saving || recording} onChange={(event) => setSettings({ ...settings, enabled: event.currentTarget.checked })} />
           <Group gap="xs" align="end">
@@ -166,15 +183,16 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
           </Group>
           <Text size="xs" c="dimmed">{settings.key === "Win" || settings.key.startsWith("Meta") ? "Одиночный Win не открывает «Пуск» при включённом хоткее." : "Двойное нажатие одной клавиши, без сочетаний. Обычная клавиша при включённом хоткее перехватывается."}</Text>
           {recording ? <Button size="xs" variant="subtle" onClick={() => void invokeLauncher("cancel_template_recording").catch((failure) => setError(String(failure)))}>Отмена записи</Button> : null}
-          {desktop.error ? <Text c="red" size="xs">{desktop.error}</Text> : null}
         </Stack> : <Text size="xs" c="dimmed">Глобальный хоткей и вставка доступны в Windows-лаунчере.</Text>}
-      </Paper>
+        </Paper>
+      </details>
     </Group>
-    <Group gap="xs">
-      <Text size="sm">Уровни:</Text>
-      {[0, 1, 2].map((level) => <Button key={level} size="xs" aria-label={`Уровень ${level + 1}`} aria-pressed={levels.includes(level)} variant={levels.includes(level) ? "filled" : "default"} onClick={() => setLevels((current) => current.includes(level) ? current.length > 1 ? current.filter((item) => item !== level) : current : [...current, level].sort())}>{level + 1}</Button>)}
-    </Group>
+    {desktop?.error ? <Alert color="red">{desktop.error}</Alert> : null}
     <TextInput ref={input} label="Фильтр" placeholder="сл.др — слова начинаются на «сл» и «др»" value={query} onChange={(event) => setQuery(event.currentTarget.value)} />
+    {document?.predefinedWords?.length ? <Group gap={4} aria-label="Готовые слова" role="group">
+      {document.predefinedWords.map((word) => <Button key={word} size="compact-sm" variant="light" onMouseDown={(event) => event.preventDefault()} onClick={() => addWord(word)}>{word}</Button>)}
+    </Group> : null}
+    {document?.predefinedWordsError ? <Alert color="yellow">{document.predefinedWordsError}</Alert> : null}
     <Group gap={4} className="templates-alphabet">
       {[...ALPHABET, "."].map((letter) => <Button key={letter} size="compact-sm" variant="default" aria-label={letter === "." ? "Следующее слово" : `Буква ${letter}`} onMouseDown={(event) => event.preventDefault()} onClick={() => editQuery(letter)}>{letter}</Button>)}
       <Button size="compact-sm" variant="light" aria-label="Удалить букву" onMouseDown={(event) => event.preventDefault()} onClick={() => editQuery("", true)}>⌫</Button>

@@ -234,6 +234,8 @@ body {
 
 .templates-page { padding-bottom: 24px; }
 .templates-hotkey { max-width: 420px; }
+.templates-hotkey summary { cursor: pointer; padding: 5px 8px; font-size: var(--mantine-font-size-sm); border-radius: var(--mantine-radius-sm); }
+.templates-hotkey summary:hover { background: var(--mantine-color-default-hover); }
 .templates-path { overflow-wrap: anywhere; flex: 1; min-width: 200px; }
 .template-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .template-levels { white-space: pre-wrap; overflow-wrap: anywhere; min-width: 0; line-height: 1.6; }

@@ -12,6 +12,7 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
     { line: 2, levels: ['Общение', 'Приветствие', 'Добрый день!'] },
   ];
   const diagnostics = [];
+  let predefinedWords = ['Сложные', 'Другие'];
   const server = createServer(async (req, res) => {
     const pathname = new URL(req.url, 'http://localhost').pathname;
     if (pathname === '/api/diagnostics/client-error') {
@@ -22,7 +23,7 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
       res.end(JSON.stringify({ logPath: '/test/handy-processor.log' }));
       return;
     }
-    const data = pathname === '/api/templates' ? { path: '/test/templates.txt', items, diagnostics: [], error: null, stale: false }
+    const data = pathname === '/api/templates' ? { path: '/test/templates.txt', items, predefinedWords, predefinedWordsError: null, diagnostics: [], error: null, stale: false }
       : pathname === '/api/editor/draft' ? { content: '', state: null, currentNoteId: null, revision: 0 }
       : pathname === '/api/transformations' ? { items: [], pagination: { total: 0, totalPages: 0 } }
       : pathname === '/api/settings/history' ? { maxEntries: 50000 }
@@ -70,6 +71,35 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
   await page.getByRole('tab', { name: 'Шаблоны', exact: true }).click();
   await page.locator('.template-row').first().waitFor();
   const filter = page.getByRole('textbox', { name: 'Фильтр', exact: true });
+  await t.test('compact hotkey settings and predefined words with refresh', async () => {
+    assert.equal(await page.getByRole('heading', { name: 'Шаблоны', exact: true }).count(), 0);
+    const interval = page.getByRole('textbox', { name: 'Интервал двойного нажатия', exact: true });
+    assert.equal(await interval.isVisible(), false);
+    await page.locator('.templates-hotkey summary').click();
+    assert.equal(await interval.isVisible(), true);
+    await page.locator('.templates-hotkey summary').click();
+    assert.equal(await interval.isVisible(), false);
+    const words = page.getByRole('group', { name: 'Готовые слова', exact: true });
+    await words.getByRole('button', { name: 'Сложные', exact: true }).click();
+    assert.equal(await filter.inputValue(), 'Сложные.');
+    assert.equal(await page.locator('.template-row').count(), 1);
+    await words.getByRole('button', { name: 'Другие', exact: true }).click();
+    assert.equal(await filter.inputValue(), 'Сложные.Другие.');
+    assert.equal(await page.locator('.template-row').count(), 1);
+    await filter.fill('сл');
+    await words.getByRole('button', { name: 'Другие', exact: true }).click();
+    assert.equal(await filter.inputValue(), 'сл.Другие.');
+    predefinedWords = ['Общение'];
+    await page.getByRole('button', { name: 'Обновить', exact: true }).click();
+    await words.getByRole('button', { name: 'Общение', exact: true }).waitFor();
+    assert.equal(await words.getByRole('button', { name: 'Другие', exact: true }).count(), 0);
+    await filter.fill('');
+    await words.getByRole('button', { name: 'Общение', exact: true }).click();
+    assert.equal(await filter.inputValue(), 'Общение.');
+    assert.equal(await page.locator('.template-row').count(), 1);
+    assert.match(await page.locator('.template-row').textContent(), /Добрый день!/);
+    await page.getByRole('button', { name: 'Очистить', exact: true }).click();
+  });
   await filter.fill('сл.др');
   assert.equal(await page.locator('.template-row').count(), 1);
   assert.deepEqual(await page.locator('mark').allTextContents(), ['Сл', 'Др']);
@@ -84,6 +114,7 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
   assert.deepEqual(await page.evaluate(() => window.__pasteCalls), ['Готовый ответ']);
   await page.evaluate(() => window.__finishPaste());
   await page.getByText('Скопировано; вставьте вручную. Фокус изменился', { exact: true }).waitFor();
+  await page.locator('.templates-hotkey summary').click();
   await page.getByRole('button', { name: 'Win × 2', exact: true }).click();
   await page.getByRole('button', { name: 'Правый Ctrl × 2', exact: true }).waitFor();
   await page.getByRole('textbox', { name: 'Интервал двойного нажатия', exact: true }).fill('350');
@@ -100,7 +131,11 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
   await page.waitForFunction(() => document.querySelector('[role="tab"][aria-selected="true"]')?.textContent === 'Шаблоны');
   assert.equal(await filter.inputValue(), 'сл');
   await page.waitForFunction(() => window.__acked === 1);
-  if (process.env.TEMPLATES_SCREENSHOT) await page.screenshot({ path: process.env.TEMPLATES_SCREENSHOT, fullPage: true });
+  if (process.env.TEMPLATES_SCREENSHOT) {
+    await page.locator('.templates-hotkey summary').click();
+    await page.screenshot({ path: process.env.TEMPLATES_SCREENSHOT, fullPage: true });
+    await page.locator('.templates-hotkey summary').click();
+  }
   await t.test('recording stops when the window loses focus or unloads', async () => {
     await page.evaluate(() => {
       const invoke = window.__TAURI__.core.invoke;
