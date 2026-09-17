@@ -18,6 +18,7 @@ import type {
 } from "./transformation-log.js";
 import { MAX_TRANSFORMATION_HISTORY_LIMIT } from "./transformation-log.js";
 import type { WebAsset, WebUiAssets } from "./web-ui-assets.js";
+import type { TemplateFile } from "./templates.js";
 
 export const MODEL_ID = "handy-basic-transformer";
 
@@ -66,6 +67,7 @@ export interface EditorDraftStorage {
 }
 
 export interface AppDependencies {
+  readonly templates?: TemplateFile;
   readonly transformationHistory: TransformationHistory;
   readonly ruleSettings: RuleSettings;
   readonly editorSessions: EditorSessionRegistry;
@@ -450,6 +452,7 @@ function getTransformationPage(
 }
 
 export function createRequestHandler({
+  templates,
   transformationHistory,
   ruleSettings,
   editorSessions,
@@ -464,6 +467,32 @@ export function createRequestHandler({
     try {
       const url = getRequestUrl(request);
       const path = normalizePath(url.pathname);
+
+      if (path === "/api/templates" && templates !== undefined) {
+        if (request.method === "GET") {
+          sendJson(response, 200, await templates.load());
+          return;
+        }
+        if (request.method === "PUT") {
+          // File selection is available only to the local, same-origin UI.
+          const origin = request.headers.origin;
+          if (origin !== `http://${request.headers.host}` ||
+              !/^http:\/\/(?:localhost|127\.0\.0\.1):\d+$/u.test(origin ?? "") ||
+              !/^application\/json(?:\s*;|$)/iu.test(request.headers["content-type"] ?? "")) {
+            throw new HttpError(403, "File selection requires a same-origin JSON request");
+          }
+          const body = await readJson(request);
+          if (body.path !== null && (typeof body.path !== "string" || body.path.length > 4096)) {
+            throw new HttpError(400, "The 'path' field must be a file path or null");
+          }
+          try {
+            sendJson(response, 200, await templates.select(body.path as string | null));
+          } catch (error) {
+            throw new HttpError(400, error instanceof Error ? error.message : "Cannot load templates");
+          }
+          return;
+        }
+      }
 
       if (request.method === "GET" && path === "/health") {
         sendJson(response, 200, {

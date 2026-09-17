@@ -21,6 +21,7 @@ import {
 import { RuleSettings } from "./rule-settings.js";
 import { TransformationLog } from "./transformation-log.js";
 import { loadWebUiAssets } from "./web-ui-assets.js";
+import { TemplateFile } from "./templates.js";
 
 const host = "127.0.0.1";
 const runtimeDirectory = resolveRuntimeDirectory();
@@ -33,6 +34,7 @@ const editorSessions = new EditorSessionRegistry();
 const diagnosticLog = new FileDiagnosticLog(runtimeDirectory);
 const webUiAssets = loadWebUiAssets(join(process.cwd(), "web-dist"));
 const handleRequest = createRequestHandler({
+  templates: new TemplateFile(runtimeDirectory, transformationLog),
   transformationHistory: transformationLog,
   ruleSettings,
   editorSessions,

@@ -579,6 +579,15 @@ export class TransformationLog {
     }));
   }
 
+  getTemplatesPath(): string | null {
+    const row = this.#getAppSetting.get("templates_path") as { value: string } | undefined;
+    return row?.value || null;
+  }
+
+  setTemplatesPath(path: string | null): void {
+    this.#setAppSetting.run("templates_path", path ?? "");
+  }
+
   setRuleEnabled(ruleId: TransformationRuleId, enabled: boolean): void {
     this.#setRuleEnabled.run(ruleId, enabled ? 1 : 0);
   }

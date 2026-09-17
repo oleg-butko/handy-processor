@@ -1,5 +1,9 @@
 import assert from "node:assert/strict";
 import { createServer } from "node:http";
+import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { TemplateFile } from "./templates.js";
 import type { AddressInfo } from "node:net";
 import { after, before, describe, it } from "node:test";
 import { createRequestHandler, MODEL_ID } from "./app.js";
@@ -13,6 +17,7 @@ import { EXTERNAL_TRANSFORMATION_CONTEXT } from "./transformation-context.js";
 import type { WebUiAssets } from "./web-ui-assets.js";
 
 const transformationLog = new TransformationLog(":memory:");
+const templatesDirectory = mkdtempSync(join(tmpdir(), "handy-api-templates-"));
 const ruleSettings = new RuleSettings(transformationLog);
 const editorSessions = new EditorSessionRegistry();
 const diagnosticEntries: ClientDiagnosticEntry[] = [];
@@ -33,6 +38,7 @@ const webUiAssets: WebUiAssets = {
   },
 };
 const handleRequest = createRequestHandler({
+  templates: new TemplateFile(templatesDirectory, transformationLog),
   transformationHistory: transformationLog,
   ruleSettings,
   editorSessions,
@@ -57,9 +63,24 @@ after(async () => {
     server.close((error) => (error ? reject(error) : resolve()));
   });
   transformationLog.close();
+  rmSync(templatesDirectory, { recursive: true, force: true });
 });
 
 describe("OpenAI-compatible API", () => {
+  it("loads templates and only accepts same-origin source changes", async () => {
+    writeFileSync(join(templatesDirectory, "templates.txt"), "а > б > в");
+    const response = await fetch(`${baseUrl}/api/templates`);
+    assert.equal(response.status, 200);
+    assert.equal((await response.json()).items[0].levels[2], "в");
+    const body = JSON.stringify({ path: null });
+    assert.equal((await fetch(`${baseUrl}/api/templates`, {
+      method: "PUT", headers: { "content-type": "application/json", origin: "https://example.com" }, body,
+    })).status, 403);
+    assert.equal((await fetch(`${baseUrl}/api/templates`, {
+      method: "PUT", headers: { "content-type": "application/json", origin: baseUrl }, body,
+    })).status, 200);
+  });
+
   it("identifies the running service", async () => {
     const response = await fetch(`${baseUrl}/health`);
     const body = (await response.json()) as Record<string, unknown>;
