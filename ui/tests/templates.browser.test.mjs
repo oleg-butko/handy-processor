@@ -136,6 +136,37 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
     await page.screenshot({ path: process.env.TEMPLATES_SCREENSHOT, fullPage: true });
     await page.locator('.templates-hotkey summary').click();
   }
+  await t.test('delayed native state cannot reset edited or saved hotkey settings', async () => {
+    const interval = page.getByRole('textbox', { name: 'Интервал двойного нажатия', exact: true });
+    for (const save of [false, true]) {
+      await page.evaluate(() => {
+        const invoke = window.__TAURI__.core.invoke;
+        window.__restoreInvoke = () => { window.__TAURI__.core.invoke = invoke; };
+        window.__finishState = null;
+        window.__TAURI__.core.invoke = async (command, args) => {
+          const result = await invoke(command, args);
+          if (command === 'templates_desktop_state') return new Promise(resolve => { window.__finishState = () => resolve(result); });
+          return result;
+        };
+      });
+      try {
+        await page.getByRole('tab', { name: 'История', exact: true }).click();
+        await page.getByRole('tab', { name: 'Шаблоны', exact: true }).click();
+        await page.waitForFunction(() => typeof window.__finishState === 'function');
+        await interval.fill(save ? '550' : '450');
+        if (save) {
+          await page.getByRole('button', { name: 'Сохранить', exact: true }).click();
+          await page.waitForFunction(() => window.__settings.intervalMs === 550);
+        }
+        await page.evaluate(() => window.__finishState());
+        await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+        assert.equal(await interval.inputValue(), save ? '550' : '450');
+        if (save) assert.match(await page.locator('.templates-hotkey summary').textContent(), /550 мс/);
+      } finally {
+        await page.evaluate(() => { window.__finishState?.(); window.__restoreInvoke(); });
+      }
+    }
+  });
   await t.test('recording stops when the window loses focus or unloads', async () => {
     await page.evaluate(() => {
       const invoke = window.__TAURI__.core.invoke;

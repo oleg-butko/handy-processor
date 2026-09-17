@@ -40,6 +40,9 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
   const actionRef = useRef(false);
   const requestRef = useRef(0);
   const changingSourceRef = useRef(false);
+  const desktopRevisionRef = useRef(0);
+  const settingsRevisionRef = useRef(0);
+  const savingRef = useRef(false);
   const input = useRef<HTMLInputElement>(null);
   const launcher = isLauncherWebView();
 
@@ -67,9 +70,16 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
     input.current?.select();
     if (launcher) {
       let cancelled = false;
+      const desktopRevision = desktopRevisionRef.current;
+      const settingsRevision = settingsRevisionRef.current;
       void invokeLauncher<TemplateDesktopState>("templates_desktop_state").then((state) => {
-        if (!cancelled) { setDesktop(state); setSettings(state.settings); }
-      }).catch((failure) => { if (!cancelled) setError(String(failure)); });
+        if (!cancelled && !savingRef.current && desktopRevision === desktopRevisionRef.current) {
+          setDesktop(state);
+          if (settingsRevision === settingsRevisionRef.current) setSettings(state.settings);
+        }
+      }).catch((failure) => {
+        if (!cancelled && !savingRef.current && desktopRevision === desktopRevisionRef.current) setError(String(failure));
+      });
       return () => { cancelled = true; };
     }
   }, [active, activation, launcher]);
@@ -104,21 +114,35 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
     finally { changingSourceRef.current = false; setLoading(false); }
   };
 
+  const editSettings = (next: TemplateHotkeySettings) => {
+    ++settingsRevisionRef.current;
+    setSettings(next);
+  };
+
   const saveSettings = async () => {
-    if (!settings) return;
+    if (!settings || savingRef.current) return;
+    savingRef.current = true;
+    ++desktopRevisionRef.current;
     setSaving(true);
     setError(undefined);
     try {
       const state = await invokeLauncher<TemplateDesktopState>("set_template_hotkey", { settings });
       setDesktop(state); setSettings(state.settings); setNotice("Настройки хоткея сохранены");
     } catch (failure) { setError(String(failure)); }
-    finally { setSaving(false); }
+    finally {
+      // Also invalidate state reads started while the save was in flight.
+      ++desktopRevisionRef.current;
+      savingRef.current = false;
+      setSaving(false);
+    }
   };
 
   const record = async () => {
+    ++settingsRevisionRef.current;
     setRecording(true); setError(undefined);
     try {
       const key = await invokeLauncher<string>("record_template_key");
+      ++settingsRevisionRef.current;
       setSettings((current) => current ? { ...current, key } : current);
     } catch (failure) { setError(String(failure)); }
     finally { setRecording(false); }
@@ -175,10 +199,10 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
         <summary>Хоткей{desktop?.supported ? `: ${desktop.settings.enabled ? `${keyLabel(desktop.settings.key)}, ${desktop.settings.intervalMs} мс` : "выключен"}` : ""}</summary>
         <Paper withBorder p="sm" mt="xs" radius="md" className="hp-surface">
         {desktop?.supported && settings ? <Stack gap="xs">
-          <Switch label="Двойное нажатие" checked={settings.enabled} disabled={saving || recording} onChange={(event) => setSettings({ ...settings, enabled: event.currentTarget.checked })} />
+          <Switch label="Двойное нажатие" checked={settings.enabled} disabled={saving || recording} onChange={(event) => editSettings({ ...settings, enabled: event.currentTarget.checked })} />
           <Group gap="xs" align="end">
             <Button size="xs" variant="light" disabled={saving} loading={recording} onClick={() => void record()}>{recording ? "Нажмите клавишу…" : keyLabel(settings.key)}</Button>
-            <NumberInput label="Интервал, мс" aria-label="Интервал двойного нажатия" size="xs" min={50} max={2000} step={50} allowDecimal={false} value={settings.intervalMs} w={115} disabled={saving || recording} onChange={(value) => setSettings({ ...settings, intervalMs: Number(value) })} />
+            <NumberInput label="Интервал, мс" aria-label="Интервал двойного нажатия" size="xs" min={50} max={2000} step={50} allowDecimal={false} value={settings.intervalMs} w={115} disabled={saving || recording} onChange={(value) => editSettings({ ...settings, intervalMs: Number(value) })} />
             <Button size="xs" loading={saving} disabled={recording || settings.intervalMs < 50 || settings.intervalMs > 2000} onClick={() => void saveSettings()}>Сохранить</Button>
           </Group>
           <Text size="xs" c="dimmed">{settings.key === "Win" || settings.key.startsWith("Meta") ? "Одиночный Win не открывает «Пуск» при включённом хоткее." : "Двойное нажатие одной клавиши, без сочетаний. Обычная клавиша при включённом хоткее перехватывается."}</Text>
