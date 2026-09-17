@@ -401,7 +401,7 @@ function readBoundedString(
 }
 
 function readClientDiagnostic(body: JsonObject): ClientDiagnosticEntry {
-  if (body.event !== "history-export") {
+  if (body.event !== "history-export" && body.event !== "templates") {
     throw new HttpError(400, "Unsupported diagnostic event");
   }
   if (typeof body.launcherBridgeDetected !== "boolean") {

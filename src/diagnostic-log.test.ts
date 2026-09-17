@@ -24,7 +24,7 @@ describe("FileDiagnosticLog", () => {
 
       await Promise.all([
         log.appendClientError(entry),
-        log.appendClientError({ ...entry, message: "second failure" }),
+        log.appendClientError({ ...entry, event: "templates", message: "second failure" }),
       ]);
 
       assert.equal(log.path, join(directory, DIAGNOSTIC_LOG_FILE_NAME));
@@ -35,6 +35,7 @@ describe("FileDiagnosticLog", () => {
       assert.equal(records.length, 2);
       assert.equal(records[0]?.message, "invoke failed");
       assert.equal(records[1]?.message, "second failure");
+      assert.equal(records[1]?.event, "templates");
       assert.equal(records[0]?.source, "web-ui");
       assert.equal(records[0]?.level, "error");
       assert.match(String(records[0]?.timestamp), /^\d{4}-\d{2}-\d{2}T/u);

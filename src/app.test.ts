@@ -345,6 +345,19 @@ describe("OpenAI-compatible API", () => {
       tauriNamespaces: ["core", "event"],
     });
 
+    const templateResponse = await fetch(`${baseUrl}/api/diagnostics/client-error`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        event: "templates", message: "templates_desktop_state: Command not allowed by ACL",
+        origin: baseUrl, userAgent: "test-webview", launcherBridgeDetected: true,
+        tauriNamespaces: ["core"], text: "must not be logged",
+      }),
+    });
+    assert.equal(templateResponse.status, 201);
+    assert.equal(diagnosticEntries.at(-1)?.event, "templates");
+    assert.equal("text" in (diagnosticEntries.at(-1) ?? {}), false);
+
     const invalidResponse = await fetch(
       `${baseUrl}/api/diagnostics/client-error`,
       {

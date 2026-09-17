@@ -21,10 +21,19 @@ export interface TemplateDesktopState {
   readonly activation: number | null;
 }
 
-export function invokeLauncher<T>(command: string, args?: Record<string, unknown>): Promise<T> {
+export async function invokeLauncher<T>(command: string, args?: Record<string, unknown>): Promise<T> {
   const core = window.__TAURI__?.core;
-  if (core === undefined) return Promise.reject(new Error("Нужен desktop-лаунчер"));
-  return core.invoke<T>(command, args);
+  if (core === undefined) throw new Error("Нужен desktop-лаунчер");
+  try {
+    return await core.invoke<T>(command, args);
+  } catch (error) {
+    // Use HTTP: a denied native command cannot log through the same IPC bridge.
+    // Never include arguments (template text, clipboard content or file paths).
+    let logPath: string | undefined;
+    try { logPath = await reportClientError("templates", `${command}: ${describeError(error)}`); }
+    catch { /* Preserve the original error when diagnostic logging fails. */ }
+    throw new Error(logPath === undefined ? describeError(error) : `${describeError(error)}. Подробности записаны в ${logPath}`);
+  }
 }
 
 export async function listenTemplatesActivation(callback: (id: number) => void): Promise<() => void> {
@@ -57,7 +66,7 @@ function describeError(error: unknown): string {
   }
   if (typeof error === "string") return error;
   try {
-    return JSON.stringify(error);
+    return JSON.stringify(error) ?? String(error);
   } catch {
     return String(error);
   }
@@ -66,18 +75,26 @@ function describeError(error: unknown): string {
 export async function reportHistoryExportError(
   error: unknown,
 ): Promise<string | undefined> {
+  return reportClientError("history-export", error);
+}
+
+async function reportClientError(
+  event: "history-export" | "templates",
+  error: unknown,
+): Promise<string | undefined> {
   const tauriGlobal = window.__TAURI__;
   const response = await fetch("/api/diagnostics/client-error", {
     method: "POST",
+    signal: AbortSignal.timeout(5000),
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      event: "history-export",
-      message: describeError(error),
-      origin: window.location.origin,
-      userAgent: navigator.userAgent,
+      event,
+      message: describeError(error).slice(0, 4096),
+      origin: window.location.origin.slice(0, 512),
+      userAgent: navigator.userAgent.slice(0, 1024),
       launcherBridgeDetected: isLauncherWebView(),
       tauriNamespaces:
-        tauriGlobal === undefined ? [] : Object.keys(tauriGlobal).sort(),
+        tauriGlobal === undefined ? [] : Object.keys(tauriGlobal).sort().slice(0, 32).map((name) => name.slice(0, 64)),
     }),
   });
   if (!response.ok) return undefined;

@@ -4,7 +4,7 @@ import { join } from "node:path";
 export const DIAGNOSTIC_LOG_FILE_NAME = "handy-processor.log";
 
 export interface ClientDiagnosticEntry {
-  readonly event: "history-export";
+  readonly event: "history-export" | "templates";
   readonly message: string;
   readonly origin: string;
   readonly userAgent: string;

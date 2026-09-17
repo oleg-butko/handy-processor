@@ -11,8 +11,17 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
     { line: 1, levels: ['Сложные задачи', 'Другие варианты', 'Готовый ответ'] },
     { line: 2, levels: ['Общение', 'Приветствие', 'Добрый день!'] },
   ];
+  const diagnostics = [];
   const server = createServer(async (req, res) => {
     const pathname = new URL(req.url, 'http://localhost').pathname;
+    if (pathname === '/api/diagnostics/client-error') {
+      let body = '';
+      for await (const chunk of req) body += chunk;
+      diagnostics.push(JSON.parse(body));
+      res.writeHead(201, { 'content-type': 'application/json' });
+      res.end(JSON.stringify({ logPath: '/test/handy-processor.log' }));
+      return;
+    }
     const data = pathname === '/api/templates' ? { path: '/test/templates.txt', items, diagnostics: [], error: null, stale: false }
       : pathname === '/api/editor/draft' ? { content: '', state: null, currentNoteId: null, revision: 0 }
       : pathname === '/api/transformations' ? { items: [], pagination: { total: 0, totalPages: 0 } }
@@ -148,6 +157,36 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
     await page.getByRole('button', { name: 'Скопировать строку 1', exact: true }).click();
     await page.waitForFunction(() => window.__copied === 'Новый ответ');
     await page.unroute('**/api/templates');
+  });
+  await t.test('native ACL errors are logged and show the log path', async () => {
+    await page.evaluate(() => {
+      const invoke = window.__TAURI__.core.invoke;
+      window.__TAURI__.core.invoke = (command, args) => {
+        if (command === 'templates_desktop_state' || command === 'save_history_export') {
+          return Promise.reject(`Command ${command} not allowed by ACL`);
+        }
+        return invoke(command, args);
+      };
+    });
+    await page.getByRole('tab', { name: 'История', exact: true }).click();
+    await page.getByRole('tab', { name: 'Шаблоны', exact: true }).click();
+    await page.getByRole('alert').filter({ hasText: 'templates_desktop_state not allowed by ACL' }).filter({ hasText: '/test/handy-processor.log' }).waitFor();
+    const entry = diagnostics.find(entry => entry.message.includes('templates_desktop_state not allowed by ACL'));
+    assert.equal(entry?.event, 'templates');
+    assert.equal(entry?.launcherBridgeDetected, true);
+    assert.equal(entry?.origin, `http://127.0.0.1:${server.address().port}`);
+    assert.equal('args' in entry, false);
+    await page.getByRole('tab', { name: 'Настройки', exact: true }).click();
+    await page.getByRole('button', { name: 'Скачать текстовый файл', exact: true }).click();
+    await page.getByText('Не удалось экспортировать историю. Подробности записаны в /test/handy-processor.log', { exact: true }).waitFor();
+    assert.equal(diagnostics.at(-1)?.event, 'history-export');
+    assert.match(diagnostics.at(-1)?.message, /save_history_export not allowed by ACL/);
+    await page.route('**/api/diagnostics/client-error', route => route.fulfill({ status: 500, body: 'Log unavailable' }));
+    await page.getByRole('tab', { name: 'Шаблоны', exact: true }).click();
+    const error = page.getByRole('alert').filter({ hasText: 'templates_desktop_state not allowed by ACL' });
+    await error.waitFor();
+    assert.equal((await error.textContent()).includes('Подробности записаны'), false);
+    await page.unroute('**/api/diagnostics/client-error');
   });
   assert.deepEqual(errors, []);
 });
