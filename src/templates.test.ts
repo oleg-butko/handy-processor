@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, writeFile, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { it } from "node:test";
@@ -54,6 +54,44 @@ it("retains the last file on read failure and persists validated selection", asy
     await assert.rejects(source.select("relative.txt"), /абсолютный/u);
   } finally {
     storage.close();
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+it("reloads predefined words beside the selected templates without blocking templates on word errors", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "handy-words-"));
+  let selected: string | null = null;
+  const source = new TemplateFile(directory, {
+    getTemplatesPath: () => selected,
+    setTemplatesPath: (path) => { selected = path; },
+  });
+  try {
+    await writeFile(join(directory, "templates.txt"), "а > б > исходный");
+    const missing = await source.load();
+    assert.deepEqual(missing.predefinedWords, []);
+    assert.equal(missing.predefinedWordsError, null);
+    await writeFile(join(directory, "predefined-words.txt"), "\uFEFF Сложные \r\n\r\nДругие\r\nСложные\r\n");
+    assert.deepEqual((await source.load()).predefinedWords, ["Сложные", "Другие"]);
+    await writeFile(join(directory, "predefined-words.txt"), "Новое\n");
+    await writeFile(join(directory, "templates.txt"), "а > б > обновлённый");
+    const refreshed = await source.load();
+    assert.deepEqual(refreshed.predefinedWords, ["Новое"]);
+    assert.equal(refreshed.items[0]?.levels[2], "обновлённый");
+
+    const other = join(directory, "other");
+    await mkdir(other);
+    await writeFile(join(other, "custom.txt"), "а > б > выбранный");
+    await writeFile(join(other, "predefined-words.txt"), "Другой\n");
+    assert.deepEqual((await source.select(join(other, "custom.txt"))).predefinedWords, ["Другой"]);
+    await writeFile(join(other, "predefined-words.txt"), Buffer.from([0xff]));
+    const invalid = await source.load();
+    assert.equal(invalid.error, null);
+    assert.equal(invalid.items[0]?.levels[2], "выбранный");
+    assert.deepEqual(invalid.predefinedWords, []);
+    assert.match(invalid.predefinedWordsError ?? "", /predefined-words.txt/u);
+    await rm(join(other, "predefined-words.txt"));
+    assert.deepEqual((await source.load()).predefinedWords, []);
+  } finally {
     await rm(directory, { recursive: true, force: true });
   }
 });

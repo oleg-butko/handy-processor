@@ -18,6 +18,12 @@ export interface TemplateResponse extends TemplateDocument {
   readonly path: string;
   readonly stale: boolean;
   readonly error: string | null;
+  readonly predefinedWords: readonly string[];
+  readonly predefinedWordsError: string | null;
+}
+
+export function parsePredefinedWords(text: string): string[] {
+  return [...new Set(text.replace(/^\uFEFF/u, "").split(/\r?\n/u).map((word) => word.trim()).filter(Boolean))];
 }
 
 export function parseTemplates(text: string): TemplateDocument {

@@ -59,7 +59,7 @@ py scripts\unpack_source_archive.py --config C:\work\update-config.json
 Скрипт оставляет на исходных местах:
 
 - `.git`, `.env` и runtime `config.json`;
-- `templates.txt` и `template-hotkey.json` в корне;
+- `templates.txt`, `predefined-words.txt` и `template-hotkey.json` в корне;
 - все каталоги `node_modules`;
 - SQLite-базы и журналы;
 - `.venv`, `archive`, `dist`, `web-dist`, `sea-build`, `release`;
