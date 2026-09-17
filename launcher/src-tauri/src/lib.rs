@@ -1,3 +1,5 @@
+#[cfg(all(test, feature = "desktop", debug_assertions))]
+mod acl_tests;
 pub mod double_tap;
 pub mod health;
 pub mod history_export;

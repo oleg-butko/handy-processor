@@ -1,0 +1,18 @@
+[[permission]]
+identifier = "allow-history-export"
+description = "Export history through the origin-validated launcher command."
+commands.allow = ["save_history_export"]
+
+[[permission]]
+identifier = "allow-templates"
+description = "Use template settings, activation and clipboard actions through origin-validated launcher commands."
+commands.allow = [
+  "templates_desktop_state",
+  "ack_templates_activation",
+  "set_template_hotkey",
+  "record_template_key",
+  "cancel_template_recording",
+  "choose_templates_file",
+  "copy_template",
+  "paste_template",
+]

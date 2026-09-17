@@ -22,6 +22,7 @@ SOURCE_DIRECTORIES = (
     "launcher/src-tauri/capabilities",
     "launcher/src-tauri/gen",
     "launcher/src-tauri/icons",
+    "launcher/src-tauri/permissions",
     "launcher/src-tauri/src",
     "scripts",
     "src",

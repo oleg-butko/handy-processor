@@ -25,6 +25,9 @@ desktop = [
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
 
+[dev-dependencies]
+tauri-utils = "2.9.3"
+
 [dependencies]
 anyhow = "1"
 serde = { version = "1", features = ["derive"] }
