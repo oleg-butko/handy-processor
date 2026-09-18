@@ -15,6 +15,7 @@ use windows::Win32::{
 
 use crate::{
     double_tap::DoubleTap,
+    paste_shortcut::send_paste,
     template_settings::{key_name, TemplateHotkeySettings},
 };
 
@@ -526,15 +527,11 @@ pub fn restore_and_paste(
     if unsafe { GetForegroundWindow() } != hwnd {
         return Err("Фокус изменился перед вставкой".into());
     }
-    let result = inject(&[
-        keyboard_input(0x11, false),
-        keyboard_input(0x56, false),
-        keyboard_input(0x56, true),
-    ]);
-    if result.is_ok() {
-        thread::sleep(Duration::from_millis(100));
-    }
-    // Always release our synthetic keys, including after partial injection.
-    let released = inject(&[keyboard_input(0x56, true), keyboard_input(0x11, true)]);
-    result.and(released)
+    send_paste(|keys| {
+        let inputs: Vec<_> = keys
+            .iter()
+            .map(|&(key, release)| keyboard_input(key, release))
+            .collect();
+        unsafe { SendInput(&inputs, size_of::<INPUT>() as i32) as usize }
+    })
 }
