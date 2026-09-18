@@ -7,4 +7,6 @@ pub mod runtime;
 pub mod supervisor;
 pub mod template_settings;
 #[cfg(windows)]
+pub mod windows_clipboard;
+#[cfg(windows)]
 pub mod windows_templates;

@@ -12,6 +12,8 @@ use tauri_plugin_clipboard_manager::ClipboardExt;
 use tauri_plugin_dialog::DialogExt;
 
 #[cfg(windows)]
+use handy_processor_launcher::windows_clipboard::TemporaryClipboard;
+#[cfg(windows)]
 use handy_processor_launcher::windows_templates::{
     restore_and_paste, FocusTarget, HookEvent, HotkeyService,
 };
@@ -336,7 +338,6 @@ impl Drop for PasteGuard {
 
 #[tauri::command]
 pub async fn paste_template(
-    app: AppHandle,
     window: WebviewWindow,
     paths: State<'_, RuntimePaths>,
     state: State<'_, Arc<TemplateDesktop>>,
@@ -351,16 +352,12 @@ pub async fn paste_template(
     {
         return Err("Вставка уже выполняется".into());
     }
-    let guard = PasteGuard(state.inner().clone());
-    app.clipboard()
-        .write_text(text.clone())
-        .map_err(|e| e.to_string())?;
+    let _guard = Arc::new(PasteGuard(state.inner().clone()));
     #[cfg(not(windows))]
     {
-        let _ = guard;
         Ok(PasteResult {
             pasted: false,
-            message: "Скопировано. Автоматическая вставка доступна в Windows".into(),
+            message: "Автоматическая вставка доступна в Windows".into(),
         })
     }
     #[cfg(windows)]
@@ -369,37 +366,53 @@ pub async fn paste_template(
         let Some(target) = target.filter(FocusTarget::is_valid) else {
             return Ok(PasteResult {
                 pasted: false,
-                message:
-                    "Скопировано; вызовите Шаблоны хоткеем из нужного поля или вставьте вручную"
-                        .into(),
+                message: "Вызовите Шаблоны хоткеем из нужного поля; буфер обмена не изменён".into(),
             });
         };
-        window.hide().map_err(|e| e.to_string())?;
-        let result = tauri::async_runtime::spawn_blocking(move || {
-            let _guard = guard;
-            restore_and_paste(&target, || {
-                if app.clipboard().read_text().map_err(|e| e.to_string())? != text {
-                    return Err(
-                        "Содержимое буфера изменилось; автоматическая вставка отменена".into(),
-                    );
-                }
-                Ok(())
-            })
+        let owner = window.hwnd().map_err(|e| e.to_string())?.0 as usize;
+        let paste_window = window.clone();
+        let worker_guard = _guard.clone();
+        let result = tauri::async_runtime::spawn_blocking(move || -> Result<bool, String> {
+            let _guard = worker_guard;
+            let mut clipboard = TemporaryClipboard::new(owner, &text)?;
+            let paste = paste_window
+                .hide()
+                .map_err(|e| e.to_string())
+                .and_then(|()| restore_and_paste(&target, || clipboard.verify()));
+            // SendInput is asynchronous. Give the target time to consume the text,
+            // also after partial injection, before restoring all original formats.
+            std::thread::sleep(std::time::Duration::from_millis(500));
+            let restored = clipboard.restore();
+            match (paste, restored) {
+                (Ok(()), Ok(restored)) => Ok(restored),
+                (Err(error), Ok(_)) => Err(error),
+                (paste, Err(error)) => Err(format!(
+                    "{}. Не удалось восстановить буфер: {error}",
+                    paste
+                        .err()
+                        .unwrap_or_else(|| "Команда вставки отправлена".into())
+                )),
+            }
         })
         .await
-        .map_err(|e| e.to_string())?;
+        .map_err(|e| e.to_string())
+        .and_then(|result| result);
         match result {
-            Ok(()) => Ok(PasteResult {
+            Ok(restored) => Ok(PasteResult {
                 pasted: true,
-                message: "Команда вставки отправлена в исходное окно".into(),
+                message: if restored {
+                    "Команда вставки отправлена; буфер обмена восстановлен"
+                } else {
+                    "Команда вставки отправлена; сохранено новое содержимое буфера"
+                }
+                .into(),
             }),
             Err(error) => {
                 let _ = window.show();
                 let _ = window.set_focus();
-                Ok(PasteResult {
-                    pasted: false,
-                    message: format!("Скопировано; вставьте вручную. {error}"),
-                })
+                Err(format!(
+                    "{error}. Для ручной вставки используйте кнопку копирования"
+                ))
             }
         }
     }
