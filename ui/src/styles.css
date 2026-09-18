@@ -242,6 +242,10 @@ body {
 .template-separator { color: var(--mantine-color-dimmed); }
 .template-levels mark { background: #ffe08a; color: #332400; border-radius: 2px; }
 .templates-alphabet button { min-width: 28px; }
+.predefined-phrase { max-width: 100%; }
+.predefined-phrase-label { height: auto; min-height: 28px; padding-block: 4px; min-width: 0; }
+.predefined-phrase-label .mantine-Button-label { white-space: normal; overflow-wrap: anywhere; text-align: left; }
+.predefined-phrase > .mantine-ActionIcon-root { flex-shrink: 0; }
 
 .voice-editor-status-dot {
   width: 7px;

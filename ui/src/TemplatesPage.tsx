@@ -1,6 +1,6 @@
 import { ActionIcon, Alert, Button, Group, NumberInput, Paper, Stack, Switch, Text, TextInput, Tooltip } from "@mantine/core";
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { filterTemplates, templateMatches, templatePrefixes, type TemplateResponse } from "../../src/template-model.js";
+import { filterTemplates, templateMatches, templatePrefixes, templateText, type TemplateResponse } from "../../src/template-model.js";
 import { invokeLauncher, isLauncherWebView, type TemplateDesktopState, type TemplateHotkeySettings } from "./launcher-bridge.js";
 
 const ALPHABET = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
@@ -168,7 +168,7 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
       } else {
         if (launcher) await invokeLauncher("copy_template", { text });
         else await navigator.clipboard.writeText(text);
-        setNotice("Третий уровень скопирован");
+        setNotice("Текст скопирован");
       }
     } catch (failure) { setError(String(failure)); }
     finally { actionRef.current = false; setActing(false); }
@@ -214,7 +214,12 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
     {desktop?.error ? <Alert color="red">{desktop.error}</Alert> : null}
     <TextInput ref={input} label="Фильтр" placeholder="сл.др — слова начинаются на «сл» и «др»" value={query} onChange={(event) => setQuery(event.currentTarget.value)} />
     {document?.predefinedWords?.length ? <Group gap={4} aria-label="Готовые слова" role="group">
-      {document.predefinedWords.map((word) => <Button key={word} size="compact-sm" variant="light" onMouseDown={(event) => event.preventDefault()} onClick={() => addWord(word)}>{word}</Button>)}
+      {document.predefinedWords.map((word) => <Group key={word} gap={0} wrap="nowrap" className="predefined-phrase">
+        <Button size="compact-sm" variant="light" className="predefined-phrase-label" onMouseDown={(event) => event.preventDefault()} onClick={() => addWord(word)}>{word}</Button>
+        <Tooltip label={desktop?.canPaste ? "Вставить фразу в исходное окно" : "Для вставки вызовите Шаблоны хоткеем из другого приложения"}>
+          <ActionIcon variant="light" aria-label={`Вставить фразу: ${word}`} disabled={acting || !desktop?.supported || !desktop.canPaste} onClick={() => void act(word, true)}><ActionGlyph paste /></ActionIcon>
+        </Tooltip>
+      </Group>)}
     </Group> : null}
     {document?.predefinedWordsError ? <Alert color="yellow">{document.predefinedWordsError}</Alert> : null}
     <Group gap={4} className="templates-alphabet">
@@ -238,8 +243,8 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
       {rows.map((row) => <Paper key={row.line} withBorder p="xs" radius="sm" className="hp-surface template-row">
         <div className="template-levels">{levels.map((level, index) => <Fragment key={level}>{index > 0 ? <span className="template-separator"> &gt; </span> : null}<span data-level={level + 1}><Highlight text={row.levels[level] ?? ""} prefixes={prefixes} /></span></Fragment>)}</div>
         <Group gap={4} wrap="nowrap">
-          <Tooltip label="Скопировать третий уровень"><ActionIcon variant="subtle" aria-label={`Скопировать строку ${row.line}`} disabled={acting} onClick={() => void act(row.levels[2], false)}><ActionGlyph /></ActionIcon></Tooltip>
-          <Tooltip label={desktop?.canPaste ? "Вставить в исходное окно" : "Для вставки вызовите Шаблоны хоткеем из другого приложения"}><ActionIcon variant="light" aria-label={`Вставить строку ${row.line}`} disabled={acting || !desktop?.supported || !desktop.canPaste} onClick={() => void act(row.levels[2], true)}><ActionGlyph paste /></ActionIcon></Tooltip>
+          <Tooltip label="Скопировать выбранные уровни"><ActionIcon variant="subtle" aria-label={`Скопировать строку ${row.line}`} disabled={acting} onClick={() => void act(templateText(row, levels), false)}><ActionGlyph /></ActionIcon></Tooltip>
+          <Tooltip label={desktop?.canPaste ? "Вставить выбранные уровни в исходное окно" : "Для вставки вызовите Шаблоны хоткеем из другого приложения"}><ActionIcon variant="light" aria-label={`Вставить строку ${row.line}`} disabled={acting || !desktop?.supported || !desktop.canPaste} onClick={() => void act(templateText(row, levels), true)}><ActionGlyph paste /></ActionIcon></Tooltip>
         </Group>
       </Paper>)}
       {document && rows.length === 0 && !loading && !document.error ? <Text c="dimmed" ta="center" py="xl">Подходящих шаблонов нет</Text> : null}

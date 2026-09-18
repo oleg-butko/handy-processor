@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import { chromium } from 'playwright';
 
 // Run after build:ui. Uses an isolated HTTP fixture, never the user's database.
-test('templates filter, alphabet, hidden third-level copy and native activation', async (t) => {
+test('templates filter, selected-level actions, predefined phrases and native activation', async (t) => {
   const items = [
     { line: 1, levels: ['Сложные задачи', 'Другие варианты', 'Готовый ответ'] },
     { line: 2, levels: ['Общение', 'Приветствие', 'Добрый день!'] },
@@ -60,7 +60,7 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
         if (command === 'copy_template') window.__copied = args.text;
         if (command === 'paste_template') {
           window.__pasteCalls.push(args.text);
-          return new Promise(resolve => { window.__finishPaste = () => resolve({ pasted: false, message: 'Скопировано; вставьте вручную. Фокус изменился' }); });
+          return new Promise(resolve => { window.__finishPaste = () => resolve({ pasted: false, message: 'Вставка отменена. Фокус изменился' }); });
         }
       } },
       event: { listen: async (_, handler) => { window.__activate = handler; return () => {}; } },
@@ -100,20 +100,56 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
     assert.match(await page.locator('.template-row').textContent(), /Добрый день!/);
     await page.getByRole('button', { name: 'Очистить', exact: true }).click();
   });
+  await t.test('selected levels and predefined phrases supply the exact paste text', async () => {
+    await page.getByRole('button', { name: 'Уровень 1', exact: true }).click();
+    await page.getByRole('button', { name: 'Скопировать строку 1', exact: true }).click();
+    await page.waitForFunction(() => window.__copied === 'Другие варианты > Готовый ответ');
+    await page.getByRole('button', { name: 'Вставить строку 1', exact: true }).click();
+    await page.waitForFunction(() => window.__pasteCalls.at(-1) === 'Другие варианты > Готовый ответ');
+    await page.evaluate(() => window.__finishPaste());
+    await page.getByText('Вставка отменена. Фокус изменился', { exact: true }).waitFor();
+    await page.getByRole('button', { name: 'Уровень 2', exact: true }).click();
+    await page.getByRole('button', { name: 'Скопировать строку 1', exact: true }).click();
+    await page.waitForFunction(() => window.__copied === 'Готовый ответ');
+    predefinedWords = ['Добрый день', 'Сложные-задачи'];
+    await page.getByRole('button', { name: 'Обновить', exact: true }).click();
+    const words = page.getByRole('group', { name: 'Готовые слова', exact: true });
+    await words.getByRole('button', { name: 'Добрый день', exact: true }).click();
+    assert.equal(await filter.inputValue(), 'Добрый день.');
+    assert.equal(await page.locator('.template-row').count(), 1);
+    assert.deepEqual(await page.locator('mark').allTextContents(), ['Добрый', 'день']);
+    await words.getByRole('button', { name: 'Вставить фразу: Сложные-задачи', exact: true }).click();
+    await page.waitForFunction(() => window.__pasteCalls.at(-1) === 'Сложные-задачи');
+    assert.equal(await filter.inputValue(), 'Добрый день.');
+    assert.equal(await words.getByRole('button', { name: 'Вставить фразу: Добрый день', exact: true }).isDisabled(), true);
+    await page.evaluate(() => window.__finishPaste());
+    await page.getByText('Вставка отменена. Фокус изменился', { exact: true }).waitFor();
+    await words.getByRole('button', { name: 'Вставить фразу: Добрый день', exact: true }).click();
+    await page.waitForFunction(() => window.__pasteCalls.at(-1) === 'Добрый день');
+    await page.evaluate(() => window.__finishPaste());
+    await page.getByText('Вставка отменена. Фокус изменился', { exact: true }).waitFor();
+    await page.getByRole('button', { name: 'Уровень 1', exact: true }).click();
+    await page.getByRole('button', { name: 'Уровень 2', exact: true }).click();
+    await page.getByRole('button', { name: 'Очистить', exact: true }).click();
+    await words.getByRole('button', { name: 'Сложные-задачи', exact: true }).click();
+    assert.equal(await page.locator('.template-row').count(), 1);
+    assert.deepEqual(await page.locator('mark').allTextContents(), ['Сложные', 'задачи']);
+    await page.evaluate(() => { window.__pasteCalls = []; });
+  });
   await filter.fill('сл.др');
   assert.equal(await page.locator('.template-row').count(), 1);
   assert.deepEqual(await page.locator('mark').allTextContents(), ['Сл', 'Др']);
   await page.getByRole('button', { name: 'Уровень 3', exact: true }).click();
   assert.equal(await page.locator('[data-level="3"]').count(), 0);
   await page.getByRole('button', { name: 'Скопировать строку 1', exact: true }).click();
-  await page.waitForFunction(() => window.__copied === 'Готовый ответ');
+  await page.waitForFunction(() => window.__copied === 'Сложные задачи > Другие варианты');
   const paste = page.getByRole('button', { name: 'Вставить строку 1', exact: true });
   await paste.click();
   await page.waitForFunction(() => window.__pasteCalls.length === 1);
   assert.equal(await paste.isDisabled(), true);
-  assert.deepEqual(await page.evaluate(() => window.__pasteCalls), ['Готовый ответ']);
+  assert.deepEqual(await page.evaluate(() => window.__pasteCalls), ['Сложные задачи > Другие варианты']);
   await page.evaluate(() => window.__finishPaste());
-  await page.getByText('Скопировано; вставьте вручную. Фокус изменился', { exact: true }).waitFor();
+  await page.getByText('Вставка отменена. Фокус изменился', { exact: true }).waitFor();
   await page.locator('.templates-hotkey summary').click();
   await page.getByRole('button', { name: 'Win × 2', exact: true }).click();
   await page.getByRole('button', { name: 'Правый Ctrl × 2', exact: true }).waitFor();
@@ -221,7 +257,7 @@ test('templates filter, alphabet, hidden third-level copy and native activation'
     await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     assert.equal(await page.locator('.templates-path').textContent(), '/test/new.txt');
     await page.getByRole('button', { name: 'Скопировать строку 1', exact: true }).click();
-    await page.waitForFunction(() => window.__copied === 'Новый ответ');
+    await page.waitForFunction(() => window.__copied === 'Новая категория');
     await page.unroute('**/api/templates');
   });
   await t.test('native ACL errors are logged and show the log path', async () => {

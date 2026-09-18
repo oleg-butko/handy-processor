@@ -49,7 +49,11 @@ function normalize(text: string): string {
 }
 
 export function templatePrefixes(query: string): readonly string[] {
-  return [...new Set(query.split(".").map((part) => normalize(part.trim())).filter(Boolean))];
+  return [...new Set(query.split(/[.\s-]+/u).map((part) => normalize(part)).filter(Boolean))];
+}
+
+export function templateText(row: TemplateRow, levels: readonly number[]): string {
+  return row.levels.filter((_, level) => levels.includes(level)).join(" > ");
 }
 
 export interface MatchRange { readonly from: number; readonly to: number }

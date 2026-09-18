@@ -4,7 +4,7 @@ import { syncBuiltinESMExports } from "node:module";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { it } from "node:test";
-import { filterTemplates, parseTemplates, templateMatches, templatePrefixes } from "./template-model.js";
+import { filterTemplates, parsePredefinedWords, parseTemplates, templateMatches, templatePrefixes, templateText } from "./template-model.js";
 import { TemplateFile } from "./templates.js";
 import { TransformationLog } from "./transformation-log.js";
 
@@ -79,6 +79,18 @@ it("matches every prefix at word starts across only selected levels", () => {
     { from: 0, to: 2 }, { from: 6, to: 9 }, { from: 13, to: 16 },
   ]);
   assert.equal(filterTemplates(items, "[.*", [0, 1, 2]).length, 0);
+});
+
+it("keeps predefined phrases intact for insertion and searches their space/hyphen-separated parts", () => {
+  const phrases = parsePredefinedWords("\uFEFF Добрый день \r\nСанкт-Петербург\nДобрый день\n");
+  assert.deepEqual(phrases, ["Добрый день", "Санкт-Петербург"]);
+  const { items } = parseTemplates("Общение > Добрый день > Санкт-Петербург\nДругое > Добрый вечер > Москва");
+  assert.deepEqual(templatePrefixes("Добрый день.Санкт-Петербург."), ["добрый", "день", "санкт", "петербург"]);
+  assert.deepEqual(filterTemplates(items, phrases.join("."), [1, 2]).map(row => row.line), [1]);
+  assert.equal(filterTemplates(items, phrases.join("."), [1]).length, 0);
+  assert.deepEqual(templateMatches("Санкт-Петербург", templatePrefixes("Санкт-Петербург")), [{ from: 0, to: 5 }, { from: 6, to: 15 }]);
+  assert.equal(templateText(items[0]!, [2, 1]), "Добрый день > Санкт-Петербург");
+  assert.equal(templateText(items[0]!, [0]), "Общение");
 });
 
 it("retains the last file on read failure and persists validated selection", async () => {
