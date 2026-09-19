@@ -242,10 +242,24 @@ body {
 .template-separator { color: var(--mantine-color-dimmed); }
 .template-levels mark { background: #ffe08a; color: #332400; border-radius: 2px; }
 .templates-alphabet button { min-width: 28px; }
-.predefined-phrase { max-width: 100%; }
-.predefined-phrase-label { height: auto; min-height: 28px; padding-block: 4px; min-width: 0; }
+.predefined-phrase {
+  max-width: 100%;
+  border: 1px solid var(--hp-result-border);
+  border-radius: var(--mantine-radius-sm);
+  background: var(--hp-result-surface);
+  overflow: hidden;
+  transition: border-color 120ms ease;
+}
+.predefined-phrase:hover,
+.predefined-phrase:focus-within { border-color: var(--mantine-color-cyan-outline); }
+.predefined-phrase-label { flex: 1; height: auto; min-height: 30px; padding: 4px 10px; min-width: 0; border: 0; }
 .predefined-phrase-label .mantine-Button-label { white-space: normal; overflow-wrap: anywhere; text-align: left; }
-.predefined-phrase > .mantine-ActionIcon-root { flex-shrink: 0; }
+.predefined-phrase-paste { flex-shrink: 0; width: 32px; height: auto; min-height: 30px; border: 0; }
+.predefined-phrase-label,
+.predefined-phrase-paste { transition: background-color 120ms ease, color 120ms ease; }
+.predefined-phrase-label:hover { background: var(--mantine-color-cyan-light-hover); }
+.predefined-phrase-paste:not(:disabled):hover { background: var(--mantine-color-cyan-filled); color: var(--mantine-color-white); }
+.predefined-phrase button:focus-visible { outline: 2px solid var(--mantine-color-cyan-outline); outline-offset: -3px; }
 
 .voice-editor-status-dot {
   width: 7px;

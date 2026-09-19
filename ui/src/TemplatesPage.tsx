@@ -213,11 +213,11 @@ export function TemplatesPage({ active, activation }: { active: boolean; activat
     </Group>
     {desktop?.error ? <Alert color="red">{desktop.error}</Alert> : null}
     <TextInput ref={input} label="Фильтр" placeholder="сл.др — слова начинаются на «сл» и «др»" value={query} onChange={(event) => setQuery(event.currentTarget.value)} />
-    {document?.predefinedWords?.length ? <Group gap={4} aria-label="Готовые слова" role="group">
-      {document.predefinedWords.map((word) => <Group key={word} gap={0} wrap="nowrap" className="predefined-phrase">
-        <Button size="compact-sm" variant="light" className="predefined-phrase-label" onMouseDown={(event) => event.preventDefault()} onClick={() => addWord(word)}>{word}</Button>
+    {document?.predefinedWords?.length ? <Group gap={12} aria-label="Готовые слова" role="group">
+      {document.predefinedWords.map((word) => <Group key={word} gap={4} align="stretch" wrap="nowrap" className="predefined-phrase">
+        <Button size="compact-sm" variant="subtle" radius={0} className="predefined-phrase-label" onMouseDown={(event) => event.preventDefault()} onClick={() => addWord(word)}>{word}</Button>
         <Tooltip label={desktop?.canPaste ? "Вставить фразу в исходное окно" : "Для вставки вызовите Шаблоны хоткеем из другого приложения"}>
-          <ActionIcon variant="light" aria-label={`Вставить фразу: ${word}`} disabled={acting || !desktop?.supported || !desktop.canPaste} onClick={() => void act(word, true)}><ActionGlyph paste /></ActionIcon>
+          <ActionIcon variant="light" radius={0} className="predefined-phrase-paste" aria-label={`Вставить фразу: ${word}`} disabled={acting || !desktop?.supported || !desktop.canPaste} onClick={() => void act(word, true)}><ActionGlyph paste /></ActionIcon>
         </Tooltip>
       </Group>)}
     </Group> : null}
