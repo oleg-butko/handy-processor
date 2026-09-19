@@ -9,6 +9,80 @@ fn cli(args: &[&str]) -> std::process::Output {
 }
 
 #[test]
+fn baseline_cli_corrects_with_config_and_exports_reproducible_resources() {
+    let temp = tempdir().unwrap();
+    let input = temp.path().join("input.txt");
+    let out = temp.path().join("out");
+    let source = "«драйвир»,\tдрайве\r\nфайл драйвир.txt\n";
+    fs::write(&input, source).unwrap();
+    let config = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("configs/baseline.toml");
+    let result = cli(&[
+        "correct",
+        input.to_str().unwrap(),
+        "--config",
+        config.to_str().unwrap(),
+        "--output-dir",
+        out.to_str().unwrap(),
+    ]);
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    assert_eq!(
+        fs::read_to_string(out.join("corrected.txt")).unwrap(),
+        "«драйвер»,\tдрайвер\r\nфайл драйвир.txt\n"
+    );
+    assert_eq!(fs::read_to_string(input).unwrap(), source);
+    let info: serde_json::Value =
+        serde_json::from_str(&fs::read_to_string(out.join("manifest.json")).unwrap()).unwrap();
+    assert_eq!(info["engine"], "levenshtein_unique");
+    assert!(info["resources"]["resource_sha256"]["dictionary"].is_string());
+}
+
+#[test]
+fn build_dict_is_sorted_reusable_and_does_not_overwrite() {
+    let temp = tempdir().unwrap();
+    let input = temp.path().join("words.txt");
+    let output = temp.path().join("dictionary.json");
+    fs::write(&input, "ёж\nдрайвер\nёж\n").unwrap();
+    let args = [
+        "build-dict",
+        input.to_str().unwrap(),
+        "--output",
+        output.to_str().unwrap(),
+    ];
+    assert!(cli(&args).status.success());
+    assert!(!cli(&args).status.success());
+    let config = temp.path().join("config.toml");
+    fs::write(&config, "dictionary='dictionary.json'\n").unwrap();
+    let result = cli(&["inspect", "драйвир", "--config", config.to_str().unwrap()]);
+    assert!(result.status.success());
+    let json: serde_json::Value = serde_json::from_slice(&result.stdout).unwrap();
+    assert_eq!(json["corrected"], "драйвер");
+}
+
+#[test]
+fn invalid_baseline_config_does_not_create_output_directory() {
+    let temp = tempdir().unwrap();
+    let input = temp.path().join("input");
+    let out = temp.path().join("out");
+    let config = temp.path().join("config.toml");
+    fs::write(&input, "драйвир").unwrap();
+    fs::write(&config, "dictionary='missing.txt'\n").unwrap();
+    let result = cli(&[
+        "correct",
+        input.to_str().unwrap(),
+        "--config",
+        config.to_str().unwrap(),
+        "--output-dir",
+        out.to_str().unwrap(),
+    ]);
+    assert!(!result.status.success());
+    assert!(!out.exists());
+}
+
+#[test]
 fn cli_review_preserves_bytes_and_refuses_existing_output() {
     let temp = tempdir().unwrap();
     let input = temp.path().join("input.txt");

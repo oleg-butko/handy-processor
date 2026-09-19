@@ -1,0 +1,7 @@
+# Exact protection only; no transliteration aliases.
+CUDA
+Vulkan
+вулкан
+Rust
+Docker
+Debian

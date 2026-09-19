@@ -1,5 +1,9 @@
-//! KEEP review rendering. Wrapping uses shared lexical spans on both sides.
-use crate::text::{Line, Tokens, tokenize};
+//! Review rendering. Wrapping uses shared lexical spans on both sides.
+use crate::{
+    corpus::Edit,
+    corrector::{Corrector, Decision, Keep, analyze},
+    text::{Line, Tokens},
+};
 use anyhow::{Result, ensure};
 use serde::Serialize;
 use unicode_segmentation::UnicodeSegmentation;
@@ -64,7 +68,7 @@ pub struct Segment {
     pub continuation_part: usize,
 }
 
-fn segments(source: &str, tokens: &Tokens, width: usize) -> Vec<Segment> {
+fn segments(source: &str, tokens: &Tokens, decisions: &[Decision], width: usize) -> Vec<Segment> {
     let mut units = Vec::new();
     if tokens.lexical.is_empty() {
         units.push((0, source.len(), 0, 0));
@@ -86,19 +90,28 @@ fn segments(source: &str, tokens: &Tokens, width: usize) -> Vec<Segment> {
     let mut current: Option<Segment> = None;
     for (start, end, token_start, token_end) in units {
         let display = visible(&source[start..end]);
-        let marker = if token_start < token_end { "-" } else { "" };
-        if !fits(&display, width) {
+        let marker = if token_start < token_end {
+            if decisions[token_start].changed() {
+                decisions[token_start].candidate.as_str()
+            } else {
+                "-"
+            }
+        } else {
+            ""
+        };
+        if !fits(&display, width) || !fits(marker, width) {
             if let Some(previous) = current.take() {
                 result.push(previous);
             }
-            for (part, fragment) in split_display(&display, width).into_iter().enumerate() {
+            let source_parts = split_display(&display, width);
+            let change_parts = split_display(marker, width);
+            for part in 0..source_parts.len().max(change_parts.len()) {
                 result.push(Segment {
-                    source: fragment,
-                    changes: if part == 0 {
-                        marker.into()
-                    } else {
-                        "↳".into()
-                    },
+                    source: source_parts.get(part).cloned().unwrap_or_default(),
+                    changes: change_parts
+                        .get(part)
+                        .cloned()
+                        .unwrap_or_else(|| "↳".into()),
                     token_start,
                     token_end,
                     source_byte_start: start,
@@ -144,15 +157,6 @@ fn segments(source: &str, tokens: &Tokens, width: usize) -> Vec<Segment> {
 }
 
 #[derive(Debug, Serialize)]
-pub struct Decision<'a> {
-    pub token: usize,
-    pub original: &'a str,
-    pub candidate: &'a str,
-    pub confidence: Option<f64>,
-    pub reason: &'static str,
-}
-
-#[derive(Debug, Serialize)]
 pub struct DebugLine<'a> {
     pub schema_version: u32,
     pub engine: &'static str,
@@ -162,7 +166,9 @@ pub struct DebugLine<'a> {
     pub ending: &'a str,
     pub strict_yo: bool,
     pub tokens: Tokens,
-    pub decisions: Vec<Decision<'a>>,
+    pub decisions: Vec<Decision>,
+    pub corrected: String,
+    pub edits: Vec<Edit>,
     pub segments: Vec<Segment>,
 }
 
@@ -171,12 +177,20 @@ pub fn render<'a>(
     width: usize,
     strict_yo: bool,
 ) -> Result<(String, DebugLine<'a>)> {
+    render_engine(line, width, &Keep { strict_yo })
+}
+
+pub fn render_engine<'a>(
+    line: &Line<'a>,
+    width: usize,
+    engine: &dyn Corrector,
+) -> Result<(String, DebugLine<'a>)> {
     ensure!(
         (32..=130).contains(&width),
         "width must be between 32 and 130"
     );
-    let tokens = tokenize(line.content, strict_yo);
-    let segments = segments(line.content, &tokens, width);
+    let analysis = analyze(line.content, engine);
+    let segments = segments(line.content, &analysis.tokens, &analysis.decisions, width);
     let mut review = String::new();
     for (i, segment) in segments.iter().enumerate() {
         review.push_str(&format!(
@@ -187,33 +201,20 @@ pub fn render<'a>(
             segment.changes
         ));
     }
-    let decisions = tokens
-        .lexical
-        .iter()
-        .enumerate()
-        .map(|(i, t)| {
-            let original = &line.content[t.byte_start..t.byte_end];
-            Decision {
-                token: i,
-                original,
-                candidate: original,
-                confidence: None,
-                reason: "keep_baseline",
-            }
-        })
-        .collect();
     Ok((
         review,
         DebugLine {
-            schema_version: 1,
-            engine: "keep",
+            schema_version: 2,
+            engine: engine.name(),
             line: line.number,
             file_byte_start: line.byte_start,
             source: line.content,
             ending: line.ending,
-            strict_yo,
-            tokens,
-            decisions,
+            strict_yo: engine.strict_yo(),
+            tokens: analysis.tokens,
+            decisions: analysis.decisions,
+            corrected: analysis.corrected,
+            edits: analysis.edits,
             segments,
         },
     ))

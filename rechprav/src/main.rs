@@ -1,7 +1,9 @@
 use anyhow::{Context, Result, ensure};
-use clap::{Parser, Subcommand, ValueEnum};
+use clap::{Args, Parser, Subcommand, ValueEnum};
 use rechprav::{
     corpus::{self, Origin},
+    corrector::{Baseline, Corrector, Keep, analyze},
+    dictionary::Dictionary,
     metrics, review, text,
 };
 use serde::Serialize;
@@ -17,7 +19,7 @@ use std::{
 #[derive(Parser)]
 #[command(
     version,
-    about = "Local ASR research workbench. Foundation version: KEEP only; no words are corrected."
+    about = "Local ASR workbench: KEEP control or experimental dictionary correction with --config."
 )]
 struct Cli {
     #[command(subcommand)]
@@ -30,8 +32,64 @@ enum InputKind {
     RealAsr,
 }
 
+#[derive(Clone, Copy, ValueEnum)]
+enum Engine {
+    Keep,
+    Baseline,
+}
+
+#[derive(Args)]
+struct EngineArgs {
+    /// Defaults to baseline with --config, otherwise KEEP.
+    #[arg(long, value_enum)]
+    engine: Option<Engine>,
+    #[arg(long)]
+    config: Option<PathBuf>,
+    /// For KEEP only; baseline takes normalization from TOML.
+    #[arg(long)]
+    strict_yo: bool,
+}
+
+impl EngineArgs {
+    fn load(self) -> Result<(Box<dyn Corrector>, serde_json::Value)> {
+        let choice = self.engine.unwrap_or(if self.config.is_some() {
+            Engine::Baseline
+        } else {
+            Engine::Keep
+        });
+        match choice {
+            Engine::Keep => {
+                ensure!(self.config.is_none(), "KEEP does not take --config");
+                Ok((
+                    Box::new(Keep {
+                        strict_yo: self.strict_yo,
+                    }),
+                    json!({"strict_yo":self.strict_yo}),
+                ))
+            }
+            Engine::Baseline => {
+                ensure!(
+                    !self.strict_yo,
+                    "set strict_yo in baseline TOML, not on the command line"
+                );
+                let config = self.config.context("baseline requires --config")?;
+                let (engine, metadata) = Baseline::load(&config)?;
+                Ok((Box::new(engine), metadata))
+            }
+        }
+    }
+}
+
 #[derive(Subcommand)]
 enum Command {
+    /// Normalize and validate a word list. Trie is built once when the baseline starts.
+    BuildDict {
+        input: PathBuf,
+        #[arg(long)]
+        output: PathBuf,
+        #[arg(long)]
+        strict_yo: bool,
+    },
     /// Create pending annotations from source-only UTF-8 lines, without guessing gold.
     Prepare {
         input: PathBuf,
@@ -47,29 +105,30 @@ enum Command {
         #[arg(required = true)]
         datasets: Vec<PathBuf>,
     },
-    /// Write review.txt, corrected.txt and debug.jsonl to a NEW directory. KEEP only.
+    /// Write review, corrected text and debug to a NEW directory. Use --config to correct.
+    #[command(visible_alias = "correct")]
     Review {
         input: PathBuf,
         #[arg(long)]
         output_dir: PathBuf,
         #[arg(long, default_value_t = 130)]
         width: usize,
-        #[arg(long)]
-        strict_yo: bool,
+        #[command(flatten)]
+        engine: EngineArgs,
     },
-    /// Evaluate the KEEP control baseline on one reviewed corpus/split.
+    /// Evaluate one engine on one reviewed corpus/split.
     Benchmark {
         dataset: PathBuf,
         #[arg(long)]
         output_dir: PathBuf,
-        #[arg(long)]
-        strict_yo: bool,
+        #[command(flatten)]
+        engine: EngineArgs,
     },
-    /// Inspect source byte ranges, lexical tokens and protected regions.
+    /// Inspect source ranges, protection, candidates and decisions.
     Inspect {
         text: String,
-        #[arg(long)]
-        strict_yo: bool,
+        #[command(flatten)]
+        engine: EngineArgs,
     },
 }
 
@@ -113,6 +172,8 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
         ("src/lib.rs", include_bytes!("lib.rs")),
         ("src/main.rs", include_bytes!("main.rs")),
         ("src/corpus.rs", include_bytes!("corpus.rs")),
+        ("src/corrector.rs", include_bytes!("corrector.rs")),
+        ("src/dictionary.rs", include_bytes!("dictionary.rs")),
         ("src/metrics.rs", include_bytes!("metrics.rs")),
         ("src/review.rs", include_bytes!("review.rs")),
         ("src/text.rs", include_bytes!("text.rs")),
@@ -122,18 +183,32 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
         .map(|(name, bytes)| (*name, format!("{:x}", Sha256::digest(bytes))))
         .collect();
     json!({
-        "schema_version":1, "command":command, "engine":"keep", "rechprav_version":env!("CARGO_PKG_VERSION"),
+        "schema_version":2, "command":command, "rechprav_version":env!("CARGO_PKG_VERSION"),
         "input_file":input.display().to_string(), "input_sha256":format!("{:x}",Sha256::digest(contents)),
         "arguments":std::env::args().skip(1).collect::<Vec<_>>(),
         "compiled_source_sha256":source_hashes,
         "os":std::env::consts::OS, "arch":std::env::consts::ARCH,
         "unix_timestamp":SystemTime::now().duration_since(UNIX_EPOCH).ok().map(|d| d.as_secs()),
-        "note":"KEEP infrastructure run; not an algorithm quality comparison"
+        "note":"experimental run; check dataset provenance before interpreting quality"
     })
 }
 
 fn run() -> Result<()> {
     match Cli::parse().command {
+        Command::BuildDict {
+            input,
+            output,
+            strict_yo,
+        } => {
+            let contents = fs::read_to_string(input)?;
+            let dictionary = Dictionary::from_text(&contents, strict_yo)?;
+            save_json(&output, &dictionary.export())?;
+            println!(
+                "{} normalized words; {} runtime trie nodes",
+                dictionary.len(),
+                dictionary.node_count()
+            );
+        }
         Command::Prepare {
             input,
             output,
@@ -172,72 +247,78 @@ fn run() -> Result<()> {
             input,
             output_dir,
             width,
-            strict_yo,
+            engine,
         } => {
             ensure!(
                 (32..=130).contains(&width),
                 "width must be between 32 and 130"
             );
             let contents = fs::read_to_string(&input).context("read input as UTF-8")?;
+            let (engine, metadata) = engine.load()?;
             new_dir(&output_dir)?;
             let mut human = new_file(&output_dir.join("review.txt"))?;
             let mut debug = new_file(&output_dir.join("debug.jsonl"))?;
+            let mut corrected = new_file(&output_dir.join("corrected.txt"))?;
             for line in text::lines(&contents) {
-                let (rendered, record) = review::render(&line, width, strict_yo)?;
+                let (rendered, record) = review::render_engine(&line, width, engine.as_ref())?;
                 human.write_all(rendered.as_bytes())?;
+                corrected.write_all(record.corrected.as_bytes())?;
+                corrected.write_all(line.ending.as_bytes())?;
                 serde_json::to_writer(&mut debug, &record)?;
                 writeln!(debug)?;
             }
             human.flush()?;
             debug.flush()?;
-            let mut corrected = new_file(&output_dir.join("corrected.txt"))?;
-            corrected.write_all(contents.as_bytes())?;
             corrected.flush()?;
-            save_json(
-                &output_dir.join("manifest.json"),
-                &manifest(&input, contents.as_bytes(), "review"),
-            )?;
-            println!("KEEP review: {} (no corrections)", output_dir.display());
+            let mut info = manifest(&input, contents.as_bytes(), "review");
+            info["engine"] = json!(engine.name());
+            info["resources"] = metadata;
+            save_json(&output_dir.join("manifest.json"), &info)?;
+            println!("{} review: {}", engine.name(), output_dir.display());
         }
         Command::Benchmark {
             dataset,
             output_dir,
-            strict_yo,
+            engine,
         } => {
             let contents = fs::read(&dataset)?;
-            let records = corpus::read(&dataset)?;
+            let records = corpus::parse(
+                std::str::from_utf8(&contents).context("corpus is not UTF-8")?,
+                &dataset,
+            )?;
+            let (engine, metadata) = engine.load()?;
             let started = Instant::now();
-            let report = metrics::benchmark_keep(&records, strict_yo)?;
+            let run = metrics::benchmark(&records, engine.as_ref())?;
             let elapsed = started.elapsed();
             new_dir(&output_dir)?;
-            save_json(&output_dir.join("metrics.json"), &report)?;
+            save_json(&output_dir.join("metrics.json"), &run.report)?;
             let mut manifest = manifest(&dataset, &contents, "benchmark");
             manifest["evaluation_wall_ns"] = json!(elapsed.as_nanos());
-            manifest["timing_scope"] =
-                json!("validation+tokenization+metrics, NOT correction latency");
+            manifest["engine"] = json!(engine.name());
+            manifest["resources"] = metadata;
+            manifest["timing_scope"] = json!(
+                "validation+correction+metrics+prediction collection; excludes resource load and serialization; NOT isolated correction latency"
+            );
             save_json(&output_dir.join("manifest.json"), &manifest)?;
             let mut predictions = new_file(&output_dir.join("predictions.jsonl"))?;
-            for record in records
-                .iter()
-                .filter(|r| r.annotation_status == corpus::Status::Reviewed)
-            {
-                serde_json::to_writer(
-                    &mut predictions,
-                    &json!({"id":record.id,"prediction":record.source,"engine":"keep"}),
-                )?;
+            for record in &run.predictions {
+                serde_json::to_writer(&mut predictions, record)?;
                 writeln!(predictions)?;
             }
             predictions.flush()?;
-            println!("{}", serde_json::to_string_pretty(&report)?);
+            println!("{}", serde_json::to_string_pretty(&run.report)?);
         }
         Command::Inspect {
             text: source,
-            strict_yo,
+            engine,
         } => {
+            let (engine, metadata) = engine.load()?;
+            let result = analyze(&source, engine.as_ref());
             println!(
                 "{}",
                 serde_json::to_string_pretty(
-                    &json!({"source":source,"tokens":text::tokenize(&source, strict_yo)})
+                    &json!({"source":source,"engine":engine.name(),"resources":metadata,
+                        "tokens":result.tokens,"decisions":result.decisions,"corrected":result.corrected,"edits":result.edits})
                 )?
             );
         }

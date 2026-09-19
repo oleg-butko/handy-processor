@@ -1,0 +1,14 @@
+# Technical fixture only; no quality claims on real ASR.
+dictionary = "../data/fixtures/baseline/dictionary.txt"
+domain = "../data/fixtures/baseline/domain.txt"
+ignore = "../data/fixtures/baseline/ignore.txt"
+strict_yo = false
+
+[policy]
+max_distance = 1
+min_word_length = 5
+max_word_length = 64
+max_candidates = 20
+max_search_nodes = 100000
+protect_titlecase = true
+protect_uppercase = true

@@ -63,6 +63,11 @@ pub struct Record {
 pub fn read(path: &Path) -> Result<Vec<Record>> {
     let text =
         fs::read_to_string(path).with_context(|| format!("read UTF-8 {}", path.display()))?;
+    parse(&text, path)
+}
+
+/// Parse the same captured bytes that the experiment manifest hashes.
+pub fn parse(text: &str, path: &Path) -> Result<Vec<Record>> {
     let records: Result<Vec<Record>> = text
         .lines()
         .enumerate()

@@ -60,6 +60,11 @@ static SPECIAL: LazyLock<Regex> = LazyLock::new(|| {
     Regex::new(r"^(?:[Cc]\+\+|[Cc]#|--?[\p{L}][\p{L}\p{N}_-]*(?:=[^\s]+)?)").unwrap()
 });
 static ABBREV: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"^(?:[\p{L}]{1,3}\.){2,}").unwrap());
+// Protect filenames/dotted identifiers and inline code before enabling correction.
+// A missing closing backtick protects the remainder of that physical line.
+static CODE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"^`+[^`\r\n]*(?:`+|$)").unwrap());
+static DOTTED: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r"^[\p{L}\p{N}_-]+(?:\.[\p{L}\p{N}_-]+)+").unwrap());
 static NUMBER: LazyLock<Regex> =
     LazyLock::new(|| Regex::new(r"^\p{N}+(?:[.,:/-]\p{N}+)*(?:[%‰])?").unwrap());
 static WORD: LazyLock<Regex> = LazyLock::new(|| {
@@ -98,12 +103,14 @@ pub fn tokenize(source: &str, strict_yo: bool) -> Tokens {
         let mut found = None;
         for (pattern, kind, trim) in [
             (&*SPACE, Kind::Whitespace, false),
+            (&*CODE, Kind::Protected, false),
             (&*URL, Kind::Protected, true),
             (&*PATH, Kind::Protected, true),
             (&*RELATIVE_PATH, Kind::Protected, true),
             (&*EMAIL, Kind::Protected, false),
             (&*SPECIAL, Kind::Protected, false),
             (&*ABBREV, Kind::Protected, false),
+            (&*DOTTED, Kind::Protected, false),
         ] {
             if let Some(m) = pattern.find(rest) {
                 let len = if trim {
@@ -134,6 +141,13 @@ pub fn tokenize(source: &str, strict_yo: bool) -> Tokens {
         });
         let end = start + len;
         let value = &source[start..end];
+        let kind = if kind == Kind::Protected
+            && NUMBER.find(value).is_some_and(|m| m.end() == value.len())
+        {
+            Kind::Number
+        } else {
+            kind
+        };
         let lexical_index = if matches!(kind, Kind::Word | Kind::Number | Kind::Protected) {
             let normalized = key(value, strict_yo);
             let is_russian_word = normalized
