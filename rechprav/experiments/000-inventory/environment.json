@@ -1,0 +1,49 @@
+{
+  "experiment": "000-inventory",
+  "kind": "environment-inventory-not-algorithm-benchmark",
+  "observed_at_utc": "2026-09-19T10:23:42.227910+00:00",
+  "git_revision": "11f41bf4cddbec155e549dbb521868fc832d4125",
+  "git_branch": "docs/rechprav-roadmap",
+  "working_tree_status": [
+    "?? docs/rechprav/",
+    "?? rechprav/"
+  ],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "tools": {
+    "rustc": {
+      "path": null,
+      "version_check": null,
+      "standard_user_path_exists": false
+    },
+    "cargo": {
+      "path": null,
+      "version_check": null,
+      "standard_user_path_exists": false
+    },
+    "node": {
+      "path": "/home/user1/.nvm/versions/node/v24.19.0/bin/node",
+      "version_check": {
+        "exit_code": 0,
+        "stdout": "v24.19.0",
+        "stderr": ""
+      }
+    },
+    "python3": {
+      "path": "/usr/bin/python3",
+      "version_check": {
+        "exit_code": 0,
+        "stdout": "Python 3.13.5",
+        "stderr": ""
+      }
+    }
+  },
+  "cpu": {
+    "Architecture": "x86_64",
+    "CPU(s)": "16",
+    "Model name": "Intel(R) Xeon(R) CPU E5-2678 v3 @ 2.50GHz",
+    "Hypervisor vendor": "VMware"
+  },
+  "memory": "total        used        free      shared  buff/cache   available\nMem:           11955        1304        9283          13        1642       10651\nSwap:              0           0           0",
+  "source_plan_sha256": "142bb32d8c0dc5a33547e6dc1710bc398a148830461a369c3d8733e20cb9c854",
+  "quality_benchmark_run": false
+}
