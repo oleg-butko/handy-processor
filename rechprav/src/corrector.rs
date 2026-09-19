@@ -1,6 +1,7 @@
 use crate::{
     corpus::Edit,
     dictionary::{Candidate, Dictionary, protected_words},
+    frequency::{FrequencyConfig, FrequencyScorer},
     text::{LexicalToken, Tokens, tokenize},
 };
 use anyhow::{Context, Result, ensure};
@@ -68,6 +69,7 @@ pub struct Config {
     pub dictionary: PathBuf,
     pub domain: Option<PathBuf>,
     pub ignore: Option<PathBuf>,
+    pub frequency: Option<FrequencyConfig>,
     #[serde(default)]
     pub strict_yo: bool,
     #[serde(default)]
@@ -84,6 +86,12 @@ pub struct Decision {
     pub candidate: String,
     pub confidence: Option<f64>,
     pub candidate_score: Option<f64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub keep_score: Option<f64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub keep_margin: Option<f64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub runner_up_margin: Option<f64>,
     pub reason: &'static str,
     pub alternatives: Vec<Candidate>,
     pub search_complete: bool,
@@ -101,6 +109,9 @@ impl Decision {
             original,
             confidence: None,
             candidate_score: None,
+            keep_score: None,
+            keep_margin: None,
+            runner_up_margin: None,
             reason,
             alternatives: vec![],
             search_complete: true,
@@ -142,6 +153,7 @@ pub struct Baseline {
     pub ignore: BTreeSet<String>,
     pub policy: Policy,
     pub strict_yo: bool,
+    pub frequency: Option<FrequencyScorer>,
 }
 
 impl Baseline {
@@ -149,6 +161,9 @@ impl Baseline {
         let contents = fs::read_to_string(path).context("read baseline config")?;
         let config: Config = toml::from_str(&contents).context("parse baseline TOML")?;
         config.policy.validate()?;
+        if let Some(frequency) = &config.frequency {
+            frequency.scoring.validate()?;
+        }
         let parent = path.parent().unwrap_or(Path::new("."));
         let mut hashes = BTreeMap::new();
         hashes.insert(
@@ -177,10 +192,24 @@ impl Baseline {
         } else {
             BTreeSet::new()
         };
+        let frequency = config
+            .frequency
+            .as_ref()
+            .map(|f| {
+                FrequencyScorer::from_tsv(
+                    &read("frequency", &f.path)?,
+                    config.strict_yo,
+                    f.scoring.clone(),
+                )
+            })
+            .transpose()?;
         let metadata = serde_json::json!({"config":config,"resource_sha256":hashes,
             "dictionary_words":dictionary.len(),"trie_nodes":dictionary.node_count(),
             "domain_words":domain.len(),"ignore_words":ignore.len(),
-            "decision_policy":"OOV + exactly one candidate in complete distance-1 search; uncalibrated"});
+            "frequency_words":frequency.as_ref().map(FrequencyScorer::len),
+            "decision_policy": if frequency.is_some() {
+                "OOV + complete distance-1 search + bounded frequency prior + KEEP and runner-up margins; uncalibrated"
+            } else { "OOV + exactly one candidate in complete distance-1 search; uncalibrated" }});
         Ok((
             Self {
                 dictionary,
@@ -188,6 +217,7 @@ impl Baseline {
                 ignore,
                 policy: config.policy,
                 strict_yo: config.strict_yo,
+                frequency,
             },
             metadata,
         ))
@@ -196,7 +226,11 @@ impl Baseline {
 
 impl Corrector for Baseline {
     fn name(&self) -> &'static str {
-        "levenshtein_unique"
+        if self.frequency.is_some() {
+            "levenshtein_frequency"
+        } else {
+            "levenshtein_unique"
+        }
     }
     fn strict_yo(&self) -> bool {
         self.strict_yo
@@ -243,7 +277,7 @@ impl Corrector for Baseline {
             result.reason = reason;
             return result;
         }
-        let search = self.dictionary.lookup(
+        let mut search = self.dictionary.lookup(
             &token.key,
             self.policy.max_distance,
             self.policy.max_candidates,
@@ -260,8 +294,47 @@ impl Corrector for Baseline {
         } else {
             "unique_distance_one"
         };
+        if let Some(frequency) = &self.frequency {
+            for candidate in &mut search.candidates {
+                candidate.frequency_per_billion = frequency.get(&candidate.key);
+                candidate.score = frequency.score(&candidate.key, candidate.distance);
+            }
+            search.candidates.sort_by(|a, b| {
+                b.score
+                    .total_cmp(&a.score)
+                    .then_with(|| a.key.cmp(&b.key))
+                    .then_with(|| a.word.cmp(&b.word))
+            });
+            let keep_score = frequency.keep_score(&token.key);
+            result.keep_score = Some(keep_score);
+            if let Some(best) = search.candidates.first() {
+                let keep_margin = best.score - keep_score;
+                let runner_margin = search
+                    .candidates
+                    .get(1)
+                    .map(|other| best.score - other.score);
+                result.keep_margin = Some(keep_margin);
+                result.runner_up_margin = runner_margin;
+                if search.complete {
+                    result.reason = if !best.frequency_per_billion.is_some_and(|v| v > 0.0) {
+                        "candidate_frequency_unknown"
+                    } else if keep_margin < frequency.policy.min_keep_margin {
+                        "keep_score_margin"
+                    } else if runner_margin
+                        .is_some_and(|v| v < frequency.policy.min_runner_up_margin)
+                    {
+                        "runner_up_score_margin"
+                    } else {
+                        "frequency_margins_passed"
+                    };
+                }
+            }
+        }
         result.candidate_score = search.candidates.first().map(|c| c.score);
-        if result.reason == "unique_distance_one" {
+        if matches!(
+            result.reason,
+            "unique_distance_one" | "frequency_margins_passed"
+        ) {
             let chosen = &search.candidates[0].word;
             result.candidate = if all_upper {
                 chosen.to_uppercase()

@@ -1,0 +1,12 @@
+# Build-time only; tested with CPython 3.13.5. Rust runtime needs none of these.
+dawg2-python==0.9.0
+ftfy==6.3.1
+langcodes==3.5.1
+locate==1.1.1
+msgpack==1.2.2
+pymorphy3==2.0.6
+pymorphy3-dicts-ru==2.4.417150.4580142
+regex==2026.9.10
+setuptools==84.0.0
+wcwidth==0.8.4
+wordfreq==3.1.1

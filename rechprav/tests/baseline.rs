@@ -13,6 +13,7 @@ fn engine(words: &str) -> Baseline {
         ignore: BTreeSet::new(),
         policy: Policy::default(),
         strict_yo: false,
+        frequency: None,
     }
 }
 

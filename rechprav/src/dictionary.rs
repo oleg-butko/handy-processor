@@ -19,6 +19,8 @@ pub struct Candidate {
     pub key: String,
     pub distance: usize,
     pub score: f64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub frequency_per_billion: Option<f64>,
 }
 
 #[derive(Debug, Serialize)]
@@ -189,6 +191,7 @@ impl Dictionary {
                     word: word.clone(),
                     distance: row[query.len()],
                     score: -(row[query.len()] as f64),
+                    frequency_per_billion: None,
                 });
                 if result.candidates.len() > max_candidates {
                     result.complete = false;

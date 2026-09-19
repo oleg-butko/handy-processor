@@ -174,6 +174,7 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
         ("src/corpus.rs", include_bytes!("corpus.rs")),
         ("src/corrector.rs", include_bytes!("corrector.rs")),
         ("src/dictionary.rs", include_bytes!("dictionary.rs")),
+        ("src/frequency.rs", include_bytes!("frequency.rs")),
         ("src/metrics.rs", include_bytes!("metrics.rs")),
         ("src/review.rs", include_bytes!("review.rs")),
         ("src/text.rs", include_bytes!("text.rs")),
