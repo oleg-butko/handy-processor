@@ -1,0 +1,480 @@
+[
+  {
+    "name": "empty",
+    "source": "",
+    "lexical": []
+  },
+  {
+    "name": "spaces",
+    "source": "  \t ",
+    "lexical": []
+  },
+  {
+    "name": "punctuation",
+    "source": "... — «»!?",
+    "lexical": []
+  },
+  {
+    "name": "one_word",
+    "source": "драйвир",
+    "lexical": [
+      "драйвир"
+    ]
+  },
+  {
+    "name": "sentence",
+    "source": "я установил драйвир",
+    "lexical": [
+      "я",
+      "установил",
+      "драйвир"
+    ]
+  },
+  {
+    "name": "quotes",
+    "source": "«Привет», мир!",
+    "lexical": [
+      "Привет",
+      "мир"
+    ]
+  },
+  {
+    "name": "parentheses",
+    "source": "(слово) [другое]",
+    "lexical": [
+      "слово",
+      "другое"
+    ]
+  },
+  {
+    "name": "comma",
+    "source": "а,б;в:г",
+    "lexical": [
+      "а",
+      "б",
+      "в",
+      "г"
+    ]
+  },
+  {
+    "name": "dash",
+    "source": "слово—слово",
+    "lexical": [
+      "слово",
+      "слово"
+    ]
+  },
+  {
+    "name": "hyphen",
+    "source": "из-за",
+    "lexical": [
+      "из-за"
+    ]
+  },
+  {
+    "name": "compound",
+    "source": "северо-запад",
+    "lexical": [
+      "северо-запад"
+    ]
+  },
+  {
+    "name": "nonbreaking_hyphen",
+    "source": "кто‑то",
+    "lexical": [
+      "кто‑то"
+    ]
+  },
+  {
+    "name": "unicode_hyphen",
+    "source": "кое‐кто",
+    "lexical": [
+      "кое‐кто"
+    ]
+  },
+  {
+    "name": "apostrophe",
+    "source": "O'Reilly",
+    "lexical": [
+      "O'Reilly"
+    ]
+  },
+  {
+    "name": "curly_apostrophe",
+    "source": "д’Артаньян",
+    "lexical": [
+      "д’Артаньян"
+    ]
+  },
+  {
+    "name": "cuda",
+    "source": "CUDA",
+    "lexical": [
+      "CUDA"
+    ]
+  },
+  {
+    "name": "vulkan",
+    "source": "Vulkan",
+    "lexical": [
+      "Vulkan"
+    ]
+  },
+  {
+    "name": "rtx",
+    "source": "RTX4090",
+    "lexical": [
+      "RTX4090"
+    ]
+  },
+  {
+    "name": "mixed_script",
+    "source": "РТX4090",
+    "lexical": [
+      "РТX4090"
+    ]
+  },
+  {
+    "name": "numeric_identifier",
+    "source": "4090RTX",
+    "lexical": [
+      "4090RTX"
+    ]
+  },
+  {
+    "name": "underscore",
+    "source": "some_name",
+    "lexical": [
+      "some_name"
+    ]
+  },
+  {
+    "name": "cpp",
+    "source": "C++",
+    "lexical": [
+      "C++"
+    ]
+  },
+  {
+    "name": "csharp",
+    "source": "C#",
+    "lexical": [
+      "C#"
+    ]
+  },
+  {
+    "name": "cpp_punctuation",
+    "source": "C++, Rust.",
+    "lexical": [
+      "C++",
+      "Rust"
+    ]
+  },
+  {
+    "name": "integer",
+    "source": "123",
+    "lexical": [
+      "123"
+    ]
+  },
+  {
+    "name": "decimal",
+    "source": "12.5",
+    "lexical": [
+      "12.5"
+    ]
+  },
+  {
+    "name": "comma_decimal",
+    "source": "12,5",
+    "lexical": [
+      "12,5"
+    ]
+  },
+  {
+    "name": "version",
+    "source": "1.2.3",
+    "lexical": [
+      "1.2.3"
+    ]
+  },
+  {
+    "name": "date",
+    "source": "2026-09-19",
+    "lexical": [
+      "2026-09-19"
+    ]
+  },
+  {
+    "name": "clock",
+    "source": "12:30",
+    "lexical": [
+      "12:30"
+    ]
+  },
+  {
+    "name": "percent",
+    "source": "25%",
+    "lexical": [
+      "25%"
+    ]
+  },
+  {
+    "name": "fraction",
+    "source": "1/2",
+    "lexical": [
+      "1/2"
+    ]
+  },
+  {
+    "name": "sign",
+    "source": "-12",
+    "lexical": [
+      "12"
+    ]
+  },
+  {
+    "name": "thousands",
+    "source": "1 000",
+    "lexical": [
+      "1",
+      "000"
+    ]
+  },
+  {
+    "name": "url",
+    "source": "https://example.org/a?x=1",
+    "lexical": [
+      "https://example.org/a?x=1"
+    ]
+  },
+  {
+    "name": "url_period",
+    "source": "https://example.org/a.",
+    "lexical": [
+      "https://example.org/a"
+    ]
+  },
+  {
+    "name": "url_balanced",
+    "source": "https://example.org/wiki/(test)",
+    "lexical": [
+      "https://example.org/wiki/(test)"
+    ]
+  },
+  {
+    "name": "url_unbalanced",
+    "source": "(https://example.org/x).",
+    "lexical": [
+      "https://example.org/x"
+    ]
+  },
+  {
+    "name": "www",
+    "source": "www.example.org",
+    "lexical": [
+      "www.example.org"
+    ]
+  },
+  {
+    "name": "mail",
+    "source": "hello@example.org",
+    "lexical": [
+      "hello@example.org"
+    ]
+  },
+  {
+    "name": "unix_path",
+    "source": "/home/user1/test.txt",
+    "lexical": [
+      "/home/user1/test.txt"
+    ]
+  },
+  {
+    "name": "tilde_path",
+    "source": "~/папка/файл.txt",
+    "lexical": [
+      "~/папка/файл.txt"
+    ]
+  },
+  {
+    "name": "relative_path",
+    "source": "docs/plan.md",
+    "lexical": [
+      "docs/plan.md"
+    ]
+  },
+  {
+    "name": "dot_path",
+    "source": "./test.txt",
+    "lexical": [
+      "./test.txt"
+    ]
+  },
+  {
+    "name": "parent_path",
+    "source": "../test.txt",
+    "lexical": [
+      "../test.txt"
+    ]
+  },
+  {
+    "name": "windows_path",
+    "source": "C:\\Users\\test.txt",
+    "lexical": [
+      "C:\\Users\\test.txt"
+    ]
+  },
+  {
+    "name": "unc",
+    "source": "\\\\server\\share\\file.txt",
+    "lexical": [
+      "\\\\server\\share\\file.txt"
+    ]
+  },
+  {
+    "name": "flag",
+    "source": "--help",
+    "lexical": [
+      "--help"
+    ]
+  },
+  {
+    "name": "short_flag",
+    "source": "-v",
+    "lexical": [
+      "-v"
+    ]
+  },
+  {
+    "name": "flag_value",
+    "source": "--mode=fast",
+    "lexical": [
+      "--mode=fast"
+    ]
+  },
+  {
+    "name": "abbr",
+    "source": "т.е.",
+    "lexical": [
+      "т.е."
+    ]
+  },
+  {
+    "name": "initials",
+    "source": "А.С. Пушкин",
+    "lexical": [
+      "А.С.",
+      "Пушкин"
+    ]
+  },
+  {
+    "name": "yo",
+    "source": "ёлка",
+    "lexical": [
+      "ёлка"
+    ]
+  },
+  {
+    "name": "nfd_yo",
+    "source": "ёлка",
+    "lexical": [
+      "ёлка"
+    ]
+  },
+  {
+    "name": "accent",
+    "source": "за́мок",
+    "lexical": [
+      "за́мок"
+    ]
+  },
+  {
+    "name": "title",
+    "source": "Драйвер",
+    "lexical": [
+      "Драйвер"
+    ]
+  },
+  {
+    "name": "uppercase",
+    "source": "ДРАЙВЕР",
+    "lexical": [
+      "ДРАЙВЕР"
+    ]
+  },
+  {
+    "name": "mixed_case",
+    "source": "дРайвер",
+    "lexical": [
+      "дРайвер"
+    ]
+  },
+  {
+    "name": "nbsp",
+    "source": "два слова",
+    "lexical": [
+      "два",
+      "слова"
+    ]
+  },
+  {
+    "name": "tabs",
+    "source": "два\tслова",
+    "lexical": [
+      "два",
+      "слова"
+    ]
+  },
+  {
+    "name": "crlf",
+    "source": "два\r\nслова",
+    "lexical": [
+      "два",
+      "слова"
+    ]
+  },
+  {
+    "name": "emoji",
+    "source": "🙂 привет 👩‍💻",
+    "lexical": [
+      "привет"
+    ]
+  },
+  {
+    "name": "chinese",
+    "source": "你好",
+    "lexical": [
+      "你好"
+    ]
+  },
+  {
+    "name": "bom",
+    "source": "﻿Привет",
+    "lexical": [
+      "Привет"
+    ]
+  },
+  {
+    "name": "bidi",
+    "source": "а‮б",
+    "lexical": [
+      "а",
+      "б"
+    ]
+  },
+  {
+    "name": "terminal",
+    "source": "\u001b[31mтекст",
+    "lexical": [
+      "31mтекст"
+    ]
+  },
+  {
+    "name": "url_cyrillic",
+    "source": "https://пример.рф/путь",
+    "lexical": [
+      "https://пример.рф/путь"
+    ]
+  }
+]
