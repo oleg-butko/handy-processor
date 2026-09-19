@@ -1,0 +1,174 @@
+{
+  "corrected": "драйвер маско катер",
+  "decisions": [
+    {
+      "alternatives": [
+        {
+          "distance": 1,
+          "key": "драйвер",
+          "score": -1.0,
+          "word": "драйвер"
+        }
+      ],
+      "byte_end": 14,
+      "byte_start": 0,
+      "candidate": "драйвер",
+      "candidate_score": -1.0,
+      "confidence": null,
+      "original": "драйвир",
+      "reason": "unique_distance_one",
+      "search_complete": true,
+      "token": 0,
+      "visited_nodes": 33
+    },
+    {
+      "alternatives": [
+        {
+          "distance": 1,
+          "key": "маска",
+          "score": -1.0,
+          "word": "маска"
+        },
+        {
+          "distance": 1,
+          "key": "масло",
+          "score": -1.0,
+          "word": "масло"
+        }
+      ],
+      "byte_end": 25,
+      "byte_start": 15,
+      "candidate": "маско",
+      "candidate_score": -1.0,
+      "confidence": null,
+      "original": "маско",
+      "reason": "ambiguous_candidates",
+      "search_complete": true,
+      "token": 1,
+      "visited_nodes": 38
+    },
+    {
+      "alternatives": [
+        {
+          "distance": 1,
+          "key": "катер",
+          "score": -1.0,
+          "word": "катер"
+        }
+      ],
+      "byte_end": 36,
+      "byte_start": 26,
+      "candidate": "катер",
+      "candidate_score": -1.0,
+      "confidence": null,
+      "original": "капер",
+      "reason": "unique_distance_one",
+      "search_complete": true,
+      "token": 2,
+      "visited_nodes": 35
+    }
+  ],
+  "edits": [
+    {
+      "byte_end": 14,
+      "byte_start": 0,
+      "replacement": "драйвер",
+      "token_end": 1,
+      "token_start": 0
+    },
+    {
+      "byte_end": 36,
+      "byte_start": 26,
+      "replacement": "катер",
+      "token_end": 3,
+      "token_start": 2
+    }
+  ],
+  "engine": "levenshtein_unique",
+  "resources": {
+    "config": {
+      "dictionary": "../data/fixtures/baseline/dictionary.txt",
+      "domain": "../data/fixtures/baseline/domain.txt",
+      "ignore": "../data/fixtures/baseline/ignore.txt",
+      "policy": {
+        "max_candidates": 20,
+        "max_distance": 1,
+        "max_search_nodes": 100000,
+        "max_word_length": 64,
+        "min_word_length": 5,
+        "protect_titlecase": true,
+        "protect_uppercase": true
+      },
+      "strict_yo": false
+    },
+    "decision_policy": "OOV + exactly one candidate in complete distance-1 search; uncalibrated",
+    "dictionary_words": 57,
+    "domain_words": 6,
+    "ignore_words": 1,
+    "resource_sha256": {
+      "config": "ba65d13312c63c905d7f48d306b66932a3b78fa71df5739443b488b94d206b23",
+      "dictionary": "afa83d84762af42316f9e079593fd4f319dedb601f033b689608d6fdb002287a",
+      "domain": "3f55176416db3a592d5a7d7d42ea06e319dafc298ec599b6e7ccf23504db9bb9",
+      "ignore": "73d9e75692a12aaee7e5cabde686fa0b77c93b3a6347c7ba6661193eb212a2fe"
+    },
+    "trie_nodes": 249
+  },
+  "source": "драйвир маско капер",
+  "tokens": {
+    "lexical": [
+      {
+        "byte_end": 14,
+        "byte_start": 0,
+        "key": "драйвир",
+        "protection": null,
+        "text_token": 0
+      },
+      {
+        "byte_end": 25,
+        "byte_start": 15,
+        "key": "маско",
+        "protection": null,
+        "text_token": 2
+      },
+      {
+        "byte_end": 36,
+        "byte_start": 26,
+        "key": "капер",
+        "protection": null,
+        "text_token": 4
+      }
+    ],
+    "text": [
+      {
+        "byte_end": 14,
+        "byte_start": 0,
+        "kind": "word",
+        "lexical_index": 0
+      },
+      {
+        "byte_end": 15,
+        "byte_start": 14,
+        "kind": "whitespace",
+        "lexical_index": null
+      },
+      {
+        "byte_end": 25,
+        "byte_start": 15,
+        "kind": "word",
+        "lexical_index": 1
+      },
+      {
+        "byte_end": 26,
+        "byte_start": 25,
+        "kind": "whitespace",
+        "lexical_index": null
+      },
+      {
+        "byte_end": 36,
+        "byte_start": 26,
+        "kind": "word",
+        "lexical_index": 2
+      }
+    ]
+  }
+}

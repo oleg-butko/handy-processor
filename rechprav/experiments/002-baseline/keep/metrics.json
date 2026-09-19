@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "engine": "keep",
+  "dataset_kind": "synthetic",
+  "split": "dev",
+  "strict_yo": false,
+  "reviewed_records": 27,
+  "excluded_ambiguous_records": 0,
+  "source_tokens": 62,
+  "gold_tokens": 62,
+  "counts_1_to_1": {
+    "tp": 0,
+    "fp": 0,
+    "fn_": 15,
+    "correct_input": 44,
+    "harmed_correct_input": 0
+  },
+  "rates_1_to_1": {
+    "precision": null,
+    "recall": 0.0,
+    "f05": 0.0,
+    "f1": 0.0,
+    "false_correction_rate": 0.0
+  },
+  "unsupported_gold_spans": 2,
+  "proposals_in_unsupported_spans": 0,
+  "proposed_edits": 0,
+  "corrected_gold_spans": 0,
+  "gold_spans": 17,
+  "overall_precision": null,
+  "all_gold_span_recall": 0.0,
+  "wer_errors_before": {
+    "substitutions": 17,
+    "deletions": 1,
+    "insertions": 1
+  },
+  "wer_errors_after": {
+    "substitutions": 17,
+    "deletions": 1,
+    "insertions": 1
+  },
+  "wer_before": 0.3064516129032258,
+  "wer_after": 0.3064516129032258,
+  "coverage": 0.0,
+  "candidate_error_positions": 15,
+  "candidate_hits_at_k": {
+    "1": 0,
+    "3": 0,
+    "5": 0,
+    "10": 0,
+    "20": 0
+  },
+  "candidate_recall_at_k": {
+    "1": 0.0,
+    "3": 0.0,
+    "5": 0.0,
+    "10": 0.0,
+    "20": 0.0
+  },
+  "candidate_recall_scope": "emitted candidates after protection/OOV gates, denominator = all annotated 1-to-1 errors; not ungated generator recall",
+  "incomplete_searches": 0,
+  "quality_claim": "technical fixtures only; not quality on real ASR"
+}

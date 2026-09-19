@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "engine": "levenshtein_unique",
+  "dataset_kind": "synthetic",
+  "split": "dev",
+  "strict_yo": false,
+  "reviewed_records": 27,
+  "excluded_ambiguous_records": 0,
+  "source_tokens": 62,
+  "gold_tokens": 62,
+  "counts_1_to_1": {
+    "tp": 9,
+    "fp": 3,
+    "fn_": 6,
+    "correct_input": 44,
+    "harmed_correct_input": 2
+  },
+  "rates_1_to_1": {
+    "precision": 0.75,
+    "recall": 0.6,
+    "f05": 0.7142857142857143,
+    "f1": 0.6666666666666666,
+    "false_correction_rate": 0.045454545454545456
+  },
+  "unsupported_gold_spans": 2,
+  "proposals_in_unsupported_spans": 0,
+  "proposed_edits": 12,
+  "corrected_gold_spans": 9,
+  "gold_spans": 17,
+  "overall_precision": 0.75,
+  "all_gold_span_recall": 0.5294117647058824,
+  "wer_errors_before": {
+    "substitutions": 17,
+    "deletions": 1,
+    "insertions": 1
+  },
+  "wer_errors_after": {
+    "substitutions": 10,
+    "deletions": 1,
+    "insertions": 1
+  },
+  "wer_before": 0.3064516129032258,
+  "wer_after": 0.1935483870967742,
+  "coverage": 0.1935483870967742,
+  "candidate_error_positions": 15,
+  "candidate_hits_at_k": {
+    "1": 10,
+    "3": 10,
+    "5": 10,
+    "10": 10,
+    "20": 10
+  },
+  "candidate_recall_at_k": {
+    "1": 0.6666666666666666,
+    "3": 0.6666666666666666,
+    "5": 0.6666666666666666,
+    "10": 0.6666666666666666,
+    "20": 0.6666666666666666
+  },
+  "candidate_recall_scope": "emitted candidates after protection/OOV gates, denominator = all annotated 1-to-1 errors; not ungated generator recall",
+  "incomplete_searches": 0,
+  "quality_claim": "technical fixtures only; not quality on real ASR"
+}

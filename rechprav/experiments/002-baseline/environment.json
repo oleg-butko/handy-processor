@@ -1,0 +1,132 @@
+{
+  "observed_at_utc": "2026-09-19T21:30:05.714404+00:00",
+  "git_revision": "65d2e7d676b85937966a0fdab0ed19d73e98103d",
+  "implementation_worktree_status": [],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "dataset_sha256": "7a6b3d4fc2fd6d9d83ff28811f8ac9e6438a0589ff8ea655936084ec50307714",
+  "binary_sha256": "6e547a4b8385a86f0a37845d08d799ed5416f30bce30dbfd87837791fef28d2a",
+  "resources": {
+    "keep": {
+      "strict_yo": false
+    },
+    "baseline": {
+      "config": {
+        "dictionary": "../data/fixtures/baseline/dictionary.txt",
+        "domain": "../data/fixtures/baseline/domain.txt",
+        "ignore": "../data/fixtures/baseline/ignore.txt",
+        "policy": {
+          "max_candidates": 20,
+          "max_distance": 1,
+          "max_search_nodes": 100000,
+          "max_word_length": 64,
+          "min_word_length": 5,
+          "protect_titlecase": true,
+          "protect_uppercase": true
+        },
+        "strict_yo": false
+      },
+      "decision_policy": "OOV + exactly one candidate in complete distance-1 search; uncalibrated",
+      "dictionary_words": 57,
+      "domain_words": 6,
+      "ignore_words": 1,
+      "resource_sha256": {
+        "config": "ba65d13312c63c905d7f48d306b66932a3b78fa71df5739443b488b94d206b23",
+        "dictionary": "afa83d84762af42316f9e079593fd4f319dedb601f033b689608d6fdb002287a",
+        "domain": "3f55176416db3a592d5a7d7d42ea06e319dafc298ec599b6e7ccf23504db9bb9",
+        "ignore": "73d9e75692a12aaee7e5cabde686fa0b77c93b3a6347c7ba6661193eb212a2fe"
+      },
+      "trie_nodes": 249
+    },
+    "no-domain": {
+      "config": {
+        "dictionary": "../data/fixtures/baseline/dictionary.txt",
+        "domain": null,
+        "ignore": "../data/fixtures/baseline/ignore.txt",
+        "policy": {
+          "max_candidates": 20,
+          "max_distance": 1,
+          "max_search_nodes": 100000,
+          "max_word_length": 64,
+          "min_word_length": 5,
+          "protect_titlecase": true,
+          "protect_uppercase": true
+        },
+        "strict_yo": false
+      },
+      "decision_policy": "OOV + exactly one candidate in complete distance-1 search; uncalibrated",
+      "dictionary_words": 57,
+      "domain_words": 0,
+      "ignore_words": 1,
+      "resource_sha256": {
+        "config": "a583d622cd25826b9e9d8bb9338839409d7506080cd71479c3e1147f945c6ce0",
+        "dictionary": "afa83d84762af42316f9e079593fd4f319dedb601f033b689608d6fdb002287a",
+        "ignore": "73d9e75692a12aaee7e5cabde686fa0b77c93b3a6347c7ba6661193eb212a2fe"
+      },
+      "trie_nodes": 249
+    },
+    "no-ignore": {
+      "config": {
+        "dictionary": "../data/fixtures/baseline/dictionary.txt",
+        "domain": "../data/fixtures/baseline/domain.txt",
+        "ignore": null,
+        "policy": {
+          "max_candidates": 20,
+          "max_distance": 1,
+          "max_search_nodes": 100000,
+          "max_word_length": 64,
+          "min_word_length": 5,
+          "protect_titlecase": true,
+          "protect_uppercase": true
+        },
+        "strict_yo": false
+      },
+      "decision_policy": "OOV + exactly one candidate in complete distance-1 search; uncalibrated",
+      "dictionary_words": 57,
+      "domain_words": 6,
+      "ignore_words": 0,
+      "resource_sha256": {
+        "config": "9405ebfd326d28ee2ccfa3665fbfa480642c90fa7f31376ce9d956f5eaacb2cb",
+        "dictionary": "afa83d84762af42316f9e079593fd4f319dedb601f033b689608d6fdb002287a",
+        "domain": "3f55176416db3a592d5a7d7d42ea06e319dafc298ec599b6e7ccf23504db9bb9"
+      },
+      "trie_nodes": 249
+    },
+    "allow-titlecase": {
+      "config": {
+        "dictionary": "../data/fixtures/baseline/dictionary.txt",
+        "domain": "../data/fixtures/baseline/domain.txt",
+        "ignore": "../data/fixtures/baseline/ignore.txt",
+        "policy": {
+          "max_candidates": 20,
+          "max_distance": 1,
+          "max_search_nodes": 100000,
+          "max_word_length": 64,
+          "min_word_length": 5,
+          "protect_titlecase": false,
+          "protect_uppercase": true
+        },
+        "strict_yo": false
+      },
+      "decision_policy": "OOV + exactly one candidate in complete distance-1 search; uncalibrated",
+      "dictionary_words": 57,
+      "domain_words": 6,
+      "ignore_words": 1,
+      "resource_sha256": {
+        "config": "0bec956c252b1a4ca6aa4612e7a436358e6ac95a07f1750e08a61e753e4533f0",
+        "dictionary": "afa83d84762af42316f9e079593fd4f319dedb601f033b689608d6fdb002287a",
+        "domain": "3f55176416db3a592d5a7d7d42ea06e319dafc298ec599b6e7ccf23504db9bb9",
+        "ignore": "73d9e75692a12aaee7e5cabde686fa0b77c93b3a6347c7ba6661193eb212a2fe"
+      },
+      "trie_nodes": 249
+    }
+  },
+  "scope": "synthetic mechanism checks; no real-ASR quality or performance claim",
+  "rustc": "rustc 1.98.0 (88d9e12ae 2026-08-18)",
+  "cargo": "cargo 1.98.0 (797e8a9bc 2026-08-05)",
+  "cpu": {
+    "Architecture": "x86_64",
+    "CPU(s)": "16",
+    "Model name": "Intel(R) Xeon(R) CPU E5-2678 v3 @ 2.50GHz",
+    "Hypervisor vendor": "VMware"
+  }
+}

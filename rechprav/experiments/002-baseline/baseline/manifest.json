@@ -1,0 +1,62 @@
+{
+  "arch": "x86_64",
+  "arguments": [
+    "benchmark",
+    "/home/user1/handy-processor/rechprav/data/fixtures/baseline/corpus.jsonl",
+    "--output-dir",
+    "/home/user1/handy-processor/rechprav/experiments/002-baseline/baseline",
+    "--config",
+    "/home/user1/handy-processor/rechprav/configs/baseline.toml"
+  ],
+  "command": "benchmark",
+  "compiled_source_sha256": {
+    "Cargo.lock": "49e76a2b718996ad97b854789d7fae9e92bd96474786d3e5aba5177115be3a8a",
+    "Cargo.toml": "1432569012b432b4a6dedb173c05427f0511f70a6a56404b7faf82ab7eef98c8",
+    "src/corpus.rs": "12352c22a15e6c333973f25941d4ba9a60480081ae88cd9e364959b0945ef64b",
+    "src/corrector.rs": "77be57a337ccb3946f13258544a6cfd9b3f4a7c60cb1fb7e190f026e3e0bbc9d",
+    "src/dictionary.rs": "239ca224cc5dc27d9eeb2b5dedce5b393b4890f8d3f8f080878ce23755f41f7e",
+    "src/lib.rs": "b4514bc1051006b7b13f0d0366736fb931a90a15f23dae3c91b8bdcc20adb06c",
+    "src/main.rs": "c1a9ef898efa49d629efa64331a25e333aa9eb7904661e59319e1534850e3483",
+    "src/metrics.rs": "dff335346a23ee561ed6a292cfbe8f2623d7f8b77042ececcf97d97ee42ada92",
+    "src/review.rs": "87ed6e193750e6e5c69cf328e6906d95bc6fe1e2460fad2c9609561d39c1cc33",
+    "src/text.rs": "61ba9d0b877da98c5ecc885d04700892a8dd58c330b3ec68b3b6b67218625794"
+  },
+  "engine": "levenshtein_unique",
+  "evaluation_wall_ns": 1449887,
+  "input_file": "/home/user1/handy-processor/rechprav/data/fixtures/baseline/corpus.jsonl",
+  "input_sha256": "7a6b3d4fc2fd6d9d83ff28811f8ac9e6438a0589ff8ea655936084ec50307714",
+  "note": "experimental run; check dataset provenance before interpreting quality",
+  "os": "linux",
+  "rechprav_version": "0.1.0",
+  "resources": {
+    "config": {
+      "dictionary": "../data/fixtures/baseline/dictionary.txt",
+      "domain": "../data/fixtures/baseline/domain.txt",
+      "ignore": "../data/fixtures/baseline/ignore.txt",
+      "policy": {
+        "max_candidates": 20,
+        "max_distance": 1,
+        "max_search_nodes": 100000,
+        "max_word_length": 64,
+        "min_word_length": 5,
+        "protect_titlecase": true,
+        "protect_uppercase": true
+      },
+      "strict_yo": false
+    },
+    "decision_policy": "OOV + exactly one candidate in complete distance-1 search; uncalibrated",
+    "dictionary_words": 57,
+    "domain_words": 6,
+    "ignore_words": 1,
+    "resource_sha256": {
+      "config": "ba65d13312c63c905d7f48d306b66932a3b78fa71df5739443b488b94d206b23",
+      "dictionary": "afa83d84762af42316f9e079593fd4f319dedb601f033b689608d6fdb002287a",
+      "domain": "3f55176416db3a592d5a7d7d42ea06e319dafc298ec599b6e7ccf23504db9bb9",
+      "ignore": "73d9e75692a12aaee7e5cabde686fa0b77c93b3a6347c7ba6661193eb212a2fe"
+    },
+    "trie_nodes": 249
+  },
+  "schema_version": 2,
+  "timing_scope": "validation+correction+metrics+prediction collection; excludes resource load and serialization; NOT isolated correction latency",
+  "unix_timestamp": 1789853405
+}

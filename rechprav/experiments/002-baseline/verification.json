@@ -1,0 +1,12 @@
+{
+  "test_count": 35,
+  "cargo_test": "passed --locked --offline",
+  "clippy": "passed --all-targets -- -D warnings",
+  "format": "passed",
+  "release_build": "passed --locked --offline",
+  "deterministic_metrics_and_predictions_all_five_profiles": true,
+  "manual_confusion_counts_match": true,
+  "debug_reconstructs_source_and_corrected": true,
+  "unchanged_source_hash": "167e16f5527793231b6dabdb2edc17859eab31a49441b65fb9f701e354a269fb",
+  "quality_scope": "synthetic only"
+}
