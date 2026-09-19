@@ -195,6 +195,18 @@ fn corpus_fixture_gold_and_counts_are_consistent() {
     assert_eq!(report.rates_1_to_1.precision, None);
     assert_eq!(report.counts_1_to_1.fp, 0);
     assert_eq!(report.counts_1_to_1.harmed_correct_input, 0);
+    assert_eq!(report.counts_1_to_1.fn_, 6);
+    assert_eq!(report.counts_1_to_1.correct_input, 28);
+    assert_eq!((report.source_tokens, report.gold_tokens), (37, 37));
+    assert_eq!(
+        report.wer_errors_before,
+        WordErrors {
+            substitutions: 8,
+            deletions: 1,
+            insertions: 1
+        }
+    );
+    assert_eq!(report.wer_before, Some(10.0 / 37.0));
     assert_eq!(report.rates_1_to_1.recall, Some(0.0));
     assert_eq!(report.unsupported_gold_spans, 2);
     assert_eq!(report.wer_before, report.wer_after);

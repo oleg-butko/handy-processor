@@ -1,0 +1,47 @@
+{
+  "experiment": "001-foundation",
+  "observed_at_utc": "2026-09-19T11:07:03.535752+00:00",
+  "implementation_revision": "8be44bf95f9cec05eda20898251a257d8b257032",
+  "branch": "feat/rechprav-foundation",
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "cpu": {
+    "Architecture": "x86_64",
+    "CPU(s)": "16",
+    "Model name": "Intel(R) Xeon(R) CPU E5-2678 v3 @ 2.50GHz",
+    "Hypervisor vendor": "VMware"
+  },
+  "rustc": "rustc 1.98.0 (88d9e12ae 2026-08-18)",
+  "cargo": "cargo 1.98.0 (797e8a9bc 2026-08-05)",
+  "rustfmt": "rustfmt 1.9.0-stable (88d9e12ae1 2026-08-18)",
+  "build_profile": "release",
+  "build_flags": [
+    "--locked",
+    "--offline"
+  ],
+  "dataset_kind": "synthetic",
+  "runtime_network_requests": false,
+  "fixture_hashes": {
+    "rechprav/data/fixtures/tokenization.json": "64275312d781793405c8a28e0fb8a674502eef8e919abe6f441820c3e60994b5",
+    "rechprav/data/fixtures/corpus.jsonl": "2094f1fd56fb6799e0e9e972696421e5d4bbdfea382f57c03768b444ff7ebd19",
+    "rechprav/data/fixtures/review-input.txt": "f259d4ccbe9666a640d953c86387085881dc866ff2f91ec91b1ebe4576e24c7d"
+  },
+  "artifact_checks": {
+    "input_equals_corrected": true,
+    "debug_reconstructs_input": true,
+    "predictions_equal_source": true,
+    "compiled_source_hashes_match": true,
+    "input_hashes_match": true,
+    "max_review_line_scalars": 130
+  },
+  "verification_summary": {
+    "tests_passed": 19,
+    "clippy": "passed with -D warnings",
+    "format": "passed",
+    "release_build": "passed"
+  },
+  "limitations": [
+    "No real ASR corpus",
+    "KEEP does not correct errors",
+    "No performance comparison"
+  ]
+}

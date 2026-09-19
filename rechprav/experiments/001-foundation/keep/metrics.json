@@ -1,0 +1,40 @@
+{
+  "engine": "keep",
+  "dataset_kind": "synthetic",
+  "split": "dev",
+  "strict_yo": false,
+  "reviewed_records": 12,
+  "excluded_ambiguous_records": 0,
+  "source_tokens": 37,
+  "gold_tokens": 37,
+  "counts_1_to_1": {
+    "tp": 0,
+    "fp": 0,
+    "fn_": 6,
+    "correct_input": 28,
+    "harmed_correct_input": 0
+  },
+  "rates_1_to_1": {
+    "precision": null,
+    "recall": 0.0,
+    "f05": 0.0,
+    "f1": 0.0,
+    "false_correction_rate": 0.0
+  },
+  "unsupported_gold_spans": 2,
+  "all_error_recall": 0.0,
+  "wer_errors_before": {
+    "substitutions": 8,
+    "deletions": 1,
+    "insertions": 1
+  },
+  "wer_errors_after": {
+    "substitutions": 8,
+    "deletions": 1,
+    "insertions": 1
+  },
+  "wer_before": 0.2702702702702703,
+  "wer_after": 0.2702702702702703,
+  "coverage": 0.0,
+  "quality_claim": "control baseline only; no correction algorithm evaluated"
+}

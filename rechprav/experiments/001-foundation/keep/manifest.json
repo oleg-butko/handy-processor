@@ -1,0 +1,30 @@
+{
+  "arch": "x86_64",
+  "arguments": [
+    "benchmark",
+    "rechprav/data/fixtures/corpus.jsonl",
+    "--output-dir",
+    "rechprav/experiments/001-foundation/keep"
+  ],
+  "command": "benchmark",
+  "compiled_source_sha256": {
+    "Cargo.lock": "36bb398e4b35117e7ea67135976734b26b26df9a7635f8f38d58a4c7b297b499",
+    "Cargo.toml": "7c59704e0c7e7bf50c4606e0d35b24eeb6e939d9a6f974e1b88d3bf75d484621",
+    "src/corpus.rs": "e4cc812a55c85306f08b74f3f2f9382f2e5c7e5fc09e78da50fe2921e52e9abf",
+    "src/lib.rs": "a9a559eefe39bd10df67f985f4f986708d67956f1781ce20a1919bd662665f65",
+    "src/main.rs": "2c13ea67349ca070d39a436f65e7804ed7159d768c4c65259df5322697fe412c",
+    "src/metrics.rs": "7e2bec49911f081444d34118f99db9fb0da75ebf159e3889754efc5c67089807",
+    "src/review.rs": "3302616e44f3ffeaffea8d2a027ea26c34e973bf36eefe68a8788c3fb0460efb",
+    "src/text.rs": "fcaa00b1797fb861264488d009a3c2caa4af6f27cc33f2863381f4120738da6d"
+  },
+  "engine": "keep",
+  "evaluation_wall_ns": 22977135,
+  "input_file": "rechprav/data/fixtures/corpus.jsonl",
+  "input_sha256": "2094f1fd56fb6799e0e9e972696421e5d4bbdfea382f57c03768b444ff7ebd19",
+  "note": "KEEP infrastructure run; not an algorithm quality comparison",
+  "os": "linux",
+  "rechprav_version": "0.1.0",
+  "schema_version": 1,
+  "timing_scope": "validation+tokenization+metrics, NOT correction latency",
+  "unix_timestamp": 1789815244
+}
