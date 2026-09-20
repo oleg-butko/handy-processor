@@ -234,6 +234,19 @@ Edit-1 дал 18 верных и 6 неверных замен; простые �
 обычные слова достаточно надёжно. Distance=2 ухудшил компромисс. Механизм
 управления принят для следующих опытов; автоматическая вставка не включается.
 
+[Опыт 007](experiments/007-context/report.md) добавляет необязательные ограничения:
+`max_known_distance`, соседние фразы с `{term}`, запрещающие `context_exclusions`
+и `require_context` для OOV. Пример — `configs/terms-context.toml` с разными
+контекстами ПНЗ и БНЗ. На новых 42 примерах профиль дал 14 TP/4 FP вместо 12/17;
+обычные слова всё ещё могут быть испорчены, а часть полезных правок теряется.
+Старые конфиги без новых полей побайтно повторяют прежние решения и диагностику.
+
+```bash
+rechprav/target/release/rechprav terms-inspect 'проверь пензе на карте' --config rechprav/configs/terms-context.toml
+rechprav/target/release/rechprav terms-inspect 'пэнзэ на стенде' --config rechprav/configs/terms-context.toml
+python3 rechprav/scripts/run_context_experiment.py rechprav/experiments/my-context-run
+```
+
 ## Организация
 
 `src/` — библиотека и CLI; `tests/` — проверки поведения, безопасности вывода и метрик;

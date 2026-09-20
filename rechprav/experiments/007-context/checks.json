@@ -1,0 +1,24 @@
+{
+  "implementation_commit": "40fe294c82b4441216418fa4701d1bf45ee32fb1",
+  "preregistered_data_commit": "c7c8c2a",
+  "tests": {
+    "passed": 74,
+    "previous": 67,
+    "new_context": 7
+  },
+  "checks": {
+    "clippy_all_targets_deny_warnings": "passed",
+    "rustfmt": "passed",
+    "offline_release_bin_and_examples": "passed",
+    "python_py_compile": "passed",
+    "compiled_source_fingerprint_reports": 32,
+    "resource_fingerprints": 155,
+    "legacy_metrics_and_predictions_byte_equal_profiles": 14,
+    "matrix_runs_with_independent_span_counts_and_byte_reconstruction": 18,
+    "all_matrix_searches_complete": true,
+    "frozen_new_corpus_and_context_rules_unchanged": "passed",
+    "original_user_plan_unchanged": "passed",
+    "local_documentation_link_targets": 87
+  },
+  "scope": "Test/build before implementation commit. All 12 term profiles + two B2 controls reproduced 006 byte-for-byte; 9 policies on each of 2 distinct corpora. No network or real ASR data."
+}

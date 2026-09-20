@@ -1,0 +1,241 @@
+[
+  {
+    "id": "terms-001",
+    "source": "проверь пээнзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пээнзэ",
+    "tags": [
+      "listed",
+      "pnz"
+    ]
+  },
+  {
+    "id": "terms-002",
+    "source": "проверь пэнзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пэнзэ",
+    "tags": [
+      "listed",
+      "pnz"
+    ]
+  },
+  {
+    "id": "terms-003",
+    "source": "проверь пензе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пензе",
+    "tags": [
+      "listed",
+      "pnz",
+      "real_word"
+    ]
+  },
+  {
+    "id": "terms-004",
+    "source": "проверь пензэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пензэ",
+    "tags": [
+      "listed",
+      "pnz"
+    ]
+  },
+  {
+    "id": "terms-005",
+    "source": "проверь бензэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бензэ",
+    "tags": [
+      "listed",
+      "pnz"
+    ]
+  },
+  {
+    "id": "terms-006",
+    "source": "проверь пэ эн зэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пэ эн зэ",
+    "tags": [
+      "listed",
+      "pnz",
+      "multiword"
+    ]
+  },
+  {
+    "id": "terms-007",
+    "source": "проверь пэн зэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пэн зэ",
+    "tags": [
+      "listed",
+      "pnz",
+      "multiword"
+    ]
+  },
+  {
+    "id": "terms-008",
+    "source": "проверь бэнзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бэнзэ",
+    "tags": [
+      "novel",
+      "pnz"
+    ]
+  },
+  {
+    "id": "terms-009",
+    "source": "проверь пэнзе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пэнзе",
+    "tags": [
+      "novel",
+      "pnz"
+    ]
+  },
+  {
+    "id": "terms-010",
+    "source": "проверь бэнзе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бэнзе",
+    "tags": [
+      "novel",
+      "pnz",
+      "distance_two"
+    ]
+  },
+  {
+    "id": "terms-011",
+    "source": "проверь пэ эн зе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пэ эн зе",
+    "tags": [
+      "novel",
+      "pnz",
+      "multiword"
+    ]
+  },
+  {
+    "id": "terms-012",
+    "source": "проверь пэ энзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пэ энзэ",
+    "tags": [
+      "novel",
+      "pnz",
+      "multiword"
+    ]
+  },
+  {
+    "id": "terms-013",
+    "source": "проверь бэн зэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бэн зэ",
+    "tags": [
+      "novel",
+      "pnz",
+      "multiword"
+    ]
+  },
+  {
+    "id": "terms-016",
+    "source": "вставь плату в свод",
+    "gold": "вставь плату в слот",
+    "prediction": "вставь плату в свод",
+    "tags": [
+      "listed",
+      "slot",
+      "missing_cue"
+    ]
+  },
+  {
+    "id": "terms-017",
+    "source": "пэнзэ",
+    "gold": "ПНЗ",
+    "prediction": "пэнзэ",
+    "tags": [
+      "listed",
+      "pnz",
+      "no_context"
+    ]
+  },
+  {
+    "id": "terms-018",
+    "source": "пензе",
+    "gold": "ПНЗ",
+    "prediction": "пензе",
+    "tags": [
+      "listed",
+      "pnz",
+      "no_context",
+      "real_word"
+    ]
+  },
+  {
+    "id": "terms-019",
+    "source": "пэнзэ на стенде",
+    "gold": "БНЗ на стенде",
+    "prediction": "пэнзэ на стенде",
+    "tags": [
+      "listed",
+      "lab_intent",
+      "conflict"
+    ]
+  },
+  {
+    "id": "terms-020",
+    "source": "сигнал бензэ в лаборатории",
+    "gold": "сигнал БНЗ в лаборатории",
+    "prediction": "сигнал бензэ в лаборатории",
+    "tags": [
+      "listed",
+      "lab_intent",
+      "conflict"
+    ]
+  },
+  {
+    "id": "terms-021",
+    "source": "проверь пэ эн зэ и сигнал пэ эн зэ",
+    "gold": "проверь ПНЗ и сигнал ПНЗ",
+    "prediction": "проверь пэ эн зэ и сигнал пэ эн зэ",
+    "tags": [
+      "listed",
+      "pnz",
+      "multiword",
+      "multiple_spans"
+    ]
+  },
+  {
+    "id": "terms-022",
+    "source": "проверь\tпэ\tэн  зэ!",
+    "gold": "проверь\tПНЗ!",
+    "prediction": "проверь\tпэ\tэн  зэ!",
+    "tags": [
+      "listed",
+      "pnz",
+      "multiword",
+      "whitespace"
+    ]
+  },
+  {
+    "id": "terms-026",
+    "source": "модуль обрабатывает ввод данных",
+    "gold": "модуль обрабатывает ввод данных",
+    "prediction": "модуль обрабатывает слот данных",
+    "tags": [
+      "negative",
+      "slot",
+      "misleading_context"
+    ]
+  },
+  {
+    "id": "terms-027",
+    "source": "плата содержит свод правил",
+    "gold": "плата содержит свод правил",
+    "prediction": "плата содержит слот правил",
+    "tags": [
+      "negative",
+      "slot",
+      "misleading_context"
+    ]
+  }
+]

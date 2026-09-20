@@ -1,0 +1,14 @@
+{
+  "implementation_commit": "40fe294c82b4441216418fa4701d1bf45ee32fb1",
+  "implementation_status": [],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "binary_sha256": "fa361c30e799220db0396a9e2d325f36b02b19ec86ff35703f091ea5a2f6ed1e",
+  "runner_sha256": "d6045c9af5847f5a8743663f4c66c05bbe0a194b93912f2250c997cb19cd31f3",
+  "shared_runner_sha256": "52f7643ebcaca3e36413e1dfbe322389607d670b0c70603d13a9f8eab7e68120",
+  "old_corpus_sha256": "fb207e3d0163f748bb8746441b4f5754a52699b71ecba948a6bc677f9aa6defe",
+  "new_corpus_sha256": "64b6047d838dd32ae11443e197755457cc09ff855ab0fff81055380c9f7799bc",
+  "context_policy_sha256": "6836a5754fd23c71fd6ec1da6dee2333e6e92abeb6a175619dc072f94436c4b8",
+  "source_fingerprint_reports": 18,
+  "legacy_byte_equal_profiles": 14,
+  "scope": "two separate authored synthetic corpora, nine frozen policies, old scores/aliases unchanged; exact 006 regression incl diagnostics; no independent ASR holdout"
+}
