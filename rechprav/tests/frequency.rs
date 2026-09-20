@@ -7,7 +7,7 @@ use std::collections::BTreeSet;
 
 fn engine(words: &str, frequencies: &str) -> Baseline {
     Baseline {
-        dictionary: Dictionary::from_text(words, false).unwrap(),
+        dictionary: Box::new(Dictionary::from_text(words, false).unwrap()),
         domain: BTreeSet::new(),
         ignore: BTreeSet::new(),
         policy: Policy::default(),

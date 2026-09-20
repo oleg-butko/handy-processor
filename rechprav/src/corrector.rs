@@ -1,7 +1,8 @@
 use crate::{
     corpus::Edit,
-    dictionary::{Candidate, Dictionary, protected_words},
+    dictionary::{Candidate, CandidateGenerator, Dictionary, protected_words},
     frequency::{FrequencyConfig, FrequencyScorer},
+    packed::PackedTrie,
     text::{LexicalToken, Tokens, tokenize},
 };
 use anyhow::{Context, Result, ensure};
@@ -148,7 +149,7 @@ impl Corrector for Keep {
 }
 
 pub struct Baseline {
-    pub dictionary: Dictionary,
+    pub dictionary: Box<dyn CandidateGenerator>,
     pub domain: BTreeSet<String>,
     pub ignore: BTreeSet<String>,
     pub policy: Policy,
@@ -170,25 +171,34 @@ impl Baseline {
             "config",
             format!("{:x}", Sha256::digest(contents.as_bytes())),
         );
-        let mut read = |name, resource: &Path| -> Result<String> {
-            let data = fs::read_to_string(parent.join(resource))
+        let mut read = |name, resource: &Path| -> Result<Vec<u8>> {
+            let data = fs::read(parent.join(resource))
                 .with_context(|| format!("read {name}: {}", resource.display()))?;
-            hashes.insert(name, format!("{:x}", Sha256::digest(data.as_bytes())));
+            hashes.insert(name, format!("{:x}", Sha256::digest(&data)));
             Ok(data)
         };
         let data = read("dictionary", &config.dictionary)?;
-        let dictionary = if config.dictionary.extension().is_some_and(|s| s == "json") {
-            Dictionary::from_json(&data, config.strict_yo)?
-        } else {
-            Dictionary::from_text(&data, config.strict_yo)?
-        };
+        let dictionary: Box<dyn CandidateGenerator> =
+            if config.dictionary.extension().is_some_and(|s| s == "rpt") {
+                Box::new(PackedTrie::from_bytes(data, config.strict_yo)?)
+            } else if config.dictionary.extension().is_some_and(|s| s == "json") {
+                Box::new(Dictionary::from_json(
+                    std::str::from_utf8(&data)?,
+                    config.strict_yo,
+                )?)
+            } else {
+                Box::new(Dictionary::from_text(
+                    std::str::from_utf8(&data)?,
+                    config.strict_yo,
+                )?)
+            };
         let domain = if let Some(p) = &config.domain {
-            protected_words(&read("domain", p)?, config.strict_yo)?
+            protected_words(std::str::from_utf8(&read("domain", p)?)?, config.strict_yo)?
         } else {
             BTreeSet::new()
         };
         let ignore = if let Some(p) = &config.ignore {
-            protected_words(&read("ignore", p)?, config.strict_yo)?
+            protected_words(std::str::from_utf8(&read("ignore", p)?)?, config.strict_yo)?
         } else {
             BTreeSet::new()
         };
@@ -197,7 +207,7 @@ impl Baseline {
             .as_ref()
             .map(|f| {
                 FrequencyScorer::from_tsv(
-                    &read("frequency", &f.path)?,
+                    std::str::from_utf8(&read("frequency", &f.path)?)?,
                     config.strict_yo,
                     f.scoring.clone(),
                 )
@@ -205,6 +215,7 @@ impl Baseline {
             .transpose()?;
         let metadata = serde_json::json!({"config":config,"resource_sha256":hashes,
             "dictionary_words":dictionary.len(),"trie_nodes":dictionary.node_count(),
+            "dictionary_storage":dictionary.storage_metadata(),
             "domain_words":domain.len(),"ignore_words":ignore.len(),
             "frequency_words":frequency.as_ref().map(FrequencyScorer::len),
             "decision_policy": if frequency.is_some() {

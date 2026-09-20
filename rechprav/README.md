@@ -164,6 +164,28 @@ KEEP; `candidate` по-прежнему означает выбранный вы
 
 ## Организация
 
+Для заранее собранного плоского trie вместо сборки BTreeMap при каждом старте:
+
+```bash
+rechprav/target/release/rechprav build-index rechprav/artifacts/opencorpora-wordfreq/dictionary.txt --output rechprav/artifacts/opencorpora-wordfreq/dictionary.rpt
+rechprav/target/release/rechprav inspect 'я установил драйвир' --config rechprav/configs/opencorpora-packed-b2.toml
+python3 rechprav/scripts/run_index_experiment.py rechprav/experiments/my-index-run --index rechprav/artifacts/opencorpora-wordfreq/dictionary.rpt
+```
+
+`build-index` принимает TXT или JSON от `build-dict`, создаёт новый `.rpt` и
+сохраняет SHA256 исходного ресурса. Расширение `.rpt` в `dictionary` включает
+готовый индекс; TOML и скоринг остаются прежними. Несовпадение `strict_yo`,
+повреждение файла или нарушение структуры приводят к ошибке до создания review.
+Молчаливого восстановления из другого словаря нет. Частоты пока читаются из TSV.
+Формат, ограничения и проверки: [packed-index.md](../docs/rechprav/packed-index.md).
+
+Runner опыта индекса по умолчанию строит новый стандартный `.rpt`; `--index`
+позволяет повторить сравнение с существующим файлом. Он проверяет точное совпадение
+всех решений B2 с опытом 003 и результатов генератора между реализациями.
+`examples/profile.rs --queries queries.json` отдельно измеряет прямые запросы
+генератора, включая неподдерживаемые корректором distance=2; это проверка индекса,
+не включение distance=2 в правила исправлений.
+
 `src/` — библиотека и CLI; `tests/` — проверки поведения, безопасности вывода и метрик;
 `data/fixtures/` — технические примеры; `experiments/` — сохранённые прогоны.
 Опыты не меняют сервер HandyProcessor до этапа интеграции.

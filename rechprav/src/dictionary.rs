@@ -5,6 +5,24 @@ use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
 use unicode_normalization::UnicodeNormalization;
 
+/// Dictionary membership and candidate generation, independent of correction policy.
+pub trait CandidateGenerator {
+    fn contains(&self, word: &str) -> bool;
+    fn len(&self) -> usize;
+    fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
+    fn node_count(&self) -> usize;
+    fn lookup(
+        &self,
+        query: &str,
+        distance: usize,
+        max_candidates: usize,
+        max_nodes: usize,
+    ) -> Search;
+    fn storage_metadata(&self) -> serde_json::Value;
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct DictionaryFile {
@@ -71,6 +89,46 @@ pub fn protected_words(contents: &str, strict_yo: bool) -> Result<BTreeSet<Strin
 }
 
 impl Dictionary {
+    /// Offline conversion only: breadth-first nodes and a single canonical spelling blob.
+    pub fn pack(&self, source_sha256: [u8; 32]) -> Result<Vec<u8>> {
+        use crate::packed::{PackedNode, encode, label};
+        ensure!(self.nodes.len() <= u32::MAX as usize, "too many trie nodes");
+        let mut order = Vec::with_capacity(self.nodes.len());
+        let mut rows = Vec::with_capacity(self.nodes.len());
+        let mut blob = Vec::new();
+        order.push(0usize);
+        rows.push(PackedNode {
+            label: 255,
+            ..Default::default()
+        });
+        let mut cursor = 0;
+        while cursor < order.len() {
+            let node = &self.nodes[order[cursor]];
+            if !node.children.is_empty() {
+                rows[cursor].first_child = order.len() as u32;
+                rows[cursor].child_count = node.children.len() as u8;
+            }
+            if let Some(id) = node.terminal {
+                let spelling = &self.entries[id].1;
+                rows[cursor].word_start = u32::try_from(blob.len())?;
+                rows[cursor].word_len = spelling.len() as u16;
+                blob.extend_from_slice(spelling.as_bytes());
+                ensure!(
+                    blob.len() <= u32::MAX as usize,
+                    "spelling blob exceeds 4 GiB"
+                );
+            }
+            for (&ch, &child) in &node.children {
+                order.push(child);
+                rows.push(PackedNode {
+                    label: label(ch).unwrap(),
+                    ..Default::default()
+                });
+            }
+            cursor += 1;
+        }
+        encode(self.strict_yo, self.len(), source_sha256, &rows, &blob)
+    }
     pub fn from_text(contents: &str, strict_yo: bool) -> Result<Self> {
         Self::from_words(
             word_lines(contents).into_iter().map(str::to_owned),
@@ -218,5 +276,29 @@ impl Dictionary {
             .sort_by(|a, b| (a.distance, &a.key, &a.word).cmp(&(b.distance, &b.key, &b.word)));
         result.candidates.truncate(max_candidates);
         result
+    }
+}
+
+impl CandidateGenerator for Dictionary {
+    fn contains(&self, word: &str) -> bool {
+        self.contains(word)
+    }
+    fn len(&self) -> usize {
+        self.len()
+    }
+    fn node_count(&self) -> usize {
+        self.node_count()
+    }
+    fn lookup(
+        &self,
+        query: &str,
+        distance: usize,
+        max_candidates: usize,
+        max_nodes: usize,
+    ) -> Search {
+        self.lookup(query, distance, max_candidates, max_nodes)
+    }
+    fn storage_metadata(&self) -> serde_json::Value {
+        serde_json::json!({"format":"btree_trie"})
     }
 }

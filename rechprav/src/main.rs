@@ -4,7 +4,9 @@ use rechprav::{
     corpus::{self, Origin},
     corrector::{Baseline, Corrector, Keep, analyze},
     dictionary::Dictionary,
-    metrics, review, text,
+    metrics,
+    packed::PackedTrie,
+    review, text,
 };
 use serde::Serialize;
 use serde_json::json;
@@ -82,6 +84,14 @@ impl EngineArgs {
 
 #[derive(Subcommand)]
 enum Command {
+    /// Build a validated portable packed trie (.rpt) once, for fast offline loading.
+    BuildIndex {
+        input: PathBuf,
+        #[arg(long)]
+        output: PathBuf,
+        #[arg(long)]
+        strict_yo: bool,
+    },
     /// Normalize and validate a word list. Trie is built once when the baseline starts.
     BuildDict {
         input: PathBuf,
@@ -176,6 +186,7 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
         ("src/dictionary.rs", include_bytes!("dictionary.rs")),
         ("src/frequency.rs", include_bytes!("frequency.rs")),
         ("src/metrics.rs", include_bytes!("metrics.rs")),
+        ("src/packed.rs", include_bytes!("packed.rs")),
         ("src/review.rs", include_bytes!("review.rs")),
         ("src/text.rs", include_bytes!("text.rs")),
     ];
@@ -196,6 +207,37 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
 
 fn run() -> Result<()> {
     match Cli::parse().command {
+        Command::BuildIndex {
+            input,
+            output,
+            strict_yo,
+        } => {
+            ensure!(
+                output.extension().is_some_and(|s| s == "rpt"),
+                "packed index output must end in .rpt"
+            );
+            let contents = fs::read_to_string(&input).context("read dictionary as UTF-8")?;
+            let source_sha256: [u8; 32] = Sha256::digest(contents.as_bytes()).into();
+            let dictionary = if input.extension().is_some_and(|s| s == "json") {
+                Dictionary::from_json(&contents, strict_yo)?
+            } else {
+                Dictionary::from_text(&contents, strict_yo)?
+            };
+            let start = Instant::now();
+            let packed = PackedTrie::from_bytes(dictionary.pack(source_sha256)?, strict_yo)?;
+            let mut file = new_file(&output)?;
+            file.write_all(packed.as_bytes())?;
+            file.flush()?;
+            println!(
+                "{}",
+                serde_json::to_string_pretty(&json!({
+                    "words":dictionary.len(),"nodes":dictionary.node_count(),"index_bytes":packed.as_bytes().len(),
+                    "source_sha256":packed.source_sha256(),"index_sha256":format!("{:x}",Sha256::digest(packed.as_bytes())),
+                    "pack_validate_write_ms":start.elapsed().as_secs_f64()*1000.0,
+                    "scope":"packing, validation and file write only; excludes source read and reference trie build"
+                }))?
+            );
+        }
         Command::BuildDict {
             input,
             output,
