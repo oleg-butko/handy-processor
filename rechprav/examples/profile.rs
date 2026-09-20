@@ -78,6 +78,11 @@ fn main() -> Result<()> {
             include_bytes!("../src/review.rs").as_slice(),
         ),
         ("src/text.rs", include_bytes!("../src/text.rs").as_slice()),
+        ("src/terms.rs", include_bytes!("../src/terms.rs").as_slice()),
+        (
+            "src/term_metrics.rs",
+            include_bytes!("../src/term_metrics.rs").as_slice(),
+        ),
         (
             "src/packed_frequency.rs",
             include_bytes!("../src/packed_frequency.rs").as_slice(),

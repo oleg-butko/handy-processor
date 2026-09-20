@@ -86,6 +86,34 @@ impl EngineArgs {
 
 #[derive(Subcommand)]
 enum Command {
+    /// Inspect a separate experimental term-only pass (not cascaded with B2).
+    TermsInspect {
+        text: String,
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        disable_terms: bool,
+    },
+    /// Apply a term-only pass and save exact span diagnostics to a NEW directory.
+    TermsReview {
+        input: PathBuf,
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        output_dir: PathBuf,
+        #[arg(long)]
+        disable_terms: bool,
+    },
+    /// Evaluate term corrections including multiple input words with exact span metrics.
+    TermsBenchmark {
+        dataset: PathBuf,
+        #[arg(long)]
+        config: PathBuf,
+        #[arg(long)]
+        output_dir: PathBuf,
+        #[arg(long)]
+        disable_terms: bool,
+    },
     /// Build an exact, validated frequency table (.rpf) from TSV for offline loading.
     BuildFrequency {
         input: PathBuf,
@@ -204,6 +232,8 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
         ),
         ("src/review.rs", include_bytes!("review.rs")),
         ("src/text.rs", include_bytes!("text.rs")),
+        ("src/terms.rs", include_bytes!("terms.rs")),
+        ("src/term_metrics.rs", include_bytes!("term_metrics.rs")),
     ];
     let source_hashes: std::collections::BTreeMap<_, _> = sources
         .iter()
@@ -222,6 +252,76 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
 
 fn run() -> Result<()> {
     match Cli::parse().command {
+        Command::TermsInspect {
+            text: source,
+            config,
+            disable_terms,
+        } => {
+            let (engine, metadata) = rechprav::terms::TermEngine::load(&config, disable_terms)?;
+            println!(
+                "{}",
+                serde_json::to_string_pretty(
+                    &json!({"source":source,"resources":metadata,"analysis":engine.analyze(&source)})
+                )?
+            );
+        }
+        Command::TermsReview {
+            input,
+            config,
+            output_dir,
+            disable_terms,
+        } => {
+            let contents = fs::read_to_string(&input)?;
+            let (engine, metadata) = rechprav::terms::TermEngine::load(&config, disable_terms)?;
+            new_dir(&output_dir)?;
+            let mut corrected = new_file(&output_dir.join("corrected.txt"))?;
+            let mut debug = new_file(&output_dir.join("debug.jsonl"))?;
+            for line in text::lines(&contents) {
+                let analysis = engine.analyze(line.content);
+                corrected.write_all(analysis.corrected.as_bytes())?;
+                corrected.write_all(line.ending.as_bytes())?;
+                serde_json::to_writer(
+                    &mut debug,
+                    &json!({"line":line.number,"file_byte_start":line.byte_start,"source":line.content,"ending":line.ending,"analysis":analysis}),
+                )?;
+                writeln!(debug)?;
+            }
+            corrected.flush()?;
+            debug.flush()?;
+            let mut info = manifest(&input, contents.as_bytes(), "terms-review");
+            info["resources"] = metadata;
+            save_json(&output_dir.join("manifest.json"), &info)?;
+            println!("Term-only review: {}", output_dir.display());
+        }
+        Command::TermsBenchmark {
+            dataset,
+            config,
+            output_dir,
+            disable_terms,
+        } => {
+            let contents = fs::read(&dataset)?;
+            let records = corpus::parse(std::str::from_utf8(&contents)?, &dataset)?;
+            let (engine, metadata) = rechprav::terms::TermEngine::load(&config, disable_terms)?;
+            let started = Instant::now();
+            let run = rechprav::term_metrics::benchmark(&records, &engine)?;
+            let elapsed = started.elapsed();
+            new_dir(&output_dir)?;
+            save_json(&output_dir.join("metrics.json"), &run.report)?;
+            let mut predictions = new_file(&output_dir.join("predictions.jsonl"))?;
+            for prediction in &run.predictions {
+                serde_json::to_writer(&mut predictions, prediction)?;
+                writeln!(predictions)?;
+            }
+            predictions.flush()?;
+            let mut info = manifest(&dataset, &contents, "terms-benchmark");
+            info["resources"] = metadata;
+            info["evaluation_wall_ns"] = json!(elapsed.as_nanos());
+            info["timing_scope"] = json!(
+                "validation + term correction + metrics + diagnostics; excludes resource load; not isolated latency"
+            );
+            save_json(&output_dir.join("manifest.json"), &info)?;
+            println!("{}", serde_json::to_string_pretty(&run.report)?);
+        }
         Command::BuildFrequency {
             input,
             output,
