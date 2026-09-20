@@ -1,0 +1,21 @@
+{
+  "git_revision": "f289652a061e2403e6fe67919f733d572874f9fb",
+  "implementation_status": [],
+  "cpu": "Intel(R) Xeon(R) CPU E5-2678 v3 @ 2.50GHz",
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "dataset_sha256": "7a6b3d4fc2fd6d9d83ff28811f8ac9e6438a0589ff8ea655936084ec50307714",
+  "binary_sha256": "0577790abbf9b16dac43a0aad2175ede45cc7922abd7e558de2680cda3fb3090",
+  "profiler_sha256": "19f05f302b3876a4b274a09906768988143cbb4f86e3ee6a962a160a383d14e5",
+  "profiler_source_sha256": "1b0c9b6ced738bbdc15ae4dd736b381d7c0c80ef7111c1b418960facf1c3eb95",
+  "runner_sha256": "901a59db0ffda1cb67773ce156dc0530add52bd563cfca8c8e028cee8511a8d3",
+  "whole_process_seconds": {
+    "keep": 0.030017344000043522,
+    "b1-tiny": 0.02159695799991823,
+    "b2-tiny": 1.4755806929997561,
+    "b1-full": 18.653571112999998,
+    "b2-full": 18.216002540000318,
+    "b2-full-zero-frequency": 17.83088714600035
+  },
+  "scope": "synthetic dev mechanism experiment; fixed heuristic parameters, no tuning or held-out quality estimate"
+}

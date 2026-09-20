@@ -1,0 +1,58 @@
+{
+  "compiled_source_sha256": {
+    "Cargo.lock": "49e76a2b718996ad97b854789d7fae9e92bd96474786d3e5aba5177115be3a8a",
+    "Cargo.toml": "1432569012b432b4a6dedb173c05427f0511f70a6a56404b7faf82ab7eef98c8",
+    "examples/profile.rs": "1b0c9b6ced738bbdc15ae4dd736b381d7c0c80ef7111c1b418960facf1c3eb95",
+    "src/corpus.rs": "12352c22a15e6c333973f25941d4ba9a60480081ae88cd9e364959b0945ef64b",
+    "src/corrector.rs": "58c97c00038b78d0c8442a4d1ca07efd3b027b7352605b65bf60da9cca3e98d9",
+    "src/dictionary.rs": "f6c80da7f9c8fab2e78aaa1f3dfeaceef442e0870751d1a5001c42b4c24ba291",
+    "src/frequency.rs": "95261f8a9903e556a3116ed1930b35351f0dfd814fbdd16b17ae11496f9664ea",
+    "src/lib.rs": "adc972ee125977d0b48a14f52b464e78f8522d35dce14de5d3f682cccd48f81a",
+    "src/metrics.rs": "dff335346a23ee561ed6a292cfbe8f2623d7f8b77042ececcf97d97ee42ada92",
+    "src/review.rs": "87ed6e193750e6e5c69cf328e6906d95bc6fe1e2460fad2c9609561d39c1cc33",
+    "src/text.rs": "61ba9d0b877da98c5ecc885d04700892a8dd58c330b3ec68b3b6b67218625794"
+  },
+  "engine": "levenshtein_unique",
+  "process_memory_linux": [
+    "VmHWM:\t    7320 kB",
+    "VmRSS:\t    7320 kB"
+  ],
+  "records": 27,
+  "repetitions": 100,
+  "resource_load_ms": 0.35926600000000003,
+  "resources": {
+    "config": {
+      "dictionary": "../data/fixtures/baseline/dictionary.txt",
+      "domain": "../data/fixtures/baseline/domain.txt",
+      "frequency": null,
+      "ignore": "../data/fixtures/baseline/ignore.txt",
+      "policy": {
+        "max_candidates": 20,
+        "max_distance": 1,
+        "max_search_nodes": 100000,
+        "max_word_length": 64,
+        "min_word_length": 5,
+        "protect_titlecase": true,
+        "protect_uppercase": true
+      },
+      "strict_yo": false
+    },
+    "decision_policy": "OOV + exactly one candidate in complete distance-1 search; uncalibrated",
+    "dictionary_words": 57,
+    "domain_words": 6,
+    "frequency_words": null,
+    "ignore_words": 1,
+    "resource_sha256": {
+      "config": "ba65d13312c63c905d7f48d306b66932a3b78fa71df5739443b488b94d206b23",
+      "dictionary": "afa83d84762af42316f9e079593fd4f319dedb601f033b689608d6fdb002287a",
+      "domain": "3f55176416db3a592d5a7d7d42ea06e319dafc298ec599b6e7ccf23504db9bb9",
+      "ignore": "73d9e75692a12aaee7e5cabde686fa0b77c93b3a6347c7ba6661193eb212a2fe"
+    },
+    "trie_nodes": 249
+  },
+  "samples": 2700,
+  "scope": "warm analyze per synthetic record: tokenization, gates, lookup, scoring, reconstruction; excludes result drop, validation, serialization; load includes reading/hashing/building resources; OS page cache uncontrolled; not production latency",
+  "warm_record_max_ns": 179247,
+  "warm_record_p50_ns": 9607,
+  "warm_record_p95_ns": 38159
+}

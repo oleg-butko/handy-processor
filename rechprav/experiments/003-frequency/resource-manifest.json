@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "python": "3.13.5",
+  "packages": {
+    "dawg2-python": "0.9.0",
+    "ftfy": "6.3.1",
+    "langcodes": "3.5.1",
+    "locate": "1.1.1",
+    "msgpack": "1.2.2",
+    "pymorphy3": "2.0.6",
+    "pymorphy3-dicts-ru": "2.4.417150.4580142",
+    "regex": "2026.9.10",
+    "setuptools": "84.0.0",
+    "wcwidth": "0.8.4",
+    "wordfreq": "3.1.1"
+  },
+  "script_sha256": "0a8a841906f25baeda8b81ce6870e63c59415f877109a72ad3d4ffbca0110623",
+  "counts": {
+    "raw_keys": 5140211,
+    "duplicate_keys": 2075399,
+    "excluded_keys": 42473,
+    "word_forms": 3022339,
+    "frequency_raw_entries": 713447,
+    "frequency_exported_entries": 668309
+  },
+  "opencorpora": {
+    "language_code": "ru",
+    "format_version": "2.4",
+    "pymorphy2_version": "0.0.1",
+    "compiled_at": "2022-01-08T22:09:24.565962",
+    "source": "opencorpora.org",
+    "source_version": "0.92",
+    "source_revision": "417150",
+    "source_lexemes_count": 391778,
+    "source_links_count": 258607,
+    "gramtab_length": 5532,
+    "gramtab_formats": {
+      "opencorpora-ext": "gramtab-opencorpora-ext.json",
+      "opencorpora-int": "gramtab-opencorpora-int.json"
+    },
+    "paradigms_length": 3456,
+    "suffixes_length": 16311,
+    "words_dawg_length": 5140211,
+    "compile_options": {
+      "min_ending_freq": 2,
+      "min_paradigm_popularity": 3,
+      "max_suffix_length": 5,
+      "paradigm_prefixes": [
+        "",
+        "по",
+        "наи"
+      ]
+    },
+    "prediction_suffixes_dawg_lengths": [
+      375373,
+      1882,
+      21
+    ],
+    "P(t|w)": true,
+    "P(t|w)_unique_words": 45471,
+    "P(t|w)_outcomes": 518367,
+    "P(t|w)_min_word_freq": 1,
+    "corpus_revision": "4580142"
+  },
+  "input_sha256": {
+    "pymorphy3-dicts-ru/grammemes.json": "0c2dae69cf15c3cdd9b92c7bce2273b2f1ca0f806228a01de0fe3f24145337fb",
+    "pymorphy3-dicts-ru/gramtab-opencorpora-ext.json": "07ba6280d93ade73563289edac1a8fff4ce2388a813d0f47d32431cfaae84d90",
+    "pymorphy3-dicts-ru/gramtab-opencorpora-int.json": "1a72703ac84c16572deee6a92779a322b59763cbc336021433d52c33160fa05b",
+    "pymorphy3-dicts-ru/meta.json": "0c16fa06946dbda7db6df209128004f5edb36f9d8bdf48e5efff6045ec21a2fd",
+    "pymorphy3-dicts-ru/p_t_given_w.intdawg": "000a4d34ff42c44c65aca33ebcae689c77455a9a244145881b28fd8b8b7ea21e",
+    "pymorphy3-dicts-ru/paradigms.array": "dfc465558f1a2760bbde6fa89f0447a5c93896da429efe658fe2f0638954758b",
+    "pymorphy3-dicts-ru/prediction-suffixes-0.dawg": "85f38ab5a14566b7b22b8bfb5a63118992013f45757bf60ef1e5e937a92f1aae",
+    "pymorphy3-dicts-ru/prediction-suffixes-1.dawg": "31ddaef03712c6168488241be17ce59afa0f4c465e1ba7bf3a5bf095f2053b5f",
+    "pymorphy3-dicts-ru/prediction-suffixes-2.dawg": "4e6d6e687031b89e5e7035647570f69d28528e7df123210cc994b8aea36c85fd",
+    "pymorphy3-dicts-ru/suffixes.json": "c827ccc32b85e42c3edab8ac235bf91fdbc392e94455ad139da06fb1babcdb74",
+    "pymorphy3-dicts-ru/words.dawg": "ae4381a9d6e4e636309ac1a242e480a9470a05723f6673d5fcc3fcf293aa8a9e",
+    "wordfreq/large_ru.msgpack.gz": "0440613cc765c14a20fb9483225f2fec4d85e66672809076bcec9b29119f9b43"
+  },
+  "output_sha256": {
+    "dictionary.txt": "e2e67e5b5e226473b668dff5029fb5af0aa55a3f6e0165da012363be39766a11",
+    "frequency.tsv": "b825e97778693cb7e3b5cb26d058ba6bde6cf4971471dc0a6f2d1a1e889c160f"
+  },
+  "elapsed_seconds": 73.98872545699987,
+  "dictionary": {
+    "source": "https://pypi.org/project/pymorphy3-dicts-ru/2.4.417150.4580142/",
+    "data_license": "CC BY-SA 3.0",
+    "attribution": "OpenCorpora; pymorphy3-dicts-ru by Danylo Halaiko",
+    "filter": "all stored forms matching lowercase [а-яё]{1,128}; no corpus-derived additions"
+  },
+  "frequency": {
+    "source": "https://pypi.org/project/wordfreq/3.1.1/",
+    "attribution": "Robyn Speer, wordfreq; upstream NOTICE includes source attributions",
+    "data_license": "CC BY-SA 4.0",
+    "code_license": "Apache-2.0",
+    "unit": "occurrences per billion",
+    "list": "ru large",
+    "normalization": "spellings exported separately; runtime е/ё collisions use max, not sum",
+    "missing": "unknown; zero scoring floor, not proof of invalidity"
+  },
+  "scope": "Offline resource export; no corpus input, no quality claim. See docs/rechprav/resource-sources.md."
+}

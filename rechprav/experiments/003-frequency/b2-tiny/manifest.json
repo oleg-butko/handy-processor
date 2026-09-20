@@ -1,0 +1,76 @@
+{
+  "arch": "x86_64",
+  "arguments": [
+    "benchmark",
+    "/home/user1/handy-processor/rechprav/data/fixtures/baseline/corpus.jsonl",
+    "--output-dir",
+    "/home/user1/handy-processor/rechprav/experiments/003-frequency/b2-tiny",
+    "--config",
+    "/home/user1/handy-processor/rechprav/configs/frequency-tiny.toml"
+  ],
+  "command": "benchmark",
+  "compiled_source_sha256": {
+    "Cargo.lock": "49e76a2b718996ad97b854789d7fae9e92bd96474786d3e5aba5177115be3a8a",
+    "Cargo.toml": "1432569012b432b4a6dedb173c05427f0511f70a6a56404b7faf82ab7eef98c8",
+    "src/corpus.rs": "12352c22a15e6c333973f25941d4ba9a60480081ae88cd9e364959b0945ef64b",
+    "src/corrector.rs": "58c97c00038b78d0c8442a4d1ca07efd3b027b7352605b65bf60da9cca3e98d9",
+    "src/dictionary.rs": "f6c80da7f9c8fab2e78aaa1f3dfeaceef442e0870751d1a5001c42b4c24ba291",
+    "src/frequency.rs": "95261f8a9903e556a3116ed1930b35351f0dfd814fbdd16b17ae11496f9664ea",
+    "src/lib.rs": "adc972ee125977d0b48a14f52b464e78f8522d35dce14de5d3f682cccd48f81a",
+    "src/main.rs": "414b12dc7b22ce43db9184d7ba571b77aa9227445727dc5e10e03ee82b6700a8",
+    "src/metrics.rs": "dff335346a23ee561ed6a292cfbe8f2623d7f8b77042ececcf97d97ee42ada92",
+    "src/review.rs": "87ed6e193750e6e5c69cf328e6906d95bc6fe1e2460fad2c9609561d39c1cc33",
+    "src/text.rs": "61ba9d0b877da98c5ecc885d04700892a8dd58c330b3ec68b3b6b67218625794"
+  },
+  "engine": "levenshtein_frequency",
+  "evaluation_wall_ns": 1130799,
+  "input_file": "/home/user1/handy-processor/rechprav/data/fixtures/baseline/corpus.jsonl",
+  "input_sha256": "7a6b3d4fc2fd6d9d83ff28811f8ac9e6438a0589ff8ea655936084ec50307714",
+  "note": "experimental run; check dataset provenance before interpreting quality",
+  "os": "linux",
+  "rechprav_version": "0.1.0",
+  "resources": {
+    "config": {
+      "dictionary": "../data/fixtures/baseline/dictionary.txt",
+      "domain": "../data/fixtures/baseline/domain.txt",
+      "frequency": {
+        "path": "../artifacts/opencorpora-wordfreq/frequency.tsv",
+        "scoring": {
+          "edit_penalty": 1.0,
+          "keep_bias": 1.0,
+          "log_cap": 6.0,
+          "min_keep_margin": 0.5,
+          "min_runner_up_margin": 0.5,
+          "weight": 1.0
+        }
+      },
+      "ignore": "../data/fixtures/baseline/ignore.txt",
+      "policy": {
+        "max_candidates": 20,
+        "max_distance": 1,
+        "max_search_nodes": 100000,
+        "max_word_length": 64,
+        "min_word_length": 5,
+        "protect_titlecase": true,
+        "protect_uppercase": true
+      },
+      "strict_yo": false
+    },
+    "decision_policy": "OOV + complete distance-1 search + bounded frequency prior + KEEP and runner-up margins; uncalibrated",
+    "dictionary_words": 57,
+    "domain_words": 6,
+    "frequency_words": 661389,
+    "ignore_words": 1,
+    "resource_sha256": {
+      "config": "8db7a4b54ac1c9032288df9a309b9f93555c5e3783f276d6b63e539c75caa2a3",
+      "dictionary": "afa83d84762af42316f9e079593fd4f319dedb601f033b689608d6fdb002287a",
+      "domain": "3f55176416db3a592d5a7d7d42ea06e319dafc298ec599b6e7ccf23504db9bb9",
+      "frequency": "b825e97778693cb7e3b5cb26d058ba6bde6cf4971471dc0a6f2d1a1e889c160f",
+      "ignore": "73d9e75692a12aaee7e5cabde686fa0b77c93b3a6347c7ba6661193eb212a2fe"
+    },
+    "trie_nodes": 249
+  },
+  "schema_version": 2,
+  "timing_scope": "validation+correction+metrics+prediction collection; excludes resource load and serialization; NOT isolated correction latency",
+  "unix_timestamp": 1789854637
+}

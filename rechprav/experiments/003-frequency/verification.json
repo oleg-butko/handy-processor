@@ -1,0 +1,26 @@
+{
+  "implementation_commit": "f289652a061e2403e6fe67919f733d572874f9fb",
+  "rust_tests": {
+    "passed": 45,
+    "baseline": 13,
+    "cli": 7,
+    "foundation": 15,
+    "frequency": 10
+  },
+  "checks": {
+    "clippy_all_targets_deny_warnings": "passed",
+    "rustfmt_check": "passed",
+    "offline_release_bin_and_examples": "passed",
+    "python_py_compile": "passed",
+    "six_profile_input_and_compiled_source_hashes": "passed",
+    "prediction_edits_reconstruct_exact_output": "passed",
+    "all_b1_tiny_metrics_equal_experiment_002": "passed",
+    "review_manifest_and_width": "passed",
+    "original_first_plan_unchanged": "passed"
+  },
+  "test_log_scope": "Rust tests/clippy/build executed during implementation; this file also records post-run artifact checks. No statistical real-ASR claim.",
+  "toolchain": {
+    "rustc": "rustc 1.98.0 (88d9e12ae 2026-08-18)",
+    "cargo": "cargo 1.98.0 (797e8a9bc 2026-08-05)"
+  }
+}
