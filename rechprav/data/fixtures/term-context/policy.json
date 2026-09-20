@@ -1,0 +1,14 @@
+{
+  "hardware/pnz": {
+    "context_patterns": ["проверь {term}", "сигнал {term}", "{term} модуля", "модуль {term}"],
+    "context_exclusions": ["{term} на карте", "живу в {term}", "{term} сегодня тепло", "город {term}"]
+  },
+  "hardware/slot": {
+    "context_patterns": ["{term} памяти", "вставь плату в {term}", "{term} для платы", "проверь {term}"],
+    "context_exclusions": ["{term} данных", "{term} правил"]
+  },
+  "lab/bnz": {
+    "context_patterns": ["{term} на стенде", "{term} в лаборатории", "датчик {term}"],
+    "context_exclusions": []
+  }
+}
