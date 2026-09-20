@@ -12,6 +12,7 @@ use std::{
     collections::{BTreeMap, BTreeSet},
     fs,
     path::{Path, PathBuf},
+    time::Instant,
 };
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
@@ -159,6 +160,13 @@ pub struct Baseline {
 
 impl Baseline {
     pub fn load(path: &Path) -> Result<(Self, serde_json::Value)> {
+        let (engine, metadata, _) = Self::load_profiled(path)?;
+        Ok((engine, metadata))
+    }
+
+    pub fn load_profiled(path: &Path) -> Result<(Self, serde_json::Value, BTreeMap<String, u128>)> {
+        let overall = Instant::now();
+        let mut phases = BTreeMap::new();
         let contents = fs::read_to_string(path).context("read baseline config")?;
         let config: Config = toml::from_str(&contents).context("parse baseline TOML")?;
         config.policy.validate()?;
@@ -171,16 +179,39 @@ impl Baseline {
             "config",
             format!("{:x}", Sha256::digest(contents.as_bytes())),
         );
-        let mut read = |name, resource: &Path| -> Result<Vec<u8>> {
+        fn read(
+            name: &'static str,
+            parent: &Path,
+            resource: &Path,
+            hashes: &mut BTreeMap<&'static str, String>,
+            phases: &mut BTreeMap<String, u128>,
+        ) -> Result<Vec<u8>> {
+            let start = Instant::now();
             let data = fs::read(parent.join(resource))
                 .with_context(|| format!("read {name}: {}", resource.display()))?;
+            phases.insert(format!("{name}.read"), start.elapsed().as_nanos());
+            let start = Instant::now();
             hashes.insert(name, format!("{:x}", Sha256::digest(&data)));
+            phases.insert(format!("{name}.sha256"), start.elapsed().as_nanos());
             Ok(data)
-        };
-        let data = read("dictionary", &config.dictionary)?;
+        }
+        phases.insert("config".into(), overall.elapsed().as_nanos());
+        let data = read(
+            "dictionary",
+            parent,
+            &config.dictionary,
+            &mut hashes,
+            &mut phases,
+        )?;
+        let start = Instant::now();
         let dictionary: Box<dyn CandidateGenerator> =
             if config.dictionary.extension().is_some_and(|s| s == "rpt") {
-                Box::new(PackedTrie::from_bytes(data, config.strict_yo)?)
+                let (dictionary, validation) =
+                    PackedTrie::from_bytes_profiled(data, config.strict_yo)?;
+                for (phase, ns) in validation {
+                    phases.insert(format!("dictionary.validation.{phase}"), ns);
+                }
+                Box::new(dictionary)
             } else if config.dictionary.extension().is_some_and(|s| s == "json") {
                 Box::new(Dictionary::from_json(
                     std::str::from_utf8(&data)?,
@@ -192,27 +223,39 @@ impl Baseline {
                     config.strict_yo,
                 )?)
             };
+        phases.insert("dictionary.decode".into(), start.elapsed().as_nanos());
         let domain = if let Some(p) = &config.domain {
-            protected_words(std::str::from_utf8(&read("domain", p)?)?, config.strict_yo)?
+            let data = read("domain", parent, p, &mut hashes, &mut phases)?;
+            let start = Instant::now();
+            let words = protected_words(std::str::from_utf8(&data)?, config.strict_yo)?;
+            phases.insert("domain.decode".into(), start.elapsed().as_nanos());
+            words
         } else {
             BTreeSet::new()
         };
         let ignore = if let Some(p) = &config.ignore {
-            protected_words(std::str::from_utf8(&read("ignore", p)?)?, config.strict_yo)?
+            let data = read("ignore", parent, p, &mut hashes, &mut phases)?;
+            let start = Instant::now();
+            let words = protected_words(std::str::from_utf8(&data)?, config.strict_yo)?;
+            phases.insert("ignore.decode".into(), start.elapsed().as_nanos());
+            words
         } else {
             BTreeSet::new()
         };
-        let frequency = config
-            .frequency
-            .as_ref()
-            .map(|f| {
-                FrequencyScorer::from_tsv(
-                    std::str::from_utf8(&read("frequency", &f.path)?)?,
-                    config.strict_yo,
-                    f.scoring.clone(),
-                )
-            })
-            .transpose()?;
+        let frequency = if let Some(f) = &config.frequency {
+            let data = read("frequency", parent, &f.path, &mut hashes, &mut phases)?;
+            let start = Instant::now();
+            let frequency = FrequencyScorer::from_tsv(
+                std::str::from_utf8(&data)?,
+                config.strict_yo,
+                f.scoring.clone(),
+            )?;
+            phases.insert("frequency.decode".into(), start.elapsed().as_nanos());
+            Some(frequency)
+        } else {
+            None
+        };
+        let start = Instant::now();
         let metadata = serde_json::json!({"config":config,"resource_sha256":hashes,
             "dictionary_words":dictionary.len(),"trie_nodes":dictionary.node_count(),
             "dictionary_storage":dictionary.storage_metadata(),
@@ -221,6 +264,8 @@ impl Baseline {
             "decision_policy": if frequency.is_some() {
                 "OOV + complete distance-1 search + bounded frequency prior + KEEP and runner-up margins; uncalibrated"
             } else { "OOV + exactly one candidate in complete distance-1 search; uncalibrated" }});
+        phases.insert("metadata".into(), start.elapsed().as_nanos());
+        phases.insert("total".into(), overall.elapsed().as_nanos());
         Ok((
             Self {
                 dictionary,
@@ -231,6 +276,7 @@ impl Baseline {
                 frequency,
             },
             metadata,
+            phases,
         ))
     }
 }

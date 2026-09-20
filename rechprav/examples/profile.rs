@@ -114,7 +114,7 @@ fn main() -> Result<()> {
     corpus::validate(&records)?;
     ensure!(!records.is_empty(), "empty corpus");
     let start = Instant::now();
-    let (engine, resources) = Baseline::load(&args.config)?;
+    let (engine, resources, load_phases) = Baseline::load_profiled(&args.config)?;
     let load_ms = start.elapsed().as_secs_f64() * 1000.0;
     for record in &records {
         black_box(analyze(&record.source, &engine));
@@ -185,6 +185,8 @@ fn main() -> Result<()> {
         "{}",
         serde_json::to_string_pretty(&serde_json::json!({
             "engine": engine.name(), "resource_load_ms": load_ms,
+            "load_phases_ns":load_phases,
+            "load_phases_scope":"dictionary.validation.* are nested inside dictionary.decode; all other phases are sequential; total includes timing/bookkeeping overhead, excludes final local-buffer destruction",
             "compiled_source_sha256":compiled_sources,
             "warm_record_p50_ns":percentile(50), "warm_record_p95_ns":percentile(95),
             "warm_record_p99_ns":percentile(99),

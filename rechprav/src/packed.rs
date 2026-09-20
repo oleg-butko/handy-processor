@@ -8,6 +8,7 @@ use crate::{
 };
 use anyhow::{Result, ensure};
 use sha2::{Digest, Sha256};
+use std::{collections::BTreeMap, time::Instant};
 
 const MAGIC: &[u8; 8] = b"RCHPTR01";
 const HEADER: usize = 104;
@@ -90,6 +91,16 @@ pub struct PackedTrie {
 
 impl PackedTrie {
     pub fn from_bytes(data: Vec<u8>, strict_yo: bool) -> Result<Self> {
+        Self::from_bytes_profiled(data, strict_yo).map(|(trie, _)| trie)
+    }
+
+    /// Timings are diagnostic only and never enter resource metadata or decisions.
+    pub fn from_bytes_profiled(
+        data: Vec<u8>,
+        strict_yo: bool,
+    ) -> Result<(Self, BTreeMap<String, u128>)> {
+        let mut phases = BTreeMap::new();
+        let start = Instant::now();
         ensure!(
             data.len() >= HEADER && &data[..8] == MAGIC,
             "invalid packed trie magic/version/header"
@@ -126,10 +137,14 @@ impl PackedTrie {
             blob_start.checked_add(blob_len) == Some(data.len()),
             "packed trie size mismatch/trailing data"
         );
+        phases.insert("header".into(), start.elapsed().as_nanos());
+        let start = Instant::now();
         ensure!(
             checksum(&data) == data[72..HEADER],
             "packed trie checksum mismatch"
         );
+        phases.insert("checksum".into(), start.elapsed().as_nanos());
+        let start = Instant::now();
         // Check the entire blob before taking UTF-8 slices from terminal offsets.
         let blob = std::str::from_utf8(&data[blob_start..])?;
         ensure!(
@@ -143,8 +158,14 @@ impl PackedTrie {
             blob_start,
             strict_yo,
         };
+        phases.insert("utf8_alphabet".into(), start.elapsed().as_nanos());
+        let start = Instant::now();
         trie.validate_structure()?;
-        Ok(trie)
+        phases.insert(
+            "structure_and_spelling_paths".into(),
+            start.elapsed().as_nanos(),
+        );
+        Ok((trie, phases))
     }
 
     pub fn as_bytes(&self) -> &[u8] {
