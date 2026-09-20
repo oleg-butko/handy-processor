@@ -1,0 +1,284 @@
+[
+  {
+    "id": "terms-001",
+    "tags": [
+      "listed",
+      "pnz"
+    ],
+    "source": "проверь пээнзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-002",
+    "tags": [
+      "listed",
+      "pnz"
+    ],
+    "source": "проверь пэнзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-003",
+    "tags": [
+      "listed",
+      "pnz",
+      "real_word"
+    ],
+    "source": "проверь пензе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-004",
+    "tags": [
+      "listed",
+      "pnz"
+    ],
+    "source": "проверь пензэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-005",
+    "tags": [
+      "listed",
+      "pnz"
+    ],
+    "source": "проверь бензэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-006",
+    "tags": [
+      "listed",
+      "pnz",
+      "multiword"
+    ],
+    "source": "проверь пэ эн зэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-007",
+    "tags": [
+      "listed",
+      "pnz",
+      "multiword"
+    ],
+    "source": "проверь пэн зэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-008",
+    "tags": [
+      "novel",
+      "pnz"
+    ],
+    "source": "проверь бэнзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-009",
+    "tags": [
+      "novel",
+      "pnz"
+    ],
+    "source": "проверь пэнзе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-010",
+    "tags": [
+      "novel",
+      "pnz",
+      "distance_two"
+    ],
+    "source": "проверь бэнзе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бэнзе",
+    "fp": 0,
+    "fn": 1
+  },
+  {
+    "id": "terms-011",
+    "tags": [
+      "novel",
+      "pnz",
+      "multiword"
+    ],
+    "source": "проверь пэ эн зе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-012",
+    "tags": [
+      "novel",
+      "pnz",
+      "multiword"
+    ],
+    "source": "проверь пэ энзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-013",
+    "tags": [
+      "novel",
+      "pnz",
+      "multiword"
+    ],
+    "source": "проверь бэн зэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-014",
+    "tags": [
+      "listed",
+      "slot",
+      "real_word"
+    ],
+    "source": "вставь модуль в свод памяти",
+    "gold": "вставь модуль в слот памяти",
+    "prediction": "вставь модуль в свод памяти",
+    "fp": 0,
+    "fn": 1
+  },
+  {
+    "id": "terms-015",
+    "tags": [
+      "listed",
+      "slot",
+      "real_word"
+    ],
+    "source": "проверь ввод памяти",
+    "gold": "проверь слот памяти",
+    "prediction": "проверь ввод памяти",
+    "fp": 0,
+    "fn": 1
+  },
+  {
+    "id": "terms-016",
+    "tags": [
+      "listed",
+      "slot",
+      "missing_cue"
+    ],
+    "source": "вставь плату в свод",
+    "gold": "вставь плату в слот",
+    "prediction": "вставь плату в свод",
+    "fp": 0,
+    "fn": 1
+  },
+  {
+    "id": "terms-017",
+    "tags": [
+      "listed",
+      "pnz",
+      "no_context"
+    ],
+    "source": "пэнзэ",
+    "gold": "ПНЗ",
+    "prediction": "БНЗ",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-018",
+    "tags": [
+      "listed",
+      "pnz",
+      "no_context",
+      "real_word"
+    ],
+    "source": "пензе",
+    "gold": "ПНЗ",
+    "prediction": "пензе",
+    "fp": 0,
+    "fn": 1
+  },
+  {
+    "id": "terms-021",
+    "tags": [
+      "listed",
+      "pnz",
+      "multiword",
+      "multiple_spans"
+    ],
+    "source": "проверь пэ эн зэ и сигнал пэ эн зэ",
+    "gold": "проверь ПНЗ и сигнал ПНЗ",
+    "prediction": "проверь БНЗ и сигнал БНЗ",
+    "fp": 2,
+    "fn": 2
+  },
+  {
+    "id": "terms-022",
+    "tags": [
+      "listed",
+      "pnz",
+      "multiword",
+      "whitespace"
+    ],
+    "source": "проверь\tпэ\tэн  зэ!",
+    "gold": "проверь\tПНЗ!",
+    "prediction": "проверь\tБНЗ!",
+    "fp": 1,
+    "fn": 1
+  },
+  {
+    "id": "terms-025",
+    "tags": [
+      "negative",
+      "city",
+      "misleading_context"
+    ],
+    "source": "в пензе проверь сигнал",
+    "gold": "в пензе проверь сигнал",
+    "prediction": "в БНЗ проверь сигнал",
+    "fp": 1,
+    "fn": 0
+  },
+  {
+    "id": "terms-042",
+    "tags": [
+      "negative",
+      "similar_word"
+    ],
+    "source": "проверь пение",
+    "gold": "проверь пение",
+    "prediction": "проверь БНЗ",
+    "fp": 1,
+    "fn": 0
+  }
+]

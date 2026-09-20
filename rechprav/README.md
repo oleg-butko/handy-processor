@@ -208,6 +208,32 @@ decode и вложенные проверки словаря. Вложенные
 тех же ресурсов, а не для сравнения новых алгоритмов коррекции.
 Выводы и отвергнутые варианты: [опыт 005](experiments/005-loading/report.md).
 
+## Отключаемые наборы терминов
+
+Отдельный экспериментальный проход поддерживает речевые варианты аббревиатур,
+1–3 исходных слова, переключение наборов, вес отдельного термина и отказ при
+конфликте. Примеры: `пэ эн зэ → ПНЗ`, `свод/ввод → слот` в выбранном контексте.
+В обычный B2 он автоматически не включён; команды `terms-*` выполняют только
+терминологический проход, без последовательного применения B2.
+
+```bash
+rechprav/target/release/rechprav terms-inspect 'проверь пэ эн зэ' --config rechprav/configs/terms-example.toml
+rechprav/target/release/rechprav terms-review input.txt --config rechprav/configs/terms-example.toml --output-dir rechprav/artifacts/terms-001
+rechprav/target/release/rechprav terms-inspect 'проверь пэнзэ' --config rechprav/configs/terms-example.toml --disable-terms
+python3 rechprav/scripts/run_term_experiment.py rechprav/experiments/my-term-run
+```
+
+Настройки и формула score: [terms.md](../docs/rechprav/terms.md).
+`boost` повышает/понижает предпочтение, но не является вероятностью.
+Выключатели есть в корне TOML, у каждого набора и у каждого термина.
+`terms-review` сохраняет corrected.txt, JSONL с исходными диапазонами и manifest.
+Для нескольких исходных слов используется новый span evaluator.
+
+[Опыт 006](experiments/006-terms/report.md): 43 технические записи, 12 профилей.
+Edit-1 дал 18 верных и 6 неверных замен; простые контекстные подсказки не защищают
+обычные слова достаточно надёжно. Distance=2 ухудшил компромисс. Механизм
+управления принят для следующих опытов; автоматическая вставка не включается.
+
 ## Организация
 
 `src/` — библиотека и CLI; `tests/` — проверки поведения, безопасности вывода и метрик;

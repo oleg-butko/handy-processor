@@ -1,0 +1,10 @@
+{
+  "implementation_commit": "b4e9c3107547b63e831ac1b0203a721811aa3338",
+  "implementation_status": [],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "binary_sha256": "eb78143ec2a605264444eaac73b3dda20cacba6fb9ebdaf79b141e4dfed94a0e",
+  "runner_sha256": "e3b474b140e7539c3ff9b9bad4080a106192cba6479299ec35ca0bf0ea33a68e",
+  "corpus_sha256": "fb207e3d0163f748bb8746441b4f5754a52699b71ecba948a6bc677f9aa6defe",
+  "prototype_config_sha256": "2e1896dae954d7de9533ddfd8e6304148296fcb55de847bb10ede734f262f4e2",
+  "scope": "fixed synthetic stress corpus; 12 a priori profiles; same weights except specified ablation; no real ASR quality claim; full B2 unchanged; config snapshots contain resolved baseline path"
+}

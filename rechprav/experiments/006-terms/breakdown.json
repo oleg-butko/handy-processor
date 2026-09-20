@@ -1,0 +1,665 @@
+{
+  "disabled": {
+    "listed": {
+      "records": 16,
+      "tp": 0,
+      "fp": 0,
+      "fn": 17,
+      "exact_records": 0
+    },
+    "novel": {
+      "records": 6,
+      "tp": 0,
+      "fp": 0,
+      "fn": 6,
+      "exact_records": 0
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 8,
+      "exact_records": 0
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 4,
+      "exact_records": 3
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 21
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 3
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "exact_records": 0
+    }
+  },
+  "exact": {
+    "listed": {
+      "records": 16,
+      "tp": 13,
+      "fp": 2,
+      "fn": 4,
+      "exact_records": 12
+    },
+    "novel": {
+      "records": 6,
+      "tp": 0,
+      "fp": 0,
+      "fn": 6,
+      "exact_records": 0
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 5,
+      "fp": 0,
+      "fn": 3,
+      "exact_records": 4
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1,
+      "exact_records": 6
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0,
+      "exact_records": 18
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0,
+      "exact_records": 0
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 2,
+      "exact_records": 0
+    }
+  },
+  "edit-1": {
+    "listed": {
+      "records": 16,
+      "tp": 13,
+      "fp": 2,
+      "fn": 4,
+      "exact_records": 12
+    },
+    "novel": {
+      "records": 6,
+      "tp": 5,
+      "fp": 0,
+      "fn": 1,
+      "exact_records": 5
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 7
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1,
+      "exact_records": 6
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0,
+      "exact_records": 17
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0,
+      "exact_records": 0
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 2,
+      "exact_records": 0
+    }
+  },
+  "edit-2": {
+    "listed": {
+      "records": 16,
+      "tp": 13,
+      "fp": 2,
+      "fn": 4,
+      "exact_records": 12
+    },
+    "novel": {
+      "records": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 6
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 7
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1,
+      "exact_records": 6
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 7,
+      "fn": 0,
+      "exact_records": 14
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0,
+      "exact_records": 0
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 2,
+      "exact_records": 0
+    }
+  },
+  "oov-only": {
+    "listed": {
+      "records": 16,
+      "tp": 6,
+      "fp": 2,
+      "fn": 11,
+      "exact_records": 6
+    },
+    "novel": {
+      "records": 6,
+      "tp": 4,
+      "fp": 0,
+      "fn": 2,
+      "exact_records": 4
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 5,
+      "exact_records": 3
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 4,
+      "exact_records": 3
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 21
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 3
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 2,
+      "exact_records": 0
+    }
+  },
+  "unguarded": {
+    "listed": {
+      "records": 16,
+      "tp": 15,
+      "fp": 2,
+      "fn": 2,
+      "exact_records": 14
+    },
+    "novel": {
+      "records": 6,
+      "tp": 5,
+      "fp": 0,
+      "fn": 1,
+      "exact_records": 5
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 7
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 4,
+      "fp": 3,
+      "fn": 0,
+      "exact_records": 4
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 8,
+      "fn": 0,
+      "exact_records": 13
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0,
+      "exact_records": 0
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 2,
+      "exact_records": 0
+    }
+  },
+  "pnz-low": {
+    "listed": {
+      "records": 16,
+      "tp": 12,
+      "fp": 1,
+      "fn": 5,
+      "exact_records": 11
+    },
+    "novel": {
+      "records": 6,
+      "tp": 4,
+      "fp": 0,
+      "fn": 2,
+      "exact_records": 4
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 7,
+      "fp": 0,
+      "fn": 1,
+      "exact_records": 6
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1,
+      "exact_records": 6
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0,
+      "exact_records": 18
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0,
+      "exact_records": 0
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 2,
+      "exact_records": 0
+    }
+  },
+  "pnz-high": {
+    "listed": {
+      "records": 16,
+      "tp": 13,
+      "fp": 2,
+      "fn": 4,
+      "exact_records": 12
+    },
+    "novel": {
+      "records": 6,
+      "tp": 5,
+      "fp": 0,
+      "fn": 1,
+      "exact_records": 5
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 7
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1,
+      "exact_records": 6
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0,
+      "exact_records": 17
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0,
+      "exact_records": 0
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 2,
+      "exact_records": 0
+    }
+  },
+  "conflict": {
+    "listed": {
+      "records": 16,
+      "tp": 2,
+      "fp": 0,
+      "fn": 15,
+      "exact_records": 2
+    },
+    "novel": {
+      "records": 6,
+      "tp": 0,
+      "fp": 0,
+      "fn": 6,
+      "exact_records": 0
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 8,
+      "exact_records": 0
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 2,
+      "fp": 0,
+      "fn": 2,
+      "exact_records": 5
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0,
+      "exact_records": 19
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0,
+      "exact_records": 1
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "exact_records": 0
+    }
+  },
+  "prefer-hardware": {
+    "listed": {
+      "records": 16,
+      "tp": 13,
+      "fp": 2,
+      "fn": 4,
+      "exact_records": 12
+    },
+    "novel": {
+      "records": 6,
+      "tp": 5,
+      "fp": 0,
+      "fn": 1,
+      "exact_records": 5
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 7
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1,
+      "exact_records": 6
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0,
+      "exact_records": 17
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0,
+      "exact_records": 0
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 2,
+      "exact_records": 0
+    }
+  },
+  "lab-only": {
+    "listed": {
+      "records": 16,
+      "tp": 2,
+      "fp": 11,
+      "fn": 15,
+      "exact_records": 2
+    },
+    "novel": {
+      "records": 6,
+      "tp": 0,
+      "fp": 5,
+      "fn": 6,
+      "exact_records": 0
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 0,
+      "fp": 8,
+      "fn": 8,
+      "exact_records": 0
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 0,
+      "fp": 1,
+      "fn": 4,
+      "exact_records": 3
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0,
+      "exact_records": 19
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0,
+      "exact_records": 2
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 2
+    }
+  },
+  "pnz-disabled": {
+    "listed": {
+      "records": 16,
+      "tp": 2,
+      "fp": 0,
+      "fn": 15,
+      "exact_records": 2
+    },
+    "novel": {
+      "records": 6,
+      "tp": 0,
+      "fp": 0,
+      "fn": 6,
+      "exact_records": 0
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 8,
+      "exact_records": 0
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 2,
+      "fp": 0,
+      "fn": 2,
+      "exact_records": 5
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0,
+      "exact_records": 19
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0,
+      "exact_records": 1
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "exact_records": 0
+    }
+  },
+  "b2-new": {
+    "listed": {
+      "records": 16,
+      "tp": 0,
+      "fp": 0,
+      "fn": 17,
+      "exact_records": 0
+    },
+    "novel": {
+      "records": 6,
+      "tp": 0,
+      "fp": 1,
+      "fn": 6,
+      "exact_records": 0
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 8,
+      "exact_records": 0
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 4,
+      "exact_records": 3
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 21
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "exact_records": 3
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "exact_records": 0
+    }
+  }
+}

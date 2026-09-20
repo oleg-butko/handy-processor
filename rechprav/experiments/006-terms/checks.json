@@ -1,0 +1,22 @@
+{
+  "implementation_commit": "b4e9c3107547b63e831ac1b0203a721811aa3338",
+  "tests": {
+    "passed": 67,
+    "previous": 56,
+    "terms": 11
+  },
+  "checks": {
+    "clippy_all_targets_deny_warnings": "passed",
+    "rustfmt": "passed",
+    "offline_release_bin_and_examples": "passed",
+    "python_py_compile": "passed",
+    "source_fingerprint_manifests": 14,
+    "profiles_with_independent_span_counts_and_byte_reconstruction": 12,
+    "b2_old_predictions_and_metrics_byte_equal_003": "passed",
+    "original_plan_unchanged": "passed",
+    "all_profiles_search_complete": true,
+    "resource_fingerprints": 65,
+    "local_documentation_link_targets": 71
+  },
+  "scope": "Test/build checks executed before implementation commit; source fingerprints checked again after experiment; full dictionary locally cached, no network used."
+}
