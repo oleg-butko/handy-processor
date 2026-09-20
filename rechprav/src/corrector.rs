@@ -241,11 +241,15 @@ impl Baseline {
         let frequency = if let Some(f) = &config.frequency {
             let data = read("frequency", parent, &f.path, &mut hashes, &mut phases)?;
             let start = Instant::now();
-            let frequency = FrequencyScorer::from_tsv(
-                std::str::from_utf8(&data)?,
-                config.strict_yo,
-                f.scoring.clone(),
-            )?;
+            let frequency = if f.path.extension().is_some_and(|s| s == "rpf") {
+                FrequencyScorer::from_packed(data, config.strict_yo, f.scoring.clone())?
+            } else {
+                FrequencyScorer::from_tsv(
+                    std::str::from_utf8(&data)?,
+                    config.strict_yo,
+                    f.scoring.clone(),
+                )?
+            };
             phases.insert("frequency.decode".into(), start.elapsed().as_nanos());
             Some(frequency)
         } else {
@@ -257,6 +261,7 @@ impl Baseline {
             "dictionary_storage":dictionary.storage_metadata(),
             "domain_words":domain.len(),"ignore_words":ignore.len(),
             "frequency_words":frequency.as_ref().map(FrequencyScorer::len),
+            "frequency_storage":frequency.as_ref().map(FrequencyScorer::storage_metadata),
             "decision_policy": if frequency.is_some() {
                 "OOV + complete distance-1 search + bounded frequency prior + KEEP and runner-up margins; uncalibrated"
             } else { "OOV + exactly one candidate in complete distance-1 search; uncalibrated" }});

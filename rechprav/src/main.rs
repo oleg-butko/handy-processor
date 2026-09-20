@@ -4,8 +4,10 @@ use rechprav::{
     corpus::{self, Origin},
     corrector::{Baseline, Corrector, Keep, analyze},
     dictionary::Dictionary,
+    frequency::{FrequencyPolicy, FrequencyScorer},
     metrics,
     packed::PackedTrie,
+    packed_frequency::PackedFrequency,
     review, text,
 };
 use serde::Serialize;
@@ -84,6 +86,14 @@ impl EngineArgs {
 
 #[derive(Subcommand)]
 enum Command {
+    /// Build an exact, validated frequency table (.rpf) from TSV for offline loading.
+    BuildFrequency {
+        input: PathBuf,
+        #[arg(long)]
+        output: PathBuf,
+        #[arg(long)]
+        strict_yo: bool,
+    },
     /// Build a validated portable packed trie (.rpt) once, for fast offline loading.
     BuildIndex {
         input: PathBuf,
@@ -188,6 +198,10 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
         ("src/hashing.rs", include_bytes!("hashing.rs")),
         ("src/metrics.rs", include_bytes!("metrics.rs")),
         ("src/packed.rs", include_bytes!("packed.rs")),
+        (
+            "src/packed_frequency.rs",
+            include_bytes!("packed_frequency.rs"),
+        ),
         ("src/review.rs", include_bytes!("review.rs")),
         ("src/text.rs", include_bytes!("text.rs")),
     ];
@@ -208,6 +222,44 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
 
 fn run() -> Result<()> {
     match Cli::parse().command {
+        Command::BuildFrequency {
+            input,
+            output,
+            strict_yo,
+        } => {
+            ensure!(
+                output.extension().is_some_and(|s| s == "rpf"),
+                "frequency output must end in .rpf"
+            );
+            let start = Instant::now();
+            let contents = fs::read_to_string(&input).context("read frequency TSV as UTF-8")?;
+            let reference =
+                FrequencyScorer::from_tsv(&contents, strict_yo, FrequencyPolicy::default())?;
+            let packed = PackedFrequency::from_bytes(
+                reference.pack(Sha256::digest(contents.as_bytes()).into())?,
+                strict_yo,
+            )?;
+            ensure!(
+                reference.len() == packed.len()
+                    && packed
+                        .entries()
+                        .all(|(key, value)| reference.get(key).map(f64::to_bits)
+                            == Some(value.to_bits())),
+                "packed frequency differs from TSV"
+            );
+            let mut file = new_file(&output)?;
+            file.write_all(packed.as_bytes())?;
+            file.flush()?;
+            println!(
+                "{}",
+                serde_json::to_string_pretty(&json!({
+                    "words":packed.len(), "verified_bitwise_values":packed.len(), "index_bytes":packed.as_bytes().len(),
+                    "source_sha256":packed.source_sha256(), "index_sha256":rechprav::hashing::sha256_hex(packed.as_bytes()),
+                    "build_validate_write_ms":start.elapsed().as_secs_f64()*1000.0,
+                    "scope":"source read, parse, pack, validation, full bitwise equality check, file write and index hash"
+                }))?
+            );
+        }
         Command::BuildIndex {
             input,
             output,

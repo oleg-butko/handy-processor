@@ -27,8 +27,10 @@ def main():
     parser.add_argument("output_dir",type=Path)
     parser.add_argument("--profile",action="append",required=True,help="name=config.toml; may repeat")
     parser.add_argument("--repetitions",type=int,default=3)
+    parser.add_argument("--analyze-repetitions",type=int,default=100)
     args=parser.parse_args()
     if not 1<=args.repetitions<=20: raise ValueError("require 1..20 fresh processes per profile")
+    if not 1<=args.analyze_repetitions<=1000: raise ValueError("require 1..1000 analyze repetitions")
     profiles={}
     for item in args.profile:
         name,config=item.split("=",1)
@@ -72,7 +74,7 @@ def main():
         names=list(profiles); rng.shuffle(names)
         for name in names:
             order.append(name)
-            report=json.loads(run([profiler,profiles[name],corpus,"--repetitions","1"]))
+            report=json.loads(run([profiler,profiles[name],corpus,"--repetitions",str(args.analyze_repetitions)]))
             verify_sources(report)
             if report["resources"]!=metadata[name]: raise ValueError("resources changed between processes")
             phases=report["load_phases_ns"]
@@ -91,12 +93,14 @@ def main():
         summary[name]={"load_ms":[r["resource_load_ms"] for r in runs],
             "median_load_ms":statistics.median(r["resource_load_ms"] for r in runs),
             "median_phases_ms":{p:statistics.median(r["load_phases_ns"][p] for r in runs)/1e6 for p in fields},
+            "analyze_repetitions":args.analyze_repetitions,
+            "median_warm_record_p95_ms":statistics.median(r["warm_record_p95_ns"] for r in runs)/1e6,
             "rss_kib":[memory(r,"VmRSS") for r in runs],"peak_rss_kib":[memory(r,"VmHWM") for r in runs]}
     save(output/"summary.json",summary)
     save(output/"commands.json",commands)
     save(output/"validation.json",validation)
     save(output/"environment.json",{"git_revision":subprocess.check_output(["git","-C",str(root),"rev-parse","HEAD"],text=True).strip(),
-         "implementation_status":subprocess.check_output(["git","-C",str(root),"status","--porcelain","--","src","examples","scripts","tests","configs"],text=True).splitlines(),
+         "implementation_status":subprocess.check_output(["git","-C",str(root),"status","--porcelain","--","Cargo.toml","Cargo.lock","src","examples","scripts","tests","configs"],text=True).splitlines(),
          "platform":platform.platform(),"cpu":next(line.split(":",1)[1].strip() for line in Path("/proc/cpuinfo").read_text().splitlines() if line.startswith("model name")),
          "binary_sha256":sha(binary),"profiler_sha256":sha(profiler),"runner_sha256":sha(Path(__file__)),"corpus_sha256":sha(corpus),
          "profile_config_paths":{name:str(path) for name,path in profiles.items()},"seed":505,"run_order":order,

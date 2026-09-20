@@ -5,5 +5,6 @@ pub mod frequency;
 pub mod hashing;
 pub mod metrics;
 pub mod packed;
+pub mod packed_frequency;
 pub mod review;
 pub mod text;

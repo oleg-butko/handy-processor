@@ -1,4 +1,5 @@
 //! Bounded frequency prior, separate from the dictionary of valid forms.
+use crate::packed_frequency::PackedFrequency;
 use crate::text::key;
 use anyhow::{Context, Result, ensure};
 use serde::{Deserialize, Serialize};
@@ -67,7 +68,13 @@ impl FrequencyPolicy {
 
 pub struct FrequencyScorer {
     pub policy: FrequencyPolicy,
-    values: BTreeMap<String, f64>,
+    values: Values,
+    strict_yo: bool,
+}
+
+enum Values {
+    Text(BTreeMap<String, f64>),
+    Packed(PackedFrequency),
 }
 
 impl FrequencyScorer {
@@ -98,16 +105,50 @@ impl FrequencyScorer {
                 .or_insert(value);
         }
         ensure!(!values.is_empty(), "frequency table is empty");
-        Ok(Self { policy, values })
+        Ok(Self {
+            policy,
+            values: Values::Text(values),
+            strict_yo,
+        })
+    }
+    pub fn from_packed(data: Vec<u8>, strict_yo: bool, policy: FrequencyPolicy) -> Result<Self> {
+        policy.validate()?;
+        Ok(Self {
+            policy,
+            values: Values::Packed(PackedFrequency::from_bytes(data, strict_yo)?),
+            strict_yo,
+        })
+    }
+    pub fn pack(&self, source_sha256: [u8; 32]) -> Result<Vec<u8>> {
+        match &self.values {
+            Values::Text(values) => {
+                crate::packed_frequency::encode(values, self.strict_yo, source_sha256)
+            }
+            Values::Packed(_) => anyhow::bail!("pack requires the original TSV table"),
+        }
+    }
+    pub fn storage_metadata(&self) -> serde_json::Value {
+        match &self.values {
+            Values::Text(_) => serde_json::json!({"format":"tsv_btree"}),
+            Values::Packed(table) => {
+                serde_json::json!({"format":"packed_frequency_v1", "bytes":table.as_bytes().len(), "source_sha256":table.source_sha256()})
+            }
+        }
     }
     pub fn get(&self, key: &str) -> Option<f64> {
-        self.values.get(key).copied()
+        match &self.values {
+            Values::Text(values) => values.get(key).copied(),
+            Values::Packed(table) => table.get(key),
+        }
     }
     pub fn len(&self) -> usize {
-        self.values.len()
+        match &self.values {
+            Values::Text(values) => values.len(),
+            Values::Packed(table) => table.len(),
+        }
     }
     pub fn is_empty(&self) -> bool {
-        self.values.is_empty()
+        self.len() == 0
     }
     pub fn score(&self, key: &str, distance: usize) -> f64 {
         self.policy.prior(self.get(key)) - self.policy.edit_penalty * distance as f64
