@@ -1,0 +1,17 @@
+[
+  [
+    "/home/user1/handy-processor/rechprav/target/release/examples/profile",
+    "/home/user1/handy-processor/rechprav/experiments/004-packed-trie/packed-no-frequency.toml",
+    "/home/user1/handy-processor/rechprav/data/fixtures/baseline/corpus.jsonl"
+  ],
+  [
+    "/home/user1/handy-processor/rechprav/target/release/examples/profile",
+    "/home/user1/handy-processor/rechprav/experiments/004-packed-trie/packed-no-frequency.toml",
+    "/home/user1/handy-processor/rechprav/data/fixtures/baseline/corpus.jsonl"
+  ],
+  [
+    "/home/user1/handy-processor/rechprav/target/release/examples/profile",
+    "/home/user1/handy-processor/rechprav/experiments/004-packed-trie/packed-no-frequency.toml",
+    "/home/user1/handy-processor/rechprav/data/fixtures/baseline/corpus.jsonl"
+  ]
+]

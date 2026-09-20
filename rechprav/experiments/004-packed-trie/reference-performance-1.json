@@ -1,0 +1,150 @@
+{
+  "compiled_source_sha256": {
+    "Cargo.lock": "49e76a2b718996ad97b854789d7fae9e92bd96474786d3e5aba5177115be3a8a",
+    "Cargo.toml": "1432569012b432b4a6dedb173c05427f0511f70a6a56404b7faf82ab7eef98c8",
+    "examples/profile.rs": "12b78fab7007c4532747da7ef78569e92b0225ddfb333caa6e54ea5e95da9936",
+    "src/corpus.rs": "12352c22a15e6c333973f25941d4ba9a60480081ae88cd9e364959b0945ef64b",
+    "src/corrector.rs": "9b3701d574428d6d94cf74607d8dda8964f1f9461bff06e818d805564eb8445d",
+    "src/dictionary.rs": "4ea29fac723d5efb6190a75052d1a1766fd0e3291cd6ff01469ca3adf1cd354f",
+    "src/frequency.rs": "95261f8a9903e556a3116ed1930b35351f0dfd814fbdd16b17ae11496f9664ea",
+    "src/lib.rs": "725fd053d78906cf91b8719c5c7acaabfa92423b7dfcfe7b0c09c325f39e1435",
+    "src/metrics.rs": "dff335346a23ee561ed6a292cfbe8f2623d7f8b77042ececcf97d97ee42ada92",
+    "src/packed.rs": "7dab3c6131aec1cb8a5ba52a2eaeeb4f9146fadfbcf974251bcc38c3bd16d1eb",
+    "src/review.rs": "87ed6e193750e6e5c69cf328e6906d95bc6fe1e2460fad2c9609561d39c1cc33",
+    "src/text.rs": "61ba9d0b877da98c5ecc885d04700892a8dd58c330b3ec68b3b6b67218625794"
+  },
+  "engine": "levenshtein_frequency",
+  "lookup_scope": "normalized direct generator queries; includes DP allocation, traversal, candidates and sort, excludes result drop and serialization; bypasses protection/OOV/scoring; per-query warm repetitions",
+  "lookup_statistics": {
+    "distance_1_complete": {
+      "max_ns": 6369059,
+      "mean_ns": 756373.9477040817,
+      "p50_ns": 562632,
+      "p95_ns": 1886439,
+      "p99_ns": 3587404,
+      "samples": 3920
+    },
+    "distance_1_limited": {
+      "max_ns": 255890,
+      "mean_ns": 43568.419565217395,
+      "p50_ns": 20971,
+      "p95_ns": 129665,
+      "p99_ns": 175890,
+      "samples": 460
+    },
+    "distance_2_complete": {
+      "max_ns": 21435121,
+      "mean_ns": 8351629.475,
+      "p50_ns": 6157399,
+      "p95_ns": 15682115,
+      "p99_ns": 21435121,
+      "samples": 80
+    },
+    "distance_2_limited": {
+      "max_ns": 950502,
+      "mean_ns": 771185.15,
+      "p50_ns": 720855,
+      "p95_ns": 875451,
+      "p99_ns": 950502,
+      "samples": 20
+    },
+    "length_0_4": {
+      "max_ns": 509530,
+      "mean_ns": 151513.2719512195,
+      "p50_ns": 146453,
+      "p95_ns": 328084,
+      "p99_ns": 419141,
+      "samples": 820
+    },
+    "length_17_32": {
+      "max_ns": 7222247,
+      "mean_ns": 991305.11,
+      "p50_ns": 785196,
+      "p95_ns": 1776937,
+      "p99_ns": 6619354,
+      "samples": 800
+    },
+    "length_33_plus": {
+      "max_ns": 21435121,
+      "mean_ns": 2174995.664473684,
+      "p50_ns": 1760214,
+      "p95_ns": 3880586,
+      "p99_ns": 15489328,
+      "samples": 760
+    },
+    "length_5_8": {
+      "max_ns": 5841592,
+      "mean_ns": 404410.51517857146,
+      "p50_ns": 303069,
+      "p95_ns": 667540,
+      "p99_ns": 5127550,
+      "samples": 1120
+    },
+    "length_9_16": {
+      "max_ns": 6157399,
+      "mean_ns": 658530.5673469388,
+      "p50_ns": 556260,
+      "p95_ns": 839337,
+      "p99_ns": 5610985,
+      "samples": 980
+    }
+  },
+  "process_memory_linux": [
+    "VmHWM:\t 1630488 kB",
+    "VmRSS:\t 1541312 kB"
+  ],
+  "queries_sha256": "0a4df6472a88182a87c148fe0bf7aeca20e83e042bb53aaeb854916f8282619d",
+  "records": 27,
+  "repetitions": 100,
+  "resource_load_ms": 15305.900928,
+  "resources": {
+    "config": {
+      "dictionary": "/home/user1/handy-processor/rechprav/artifacts/opencorpora-wordfreq/dictionary.txt",
+      "domain": "/home/user1/handy-processor/rechprav/data/fixtures/baseline/domain.txt",
+      "frequency": {
+        "path": "/home/user1/handy-processor/rechprav/artifacts/opencorpora-wordfreq/frequency.tsv",
+        "scoring": {
+          "edit_penalty": 1.0,
+          "keep_bias": 1.0,
+          "log_cap": 6.0,
+          "min_keep_margin": 0.5,
+          "min_runner_up_margin": 0.5,
+          "weight": 1.0
+        }
+      },
+      "ignore": "/home/user1/handy-processor/rechprav/data/fixtures/baseline/ignore.txt",
+      "policy": {
+        "max_candidates": 20,
+        "max_distance": 1,
+        "max_search_nodes": 100000,
+        "max_word_length": 64,
+        "min_word_length": 5,
+        "protect_titlecase": true,
+        "protect_uppercase": true
+      },
+      "strict_yo": false
+    },
+    "decision_policy": "OOV + complete distance-1 search + bounded frequency prior + KEEP and runner-up margins; uncalibrated",
+    "dictionary_storage": {
+      "format": "btree_trie"
+    },
+    "dictionary_words": 3017654,
+    "domain_words": 6,
+    "frequency_words": 661389,
+    "ignore_words": 1,
+    "resource_sha256": {
+      "config": "9c3f8dddf4ad0423f48ebc1c8a5d079429fcdc1e90cd4318b1e86e0a37037572",
+      "dictionary": "e2e67e5b5e226473b668dff5029fb5af0aa55a3f6e0165da012363be39766a11",
+      "domain": "3f55176416db3a592d5a7d7d42ea06e319dafc298ec599b6e7ccf23504db9bb9",
+      "frequency": "b825e97778693cb7e3b5cb26d058ba6bde6cf4971471dc0a6f2d1a1e889c160f",
+      "ignore": "73d9e75692a12aaee7e5cabde686fa0b77c93b3a6347c7ba6661193eb212a2fe"
+    },
+    "trie_nodes": 4562033
+  },
+  "samples": 2700,
+  "scope": "warm analyze per synthetic record: tokenization, gates, lookup, scoring, reconstruction; excludes result drop, validation, serialization; load includes reading/hashing/building resources; OS page cache uncontrolled; not production latency",
+  "warm_record_max_ns": 2085671,
+  "warm_record_p50_ns": 12221,
+  "warm_record_p95_ns": 718928,
+  "warm_record_p99_ns": 955559
+}

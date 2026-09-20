@@ -1,0 +1,8 @@
+{
+  "exact_lookup_comparisons": 1344,
+  "distinct_queries": 224,
+  "all_lookup_snapshots_equal": true,
+  "compared": "membership, canonical spellings, candidate keys, distances, order, scores, completeness, reasons and visited nodes",
+  "b2_metrics_and_predictions_equal_003": true,
+  "warm_cache_note": "OS cache not flushed; three separate processes per profile, profile order fixed"
+}

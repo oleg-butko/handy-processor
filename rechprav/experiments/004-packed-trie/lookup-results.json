@@ -1,0 +1,9025 @@
+[
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-000",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "иксе"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "иксе",
+          "score": -0.0,
+          "word": "иксе"
+        },
+        {
+          "distance": 1,
+          "key": "аксе",
+          "score": -1.0,
+          "word": "аксе"
+        },
+        {
+          "distance": 1,
+          "key": "биксе",
+          "score": -1.0,
+          "word": "биксе"
+        },
+        {
+          "distance": 1,
+          "key": "икосе",
+          "score": -1.0,
+          "word": "икосе"
+        },
+        {
+          "distance": 1,
+          "key": "икре",
+          "score": -1.0,
+          "word": "икре"
+        },
+        {
+          "distance": 1,
+          "key": "икс",
+          "score": -1.0,
+          "word": "икс"
+        },
+        {
+          "distance": 1,
+          "key": "икса",
+          "score": -1.0,
+          "word": "икса"
+        },
+        {
+          "distance": 1,
+          "key": "иксу",
+          "score": -1.0,
+          "word": "иксу"
+        },
+        {
+          "distance": 1,
+          "key": "иксы",
+          "score": -1.0,
+          "word": "иксы"
+        },
+        {
+          "distance": 1,
+          "key": "икте",
+          "score": -1.0,
+          "word": "икте"
+        },
+        {
+          "distance": 1,
+          "key": "икше",
+          "score": -1.0,
+          "word": "икше"
+        },
+        {
+          "distance": 1,
+          "key": "исе",
+          "score": -1.0,
+          "word": "исе"
+        },
+        {
+          "distance": 1,
+          "key": "иссе",
+          "score": -1.0,
+          "word": "иссе"
+        },
+        {
+          "distance": 1,
+          "key": "киксе",
+          "score": -1.0,
+          "word": "киксе"
+        },
+        {
+          "distance": 1,
+          "key": "миксе",
+          "score": -1.0,
+          "word": "миксе"
+        },
+        {
+          "distance": 1,
+          "key": "фиксе",
+          "score": -1.0,
+          "word": "фиксе"
+        },
+        {
+          "distance": 1,
+          "key": "чиксе",
+          "score": -1.0,
+          "word": "чиксе"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 201
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-001",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "ике"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аике",
+          "score": -1.0,
+          "word": "аике"
+        },
+        {
+          "distance": 1,
+          "key": "аке",
+          "score": -1.0,
+          "word": "аке"
+        },
+        {
+          "distance": 1,
+          "key": "вике",
+          "score": -1.0,
+          "word": "вике"
+        },
+        {
+          "distance": 1,
+          "key": "гике",
+          "score": -1.0,
+          "word": "гике"
+        },
+        {
+          "distance": 1,
+          "key": "дике",
+          "score": -1.0,
+          "word": "дике"
+        },
+        {
+          "distance": 1,
+          "key": "иве",
+          "score": -1.0,
+          "word": "иве"
+        },
+        {
+          "distance": 1,
+          "key": "иге",
+          "score": -1.0,
+          "word": "иге"
+        },
+        {
+          "distance": 1,
+          "key": "иде",
+          "score": -1.0,
+          "word": "иде"
+        },
+        {
+          "distance": 1,
+          "key": "иже",
+          "score": -1.0,
+          "word": "иже"
+        },
+        {
+          "distance": 1,
+          "key": "изе",
+          "score": -1.0,
+          "word": "изе"
+        },
+        {
+          "distance": 1,
+          "key": "икеа",
+          "score": -1.0,
+          "word": "икеа"
+        },
+        {
+          "distance": 1,
+          "key": "икр",
+          "score": -1.0,
+          "word": "икр"
+        },
+        {
+          "distance": 1,
+          "key": "икре",
+          "score": -1.0,
+          "word": "икре"
+        },
+        {
+          "distance": 1,
+          "key": "икс",
+          "score": -1.0,
+          "word": "икс"
+        },
+        {
+          "distance": 1,
+          "key": "иксе",
+          "score": -1.0,
+          "word": "иксе"
+        },
+        {
+          "distance": 1,
+          "key": "икт",
+          "score": -1.0,
+          "word": "икт"
+        },
+        {
+          "distance": 1,
+          "key": "икте",
+          "score": -1.0,
+          "word": "икте"
+        },
+        {
+          "distance": 1,
+          "key": "икше",
+          "score": -1.0,
+          "word": "икше"
+        },
+        {
+          "distance": 1,
+          "key": "иле",
+          "score": -1.0,
+          "word": "иле"
+        },
+        {
+          "distance": 1,
+          "key": "ине",
+          "score": -1.0,
+          "word": "ине"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 81
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-002",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "икасе"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "ивасе",
+          "score": -1.0,
+          "word": "ивасе"
+        },
+        {
+          "distance": 1,
+          "key": "икаре",
+          "score": -1.0,
+          "word": "икаре"
+        },
+        {
+          "distance": 1,
+          "key": "икосе",
+          "score": -1.0,
+          "word": "икосе"
+        },
+        {
+          "distance": 1,
+          "key": "иксе",
+          "score": -1.0,
+          "word": "иксе"
+        },
+        {
+          "distance": 1,
+          "key": "касе",
+          "score": -1.0,
+          "word": "касе"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 225
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-003",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "икае"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "акае",
+          "score": -1.0,
+          "word": "акае"
+        },
+        {
+          "distance": 1,
+          "key": "икав",
+          "score": -1.0,
+          "word": "икав"
+        },
+        {
+          "distance": 1,
+          "key": "икаем",
+          "score": -1.0,
+          "word": "икаем"
+        },
+        {
+          "distance": 1,
+          "key": "икает",
+          "score": -1.0,
+          "word": "икает"
+        },
+        {
+          "distance": 1,
+          "key": "икай",
+          "score": -1.0,
+          "word": "икай"
+        },
+        {
+          "distance": 1,
+          "key": "икал",
+          "score": -1.0,
+          "word": "икал"
+        },
+        {
+          "distance": 1,
+          "key": "икар",
+          "score": -1.0,
+          "word": "икар"
+        },
+        {
+          "distance": 1,
+          "key": "икаре",
+          "score": -1.0,
+          "word": "икаре"
+        },
+        {
+          "distance": 1,
+          "key": "икаю",
+          "score": -1.0,
+          "word": "икаю"
+        },
+        {
+          "distance": 1,
+          "key": "икая",
+          "score": -1.0,
+          "word": "икая"
+        },
+        {
+          "distance": 1,
+          "key": "икре",
+          "score": -1.0,
+          "word": "икре"
+        },
+        {
+          "distance": 1,
+          "key": "иксе",
+          "score": -1.0,
+          "word": "иксе"
+        },
+        {
+          "distance": 1,
+          "key": "икте",
+          "score": -1.0,
+          "word": "икте"
+        },
+        {
+          "distance": 1,
+          "key": "икше",
+          "score": -1.0,
+          "word": "икше"
+        },
+        {
+          "distance": 1,
+          "key": "исае",
+          "score": -1.0,
+          "word": "исае"
+        },
+        {
+          "distance": 1,
+          "key": "кае",
+          "score": -1.0,
+          "word": "кае"
+        },
+        {
+          "distance": 1,
+          "key": "скае",
+          "score": -1.0,
+          "word": "скае"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 234
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-004",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "икес"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "икеа",
+          "score": -1.0,
+          "word": "икеа"
+        },
+        {
+          "distance": 1,
+          "key": "икос",
+          "score": -1.0,
+          "word": "икос"
+        },
+        {
+          "distance": 1,
+          "key": "икс",
+          "score": -1.0,
+          "word": "икс"
+        },
+        {
+          "distance": 1,
+          "key": "инес",
+          "score": -1.0,
+          "word": "инес"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 202
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "distance_two_probe",
+      "distance": 2,
+      "id": "lookup-005",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "иксаа"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 2,
+          "key": "акса",
+          "score": -2.0,
+          "word": "акса"
+        },
+        {
+          "distance": 2,
+          "key": "аксае",
+          "score": -2.0,
+          "word": "аксае"
+        },
+        {
+          "distance": 2,
+          "key": "аксай",
+          "score": -2.0,
+          "word": "аксай"
+        },
+        {
+          "distance": 2,
+          "key": "аксам",
+          "score": -2.0,
+          "word": "аксам"
+        },
+        {
+          "distance": 2,
+          "key": "аксан",
+          "score": -2.0,
+          "word": "аксан"
+        },
+        {
+          "distance": 2,
+          "key": "аксана",
+          "score": -2.0,
+          "word": "аксана"
+        },
+        {
+          "distance": 2,
+          "key": "аксах",
+          "score": -2.0,
+          "word": "аксах"
+        },
+        {
+          "distance": 2,
+          "key": "аксаю",
+          "score": -2.0,
+          "word": "аксаю"
+        },
+        {
+          "distance": 2,
+          "key": "аксая",
+          "score": -2.0,
+          "word": "аксая"
+        },
+        {
+          "distance": 2,
+          "key": "бикса",
+          "score": -2.0,
+          "word": "бикса"
+        },
+        {
+          "distance": 2,
+          "key": "биксам",
+          "score": -2.0,
+          "word": "биксам"
+        },
+        {
+          "distance": 2,
+          "key": "биксах",
+          "score": -2.0,
+          "word": "биксах"
+        },
+        {
+          "distance": 2,
+          "key": "икав",
+          "score": -2.0,
+          "word": "икав"
+        },
+        {
+          "distance": 2,
+          "key": "икай",
+          "score": -2.0,
+          "word": "икай"
+        },
+        {
+          "distance": 2,
+          "key": "икал",
+          "score": -2.0,
+          "word": "икал"
+        },
+        {
+          "distance": 2,
+          "key": "икала",
+          "score": -2.0,
+          "word": "икала"
+        },
+        {
+          "distance": 2,
+          "key": "икар",
+          "score": -2.0,
+          "word": "икар"
+        },
+        {
+          "distance": 2,
+          "key": "икара",
+          "score": -2.0,
+          "word": "икара"
+        },
+        {
+          "distance": 2,
+          "key": "икаю",
+          "score": -2.0,
+          "word": "икаю"
+        },
+        {
+          "distance": 2,
+          "key": "икая",
+          "score": -2.0,
+          "word": "икая"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 1017
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-006",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "азии"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "азии",
+          "score": -0.0,
+          "word": "азии"
+        },
+        {
+          "distance": 1,
+          "key": "авии",
+          "score": -1.0,
+          "word": "авии"
+        },
+        {
+          "distance": 1,
+          "key": "агии",
+          "score": -1.0,
+          "word": "агии"
+        },
+        {
+          "distance": 1,
+          "key": "адии",
+          "score": -1.0,
+          "word": "адии"
+        },
+        {
+          "distance": 1,
+          "key": "азаи",
+          "score": -1.0,
+          "word": "азаи"
+        },
+        {
+          "distance": 1,
+          "key": "ази",
+          "score": -1.0,
+          "word": "ази"
+        },
+        {
+          "distance": 1,
+          "key": "азид",
+          "score": -1.0,
+          "word": "азид"
+        },
+        {
+          "distance": 1,
+          "key": "азиз",
+          "score": -1.0,
+          "word": "азиз"
+        },
+        {
+          "distance": 1,
+          "key": "азизи",
+          "score": -1.0,
+          "word": "азизи"
+        },
+        {
+          "distance": 1,
+          "key": "азик",
+          "score": -1.0,
+          "word": "азик"
+        },
+        {
+          "distance": 1,
+          "key": "азики",
+          "score": -1.0,
+          "word": "азики"
+        },
+        {
+          "distance": 1,
+          "key": "азили",
+          "score": -1.0,
+          "word": "азили"
+        },
+        {
+          "distance": 1,
+          "key": "азим",
+          "score": -1.0,
+          "word": "азим"
+        },
+        {
+          "distance": 1,
+          "key": "азин",
+          "score": -1.0,
+          "word": "азин"
+        },
+        {
+          "distance": 1,
+          "key": "азир",
+          "score": -1.0,
+          "word": "азир"
+        },
+        {
+          "distance": 1,
+          "key": "азис",
+          "score": -1.0,
+          "word": "азис"
+        },
+        {
+          "distance": 1,
+          "key": "азит",
+          "score": -1.0,
+          "word": "азит"
+        },
+        {
+          "distance": 1,
+          "key": "азию",
+          "score": -1.0,
+          "word": "азию"
+        },
+        {
+          "distance": 1,
+          "key": "азия",
+          "score": -1.0,
+          "word": "азия"
+        },
+        {
+          "distance": 1,
+          "key": "азми",
+          "score": -1.0,
+          "word": "азми"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 64
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-007",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "ази"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "ази",
+          "score": -0.0,
+          "word": "ази"
+        },
+        {
+          "distance": 1,
+          "key": "аби",
+          "score": -1.0,
+          "word": "аби"
+        },
+        {
+          "distance": 1,
+          "key": "аги",
+          "score": -1.0,
+          "word": "аги"
+        },
+        {
+          "distance": 1,
+          "key": "ади",
+          "score": -1.0,
+          "word": "ади"
+        },
+        {
+          "distance": 1,
+          "key": "ажи",
+          "score": -1.0,
+          "word": "ажи"
+        },
+        {
+          "distance": 1,
+          "key": "аз",
+          "score": -1.0,
+          "word": "аз"
+        },
+        {
+          "distance": 1,
+          "key": "аза",
+          "score": -1.0,
+          "word": "аза"
+        },
+        {
+          "distance": 1,
+          "key": "азаи",
+          "score": -1.0,
+          "word": "азаи"
+        },
+        {
+          "distance": 1,
+          "key": "азе",
+          "score": -1.0,
+          "word": "азе"
+        },
+        {
+          "distance": 1,
+          "key": "азз",
+          "score": -1.0,
+          "word": "азз"
+        },
+        {
+          "distance": 1,
+          "key": "азид",
+          "score": -1.0,
+          "word": "азид"
+        },
+        {
+          "distance": 1,
+          "key": "азиз",
+          "score": -1.0,
+          "word": "азиз"
+        },
+        {
+          "distance": 1,
+          "key": "азии",
+          "score": -1.0,
+          "word": "азии"
+        },
+        {
+          "distance": 1,
+          "key": "азик",
+          "score": -1.0,
+          "word": "азик"
+        },
+        {
+          "distance": 1,
+          "key": "азим",
+          "score": -1.0,
+          "word": "азим"
+        },
+        {
+          "distance": 1,
+          "key": "азин",
+          "score": -1.0,
+          "word": "азин"
+        },
+        {
+          "distance": 1,
+          "key": "азир",
+          "score": -1.0,
+          "word": "азир"
+        },
+        {
+          "distance": 1,
+          "key": "азис",
+          "score": -1.0,
+          "word": "азис"
+        },
+        {
+          "distance": 1,
+          "key": "азит",
+          "score": -1.0,
+          "word": "азит"
+        },
+        {
+          "distance": 1,
+          "key": "азию",
+          "score": -1.0,
+          "word": "азию"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 40
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-008",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "азаии"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "азади",
+          "score": -1.0,
+          "word": "азади"
+        },
+        {
+          "distance": 1,
+          "key": "азаи",
+          "score": -1.0,
+          "word": "азаи"
+        },
+        {
+          "distance": 1,
+          "key": "азаид",
+          "score": -1.0,
+          "word": "азаид"
+        },
+        {
+          "distance": 1,
+          "key": "азалии",
+          "score": -1.0,
+          "word": "азалии"
+        },
+        {
+          "distance": 1,
+          "key": "азами",
+          "score": -1.0,
+          "word": "азами"
+        },
+        {
+          "distance": 1,
+          "key": "азари",
+          "score": -1.0,
+          "word": "азари"
+        },
+        {
+          "distance": 1,
+          "key": "азарии",
+          "score": -1.0,
+          "word": "азарии"
+        },
+        {
+          "distance": 1,
+          "key": "азии",
+          "score": -1.0,
+          "word": "азии"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 260
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-009",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "азаи"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "азаи",
+          "score": -0.0,
+          "word": "азаи"
+        },
+        {
+          "distance": 1,
+          "key": "абаи",
+          "score": -1.0,
+          "word": "абаи"
+        },
+        {
+          "distance": 1,
+          "key": "агаи",
+          "score": -1.0,
+          "word": "агаи"
+        },
+        {
+          "distance": 1,
+          "key": "адаи",
+          "score": -1.0,
+          "word": "адаи"
+        },
+        {
+          "distance": 1,
+          "key": "ажаи",
+          "score": -1.0,
+          "word": "ажаи"
+        },
+        {
+          "distance": 1,
+          "key": "аза",
+          "score": -1.0,
+          "word": "аза"
+        },
+        {
+          "distance": 1,
+          "key": "азад",
+          "score": -1.0,
+          "word": "азад"
+        },
+        {
+          "distance": 1,
+          "key": "азади",
+          "score": -1.0,
+          "word": "азади"
+        },
+        {
+          "distance": 1,
+          "key": "азае",
+          "score": -1.0,
+          "word": "азае"
+        },
+        {
+          "distance": 1,
+          "key": "азаид",
+          "score": -1.0,
+          "word": "азаид"
+        },
+        {
+          "distance": 1,
+          "key": "азай",
+          "score": -1.0,
+          "word": "азай"
+        },
+        {
+          "distance": 1,
+          "key": "азал",
+          "score": -1.0,
+          "word": "азал"
+        },
+        {
+          "distance": 1,
+          "key": "азам",
+          "score": -1.0,
+          "word": "азам"
+        },
+        {
+          "distance": 1,
+          "key": "азами",
+          "score": -1.0,
+          "word": "азами"
+        },
+        {
+          "distance": 1,
+          "key": "азан",
+          "score": -1.0,
+          "word": "азан"
+        },
+        {
+          "distance": 1,
+          "key": "азар",
+          "score": -1.0,
+          "word": "азар"
+        },
+        {
+          "distance": 1,
+          "key": "азари",
+          "score": -1.0,
+          "word": "азари"
+        },
+        {
+          "distance": 1,
+          "key": "азас",
+          "score": -1.0,
+          "word": "азас"
+        },
+        {
+          "distance": 1,
+          "key": "азат",
+          "score": -1.0,
+          "word": "азат"
+        },
+        {
+          "distance": 1,
+          "key": "азау",
+          "score": -1.0,
+          "word": "азау"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 47
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-010",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "йод"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "йод",
+          "score": -0.0,
+          "word": "йод"
+        },
+        {
+          "distance": 1,
+          "key": "аод",
+          "score": -1.0,
+          "word": "аод"
+        },
+        {
+          "distance": 1,
+          "key": "бод",
+          "score": -1.0,
+          "word": "бод"
+        },
+        {
+          "distance": 1,
+          "key": "вод",
+          "score": -1.0,
+          "word": "вод"
+        },
+        {
+          "distance": 1,
+          "key": "год",
+          "score": -1.0,
+          "word": "год"
+        },
+        {
+          "distance": 1,
+          "key": "иод",
+          "score": -1.0,
+          "word": "иод"
+        },
+        {
+          "distance": 1,
+          "key": "йо",
+          "score": -1.0,
+          "word": "йо"
+        },
+        {
+          "distance": 1,
+          "key": "йов",
+          "score": -1.0,
+          "word": "йов"
+        },
+        {
+          "distance": 1,
+          "key": "йог",
+          "score": -1.0,
+          "word": "йог"
+        },
+        {
+          "distance": 1,
+          "key": "йода",
+          "score": -1.0,
+          "word": "йода"
+        },
+        {
+          "distance": 1,
+          "key": "йоде",
+          "score": -1.0,
+          "word": "йоде"
+        },
+        {
+          "distance": 1,
+          "key": "йоду",
+          "score": -1.0,
+          "word": "йоду"
+        },
+        {
+          "distance": 1,
+          "key": "йоды",
+          "score": -1.0,
+          "word": "йоды"
+        },
+        {
+          "distance": 1,
+          "key": "йот",
+          "score": -1.0,
+          "word": "йот"
+        },
+        {
+          "distance": 1,
+          "key": "код",
+          "score": -1.0,
+          "word": "код"
+        },
+        {
+          "distance": 1,
+          "key": "мод",
+          "score": -1.0,
+          "word": "мод"
+        },
+        {
+          "distance": 1,
+          "key": "од",
+          "score": -1.0,
+          "word": "од"
+        },
+        {
+          "distance": 1,
+          "key": "под",
+          "score": -1.0,
+          "word": "под"
+        },
+        {
+          "distance": 1,
+          "key": "род",
+          "score": -1.0,
+          "word": "род"
+        },
+        {
+          "distance": 1,
+          "key": "сод",
+          "score": -1.0,
+          "word": "сод"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 99
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-011",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "йд"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "ад",
+          "score": -1.0,
+          "word": "ад"
+        },
+        {
+          "distance": 1,
+          "key": "бд",
+          "score": -1.0,
+          "word": "бд"
+        },
+        {
+          "distance": 1,
+          "key": "д",
+          "score": -1.0,
+          "word": "д"
+        },
+        {
+          "distance": 1,
+          "key": "ед",
+          "score": -1.0,
+          "word": "ед"
+        },
+        {
+          "distance": 1,
+          "key": "ид",
+          "score": -1.0,
+          "word": "ид"
+        },
+        {
+          "distance": 1,
+          "key": "йо",
+          "score": -1.0,
+          "word": "йо"
+        },
+        {
+          "distance": 1,
+          "key": "йод",
+          "score": -1.0,
+          "word": "йод"
+        },
+        {
+          "distance": 1,
+          "key": "кд",
+          "score": -1.0,
+          "word": "кд"
+        },
+        {
+          "distance": 1,
+          "key": "од",
+          "score": -1.0,
+          "word": "од"
+        },
+        {
+          "distance": 1,
+          "key": "уд",
+          "score": -1.0,
+          "word": "уд"
+        },
+        {
+          "distance": 1,
+          "key": "эд",
+          "score": -1.0,
+          "word": "эд"
+        },
+        {
+          "distance": 1,
+          "key": "яд",
+          "score": -1.0,
+          "word": "яд"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 70
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-012",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "йаод"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аод",
+          "score": -1.0,
+          "word": "аод"
+        },
+        {
+          "distance": 1,
+          "key": "йод",
+          "score": -1.0,
+          "word": "йод"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 96
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-013",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "йад"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "ад",
+          "score": -1.0,
+          "word": "ад"
+        },
+        {
+          "distance": 1,
+          "key": "вад",
+          "score": -1.0,
+          "word": "вад"
+        },
+        {
+          "distance": 1,
+          "key": "гад",
+          "score": -1.0,
+          "word": "гад"
+        },
+        {
+          "distance": 1,
+          "key": "дад",
+          "score": -1.0,
+          "word": "дад"
+        },
+        {
+          "distance": 1,
+          "key": "зад",
+          "score": -1.0,
+          "word": "зад"
+        },
+        {
+          "distance": 1,
+          "key": "йод",
+          "score": -1.0,
+          "word": "йод"
+        },
+        {
+          "distance": 1,
+          "key": "лад",
+          "score": -1.0,
+          "word": "лад"
+        },
+        {
+          "distance": 1,
+          "key": "над",
+          "score": -1.0,
+          "word": "над"
+        },
+        {
+          "distance": 1,
+          "key": "рад",
+          "score": -1.0,
+          "word": "рад"
+        },
+        {
+          "distance": 1,
+          "key": "сад",
+          "score": -1.0,
+          "word": "сад"
+        },
+        {
+          "distance": 1,
+          "key": "чад",
+          "score": -1.0,
+          "word": "чад"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 96
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-014",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "йдо"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "до",
+          "score": -1.0,
+          "word": "до"
+        },
+        {
+          "distance": 1,
+          "key": "идо",
+          "score": -1.0,
+          "word": "идо"
+        },
+        {
+          "distance": 1,
+          "key": "йо",
+          "score": -1.0,
+          "word": "йо"
+        },
+        {
+          "distance": 1,
+          "key": "удо",
+          "score": -1.0,
+          "word": "удо"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 86
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-015",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "ягах"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "ягах",
+          "score": -0.0,
+          "word": "ягах"
+        },
+        {
+          "distance": 1,
+          "key": "агах",
+          "score": -1.0,
+          "word": "агах"
+        },
+        {
+          "distance": 1,
+          "key": "игах",
+          "score": -1.0,
+          "word": "игах"
+        },
+        {
+          "distance": 1,
+          "key": "мгах",
+          "score": -1.0,
+          "word": "мгах"
+        },
+        {
+          "distance": 1,
+          "key": "тягах",
+          "score": -1.0,
+          "word": "тягах"
+        },
+        {
+          "distance": 1,
+          "key": "югах",
+          "score": -1.0,
+          "word": "югах"
+        },
+        {
+          "distance": 1,
+          "key": "яга",
+          "score": -1.0,
+          "word": "яга"
+        },
+        {
+          "distance": 1,
+          "key": "ягам",
+          "score": -1.0,
+          "word": "ягам"
+        },
+        {
+          "distance": 1,
+          "key": "ядах",
+          "score": -1.0,
+          "word": "ядах"
+        },
+        {
+          "distance": 1,
+          "key": "язах",
+          "score": -1.0,
+          "word": "язах"
+        },
+        {
+          "distance": 1,
+          "key": "яках",
+          "score": -1.0,
+          "word": "яках"
+        },
+        {
+          "distance": 1,
+          "key": "ялах",
+          "score": -1.0,
+          "word": "ялах"
+        },
+        {
+          "distance": 1,
+          "key": "ямах",
+          "score": -1.0,
+          "word": "ямах"
+        },
+        {
+          "distance": 1,
+          "key": "янах",
+          "score": -1.0,
+          "word": "янах"
+        },
+        {
+          "distance": 1,
+          "key": "ярах",
+          "score": -1.0,
+          "word": "ярах"
+        },
+        {
+          "distance": 1,
+          "key": "ясах",
+          "score": -1.0,
+          "word": "ясах"
+        },
+        {
+          "distance": 1,
+          "key": "яхах",
+          "score": -1.0,
+          "word": "яхах"
+        },
+        {
+          "distance": 1,
+          "key": "яшах",
+          "score": -1.0,
+          "word": "яшах"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 170
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-016",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "ягх"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "агх",
+          "score": -1.0,
+          "word": "агх"
+        },
+        {
+          "distance": 1,
+          "key": "яг",
+          "score": -1.0,
+          "word": "яг"
+        },
+        {
+          "distance": 1,
+          "key": "яга",
+          "score": -1.0,
+          "word": "яга"
+        },
+        {
+          "distance": 1,
+          "key": "ягах",
+          "score": -1.0,
+          "word": "ягах"
+        },
+        {
+          "distance": 1,
+          "key": "яге",
+          "score": -1.0,
+          "word": "яге"
+        },
+        {
+          "distance": 1,
+          "key": "яги",
+          "score": -1.0,
+          "word": "яги"
+        },
+        {
+          "distance": 1,
+          "key": "яго",
+          "score": -1.0,
+          "word": "яго"
+        },
+        {
+          "distance": 1,
+          "key": "ягу",
+          "score": -1.0,
+          "word": "ягу"
+        },
+        {
+          "distance": 1,
+          "key": "ях",
+          "score": -1.0,
+          "word": "ях"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 122
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-017",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "ягаах"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "ягах",
+          "score": -1.0,
+          "word": "ягах"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 156
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-018",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "ягох"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "ягах",
+          "score": -1.0,
+          "word": "ягах"
+        },
+        {
+          "distance": 1,
+          "key": "яго",
+          "score": -1.0,
+          "word": "яго"
+        },
+        {
+          "distance": 1,
+          "key": "ягод",
+          "score": -1.0,
+          "word": "ягод"
+        },
+        {
+          "distance": 1,
+          "key": "ягой",
+          "score": -1.0,
+          "word": "ягой"
+        },
+        {
+          "distance": 1,
+          "key": "ягою",
+          "score": -1.0,
+          "word": "ягою"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 157
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-019",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "ягха"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "агха",
+          "score": -1.0,
+          "word": "агха"
+        },
+        {
+          "distance": 1,
+          "key": "яга",
+          "score": -1.0,
+          "word": "яга"
+        },
+        {
+          "distance": 1,
+          "key": "яха",
+          "score": -1.0,
+          "word": "яха"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 125
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-020",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "пхни"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "пхни",
+          "score": -0.0,
+          "word": "пхни"
+        },
+        {
+          "distance": 1,
+          "key": "ахни",
+          "score": -1.0,
+          "word": "ахни"
+        },
+        {
+          "distance": 1,
+          "key": "охни",
+          "score": -1.0,
+          "word": "охни"
+        },
+        {
+          "distance": 1,
+          "key": "пани",
+          "score": -1.0,
+          "word": "пани"
+        },
+        {
+          "distance": 1,
+          "key": "пахни",
+          "score": -1.0,
+          "word": "пахни"
+        },
+        {
+          "distance": 1,
+          "key": "пени",
+          "score": -1.0,
+          "word": "пени"
+        },
+        {
+          "distance": 1,
+          "key": "пихни",
+          "score": -1.0,
+          "word": "пихни"
+        },
+        {
+          "distance": 1,
+          "key": "пни",
+          "score": -1.0,
+          "word": "пни"
+        },
+        {
+          "distance": 1,
+          "key": "пони",
+          "score": -1.0,
+          "word": "пони"
+        },
+        {
+          "distance": 1,
+          "key": "пуни",
+          "score": -1.0,
+          "word": "пуни"
+        },
+        {
+          "distance": 1,
+          "key": "пухни",
+          "score": -1.0,
+          "word": "пухни"
+        },
+        {
+          "distance": 1,
+          "key": "пхну",
+          "score": -1.0,
+          "word": "пхну"
+        },
+        {
+          "distance": 1,
+          "key": "пыхни",
+          "score": -1.0,
+          "word": "пыхни"
+        },
+        {
+          "distance": 1,
+          "key": "ухни",
+          "score": -1.0,
+          "word": "ухни"
+        },
+        {
+          "distance": 1,
+          "key": "чхни",
+          "score": -1.0,
+          "word": "чхни"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 147
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-021",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "пхи"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "ахи",
+          "score": -1.0,
+          "word": "ахи"
+        },
+        {
+          "distance": 1,
+          "key": "мхи",
+          "score": -1.0,
+          "word": "мхи"
+        },
+        {
+          "distance": 1,
+          "key": "охи",
+          "score": -1.0,
+          "word": "охи"
+        },
+        {
+          "distance": 1,
+          "key": "паи",
+          "score": -1.0,
+          "word": "паи"
+        },
+        {
+          "distance": 1,
+          "key": "пи",
+          "score": -1.0,
+          "word": "пи"
+        },
+        {
+          "distance": 1,
+          "key": "пии",
+          "score": -1.0,
+          "word": "пии"
+        },
+        {
+          "distance": 1,
+          "key": "пли",
+          "score": -1.0,
+          "word": "пли"
+        },
+        {
+          "distance": 1,
+          "key": "пни",
+          "score": -1.0,
+          "word": "пни"
+        },
+        {
+          "distance": 1,
+          "key": "пои",
+          "score": -1.0,
+          "word": "пои"
+        },
+        {
+          "distance": 1,
+          "key": "при",
+          "score": -1.0,
+          "word": "при"
+        },
+        {
+          "distance": 1,
+          "key": "пхни",
+          "score": -1.0,
+          "word": "пхни"
+        },
+        {
+          "distance": 1,
+          "key": "пьи",
+          "score": -1.0,
+          "word": "пьи"
+        },
+        {
+          "distance": 1,
+          "key": "пюи",
+          "score": -1.0,
+          "word": "пюи"
+        },
+        {
+          "distance": 1,
+          "key": "тхи",
+          "score": -1.0,
+          "word": "тхи"
+        },
+        {
+          "distance": 1,
+          "key": "ухи",
+          "score": -1.0,
+          "word": "ухи"
+        },
+        {
+          "distance": 1,
+          "key": "хи",
+          "score": -1.0,
+          "word": "хи"
+        },
+        {
+          "distance": 1,
+          "key": "яхи",
+          "score": -1.0,
+          "word": "яхи"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 135
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-022",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "пхани"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "пани",
+          "score": -1.0,
+          "word": "пани"
+        },
+        {
+          "distance": 1,
+          "key": "пхали",
+          "score": -1.0,
+          "word": "пхали"
+        },
+        {
+          "distance": 1,
+          "key": "пхан",
+          "score": -1.0,
+          "word": "пхан"
+        },
+        {
+          "distance": 1,
+          "key": "пхана",
+          "score": -1.0,
+          "word": "пхана"
+        },
+        {
+          "distance": 1,
+          "key": "пхано",
+          "score": -1.0,
+          "word": "пхано"
+        },
+        {
+          "distance": 1,
+          "key": "пханы",
+          "score": -1.0,
+          "word": "пханы"
+        },
+        {
+          "distance": 1,
+          "key": "пхни",
+          "score": -1.0,
+          "word": "пхни"
+        },
+        {
+          "distance": 1,
+          "key": "хани",
+          "score": -1.0,
+          "word": "хани"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 185
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-023",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "пхаи"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "паи",
+          "score": -1.0,
+          "word": "паи"
+        },
+        {
+          "distance": 1,
+          "key": "пхав",
+          "score": -1.0,
+          "word": "пхав"
+        },
+        {
+          "distance": 1,
+          "key": "пхай",
+          "score": -1.0,
+          "word": "пхай"
+        },
+        {
+          "distance": 1,
+          "key": "пхал",
+          "score": -1.0,
+          "word": "пхал"
+        },
+        {
+          "distance": 1,
+          "key": "пхали",
+          "score": -1.0,
+          "word": "пхали"
+        },
+        {
+          "distance": 1,
+          "key": "пхан",
+          "score": -1.0,
+          "word": "пхан"
+        },
+        {
+          "distance": 1,
+          "key": "пхаю",
+          "score": -1.0,
+          "word": "пхаю"
+        },
+        {
+          "distance": 1,
+          "key": "пхая",
+          "score": -1.0,
+          "word": "пхая"
+        },
+        {
+          "distance": 1,
+          "key": "пхни",
+          "score": -1.0,
+          "word": "пхни"
+        },
+        {
+          "distance": 1,
+          "key": "хаи",
+          "score": -1.0,
+          "word": "хаи"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 158
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-024",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "пхин"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "паин",
+          "score": -1.0,
+          "word": "паин"
+        },
+        {
+          "distance": 1,
+          "key": "пин",
+          "score": -1.0,
+          "word": "пин"
+        },
+        {
+          "distance": 1,
+          "key": "пнин",
+          "score": -1.0,
+          "word": "пнин"
+        },
+        {
+          "distance": 1,
+          "key": "псин",
+          "score": -1.0,
+          "word": "псин"
+        },
+        {
+          "distance": 1,
+          "key": "пхан",
+          "score": -1.0,
+          "word": "пхан"
+        },
+        {
+          "distance": 1,
+          "key": "хин",
+          "score": -1.0,
+          "word": "хин"
+        },
+        {
+          "distance": 1,
+          "key": "эхин",
+          "score": -1.0,
+          "word": "эхин"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 150
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-025",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "вшей"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "вшей",
+          "score": -0.0,
+          "word": "вшей"
+        },
+        {
+          "distance": 1,
+          "key": "ашей",
+          "score": -1.0,
+          "word": "ашей"
+        },
+        {
+          "distance": 1,
+          "key": "вашей",
+          "score": -1.0,
+          "word": "вашей"
+        },
+        {
+          "distance": 1,
+          "key": "вбей",
+          "score": -1.0,
+          "word": "вбей"
+        },
+        {
+          "distance": 1,
+          "key": "ввей",
+          "score": -1.0,
+          "word": "ввей"
+        },
+        {
+          "distance": 1,
+          "key": "вей",
+          "score": -1.0,
+          "word": "вей"
+        },
+        {
+          "distance": 1,
+          "key": "влей",
+          "score": -1.0,
+          "word": "влей"
+        },
+        {
+          "distance": 1,
+          "key": "впей",
+          "score": -1.0,
+          "word": "впей"
+        },
+        {
+          "distance": 1,
+          "key": "всей",
+          "score": -1.0,
+          "word": "всей"
+        },
+        {
+          "distance": 1,
+          "key": "выей",
+          "score": -1.0,
+          "word": "выей"
+        },
+        {
+          "distance": 1,
+          "key": "вышей",
+          "score": -1.0,
+          "word": "вышей"
+        },
+        {
+          "distance": 1,
+          "key": "евшей",
+          "score": -1.0,
+          "word": "евшей"
+        },
+        {
+          "distance": 1,
+          "key": "ошей",
+          "score": -1.0,
+          "word": "ошей"
+        },
+        {
+          "distance": 1,
+          "key": "сшей",
+          "score": -1.0,
+          "word": "сшей"
+        },
+        {
+          "distance": 1,
+          "key": "ушей",
+          "score": -1.0,
+          "word": "ушей"
+        },
+        {
+          "distance": 1,
+          "key": "шей",
+          "score": -1.0,
+          "word": "шей"
+        },
+        {
+          "distance": 1,
+          "key": "яшей",
+          "score": -1.0,
+          "word": "яшей"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 165
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-026",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "вшй"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "вай",
+          "score": -1.0,
+          "word": "вай"
+        },
+        {
+          "distance": 1,
+          "key": "вей",
+          "score": -1.0,
+          "word": "вей"
+        },
+        {
+          "distance": 1,
+          "key": "вой",
+          "score": -1.0,
+          "word": "вой"
+        },
+        {
+          "distance": 1,
+          "key": "вшей",
+          "score": -1.0,
+          "word": "вшей"
+        },
+        {
+          "distance": 1,
+          "key": "вши",
+          "score": -1.0,
+          "word": "вши"
+        },
+        {
+          "distance": 1,
+          "key": "вшэ",
+          "score": -1.0,
+          "word": "вшэ"
+        },
+        {
+          "distance": 1,
+          "key": "вый",
+          "score": -1.0,
+          "word": "вый"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 113
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-027",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "вшаей"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "вшей",
+          "score": -1.0,
+          "word": "вшей"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 153
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-028",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "вшай"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "вай",
+          "score": -1.0,
+          "word": "вай"
+        },
+        {
+          "distance": 1,
+          "key": "вешай",
+          "score": -1.0,
+          "word": "вешай"
+        },
+        {
+          "distance": 1,
+          "key": "вшам",
+          "score": -1.0,
+          "word": "вшам"
+        },
+        {
+          "distance": 1,
+          "key": "вшах",
+          "score": -1.0,
+          "word": "вшах"
+        },
+        {
+          "distance": 1,
+          "key": "вшей",
+          "score": -1.0,
+          "word": "вшей"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 154
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-029",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "вшйе"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "вайе",
+          "score": -1.0,
+          "word": "вайе"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 114
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-030",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "вдов"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "вдов",
+          "score": -0.0,
+          "word": "вдов"
+        },
+        {
+          "distance": 1,
+          "key": "адов",
+          "score": -1.0,
+          "word": "адов"
+        },
+        {
+          "distance": 1,
+          "key": "вадов",
+          "score": -1.0,
+          "word": "вадов"
+        },
+        {
+          "distance": 1,
+          "key": "вдев",
+          "score": -1.0,
+          "word": "вдев"
+        },
+        {
+          "distance": 1,
+          "key": "вдова",
+          "score": -1.0,
+          "word": "вдова"
+        },
+        {
+          "distance": 1,
+          "key": "вдове",
+          "score": -1.0,
+          "word": "вдове"
+        },
+        {
+          "distance": 1,
+          "key": "вдово",
+          "score": -1.0,
+          "word": "вдово"
+        },
+        {
+          "distance": 1,
+          "key": "вдову",
+          "score": -1.0,
+          "word": "вдову"
+        },
+        {
+          "distance": 1,
+          "key": "вдовы",
+          "score": -1.0,
+          "word": "вдовы"
+        },
+        {
+          "distance": 1,
+          "key": "вдох",
+          "score": -1.0,
+          "word": "вдох"
+        },
+        {
+          "distance": 1,
+          "key": "вдув",
+          "score": -1.0,
+          "word": "вдув"
+        },
+        {
+          "distance": 1,
+          "key": "видов",
+          "score": -1.0,
+          "word": "видов"
+        },
+        {
+          "distance": 1,
+          "key": "вов",
+          "score": -1.0,
+          "word": "вов"
+        },
+        {
+          "distance": 1,
+          "key": "водов",
+          "score": -1.0,
+          "word": "водов"
+        },
+        {
+          "distance": 1,
+          "key": "гдов",
+          "score": -1.0,
+          "word": "гдов"
+        },
+        {
+          "distance": 1,
+          "key": "удов",
+          "score": -1.0,
+          "word": "удов"
+        },
+        {
+          "distance": 1,
+          "key": "ядов",
+          "score": -1.0,
+          "word": "ядов"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 206
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-031",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "вдв"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "вв",
+          "score": -1.0,
+          "word": "вв"
+        },
+        {
+          "distance": 1,
+          "key": "вдев",
+          "score": -1.0,
+          "word": "вдев"
+        },
+        {
+          "distance": 1,
+          "key": "вдов",
+          "score": -1.0,
+          "word": "вдов"
+        },
+        {
+          "distance": 1,
+          "key": "вдув",
+          "score": -1.0,
+          "word": "вдув"
+        },
+        {
+          "distance": 1,
+          "key": "вив",
+          "score": -1.0,
+          "word": "вив"
+        },
+        {
+          "distance": 1,
+          "key": "вов",
+          "score": -1.0,
+          "word": "вов"
+        },
+        {
+          "distance": 1,
+          "key": "выв",
+          "score": -1.0,
+          "word": "выв"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 153
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-032",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "вдаов"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "вдов",
+          "score": -1.0,
+          "word": "вдов"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 181
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-033",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "вдав"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "вдави",
+          "score": -1.0,
+          "word": "вдави"
+        },
+        {
+          "distance": 1,
+          "key": "вдев",
+          "score": -1.0,
+          "word": "вдев"
+        },
+        {
+          "distance": 1,
+          "key": "вдов",
+          "score": -1.0,
+          "word": "вдов"
+        },
+        {
+          "distance": 1,
+          "key": "вдув",
+          "score": -1.0,
+          "word": "вдув"
+        },
+        {
+          "distance": 1,
+          "key": "ведав",
+          "score": -1.0,
+          "word": "ведав"
+        },
+        {
+          "distance": 1,
+          "key": "вжав",
+          "score": -1.0,
+          "word": "вжав"
+        },
+        {
+          "distance": 1,
+          "key": "видав",
+          "score": -1.0,
+          "word": "видав"
+        },
+        {
+          "distance": 1,
+          "key": "впав",
+          "score": -1.0,
+          "word": "впав"
+        },
+        {
+          "distance": 1,
+          "key": "врав",
+          "score": -1.0,
+          "word": "врав"
+        },
+        {
+          "distance": 1,
+          "key": "выдав",
+          "score": -1.0,
+          "word": "выдав"
+        },
+        {
+          "distance": 1,
+          "key": "дав",
+          "score": -1.0,
+          "word": "дав"
+        },
+        {
+          "distance": 1,
+          "key": "едав",
+          "score": -1.0,
+          "word": "едав"
+        },
+        {
+          "distance": 1,
+          "key": "ждав",
+          "score": -1.0,
+          "word": "ждав"
+        },
+        {
+          "distance": 1,
+          "key": "сдав",
+          "score": -1.0,
+          "word": "сдав"
+        },
+        {
+          "distance": 1,
+          "key": "удав",
+          "score": -1.0,
+          "word": "удав"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 197
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-034",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "вдво"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "вдвое",
+          "score": -1.0,
+          "word": "вдвое"
+        },
+        {
+          "distance": 1,
+          "key": "вдово",
+          "score": -1.0,
+          "word": "вдово"
+        },
+        {
+          "distance": 1,
+          "key": "виво",
+          "score": -1.0,
+          "word": "виво"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 169
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-035",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "ладь"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "ладь",
+          "score": -0.0,
+          "word": "ладь"
+        },
+        {
+          "distance": 1,
+          "key": "гадь",
+          "score": -1.0,
+          "word": "гадь"
+        },
+        {
+          "distance": 1,
+          "key": "гладь",
+          "score": -1.0,
+          "word": "гладь"
+        },
+        {
+          "distance": 1,
+          "key": "кадь",
+          "score": -1.0,
+          "word": "кадь"
+        },
+        {
+          "distance": 1,
+          "key": "кладь",
+          "score": -1.0,
+          "word": "кладь"
+        },
+        {
+          "distance": 1,
+          "key": "лад",
+          "score": -1.0,
+          "word": "лад"
+        },
+        {
+          "distance": 1,
+          "key": "лада",
+          "score": -1.0,
+          "word": "лада"
+        },
+        {
+          "distance": 1,
+          "key": "ладе",
+          "score": -1.0,
+          "word": "ладе"
+        },
+        {
+          "distance": 1,
+          "key": "лади",
+          "score": -1.0,
+          "word": "лади"
+        },
+        {
+          "distance": 1,
+          "key": "ладо",
+          "score": -1.0,
+          "word": "ладо"
+        },
+        {
+          "distance": 1,
+          "key": "ладу",
+          "score": -1.0,
+          "word": "ладу"
+        },
+        {
+          "distance": 1,
+          "key": "лады",
+          "score": -1.0,
+          "word": "лады"
+        },
+        {
+          "distance": 1,
+          "key": "ладье",
+          "score": -1.0,
+          "word": "ладье"
+        },
+        {
+          "distance": 1,
+          "key": "ладьи",
+          "score": -1.0,
+          "word": "ладьи"
+        },
+        {
+          "distance": 1,
+          "key": "ладью",
+          "score": -1.0,
+          "word": "ладью"
+        },
+        {
+          "distance": 1,
+          "key": "ладья",
+          "score": -1.0,
+          "word": "ладья"
+        },
+        {
+          "distance": 1,
+          "key": "ладю",
+          "score": -1.0,
+          "word": "ладю"
+        },
+        {
+          "distance": 1,
+          "key": "ладя",
+          "score": -1.0,
+          "word": "ладя"
+        },
+        {
+          "distance": 1,
+          "key": "лазь",
+          "score": -1.0,
+          "word": "лазь"
+        },
+        {
+          "distance": 1,
+          "key": "лань",
+          "score": -1.0,
+          "word": "лань"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 106
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-036",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "лаь"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "ла",
+          "score": -1.0,
+          "word": "ла"
+        },
+        {
+          "distance": 1,
+          "key": "лав",
+          "score": -1.0,
+          "word": "лав"
+        },
+        {
+          "distance": 1,
+          "key": "лаг",
+          "score": -1.0,
+          "word": "лаг"
+        },
+        {
+          "distance": 1,
+          "key": "лад",
+          "score": -1.0,
+          "word": "лад"
+        },
+        {
+          "distance": 1,
+          "key": "ладь",
+          "score": -1.0,
+          "word": "ладь"
+        },
+        {
+          "distance": 1,
+          "key": "лае",
+          "score": -1.0,
+          "word": "лае"
+        },
+        {
+          "distance": 1,
+          "key": "лаж",
+          "score": -1.0,
+          "word": "лаж"
+        },
+        {
+          "distance": 1,
+          "key": "лаз",
+          "score": -1.0,
+          "word": "лаз"
+        },
+        {
+          "distance": 1,
+          "key": "лазь",
+          "score": -1.0,
+          "word": "лазь"
+        },
+        {
+          "distance": 1,
+          "key": "лаи",
+          "score": -1.0,
+          "word": "лаи"
+        },
+        {
+          "distance": 1,
+          "key": "лай",
+          "score": -1.0,
+          "word": "лай"
+        },
+        {
+          "distance": 1,
+          "key": "лак",
+          "score": -1.0,
+          "word": "лак"
+        },
+        {
+          "distance": 1,
+          "key": "лал",
+          "score": -1.0,
+          "word": "лал"
+        },
+        {
+          "distance": 1,
+          "key": "лам",
+          "score": -1.0,
+          "word": "лам"
+        },
+        {
+          "distance": 1,
+          "key": "лан",
+          "score": -1.0,
+          "word": "лан"
+        },
+        {
+          "distance": 1,
+          "key": "лань",
+          "score": -1.0,
+          "word": "лань"
+        },
+        {
+          "distance": 1,
+          "key": "лап",
+          "score": -1.0,
+          "word": "лап"
+        },
+        {
+          "distance": 1,
+          "key": "лар",
+          "score": -1.0,
+          "word": "лар"
+        },
+        {
+          "distance": 1,
+          "key": "ларь",
+          "score": -1.0,
+          "word": "ларь"
+        },
+        {
+          "distance": 1,
+          "key": "лас",
+          "score": -1.0,
+          "word": "лас"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 65
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-037",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "лаадь"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "ладь",
+          "score": -1.0,
+          "word": "ладь"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 197
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-038",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "лааь"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "ладь",
+          "score": -1.0,
+          "word": "ладь"
+        },
+        {
+          "distance": 1,
+          "key": "лазь",
+          "score": -1.0,
+          "word": "лазь"
+        },
+        {
+          "distance": 1,
+          "key": "лань",
+          "score": -1.0,
+          "word": "лань"
+        },
+        {
+          "distance": 1,
+          "key": "ларь",
+          "score": -1.0,
+          "word": "ларь"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 189
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-039",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "лаьд"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "лад",
+          "score": -1.0,
+          "word": "лад"
+        },
+        {
+          "distance": 1,
+          "key": "лайд",
+          "score": -1.0,
+          "word": "лайд"
+        },
+        {
+          "distance": 1,
+          "key": "ланд",
+          "score": -1.0,
+          "word": "ланд"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 164
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-040",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "пенкине"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "пенкине",
+          "score": -0.0,
+          "word": "пенкине"
+        },
+        {
+          "distance": 1,
+          "key": "апенкине",
+          "score": -1.0,
+          "word": "апенкине"
+        },
+        {
+          "distance": 1,
+          "key": "зенкине",
+          "score": -1.0,
+          "word": "зенкине"
+        },
+        {
+          "distance": 1,
+          "key": "панкине",
+          "score": -1.0,
+          "word": "панкине"
+        },
+        {
+          "distance": 1,
+          "key": "певкине",
+          "score": -1.0,
+          "word": "певкине"
+        },
+        {
+          "distance": 1,
+          "key": "пекине",
+          "score": -1.0,
+          "word": "пекине"
+        },
+        {
+          "distance": 1,
+          "key": "пенжине",
+          "score": -1.0,
+          "word": "пенжине"
+        },
+        {
+          "distance": 1,
+          "key": "пенкин",
+          "score": -1.0,
+          "word": "пенкин"
+        },
+        {
+          "distance": 1,
+          "key": "пенкина",
+          "score": -1.0,
+          "word": "пенкина"
+        },
+        {
+          "distance": 1,
+          "key": "пенкину",
+          "score": -1.0,
+          "word": "пенкину"
+        },
+        {
+          "distance": 1,
+          "key": "пенкины",
+          "score": -1.0,
+          "word": "пенкины"
+        },
+        {
+          "distance": 1,
+          "key": "печкине",
+          "score": -1.0,
+          "word": "печкине"
+        },
+        {
+          "distance": 1,
+          "key": "пленкине",
+          "score": -1.0,
+          "word": "пленкине"
+        },
+        {
+          "distance": 1,
+          "key": "ренкине",
+          "score": -1.0,
+          "word": "ренкине"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 314
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-041",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "пенине"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "бенине",
+          "score": -1.0,
+          "word": "бенине"
+        },
+        {
+          "distance": 1,
+          "key": "венине",
+          "score": -1.0,
+          "word": "венине"
+        },
+        {
+          "distance": 1,
+          "key": "генине",
+          "score": -1.0,
+          "word": "генине"
+        },
+        {
+          "distance": 1,
+          "key": "енине",
+          "score": -1.0,
+          "word": "енине"
+        },
+        {
+          "distance": 1,
+          "key": "ленине",
+          "score": -1.0,
+          "word": "ленине"
+        },
+        {
+          "distance": 1,
+          "key": "панине",
+          "score": -1.0,
+          "word": "панине"
+        },
+        {
+          "distance": 1,
+          "key": "пежине",
+          "score": -1.0,
+          "word": "пежине"
+        },
+        {
+          "distance": 1,
+          "key": "пекине",
+          "score": -1.0,
+          "word": "пекине"
+        },
+        {
+          "distance": 1,
+          "key": "пенжине",
+          "score": -1.0,
+          "word": "пенжине"
+        },
+        {
+          "distance": 1,
+          "key": "пение",
+          "score": -1.0,
+          "word": "пение"
+        },
+        {
+          "distance": 1,
+          "key": "пенисе",
+          "score": -1.0,
+          "word": "пенисе"
+        },
+        {
+          "distance": 1,
+          "key": "пените",
+          "score": -1.0,
+          "word": "пените"
+        },
+        {
+          "distance": 1,
+          "key": "пенкине",
+          "score": -1.0,
+          "word": "пенкине"
+        },
+        {
+          "distance": 1,
+          "key": "пенсне",
+          "score": -1.0,
+          "word": "пенсне"
+        },
+        {
+          "distance": 1,
+          "key": "пепине",
+          "score": -1.0,
+          "word": "пепине"
+        },
+        {
+          "distance": 1,
+          "key": "перине",
+          "score": -1.0,
+          "word": "перине"
+        },
+        {
+          "distance": 1,
+          "key": "петине",
+          "score": -1.0,
+          "word": "петине"
+        },
+        {
+          "distance": 1,
+          "key": "пнине",
+          "score": -1.0,
+          "word": "пнине"
+        },
+        {
+          "distance": 1,
+          "key": "ренине",
+          "score": -1.0,
+          "word": "ренине"
+        },
+        {
+          "distance": 1,
+          "key": "сенине",
+          "score": -1.0,
+          "word": "сенине"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 326
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-042",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "пенакине"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "пенкине",
+          "score": -1.0,
+          "word": "пенкине"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 294
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-043",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "пенаине"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "пенжине",
+          "score": -1.0,
+          "word": "пенжине"
+        },
+        {
+          "distance": 1,
+          "key": "пенкине",
+          "score": -1.0,
+          "word": "пенкине"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 296
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-044",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "пеникне"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 303
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "distance_two_probe",
+      "distance": 2,
+      "id": "lookup-045",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "пенкинаа"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "пенкина",
+          "score": -1.0,
+          "word": "пенкина"
+        },
+        {
+          "distance": 2,
+          "key": "апенкина",
+          "score": -2.0,
+          "word": "апенкина"
+        },
+        {
+          "distance": 2,
+          "key": "зенкина",
+          "score": -2.0,
+          "word": "зенкина"
+        },
+        {
+          "distance": 2,
+          "key": "панкина",
+          "score": -2.0,
+          "word": "панкина"
+        },
+        {
+          "distance": 2,
+          "key": "певкина",
+          "score": -2.0,
+          "word": "певкина"
+        },
+        {
+          "distance": 2,
+          "key": "пекина",
+          "score": -2.0,
+          "word": "пекина"
+        },
+        {
+          "distance": 2,
+          "key": "пекинам",
+          "score": -2.0,
+          "word": "пекинам"
+        },
+        {
+          "distance": 2,
+          "key": "пекинах",
+          "score": -2.0,
+          "word": "пекинах"
+        },
+        {
+          "distance": 2,
+          "key": "пекинца",
+          "score": -2.0,
+          "word": "пекинца"
+        },
+        {
+          "distance": 2,
+          "key": "пенжина",
+          "score": -2.0,
+          "word": "пенжина"
+        },
+        {
+          "distance": 2,
+          "key": "пенкин",
+          "score": -2.0,
+          "word": "пенкин"
+        },
+        {
+          "distance": 2,
+          "key": "пенкине",
+          "score": -2.0,
+          "word": "пенкине"
+        },
+        {
+          "distance": 2,
+          "key": "пенкиной",
+          "score": -2.0,
+          "word": "пенкиной"
+        },
+        {
+          "distance": 2,
+          "key": "пенкину",
+          "score": -2.0,
+          "word": "пенкину"
+        },
+        {
+          "distance": 2,
+          "key": "пенкины",
+          "score": -2.0,
+          "word": "пенкины"
+        },
+        {
+          "distance": 2,
+          "key": "пенкиным",
+          "score": -2.0,
+          "word": "пенкиным"
+        },
+        {
+          "distance": 2,
+          "key": "пенкиных",
+          "score": -2.0,
+          "word": "пенкиных"
+        },
+        {
+          "distance": 2,
+          "key": "печкина",
+          "score": -2.0,
+          "word": "печкина"
+        },
+        {
+          "distance": 2,
+          "key": "пленкина",
+          "score": -2.0,
+          "word": "пленкина"
+        },
+        {
+          "distance": 2,
+          "key": "ренкина",
+          "score": -2.0,
+          "word": "ренкина"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 4787
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-046",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "секся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "секся",
+          "score": -0.0,
+          "word": "сёкся"
+        },
+        {
+          "distance": 1,
+          "key": "осекся",
+          "score": -1.0,
+          "word": "осекся"
+        },
+        {
+          "distance": 1,
+          "key": "пекся",
+          "score": -1.0,
+          "word": "пёкся"
+        },
+        {
+          "distance": 1,
+          "key": "сейся",
+          "score": -1.0,
+          "word": "сейся"
+        },
+        {
+          "distance": 1,
+          "key": "секс",
+          "score": -1.0,
+          "word": "секс"
+        },
+        {
+          "distance": 1,
+          "key": "секса",
+          "score": -1.0,
+          "word": "секса"
+        },
+        {
+          "distance": 1,
+          "key": "сексе",
+          "score": -1.0,
+          "word": "сексе"
+        },
+        {
+          "distance": 1,
+          "key": "секст",
+          "score": -1.0,
+          "word": "секст"
+        },
+        {
+          "distance": 1,
+          "key": "сексу",
+          "score": -1.0,
+          "word": "сексу"
+        },
+        {
+          "distance": 1,
+          "key": "сексы",
+          "score": -1.0,
+          "word": "сексы"
+        },
+        {
+          "distance": 1,
+          "key": "спекся",
+          "score": -1.0,
+          "word": "спёкся"
+        },
+        {
+          "distance": 1,
+          "key": "стекся",
+          "score": -1.0,
+          "word": "стёкся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 263
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-047",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "сеся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "беся",
+          "score": -1.0,
+          "word": "беся"
+        },
+        {
+          "distance": 1,
+          "key": "веся",
+          "score": -1.0,
+          "word": "веся"
+        },
+        {
+          "distance": 1,
+          "key": "геся",
+          "score": -1.0,
+          "word": "геся"
+        },
+        {
+          "distance": 1,
+          "key": "леся",
+          "score": -1.0,
+          "word": "леся"
+        },
+        {
+          "distance": 1,
+          "key": "меся",
+          "score": -1.0,
+          "word": "меся"
+        },
+        {
+          "distance": 1,
+          "key": "неся",
+          "score": -1.0,
+          "word": "неся"
+        },
+        {
+          "distance": 1,
+          "key": "песя",
+          "score": -1.0,
+          "word": "песя"
+        },
+        {
+          "distance": 1,
+          "key": "себя",
+          "score": -1.0,
+          "word": "себя"
+        },
+        {
+          "distance": 1,
+          "key": "сейся",
+          "score": -1.0,
+          "word": "сейся"
+        },
+        {
+          "distance": 1,
+          "key": "секся",
+          "score": -1.0,
+          "word": "сёкся"
+        },
+        {
+          "distance": 1,
+          "key": "селя",
+          "score": -1.0,
+          "word": "селя"
+        },
+        {
+          "distance": 1,
+          "key": "семя",
+          "score": -1.0,
+          "word": "семя"
+        },
+        {
+          "distance": 1,
+          "key": "сеня",
+          "score": -1.0,
+          "word": "сеня"
+        },
+        {
+          "distance": 1,
+          "key": "серя",
+          "score": -1.0,
+          "word": "серя"
+        },
+        {
+          "distance": 1,
+          "key": "сея",
+          "score": -1.0,
+          "word": "сея"
+        },
+        {
+          "distance": 1,
+          "key": "сися",
+          "score": -1.0,
+          "word": "сися"
+        },
+        {
+          "distance": 1,
+          "key": "снеся",
+          "score": -1.0,
+          "word": "снеся"
+        },
+        {
+          "distance": 1,
+          "key": "сося",
+          "score": -1.0,
+          "word": "сося"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 248
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-048",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "сеакся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "секся",
+          "score": -1.0,
+          "word": "сёкся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 244
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-049",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "сеася"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "сейся",
+          "score": -1.0,
+          "word": "сейся"
+        },
+        {
+          "distance": 1,
+          "key": "секся",
+          "score": -1.0,
+          "word": "сёкся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 247
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-050",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "сескя"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 252
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-051",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "олигурию"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "олигурию",
+          "score": -0.0,
+          "word": "олигурию"
+        },
+        {
+          "distance": 1,
+          "key": "лигурию",
+          "score": -1.0,
+          "word": "лигурию"
+        },
+        {
+          "distance": 1,
+          "key": "олигуриею",
+          "score": -1.0,
+          "word": "олигуриею"
+        },
+        {
+          "distance": 1,
+          "key": "олигурии",
+          "score": -1.0,
+          "word": "олигурии"
+        },
+        {
+          "distance": 1,
+          "key": "олигурий",
+          "score": -1.0,
+          "word": "олигурий"
+        },
+        {
+          "distance": 1,
+          "key": "олигурия",
+          "score": -1.0,
+          "word": "олигурия"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 279
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-052",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "олигрию"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "олигурию",
+          "score": -1.0,
+          "word": "олигурию"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 264
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-053",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "олигаурию"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "олигурию",
+          "score": -1.0,
+          "word": "олигурию"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 278
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-054",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "олигарию"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "олигархию",
+          "score": -1.0,
+          "word": "олигархию"
+        },
+        {
+          "distance": 1,
+          "key": "олигурию",
+          "score": -1.0,
+          "word": "олигурию"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 284
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-055",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "олигруию"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 263
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-056",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "плачась"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "плачась",
+          "score": -0.0,
+          "word": "плачась"
+        },
+        {
+          "distance": 1,
+          "key": "влачась",
+          "score": -1.0,
+          "word": "влачась"
+        },
+        {
+          "distance": 1,
+          "key": "плачусь",
+          "score": -1.0,
+          "word": "плачусь"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 228
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-057",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "плаась"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "плачась",
+          "score": -1.0,
+          "word": "плачась"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 199
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-058",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "плаачась"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "плачась",
+          "score": -1.0,
+          "word": "плачась"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 200
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-059",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "плааась"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "плачась",
+          "score": -1.0,
+          "word": "плачась"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 197
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-060",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "плаачсь"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 197
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-061",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "далаевич"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "далаевич",
+          "score": -0.0,
+          "word": "далаевич"
+        },
+        {
+          "distance": 1,
+          "key": "алаевич",
+          "score": -1.0,
+          "word": "алаевич"
+        },
+        {
+          "distance": 1,
+          "key": "далаевича",
+          "score": -1.0,
+          "word": "далаевича"
+        },
+        {
+          "distance": 1,
+          "key": "далаевиче",
+          "score": -1.0,
+          "word": "далаевиче"
+        },
+        {
+          "distance": 1,
+          "key": "далаевичи",
+          "score": -1.0,
+          "word": "далаевичи"
+        },
+        {
+          "distance": 1,
+          "key": "далаевичу",
+          "score": -1.0,
+          "word": "далаевичу"
+        },
+        {
+          "distance": 1,
+          "key": "далиевич",
+          "score": -1.0,
+          "word": "далиевич"
+        },
+        {
+          "distance": 1,
+          "key": "дальевич",
+          "score": -1.0,
+          "word": "дальевич"
+        },
+        {
+          "distance": 1,
+          "key": "талаевич",
+          "score": -1.0,
+          "word": "талаевич"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 318
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-062",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "далавич"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "далаевич",
+          "score": -1.0,
+          "word": "далаевич"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 289
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-063",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "далааевич"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "далаевич",
+          "score": -1.0,
+          "word": "далаевич"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 282
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-064",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "далаавич"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "далаевич",
+          "score": -1.0,
+          "word": "далаевич"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 280
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-065",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "далавеич"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 289
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-066",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "ударницу"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "ударницу",
+          "score": -0.0,
+          "word": "ударницу"
+        },
+        {
+          "distance": 1,
+          "key": "ударнику",
+          "score": -1.0,
+          "word": "ударнику"
+        },
+        {
+          "distance": 1,
+          "key": "ударниц",
+          "score": -1.0,
+          "word": "ударниц"
+        },
+        {
+          "distance": 1,
+          "key": "ударница",
+          "score": -1.0,
+          "word": "ударница"
+        },
+        {
+          "distance": 1,
+          "key": "ударнице",
+          "score": -1.0,
+          "word": "ударнице"
+        },
+        {
+          "distance": 1,
+          "key": "ударницы",
+          "score": -1.0,
+          "word": "ударницы"
+        },
+        {
+          "distance": 1,
+          "key": "удачницу",
+          "score": -1.0,
+          "word": "удачницу"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 266
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-067",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "ударицу"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "ударницу",
+          "score": -1.0,
+          "word": "ударницу"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 269
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-068",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "удараницу"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "ударницу",
+          "score": -1.0,
+          "word": "ударницу"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 267
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-069",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "удараицу"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "ударницу",
+          "score": -1.0,
+          "word": "ударницу"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 265
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-070",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "ударинцу"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 271
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-071",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "дорожках"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "дорожках",
+          "score": -0.0,
+          "word": "дорожках"
+        },
+        {
+          "distance": 1,
+          "key": "дорожка",
+          "score": -1.0,
+          "word": "дорожка"
+        },
+        {
+          "distance": 1,
+          "key": "дорожкам",
+          "score": -1.0,
+          "word": "дорожкам"
+        },
+        {
+          "distance": 1,
+          "key": "дрожках",
+          "score": -1.0,
+          "word": "дрожках"
+        },
+        {
+          "distance": 1,
+          "key": "порожках",
+          "score": -1.0,
+          "word": "порожках"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 333
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-072",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "дороках"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "дориках",
+          "score": -1.0,
+          "word": "дориках"
+        },
+        {
+          "distance": 1,
+          "key": "дорогах",
+          "score": -1.0,
+          "word": "дорогах"
+        },
+        {
+          "distance": 1,
+          "key": "дорожках",
+          "score": -1.0,
+          "word": "дорожках"
+        },
+        {
+          "distance": 1,
+          "key": "доротах",
+          "score": -1.0,
+          "word": "доротах"
+        },
+        {
+          "distance": 1,
+          "key": "дорошах",
+          "score": -1.0,
+          "word": "дорошах"
+        },
+        {
+          "distance": 1,
+          "key": "дроках",
+          "score": -1.0,
+          "word": "дроках"
+        },
+        {
+          "distance": 1,
+          "key": "мороках",
+          "score": -1.0,
+          "word": "мороках"
+        },
+        {
+          "distance": 1,
+          "key": "пороках",
+          "score": -1.0,
+          "word": "пороках"
+        },
+        {
+          "distance": 1,
+          "key": "сороках",
+          "score": -1.0,
+          "word": "сороках"
+        },
+        {
+          "distance": 1,
+          "key": "тороках",
+          "score": -1.0,
+          "word": "тороках"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 340
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-073",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "дороажках"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "дорожках",
+          "score": -1.0,
+          "word": "дорожках"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 312
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-074",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "дороаках"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "дорожках",
+          "score": -1.0,
+          "word": "дорожках"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 313
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-075",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "дорокжах"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 319
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-076",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "джетымам"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "джетымам",
+          "score": -0.0,
+          "word": "джетымам"
+        },
+        {
+          "distance": 1,
+          "key": "джетыма",
+          "score": -1.0,
+          "word": "джетыма"
+        },
+        {
+          "distance": 1,
+          "key": "джетымами",
+          "score": -1.0,
+          "word": "джетымами"
+        },
+        {
+          "distance": 1,
+          "key": "джетымах",
+          "score": -1.0,
+          "word": "джетымах"
+        },
+        {
+          "distance": 1,
+          "key": "джетымом",
+          "score": -1.0,
+          "word": "джетымом"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 204
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-077",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "джетмам"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "джемам",
+          "score": -1.0,
+          "word": "джемам"
+        },
+        {
+          "distance": 1,
+          "key": "джеммам",
+          "score": -1.0,
+          "word": "джеммам"
+        },
+        {
+          "distance": 1,
+          "key": "джетам",
+          "score": -1.0,
+          "word": "джетам"
+        },
+        {
+          "distance": 1,
+          "key": "джетымам",
+          "score": -1.0,
+          "word": "джетымам"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 194
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-078",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "джетаымам"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "джетымам",
+          "score": -1.0,
+          "word": "джетымам"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 197
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-079",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "джетамам"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "джетымам",
+          "score": -1.0,
+          "word": "джетымам"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 205
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-080",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "джетмыам"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 191
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-081",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "разгоняющемуся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "разгоняющемуся",
+          "score": -0.0,
+          "word": "разгоняющемуся"
+        },
+        {
+          "distance": 1,
+          "key": "разгоняющемся",
+          "score": -1.0,
+          "word": "разгоняющемся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 308
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-082",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "разгонящемуся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "разгоняющемуся",
+          "score": -1.0,
+          "word": "разгоняющемуся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 296
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-083",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "разгоняающемуся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "разгоняющемуся",
+          "score": -1.0,
+          "word": "разгоняющемуся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 297
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-084",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "разгоняащемуся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "разгоняющемуся",
+          "score": -1.0,
+          "word": "разгоняющемуся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 297
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-085",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "разгонящюемуся"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 289
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "distance_two_probe",
+      "distance": 2,
+      "id": "lookup-086",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "разгоняющемусаа"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 2,
+          "key": "разгоняющемуся",
+          "score": -2.0,
+          "word": "разгоняющемуся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 4588
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-087",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "промолотившею"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "промолотившею",
+          "score": -0.0,
+          "word": "промолотившею"
+        },
+        {
+          "distance": 1,
+          "key": "помолотившею",
+          "score": -1.0,
+          "word": "помолотившею"
+        },
+        {
+          "distance": 1,
+          "key": "примолотившею",
+          "score": -1.0,
+          "word": "примолотившею"
+        },
+        {
+          "distance": 1,
+          "key": "проколотившею",
+          "score": -1.0,
+          "word": "проколотившею"
+        },
+        {
+          "distance": 1,
+          "key": "промолотившее",
+          "score": -1.0,
+          "word": "промолотившее"
+        },
+        {
+          "distance": 1,
+          "key": "промолотившей",
+          "score": -1.0,
+          "word": "промолотившей"
+        },
+        {
+          "distance": 1,
+          "key": "промолотившем",
+          "score": -1.0,
+          "word": "промолотившем"
+        },
+        {
+          "distance": 1,
+          "key": "промолотившую",
+          "score": -1.0,
+          "word": "промолотившую"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 417
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-088",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "промолтившею"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "промолвившею",
+          "score": -1.0,
+          "word": "промолвившею"
+        },
+        {
+          "distance": 1,
+          "key": "промолотившею",
+          "score": -1.0,
+          "word": "промолотившею"
+        },
+        {
+          "distance": 1,
+          "key": "промостившею",
+          "score": -1.0,
+          "word": "промостившею"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 375
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-089",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "промолаотившею"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "промолотившею",
+          "score": -1.0,
+          "word": "промолотившею"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 376
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-090",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "промолатившею"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "промолотившею",
+          "score": -1.0,
+          "word": "промолотившею"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 382
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-091",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "промолтоившею"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 361
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-092",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "беременностью"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "беременностью",
+          "score": -0.0,
+          "word": "беременностью"
+        },
+        {
+          "distance": 1,
+          "key": "беременность",
+          "score": -1.0,
+          "word": "беременность"
+        },
+        {
+          "distance": 1,
+          "key": "переменностью",
+          "score": -1.0,
+          "word": "переменностью"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 368
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-093",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "беременостью"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "беременностью",
+          "score": -1.0,
+          "word": "беременностью"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 350
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-094",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "беремеанностью"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "беременностью",
+          "score": -1.0,
+          "word": "беременностью"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 339
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-095",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "беремеаностью"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "беременностью",
+          "score": -1.0,
+          "word": "беременностью"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 339
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-096",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "отстирывают"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "отстирывают",
+          "score": -0.0,
+          "word": "отстирывают"
+        },
+        {
+          "distance": 1,
+          "key": "обстирывают",
+          "score": -1.0,
+          "word": "обстирывают"
+        },
+        {
+          "distance": 1,
+          "key": "отстирывает",
+          "score": -1.0,
+          "word": "отстирывает"
+        },
+        {
+          "distance": 1,
+          "key": "отстирываю",
+          "score": -1.0,
+          "word": "отстирываю"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 261
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-097",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "отстиывают"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "отстирывают",
+          "score": -1.0,
+          "word": "отстирывают"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 239
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-098",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "отстиарывают"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "отстирывают",
+          "score": -1.0,
+          "word": "отстирывают"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 241
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-099",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "отстиаывают"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "отстирывают",
+          "score": -1.0,
+          "word": "отстирывают"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 241
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-100",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "отстиырвают"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 235
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-101",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "адвокатстве"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "адвокатстве",
+          "score": -0.0,
+          "word": "адвокатстве"
+        },
+        {
+          "distance": 1,
+          "key": "адвокатств",
+          "score": -1.0,
+          "word": "адвокатств"
+        },
+        {
+          "distance": 1,
+          "key": "адвокатства",
+          "score": -1.0,
+          "word": "адвокатства"
+        },
+        {
+          "distance": 1,
+          "key": "адвокатство",
+          "score": -1.0,
+          "word": "адвокатство"
+        },
+        {
+          "distance": 1,
+          "key": "адвокатству",
+          "score": -1.0,
+          "word": "адвокатству"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 238
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-102",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "адвоктстве"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "адвокатстве",
+          "score": -1.0,
+          "word": "адвокатстве"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 226
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-103",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "адвокаатстве"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "адвокатстве",
+          "score": -1.0,
+          "word": "адвокатстве"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 228
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-104",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "адвокотстве"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "адвокатстве",
+          "score": -1.0,
+          "word": "адвокатстве"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 226
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-105",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "адвоктастве"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 223
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-106",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "прописывавшийся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "прописывавшийся",
+          "score": -0.0,
+          "word": "прописывавшийся"
+        },
+        {
+          "distance": 1,
+          "key": "пописывавшийся",
+          "score": -1.0,
+          "word": "пописывавшийся"
+        },
+        {
+          "distance": 1,
+          "key": "приписывавшийся",
+          "score": -1.0,
+          "word": "приписывавшийся"
+        },
+        {
+          "distance": 1,
+          "key": "прописывавшейся",
+          "score": -1.0,
+          "word": "прописывавшейся"
+        },
+        {
+          "distance": 1,
+          "key": "прописывавшиеся",
+          "score": -1.0,
+          "word": "прописывавшиеся"
+        },
+        {
+          "distance": 1,
+          "key": "прописывавшимся",
+          "score": -1.0,
+          "word": "прописывавшимся"
+        },
+        {
+          "distance": 1,
+          "key": "прописывавшихся",
+          "score": -1.0,
+          "word": "прописывавшихся"
+        },
+        {
+          "distance": 1,
+          "key": "пропитывавшийся",
+          "score": -1.0,
+          "word": "пропитывавшийся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 373
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-107",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "прописыавшийся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "прописавшийся",
+          "score": -1.0,
+          "word": "прописавшийся"
+        },
+        {
+          "distance": 1,
+          "key": "прописывавшийся",
+          "score": -1.0,
+          "word": "прописывавшийся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 332
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-108",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "прописыававшийся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "прописывавшийся",
+          "score": -1.0,
+          "word": "прописывавшийся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 327
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-109",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "прописыаавшийся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "прописывавшийся",
+          "score": -1.0,
+          "word": "прописывавшийся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 326
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-110",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "прописыаввшийся"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 322
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-111",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "выщербленною"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "выщербленною",
+          "score": -0.0,
+          "word": "выщербленною"
+        },
+        {
+          "distance": 1,
+          "key": "выщербленное",
+          "score": -1.0,
+          "word": "выщербленное"
+        },
+        {
+          "distance": 1,
+          "key": "выщербленной",
+          "score": -1.0,
+          "word": "выщербленной"
+        },
+        {
+          "distance": 1,
+          "key": "выщербленном",
+          "score": -1.0,
+          "word": "выщербленном"
+        },
+        {
+          "distance": 1,
+          "key": "выщербленную",
+          "score": -1.0,
+          "word": "выщербленную"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 215
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-112",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "выщербенною"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "выщербленною",
+          "score": -1.0,
+          "word": "выщербленною"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 200
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-113",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "выщербаленною"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "выщербленною",
+          "score": -1.0,
+          "word": "выщербленною"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 201
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-114",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "выщербаенною"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "выщербленною",
+          "score": -1.0,
+          "word": "выщербленною"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 200
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-115",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "выщербелнною"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 197
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-116",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "бургонову"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "бургонову",
+          "score": -0.0,
+          "word": "бургонову"
+        },
+        {
+          "distance": 1,
+          "key": "бургонов",
+          "score": -1.0,
+          "word": "бургонов"
+        },
+        {
+          "distance": 1,
+          "key": "бургонова",
+          "score": -1.0,
+          "word": "бургонова"
+        },
+        {
+          "distance": 1,
+          "key": "бургонове",
+          "score": -1.0,
+          "word": "бургонове"
+        },
+        {
+          "distance": 1,
+          "key": "бургоновы",
+          "score": -1.0,
+          "word": "бургоновы"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 282
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-117",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "бургнову"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "буранову",
+          "score": -1.0,
+          "word": "буранову"
+        },
+        {
+          "distance": 1,
+          "key": "бургонову",
+          "score": -1.0,
+          "word": "бургонову"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 260
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-118",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "бургаонову"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "бургонову",
+          "score": -1.0,
+          "word": "бургонову"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 272
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-119",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "бурганову"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "буганову",
+          "score": -1.0,
+          "word": "буганову"
+        },
+        {
+          "distance": 1,
+          "key": "буранову",
+          "score": -1.0,
+          "word": "буранову"
+        },
+        {
+          "distance": 1,
+          "key": "бурганов",
+          "score": -1.0,
+          "word": "бурганов"
+        },
+        {
+          "distance": 1,
+          "key": "бургановну",
+          "score": -1.0,
+          "word": "бургановну"
+        },
+        {
+          "distance": 1,
+          "key": "бургонову",
+          "score": -1.0,
+          "word": "бургонову"
+        },
+        {
+          "distance": 1,
+          "key": "бурханову",
+          "score": -1.0,
+          "word": "бурханову"
+        },
+        {
+          "distance": 1,
+          "key": "сурганову",
+          "score": -1.0,
+          "word": "сурганову"
+        },
+        {
+          "distance": 1,
+          "key": "турганову",
+          "score": -1.0,
+          "word": "турганову"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 311
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-120",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "бургноову"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 253
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-121",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "интракардиальными"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "интракардиальными",
+          "score": -0.0,
+          "word": "интракардиальными"
+        },
+        {
+          "distance": 1,
+          "key": "интракардиальным",
+          "score": -1.0,
+          "word": "интракардиальным"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 264
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-122",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "интракариальными"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "интракардиальными",
+          "score": -1.0,
+          "word": "интракардиальными"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 255
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-123",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "интракарадиальными"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "интракардиальными",
+          "score": -1.0,
+          "word": "интракардиальными"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 255
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-124",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "интракараиальными"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "интракардиальными",
+          "score": -1.0,
+          "word": "интракардиальными"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 255
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-125",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "интракаридальными"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 248
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "distance_two_probe",
+      "distance": 2,
+      "id": "lookup-126",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "интракардиальнымаа"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 2,
+          "key": "интракардиальным",
+          "score": -2.0,
+          "word": "интракардиальным"
+        },
+        {
+          "distance": 2,
+          "key": "интракардиальными",
+          "score": -2.0,
+          "word": "интракардиальными"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 4034
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-127",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "скомпрометированную"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "скомпрометированную",
+          "score": -0.0,
+          "word": "скомпрометированную"
+        },
+        {
+          "distance": 1,
+          "key": "компрометированную",
+          "score": -1.0,
+          "word": "компрометированную"
+        },
+        {
+          "distance": 1,
+          "key": "скомпрометированною",
+          "score": -1.0,
+          "word": "скомпрометированною"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 275
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-128",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "скомпромеированную"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "скомпрометированную",
+          "score": -1.0,
+          "word": "скомпрометированную"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 254
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-129",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "скомпромеатированную"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "скомпрометированную",
+          "score": -1.0,
+          "word": "скомпрометированную"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 254
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-130",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "скомпромеаированную"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "скомпрометированную",
+          "score": -1.0,
+          "word": "скомпрометированную"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 254
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-131",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "скомпромеитрованную"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 246
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-132",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "противоборствуйте"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "противоборствуйте",
+          "score": -0.0,
+          "word": "противоборствуйте"
+        },
+        {
+          "distance": 1,
+          "key": "противоборствуете",
+          "score": -1.0,
+          "word": "противоборствуете"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 400
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-133",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "противобрствуйте"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "противоборствуйте",
+          "score": -1.0,
+          "word": "противоборствуйте"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 378
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-134",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "противобаорствуйте"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "противоборствуйте",
+          "score": -1.0,
+          "word": "противоборствуйте"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 381
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-135",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "противобарствуйте"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "противоборствуйте",
+          "score": -1.0,
+          "word": "противоборствуйте"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 382
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-136",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "противоброствуйте"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 376
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-137",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "заспиртовывающеюся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "заспиртовывающеюся",
+          "score": -0.0,
+          "word": "заспиртовывающеюся"
+        },
+        {
+          "distance": 1,
+          "key": "заспиртовывающееся",
+          "score": -1.0,
+          "word": "заспиртовывающееся"
+        },
+        {
+          "distance": 1,
+          "key": "заспиртовывающейся",
+          "score": -1.0,
+          "word": "заспиртовывающейся"
+        },
+        {
+          "distance": 1,
+          "key": "заспиртовывающемся",
+          "score": -1.0,
+          "word": "заспиртовывающемся"
+        },
+        {
+          "distance": 1,
+          "key": "заспиртовывающуюся",
+          "score": -1.0,
+          "word": "заспиртовывающуюся"
+        },
+        {
+          "distance": 1,
+          "key": "наспиртовывающеюся",
+          "score": -1.0,
+          "word": "наспиртовывающеюся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 302
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-138",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "заспиртоввающеюся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "заспиртовывающеюся",
+          "score": -1.0,
+          "word": "заспиртовывающеюся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 268
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-139",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "заспиртоваывающеюся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "заспиртовывающеюся",
+          "score": -1.0,
+          "word": "заспиртовывающеюся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 273
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-140",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "заспиртовавающеюся"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "заспиртовывающеюся",
+          "score": -1.0,
+          "word": "заспиртовывающеюся"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 277
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-141",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "заспиртоввыающеюся"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 261
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-142",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "низкоуглеродистые"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "низкоуглеродистые",
+          "score": -0.0,
+          "word": "низкоуглеродистые"
+        },
+        {
+          "distance": 1,
+          "key": "низкоуглеродистое",
+          "score": -1.0,
+          "word": "низкоуглеродистое"
+        },
+        {
+          "distance": 1,
+          "key": "низкоуглеродистый",
+          "score": -1.0,
+          "word": "низкоуглеродистый"
+        },
+        {
+          "distance": 1,
+          "key": "низкоуглеродистым",
+          "score": -1.0,
+          "word": "низкоуглеродистым"
+        },
+        {
+          "distance": 1,
+          "key": "низкоуглеродистых",
+          "score": -1.0,
+          "word": "низкоуглеродистых"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 261
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-143",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "низкоуглродистые"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "низкоуглеродистые",
+          "score": -1.0,
+          "word": "низкоуглеродистые"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 254
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-144",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "низкоуглаеродистые"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "низкоуглеродистые",
+          "score": -1.0,
+          "word": "низкоуглеродистые"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 254
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-145",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "низкоуглародистые"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "низкоуглеродистые",
+          "score": -1.0,
+          "word": "низкоуглеродистые"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 254
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-146",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "низкоуглреодистые"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 247
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-147",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "известегасильному"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "известегасильному",
+          "score": -0.0,
+          "word": "известегасильному"
+        },
+        {
+          "distance": 1,
+          "key": "известегасильном",
+          "score": -1.0,
+          "word": "известегасильном"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 253
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-148",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "известегсильному"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "известегасильному",
+          "score": -1.0,
+          "word": "известегасильному"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 244
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-149",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "известегаасильному"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "известегасильному",
+          "score": -1.0,
+          "word": "известегасильному"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 244
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-150",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "известегосильному"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "известегасильному",
+          "score": -1.0,
+          "word": "известегасильному"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 244
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-151",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "известегсаильному"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 237
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-152",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "укомплектовываемого"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "укомплектовываемого",
+          "score": -0.0,
+          "word": "укомплектовываемого"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 288
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-153",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "укомплектвываемого"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "укомплектовываемого",
+          "score": -1.0,
+          "word": "укомплектовываемого"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 266
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-154",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "укомплектаовываемого"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "укомплектовываемого",
+          "score": -1.0,
+          "word": "укомплектовываемого"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 267
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-155",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "укомплектавываемого"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "укомплектовываемого",
+          "score": -1.0,
+          "word": "укомплектовываемого"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 268
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-156",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "укомплектвоываемого"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 258
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-157",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "быстросхватывающе"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "быстросхватывающе",
+          "score": -0.0,
+          "word": "быстросхватывающе"
+        },
+        {
+          "distance": 1,
+          "key": "быстросхватывающее",
+          "score": -1.0,
+          "word": "быстросхватывающее"
+        },
+        {
+          "distance": 1,
+          "key": "быстросхватывающей",
+          "score": -1.0,
+          "word": "быстросхватывающей"
+        },
+        {
+          "distance": 1,
+          "key": "быстросхватывающем",
+          "score": -1.0,
+          "word": "быстросхватывающем"
+        },
+        {
+          "distance": 1,
+          "key": "быстросхватывающею",
+          "score": -1.0,
+          "word": "быстросхватывающею"
+        },
+        {
+          "distance": 1,
+          "key": "быстросхватывающие",
+          "score": -1.0,
+          "word": "быстросхватывающие"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 202
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-158",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "быстросхатывающе"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "быстросхватывающе",
+          "score": -1.0,
+          "word": "быстросхватывающе"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 195
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-159",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "быстросхаватывающе"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "быстросхватывающе",
+          "score": -1.0,
+          "word": "быстросхватывающе"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 195
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-160",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "быстросхаатывающе"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "быстросхватывающе",
+          "score": -1.0,
+          "word": "быстросхватывающе"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 195
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-161",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "быстросхавтывающе"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 188
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-162",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммехмонтажкомплектам"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "аркадакагропроммехмонтажкомплектам",
+          "score": -0.0,
+          "word": "аркадакагропроммехмонтажкомплектам"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекта",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекта"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектами",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектами"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектах",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектах"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектом",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектом"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 399
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-163",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммемонтажкомплектам"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектам",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектам"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 392
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-164",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммеахмонтажкомплектам"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектам",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектам"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 392
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-165",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммеамонтажкомплектам"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектам",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектам"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 392
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-166",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммемхонтажкомплектам"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 377
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "distance_two_probe",
+      "distance": 2,
+      "id": "lookup-167",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммехмонтажкомплектааа"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 2,
+          "key": "аркадакагропроммехмонтажкомплекта",
+          "score": -2.0,
+          "word": "аркадакагропроммехмонтажкомплекта"
+        },
+        {
+          "distance": 2,
+          "key": "аркадакагропроммехмонтажкомплектам",
+          "score": -2.0,
+          "word": "аркадакагропроммехмонтажкомплектам"
+        },
+        {
+          "distance": 2,
+          "key": "аркадакагропроммехмонтажкомплектами",
+          "score": -2.0,
+          "word": "аркадакагропроммехмонтажкомплектами"
+        },
+        {
+          "distance": 2,
+          "key": "аркадакагропроммехмонтажкомплектах",
+          "score": -2.0,
+          "word": "аркадакагропроммехмонтажкомплектах"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 6059
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-168",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммехмонтажкомплекте"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "аркадакагропроммехмонтажкомплекте",
+          "score": -0.0,
+          "word": "аркадакагропроммехмонтажкомплекте"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплект",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплект"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекта",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекта"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекту",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекту"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекты",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекты"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 395
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-169",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммхмонтажкомплекте"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекте",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекте"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 391
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-170",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммаехмонтажкомплекте"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекте",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекте"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 391
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-171",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммахмонтажкомплекте"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекте",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекте"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 391
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-172",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммхемонтажкомплекте"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 376
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-173",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммехмонтажкомплекта"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "аркадакагропроммехмонтажкомплекта",
+          "score": -0.0,
+          "word": "аркадакагропроммехмонтажкомплекта"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплект",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплект"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектам",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектам"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектах",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектах"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекте",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекте"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекту",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекту"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекты",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекты"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 397
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-174",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммхмонтажкомплекта"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекта",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекта"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 391
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-175",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммаехмонтажкомплекта"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекта",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекта"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 391
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-176",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммахмонтажкомплекта"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекта",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекта"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 391
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-177",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммхемонтажкомплекта"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 376
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-178",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "средневолжсксельэлектросетьстроем"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "средневолжсксельэлектросетьстроем",
+          "score": -0.0,
+          "word": "средневолжсксельэлектросетьстроем"
+        },
+        {
+          "distance": 1,
+          "key": "средневолжсксельэлектросетьстрое",
+          "score": -1.0,
+          "word": "средневолжсксельэлектросетьстрое"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 366
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-179",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "средневолжсксельлектросетьстроем"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "средневолжсксельэлектросетьстроем",
+          "score": -1.0,
+          "word": "средневолжсксельэлектросетьстроем"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 363
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-180",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "средневолжсксельаэлектросетьстроем"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "средневолжсксельэлектросетьстроем",
+          "score": -1.0,
+          "word": "средневолжсксельэлектросетьстроем"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 363
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-181",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "средневолжсксельалектросетьстроем"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "средневолжсксельэлектросетьстроем",
+          "score": -1.0,
+          "word": "средневолжсксельэлектросетьстроем"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 363
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-182",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "средневолжсксельлэектросетьстроем"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 348
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-183",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммехмонтажкомплектах"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "аркадакагропроммехмонтажкомплектах",
+          "score": -0.0,
+          "word": "аркадакагропроммехмонтажкомплектах"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекта",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекта"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектам",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектам"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 397
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-184",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммемонтажкомплектах"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектах",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектах"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 392
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-185",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммеахмонтажкомплектах"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектах",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектах"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 392
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-186",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммеамонтажкомплектах"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектах",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектах"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 392
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-187",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммемхонтажкомплектах"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 377
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-188",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммехмонтажкомплектов"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "аркадакагропроммехмонтажкомплектов",
+          "score": -0.0,
+          "word": "аркадакагропроммехмонтажкомплектов"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектом",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектом"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 397
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-189",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммемонтажкомплектов"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектов",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектов"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 392
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-190",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммеахмонтажкомплектов"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектов",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектов"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 392
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-191",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммеамонтажкомплектов"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектов",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектов"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 392
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-192",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммемхонтажкомплектов"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 377
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-193",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммехмонтажкомплекты"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "аркадакагропроммехмонтажкомплекты",
+          "score": -0.0,
+          "word": "аркадакагропроммехмонтажкомплекты"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплект",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплект"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекта",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекта"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекте",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекте"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекту",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекту"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 395
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-194",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммхмонтажкомплекты"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекты",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекты"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 391
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-195",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммаехмонтажкомплекты"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекты",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекты"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 391
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-196",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммахмонтажкомплекты"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплекты",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплекты"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 391
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-197",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммхемонтажкомплекты"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 376
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "known",
+      "distance": 1,
+      "id": "lookup-198",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммехмонтажкомплектом"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "аркадакагропроммехмонтажкомплектом",
+          "score": -0.0,
+          "word": "аркадакагропроммехмонтажкомплектом"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектам",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектам"
+        },
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектов",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектов"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 398
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "deletion",
+      "distance": 1,
+      "id": "lookup-199",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммемонтажкомплектом"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектом",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектом"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 392
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "insertion",
+      "distance": 1,
+      "id": "lookup-200",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммеахмонтажкомплектом"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектом",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектом"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 392
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "substitution",
+      "distance": 1,
+      "id": "lookup-201",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммеамонтажкомплектом"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "аркадакагропроммехмонтажкомплектом",
+          "score": -1.0,
+          "word": "аркадакагропроммехмонтажкомплектом"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 392
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "transposition",
+      "distance": 1,
+      "id": "lookup-202",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аркадакагропроммемхонтажкомплектом"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 377
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "edge_case",
+      "distance": 1,
+      "id": "lookup-203",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "маско"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "каско",
+          "score": -1.0,
+          "word": "каско"
+        },
+        {
+          "distance": 1,
+          "key": "мазко",
+          "score": -1.0,
+          "word": "мазко"
+        },
+        {
+          "distance": 1,
+          "key": "манко",
+          "score": -1.0,
+          "word": "манко"
+        },
+        {
+          "distance": 1,
+          "key": "марко",
+          "score": -1.0,
+          "word": "марко"
+        },
+        {
+          "distance": 1,
+          "key": "маска",
+          "score": -1.0,
+          "word": "маска"
+        },
+        {
+          "distance": 1,
+          "key": "маске",
+          "score": -1.0,
+          "word": "маске"
+        },
+        {
+          "distance": 1,
+          "key": "маски",
+          "score": -1.0,
+          "word": "маски"
+        },
+        {
+          "distance": 1,
+          "key": "маской",
+          "score": -1.0,
+          "word": "маской"
+        },
+        {
+          "distance": 1,
+          "key": "маскон",
+          "score": -1.0,
+          "word": "маскон"
+        },
+        {
+          "distance": 1,
+          "key": "маскот",
+          "score": -1.0,
+          "word": "маскот"
+        },
+        {
+          "distance": 1,
+          "key": "маскою",
+          "score": -1.0,
+          "word": "маскою"
+        },
+        {
+          "distance": 1,
+          "key": "маску",
+          "score": -1.0,
+          "word": "маску"
+        },
+        {
+          "distance": 1,
+          "key": "масло",
+          "score": -1.0,
+          "word": "масло"
+        },
+        {
+          "distance": 1,
+          "key": "мяско",
+          "score": -1.0,
+          "word": "мяско"
+        },
+        {
+          "distance": 1,
+          "key": "уаско",
+          "score": -1.0,
+          "word": "уаско"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 322
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "edge_case",
+      "distance": 1,
+      "id": "lookup-204",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "драйвир"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "драйвер",
+          "score": -1.0,
+          "word": "драйвер"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 232
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "edge_case",
+      "distance": 1,
+      "id": "lookup-205",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "елко"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "едко",
+          "score": -1.0,
+          "word": "едко"
+        },
+        {
+          "distance": 1,
+          "key": "елико",
+          "score": -1.0,
+          "word": "елико"
+        },
+        {
+          "distance": 1,
+          "key": "елка",
+          "score": -1.0,
+          "word": "ёлка"
+        },
+        {
+          "distance": 1,
+          "key": "елке",
+          "score": -1.0,
+          "word": "ёлке"
+        },
+        {
+          "distance": 1,
+          "key": "елки",
+          "score": -1.0,
+          "word": "ёлки"
+        },
+        {
+          "distance": 1,
+          "key": "елкой",
+          "score": -1.0,
+          "word": "ёлкой"
+        },
+        {
+          "distance": 1,
+          "key": "елкою",
+          "score": -1.0,
+          "word": "ёлкою"
+        },
+        {
+          "distance": 1,
+          "key": "елку",
+          "score": -1.0,
+          "word": "ёлку"
+        },
+        {
+          "distance": 1,
+          "key": "ело",
+          "score": -1.0,
+          "word": "ело"
+        },
+        {
+          "distance": 1,
+          "key": "емко",
+          "score": -1.0,
+          "word": "ёмко"
+        },
+        {
+          "distance": 1,
+          "key": "мелко",
+          "score": -1.0,
+          "word": "мелко"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 200
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "edge_case",
+      "distance": 1,
+      "id": "lookup-206",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": ""
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "а",
+          "score": -1.0,
+          "word": "а"
+        },
+        {
+          "distance": 1,
+          "key": "б",
+          "score": -1.0,
+          "word": "б"
+        },
+        {
+          "distance": 1,
+          "key": "в",
+          "score": -1.0,
+          "word": "в"
+        },
+        {
+          "distance": 1,
+          "key": "г",
+          "score": -1.0,
+          "word": "г"
+        },
+        {
+          "distance": 1,
+          "key": "д",
+          "score": -1.0,
+          "word": "д"
+        },
+        {
+          "distance": 1,
+          "key": "е",
+          "score": -1.0,
+          "word": "е"
+        },
+        {
+          "distance": 1,
+          "key": "ж",
+          "score": -1.0,
+          "word": "ж"
+        },
+        {
+          "distance": 1,
+          "key": "и",
+          "score": -1.0,
+          "word": "и"
+        },
+        {
+          "distance": 1,
+          "key": "к",
+          "score": -1.0,
+          "word": "к"
+        },
+        {
+          "distance": 1,
+          "key": "л",
+          "score": -1.0,
+          "word": "л"
+        },
+        {
+          "distance": 1,
+          "key": "м",
+          "score": -1.0,
+          "word": "м"
+        },
+        {
+          "distance": 1,
+          "key": "н",
+          "score": -1.0,
+          "word": "н"
+        },
+        {
+          "distance": 1,
+          "key": "о",
+          "score": -1.0,
+          "word": "о"
+        },
+        {
+          "distance": 1,
+          "key": "п",
+          "score": -1.0,
+          "word": "п"
+        },
+        {
+          "distance": 1,
+          "key": "р",
+          "score": -1.0,
+          "word": "р"
+        },
+        {
+          "distance": 1,
+          "key": "с",
+          "score": -1.0,
+          "word": "с"
+        },
+        {
+          "distance": 1,
+          "key": "т",
+          "score": -1.0,
+          "word": "т"
+        },
+        {
+          "distance": 1,
+          "key": "у",
+          "score": -1.0,
+          "word": "у"
+        },
+        {
+          "distance": 1,
+          "key": "ф",
+          "score": -1.0,
+          "word": "ф"
+        },
+        {
+          "distance": 1,
+          "key": "ч",
+          "score": -1.0,
+          "word": "ч"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 26
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "edge_case",
+      "distance": 1,
+      "id": "lookup-207",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "🙂"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "а",
+          "score": -1.0,
+          "word": "а"
+        },
+        {
+          "distance": 1,
+          "key": "б",
+          "score": -1.0,
+          "word": "б"
+        },
+        {
+          "distance": 1,
+          "key": "в",
+          "score": -1.0,
+          "word": "в"
+        },
+        {
+          "distance": 1,
+          "key": "г",
+          "score": -1.0,
+          "word": "г"
+        },
+        {
+          "distance": 1,
+          "key": "д",
+          "score": -1.0,
+          "word": "д"
+        },
+        {
+          "distance": 1,
+          "key": "е",
+          "score": -1.0,
+          "word": "е"
+        },
+        {
+          "distance": 1,
+          "key": "ж",
+          "score": -1.0,
+          "word": "ж"
+        },
+        {
+          "distance": 1,
+          "key": "и",
+          "score": -1.0,
+          "word": "и"
+        },
+        {
+          "distance": 1,
+          "key": "к",
+          "score": -1.0,
+          "word": "к"
+        },
+        {
+          "distance": 1,
+          "key": "л",
+          "score": -1.0,
+          "word": "л"
+        },
+        {
+          "distance": 1,
+          "key": "м",
+          "score": -1.0,
+          "word": "м"
+        },
+        {
+          "distance": 1,
+          "key": "н",
+          "score": -1.0,
+          "word": "н"
+        },
+        {
+          "distance": 1,
+          "key": "о",
+          "score": -1.0,
+          "word": "о"
+        },
+        {
+          "distance": 1,
+          "key": "п",
+          "score": -1.0,
+          "word": "п"
+        },
+        {
+          "distance": 1,
+          "key": "р",
+          "score": -1.0,
+          "word": "р"
+        },
+        {
+          "distance": 1,
+          "key": "с",
+          "score": -1.0,
+          "word": "с"
+        },
+        {
+          "distance": 1,
+          "key": "т",
+          "score": -1.0,
+          "word": "т"
+        },
+        {
+          "distance": 1,
+          "key": "у",
+          "score": -1.0,
+          "word": "у"
+        },
+        {
+          "distance": 1,
+          "key": "ф",
+          "score": -1.0,
+          "word": "ф"
+        },
+        {
+          "distance": 1,
+          "key": "ч",
+          "score": -1.0,
+          "word": "ч"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 26
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "edge_case",
+      "distance": 1,
+      "id": "lookup-208",
+      "max_candidates": 20,
+      "max_nodes": 100000,
+      "query": "аааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа"
+    },
+    "search": {
+      "candidates": [],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 128
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-209",
+      "max_candidates": 0,
+      "max_nodes": 100000,
+      "query": "маско"
+    },
+    "search": {
+      "candidates": [],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 56
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-210",
+      "max_candidates": 1,
+      "max_nodes": 100000,
+      "query": "маско"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "каско",
+          "score": -1.0,
+          "word": "каско"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 79
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-211",
+      "max_candidates": 20,
+      "max_nodes": 0,
+      "query": "маско"
+    },
+    "search": {
+      "candidates": [],
+      "complete": false,
+      "stop_reason": "search_node_limit",
+      "visited_nodes": 0
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-212",
+      "max_candidates": 20,
+      "max_nodes": 1,
+      "query": "маско"
+    },
+    "search": {
+      "candidates": [],
+      "complete": false,
+      "stop_reason": "search_node_limit",
+      "visited_nodes": 1
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-213",
+      "max_candidates": 20,
+      "max_nodes": 10,
+      "query": "маско"
+    },
+    "search": {
+      "candidates": [],
+      "complete": false,
+      "stop_reason": "search_node_limit",
+      "visited_nodes": 10
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-214",
+      "max_candidates": 0,
+      "max_nodes": 100000,
+      "query": "а"
+    },
+    "search": {
+      "candidates": [],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 2
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-215",
+      "max_candidates": 1,
+      "max_nodes": 100000,
+      "query": "а"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "а",
+          "score": -0.0,
+          "word": "а"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 3
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-216",
+      "max_candidates": 20,
+      "max_nodes": 0,
+      "query": "а"
+    },
+    "search": {
+      "candidates": [],
+      "complete": false,
+      "stop_reason": "search_node_limit",
+      "visited_nodes": 0
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-217",
+      "max_candidates": 20,
+      "max_nodes": 1,
+      "query": "а"
+    },
+    "search": {
+      "candidates": [],
+      "complete": false,
+      "stop_reason": "search_node_limit",
+      "visited_nodes": 1
+    }
+  },
+  {
+    "known": true,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-218",
+      "max_candidates": 20,
+      "max_nodes": 10,
+      "query": "а"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 0,
+          "key": "а",
+          "score": -0.0,
+          "word": "а"
+        },
+        {
+          "distance": 1,
+          "key": "аа",
+          "score": -1.0,
+          "word": "аа"
+        },
+        {
+          "distance": 1,
+          "key": "аб",
+          "score": -1.0,
+          "word": "аб"
+        },
+        {
+          "distance": 1,
+          "key": "ав",
+          "score": -1.0,
+          "word": "ав"
+        },
+        {
+          "distance": 1,
+          "key": "аг",
+          "score": -1.0,
+          "word": "аг"
+        },
+        {
+          "distance": 1,
+          "key": "ад",
+          "score": -1.0,
+          "word": "ад"
+        },
+        {
+          "distance": 1,
+          "key": "ае",
+          "score": -1.0,
+          "word": "ае"
+        },
+        {
+          "distance": 1,
+          "key": "аж",
+          "score": -1.0,
+          "word": "аж"
+        },
+        {
+          "distance": 1,
+          "key": "аз",
+          "score": -1.0,
+          "word": "аз"
+        }
+      ],
+      "complete": false,
+      "stop_reason": "search_node_limit",
+      "visited_nodes": 10
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-219",
+      "max_candidates": 0,
+      "max_nodes": 100000,
+      "query": "драйвир"
+    },
+    "search": {
+      "candidates": [],
+      "complete": false,
+      "stop_reason": "candidate_limit",
+      "visited_nodes": 80
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-220",
+      "max_candidates": 1,
+      "max_nodes": 100000,
+      "query": "драйвир"
+    },
+    "search": {
+      "candidates": [
+        {
+          "distance": 1,
+          "key": "драйвер",
+          "score": -1.0,
+          "word": "драйвер"
+        }
+      ],
+      "complete": true,
+      "stop_reason": null,
+      "visited_nodes": 232
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-221",
+      "max_candidates": 20,
+      "max_nodes": 0,
+      "query": "драйвир"
+    },
+    "search": {
+      "candidates": [],
+      "complete": false,
+      "stop_reason": "search_node_limit",
+      "visited_nodes": 0
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-222",
+      "max_candidates": 20,
+      "max_nodes": 1,
+      "query": "драйвир"
+    },
+    "search": {
+      "candidates": [],
+      "complete": false,
+      "stop_reason": "search_node_limit",
+      "visited_nodes": 1
+    }
+  },
+  {
+    "known": false,
+    "request": {
+      "category": "limit_probe",
+      "distance": 1,
+      "id": "lookup-223",
+      "max_candidates": 20,
+      "max_nodes": 10,
+      "query": "драйвир"
+    },
+    "search": {
+      "candidates": [],
+      "complete": false,
+      "stop_reason": "search_node_limit",
+      "visited_nodes": 10
+    }
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "index_bytes": 123007276,
+  "index_sha256": "2435885729fd1f05fe109ddf8564df2f6fb33b6731361fce97f853b9e5263619",
+  "nodes": 4562033,
+  "pack_validate_write_ms": 4964.350244,
+  "scope": "packing, validation and file write only; excludes source read and reference trie build",
+  "source_sha256": "e2e67e5b5e226473b668dff5029fb5af0aa55a3f6e0165da012363be39766a11",
+  "words": 3017654,
+  "whole_process_seconds": 24.21831771900179
+}

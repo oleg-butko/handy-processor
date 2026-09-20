@@ -1,0 +1,1794 @@
+[
+  {
+    "id": "lookup-000",
+    "query": "иксе",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-001",
+    "query": "ике",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-002",
+    "query": "икасе",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-003",
+    "query": "икае",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-004",
+    "query": "икес",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-005",
+    "query": "иксаа",
+    "category": "distance_two_probe",
+    "distance": 2,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-006",
+    "query": "азии",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-007",
+    "query": "ази",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-008",
+    "query": "азаии",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-009",
+    "query": "азаи",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-010",
+    "query": "йод",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-011",
+    "query": "йд",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-012",
+    "query": "йаод",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-013",
+    "query": "йад",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-014",
+    "query": "йдо",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-015",
+    "query": "ягах",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-016",
+    "query": "ягх",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-017",
+    "query": "ягаах",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-018",
+    "query": "ягох",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-019",
+    "query": "ягха",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-020",
+    "query": "пхни",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-021",
+    "query": "пхи",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-022",
+    "query": "пхани",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-023",
+    "query": "пхаи",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-024",
+    "query": "пхин",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-025",
+    "query": "вшей",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-026",
+    "query": "вшй",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-027",
+    "query": "вшаей",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-028",
+    "query": "вшай",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-029",
+    "query": "вшйе",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-030",
+    "query": "вдов",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-031",
+    "query": "вдв",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-032",
+    "query": "вдаов",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-033",
+    "query": "вдав",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-034",
+    "query": "вдво",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-035",
+    "query": "ладь",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-036",
+    "query": "лаь",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-037",
+    "query": "лаадь",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-038",
+    "query": "лааь",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-039",
+    "query": "лаьд",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-040",
+    "query": "пенкине",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-041",
+    "query": "пенине",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-042",
+    "query": "пенакине",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-043",
+    "query": "пенаине",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-044",
+    "query": "пеникне",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-045",
+    "query": "пенкинаа",
+    "category": "distance_two_probe",
+    "distance": 2,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-046",
+    "query": "секся",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-047",
+    "query": "сеся",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-048",
+    "query": "сеакся",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-049",
+    "query": "сеася",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-050",
+    "query": "сескя",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-051",
+    "query": "олигурию",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-052",
+    "query": "олигрию",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-053",
+    "query": "олигаурию",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-054",
+    "query": "олигарию",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-055",
+    "query": "олигруию",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-056",
+    "query": "плачась",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-057",
+    "query": "плаась",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-058",
+    "query": "плаачась",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-059",
+    "query": "плааась",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-060",
+    "query": "плаачсь",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-061",
+    "query": "далаевич",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-062",
+    "query": "далавич",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-063",
+    "query": "далааевич",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-064",
+    "query": "далаавич",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-065",
+    "query": "далавеич",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-066",
+    "query": "ударницу",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-067",
+    "query": "ударицу",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-068",
+    "query": "удараницу",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-069",
+    "query": "удараицу",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-070",
+    "query": "ударинцу",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-071",
+    "query": "дорожках",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-072",
+    "query": "дороках",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-073",
+    "query": "дороажках",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-074",
+    "query": "дороаках",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-075",
+    "query": "дорокжах",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-076",
+    "query": "джетымам",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-077",
+    "query": "джетмам",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-078",
+    "query": "джетаымам",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-079",
+    "query": "джетамам",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-080",
+    "query": "джетмыам",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-081",
+    "query": "разгоняющемуся",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-082",
+    "query": "разгонящемуся",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-083",
+    "query": "разгоняающемуся",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-084",
+    "query": "разгоняащемуся",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-085",
+    "query": "разгонящюемуся",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-086",
+    "query": "разгоняющемусаа",
+    "category": "distance_two_probe",
+    "distance": 2,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-087",
+    "query": "промолотившею",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-088",
+    "query": "промолтившею",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-089",
+    "query": "промолаотившею",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-090",
+    "query": "промолатившею",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-091",
+    "query": "промолтоившею",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-092",
+    "query": "беременностью",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-093",
+    "query": "беременостью",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-094",
+    "query": "беремеанностью",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-095",
+    "query": "беремеаностью",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-096",
+    "query": "отстирывают",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-097",
+    "query": "отстиывают",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-098",
+    "query": "отстиарывают",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-099",
+    "query": "отстиаывают",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-100",
+    "query": "отстиырвают",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-101",
+    "query": "адвокатстве",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-102",
+    "query": "адвоктстве",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-103",
+    "query": "адвокаатстве",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-104",
+    "query": "адвокотстве",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-105",
+    "query": "адвоктастве",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-106",
+    "query": "прописывавшийся",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-107",
+    "query": "прописыавшийся",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-108",
+    "query": "прописыававшийся",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-109",
+    "query": "прописыаавшийся",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-110",
+    "query": "прописыаввшийся",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-111",
+    "query": "выщербленною",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-112",
+    "query": "выщербенною",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-113",
+    "query": "выщербаленною",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-114",
+    "query": "выщербаенною",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-115",
+    "query": "выщербелнною",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-116",
+    "query": "бургонову",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-117",
+    "query": "бургнову",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-118",
+    "query": "бургаонову",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-119",
+    "query": "бурганову",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-120",
+    "query": "бургноову",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-121",
+    "query": "интракардиальными",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-122",
+    "query": "интракариальными",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-123",
+    "query": "интракарадиальными",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-124",
+    "query": "интракараиальными",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-125",
+    "query": "интракаридальными",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-126",
+    "query": "интракардиальнымаа",
+    "category": "distance_two_probe",
+    "distance": 2,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-127",
+    "query": "скомпрометированную",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-128",
+    "query": "скомпромеированную",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-129",
+    "query": "скомпромеатированную",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-130",
+    "query": "скомпромеаированную",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-131",
+    "query": "скомпромеитрованную",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-132",
+    "query": "противоборствуйте",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-133",
+    "query": "противобрствуйте",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-134",
+    "query": "противобаорствуйте",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-135",
+    "query": "противобарствуйте",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-136",
+    "query": "противоброствуйте",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-137",
+    "query": "заспиртовывающеюся",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-138",
+    "query": "заспиртоввающеюся",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-139",
+    "query": "заспиртоваывающеюся",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-140",
+    "query": "заспиртовавающеюся",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-141",
+    "query": "заспиртоввыающеюся",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-142",
+    "query": "низкоуглеродистые",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-143",
+    "query": "низкоуглродистые",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-144",
+    "query": "низкоуглаеродистые",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-145",
+    "query": "низкоуглародистые",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-146",
+    "query": "низкоуглреодистые",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-147",
+    "query": "известегасильному",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-148",
+    "query": "известегсильному",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-149",
+    "query": "известегаасильному",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-150",
+    "query": "известегосильному",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-151",
+    "query": "известегсаильному",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-152",
+    "query": "укомплектовываемого",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-153",
+    "query": "укомплектвываемого",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-154",
+    "query": "укомплектаовываемого",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-155",
+    "query": "укомплектавываемого",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-156",
+    "query": "укомплектвоываемого",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-157",
+    "query": "быстросхватывающе",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-158",
+    "query": "быстросхатывающе",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-159",
+    "query": "быстросхаватывающе",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-160",
+    "query": "быстросхаатывающе",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-161",
+    "query": "быстросхавтывающе",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-162",
+    "query": "аркадакагропроммехмонтажкомплектам",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-163",
+    "query": "аркадакагропроммемонтажкомплектам",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-164",
+    "query": "аркадакагропроммеахмонтажкомплектам",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-165",
+    "query": "аркадакагропроммеамонтажкомплектам",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-166",
+    "query": "аркадакагропроммемхонтажкомплектам",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-167",
+    "query": "аркадакагропроммехмонтажкомплектааа",
+    "category": "distance_two_probe",
+    "distance": 2,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-168",
+    "query": "аркадакагропроммехмонтажкомплекте",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-169",
+    "query": "аркадакагропроммхмонтажкомплекте",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-170",
+    "query": "аркадакагропроммаехмонтажкомплекте",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-171",
+    "query": "аркадакагропроммахмонтажкомплекте",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-172",
+    "query": "аркадакагропроммхемонтажкомплекте",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-173",
+    "query": "аркадакагропроммехмонтажкомплекта",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-174",
+    "query": "аркадакагропроммхмонтажкомплекта",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-175",
+    "query": "аркадакагропроммаехмонтажкомплекта",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-176",
+    "query": "аркадакагропроммахмонтажкомплекта",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-177",
+    "query": "аркадакагропроммхемонтажкомплекта",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-178",
+    "query": "средневолжсксельэлектросетьстроем",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-179",
+    "query": "средневолжсксельлектросетьстроем",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-180",
+    "query": "средневолжсксельаэлектросетьстроем",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-181",
+    "query": "средневолжсксельалектросетьстроем",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-182",
+    "query": "средневолжсксельлэектросетьстроем",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-183",
+    "query": "аркадакагропроммехмонтажкомплектах",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-184",
+    "query": "аркадакагропроммемонтажкомплектах",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-185",
+    "query": "аркадакагропроммеахмонтажкомплектах",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-186",
+    "query": "аркадакагропроммеамонтажкомплектах",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-187",
+    "query": "аркадакагропроммемхонтажкомплектах",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-188",
+    "query": "аркадакагропроммехмонтажкомплектов",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-189",
+    "query": "аркадакагропроммемонтажкомплектов",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-190",
+    "query": "аркадакагропроммеахмонтажкомплектов",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-191",
+    "query": "аркадакагропроммеамонтажкомплектов",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-192",
+    "query": "аркадакагропроммемхонтажкомплектов",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-193",
+    "query": "аркадакагропроммехмонтажкомплекты",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-194",
+    "query": "аркадакагропроммхмонтажкомплекты",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-195",
+    "query": "аркадакагропроммаехмонтажкомплекты",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-196",
+    "query": "аркадакагропроммахмонтажкомплекты",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-197",
+    "query": "аркадакагропроммхемонтажкомплекты",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-198",
+    "query": "аркадакагропроммехмонтажкомплектом",
+    "category": "known",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-199",
+    "query": "аркадакагропроммемонтажкомплектом",
+    "category": "deletion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-200",
+    "query": "аркадакагропроммеахмонтажкомплектом",
+    "category": "insertion",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-201",
+    "query": "аркадакагропроммеамонтажкомплектом",
+    "category": "substitution",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-202",
+    "query": "аркадакагропроммемхонтажкомплектом",
+    "category": "transposition",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-203",
+    "query": "маско",
+    "category": "edge_case",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-204",
+    "query": "драйвир",
+    "category": "edge_case",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-205",
+    "query": "елко",
+    "category": "edge_case",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-206",
+    "query": "",
+    "category": "edge_case",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-207",
+    "query": "🙂",
+    "category": "edge_case",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-208",
+    "query": "аааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааааа",
+    "category": "edge_case",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-209",
+    "query": "маско",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 0,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-210",
+    "query": "маско",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 1,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-211",
+    "query": "маско",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 0
+  },
+  {
+    "id": "lookup-212",
+    "query": "маско",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 1
+  },
+  {
+    "id": "lookup-213",
+    "query": "маско",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 10
+  },
+  {
+    "id": "lookup-214",
+    "query": "а",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 0,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-215",
+    "query": "а",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 1,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-216",
+    "query": "а",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 0
+  },
+  {
+    "id": "lookup-217",
+    "query": "а",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 1
+  },
+  {
+    "id": "lookup-218",
+    "query": "а",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 10
+  },
+  {
+    "id": "lookup-219",
+    "query": "драйвир",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 0,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-220",
+    "query": "драйвир",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 1,
+    "max_nodes": 100000
+  },
+  {
+    "id": "lookup-221",
+    "query": "драйвир",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 0
+  },
+  {
+    "id": "lookup-222",
+    "query": "драйвир",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 1
+  },
+  {
+    "id": "lookup-223",
+    "query": "драйвир",
+    "category": "limit_probe",
+    "distance": 1,
+    "max_candidates": 20,
+    "max_nodes": 10
+  }
+]

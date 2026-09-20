@@ -1,0 +1,14 @@
+{
+  "git_revision": "91b1d4b670143f1dd03ab6f8bfab69fd0bdd1539",
+  "implementation_status": [],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "cpu": "Intel(R) Xeon(R) CPU E5-2678 v3 @ 2.50GHz",
+  "binary_sha256": "635980c60a8ff763a5df86589bc5ebd4b2a311f9c67919a1156f448b7ed6cd4c",
+  "profiler_sha256": "6a4598225493075e2290e40f7bc4b951871c0b813cd35aa42ce437fc097352a1",
+  "runner_sha256": "9065636dc2de9ecd384168ef1a5c6f9c8e4f45a0c11a82bdbae614714d8fcda0",
+  "source_sha256": "e2e67e5b5e226473b668dff5029fb5af0aa55a3f6e0165da012363be39766a11",
+  "index_sha256": "2435885729fd1f05fe109ddf8564df2f6fb33b6731361fce97f853b9e5263619",
+  "frequencies_sha256": "b825e97778693cb7e3b5cb26d058ba6bde6cf4971471dc0a6f2d1a1e889c160f",
+  "corpus_sha256": "7a6b3d4fc2fd6d9d83ff28811f8ac9e6438a0589ff8ea655936084ec50307714"
+}

@@ -1,0 +1,25 @@
+# Synthetic experiment; parameters fixed before evaluation, not calibrated.
+dictionary = "/home/user1/handy-processor/rechprav/artifacts/opencorpora-wordfreq/dictionary.txt"
+domain = "/home/user1/handy-processor/rechprav/data/fixtures/baseline/domain.txt"
+ignore = "/home/user1/handy-processor/rechprav/data/fixtures/baseline/ignore.txt"
+strict_yo = false
+
+[policy]
+max_distance = 1
+min_word_length = 5
+max_word_length = 64
+max_candidates = 20
+max_search_nodes = 100000
+protect_titlecase = true
+protect_uppercase = true
+
+[frequency]
+path = "/home/user1/handy-processor/rechprav/artifacts/opencorpora-wordfreq/frequency.tsv"
+
+[frequency.scoring]
+weight = 1.0
+log_cap = 6.0
+edit_penalty = 1.0
+keep_bias = 1.0
+min_keep_margin = 0.5
+min_runner_up_margin = 0.5
