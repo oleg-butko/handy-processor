@@ -233,6 +233,7 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
         ("src/review.rs", include_bytes!("review.rs")),
         ("src/text.rs", include_bytes!("text.rs")),
         ("src/terms.rs", include_bytes!("terms.rs")),
+        ("src/term_context.rs", include_bytes!("term_context.rs")),
         ("src/term_metrics.rs", include_bytes!("term_metrics.rs")),
     ];
     let source_hashes: std::collections::BTreeMap<_, _> = sources

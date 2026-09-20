@@ -2,6 +2,7 @@
 use crate::{
     corpus::Edit,
     corrector::Baseline,
+    term_context::{Pattern, horizontal},
     text::{self, Kind, Tokens},
 };
 use anyhow::{Context, Result, ensure};
@@ -14,6 +15,9 @@ use std::{
 
 fn yes() -> bool {
     true
+}
+fn is_false(value: &bool) -> bool {
+    !value
 }
 
 #[derive(Clone, Copy, Debug, Deserialize, Serialize, PartialEq, Eq)]
@@ -79,6 +83,14 @@ pub struct Term {
     pub known_words: KnownWords,
     #[serde(default)]
     pub context: Vec<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub max_known_distance: Option<usize>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub context_patterns: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub context_exclusions: Vec<String>,
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub require_context: bool,
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
@@ -182,7 +194,20 @@ impl Config {
                     "context cues must be individual alphabetic words"
                 );
                 ensure!(
-                    term.known_words != KnownWords::Context || !term.context.is_empty(),
+                    term.max_known_distance.is_none_or(|d| d <= 2),
+                    "max_known_distance must be in 0..2"
+                );
+                ensure!(
+                    term.context_patterns.len() <= 32 && term.context_exclusions.len() <= 32,
+                    "too many context patterns"
+                );
+                for pattern in term.context_patterns.iter().chain(&term.context_exclusions) {
+                    Pattern::parse(pattern, false, p.context_window)?;
+                }
+                ensure!(
+                    !(term.known_words == KnownWords::Context || term.require_context)
+                        || !term.context.is_empty()
+                        || !term.context_patterns.is_empty(),
                     "context policy needs cues"
                 );
                 alias_count += term.aliases.len();
@@ -206,19 +231,14 @@ fn russian(word: &str) -> bool {
             .chars()
             .all(|c| ('а'..='я').contains(&c) || ('А'..='Я').contains(&c) || c == 'ё' || c == 'Ё')
 }
-fn horizontal(gap: &str) -> bool {
-    !gap.is_empty()
-        && gap
-            .chars()
-            .all(|c| c == ' ' || c == '\t' || c == '\u{00a0}')
-}
-
 struct Entry {
     set: String,
     term: Term,
     boost: f64,
     aliases: Vec<(String, String)>,
     context: BTreeSet<String>,
+    patterns: Vec<Pattern>,
+    exclusions: Vec<Pattern>,
 }
 
 pub struct TermEngine {
@@ -237,6 +257,12 @@ pub struct Candidate {
     pub distance: usize,
     pub score: f64,
     pub context_hits: Vec<String>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub context_pattern_hits: Vec<String>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub context_exclusion_hits: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub max_known_distance: Option<usize>,
     pub contains_known_word: bool,
     pub eligible: bool,
     pub gate: &'static str,
@@ -322,6 +348,16 @@ impl TermEngine {
                             })
                             .collect(),
                         context: term.context.iter().map(|w| text::key(w, strict)).collect(),
+                        patterns: term
+                            .context_patterns
+                            .iter()
+                            .map(|p| Pattern::parse(p, strict, config.policy.context_window))
+                            .collect::<Result<_>>()?,
+                        exclusions: term
+                            .context_exclusions
+                            .iter()
+                            .map(|p| Pattern::parse(p, strict, config.policy.context_window))
+                            .collect::<Result<_>>()?,
                     });
                 }
             }
@@ -429,12 +465,7 @@ impl TermEngine {
                     let mut best: Option<(usize, &str)> = None;
                     for (alias, joined) in &entry.aliases {
                         if result.comparisons == p.max_comparisons {
-                            result.complete = false;
-                            for d in &mut result.decisions {
-                                d.selected = None;
-                                d.reason = "comparison_limit";
-                            }
-                            return result;
+                            return incomplete(result);
                         }
                         result.comparisons += 1;
                         let distance = match p.mode {
@@ -452,20 +483,47 @@ impl TermEngine {
                     };
                     let context_hits: Vec<_> =
                         entry.context.intersection(&neighbors).cloned().collect();
-                    let eligible = !known
-                        || match entry.term.known_words {
-                            KnownWords::Never => false,
-                            KnownWords::Context => !context_hits.is_empty(),
-                            KnownWords::Always => true,
-                        };
+                    let mut context_pattern_hits = Vec::new();
+                    let mut context_exclusion_hits = Vec::new();
+                    for (patterns, hits) in [
+                        (&entry.patterns, &mut context_pattern_hits),
+                        (&entry.exclusions, &mut context_exclusion_hits),
+                    ] {
+                        for pattern in patterns {
+                            if result.comparisons == p.max_comparisons {
+                                return incomplete(result);
+                            }
+                            result.comparisons += 1;
+                            if pattern.matches(source, &tokens, start, end) {
+                                hits.push(pattern.label.clone());
+                            }
+                        }
+                    }
+                    let has_context = !context_hits.is_empty() || !context_pattern_hits.is_empty();
+                    let gate = if !context_exclusion_hits.is_empty() {
+                        "context_excluded"
+                    } else if known && entry.term.known_words == KnownWords::Never {
+                        "known_word_blocked"
+                    } else if known
+                        && entry
+                            .term
+                            .max_known_distance
+                            .is_some_and(|limit| distance > limit)
+                    {
+                        "known_distance_limit"
+                    } else if (entry.term.require_context
+                        || (known && entry.term.known_words == KnownWords::Context))
+                        && !has_context
+                    {
+                        "context_required"
+                    } else {
+                        "eligible"
+                    };
+                    let eligible = gate == "eligible";
                     let score = 4.0 - p.edit_penalty * distance as f64
                         + p.boost
                         + entry.boost
-                        + if context_hits.is_empty() {
-                            0.0
-                        } else {
-                            p.context_bonus
-                        }
+                        + if !has_context { 0.0 } else { p.context_bonus }
                         - if known { p.known_penalty } else { 0.0 };
                     let candidate = Candidate {
                         set: entry.set.clone(),
@@ -475,15 +533,12 @@ impl TermEngine {
                         distance,
                         score,
                         context_hits,
+                        context_pattern_hits,
+                        context_exclusion_hits,
+                        max_known_distance: entry.term.max_known_distance,
                         contains_known_word: known,
                         eligible,
-                        gate: if eligible {
-                            "eligible"
-                        } else if entry.term.known_words == KnownWords::Never {
-                            "known_word_blocked"
-                        } else {
-                            "context_required"
-                        },
+                        gate,
                     };
                     // Identical outputs do not vote multiple times or count as competing goals.
                     let replace = by_target.get(&candidate.canonical).is_none_or(|old| {
@@ -616,6 +671,15 @@ impl TermEngine {
         result.corrected.push_str(&source[cursor..]);
         result
     }
+}
+
+fn incomplete(mut result: Analysis) -> Analysis {
+    result.complete = false;
+    for decision in &mut result.decisions {
+        decision.selected = None;
+        decision.reason = "comparison_limit";
+    }
+    result
 }
 
 /// Unicode Levenshtein with length and row cutoffs; bounded inputs validated above.

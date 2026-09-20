@@ -37,6 +37,207 @@ fn engine(c: Config) -> TermEngine {
 }
 
 #[test]
+fn known_distance_cap_blocks_fuzzy_real_words_but_keeps_oov_and_split_zero_distance() {
+    let mut c = config();
+    c.policy.mode = MatchMode::Edit;
+    let make = |c| {
+        let mut b = base();
+        b.dictionary = Box::new(Dictionary::from_text("пение\nпензе\nэн\nпэ", false).unwrap());
+        TermEngine::new(c, Some(b)).unwrap()
+    };
+    assert_eq!(
+        make(c.clone()).analyze("проверь пение").corrected,
+        "проверь ПНЗ"
+    );
+    c.sets[0].terms[0].max_known_distance = Some(0);
+    let a = make(c.clone()).analyze("проверь пение");
+    assert!(a.edits.is_empty());
+    assert_eq!(
+        a.decisions.last().unwrap().candidates[0].gate,
+        "known_distance_limit"
+    );
+    assert_eq!(make(c.clone()).analyze("бэнзэ").corrected, "ПНЗ");
+    assert_eq!(
+        make(c.clone()).analyze("проверь пензе").corrected,
+        "проверь ПНЗ"
+    );
+    assert!(make(c.clone()).analyze("проверь пэ эн зе").edits.is_empty());
+    // Isolate zero-distance segmentation: a fuzzy OOV suffix can otherwise tie
+    // the known-word whole span under the existing scorer/overlap policy.
+    let mut zero_only = c.clone();
+    zero_only.policy.max_distance = 0;
+    assert_eq!(
+        make(zero_only).analyze("проверь пэ энзэ").corrected,
+        "проверь ПНЗ"
+    );
+    c.policy.boost = 10.0;
+    assert!(make(c).analyze("проверь пение").edits.is_empty());
+}
+
+#[test]
+fn anchored_context_requires_both_adjacent_sides_without_crossing_boundaries() {
+    let mut c = config();
+    let t = &mut c.sets[0].terms[0];
+    t.context.clear();
+    t.require_context = true;
+    t.context_patterns = vec!["проверь {term} модуля".into()];
+    let e = engine(c);
+    let a = e.analyze("Проверь\tпэ  эн зэ\u{00a0}модуля!");
+    assert_eq!(a.corrected, "Проверь\tПНЗ\u{00a0}модуля!");
+    assert_eq!(
+        a.decisions
+            .iter()
+            .find(|d| d.selected.is_some())
+            .unwrap()
+            .candidates[0]
+            .context_pattern_hits,
+        vec!["проверь {term} модуля"]
+    );
+    for source in [
+        "проверь новый пэнзэ модуля",
+        "проверь пэнзэ нового модуля",
+        "пэнзэ модуля",
+        "проверь пэнзэ",
+        "проверь. пэнзэ модуля",
+        "проверь пэнзэ, модуля",
+        "проверь\nпэнзэ модуля",
+        "проверь пэнзэ\rмодуля",
+        "`проверь` пэнзэ модуля",
+    ] {
+        assert_eq!(e.analyze(source).corrected, source, "{source}");
+    }
+}
+
+#[test]
+fn exclusion_vetoes_known_oov_and_positive_cues_even_at_high_boost() {
+    let mut c = config();
+    c.policy.boost = 10.0;
+    let t = &mut c.sets[0].terms[0];
+    t.context_exclusions = vec!["{term} на карте".into()];
+    t.context_patterns = vec!["проверь {term}".into()];
+    let e = engine(c);
+    for source in [
+        "проверь пензе на карте",
+        "проверь пэнзэ на карте",
+        "проверь пэ эн зэ на карте",
+    ] {
+        let a = e.analyze(source);
+        assert_eq!(a.corrected, source);
+        assert!(
+            a.decisions
+                .iter()
+                .any(|d| d.candidates[0].gate == "context_excluded")
+        );
+    }
+    // Exclusions are local; they deliberately do not search across punctuation or gaps.
+    assert_eq!(
+        e.analyze("проверь пэнзэ. на карте").corrected,
+        "проверь ПНЗ. на карте"
+    );
+    assert_eq!(
+        e.analyze("проверь пэнзэ на новой карте").corrected,
+        "проверь ПНЗ на новой карте"
+    );
+}
+
+#[test]
+fn context_is_optional_for_oov_unless_required_and_can_route_conflicting_sets() {
+    let mut c = config();
+    let t = &mut c.sets[0].terms[0];
+    t.context.clear();
+    t.context_patterns = vec!["модуль {term}".into()];
+    assert_eq!(engine(c.clone()).analyze("пэнзэ").corrected, "ПНЗ");
+    c.sets[0].terms[0].require_context = true;
+    let mut lab = c.sets[0].clone();
+    lab.id = "lab".into();
+    lab.terms[0].canonical = "БНЗ".into();
+    lab.terms[0].context_patterns = vec!["{term} на стенде".into()];
+    c.sets.push(lab);
+    let e = engine(c.clone());
+    assert_eq!(e.analyze("модуль пэнзэ").corrected, "модуль ПНЗ");
+    assert_eq!(e.analyze("пэнзэ на стенде").corrected, "БНЗ на стенде");
+    assert_eq!(
+        e.analyze("модуль пэнзэ на стенде").corrected,
+        "модуль пэнзэ на стенде"
+    );
+    assert_eq!(e.analyze("пэнзэ").corrected, "пэнзэ");
+    c.sets.reverse();
+    assert_eq!(
+        engine(c).analyze("пэнзэ на стенде").corrected,
+        "БНЗ на стенде"
+    );
+}
+
+#[test]
+fn pattern_work_consumes_budget_and_discards_previous_selected_spans() {
+    let mut c = config();
+    c.sets[0].terms[0].context_patterns = vec!["проверь {term}".into()];
+    c.policy.max_tokens = 1;
+    c.policy.max_comparisons = 4;
+    // Three aliases + one pattern for the first span exhaust the budget.
+    let a = engine(c).analyze("пэнзэ пэнзэ");
+    assert!(!a.complete);
+    assert_eq!(a.comparisons, 4);
+    assert_eq!(a.corrected, "пэнзэ пэнзэ");
+    assert!(a.edits.is_empty());
+    assert!(!a.decisions.is_empty());
+    assert!(a.decisions.iter().all(|d| d.selected.is_none()));
+}
+
+#[test]
+fn context_patterns_normalize_case_and_yo_using_baseline_mode() {
+    let mut c = config();
+    let t = &mut c.sets[0].terms[0];
+    t.context.clear();
+    t.require_context = true;
+    t.context_patterns = vec!["Ёлки {term}".into()];
+    assert_eq!(
+        engine(c.clone()).analyze("елки пэнзэ").corrected,
+        "елки ПНЗ"
+    );
+    let mut b = base();
+    b.strict_yo = true;
+    let e = TermEngine::new(c, Some(b)).unwrap();
+    assert!(e.analyze("елки пэнзэ").edits.is_empty());
+    assert_eq!(e.analyze("ёлки пэнзэ").corrected, "ёлки ПНЗ");
+}
+
+#[test]
+fn malformed_or_unbounded_context_rules_fail_validation() {
+    for pattern in [
+        "{term}",
+        "проверь",
+        "{term} {term}",
+        "проверь  {term}",
+        "проверь\n{term}",
+        "проверь, {term}",
+        "* {term}",
+        "а б в г д {term}",
+    ] {
+        let mut c = config();
+        c.sets[0].terms[0].context_patterns = vec![pattern.into()];
+        assert!(c.validate().is_err(), "{pattern}");
+    }
+    let mut c = config();
+    c.sets[0].terms[0].max_known_distance = Some(3);
+    assert!(c.validate().is_err());
+    let mut c = config();
+    c.policy.context_window = 0;
+    c.sets[0].terms[0].context_patterns = vec!["проверь {term}".into()];
+    assert!(c.validate().is_err());
+    let mut c = config();
+    let t = &mut c.sets[0].terms[0];
+    t.context.clear();
+    t.known_words = KnownWords::Always;
+    t.require_context = true;
+    t.context_exclusions = vec!["{term} данных".into()];
+    assert!(c.validate().is_err());
+    let mut c = config();
+    c.sets[0].terms[0].context_patterns = vec!["проверь {term}".into(); 33];
+    assert!(c.validate().is_err());
+}
+
+#[test]
 fn disabled_feature_set_and_term_are_identity_without_loading_resources() {
     for level in 0..3 {
         let mut c = config();

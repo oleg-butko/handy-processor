@@ -7,6 +7,7 @@ pub mod metrics;
 pub mod packed;
 pub mod packed_frequency;
 pub mod review;
+mod term_context;
 pub mod term_metrics;
 pub mod terms;
 pub mod text;
