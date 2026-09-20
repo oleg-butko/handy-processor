@@ -126,7 +126,7 @@ def main():
     for file in ["metrics.json", "predictions.jsonl"]:
         assert (output / "b2-old" / file).read_bytes() == (root / "experiments/003-frequency/b2-full" / file).read_bytes()
     with (output / "comparison.csv").open("x", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=summary[0].keys()); writer.writeheader(); writer.writerows(summary)
+        writer = csv.DictWriter(stream, fieldnames=summary[0].keys(), lineterminator="\n"); writer.writeheader(); writer.writerows(summary)
     save(output / "summary.json", summary)
     save(output / "commands.json", commands)
     save(output / "environment.json", {"implementation_commit": subprocess.check_output(["git", "-C", str(root), "rev-parse", "HEAD"], text=True).strip(),
