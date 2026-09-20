@@ -1,0 +1,83 @@
+{
+  "arch": "x86_64",
+  "arguments": [
+    "benchmark",
+    "/home/user1/handy-processor/rechprav/data/fixtures/baseline/corpus.jsonl",
+    "--config",
+    "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-b2.toml",
+    "--output-dir",
+    "/home/user1/handy-processor/rechprav/experiments/005-loading/sha011/tsv"
+  ],
+  "command": "benchmark",
+  "compiled_source_sha256": {
+    "Cargo.lock": "f22607ef59438df4792d544d3a319aebd6d946ff3a238173a54f6405c8e15f01",
+    "Cargo.toml": "9f464317e0dee3f432a9b146a61bf6039048f7f999891b0abe0f310c956df09b",
+    "src/corpus.rs": "12352c22a15e6c333973f25941d4ba9a60480081ae88cd9e364959b0945ef64b",
+    "src/corrector.rs": "e65739ce1070d693733d5ad4d02bcd6bea09db678c6f02745ff53275e65e6c6f",
+    "src/dictionary.rs": "4ea29fac723d5efb6190a75052d1a1766fd0e3291cd6ff01469ca3adf1cd354f",
+    "src/frequency.rs": "95261f8a9903e556a3116ed1930b35351f0dfd814fbdd16b17ae11496f9664ea",
+    "src/hashing.rs": "e3b49fb102dc7c117dfaf9f29c77386b6d22dbc8a186f2d06cde47febaa50699",
+    "src/lib.rs": "1db8337e80f96486bfbd814f255d03fba0c49d53613c5d7d0366802895d8a49b",
+    "src/main.rs": "a0f6d85d7ef05a1a206a9248561eb23dc09dde81863a1c4d8d2a989c01c4bc4a",
+    "src/metrics.rs": "dff335346a23ee561ed6a292cfbe8f2623d7f8b77042ececcf97d97ee42ada92",
+    "src/packed.rs": "0513c3725b89655a1451f5551a4f447e9597ffb413e1649baa4a861483c96c0a",
+    "src/review.rs": "87ed6e193750e6e5c69cf328e6906d95bc6fe1e2460fad2c9609561d39c1cc33",
+    "src/text.rs": "61ba9d0b877da98c5ecc885d04700892a8dd58c330b3ec68b3b6b67218625794"
+  },
+  "engine": "levenshtein_frequency",
+  "evaluation_wall_ns": 6380746,
+  "input_file": "/home/user1/handy-processor/rechprav/data/fixtures/baseline/corpus.jsonl",
+  "input_sha256": "7a6b3d4fc2fd6d9d83ff28811f8ac9e6438a0589ff8ea655936084ec50307714",
+  "note": "experimental run; check dataset provenance before interpreting quality",
+  "os": "linux",
+  "rechprav_version": "0.1.0",
+  "resources": {
+    "config": {
+      "dictionary": "../artifacts/opencorpora-wordfreq/dictionary.rpt",
+      "domain": "../data/fixtures/baseline/domain.txt",
+      "frequency": {
+        "path": "../artifacts/opencorpora-wordfreq/frequency.tsv",
+        "scoring": {
+          "edit_penalty": 1.0,
+          "keep_bias": 1.0,
+          "log_cap": 6.0,
+          "min_keep_margin": 0.5,
+          "min_runner_up_margin": 0.5,
+          "weight": 1.0
+        }
+      },
+      "ignore": "../data/fixtures/baseline/ignore.txt",
+      "policy": {
+        "max_candidates": 20,
+        "max_distance": 1,
+        "max_search_nodes": 100000,
+        "max_word_length": 64,
+        "min_word_length": 5,
+        "protect_titlecase": true,
+        "protect_uppercase": true
+      },
+      "strict_yo": false
+    },
+    "decision_policy": "OOV + complete distance-1 search + bounded frequency prior + KEEP and runner-up margins; uncalibrated",
+    "dictionary_storage": {
+      "bytes": 123007276,
+      "format": "packed_trie_v1",
+      "source_sha256": "e2e67e5b5e226473b668dff5029fb5af0aa55a3f6e0165da012363be39766a11"
+    },
+    "dictionary_words": 3017654,
+    "domain_words": 6,
+    "frequency_words": 661389,
+    "ignore_words": 1,
+    "resource_sha256": {
+      "config": "d7537e46dd6b8e5708311b2d05669f03f37b03150f730442b772ecdefcc57e6c",
+      "dictionary": "2435885729fd1f05fe109ddf8564df2f6fb33b6731361fce97f853b9e5263619",
+      "domain": "3f55176416db3a592d5a7d7d42ea06e319dafc298ec599b6e7ccf23504db9bb9",
+      "frequency": "b825e97778693cb7e3b5cb26d058ba6bde6cf4971471dc0a6f2d1a1e889c160f",
+      "ignore": "73d9e75692a12aaee7e5cabde686fa0b77c93b3a6347c7ba6661193eb212a2fe"
+    },
+    "trie_nodes": 4562033
+  },
+  "schema_version": 2,
+  "timing_scope": "validation+correction+metrics+prediction collection; excludes resource load and serialization; NOT isolated correction latency",
+  "unix_timestamp": 1789895361
+}

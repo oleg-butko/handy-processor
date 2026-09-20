@@ -1,0 +1,41 @@
+{
+  "tsv": {
+    "load_ms": [
+      3852.6089699999998,
+      4010.6160419999997,
+      3704.308934
+    ],
+    "median_load_ms": 3852.6089699999998,
+    "median_phases_ms": {
+      "config": 0.097349,
+      "dictionary.decode": 1393.386484,
+      "dictionary.read": 63.501213,
+      "dictionary.sha256": 875.727973,
+      "dictionary.validation.checksum": 841.051047,
+      "dictionary.validation.header": 0.000852,
+      "dictionary.validation.structure_and_spelling_paths": 413.588984,
+      "dictionary.validation.utf8_alphabet": 138.728843,
+      "domain.decode": 0.052889,
+      "domain.read": 0.04873,
+      "domain.sha256": 0.005869,
+      "frequency.decode": 1414.507734,
+      "frequency.read": 10.848473,
+      "frequency.sha256": 152.337888,
+      "ignore.decode": 0.008041,
+      "ignore.read": 0.022514,
+      "ignore.sha256": 0.001817,
+      "metadata": 0.032805,
+      "total": 3852.605674
+    },
+    "rss_kib": [
+      194080,
+      194080,
+      194032
+    ],
+    "peak_rss_kib": [
+      215248,
+      215248,
+      215216
+    ]
+  }
+}

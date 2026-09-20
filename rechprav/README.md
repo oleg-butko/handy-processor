@@ -176,7 +176,7 @@ python3 rechprav/scripts/run_index_experiment.py rechprav/experiments/my-index-r
 сохраняет SHA256 исходного ресурса. Расширение `.rpt` в `dictionary` включает
 готовый индекс; TOML и скоринг остаются прежними. Несовпадение `strict_yo`,
 повреждение файла или нарушение структуры приводят к ошибке до создания review.
-Молчаливого восстановления из другого словаря нет. Частоты пока читаются из TSV.
+Молчаливого восстановления из другого словаря нет. Частоты читаются из TSV или `.rpf`.
 Формат, ограничения и проверки: [packed-index.md](../docs/rechprav/packed-index.md).
 
 Runner опыта индекса по умолчанию строит новый стандартный `.rpt`; `--index`
@@ -185,6 +185,28 @@ Runner опыта индекса по умолчанию строит новый
 `examples/profile.rs --queries queries.json` отдельно измеряет прямые запросы
 генератора, включая неподдерживаемые корректором distance=2; это проверка индекса,
 не включение distance=2 в правила исправлений.
+
+## Готовая частотная таблица и измерение загрузки
+
+```bash
+rechprav/target/release/rechprav build-frequency rechprav/artifacts/opencorpora-wordfreq/frequency.tsv --output rechprav/artifacts/opencorpora-wordfreq/frequency.rpf
+rechprav/target/release/rechprav inspect 'я установил драйвир' --config rechprav/configs/opencorpora-packed-frequency-b2.toml
+python3 rechprav/scripts/run_load_experiment.py rechprav/experiments/my-load-run --profile tsv=rechprav/configs/opencorpora-packed-b2.toml --profile packed=rechprav/configs/opencorpora-packed-frequency-b2.toml
+```
+
+Сборка сохраняет точные `f64` и проверяет все значения перед записью. Расширение
+`.rpf` в `[frequency].path` включает бинарный поиск в готовой таблице.
+[Формат и проверки](../docs/rechprav/packed-frequency.md).
+
+Runner измеряет по три новых процесса каждого варианта в перемешанном порядке;
+`--repetitions` меняет число процессов, `--analyze-repetitions` — повторения
+корпуса внутри процесса (по умолчанию 100). Отдельно сохраняются read, SHA256,
+decode и вложенные проверки словаря. Вложенные фазы нельзя складывать с decode,
+а суммы медиан не обязаны совпадать с медианой общего времени.
+Кеш ОС не очищается. Runner проверяет исходники бинарника и побайтное совпадение
+предсказаний/метрик B2 с опытом 003; он предназначен для вариантов хранения
+тех же ресурсов, а не для сравнения новых алгоритмов коррекции.
+Выводы и отвергнутые варианты: [опыт 005](experiments/005-loading/report.md).
 
 ## Организация
 

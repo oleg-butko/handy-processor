@@ -1,0 +1,19 @@
+{
+  "command": [
+    "rechprav/target/release/rechprav",
+    "build-frequency",
+    "rechprav/artifacts/opencorpora-wordfreq/frequency.tsv",
+    "--output",
+    "rechprav/artifacts/opencorpora-wordfreq/frequency.rpf"
+  ],
+  "git_revision": "dde352b6c9ede9196bc983364c6518c75f8adbe5",
+  "result": {
+    "build_validate_write_ms": 2405.506735,
+    "index_bytes": 22530646,
+    "index_sha256": "689c7de7c863d3aedb9a3fa1094a95bc1af6575a20e2900d87c29563fe953695",
+    "scope": "source read, parse, pack, validation, full bitwise equality check, file write and index hash",
+    "source_sha256": "b825e97778693cb7e3b5cb26d058ba6bde6cf4971471dc0a6f2d1a1e889c160f",
+    "verified_bitwise_values": 661389,
+    "words": 661389
+  }
+}

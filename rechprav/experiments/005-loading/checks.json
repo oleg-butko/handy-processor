@@ -1,0 +1,39 @@
+{
+  "implementation_commit": "dde352b6c9ede9196bc983364c6518c75f8adbe5",
+  "tests": {
+    "passed": 56,
+    "baseline": 13,
+    "cli": 7,
+    "foundation": 15,
+    "frequency": 10,
+    "hashes": 1,
+    "packed": 6,
+    "packed_frequency": 4
+  },
+  "checks": {
+    "clippy_all_targets_deny_warnings": "passed",
+    "rustfmt": "passed",
+    "offline_release_bin_and_examples": "passed",
+    "python_py_compile": "passed",
+    "historical_and_current_source_fingerprint_reports": 16,
+    "resource_hash_checks": 64,
+    "metrics_predictions_byte_equality_files": 8,
+    "runner_fingerprints": "passed",
+    "full_frequency_bitwise_values": 661389,
+    "original_plan_unchanged": "passed"
+  },
+  "commands": [
+    "/home/user1/.local/bin/cargo test --manifest-path rechprav/Cargo.toml --locked --offline",
+    "/home/user1/.local/bin/cargo clippy --manifest-path rechprav/Cargo.toml --locked --offline --all-targets -- -D warnings",
+    "/home/user1/.local/bin/cargo fmt --manifest-path rechprav/Cargo.toml -- --check",
+    "/home/user1/.local/bin/cargo build --manifest-path rechprav/Cargo.toml --release --locked --offline --examples --bin rechprav",
+    "python3 -m py_compile rechprav/scripts/run_load_experiment.py"
+  ],
+  "cpu_flags": {
+    "sha_ni": false,
+    "sha": false,
+    "avx2": true,
+    "sse4_1": true
+  },
+  "scope": "Tests/build checks executed before accepted code commit; sources checked against each run commit, resource hashes and exact 003 equality checked after measurements. Frequency builder checks every value before writing."
+}

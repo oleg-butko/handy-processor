@@ -1,0 +1,84 @@
+{
+  "tsv": {
+    "load_ms": [
+      3518.342879,
+      3673.422266,
+      3566.577918
+    ],
+    "median_load_ms": 3566.577918,
+    "median_phases_ms": {
+      "config": 0.077685,
+      "dictionary.decode": 1160.528656,
+      "dictionary.read": 61.342934,
+      "dictionary.sha256": 829.504183,
+      "dictionary.validation.checksum": 687.569874,
+      "dictionary.validation.header": 0.000875,
+      "dictionary.validation.structure_and_spelling_paths": 346.739995,
+      "dictionary.validation.utf8_alphabet": 110.00123,
+      "domain.decode": 0.070107,
+      "domain.read": 0.04452,
+      "domain.sha256": 0.005462,
+      "frequency.decode": 1326.330514,
+      "frequency.read": 13.843043,
+      "frequency.sha256": 152.559493,
+      "ignore.decode": 0.008402,
+      "ignore.read": 0.029328,
+      "ignore.sha256": 0.002101,
+      "metadata": 0.030295,
+      "total": 3566.575509
+    },
+    "analyze_repetitions": 100,
+    "median_warm_record_p95_ms": 0.62962,
+    "rss_kib": [
+      194256,
+      194364,
+      194300
+    ],
+    "peak_rss_kib": [
+      215236,
+      215332,
+      215396
+    ]
+  },
+  "packed": {
+    "load_ms": [
+      2337.838247,
+      2194.9069,
+      2590.5929770000002
+    ],
+    "median_load_ms": 2337.838247,
+    "median_phases_ms": {
+      "config": 0.091482,
+      "dictionary.decode": 1199.981664,
+      "dictionary.read": 61.734851,
+      "dictionary.sha256": 750.761818,
+      "dictionary.validation.checksum": 686.631209,
+      "dictionary.validation.header": 0.000902,
+      "dictionary.validation.structure_and_spelling_paths": 392.608341,
+      "dictionary.validation.utf8_alphabet": 110.94455,
+      "domain.decode": 0.052713,
+      "domain.read": 0.047602,
+      "domain.sha256": 0.005339,
+      "frequency.decode": 163.391419,
+      "frequency.read": 11.360442,
+      "frequency.sha256": 126.331282,
+      "ignore.decode": 0.007881,
+      "ignore.read": 0.020205,
+      "ignore.sha256": 0.001722,
+      "metadata": 0.031779,
+      "total": 2337.835974
+    },
+    "analyze_repetitions": 100,
+    "median_warm_record_p95_ms": 0.679404,
+    "rss_kib": [
+      149744,
+      149724,
+      149628
+    ],
+    "peak_rss_kib": [
+      149744,
+      149724,
+      149628
+    ]
+  }
+}

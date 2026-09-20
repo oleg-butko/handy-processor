@@ -1,0 +1,20 @@
+{
+  "git_revision": "199b4024b480f4936c784a0e778ebbf8631fad19",
+  "implementation_status": [],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "cpu": "Intel(R) Xeon(R) CPU E5-2678 v3 @ 2.50GHz",
+  "binary_sha256": "acdfccff03600094a81c6ab5d46b67add39d8ed075efe84b2c39ee4f0be3f480",
+  "profiler_sha256": "d6b9957b4b2a8545ad889270227f6bca172ad9c3ce4cec071d38bd70c5ccc387",
+  "runner_sha256": "8f14b410a0071145d6b2263fb6d1416afc58d49b365e8304c338acf4c6add3f2",
+  "corpus_sha256": "7a6b3d4fc2fd6d9d83ff28811f8ac9e6438a0589ff8ea655936084ec50307714",
+  "profile_config_paths": {
+    "tsv": "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-b2.toml"
+  },
+  "seed": 505,
+  "run_order": [
+    "tsv",
+    "tsv",
+    "tsv"
+  ],
+  "scope": "fresh processes; OS cache not flushed; config snapshots retain paths relative to originals; phase medians are not additive; B2 predictions/metrics exactly equal 003"
+}
