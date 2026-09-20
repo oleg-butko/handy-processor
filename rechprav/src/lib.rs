@@ -2,6 +2,7 @@ pub mod corpus;
 pub mod corrector;
 pub mod dictionary;
 pub mod frequency;
+pub mod hashing;
 pub mod metrics;
 pub mod packed;
 pub mod review;

@@ -7,7 +7,6 @@ use crate::{
 };
 use anyhow::{Context, Result, ensure};
 use serde::{Deserialize, Serialize};
-use sha2::{Digest, Sha256};
 use std::{
     collections::{BTreeMap, BTreeSet},
     fs,
@@ -175,10 +174,7 @@ impl Baseline {
         }
         let parent = path.parent().unwrap_or(Path::new("."));
         let mut hashes = BTreeMap::new();
-        hashes.insert(
-            "config",
-            format!("{:x}", Sha256::digest(contents.as_bytes())),
-        );
+        hashes.insert("config", crate::hashing::sha256_hex(contents.as_bytes()));
         fn read(
             name: &'static str,
             parent: &Path,
@@ -191,7 +187,7 @@ impl Baseline {
                 .with_context(|| format!("read {name}: {}", resource.display()))?;
             phases.insert(format!("{name}.read"), start.elapsed().as_nanos());
             let start = Instant::now();
-            hashes.insert(name, format!("{:x}", Sha256::digest(&data)));
+            hashes.insert(name, crate::hashing::sha256_hex(&data));
             phases.insert(format!("{name}.sha256"), start.elapsed().as_nanos());
             Ok(data)
         }

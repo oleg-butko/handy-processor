@@ -6,7 +6,6 @@ use rechprav::{
     corrector::{Baseline, Corrector, analyze},
 };
 use serde::{Deserialize, Serialize};
-use sha2::{Digest, Sha256};
 use std::{hint::black_box, path::PathBuf, time::Instant};
 
 #[derive(Parser)]
@@ -51,6 +50,10 @@ fn main() -> Result<()> {
         ("Cargo.lock", include_bytes!("../Cargo.lock").as_slice()),
         ("src/lib.rs", include_bytes!("../src/lib.rs").as_slice()),
         (
+            "src/hashing.rs",
+            include_bytes!("../src/hashing.rs").as_slice(),
+        ),
+        (
             "src/corpus.rs",
             include_bytes!("../src/corpus.rs").as_slice(),
         ),
@@ -81,7 +84,7 @@ fn main() -> Result<()> {
         ),
     ]
     .into_iter()
-    .map(|(name, bytes)| (name, format!("{:x}", Sha256::digest(bytes))))
+    .map(|(name, bytes)| (name, rechprav::hashing::sha256_hex(bytes)))
     .collect();
     let args = Args::parse();
     ensure!(
@@ -193,7 +196,7 @@ fn main() -> Result<()> {
             "warm_record_max_ns":durations.last(), "samples":durations.len(),
             "records":records.len(), "repetitions":args.repetitions,
             "process_memory_linux":memory, "resources":resources,
-            "queries_sha256":query_data.as_ref().map(|data| format!("{:x}",Sha256::digest(data))),
+            "queries_sha256":query_data.as_ref().map(|data| rechprav::hashing::sha256_hex(data)),
             "lookup_checks":lookup_checks,"lookup_statistics":lookup_stats,
             "lookup_scope":"normalized direct generator queries; includes DP allocation, traversal, candidates and sort, excludes result drop and serialization; bypasses protection/OOV/scoring; per-query warm repetitions",
             "scope":"warm analyze per synthetic record: tokenization, gates, lookup, scoring, reconstruction; excludes result drop, validation, serialization; load includes reading/hashing/building resources; OS page cache uncontrolled; not production latency"

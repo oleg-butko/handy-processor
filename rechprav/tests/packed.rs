@@ -194,7 +194,7 @@ fn cli_build_and_correction_preserve_output_and_reject_corrupt_resource() {
     );
     assert_eq!(
         meta["dictionary_storage"]["source_sha256"],
-        format!("{:x}", Sha256::digest(fs::read(&input).unwrap()))
+        rechprav::hashing::sha256_hex(&fs::read(&input).unwrap())
     );
     fs::write(&output, b"invalid").unwrap();
     fs::write(dir.path().join("source.txt"), "драйвир").unwrap();

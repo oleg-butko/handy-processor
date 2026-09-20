@@ -175,7 +175,6 @@ fn yo_collisions_use_max_deterministically_not_double_counting() {
 
 #[test]
 fn config_loads_relative_frequency_path_and_hashes_exact_bytes() {
-    use sha2::{Digest, Sha256};
     let dir = tempfile::tempdir().unwrap();
     let data = "маска\t9999\nмасло\t9";
     std::fs::write(dir.path().join("words.txt"), "маска\nмасло").unwrap();
@@ -185,7 +184,7 @@ fn config_loads_relative_frequency_path_and_hashes_exact_bytes() {
     let (e, meta) = Baseline::load(&config).unwrap();
     assert_eq!(
         meta["resource_sha256"]["frequency"],
-        format!("{:x}", Sha256::digest(data.as_bytes()))
+        rechprav::hashing::sha256_hex(data.as_bytes())
     );
     assert_eq!(analyze("маско", &e).corrected, "маска");
     std::fs::write(&config, "dictionary='words.txt'\n[frequency]\npath='frequency.tsv'\n[frequency.scoring]\nweigth=1.0").unwrap();

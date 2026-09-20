@@ -185,6 +185,7 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
         ("src/corrector.rs", include_bytes!("corrector.rs")),
         ("src/dictionary.rs", include_bytes!("dictionary.rs")),
         ("src/frequency.rs", include_bytes!("frequency.rs")),
+        ("src/hashing.rs", include_bytes!("hashing.rs")),
         ("src/metrics.rs", include_bytes!("metrics.rs")),
         ("src/packed.rs", include_bytes!("packed.rs")),
         ("src/review.rs", include_bytes!("review.rs")),
@@ -192,11 +193,11 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
     ];
     let source_hashes: std::collections::BTreeMap<_, _> = sources
         .iter()
-        .map(|(name, bytes)| (*name, format!("{:x}", Sha256::digest(bytes))))
+        .map(|(name, bytes)| (*name, rechprav::hashing::sha256_hex(bytes)))
         .collect();
     json!({
         "schema_version":2, "command":command, "rechprav_version":env!("CARGO_PKG_VERSION"),
-        "input_file":input.display().to_string(), "input_sha256":format!("{:x}",Sha256::digest(contents)),
+        "input_file":input.display().to_string(), "input_sha256":rechprav::hashing::sha256_hex(contents),
         "arguments":std::env::args().skip(1).collect::<Vec<_>>(),
         "compiled_source_sha256":source_hashes,
         "os":std::env::consts::OS, "arch":std::env::consts::ARCH,
@@ -232,7 +233,7 @@ fn run() -> Result<()> {
                 "{}",
                 serde_json::to_string_pretty(&json!({
                     "words":dictionary.len(),"nodes":dictionary.node_count(),"index_bytes":packed.as_bytes().len(),
-                    "source_sha256":packed.source_sha256(),"index_sha256":format!("{:x}",Sha256::digest(packed.as_bytes())),
+                    "source_sha256":packed.source_sha256(),"index_sha256":rechprav::hashing::sha256_hex(packed.as_bytes()),
                     "pack_validate_write_ms":start.elapsed().as_secs_f64()*1000.0,
                     "scope":"packing, validation and file write only; excludes source read and reference trie build"
                 }))?
