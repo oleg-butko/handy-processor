@@ -33,7 +33,7 @@ CASES=[
  ('плод созрел',[],['negative','known']),
  ('сладкий солод',[],['negative','known']),
  ('снять шторы',[],['negative','known']),
- ('без снятия сваты',[],['negative','ambiguous_context']),
+ ('сваты приехали',[],['negative','known']),
  ('в свате',[],['negative','known']),
  ('слово клиппорт написано неверно',[],['negative','literal','oov']),
  ('слово нетосвон придумано',[],['negative','literal','oov']),
