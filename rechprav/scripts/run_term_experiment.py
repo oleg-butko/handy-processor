@@ -25,6 +25,9 @@ def write_config(path, config):
     emit = lambda key, value: f"{key} = {json.dumps(value, ensure_ascii=False)}\n"
     with path.open("x", encoding="utf-8") as stream:
         stream.write(emit("baseline_config", config["baseline_config"]) + emit("enabled", config["enabled"]))
+        for rule in config.get("source_penalties", []):
+            stream.write("\n[[source_penalties]]\n")
+            for key, value in rule.items(): stream.write(emit(key, value))
         stream.write("\n[policy]\n")
         for key, value in config["policy"].items(): stream.write(emit(key, value))
         for group in config["sets"]:

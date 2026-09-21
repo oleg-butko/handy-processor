@@ -232,6 +232,29 @@ fn expand_aliases(
     Ok((origins.keys().cloned().collect(), origins))
 }
 
+/// A bounded disadvantage of keeping an exact input span, not a target probability.
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct SourcePenalty {
+    pub id: String,
+    #[serde(default = "yes")]
+    pub enabled: bool,
+    pub source: String,
+    pub penalty: f64,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub context_patterns: Vec<String>,
+}
+
+struct SourceRule {
+    definition: SourcePenalty,
+    key: String,
+    patterns: Vec<Pattern>,
+}
+
+fn is_zero(value: &f64) -> bool {
+    *value == 0.0
+}
+
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
@@ -242,6 +265,8 @@ pub struct Config {
     #[serde(default)]
     pub policy: Policy,
     pub sets: Vec<TermSet>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub source_penalties: Vec<SourcePenalty>,
 }
 
 fn bounded(value: f64, lower: f64, upper: f64) -> bool {
@@ -267,6 +292,32 @@ impl Config {
                 && bounded(p.min_margin, 0.01, 100.0),
             "invalid term scoring policy; KEEP and conflict margins must be positive"
         );
+        ensure!(
+            self.source_penalties.len() <= 128,
+            "too many source penalties"
+        );
+        let mut penalty_ids = BTreeSet::new();
+        for rule in &self.source_penalties {
+            ensure!(
+                valid_id(&rule.id) && penalty_ids.insert(&rule.id),
+                "invalid/duplicate source penalty id"
+            );
+            let words: Vec<_> = rule.source.split(' ').collect();
+            ensure!(
+                (1..=3).contains(&words.len())
+                    && words.iter().all(|w| russian(w))
+                    && rule.source.chars().count() <= 128,
+                "source penalty requires 1..3 Russian words with single spaces"
+            );
+            ensure!(bounded(rule.penalty, 0.0, 10.0), "invalid source penalty");
+            ensure!(
+                rule.context_patterns.len() <= 32,
+                "too many source context patterns"
+            );
+            for pattern in &rule.context_patterns {
+                Pattern::parse(pattern, false, p.context_window)?;
+            }
+        }
         ensure!(self.sets.len() <= 64, "too many term sets");
         let mut sets = BTreeSet::new();
         let mut alias_count = 0;
@@ -390,6 +441,7 @@ pub struct TermEngine {
     baseline: Option<Baseline>,
     entries: Vec<Entry>,
     canonical: BTreeSet<String>,
+    source_rules: Vec<SourceRule>,
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -406,6 +458,10 @@ pub struct Candidate {
     pub replacement_edit: Option<Edit>,
     pub distance: usize,
     pub score: f64,
+    #[serde(skip_serializing_if = "is_zero")]
+    pub source_penalty: f64,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub source_penalty_hits: Vec<String>,
     pub context_hits: Vec<String>,
     #[serde(skip_serializing_if = "Vec::is_empty")]
     pub context_pattern_hits: Vec<String>,
@@ -545,11 +601,28 @@ impl TermEngine {
                 }
             }
         }
+        let source_rules = config
+            .source_penalties
+            .iter()
+            .filter(|rule| config.enabled && rule.enabled)
+            .map(|rule| {
+                Ok(SourceRule {
+                    definition: rule.clone(),
+                    key: text::key(&rule.source, strict),
+                    patterns: rule
+                        .context_patterns
+                        .iter()
+                        .map(|p| Pattern::parse(p, strict, config.policy.context_window))
+                        .collect::<Result<_>>()?,
+                })
+            })
+            .collect::<Result<Vec<_>>>()?;
         Ok(Self {
             config,
             baseline,
             entries,
             canonical,
+            source_rules,
         })
     }
 
@@ -643,6 +716,30 @@ impl TermEngine {
                     .iter()
                     .any(|w| self.baseline.as_ref().unwrap().dictionary.contains(w));
                 let neighbors = self.neighbors(source, &tokens, start, end);
+                let mut source_penalty: f64 = 0.0;
+                let mut source_penalty_hits = Vec::new();
+                for rule in &self.source_rules {
+                    if result.comparisons == p.max_comparisons {
+                        return incomplete(result);
+                    }
+                    result.comparisons += 1;
+                    if rule.key != spaced {
+                        continue;
+                    }
+                    let mut matched = rule.patterns.is_empty();
+                    for pattern in &rule.patterns {
+                        if result.comparisons == p.max_comparisons {
+                            return incomplete(result);
+                        }
+                        result.comparisons += 1;
+                        matched |= pattern.matches(source, &tokens, start, end);
+                    }
+                    if matched {
+                        source_penalty = source_penalty.max(rule.definition.penalty);
+                        source_penalty_hits.push(rule.definition.id.clone());
+                    }
+                }
+                source_penalty_hits.sort();
                 let mut by_target = BTreeMap::<String, Candidate>::new();
                 for entry in &self.entries {
                     let mut best: Option<(usize, &str)> = None;
@@ -731,7 +828,8 @@ impl TermEngine {
                         + p.boost
                         + entry.boost
                         + if !has_context { 0.0 } else { p.context_bonus }
-                        - if known { p.known_penalty } else { 0.0 };
+                        - if known { p.known_penalty } else { 0.0 }
+                        + source_penalty;
                     let candidate = Candidate {
                         set: entry.set.clone(),
                         term: entry.term.id.clone(),
@@ -742,6 +840,8 @@ impl TermEngine {
                         replacement_edit,
                         distance,
                         score,
+                        source_penalty,
+                        source_penalty_hits: source_penalty_hits.clone(),
                         context_hits,
                         context_pattern_hits,
                         context_exclusion_hits,
