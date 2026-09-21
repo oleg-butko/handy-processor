@@ -1,0 +1,137 @@
+[
+  {
+    "id": "pronunciation-006",
+    "source": "проверь бензэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бензэ",
+    "tags": [
+      "pnz",
+      "observed_alias"
+    ],
+    "manual_prediction": "проверь ПНЗ",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "pronunciation-007",
+    "source": "проверь пензе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пензе",
+    "tags": [
+      "pnz",
+      "known_alias"
+    ],
+    "manual_prediction": "проверь ПНЗ",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "pronunciation-008",
+    "source": "датчик бэ эн зэ",
+    "gold": "датчик БНЗ",
+    "prediction": "датчик БНЗ",
+    "tags": [
+      "bnz",
+      "three_tokens"
+    ],
+    "manual_prediction": "датчик бэ эн зэ",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "pronunciation-010",
+    "source": "проверь бэ эн зэ на стенде",
+    "gold": "проверь БНЗ на стенде",
+    "prediction": "проверь БНЗ на стенде",
+    "tags": [
+      "bnz",
+      "conflicting_context"
+    ],
+    "manual_prediction": "проверь бэ эн зэ на стенде",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "pronunciation-011",
+    "source": "контроллер пэ эль ка",
+    "gold": "контроллер ПЛК",
+    "prediction": "контроллер ПЛК",
+    "tags": [
+      "plk",
+      "three_tokens"
+    ],
+    "manual_prediction": "контроллер пэ эль ка",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "pronunciation-012",
+    "source": "проверь пээлька",
+    "gold": "проверь ПЛК",
+    "prediction": "проверь ПЛК",
+    "tags": [
+      "plk",
+      "joined"
+    ],
+    "manual_prediction": "проверь пээлька",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "pronunciation-018",
+    "source": "проверь о зэ у",
+    "gold": "проверь ОЗУ",
+    "prediction": "проверь ОЗУ",
+    "tags": [
+      "ozu",
+      "three_tokens",
+      "known_syllable"
+    ],
+    "manual_prediction": "проверь о зэ у",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "pronunciation-024",
+    "source": "проверь пэ\tэль  ка!",
+    "gold": "проверь ПЛК!",
+    "prediction": "проверь ПЛК!",
+    "tags": [
+      "plk",
+      "whitespace"
+    ],
+    "manual_prediction": "проверь пэ\tэль  ка!",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "pronunciation-025",
+    "source": "контроллер пээлька и ацэпэ модуля",
+    "gold": "контроллер ПЛК и АЦП модуля",
+    "prediction": "контроллер ПЛК и АЦП модуля",
+    "tags": [
+      "multiple_terms"
+    ],
+    "manual_prediction": "контроллер пээлька и АЦП модуля",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  }
+]

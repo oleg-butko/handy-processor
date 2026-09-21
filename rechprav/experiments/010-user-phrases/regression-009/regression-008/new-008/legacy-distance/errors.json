@@ -1,0 +1,127 @@
+[
+  {
+    "id": "span-013",
+    "source": "датчик пэ энзэ",
+    "gold": "датчик БНЗ",
+    "prediction": "датчик ПНЗ",
+    "tags": [
+      "whole",
+      "lab"
+    ]
+  },
+  {
+    "id": "span-014",
+    "source": "пэ энзэ на стенде",
+    "gold": "БНЗ на стенде",
+    "prediction": "ПНЗ на стенде",
+    "tags": [
+      "whole",
+      "lab",
+      "right_context"
+    ]
+  },
+  {
+    "id": "span-015",
+    "source": "проверь пэ энзэ на стенде",
+    "gold": "проверь БНЗ на стенде",
+    "prediction": "проверь ПНЗ на стенде",
+    "tags": [
+      "whole",
+      "conflicting_context"
+    ]
+  },
+  {
+    "id": "span-018",
+    "source": "сигнал пэ энзэ модуля и датчик пэ энзэ",
+    "gold": "сигнал ПНЗ модуля и датчик БНЗ",
+    "prediction": "сигнал ПНЗ модуля и датчик ПНЗ",
+    "tags": [
+      "whole",
+      "routing",
+      "two_terms"
+    ]
+  },
+  {
+    "id": "span-019",
+    "source": "обозначь символом пэ энзэ модуля",
+    "gold": "обозначь символом пэ ПНЗ модуля",
+    "prediction": "обозначь символом ПНЗ модуля",
+    "tags": [
+      "fragment",
+      "correct_letter_neighbor"
+    ]
+  },
+  {
+    "id": "span-020",
+    "source": "обозначь буквой пэ энзэ модуля",
+    "gold": "обозначь буквой пэ ПНЗ модуля",
+    "prediction": "обозначь буквой ПНЗ модуля",
+    "tags": [
+      "fragment",
+      "correct_letter_neighbor"
+    ]
+  },
+  {
+    "id": "span-021",
+    "source": "проверь символ пэ энзэ модуля",
+    "gold": "проверь символ пэ ПНЗ модуля",
+    "prediction": "проверь символ ПНЗ модуля",
+    "tags": [
+      "fragment",
+      "correct_letter_neighbor"
+    ]
+  },
+  {
+    "id": "span-022",
+    "source": "обозначь символом пэ энзэ на стенде",
+    "gold": "обозначь символом пэ БНЗ на стенде",
+    "prediction": "обозначь символом ПНЗ на стенде",
+    "tags": [
+      "fragment",
+      "correct_letter_neighbor",
+      "lab"
+    ]
+  },
+  {
+    "id": "span-028",
+    "source": "проверь пэ энзэ на карте",
+    "gold": "проверь пэ энзэ на карте",
+    "prediction": "проверь ПНЗ на карте",
+    "tags": [
+      "negative",
+      "whole",
+      "exclusion"
+    ]
+  },
+  {
+    "id": "span-029",
+    "source": "живу в пэ энзэ",
+    "gold": "живу в пэ энзэ",
+    "prediction": "живу в ПНЗ",
+    "tags": [
+      "negative",
+      "whole",
+      "exclusion"
+    ]
+  },
+  {
+    "id": "span-030",
+    "source": "проверь пэ\nэнзэ на карте",
+    "gold": "проверь пэ\nэнзэ на карте",
+    "prediction": "проверь пэ\nПНЗ на карте",
+    "tags": [
+      "negative",
+      "newline"
+    ]
+  },
+  {
+    "id": "span-031",
+    "source": "проверь пэ, энзэ на карте",
+    "gold": "проверь пэ, энзэ на карте",
+    "prediction": "проверь пэ, ПНЗ на карте",
+    "tags": [
+      "negative",
+      "punctuation"
+    ]
+  }
+]

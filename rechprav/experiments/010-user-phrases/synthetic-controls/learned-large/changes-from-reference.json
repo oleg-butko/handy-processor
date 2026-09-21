@@ -1,0 +1,99 @@
+[
+  {
+    "id": "phrase-control-011",
+    "source": "открой луколхоз",
+    "gold": "открой локалхост",
+    "prediction": "открой локалхост",
+    "tags": [
+      "positive",
+      "learned_alias"
+    ],
+    "reference_profile": "canonical-large",
+    "reference_prediction": "открой луколхоз",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "phrase-control-012",
+    "source": "свуты памяти",
+    "gold": "слот памяти",
+    "prediction": "слот памяти",
+    "tags": [
+      "positive",
+      "learned_alias"
+    ],
+    "reference_profile": "canonical-large",
+    "reference_prediction": "свуты памяти",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "phrase-control-013",
+    "source": "без снятия сваты памяти",
+    "gold": "без снятия слота памяти",
+    "prediction": "без снятия слота памяти",
+    "tags": [
+      "positive",
+      "inflection"
+    ],
+    "reference_profile": "canonical-large",
+    "reference_prediction": "без снятия сваты памяти",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "phrase-control-029",
+    "source": "сваты приехали к невесте",
+    "gold": "сваты приехали к невесте",
+    "prediction": "слота приехали к невесте",
+    "tags": [
+      "negative",
+      "known_word",
+      "inflection_collision"
+    ],
+    "reference_profile": "canonical-large",
+    "reference_prediction": "сваты приехали к невесте",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "phrase-control-033",
+    "source": "обсуждаем выражение нет звон",
+    "gold": "обсуждаем выражение нет звон",
+    "prediction": "обсуждаем выражение недозвон",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ],
+    "reference_profile": "canonical-large",
+    "reference_prediction": "обсуждаем выражение нет звон",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "phrase-control-035",
+    "source": "слово луколхоз смешное",
+    "gold": "слово луколхоз смешное",
+    "prediction": "слово локалхост смешное",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ],
+    "reference_profile": "canonical-large",
+    "reference_prediction": "слово луколхоз смешное",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  }
+]

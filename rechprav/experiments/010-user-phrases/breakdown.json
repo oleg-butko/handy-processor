@@ -1,0 +1,2492 @@
+{
+  "user-reported/disabled": {
+    "user_reported": {
+      "records": 9,
+      "tp": 0,
+      "fp": 0,
+      "fn": 10
+    }
+  },
+  "user-reported/phrases-only": {
+    "user_reported": {
+      "records": 9,
+      "tp": 2,
+      "fp": 0,
+      "fn": 8
+    }
+  },
+  "user-reported/canonical-small": {
+    "user_reported": {
+      "records": 9,
+      "tp": 4,
+      "fp": 0,
+      "fn": 6
+    }
+  },
+  "user-reported/canonical-medium": {
+    "user_reported": {
+      "records": 9,
+      "tp": 4,
+      "fp": 0,
+      "fn": 6
+    }
+  },
+  "user-reported/canonical-large": {
+    "user_reported": {
+      "records": 9,
+      "tp": 4,
+      "fp": 0,
+      "fn": 6
+    }
+  },
+  "user-reported/canonical-large-distance2": {
+    "user_reported": {
+      "records": 9,
+      "tp": 5,
+      "fp": 0,
+      "fn": 5
+    }
+  },
+  "user-reported/learned-large": {
+    "user_reported": {
+      "records": 9,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "user-reported/learned-low": {
+    "user_reported": {
+      "records": 9,
+      "tp": 8,
+      "fp": 0,
+      "fn": 2
+    }
+  },
+  "user-reported/learned-high": {
+    "user_reported": {
+      "records": 9,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "user-reported/learned-context": {
+    "user_reported": {
+      "records": 9,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "user-reported/learned-safe": {
+    "user_reported": {
+      "records": 9,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "user-reported/user-set-off": {
+    "user_reported": {
+      "records": 9,
+      "tp": 2,
+      "fp": 0,
+      "fn": 8
+    }
+  },
+  "user-reported/slot-term-off": {
+    "user_reported": {
+      "records": 9,
+      "tp": 8,
+      "fp": 0,
+      "fn": 2
+    }
+  },
+  "user-reported/conflict": {
+    "user_reported": {
+      "records": 9,
+      "tp": 8,
+      "fp": 0,
+      "fn": 2
+    }
+  },
+  "user-reported/prefer-user": {
+    "user_reported": {
+      "records": 9,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/disabled": {
+    "positive": {
+      "records": 13,
+      "tp": 0,
+      "fp": 0,
+      "fn": 13
+    },
+    "split": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 3
+    },
+    "term": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/phrases-only": {
+    "positive": {
+      "records": 13,
+      "tp": 9,
+      "fp": 0,
+      "fn": 4
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/canonical-small": {
+    "positive": {
+      "records": 13,
+      "tp": 5,
+      "fp": 0,
+      "fn": 8
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 3
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/canonical-medium": {
+    "positive": {
+      "records": 13,
+      "tp": 7,
+      "fp": 0,
+      "fn": 6
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 3
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/canonical-large": {
+    "positive": {
+      "records": 13,
+      "tp": 10,
+      "fp": 0,
+      "fn": 3
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/canonical-large-distance2": {
+    "positive": {
+      "records": 13,
+      "tp": 10,
+      "fp": 0,
+      "fn": 3
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/learned-large": {
+    "positive": {
+      "records": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 7,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/learned-low": {
+    "positive": {
+      "records": 13,
+      "tp": 12,
+      "fp": 0,
+      "fn": 1
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/learned-high": {
+    "positive": {
+      "records": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 7,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/learned-context": {
+    "positive": {
+      "records": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 6,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/learned-safe": {
+    "positive": {
+      "records": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/user-set-off": {
+    "positive": {
+      "records": 13,
+      "tp": 9,
+      "fp": 0,
+      "fn": 4
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/slot-term-off": {
+    "positive": {
+      "records": 13,
+      "tp": 11,
+      "fp": 0,
+      "fn": 2
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 6,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/conflict": {
+    "positive": {
+      "records": 13,
+      "tp": 12,
+      "fp": 0,
+      "fn": 1
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 7,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/prefer-user": {
+    "positive": {
+      "records": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 7,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  }
+}

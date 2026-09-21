@@ -1,0 +1,32 @@
+[
+  {
+    "id": "user-20260921-004",
+    "source": "Нет звон",
+    "gold": "недозвон",
+    "prediction": "Нет звон",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "недозвон",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "user-20260921-008",
+    "source": "без снятия сваты",
+    "gold": "без снятия слота",
+    "prediction": "без снятия сваты",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "без снятия слота",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  }
+]

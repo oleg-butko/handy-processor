@@ -1,0 +1,137 @@
+[
+  {
+    "id": "user-20260921-001",
+    "source": "калиборд",
+    "gold": "клипборд",
+    "prediction": "калиборд",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "клипборд",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "user-20260921-002",
+    "source": "этабы",
+    "gold": "табы",
+    "prediction": "этабы",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "табы",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "user-20260921-003",
+    "source": "луколхоз",
+    "gold": "локалхост",
+    "prediction": "луколхоз",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "локалхост",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "user-20260921-004",
+    "source": "Нет звон",
+    "gold": "недозвон",
+    "prediction": "Нет звон",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "недозвон",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "user-20260921-005",
+    "source": "свуты и пнзэ",
+    "gold": "слот и пнз",
+    "prediction": "свуты и пнзэ",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "слот и пнз",
+    "gained_tp": 0,
+    "lost_tp": 2,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "user-20260921-006",
+    "source": "проковол колесо",
+    "gold": "проколол колесо",
+    "prediction": "проковол колесо",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "проколол колесо",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "user-20260921-007",
+    "source": "долгождать",
+    "gold": "долго ждать",
+    "prediction": "долгождать",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "долго ждать",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "user-20260921-008",
+    "source": "без снятия сваты",
+    "gold": "без снятия слота",
+    "prediction": "без снятия сваты",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "без снятия слота",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "user-20260921-009",
+    "source": "недозвода клиента",
+    "gold": "недозвон до клиента",
+    "prediction": "недозвода клиента",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "недозвон до клиента",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  }
+]

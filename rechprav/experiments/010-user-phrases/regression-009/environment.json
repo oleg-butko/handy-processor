@@ -1,0 +1,23 @@
+{
+  "implementation_commit": "3d917fb25579f004851428364d6914e48101fd6d",
+  "implementation_status": [],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "binary_sha256": "fe13605da1cbeab19760607162dc68b70787d0c0f6a049c2a0074d8dae44aa10",
+  "runner_sha256": {
+    "run_pronunciation_experiment.py": "9e8ce0ae2ab3548e7ccf24a1c0d557a52c894cadf25c654d05295956d193f7c4",
+    "run_span_experiment.py": "09afac4104d64aae843b549f6ba97972ec3cebf1424cfcca4bd83d3919a1df25",
+    "run_context_experiment.py": "d6045c9af5847f5a8743663f4c66c05bbe0a194b93912f2250c997cb19cd31f3",
+    "run_term_experiment.py": "52f7643ebcaca3e36413e1dfbe322389607d670b0c70603d13a9f8eab7e68120"
+  },
+  "corpus_sha256": {
+    "old-006": "fb207e3d0163f748bb8746441b4f5754a52699b71ecba948a6bc677f9aa6defe",
+    "old-007": "64b6047d838dd32ae11443e197755457cc09ff855ab0fff81055380c9f7799bc",
+    "old-008": "aa975a8cb20b4969eebd69ddac96f5cc45ce38c64a6c10dc31b73742c1e54290",
+    "new-009": "3f8a7aeffd16280c8f08f731c90d6fc0c3cbd0061b8c688db6a3d5a66a0918a8"
+  },
+  "source_fingerprint_reports": 74,
+  "resource_hashes_verified": 365,
+  "legacy_byte_equal_profiles": 50,
+  "manual_config_sha256": "007ea2703746fbb724b715f7d10c42cbbc32add1cb00ec8d749a8cf4a5a73581",
+  "scope": "four separate synthetic dev corpora; no real ASR holdout; manual/generated/union x exact/edit; fixed scores and context; 50 previous profiles exactly reproduced"
+}

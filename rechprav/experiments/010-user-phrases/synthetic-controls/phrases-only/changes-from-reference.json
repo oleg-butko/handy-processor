@@ -1,0 +1,50 @@
+[
+  {
+    "id": "phrase-control-010",
+    "source": "проверь этабы",
+    "gold": "проверь табы",
+    "prediction": "проверь этабы",
+    "tags": [
+      "positive",
+      "term"
+    ],
+    "reference_profile": "canonical-large",
+    "reference_prediction": "проверь табы",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "phrase-control-025",
+    "source": "табы и таб",
+    "gold": "табы и таб",
+    "prediction": "табы и таб",
+    "tags": [
+      "negative",
+      "correct_term"
+    ],
+    "reference_profile": "canonical-large",
+    "reference_prediction": "табы и табы",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "phrase-control-034",
+    "source": "слово этабы содержит ошибку",
+    "gold": "слово этабы содержит ошибку",
+    "prediction": "слово этабы содержит ошибку",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ],
+    "reference_profile": "canonical-large",
+    "reference_prediction": "слово табы содержит ошибку",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  }
+]

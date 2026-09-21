@@ -1,0 +1,40 @@
+[
+  {
+    "id": "pronunciation-017",
+    "source": "а цэпэ модуля",
+    "gold": "АЦП модуля",
+    "prediction": "а АЦП модуля",
+    "tags": [
+      "acp",
+      "two_tokens"
+    ]
+  },
+  {
+    "id": "pronunciation-020",
+    "source": "проверь озу",
+    "gold": "проверь ОЗУ",
+    "prediction": "проверь озу",
+    "tags": [
+      "ozu",
+      "canonical_lowercase"
+    ]
+  },
+  {
+    "id": "pronunciation-026",
+    "source": "включи пээлька",
+    "gold": "включи ПЛК",
+    "prediction": "включи пээлька",
+    "tags": [
+      "missing_context"
+    ]
+  },
+  {
+    "id": "pronunciation-034",
+    "source": "обозначь символом пэ энзэ модуля",
+    "gold": "обозначь символом пэ ПНЗ модуля",
+    "prediction": "обозначь символом ПНЗ модуля",
+    "tags": [
+      "correct_letter_neighbor"
+    ]
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "id": "phrase-control-005",
+    "source": "спокойнойночи",
+    "gold": "спокойной ночи",
+    "prediction": "спокойнойночи",
+    "tags": [
+      "positive",
+      "medium_pack"
+    ]
+  },
+  {
+    "id": "phrase-control-006",
+    "source": "большоеспасибо",
+    "gold": "большое спасибо",
+    "prediction": "большоеспасибо",
+    "tags": [
+      "positive",
+      "medium_pack"
+    ]
+  },
+  {
+    "id": "phrase-control-007",
+    "source": "питьводу",
+    "gold": "пить воду",
+    "prediction": "питьводу",
+    "tags": [
+      "positive",
+      "large_pack"
+    ]
+  },
+  {
+    "id": "phrase-control-008",
+    "source": "принятьрешение",
+    "gold": "принять решение",
+    "prediction": "принятьрешение",
+    "tags": [
+      "positive",
+      "large_pack"
+    ]
+  },
+  {
+    "id": "phrase-control-009",
+    "source": "свежийхлеб",
+    "gold": "свежий хлеб",
+    "prediction": "свежийхлеб",
+    "tags": [
+      "positive",
+      "large_pack"
+    ]
+  },
+  {
+    "id": "phrase-control-011",
+    "source": "открой луколхоз",
+    "gold": "открой локалхост",
+    "prediction": "открой луколхоз",
+    "tags": [
+      "positive",
+      "learned_alias"
+    ]
+  },
+  {
+    "id": "phrase-control-012",
+    "source": "свуты памяти",
+    "gold": "слот памяти",
+    "prediction": "свуты памяти",
+    "tags": [
+      "positive",
+      "learned_alias"
+    ]
+  },
+  {
+    "id": "phrase-control-013",
+    "source": "без снятия сваты памяти",
+    "gold": "без снятия слота памяти",
+    "prediction": "без снятия сваты памяти",
+    "tags": [
+      "positive",
+      "inflection"
+    ]
+  },
+  {
+    "id": "phrase-control-025",
+    "source": "табы и таб",
+    "gold": "табы и таб",
+    "prediction": "табы и табы",
+    "tags": [
+      "negative",
+      "correct_term"
+    ]
+  },
+  {
+    "id": "phrase-control-034",
+    "source": "слово этабы содержит ошибку",
+    "gold": "слово этабы содержит ошибку",
+    "prediction": "слово табы содержит ошибку",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  }
+]

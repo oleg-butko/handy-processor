@@ -1,0 +1,50 @@
+[
+  {
+    "id": "phrase-control-005",
+    "source": "спокойнойночи",
+    "gold": "спокойной ночи",
+    "prediction": "спокойной ночи",
+    "tags": [
+      "positive",
+      "medium_pack"
+    ],
+    "reference_profile": "canonical-small",
+    "reference_prediction": "спокойнойночи",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "phrase-control-006",
+    "source": "большоеспасибо",
+    "gold": "большое спасибо",
+    "prediction": "большое спасибо",
+    "tags": [
+      "positive",
+      "medium_pack"
+    ],
+    "reference_profile": "canonical-small",
+    "reference_prediction": "большоеспасибо",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "phrase-control-021",
+    "source": "крепкий чан",
+    "gold": "крепкий чан",
+    "prediction": "крепкий чай",
+    "tags": [
+      "negative",
+      "ordinary_words"
+    ],
+    "reference_profile": "canonical-small",
+    "reference_prediction": "крепкий чан",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "profile": "disabled",
+    "tp": 0,
+    "fp": 0,
+    "fn": 23,
+    "harmed_correct_input": 0,
+    "exact_records": 21,
+    "wer_after": 0.3076923076923077
+  },
+  {
+    "profile": "exact",
+    "tp": 13,
+    "fp": 5,
+    "fn": 10,
+    "harmed_correct_input": 3,
+    "exact_records": 30,
+    "wer_after": 0.1452991452991453
+  },
+  {
+    "profile": "edit-1",
+    "tp": 18,
+    "fp": 6,
+    "fn": 5,
+    "harmed_correct_input": 4,
+    "exact_records": 34,
+    "wer_after": 0.07692307692307693
+  },
+  {
+    "profile": "edit-2",
+    "tp": 19,
+    "fp": 9,
+    "fn": 4,
+    "harmed_correct_input": 8,
+    "exact_records": 32,
+    "wer_after": 0.10256410256410256
+  },
+  {
+    "profile": "oov-only",
+    "tp": 10,
+    "fp": 2,
+    "fn": 13,
+    "harmed_correct_input": 0,
+    "exact_records": 31,
+    "wer_after": 0.19658119658119658
+  },
+  {
+    "profile": "unguarded",
+    "tp": 20,
+    "fp": 10,
+    "fn": 3,
+    "harmed_correct_input": 8,
+    "exact_records": 32,
+    "wer_after": 0.09401709401709402
+  },
+  {
+    "profile": "pnz-low",
+    "tp": 16,
+    "fp": 4,
+    "fn": 7,
+    "harmed_correct_input": 3,
+    "exact_records": 33,
+    "wer_after": 0.10256410256410256
+  },
+  {
+    "profile": "pnz-high",
+    "tp": 18,
+    "fp": 6,
+    "fn": 5,
+    "harmed_correct_input": 4,
+    "exact_records": 34,
+    "wer_after": 0.07692307692307693
+  },
+  {
+    "profile": "conflict",
+    "tp": 2,
+    "fp": 2,
+    "fn": 21,
+    "harmed_correct_input": 2,
+    "exact_records": 21,
+    "wer_after": 0.3076923076923077
+  },
+  {
+    "profile": "prefer-hardware",
+    "tp": 18,
+    "fp": 6,
+    "fn": 5,
+    "harmed_correct_input": 4,
+    "exact_records": 34,
+    "wer_after": 0.07692307692307693
+  },
+  {
+    "profile": "lab-only",
+    "tp": 2,
+    "fp": 18,
+    "fn": 21,
+    "harmed_correct_input": 2,
+    "exact_records": 21,
+    "wer_after": 0.19658119658119658
+  },
+  {
+    "profile": "pnz-disabled",
+    "tp": 2,
+    "fp": 2,
+    "fn": 21,
+    "harmed_correct_input": 2,
+    "exact_records": 21,
+    "wer_after": 0.3076923076923077
+  }
+]

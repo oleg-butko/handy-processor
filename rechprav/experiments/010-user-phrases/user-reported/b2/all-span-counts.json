@@ -1,0 +1,8 @@
+{
+  "tp": 1,
+  "fp": 1,
+  "fn": 9,
+  "harmed_correct_input": 0,
+  "exact_records": 1,
+  "scope": "independent exact source-span recount incl unsupported split/merge gold; B2 only, no cascade"
+}

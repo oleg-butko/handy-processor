@@ -1,0 +1,110 @@
+[
+  {
+    "id": "pronunciation-008",
+    "source": "датчик бэ эн зэ",
+    "gold": "датчик БНЗ",
+    "prediction": "датчик бэ эн зэ",
+    "tags": [
+      "bnz",
+      "three_tokens"
+    ]
+  },
+  {
+    "id": "pronunciation-010",
+    "source": "проверь бэ эн зэ на стенде",
+    "gold": "проверь БНЗ на стенде",
+    "prediction": "проверь бэ эн зэ на стенде",
+    "tags": [
+      "bnz",
+      "conflicting_context"
+    ]
+  },
+  {
+    "id": "pronunciation-011",
+    "source": "контроллер пэ эль ка",
+    "gold": "контроллер ПЛК",
+    "prediction": "контроллер пэ эль ка",
+    "tags": [
+      "plk",
+      "three_tokens"
+    ]
+  },
+  {
+    "id": "pronunciation-012",
+    "source": "проверь пээлька",
+    "gold": "проверь ПЛК",
+    "prediction": "проверь пээлька",
+    "tags": [
+      "plk",
+      "joined"
+    ]
+  },
+  {
+    "id": "pronunciation-017",
+    "source": "а цэпэ модуля",
+    "gold": "АЦП модуля",
+    "prediction": "а АЦП модуля",
+    "tags": [
+      "acp",
+      "two_tokens"
+    ]
+  },
+  {
+    "id": "pronunciation-018",
+    "source": "проверь о зэ у",
+    "gold": "проверь ОЗУ",
+    "prediction": "проверь о зэ у",
+    "tags": [
+      "ozu",
+      "three_tokens",
+      "known_syllable"
+    ]
+  },
+  {
+    "id": "pronunciation-020",
+    "source": "проверь озу",
+    "gold": "проверь ОЗУ",
+    "prediction": "проверь озу",
+    "tags": [
+      "ozu",
+      "canonical_lowercase"
+    ]
+  },
+  {
+    "id": "pronunciation-024",
+    "source": "проверь пэ\tэль  ка!",
+    "gold": "проверь ПЛК!",
+    "prediction": "проверь пэ\tэль  ка!",
+    "tags": [
+      "plk",
+      "whitespace"
+    ]
+  },
+  {
+    "id": "pronunciation-025",
+    "source": "контроллер пээлька и ацэпэ модуля",
+    "gold": "контроллер ПЛК и АЦП модуля",
+    "prediction": "контроллер пээлька и АЦП модуля",
+    "tags": [
+      "multiple_terms"
+    ]
+  },
+  {
+    "id": "pronunciation-026",
+    "source": "включи пээлька",
+    "gold": "включи ПЛК",
+    "prediction": "включи пээлька",
+    "tags": [
+      "missing_context"
+    ]
+  },
+  {
+    "id": "pronunciation-034",
+    "source": "обозначь символом пэ энзэ модуля",
+    "gold": "обозначь символом пэ ПНЗ модуля",
+    "prediction": "обозначь символом ПНЗ модуля",
+    "tags": [
+      "correct_letter_neighbor"
+    ]
+  }
+]

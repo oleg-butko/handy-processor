@@ -1,0 +1,117 @@
+baseline_config = "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml"
+enabled = true
+
+[policy]
+mode = "edit"
+max_distance = 1
+max_tokens = 3
+max_comparisons = 20000
+context_window = 4
+boost = 0.0
+edit_penalty = 1.0
+context_bonus = 2.0
+known_penalty = 1.0
+min_score = 3.0
+min_margin = 1.0
+
+[[sets]]
+id = "hardware"
+enabled = true
+boost = 0.0
+
+[[sets.terms]]
+id = "pnz"
+canonical = "ПНЗ"
+aliases = []
+enabled = true
+boost = 0.0
+known_words = "context"
+context = []
+max_known_distance = 0
+context_patterns = ["проверь {term}", "сигнал {term}", "{term} модуля", "модуль {term}"]
+context_exclusions = ["{term} на карте", "живу в {term}", "{term} сегодня тепло", "город {term}"]
+require_context = true
+pronunciation = "ru_letters"
+
+[[sets.terms]]
+id = "slot"
+canonical = "слот"
+aliases = ["свод", "ввод"]
+enabled = true
+boost = 0.0
+known_words = "context"
+context = []
+max_known_distance = 0
+context_patterns = ["{term} памяти", "вставь плату в {term}", "{term} для платы", "проверь {term}"]
+context_exclusions = ["{term} данных", "{term} правил"]
+require_context = true
+
+[[sets.terms]]
+id = "plk"
+canonical = "ПЛК"
+aliases = []
+enabled = true
+boost = 0.0
+known_words = "context"
+context = []
+max_known_distance = 0
+context_patterns = ["проверь {term}", "контроллер {term}", "{term} модуля"]
+require_context = true
+pronunciation = "ru_letters"
+
+[[sets.terms]]
+id = "acp"
+canonical = "АЦП"
+aliases = []
+enabled = true
+boost = 0.0
+known_words = "context"
+context = []
+max_known_distance = 0
+context_patterns = ["проверь {term}", "контроллер {term}", "{term} модуля"]
+require_context = true
+pronunciation = "ru_letters"
+
+[[sets.terms]]
+id = "ozu"
+canonical = "ОЗУ"
+aliases = []
+enabled = true
+boost = 0.0
+known_words = "context"
+context = []
+max_known_distance = 0
+context_patterns = ["проверь {term}", "контроллер {term}", "{term} модуля"]
+require_context = true
+pronunciation = "ru_letters"
+
+[[sets.terms]]
+id = "sks"
+canonical = "СКС"
+aliases = []
+enabled = true
+boost = 0.0
+known_words = "context"
+context = []
+max_known_distance = 0
+context_patterns = ["проверь {term}", "контроллер {term}", "{term} модуля"]
+require_context = true
+pronunciation = "ru_letters"
+
+[[sets]]
+id = "lab"
+enabled = true
+boost = 0.0
+
+[[sets.terms]]
+id = "bnz"
+canonical = "БНЗ"
+aliases = []
+enabled = true
+boost = 0.0
+known_words = "context"
+context = []
+max_known_distance = 0
+context_patterns = ["{term} на стенде", "{term} в лаборатории", "датчик {term}"]
+require_context = true
+pronunciation = "ru_letters"

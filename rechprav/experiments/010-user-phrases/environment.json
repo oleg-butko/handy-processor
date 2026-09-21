@@ -1,0 +1,23 @@
+{
+  "implementation_commit": "3d917fb25579f004851428364d6914e48101fd6d",
+  "implementation_status": [],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "binary_sha256": "fe13605da1cbeab19760607162dc68b70787d0c0f6a049c2a0074d8dae44aa10",
+  "runner_sha256": {
+    "run_user_phrase_experiment.py": "8bac16e81900452298d7b98da849a422aa1cf73499b244647edb6730c82f37d6",
+    "user_phrase_profiles.py": "a91995b610a34de74d7c13149a45ed041ecb1d4854e996fb5d18bded2b7ddb98",
+    "run_pronunciation_experiment.py": "9e8ce0ae2ab3548e7ccf24a1c0d557a52c894cadf25c654d05295956d193f7c4",
+    "run_span_experiment.py": "09afac4104d64aae843b549f6ba97972ec3cebf1424cfcca4bd83d3919a1df25",
+    "run_context_experiment.py": "d6045c9af5847f5a8743663f4c66c05bbe0a194b93912f2250c997cb19cd31f3",
+    "run_term_experiment.py": "52f7643ebcaca3e36413e1dfbe322389607d670b0c70603d13a9f8eab7e68120"
+  },
+  "corpus_sha256": {
+    "user-reported": "605df9d6a3b98130ade9c49bdacba8429655bcffa02d770446a4e37b57951fe2",
+    "synthetic-controls": "3ec707ddbcadf779c525c3fa03e5618ccb347b8019210e0c75312e0799017f21"
+  },
+  "source_fingerprint_reports": 106,
+  "resource_hashes_verified": 515,
+  "legacy_byte_equal_profiles": 74,
+  "phrase_packs_sha256": "056b621558a2825b435821663e57c804c313fb3ff1314cd4712bf18cbe5d82b3",
+  "scope": "nine user-reported ASR pairs separate from authored controls; learned aliases evaluated on seen examples are not holdout quality; 74 historical profiles exactly reproduced"
+}

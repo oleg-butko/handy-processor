@@ -1,0 +1,561 @@
+baseline_config = "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml"
+enabled = true
+
+[policy]
+mode = "edit"
+max_distance = 1
+max_tokens = 3
+max_comparisons = 20000
+context_window = 4
+boost = 0.0
+edit_penalty = 1.0
+context_bonus = 2.0
+known_penalty = 1.0
+min_score = 3.0
+min_margin = 1.0
+
+[[sets]]
+id = "russian_phrases"
+enabled = true
+boost = 0.0
+
+[[sets.terms]]
+id = "p001"
+canonical = "долго ждать"
+aliases = ["долго ждать"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p002"
+canonical = "проколол колесо"
+aliases = ["проколол колесо"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p003"
+canonical = "добрый день"
+aliases = ["добрый день"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p004"
+canonical = "до свидания"
+aliases = ["до свидания"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p005"
+canonical = "спокойной ночи"
+aliases = ["спокойной ночи"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p006"
+canonical = "большое спасибо"
+aliases = ["большое спасибо"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p007"
+canonical = "доброе утро"
+aliases = ["доброе утро"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p008"
+canonical = "в добрый путь"
+aliases = ["в добрый путь"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p009"
+canonical = "сломал ногу"
+aliases = ["сломал ногу"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p010"
+canonical = "открыл дверь"
+aliases = ["открыл дверь"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p011"
+canonical = "закрыл окно"
+aliases = ["закрыл окно"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p012"
+canonical = "крепкий чай"
+aliases = ["крепкий чай"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p013"
+canonical = "чёрный кофе"
+aliases = ["чёрный кофе"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p014"
+canonical = "свежий хлеб"
+aliases = ["свежий хлеб"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p015"
+canonical = "чистая вода"
+aliases = ["чистая вода"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p016"
+canonical = "тёплая одежда"
+aliases = ["тёплая одежда"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p017"
+canonical = "быстро бежать"
+aliases = ["быстро бежать"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p018"
+canonical = "тихо говорить"
+aliases = ["тихо говорить"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p019"
+canonical = "громко смеяться"
+aliases = ["громко смеяться"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p020"
+canonical = "читать книгу"
+aliases = ["читать книгу"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p021"
+canonical = "писать письмо"
+aliases = ["писать письмо"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p022"
+canonical = "пить воду"
+aliases = ["пить воду"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p023"
+canonical = "идти домой"
+aliases = ["идти домой"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p024"
+canonical = "ждать ответа"
+aliases = ["ждать ответа"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p025"
+canonical = "принять решение"
+aliases = ["принять решение"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p026"
+canonical = "оказать помощь"
+aliases = ["оказать помощь"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p027"
+canonical = "задать вопрос"
+aliases = ["задать вопрос"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p028"
+canonical = "дать ответ"
+aliases = ["дать ответ"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p029"
+canonical = "обратить внимание"
+aliases = ["обратить внимание"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p030"
+canonical = "иметь значение"
+aliases = ["иметь значение"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p031"
+canonical = "играть роль"
+aliases = ["играть роль"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p032"
+canonical = "прийти вовремя"
+aliases = ["прийти вовремя"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p033"
+canonical = "потерять ключи"
+aliases = ["потерять ключи"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p034"
+canonical = "найти дорогу"
+aliases = ["найти дорогу"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p035"
+canonical = "сесть за стол"
+aliases = ["сесть за стол"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p036"
+canonical = "выйти из дома"
+aliases = ["выйти из дома"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p037"
+canonical = "пойти на работу"
+aliases = ["пойти на работу"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p038"
+canonical = "на всякий случай"
+aliases = ["на всякий случай"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p039"
+canonical = "в конце концов"
+aliases = ["в конце концов"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets.terms]]
+id = "p040"
+canonical = "друг друга"
+aliases = ["друг друга"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 1
+kind = "phrase"
+
+[[sets]]
+id = "user"
+enabled = true
+boost = 0.0
+
+[[sets.terms]]
+id = "clipboard"
+canonical = "клипборд"
+aliases = ["клипборд", "калиборд"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 0
+
+[[sets.terms]]
+id = "tabs"
+canonical = "табы"
+aliases = ["табы", "этабы"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 0
+
+[[sets.terms]]
+id = "localhost"
+canonical = "локалхост"
+aliases = ["локалхост", "луколхоз"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 0
+
+[[sets.terms]]
+id = "noanswer"
+canonical = "недозвон"
+aliases = ["недозвон", "нет звон"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 0
+
+[[sets.terms]]
+id = "slot"
+canonical = "слот"
+aliases = ["слот", "свуты"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 0
+
+[[sets.terms]]
+id = "slot-genitive"
+canonical = "слота"
+aliases = ["слота", "сваты"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 0
+
+[[sets.terms]]
+id = "pnz"
+canonical = "пнз"
+aliases = ["пнз", "пнзэ"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 0
+
+[[sets.terms]]
+id = "noanswer-to"
+canonical = "недозвон до"
+aliases = ["недозвон до", "недозвода"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 0
+kind = "phrase"
+
+[[sets]]
+id = "conflicting"
+enabled = true
+boost = 0.0
+
+[[sets.terms]]
+id = "rival"
+canonical = "свитч"
+aliases = ["свуты", "пнзэ"]
+enabled = true
+boost = 1.0
+known_words = "always"
+context = []
+max_known_distance = 0

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "terms-003",
+    "source": "проверь пензе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пензе",
+    "tags": [
+      "listed",
+      "pnz",
+      "real_word"
+    ],
+    "manual_prediction": "проверь ПНЗ",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "terms-004",
+    "source": "проверь пензэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пензэ",
+    "tags": [
+      "listed",
+      "pnz"
+    ],
+    "manual_prediction": "проверь ПНЗ",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "terms-005",
+    "source": "проверь бензэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бензэ",
+    "tags": [
+      "listed",
+      "pnz"
+    ],
+    "manual_prediction": "проверь ПНЗ",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "terms-008",
+    "source": "проверь бэнзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бэнзэ",
+    "tags": [
+      "novel",
+      "pnz"
+    ],
+    "manual_prediction": "проверь ПНЗ",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "terms-009",
+    "source": "проверь пэнзе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пэнзе",
+    "tags": [
+      "novel",
+      "pnz"
+    ],
+    "manual_prediction": "проверь ПНЗ",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "terms-013",
+    "source": "проверь бэн зэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бэн зэ",
+    "tags": [
+      "novel",
+      "pnz",
+      "multiword"
+    ],
+    "manual_prediction": "проверь ПНЗ",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "terms-019",
+    "source": "пэнзэ на стенде",
+    "gold": "БНЗ на стенде",
+    "prediction": "пэнзэ на стенде",
+    "tags": [
+      "listed",
+      "lab_intent",
+      "conflict"
+    ],
+    "manual_prediction": "БНЗ на стенде",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  }
+]

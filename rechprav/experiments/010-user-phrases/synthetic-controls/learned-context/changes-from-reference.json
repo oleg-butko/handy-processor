@@ -1,0 +1,19 @@
+[
+  {
+    "id": "phrase-control-029",
+    "source": "сваты приехали к невесте",
+    "gold": "сваты приехали к невесте",
+    "prediction": "сваты приехали к невесте",
+    "tags": [
+      "negative",
+      "known_word",
+      "inflection_collision"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "слота приехали к невесте",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  }
+]

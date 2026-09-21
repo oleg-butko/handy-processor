@@ -1,0 +1,67 @@
+[
+  {
+    "id": "phrase-control-013",
+    "source": "без снятия сваты памяти",
+    "gold": "без снятия слота памяти",
+    "prediction": "без снятия сваты памяти",
+    "tags": [
+      "positive",
+      "inflection"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "без снятия слота памяти",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "phrase-control-025",
+    "source": "табы и таб",
+    "gold": "табы и таб",
+    "prediction": "табы и таб",
+    "tags": [
+      "negative",
+      "correct_term"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "табы и табы",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "phrase-control-029",
+    "source": "сваты приехали к невесте",
+    "gold": "сваты приехали к невесте",
+    "prediction": "сваты приехали к невесте",
+    "tags": [
+      "negative",
+      "known_word",
+      "inflection_collision"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "слота приехали к невесте",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "phrase-control-033",
+    "source": "обсуждаем выражение нет звон",
+    "gold": "обсуждаем выражение нет звон",
+    "prediction": "обсуждаем выражение нет звон",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ],
+    "reference_profile": "learned-large",
+    "reference_prediction": "обсуждаем выражение недозвон",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  }
+]

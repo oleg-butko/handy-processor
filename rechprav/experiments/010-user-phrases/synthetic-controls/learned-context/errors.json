@@ -1,0 +1,62 @@
+[
+  {
+    "id": "phrase-control-021",
+    "source": "крепкий чан",
+    "gold": "крепкий чан",
+    "prediction": "крепкий чай",
+    "tags": [
+      "negative",
+      "ordinary_words"
+    ]
+  },
+  {
+    "id": "phrase-control-023",
+    "source": "найти дороги",
+    "gold": "найти дороги",
+    "prediction": "найти дорогу",
+    "tags": [
+      "negative",
+      "ordinary_words"
+    ]
+  },
+  {
+    "id": "phrase-control-025",
+    "source": "табы и таб",
+    "gold": "табы и таб",
+    "prediction": "табы и табы",
+    "tags": [
+      "negative",
+      "correct_term"
+    ]
+  },
+  {
+    "id": "phrase-control-033",
+    "source": "обсуждаем выражение нет звон",
+    "gold": "обсуждаем выражение нет звон",
+    "prediction": "обсуждаем выражение недозвон",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  },
+  {
+    "id": "phrase-control-034",
+    "source": "слово этабы содержит ошибку",
+    "gold": "слово этабы содержит ошибку",
+    "prediction": "слово табы содержит ошибку",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  },
+  {
+    "id": "phrase-control-035",
+    "source": "слово луколхоз смешное",
+    "gold": "слово луколхоз смешное",
+    "prediction": "слово локалхост смешное",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  }
+]
