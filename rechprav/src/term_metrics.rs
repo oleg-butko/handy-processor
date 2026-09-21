@@ -1,4 +1,4 @@
-//! Exact source-span scoring supports 1..3 input words -> one term.
+//! Exact source-span scoring supports lexical term and multiword phrase outputs.
 use crate::{
     corpus::{self, Record, Status},
     metrics::{Counts, WordErrors, ratio, word_errors},
@@ -99,7 +99,11 @@ pub fn benchmark(records: &[Record], engine: &TermEngine) -> Result<Run> {
         "exact_records":exact,"incomplete_records":incomplete,"wer_errors_before":before,"wer_errors_after":after,
         "wer_before":ratio(before.total(),gold_tokens),"wer_after":ratio(after.total(),gold_tokens),
         "scope":"TP/FP/FN require exact source byte span and case-sensitive replacement; harms count touched correct input tokens once; WER uses case-insensitive yo-folded lexical tokens; no token zip",
-        "quality_claim":"experimental corpus result; synthetic fixtures do not estimate real ASR quality; scores are not probabilities"}),
+        "quality_claim": if first.provenance.kind == corpus::Origin::RealAsr {
+            "experimental result on the supplied ASR corpus; check provenance and split; development or learned examples are not independent quality estimates; scores are not probabilities"
+        } else {
+            "experimental corpus result; synthetic fixtures do not estimate real ASR quality; scores are not probabilities"
+        }}),
         predictions,
     })
 }

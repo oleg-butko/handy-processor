@@ -33,8 +33,22 @@ pub enum MatchMode {
 pub enum KnownWords {
     #[default]
     Never,
+    Preserve,
     Context,
     Always,
+}
+
+#[derive(Clone, Copy, Debug, Default, Deserialize, Serialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum TermKind {
+    #[default]
+    Word,
+    Phrase,
+}
+impl TermKind {
+    fn is_default(&self) -> bool {
+        *self == Self::Word
+    }
 }
 
 /// Tie-break only: gates, score and conflicting canonical outputs take priority.
@@ -93,6 +107,8 @@ impl Default for Policy {
 pub struct Term {
     pub id: String,
     pub canonical: String,
+    #[serde(default, skip_serializing_if = "TermKind::is_default")]
+    pub kind: TermKind,
     #[serde(default)]
     pub aliases: Vec<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -210,22 +226,33 @@ impl Config {
                 );
                 ensure!(bounded(term.boost, -10.0, 10.0), "invalid term boost");
                 let canonical = text::tokenize(&term.canonical, true);
-                ensure!(
-                    canonical.lexical.len() == 1
-                        && canonical.lexical[0].byte_start == 0
-                        && canonical.lexical[0].byte_end == term.canonical.len()
-                        && (1..=64).contains(&term.canonical.chars().count())
-                        && term
-                            .canonical
-                            .chars()
-                            .next()
-                            .is_some_and(char::is_alphabetic)
-                        && term
-                            .canonical
-                            .chars()
-                            .all(|c| c.is_alphanumeric() || "+#_-".contains(c)),
-                    "canonical term must be one technical word/abbreviation"
-                );
+                if term.kind == TermKind::Phrase {
+                    let words: Vec<_> = term.canonical.split(' ').collect();
+                    ensure!(
+                        (2..=3).contains(&words.len())
+                            && words.iter().all(|w| russian(w))
+                            && term.canonical.chars().count() <= 128
+                            && term.pronunciation.is_none(),
+                        "phrase canonical requires 2..3 Russian words with single spaces, no pronunciation generator"
+                    );
+                } else {
+                    ensure!(
+                        canonical.lexical.len() == 1
+                            && canonical.lexical[0].byte_start == 0
+                            && canonical.lexical[0].byte_end == term.canonical.len()
+                            && (1..=64).contains(&term.canonical.chars().count())
+                            && term
+                                .canonical
+                                .chars()
+                                .next()
+                                .is_some_and(char::is_alphabetic)
+                            && term
+                                .canonical
+                                .chars()
+                                .all(|c| c.is_alphanumeric() || "+#_-".contains(c)),
+                        "canonical term must be one technical word/abbreviation"
+                    );
+                }
                 ensure!(
                     (!term.aliases.is_empty() || term.pronunciation.is_some())
                         && term.aliases.len() <= 64,
@@ -311,6 +338,8 @@ pub struct Candidate {
     pub alias: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub alias_origin: Option<AliasOrigin>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub replacement_edit: Option<Edit>,
     pub distance: usize,
     pub score: f64,
     pub context_hits: Vec<String>,
@@ -550,6 +579,17 @@ impl TermEngine {
                     let Some((distance, alias)) = best else {
                         continue;
                     };
+                    let replacement_edit = if entry.term.kind == TermKind::Phrase {
+                        let Some(edit) =
+                            phrase_edit(&tokens, start, end, &entry.term.canonical, strict)
+                        else {
+                            // No-op or pure insertion/deletion; unsupported by lexical edit schema.
+                            continue;
+                        };
+                        Some(edit)
+                    } else {
+                        None
+                    };
                     let context_hits: Vec<_> =
                         entry.context.intersection(&neighbors).cloned().collect();
                     let mut context_pattern_hits = Vec::new();
@@ -569,10 +609,23 @@ impl TermEngine {
                         }
                     }
                     let has_context = !context_hits.is_empty() || !context_pattern_hits.is_empty();
+                    let changed_known = entry.term.known_words == KnownWords::Preserve
+                        && replacement_edit
+                            .as_ref()
+                            .map_or(start..end, |e| e.token_start..e.token_end)
+                            .any(|i| {
+                                self.baseline
+                                    .as_ref()
+                                    .unwrap()
+                                    .dictionary
+                                    .contains(&tokens.lexical[i].key)
+                            });
                     let gate = if !context_exclusion_hits.is_empty() {
                         "context_excluded"
                     } else if known && entry.term.known_words == KnownWords::Never {
                         "known_word_blocked"
+                    } else if changed_known {
+                        "known_changed_word_blocked"
                     } else if known
                         && entry
                             .term
@@ -600,6 +653,7 @@ impl TermEngine {
                         canonical: entry.term.canonical.clone(),
                         alias: alias.into(),
                         alias_origin: entry.alias_origins.get(alias).copied(),
+                        replacement_edit,
                         distance,
                         score,
                         context_hits,
@@ -731,13 +785,20 @@ impl TermEngine {
                 d.reason = "overlap_lower_priority";
             } else {
                 occupied.extend(d.token_start..d.token_end);
-                result.edits.push(Edit {
-                    byte_start: d.byte_start,
-                    byte_end: d.byte_end,
-                    token_start: d.token_start,
-                    token_end: d.token_end,
-                    replacement: d.selected.clone().unwrap(),
-                });
+                result
+                    .edits
+                    .push(
+                        d.candidates[0]
+                            .replacement_edit
+                            .clone()
+                            .unwrap_or_else(|| Edit {
+                                byte_start: d.byte_start,
+                                byte_end: d.byte_end,
+                                token_start: d.token_start,
+                                token_end: d.token_end,
+                                replacement: d.selected.clone().unwrap(),
+                            }),
+                    );
             }
         }
         result.edits.sort_by_key(|e| e.byte_start);
@@ -751,6 +812,37 @@ impl TermEngine {
         result.corrected.push_str(&source[cursor..]);
         result
     }
+}
+
+/// Keep unchanged edge words (and their original spaces/case) outside the edit.
+/// Conflict resolution still reserves the entire matched input phrase.
+fn phrase_edit(
+    tokens: &Tokens,
+    start: usize,
+    end: usize,
+    canonical: &str,
+    strict: bool,
+) -> Option<Edit> {
+    let target = text::tokenize(canonical, strict);
+    let (mut left, mut right, mut a, mut b) = (start, end, 0, target.lexical.len());
+    while left < right && a < b && tokens.lexical[left].key == target.lexical[a].key {
+        left += 1;
+        a += 1;
+    }
+    while left < right && a < b && tokens.lexical[right - 1].key == target.lexical[b - 1].key {
+        right -= 1;
+        b -= 1;
+    }
+    if left == right || a == b {
+        return None;
+    }
+    Some(Edit {
+        byte_start: tokens.lexical[left].byte_start,
+        byte_end: tokens.lexical[right - 1].byte_end,
+        token_start: left,
+        token_end: right,
+        replacement: canonical[target.lexical[a].byte_start..target.lexical[b - 1].byte_end].into(),
+    })
 }
 
 fn incomplete(mut result: Analysis) -> Analysis {
