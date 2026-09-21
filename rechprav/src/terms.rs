@@ -67,10 +67,93 @@ impl SpanTieBreak {
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct SubstitutionCost {
+    pub from: char,
+    pub to: char,
+    pub cost: usize,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct WeightedDistance {
+    pub max_cost: usize,
+    pub insertion: usize,
+    pub deletion: usize,
+    pub substitutions: Vec<SubstitutionCost>,
+}
+impl WeightedDistance {
+    fn validate(&self) -> Result<()> {
+        ensure!(
+            self.max_cost <= 200
+                && (50..=200).contains(&self.insertion)
+                && (50..=200).contains(&self.deletion),
+            "invalid weighted distance bounds"
+        );
+        ensure!(
+            self.substitutions.len() <= 64,
+            "too many weighted substitutions"
+        );
+        let mut seen = BTreeSet::new();
+        for rule in &self.substitutions {
+            ensure!(
+                ('а'..='я').contains(&rule.from)
+                    && ('а'..='я').contains(&rule.to)
+                    && rule.from != rule.to
+                    && (50..=200).contains(&rule.cost)
+                    && seen.insert((rule.from, rule.to)),
+                "invalid/duplicate directed substitution"
+            );
+        }
+        Ok(())
+    }
+
+    // Direction is recognized source -> alias. Costs are integer hundredths.
+    fn cost_at_most(&self, source: &str, alias: &str) -> Option<usize> {
+        let a: Vec<_> = source.chars().collect();
+        let b: Vec<_> = alias.chars().collect();
+        let length_cost = if a.len() > b.len() {
+            (a.len() - b.len()) * self.deletion
+        } else {
+            (b.len() - a.len()) * self.insertion
+        };
+        if length_cost > self.max_cost {
+            return None;
+        }
+        let mut row: Vec<_> = (0..=b.len()).map(|j| j * self.insertion).collect();
+        for (i, x) in a.iter().enumerate() {
+            let mut diagonal = row[0];
+            row[0] = (i + 1) * self.deletion;
+            for (j, y) in b.iter().enumerate() {
+                let substitution = if x == y {
+                    0
+                } else {
+                    self.substitutions
+                        .iter()
+                        .find(|r| r.from == *x && r.to == *y)
+                        .map_or(100, |r| r.cost)
+                };
+                let old = row[j + 1];
+                row[j + 1] = (old + self.deletion)
+                    .min(row[j] + self.insertion)
+                    .min(diagonal + substitution);
+                diagonal = old;
+            }
+            if row.iter().copied().min().unwrap() > self.max_cost {
+                return None;
+            }
+        }
+        (row[b.len()] <= self.max_cost).then_some(row[b.len()])
+    }
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(default, deny_unknown_fields)]
 pub struct Policy {
     pub mode: MatchMode,
     pub max_distance: usize,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub weighted_distance: Option<WeightedDistance>,
     pub max_tokens: usize,
     pub max_comparisons: usize,
     pub context_window: usize,
@@ -88,6 +171,7 @@ impl Default for Policy {
         Self {
             mode: MatchMode::Exact,
             max_distance: 1,
+            weighted_distance: None,
             max_tokens: 3,
             max_comparisons: 20_000,
             context_window: 4,
@@ -276,6 +360,13 @@ fn bounded(value: f64, lower: f64, upper: f64) -> bool {
 impl Config {
     pub fn validate(&self) -> Result<()> {
         let p = &self.policy;
+        if let Some(weighted) = &p.weighted_distance {
+            ensure!(
+                p.mode == MatchMode::Edit,
+                "weighted distance requires edit mode"
+            );
+            weighted.validate()?;
+        }
         ensure!(
             p.max_distance <= 2
                 && (1..=3).contains(&p.max_tokens)
@@ -457,6 +548,8 @@ pub struct Candidate {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub replacement_edit: Option<Edit>,
     pub distance: usize,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub weighted_cost: Option<f64>,
     pub score: f64,
     #[serde(skip_serializing_if = "is_zero")]
     pub source_penalty: f64,
@@ -742,23 +835,38 @@ impl TermEngine {
                 source_penalty_hits.sort();
                 let mut by_target = BTreeMap::<String, Candidate>::new();
                 for entry in &self.entries {
-                    let mut best: Option<(usize, &str)> = None;
+                    let mut best: Option<(bool, usize, usize, &str)> = None;
                     for (alias, joined) in &entry.aliases {
                         if result.comparisons == p.max_comparisons {
                             return incomplete(result);
                         }
                         result.comparisons += 1;
-                        let distance = match p.mode {
-                            MatchMode::Exact => (spaced == *alias).then_some(0),
-                            MatchMode::Edit => distance_at_most(&compact, joined, p.max_distance),
+                        let matched = if let Some(weighted) = &p.weighted_distance {
+                            weighted.cost_at_most(&compact, joined).map(|cost| {
+                                let raw =
+                                    distance_at_most(&compact, joined, weighted.max_cost / 50)
+                                        .expect("positive costs bound ordinary distance");
+                                (cost, raw)
+                            })
+                        } else {
+                            match p.mode {
+                                MatchMode::Exact => (spaced == *alias).then_some(0),
+                                MatchMode::Edit => {
+                                    distance_at_most(&compact, joined, p.max_distance)
+                                }
+                            }
+                            .map(|d| (100 * d, d))
                         };
-                        if let Some(d) = distance
-                            && best.is_none_or(|old| (d, alias.as_str()) < old)
-                        {
-                            best = Some((d, alias));
+                        if let Some((cost, raw)) = matched {
+                            let blocked =
+                                known && entry.term.max_known_distance.is_some_and(|cap| raw > cap);
+                            let key = (blocked, cost, raw, alias.as_str());
+                            if best.is_none_or(|old| key < old) {
+                                best = Some(key);
+                            }
                         }
                     }
-                    let Some((distance, alias)) = best else {
+                    let Some((_, cost_units, distance, alias)) = best else {
                         continue;
                     };
                     let replacement_edit = if entry.term.kind == TermKind::Phrase {
@@ -824,7 +932,7 @@ impl TermEngine {
                         "eligible"
                     };
                     let eligible = gate == "eligible";
-                    let score = 4.0 - p.edit_penalty * distance as f64
+                    let score = 4.0 - p.edit_penalty * (cost_units as f64 / 100.0)
                         + p.boost
                         + entry.boost
                         + if !has_context { 0.0 } else { p.context_bonus }
@@ -839,6 +947,10 @@ impl TermEngine {
                         alias_origin: entry.alias_origins.get(alias).copied(),
                         replacement_edit,
                         distance,
+                        weighted_cost: p
+                            .weighted_distance
+                            .as_ref()
+                            .map(|_| cost_units as f64 / 100.0),
                         score,
                         source_penalty,
                         source_penalty_hits: source_penalty_hits.clone(),
@@ -1063,4 +1175,106 @@ fn distance_at_most(a: &str, b: &str, limit: usize) -> Option<usize> {
         }
     }
     (row[b.len()] <= limit).then_some(row[b.len()])
+}
+
+#[cfg(test)]
+mod weighted_tests {
+    use super::*;
+
+    // Full matrix oracle: no cutoffs or rolling rows; a map supplies directional costs.
+    fn oracle(a: &str, b: &str, c: &WeightedDistance) -> usize {
+        let a: Vec<_> = a.chars().collect();
+        let b: Vec<_> = b.chars().collect();
+        let costs: BTreeMap<_, _> = c
+            .substitutions
+            .iter()
+            .map(|r| ((r.from, r.to), r.cost))
+            .collect();
+        let mut m = vec![vec![0; b.len() + 1]; a.len() + 1];
+        for (i, row) in m.iter_mut().enumerate() {
+            row[0] = i * c.deletion;
+        }
+        for (j, cell) in m[0].iter_mut().enumerate() {
+            *cell = j * c.insertion;
+        }
+        for i in 1..=a.len() {
+            for j in 1..=b.len() {
+                let cost = if a[i - 1] == b[j - 1] {
+                    0
+                } else {
+                    *costs.get(&(a[i - 1], b[j - 1])).unwrap_or(&100)
+                };
+                m[i][j] = (m[i - 1][j] + c.deletion)
+                    .min(m[i][j - 1] + c.insertion)
+                    .min(m[i - 1][j - 1] + cost);
+            }
+        }
+        m[a.len()][b.len()]
+    }
+    #[test]
+    fn weighted_cutoffs_match_full_matrix_exhaustively() {
+        let mut strings = vec![String::new()];
+        let mut frontier = strings.clone();
+        for _ in 0..3 {
+            frontier = frontier
+                .iter()
+                .flat_map(|s| ['б', 'п', 'а'].map(|c| format!("{s}{c}")))
+                .collect();
+            strings.extend(frontier.clone());
+        }
+        for (insertion, deletion) in [(100, 100), (50, 200), (75, 100)] {
+            let mut c = WeightedDistance {
+                max_cost: 0,
+                insertion,
+                deletion,
+                substitutions: vec![SubstitutionCost {
+                    from: 'б',
+                    to: 'п',
+                    cost: 50,
+                }],
+            };
+            for a in &strings {
+                for b in &strings {
+                    let expected = oracle(a, b, &c);
+                    for limit in [0, 49, 50, 75, 100, 150, 199, 200] {
+                        c.max_cost = limit;
+                        assert_eq!(
+                            c.cost_at_most(a, b),
+                            (expected <= limit).then_some(expected),
+                            "{a}->{b} {limit}"
+                        );
+                    }
+                }
+            }
+        }
+    }
+    #[test]
+    fn uniform_costs_equal_unicode_levenshtein_and_direction_is_explicit() {
+        let mut c = WeightedDistance {
+            max_cost: 100,
+            insertion: 100,
+            deletion: 100,
+            substitutions: vec![],
+        };
+        for a in ["", "пээнзэ", "бээнсэ", "таб", "табы", "ё", "е"] {
+            for b in ["", "пнз", "пээнзэ", "таб", "табы", "е"] {
+                assert_eq!(
+                    c.cost_at_most(a, b),
+                    distance_at_most(a, b, 1).map(|d| 100 * d)
+                );
+            }
+        }
+        c.max_cost = 50;
+        c.substitutions.push(SubstitutionCost {
+            from: 'б',
+            to: 'п',
+            cost: 50,
+        });
+        assert_eq!(c.cost_at_most("б", "п"), Some(50));
+        assert_eq!(c.cost_at_most("п", "б"), None);
+        c.insertion = 50;
+        c.deletion = 100;
+        assert_eq!(c.cost_at_most("", "п"), Some(50));
+        assert_eq!(c.cost_at_most("п", ""), None);
+    }
 }

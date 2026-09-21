@@ -29,7 +29,17 @@ def write_config(path, config):
             stream.write("\n[[source_penalties]]\n")
             for key, value in rule.items(): stream.write(emit(key, value))
         stream.write("\n[policy]\n")
-        for key, value in config["policy"].items(): stream.write(emit(key, value))
+        for key, value in config["policy"].items():
+            if key != "weighted_distance": stream.write(emit(key, value))
+        if "weighted_distance" in config["policy"]:
+            weighted = config["policy"]["weighted_distance"]
+            stream.write("\n[policy.weighted_distance]\n")
+            for key, value in weighted.items():
+                if key != "substitutions": stream.write(emit(key, value))
+            if not weighted["substitutions"]: stream.write("substitutions = []\n")
+            for rule in weighted["substitutions"]:
+                stream.write("\n[[policy.weighted_distance.substitutions]]\n")
+                for key, value in rule.items(): stream.write(emit(key, value))
         for group in config["sets"]:
             stream.write("\n[[sets]]\n")
             for key, value in group.items():
