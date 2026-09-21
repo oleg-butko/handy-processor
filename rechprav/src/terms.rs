@@ -36,6 +36,21 @@ pub enum KnownWords {
     Always,
 }
 
+/// Tie-break only: gates, score and conflicting canonical outputs take priority.
+#[derive(Clone, Copy, Debug, Default, Deserialize, Serialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum SpanTieBreak {
+    #[default]
+    Shortest,
+    Distance,
+    Longest,
+}
+impl SpanTieBreak {
+    fn is_default(&self) -> bool {
+        *self == Self::Shortest
+    }
+}
+
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(default, deny_unknown_fields)]
 pub struct Policy {
@@ -50,6 +65,8 @@ pub struct Policy {
     pub known_penalty: f64,
     pub min_score: f64,
     pub min_margin: f64,
+    #[serde(skip_serializing_if = "SpanTieBreak::is_default")]
+    pub span_tie_break: SpanTieBreak,
 }
 impl Default for Policy {
     fn default() -> Self {
@@ -65,6 +82,7 @@ impl Default for Policy {
             known_penalty: 1.0,
             min_score: 3.0,
             min_margin: 1.0,
+            span_tie_break: SpanTieBreak::Shortest,
         }
     }
 }
@@ -637,7 +655,17 @@ impl TermEngine {
             b.candidates[0]
                 .score
                 .total_cmp(&a.candidates[0].score)
-                .then_with(|| (a.token_end - a.token_start).cmp(&(b.token_end - b.token_start)))
+                .then_with(|| {
+                    let lengths = (a.token_end - a.token_start).cmp(&(b.token_end - b.token_start));
+                    match p.span_tie_break {
+                        SpanTieBreak::Shortest => lengths,
+                        SpanTieBreak::Distance => a.candidates[0]
+                            .distance
+                            .cmp(&b.candidates[0].distance)
+                            .then(lengths),
+                        SpanTieBreak::Longest => lengths.reverse(),
+                    }
+                })
                 .then_with(|| a.token_start.cmp(&b.token_start))
         });
         let mut occupied = BTreeSet::new();

@@ -1,7 +1,7 @@
 use rechprav::{
     corrector::Baseline,
     dictionary::Dictionary,
-    terms::{Config, KnownWords, MatchMode, TermEngine},
+    terms::{Config, KnownWords, MatchMode, SpanTieBreak, TermEngine},
 };
 use std::collections::BTreeSet;
 
@@ -34,6 +34,157 @@ fn base() -> Baseline {
 }
 fn engine(c: Config) -> TermEngine {
     TermEngine::new(c, Some(base())).unwrap()
+}
+
+fn span_engine(c: Config) -> TermEngine {
+    let mut b = base();
+    b.dictionary = Box::new(Dictionary::from_text("пэ\nпензе\nя", false).unwrap());
+    TermEngine::new(c, Some(b)).unwrap()
+}
+
+#[test]
+fn span_distance_repairs_whole_pronunciation_but_does_not_infer_semantic_boundaries() {
+    let mut c = config();
+    c.policy.mode = MatchMode::Edit;
+    assert_eq!(
+        span_engine(c.clone()).analyze("проверь пэ энзэ").corrected,
+        "проверь пэ ПНЗ"
+    );
+    for policy in [SpanTieBreak::Distance, SpanTieBreak::Longest] {
+        c.policy.span_tie_break = policy;
+        let e = span_engine(c.clone());
+        let a = e.analyze("Проверь\tпэ  энзэ!");
+        assert_eq!(a.corrected, "Проверь\tПНЗ!");
+        assert_eq!(a.edits.len(), 1);
+        assert_eq!(
+            (a.edits[0].byte_start, a.edits[0].byte_end),
+            ("Проверь\t".len(), "Проверь\tпэ  энзэ".len())
+        );
+        // Deliberate counterexample: literal letter 'пэ' is consumed as well.
+        assert_eq!(
+            e.analyze("проверь символ пэ энзэ").corrected,
+            "проверь символ ПНЗ"
+        );
+        assert_eq!(
+            e.analyze("проверь пэ энзэ пэнзэ").corrected,
+            "проверь ПНЗ ПНЗ"
+        );
+        // A score difference always takes priority over either new tie-break.
+        c.policy.known_penalty = 2.0;
+        assert_eq!(
+            span_engine(c.clone()).analyze("проверь пэ энзэ").corrected,
+            "проверь пэ ПНЗ"
+        );
+        c.policy.known_penalty = 1.0;
+    }
+}
+
+#[test]
+fn span_distance_keeps_shorter_span_when_both_aliases_are_exact() {
+    let mut c = config();
+    c.policy.known_penalty = 0.0;
+    c.sets[0].terms[0].known_words = KnownWords::Always;
+    c.sets[0].terms[0].aliases.push("я пэнзэ".into());
+    for policy in [
+        SpanTieBreak::Shortest,
+        SpanTieBreak::Distance,
+        SpanTieBreak::Longest,
+    ] {
+        c.policy.span_tie_break = policy;
+        let expected = if policy == SpanTieBreak::Longest {
+            "ПНЗ"
+        } else {
+            "я ПНЗ"
+        };
+        assert_eq!(engine(c.clone()).analyze("я пэнзэ").corrected, expected);
+        let original = serde_json::to_value(engine(c.clone()).analyze("я пэнзэ")).unwrap();
+        c.sets[0].terms[0].aliases.reverse();
+        assert_eq!(
+            serde_json::to_value(engine(c.clone()).analyze("я пэнзэ")).unwrap(),
+            original
+        );
+    }
+}
+
+#[test]
+fn span_policies_do_not_bypass_target_conflicts_or_local_ambiguity() {
+    for policy in [
+        SpanTieBreak::Shortest,
+        SpanTieBreak::Distance,
+        SpanTieBreak::Longest,
+    ] {
+        let mut c = config();
+        c.policy.span_tie_break = policy;
+        c.sets[0].terms[0].aliases = vec!["аб вг".into()];
+        let mut other = c.sets[0].terms[0].clone();
+        other.id = "other".into();
+        other.canonical = "XYZ".into();
+        other.aliases = vec!["вг".into()];
+        c.sets[0].terms.push(other);
+        assert!(engine(c.clone()).analyze("аб вг").edits.is_empty());
+        c.sets[0].terms.reverse();
+        assert!(engine(c.clone()).analyze("аб вг").edits.is_empty());
+        let mut third = c.sets[0].terms[0].clone();
+        third.id = "third".into();
+        third.canonical = "THIRD".into();
+        c.sets[0].terms.push(third);
+        assert!(engine(c).analyze("аб вг").edits.is_empty());
+    }
+}
+
+#[test]
+fn span_policies_preserve_gates_protection_and_all_or_nothing_budget() {
+    for policy in [
+        SpanTieBreak::Shortest,
+        SpanTieBreak::Distance,
+        SpanTieBreak::Longest,
+    ] {
+        let mut c = config();
+        c.policy.span_tie_break = policy;
+        c.policy.mode = MatchMode::Edit;
+        c.sets[0].terms[0].context_exclusions = vec!["{term} на карте".into()];
+        let e = span_engine(c.clone());
+        for source in [
+            "проверь пэ энзэ на карте",
+            "проверь `пэ энзэ`",
+            "проверь ПЭ ЭНЗЭ",
+            "проверь пэ\nэнзэ на карте",
+        ] {
+            assert_eq!(e.analyze(source).corrected, source, "{policy:?}: {source}");
+        }
+        c.sets[0].terms[0].require_context = true;
+        assert!(span_engine(c.clone()).analyze("пэ энзэ").edits.is_empty());
+        c.policy.max_comparisons = 5;
+        let a = span_engine(c.clone()).analyze("пэнзэ проверь пэ энзэ");
+        assert!(!a.complete);
+        assert!(a.edits.is_empty());
+        assert!(a.decisions.iter().all(|d| d.selected.is_none()));
+        c.enabled = false;
+        let a = TermEngine::new(c, None).unwrap().analyze("проверь пэ энзэ");
+        assert!(a.edits.is_empty());
+        assert_eq!(a.comparisons, 0);
+    }
+}
+
+#[test]
+fn span_policy_serialization_preserves_legacy_metadata_and_rejects_typos() {
+    let mut c = config();
+    assert!(
+        serde_json::to_value(&c).unwrap()["policy"]
+            .get("span_tie_break")
+            .is_none()
+    );
+    for policy in [
+        SpanTieBreak::Shortest,
+        SpanTieBreak::Distance,
+        SpanTieBreak::Longest,
+    ] {
+        c.policy.span_tie_break = policy;
+        let parsed: Config = toml::from_str(&toml::to_string(&c).unwrap()).unwrap();
+        assert_eq!(parsed.policy.span_tie_break, policy);
+    }
+    let invalid = toml::to_string(&c).unwrap().replace("longest", "longer");
+    assert!(toml::from_str::<Config>(&invalid).is_err());
 }
 
 #[test]
