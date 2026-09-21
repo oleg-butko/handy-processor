@@ -6,6 +6,7 @@ pub mod hashing;
 pub mod metrics;
 pub mod packed;
 pub mod packed_frequency;
+pub mod pronunciation;
 pub mod review;
 mod term_context;
 pub mod term_metrics;

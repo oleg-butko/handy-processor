@@ -1,6 +1,7 @@
 use rechprav::{
     corrector::Baseline,
     dictionary::Dictionary,
+    pronunciation::{AliasOrigin, Pronunciation},
     terms::{Config, KnownWords, MatchMode, SpanTieBreak, TermEngine},
 };
 use std::collections::BTreeSet;
@@ -34,6 +35,186 @@ fn base() -> Baseline {
 }
 fn engine(c: Config) -> TermEngine {
     TermEngine::new(c, Some(base())).unwrap()
+}
+
+#[test]
+fn letter_generator_has_fixed_names_segmentations_and_bounded_expansion() {
+    let g = Pronunciation::RuLetters;
+    let actual: BTreeSet<_> = g.generate("ПНЗ").unwrap().into_iter().collect();
+    let expected = ["пээнзэ", "пэ энзэ", "пээн зэ", "пэ эн зэ"]
+        .map(String::from)
+        .into_iter()
+        .collect();
+    assert_eq!(actual, expected);
+    assert_eq!(g.generate("ПЛК").unwrap().len(), 8);
+    assert!(g.generate("ПЛК").unwrap().contains(&"пэ эл ка".into()));
+    let largest = g.generate("ЛЛЛ").unwrap();
+    assert_eq!(largest.len(), 32);
+    assert!(largest.iter().all(|a| a.split(' ').count() <= 3));
+    for unsupported in ["П", "ПНЗС", "Пнз", "CPU", "П2", "ПЙ", "ЪП", "ПЬ", "", "П Н"]
+    {
+        assert!(g.generate(unsupported).is_err(), "{unsupported}");
+    }
+}
+
+#[test]
+fn generated_aliases_correct_all_splits_without_loosening_context_or_known_word_gates() {
+    let mut c = config();
+    c.sets[0].terms[0].pronunciation = Some(Pronunciation::RuLetters);
+    c.sets[0].terms[0].aliases.clear();
+    c.sets[0].terms[0].require_context = true;
+    c.sets[0].terms[0].context_patterns = vec!["проверь {term}".into()];
+    c.sets[0].terms[0].context.clear();
+    for alias in Pronunciation::RuLetters.generate("ПНЗ").unwrap() {
+        let a = engine(c.clone()).analyze(&format!("проверь {alias}!"));
+        assert_eq!(a.corrected, "проверь ПНЗ!");
+        assert_eq!(a.edits.len(), 1);
+        assert_eq!(
+            a.decisions
+                .iter()
+                .find(|d| d.selected.is_some())
+                .unwrap()
+                .candidates[0]
+                .alias_origin,
+            Some(AliasOrigin::Generated)
+        );
+        assert!(engine(c.clone()).analyze(&alias).edits.is_empty());
+    }
+    assert_eq!(
+        engine(c.clone())
+            .analyze("Проверь\tпэ  эн\u{00a0}зэ!")
+            .corrected,
+        "Проверь\tПНЗ!"
+    );
+    c.sets[0].terms[0].context_exclusions = vec!["{term} на карте".into()];
+    for source in [
+        "проверь пэ эн зэ на карте",
+        "проверь `пэ эн зэ`",
+        "проверь ПЭ ЭН ЗЭ",
+        "проверь пэ эн\nзэ",
+    ] {
+        assert_eq!(engine(c.clone()).analyze(source).corrected, source);
+    }
+    c.sets[0].terms[0].known_words = KnownWords::Never;
+    assert!(span_engine(c).analyze("проверь пэ энзэ").edits.is_empty());
+}
+
+#[test]
+fn generated_and_manual_aliases_deduplicate_after_normalization_without_votes() {
+    let mut c = config();
+    let t = &mut c.sets[0].terms[0];
+    t.canonical = "ЁП".into();
+    t.pronunciation = Some(Pronunciation::RuLetters);
+    t.aliases = vec!["е пэ".into()];
+    let first = engine(c.clone()).analyze("проверь е пэ");
+    c.sets[0].terms[0]
+        .aliases
+        .extend(["ё пэ".into(), "Е ПЭ".into(), "е пэ".into()]);
+    let duplicate = engine(c.clone()).analyze("проверь е пэ");
+    assert_eq!(
+        serde_json::to_value(&first).unwrap(),
+        serde_json::to_value(&duplicate).unwrap()
+    );
+    assert_eq!(
+        duplicate.decisions[0].candidates[0].alias_origin,
+        Some(AliasOrigin::ManualAndGenerated)
+    );
+    let mut b = base();
+    b.strict_yo = true;
+    let e = TermEngine::new(c, Some(b)).unwrap();
+    assert_eq!(
+        e.analyze("проверь ёпэ").decisions[0].candidates[0].alias_origin,
+        Some(AliasOrigin::Generated)
+    );
+    assert_eq!(
+        e.analyze("проверь е пэ").decisions[0].candidates[0].alias_origin,
+        Some(AliasOrigin::Manual)
+    );
+}
+
+#[test]
+fn generated_aliases_respect_disabled_scopes_conflicts_and_search_budget() {
+    let mut c = config();
+    c.sets[0].terms[0].pronunciation = Some(Pronunciation::RuLetters);
+    c.sets[0].terms[0].aliases.clear();
+    let source = "проверь пэ энзэ";
+    for scope in 0..3 {
+        let mut disabled = c.clone();
+        match scope {
+            0 => disabled.enabled = false,
+            1 => disabled.sets[0].enabled = false,
+            _ => disabled.sets[0].terms[0].enabled = false,
+        }
+        let a = TermEngine::new(disabled, None).unwrap().analyze(source);
+        assert_eq!(a.corrected, source);
+        assert_eq!(a.comparisons, 0);
+    }
+    let mut other = c.sets[0].clone();
+    other.id = "lab".into();
+    other.terms[0].canonical = "XYZ".into();
+    other.terms[0].pronunciation = None;
+    other.terms[0].aliases = vec!["пэ энзэ".into()];
+    c.sets.push(other);
+    assert!(engine(c.clone()).analyze(source).edits.is_empty());
+    c.sets.reverse();
+    assert!(engine(c.clone()).analyze(source).edits.is_empty());
+    c.policy.max_comparisons = 5;
+    let a = engine(c).analyze("пэ энзэ проверь пэ энзэ");
+    assert!(!a.complete);
+    assert!(a.edits.is_empty());
+    assert!(a.decisions.iter().all(|d| d.selected.is_none()));
+}
+
+#[test]
+fn pronunciation_validation_bounds_expanded_not_only_manual_aliases() {
+    let mut c = config();
+    c.sets[0].terms[0].aliases.clear();
+    assert!(c.validate().is_err());
+    c.sets[0].terms[0].pronunciation = Some(Pronunciation::RuLetters);
+    assert!(c.validate().is_ok());
+    c.sets[0].terms[0].canonical = "CPU".into();
+    assert!(c.validate().is_err());
+    c.sets[0].terms[0].canonical = "ПНЗ".into();
+    c.sets[0].terms[0].aliases = (1..=61).map(|n| "а".repeat(n)).collect();
+    assert!(c.validate().is_err()); // 61 manual + 4 generated > 64.
+    c.sets[0].terms[0].aliases.clear();
+    let template = c.sets[0].clone();
+    c.sets.clear();
+    for group in 0..3 {
+        let mut set = template.clone();
+        set.id = format!("set{group}");
+        set.terms = (0..if group == 2 { 1 } else { 512 })
+            .map(|n| {
+                let mut t = template.terms[0].clone();
+                t.id = format!("t{n}");
+                t
+            })
+            .collect();
+        c.sets.push(set);
+    }
+    assert!(c.validate().is_err()); // 1025 * 4 > 4096.
+    let invalid = toml::to_string(&config()).unwrap() + "\npronunciation='guess'\n";
+    assert!(toml::from_str::<Config>(&invalid).is_err());
+}
+
+#[test]
+fn pronunciation_manifest_exposes_active_normalized_aliases_and_provenance() {
+    use std::fs;
+    let temp = tempfile::tempdir().unwrap();
+    fs::write(temp.path().join("base.toml"), "dictionary='words.txt'").unwrap();
+    fs::write(temp.path().join("words.txt"), "пензе\n").unwrap();
+    let mut c = config();
+    c.sets[0].terms[0].pronunciation = Some(Pronunciation::RuLetters);
+    let path = temp.path().join("terms.toml");
+    fs::write(&path, toml::to_string(&c).unwrap()).unwrap();
+    let (_, metadata) = TermEngine::load(&path, false).unwrap();
+    let aliases = &metadata["pronunciation_aliases"][0]["aliases"];
+    assert_eq!(aliases["пэ эн зэ"], "manual_and_generated");
+    assert_eq!(aliases["пэнзэ"], "manual");
+    assert_eq!(aliases["пээнзэ"], "generated");
+    let (_, disabled) = TermEngine::load(&path, true).unwrap();
+    assert!(disabled.get("pronunciation_aliases").is_none());
+    assert!(disabled["baseline_resources"].is_null());
 }
 
 fn span_engine(c: Config) -> TermEngine {

@@ -2,6 +2,7 @@
 use crate::{
     corpus::Edit,
     corrector::Baseline,
+    pronunciation::{AliasOrigin, Pronunciation},
     term_context::{Pattern, horizontal},
     text::{self, Kind, Tokens},
 };
@@ -92,7 +93,10 @@ impl Default for Policy {
 pub struct Term {
     pub id: String,
     pub canonical: String,
+    #[serde(default)]
     pub aliases: Vec<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub pronunciation: Option<Pronunciation>,
     #[serde(default = "yes")]
     pub enabled: bool,
     #[serde(default)]
@@ -120,6 +124,37 @@ pub struct TermSet {
     #[serde(default)]
     pub boost: f64,
     pub terms: Vec<Term>,
+}
+
+/// With generation disabled, preserve legacy alias ordering and work accounting.
+fn expand_aliases(
+    term: &Term,
+    strict: bool,
+) -> Result<(Vec<String>, BTreeMap<String, AliasOrigin>)> {
+    let manual: Vec<_> = term.aliases.iter().map(|a| text::key(a, strict)).collect();
+    let Some(generator) = term.pronunciation else {
+        return Ok((manual, BTreeMap::new()));
+    };
+    let mut origins: BTreeMap<_, _> = manual
+        .into_iter()
+        .map(|a| (a, AliasOrigin::Manual))
+        .collect();
+    for alias in generator.generate(&term.canonical)? {
+        let key = text::key(&alias, strict);
+        origins
+            .entry(key)
+            .and_modify(|origin| {
+                if *origin == AliasOrigin::Manual {
+                    *origin = AliasOrigin::ManualAndGenerated;
+                }
+            })
+            .or_insert(AliasOrigin::Generated);
+    }
+    ensure!(
+        origins.len() <= 64,
+        "expanded aliases exceed per-term limit 64"
+    );
+    Ok((origins.keys().cloned().collect(), origins))
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
@@ -192,8 +227,9 @@ impl Config {
                     "canonical term must be one technical word/abbreviation"
                 );
                 ensure!(
-                    !term.aliases.is_empty() && term.aliases.len() <= 64,
-                    "require 1..64 aliases per term"
+                    (!term.aliases.is_empty() || term.pronunciation.is_some())
+                        && term.aliases.len() <= 64,
+                    "require 1..64 manual aliases or an enabled pronunciation generator"
                 );
                 for alias in &term.aliases {
                     let parts: Vec<_> = alias.split(' ').collect();
@@ -228,7 +264,7 @@ impl Config {
                         || !term.context_patterns.is_empty(),
                     "context policy needs cues"
                 );
-                alias_count += term.aliases.len();
+                alias_count += expand_aliases(term, true)?.0.len();
             }
         }
         ensure!(alias_count <= 4096, "too many aliases (limit 4096)");
@@ -254,6 +290,7 @@ struct Entry {
     term: Term,
     boost: f64,
     aliases: Vec<(String, String)>,
+    alias_origins: BTreeMap<String, AliasOrigin>,
     context: BTreeSet<String>,
     patterns: Vec<Pattern>,
     exclusions: Vec<Pattern>,
@@ -272,6 +309,8 @@ pub struct Candidate {
     pub term: String,
     pub canonical: String,
     pub alias: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub alias_origin: Option<AliasOrigin>,
     pub distance: usize,
     pub score: f64,
     pub context_hits: Vec<String>,
@@ -333,9 +372,21 @@ impl TermEngine {
             (None, None)
         };
         let engine = Self::new(config, baseline)?;
-        let metadata = serde_json::json!({"config_sha256":crate::hashing::sha256_hex(contents.as_bytes()),
+        let mut metadata = serde_json::json!({"config_sha256":crate::hashing::sha256_hex(contents.as_bytes()),
             "effective_config":engine.config, "baseline_resources":base_metadata,
             "active_terms":engine.entries.len(), "scoring":"heuristic preferences, not probabilities; term-only pass"});
+        let catalog: Vec<_> = engine
+            .entries
+            .iter()
+            .filter(|e| e.term.pronunciation.is_some())
+            .map(|e| {
+                serde_json::json!({"set":e.set,"term":e.term.id,"canonical":e.term.canonical,
+                "generator":e.term.pronunciation,"aliases":e.alias_origins})
+            })
+            .collect();
+        if !catalog.is_empty() {
+            metadata["pronunciation_aliases"] = serde_json::json!(catalog);
+        }
         Ok((engine, metadata))
     }
 
@@ -352,19 +403,19 @@ impl TermEngine {
                         "active terms require baseline membership/protection"
                     );
                     canonical.insert(text::key(&term.canonical, strict));
+                    let (aliases, alias_origins) = expand_aliases(term, strict)?;
                     entries.push(Entry {
                         set: set.id.clone(),
                         term: term.clone(),
                         boost: set.boost + term.boost,
-                        aliases: term
-                            .aliases
-                            .iter()
+                        aliases: aliases
+                            .into_iter()
                             .map(|a| {
-                                let a = text::key(a, strict);
                                 let compact = a.replace(' ', "");
                                 (a, compact)
                             })
                             .collect(),
+                        alias_origins,
                         context: term.context.iter().map(|w| text::key(w, strict)).collect(),
                         patterns: term
                             .context_patterns
@@ -548,6 +599,7 @@ impl TermEngine {
                         term: entry.term.id.clone(),
                         canonical: entry.term.canonical.clone(),
                         alias: alias.into(),
+                        alias_origin: entry.alias_origins.get(alias).copied(),
                         distance,
                         score,
                         context_hits,

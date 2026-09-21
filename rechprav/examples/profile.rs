@@ -80,6 +80,10 @@ fn main() -> Result<()> {
         ("src/text.rs", include_bytes!("../src/text.rs").as_slice()),
         ("src/terms.rs", include_bytes!("../src/terms.rs").as_slice()),
         (
+            "src/pronunciation.rs",
+            include_bytes!("../src/pronunciation.rs").as_slice(),
+        ),
+        (
             "src/term_context.rs",
             include_bytes!("../src/term_context.rs").as_slice(),
         ),
