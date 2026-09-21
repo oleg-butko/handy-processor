@@ -2,6 +2,7 @@
 {"schema_version": 1, "event_id": "clipboard", "kind": "correction", "scope": "technical", "before": "открой калиборд", "after": "открой клипборд", "confirmed_asr": true}
 {"schema_version": 1, "event_id": "split", "kind": "correction", "scope": "technical", "before": "надо долгождать ответа", "after": "надо долго ждать ответа", "confirmed_asr": true}
 {"schema_version": 1, "event_id": "term", "kind": "correction", "scope": "technical", "before": "включи пензэ", "after": "включи ПНЗ", "confirmed_asr": true}
+{"schema_version": 1, "event_id": "unknown", "kind": "correction", "scope": "technical", "before": "включи катэхэ", "after": "включи КТХ", "confirmed_asr": true}
 {"schema_version": 1, "event_id": "word", "kind": "correction", "scope": "technical", "before": "он проковол колесо", "after": "он проколол колесо", "confirmed_asr": true}
 {"schema_version": 1, "event_id": "form", "kind": "correction", "scope": "technical", "before": "без снятия сваты", "after": "без снятия слота", "confirmed_asr": true}
 {"schema_version": 1, "event_id": "isolated", "kind": "correction", "scope": "technical", "before": "Нет звон", "after": "недозвон", "confirmed_asr": true}
