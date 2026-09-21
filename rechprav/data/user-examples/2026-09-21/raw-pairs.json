@@ -1,0 +1,56 @@
+[
+  {
+    "source": "калиборд",
+    "requested_gold": "клипборд",
+    "comment": "есть такое слово",
+    "clarification_required": false
+  },
+  {
+    "source": "этабы",
+    "requested_gold": "табы",
+    "comment": "добавилась лишняя э, есть слово таб",
+    "clarification_required": false
+  },
+  {
+    "source": "луколхоз",
+    "requested_gold": "локалхост",
+    "comment": "компьютерный термин",
+    "clarification_required": false
+  },
+  {
+    "source": "Нет звон",
+    "requested_gold": "недозвон",
+    "comment": "недозвон - термин",
+    "clarification_required": false
+  },
+  {
+    "source": "свуты и пнзэ",
+    "requested_gold": "слот и пнз",
+    "comment": "слот и пнз - два термина",
+    "clarification_required": false
+  },
+  {
+    "source": "проковол колесо",
+    "requested_gold": "проколол колесо",
+    "comment": "нет слова проковол, неправильная буква, устойчивое выражение",
+    "clarification_required": false
+  },
+  {
+    "source": "долгождать",
+    "requested_gold": "долго ждать",
+    "comment": "два слова слились в одно",
+    "clarification_required": false
+  },
+  {
+    "source": "без снятия сваты",
+    "requested_gold": "долго ждать",
+    "comment": "два слова слились в одно; clarification requested",
+    "clarification_required": true
+  },
+  {
+    "source": "недозвода клиента",
+    "requested_gold": "недозвон до клиента",
+    "comment": "недозвон - термин, устойчивое выражение, предлог до слился с первым словом",
+    "clarification_required": false
+  }
+]
