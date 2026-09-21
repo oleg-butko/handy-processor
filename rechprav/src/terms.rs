@@ -109,6 +109,8 @@ pub struct Term {
     pub canonical: String,
     #[serde(default, skip_serializing_if = "TermKind::is_default")]
     pub kind: TermKind,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub forms: Vec<TermForm>,
     #[serde(default)]
     pub aliases: Vec<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -129,6 +131,63 @@ pub struct Term {
     pub context_exclusions: Vec<String>,
     #[serde(default, skip_serializing_if = "is_false")]
     pub require_context: bool,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct TermForm {
+    pub canonical: String,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub aliases: Vec<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub context: Option<Vec<String>>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub context_patterns: Option<Vec<String>>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub context_exclusions: Option<Vec<String>>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub require_context: Option<bool>,
+}
+
+impl Term {
+    fn variants(&self) -> Result<Vec<Self>> {
+        ensure!(self.forms.len() <= 16, "at most 16 forms per term");
+        ensure!(
+            self.forms.is_empty() || (self.kind == TermKind::Word && self.pronunciation.is_none()),
+            "forms require a word term without pronunciation generation"
+        );
+        let mut base = self.clone();
+        base.forms.clear();
+        let mut seen = BTreeSet::from([text::key(&self.canonical, false)]);
+        let mut variants = vec![base.clone()];
+        for form in &self.forms {
+            ensure!(
+                seen.insert(text::key(&form.canonical, false)),
+                "duplicate canonical within term family"
+            );
+            let mut variant = base.clone();
+            variant.canonical = form.canonical.clone();
+            variant.aliases = if form.aliases.is_empty() {
+                vec![form.canonical.clone()]
+            } else {
+                form.aliases.clone()
+            };
+            if let Some(value) = &form.context {
+                variant.context = value.clone();
+            }
+            if let Some(value) = &form.context_patterns {
+                variant.context_patterns = value.clone();
+            }
+            if let Some(value) = &form.context_exclusions {
+                variant.context_exclusions = value.clone();
+            }
+            if let Some(value) = form.require_context {
+                variant.require_context = value;
+            }
+            variants.push(variant);
+        }
+        Ok(variants)
+    }
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
@@ -224,74 +283,76 @@ impl Config {
                     valid_id(&term.id) && terms.insert(&term.id),
                     "invalid/duplicate term id"
                 );
-                ensure!(bounded(term.boost, -10.0, 10.0), "invalid term boost");
-                let canonical = text::tokenize(&term.canonical, true);
-                if term.kind == TermKind::Phrase {
-                    let words: Vec<_> = term.canonical.split(' ').collect();
+                for term in term.variants()? {
+                    ensure!(bounded(term.boost, -10.0, 10.0), "invalid term boost");
+                    let canonical = text::tokenize(&term.canonical, true);
+                    if term.kind == TermKind::Phrase {
+                        let words: Vec<_> = term.canonical.split(' ').collect();
+                        ensure!(
+                            (2..=3).contains(&words.len())
+                                && words.iter().all(|w| russian(w))
+                                && term.canonical.chars().count() <= 128
+                                && term.pronunciation.is_none(),
+                            "phrase canonical requires 2..3 Russian words with single spaces, no pronunciation generator"
+                        );
+                    } else {
+                        ensure!(
+                            canonical.lexical.len() == 1
+                                && canonical.lexical[0].byte_start == 0
+                                && canonical.lexical[0].byte_end == term.canonical.len()
+                                && (1..=64).contains(&term.canonical.chars().count())
+                                && term
+                                    .canonical
+                                    .chars()
+                                    .next()
+                                    .is_some_and(char::is_alphabetic)
+                                && term
+                                    .canonical
+                                    .chars()
+                                    .all(|c| c.is_alphanumeric() || "+#_-".contains(c)),
+                            "canonical term must be one technical word/abbreviation"
+                        );
+                    }
                     ensure!(
-                        (2..=3).contains(&words.len())
-                            && words.iter().all(|w| russian(w))
-                            && term.canonical.chars().count() <= 128
-                            && term.pronunciation.is_none(),
-                        "phrase canonical requires 2..3 Russian words with single spaces, no pronunciation generator"
+                        (!term.aliases.is_empty() || term.pronunciation.is_some())
+                            && term.aliases.len() <= 64,
+                        "require 1..64 manual aliases or an enabled pronunciation generator"
                     );
-                } else {
+                    for alias in &term.aliases {
+                        let parts: Vec<_> = alias.split(' ').collect();
+                        ensure!(
+                            (1..=3).contains(&parts.len())
+                                && parts.iter().all(|w| russian(w))
+                                && alias.chars().count() <= 128,
+                            "alias must contain 1..3 Russian words separated by single spaces"
+                        );
+                    }
                     ensure!(
-                        canonical.lexical.len() == 1
-                            && canonical.lexical[0].byte_start == 0
-                            && canonical.lexical[0].byte_end == term.canonical.len()
-                            && (1..=64).contains(&term.canonical.chars().count())
-                            && term
-                                .canonical
-                                .chars()
-                                .next()
-                                .is_some_and(char::is_alphabetic)
-                            && term
-                                .canonical
-                                .chars()
-                                .all(|c| c.is_alphanumeric() || "+#_-".contains(c)),
-                        "canonical term must be one technical word/abbreviation"
+                        term.context.len() <= 64
+                            && term.context.iter().all(|word| !word.is_empty()
+                                && word.chars().count() <= 64
+                                && word.chars().all(char::is_alphabetic)),
+                        "context cues must be individual alphabetic words"
                     );
-                }
-                ensure!(
-                    (!term.aliases.is_empty() || term.pronunciation.is_some())
-                        && term.aliases.len() <= 64,
-                    "require 1..64 manual aliases or an enabled pronunciation generator"
-                );
-                for alias in &term.aliases {
-                    let parts: Vec<_> = alias.split(' ').collect();
                     ensure!(
-                        (1..=3).contains(&parts.len())
-                            && parts.iter().all(|w| russian(w))
-                            && alias.chars().count() <= 128,
-                        "alias must contain 1..3 Russian words separated by single spaces"
+                        term.max_known_distance.is_none_or(|d| d <= 2),
+                        "max_known_distance must be in 0..2"
                     );
+                    ensure!(
+                        term.context_patterns.len() <= 32 && term.context_exclusions.len() <= 32,
+                        "too many context patterns"
+                    );
+                    for pattern in term.context_patterns.iter().chain(&term.context_exclusions) {
+                        Pattern::parse(pattern, false, p.context_window)?;
+                    }
+                    ensure!(
+                        !(term.known_words == KnownWords::Context || term.require_context)
+                            || !term.context.is_empty()
+                            || !term.context_patterns.is_empty(),
+                        "context policy needs cues"
+                    );
+                    alias_count += expand_aliases(&term, true)?.0.len();
                 }
-                ensure!(
-                    term.context.len() <= 64
-                        && term.context.iter().all(|word| !word.is_empty()
-                            && word.chars().count() <= 64
-                            && word.chars().all(char::is_alphabetic)),
-                    "context cues must be individual alphabetic words"
-                );
-                ensure!(
-                    term.max_known_distance.is_none_or(|d| d <= 2),
-                    "max_known_distance must be in 0..2"
-                );
-                ensure!(
-                    term.context_patterns.len() <= 32 && term.context_exclusions.len() <= 32,
-                    "too many context patterns"
-                );
-                for pattern in term.context_patterns.iter().chain(&term.context_exclusions) {
-                    Pattern::parse(pattern, false, p.context_window)?;
-                }
-                ensure!(
-                    !(term.known_words == KnownWords::Context || term.require_context)
-                        || !term.context.is_empty()
-                        || !term.context_patterns.is_empty(),
-                    "context policy needs cues"
-                );
-                alias_count += expand_aliases(term, true)?.0.len();
             }
         }
         ensure!(alias_count <= 4096, "too many aliases (limit 4096)");
@@ -315,6 +376,7 @@ fn russian(word: &str) -> bool {
 struct Entry {
     set: String,
     term: Term,
+    family_canonical: Option<String>,
     boost: f64,
     aliases: Vec<(String, String)>,
     alias_origins: BTreeMap<String, AliasOrigin>,
@@ -335,6 +397,8 @@ pub struct Candidate {
     pub set: String,
     pub term: String,
     pub canonical: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub family_canonical: Option<String>,
     pub alias: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub alias_origin: Option<AliasOrigin>,
@@ -416,6 +480,22 @@ impl TermEngine {
         if !catalog.is_empty() {
             metadata["pronunciation_aliases"] = serde_json::json!(catalog);
         }
+        let mut families = BTreeMap::<(&str, &str), Vec<&Entry>>::new();
+        for entry in &engine.entries {
+            if entry.family_canonical.is_some() {
+                families
+                    .entry((&entry.set, &entry.term.id))
+                    .or_default()
+                    .push(entry);
+            }
+        }
+        if !families.is_empty() {
+            metadata["term_families"] =
+                serde_json::json!(families.into_iter().map(|((set, id), entries)| {
+                serde_json::json!({"set":set,"term":id,"canonical":entries[0].family_canonical,
+                    "resolved_forms":entries.iter().map(|e| &e.term).collect::<Vec<_>>()})
+            }).collect::<Vec<_>>());
+        }
         Ok((engine, metadata))
     }
 
@@ -426,37 +506,42 @@ impl TermEngine {
         let mut canonical = BTreeSet::new();
         if config.enabled {
             for set in config.sets.iter().filter(|s| s.enabled) {
-                for term in set.terms.iter().filter(|t| t.enabled) {
-                    ensure!(
-                        baseline.is_some(),
-                        "active terms require baseline membership/protection"
-                    );
-                    canonical.insert(text::key(&term.canonical, strict));
-                    let (aliases, alias_origins) = expand_aliases(term, strict)?;
-                    entries.push(Entry {
-                        set: set.id.clone(),
-                        term: term.clone(),
-                        boost: set.boost + term.boost,
-                        aliases: aliases
-                            .into_iter()
-                            .map(|a| {
-                                let compact = a.replace(' ', "");
-                                (a, compact)
-                            })
-                            .collect(),
-                        alias_origins,
-                        context: term.context.iter().map(|w| text::key(w, strict)).collect(),
-                        patterns: term
-                            .context_patterns
-                            .iter()
-                            .map(|p| Pattern::parse(p, strict, config.policy.context_window))
-                            .collect::<Result<_>>()?,
-                        exclusions: term
-                            .context_exclusions
-                            .iter()
-                            .map(|p| Pattern::parse(p, strict, config.policy.context_window))
-                            .collect::<Result<_>>()?,
-                    });
+                for definition in set.terms.iter().filter(|t| t.enabled) {
+                    let family_canonical =
+                        (!definition.forms.is_empty()).then(|| definition.canonical.clone());
+                    for term in definition.variants()? {
+                        ensure!(
+                            baseline.is_some(),
+                            "active terms require baseline membership/protection"
+                        );
+                        canonical.insert(text::key(&term.canonical, strict));
+                        let (aliases, alias_origins) = expand_aliases(&term, strict)?;
+                        entries.push(Entry {
+                            set: set.id.clone(),
+                            term: term.clone(),
+                            family_canonical: family_canonical.clone(),
+                            boost: set.boost + term.boost,
+                            aliases: aliases
+                                .into_iter()
+                                .map(|a| {
+                                    let compact = a.replace(' ', "");
+                                    (a, compact)
+                                })
+                                .collect(),
+                            alias_origins,
+                            context: term.context.iter().map(|w| text::key(w, strict)).collect(),
+                            patterns: term
+                                .context_patterns
+                                .iter()
+                                .map(|p| Pattern::parse(p, strict, config.policy.context_window))
+                                .collect::<Result<_>>()?,
+                            exclusions: term
+                                .context_exclusions
+                                .iter()
+                                .map(|p| Pattern::parse(p, strict, config.policy.context_window))
+                                .collect::<Result<_>>()?,
+                        });
+                    }
                 }
             }
         }
@@ -651,6 +736,7 @@ impl TermEngine {
                         set: entry.set.clone(),
                         term: entry.term.id.clone(),
                         canonical: entry.term.canonical.clone(),
+                        family_canonical: entry.family_canonical.clone(),
                         alias: alias.into(),
                         alias_origin: entry.alias_origins.get(alias).copied(),
                         replacement_edit,

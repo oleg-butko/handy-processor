@@ -33,7 +33,11 @@ def write_config(path, config):
                 if key != "terms": stream.write(emit(key, value))
             for term in group["terms"]:
                 stream.write("\n[[sets.terms]]\n")
-                for key, value in term.items(): stream.write(emit(key, value))
+                for key, value in term.items():
+                    if key != "forms": stream.write(emit(key, value))
+                for form in term.get("forms", []):
+                    stream.write("\n[[sets.terms.forms]]\n")
+                    for key, value in form.items(): stream.write(emit(key, value))
     assert tomllib.loads(path.read_text()) == config
 
 
