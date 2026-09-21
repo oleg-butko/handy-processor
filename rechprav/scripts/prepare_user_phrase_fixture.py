@@ -25,6 +25,9 @@ PHRASES = [
     "потерять ключи", "найти дорогу", "сесть за стол", "выйти из дома", "пойти на работу",
     "на всякий случай", "в конце концов", "друг друга",
 ]
+CLARIFICATION = {"source": "без снятия сваты", "previous_requested_gold": "долго ждать",
+                 "requested_gold": "без снятия слота", "comment": "слот - термин",
+                 "status": "resolved by user before implementation/evaluation", "date": "2026-09-21"}
 CONTROLS = [
     ("долгождать ответа", [("долгождать", "долго ждать")], ["positive", "split"]),
     ("он проковол колесо", [("проковол", "проколол")], ["positive", "phrase"]),
@@ -38,6 +41,7 @@ CONTROLS = [
     ("проверь этабы", [("этабы", "табы")], ["positive", "term"]),
     ("открой луколхоз", [("луколхоз", "локалхост")], ["positive", "learned_alias"]),
     ("свуты памяти", [("свуты", "слот")], ["positive", "learned_alias"]),
+    ("без снятия сваты памяти", [("сваты", "слота")], ["positive", "inflection"]),
     ("долго ждать", [], ["negative", "correct_phrase"]),
     ("Долго\tждать", [], ["negative", "correct_phrase", "case"]),
     ("проколол колесо", [], ["negative", "correct_phrase"]),
@@ -53,6 +57,8 @@ CONTROLS = [
     ("клипборд и локалхост", [], ["negative", "correct_term"]),
     ("недозвон до клиента", [], ["negative", "correct_term_phrase"]),
     ("слот и пнз", [], ["negative", "correct_term"]),
+    ("сваты приехали к невесте", [], ["negative", "known_word", "inflection_collision"]),
+    ("без снятия слота", [], ["negative", "correct_inflection"]),
     ("нет звонка", [], ["negative", "known_words"]),
     ("нет звона", [], ["negative", "known_words"]),
     ("обсуждаем выражение нет звон", [], ["negative", "literal_alias"]),
@@ -92,8 +98,12 @@ def main():
     with (user / "raw-pairs.json").open("x", encoding="utf-8") as f:
         json.dump([{"source": s, "requested_gold": g, "comment": comment, "clarification_required": edits is None}
                    for s, g, comment, edits in PAIRS], f, ensure_ascii=False, indent=2); f.write("\n")
+    with (user / "clarifications.json").open("x", encoding="utf-8") as f:
+        json.dump([CLARIFICATION], f, ensure_ascii=False, indent=2); f.write("\n")
     with (user / "corpus.jsonl").open("x", encoding="utf-8") as f:
         for i, (source, gold, _, edits) in enumerate(PAIRS, 1):
+            if source == CLARIFICATION["source"]:
+                gold = CLARIFICATION["requested_gold"]; edits = [("сваты", "слота")]
             r = record(f"user-20260921-{i:03}", source, edits, ["user_reported"], True)
             assert edits is None or r["gold"] == gold
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
