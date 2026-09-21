@@ -1,0 +1,198 @@
+[
+  {
+    "id": "span-001",
+    "source": "проверь пэ энзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь ПНЗ",
+    "tags": [
+      "whole",
+      "known_syllable"
+    ],
+    "manual_prediction": "проверь пэ энзэ",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "span-002",
+    "source": "сигнал пэ энзэ модуля",
+    "gold": "сигнал ПНЗ модуля",
+    "prediction": "сигнал ПНЗ модуля",
+    "tags": [
+      "whole",
+      "both_contexts"
+    ],
+    "manual_prediction": "сигнал пэ энзэ модуля",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "span-006",
+    "source": "сигнал пээн зэ модуля",
+    "gold": "сигнал ПНЗ модуля",
+    "prediction": "сигнал ПНЗ модуля",
+    "tags": [
+      "whole",
+      "alternate_split"
+    ],
+    "manual_prediction": "сигнал пээн зэ модуля",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "span-008",
+    "source": "проверь пэ  энзэ!",
+    "gold": "проверь ПНЗ!",
+    "prediction": "проверь ПНЗ!",
+    "tags": [
+      "whole",
+      "whitespace"
+    ],
+    "manual_prediction": "проверь пэ  энзэ!",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "span-009",
+    "source": "Проверь\tпэ\tэнзэ!",
+    "gold": "Проверь\tПНЗ!",
+    "prediction": "Проверь\tПНЗ!",
+    "tags": [
+      "whole",
+      "tab"
+    ],
+    "manual_prediction": "Проверь\tпэ\tэнзэ!",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "span-010",
+    "source": "сигнал пэ энзэ модуля",
+    "gold": "сигнал ПНЗ модуля",
+    "prediction": "сигнал ПНЗ модуля",
+    "tags": [
+      "whole",
+      "nbsp"
+    ],
+    "manual_prediction": "сигнал пэ энзэ модуля",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "span-011",
+    "source": "пэ энзэ модуля",
+    "gold": "ПНЗ модуля",
+    "prediction": "ПНЗ модуля",
+    "tags": [
+      "whole",
+      "right_context"
+    ],
+    "manual_prediction": "пэ энзэ модуля",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "span-015",
+    "source": "проверь пэ энзэ на стенде",
+    "gold": "проверь БНЗ на стенде",
+    "prediction": "проверь ПНЗ на стенде",
+    "tags": [
+      "whole",
+      "conflicting_context"
+    ],
+    "manual_prediction": "проверь пэ энзэ на стенде",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "span-016",
+    "source": "проверь пэ энзэ и сигнал пэнзэ",
+    "gold": "проверь ПНЗ и сигнал ПНЗ",
+    "prediction": "проверь ПНЗ и сигнал ПНЗ",
+    "tags": [
+      "whole",
+      "two_terms"
+    ],
+    "manual_prediction": "проверь пэ энзэ и сигнал ПНЗ",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "span-018",
+    "source": "сигнал пэ энзэ модуля и датчик пэ энзэ",
+    "gold": "сигнал ПНЗ модуля и датчик БНЗ",
+    "prediction": "сигнал ПНЗ модуля и датчик пэ энзэ",
+    "tags": [
+      "whole",
+      "routing",
+      "two_terms"
+    ],
+    "manual_prediction": "сигнал пэ энзэ модуля и датчик пэ энзэ",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "span-019",
+    "source": "обозначь символом пэ энзэ модуля",
+    "gold": "обозначь символом пэ ПНЗ модуля",
+    "prediction": "обозначь символом ПНЗ модуля",
+    "tags": [
+      "fragment",
+      "correct_letter_neighbor"
+    ],
+    "manual_prediction": "обозначь символом пэ энзэ модуля",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "span-020",
+    "source": "обозначь буквой пэ энзэ модуля",
+    "gold": "обозначь буквой пэ ПНЗ модуля",
+    "prediction": "обозначь буквой ПНЗ модуля",
+    "tags": [
+      "fragment",
+      "correct_letter_neighbor"
+    ],
+    "manual_prediction": "обозначь буквой пэ энзэ модуля",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "span-021",
+    "source": "проверь символ пэ энзэ модуля",
+    "gold": "проверь символ пэ ПНЗ модуля",
+    "prediction": "проверь символ ПНЗ модуля",
+    "tags": [
+      "fragment",
+      "correct_letter_neighbor"
+    ],
+    "manual_prediction": "проверь символ пэ энзэ модуля",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  }
+]

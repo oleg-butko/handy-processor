@@ -1,0 +1,89 @@
+[
+  {
+    "id": "terms-008",
+    "source": "проверь бэнзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бэнзэ",
+    "tags": [
+      "novel",
+      "pnz"
+    ]
+  },
+  {
+    "id": "terms-009",
+    "source": "проверь пэнзе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пэнзе",
+    "tags": [
+      "novel",
+      "pnz"
+    ]
+  },
+  {
+    "id": "terms-010",
+    "source": "проверь бэнзе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бэнзе",
+    "tags": [
+      "novel",
+      "pnz",
+      "distance_two"
+    ]
+  },
+  {
+    "id": "terms-011",
+    "source": "проверь пэ эн зе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пэ эн зе",
+    "tags": [
+      "novel",
+      "pnz",
+      "multiword"
+    ]
+  },
+  {
+    "id": "terms-013",
+    "source": "проверь бэн зэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бэн зэ",
+    "tags": [
+      "novel",
+      "pnz",
+      "multiword"
+    ]
+  },
+  {
+    "id": "terms-017",
+    "source": "пэнзэ",
+    "gold": "ПНЗ",
+    "prediction": "пэнзэ",
+    "tags": [
+      "listed",
+      "pnz",
+      "no_context"
+    ]
+  },
+  {
+    "id": "terms-018",
+    "source": "пензе",
+    "gold": "ПНЗ",
+    "prediction": "пензе",
+    "tags": [
+      "listed",
+      "pnz",
+      "no_context",
+      "real_word"
+    ]
+  },
+  {
+    "id": "terms-020",
+    "source": "сигнал бензэ в лаборатории",
+    "gold": "сигнал БНЗ в лаборатории",
+    "prediction": "сигнал бензэ в лаборатории",
+    "tags": [
+      "listed",
+      "lab_intent",
+      "conflict"
+    ]
+  }
+]

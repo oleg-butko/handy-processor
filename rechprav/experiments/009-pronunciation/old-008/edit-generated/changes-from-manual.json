@@ -1,0 +1,47 @@
+[
+  {
+    "id": "span-007",
+    "source": "проверь п энзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь п энзэ",
+    "tags": [
+      "whole",
+      "single_letter"
+    ],
+    "manual_prediction": "проверь ПНЗ",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "span-015",
+    "source": "проверь пэ энзэ на стенде",
+    "gold": "проверь БНЗ на стенде",
+    "prediction": "проверь ПНЗ на стенде",
+    "tags": [
+      "whole",
+      "conflicting_context"
+    ],
+    "manual_prediction": "проверь пэ энзэ на стенде",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "span-027",
+    "source": "проверь энзэ модуля",
+    "gold": "проверь ПНЗ модуля",
+    "prediction": "проверь энзэ модуля",
+    "tags": [
+      "fragment",
+      "standalone"
+    ],
+    "manual_prediction": "проверь ПНЗ модуля",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  }
+]

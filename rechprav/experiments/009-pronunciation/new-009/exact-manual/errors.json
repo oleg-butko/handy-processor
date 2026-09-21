@@ -1,0 +1,200 @@
+[
+  {
+    "id": "pronunciation-002",
+    "source": "проверь пэ энзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пэ энзэ",
+    "tags": [
+      "pnz",
+      "two_tokens"
+    ]
+  },
+  {
+    "id": "pronunciation-003",
+    "source": "проверь пээн зэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пээн зэ",
+    "tags": [
+      "pnz",
+      "two_tokens"
+    ]
+  },
+  {
+    "id": "pronunciation-008",
+    "source": "датчик бэ эн зэ",
+    "gold": "датчик БНЗ",
+    "prediction": "датчик бэ эн зэ",
+    "tags": [
+      "bnz",
+      "three_tokens"
+    ]
+  },
+  {
+    "id": "pronunciation-009",
+    "source": "бээнзэ на стенде",
+    "gold": "БНЗ на стенде",
+    "prediction": "бээнзэ на стенде",
+    "tags": [
+      "bnz",
+      "joined"
+    ]
+  },
+  {
+    "id": "pronunciation-010",
+    "source": "проверь бэ эн зэ на стенде",
+    "gold": "проверь БНЗ на стенде",
+    "prediction": "проверь бэ эн зэ на стенде",
+    "tags": [
+      "bnz",
+      "conflicting_context"
+    ]
+  },
+  {
+    "id": "pronunciation-011",
+    "source": "контроллер пэ эль ка",
+    "gold": "контроллер ПЛК",
+    "prediction": "контроллер пэ эль ка",
+    "tags": [
+      "plk",
+      "three_tokens"
+    ]
+  },
+  {
+    "id": "pronunciation-012",
+    "source": "проверь пээлька",
+    "gold": "проверь ПЛК",
+    "prediction": "проверь пээлька",
+    "tags": [
+      "plk",
+      "joined"
+    ]
+  },
+  {
+    "id": "pronunciation-013",
+    "source": "проверь пэ элка",
+    "gold": "проверь ПЛК",
+    "prediction": "проверь пэ элка",
+    "tags": [
+      "plk",
+      "alternate_name"
+    ]
+  },
+  {
+    "id": "pronunciation-015",
+    "source": "проверь а цэ пэ",
+    "gold": "проверь АЦП",
+    "prediction": "проверь а цэ пэ",
+    "tags": [
+      "acp",
+      "three_tokens",
+      "known_syllable"
+    ]
+  },
+  {
+    "id": "pronunciation-017",
+    "source": "а цэпэ модуля",
+    "gold": "АЦП модуля",
+    "prediction": "а цэпэ модуля",
+    "tags": [
+      "acp",
+      "two_tokens"
+    ]
+  },
+  {
+    "id": "pronunciation-018",
+    "source": "проверь о зэ у",
+    "gold": "проверь ОЗУ",
+    "prediction": "проверь о зэ у",
+    "tags": [
+      "ozu",
+      "three_tokens",
+      "known_syllable"
+    ]
+  },
+  {
+    "id": "pronunciation-019",
+    "source": "проверь озэу",
+    "gold": "проверь ОЗУ",
+    "prediction": "проверь озэу",
+    "tags": [
+      "ozu",
+      "joined"
+    ]
+  },
+  {
+    "id": "pronunciation-020",
+    "source": "проверь озу",
+    "gold": "проверь ОЗУ",
+    "prediction": "проверь озу",
+    "tags": [
+      "ozu",
+      "canonical_lowercase"
+    ]
+  },
+  {
+    "id": "pronunciation-021",
+    "source": "проверь эс ка эс",
+    "gold": "проверь СКС",
+    "prediction": "проверь эс ка эс",
+    "tags": [
+      "sks",
+      "three_tokens"
+    ]
+  },
+  {
+    "id": "pronunciation-023",
+    "source": "проверь эска эс",
+    "gold": "проверь СКС",
+    "prediction": "проверь эска эс",
+    "tags": [
+      "sks",
+      "two_tokens"
+    ]
+  },
+  {
+    "id": "pronunciation-024",
+    "source": "проверь пэ\tэль  ка!",
+    "gold": "проверь ПЛК!",
+    "prediction": "проверь пэ\tэль  ка!",
+    "tags": [
+      "plk",
+      "whitespace"
+    ]
+  },
+  {
+    "id": "pronunciation-025",
+    "source": "контроллер пээлька и ацэпэ модуля",
+    "gold": "контроллер ПЛК и АЦП модуля",
+    "prediction": "контроллер пээлька и АЦП модуля",
+    "tags": [
+      "multiple_terms"
+    ]
+  },
+  {
+    "id": "pronunciation-026",
+    "source": "включи пээлька",
+    "gold": "включи ПЛК",
+    "prediction": "включи пээлька",
+    "tags": [
+      "missing_context"
+    ]
+  },
+  {
+    "id": "pronunciation-033",
+    "source": "обозначь буквой а цэпэ модуля",
+    "gold": "обозначь буквой а АЦП модуля",
+    "prediction": "обозначь буквой а цэпэ модуля",
+    "tags": [
+      "correct_letter_neighbor"
+    ]
+  },
+  {
+    "id": "pronunciation-034",
+    "source": "обозначь символом пэ энзэ модуля",
+    "gold": "обозначь символом пэ ПНЗ модуля",
+    "prediction": "обозначь символом пэ энзэ модуля",
+    "tags": [
+      "correct_letter_neighbor"
+    ]
+  }
+]

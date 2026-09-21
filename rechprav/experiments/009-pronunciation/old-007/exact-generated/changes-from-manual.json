@@ -1,0 +1,145 @@
+[
+  {
+    "id": "context-001",
+    "source": "проверь пензе модуля",
+    "gold": "проверь ПНЗ модуля",
+    "prediction": "проверь пензе модуля",
+    "tags": [
+      "positive",
+      "known",
+      "pnz"
+    ],
+    "manual_prediction": "проверь ПНЗ модуля",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "context-002",
+    "source": "сигнал пэнзэ модуля пропал",
+    "gold": "сигнал ПНЗ модуля пропал",
+    "prediction": "сигнал пэнзэ модуля пропал",
+    "tags": [
+      "positive",
+      "pnz"
+    ],
+    "manual_prediction": "сигнал ПНЗ модуля пропал",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "context-007",
+    "source": "сигнал пэ энзэ пропал",
+    "gold": "сигнал ПНЗ пропал",
+    "prediction": "сигнал ПНЗ пропал",
+    "tags": [
+      "positive",
+      "multiword",
+      "novel"
+    ],
+    "manual_prediction": "сигнал пэ энзэ пропал",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "context-014",
+    "source": "проверь исправный пензе модуля",
+    "gold": "проверь исправный ПНЗ модуля",
+    "prediction": "проверь исправный пензе модуля",
+    "tags": [
+      "positive",
+      "known",
+      "right_context"
+    ],
+    "manual_prediction": "проверь исправный ПНЗ модуля",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "context-016",
+    "source": "включи пэнзэ на стенде",
+    "gold": "включи БНЗ на стенде",
+    "prediction": "включи пэнзэ на стенде",
+    "tags": [
+      "positive",
+      "lab",
+      "routing"
+    ],
+    "manual_prediction": "включи БНЗ на стенде",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "context-017",
+    "source": "наблюдай бензэ в лаборатории",
+    "gold": "наблюдай БНЗ в лаборатории",
+    "prediction": "наблюдай бензэ в лаборатории",
+    "tags": [
+      "positive",
+      "lab",
+      "routing"
+    ],
+    "manual_prediction": "наблюдай БНЗ в лаборатории",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "context-021",
+    "source": "проверь пэнзэ модуля и датчик бензэ",
+    "gold": "проверь ПНЗ модуля и датчик БНЗ",
+    "prediction": "проверь пэнзэ модуля и датчик бензэ",
+    "tags": [
+      "positive",
+      "routing",
+      "multiple_spans"
+    ],
+    "manual_prediction": "проверь ПНЗ модуля и датчик БНЗ",
+    "gained_tp": 0,
+    "lost_tp": 2,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "context-033",
+    "source": "проверь пензе. на карте",
+    "gold": "проверь пензе. на карте",
+    "prediction": "проверь пензе. на карте",
+    "tags": [
+      "negative",
+      "punctuation",
+      "exclusion_boundary"
+    ],
+    "manual_prediction": "проверь ПНЗ. на карте",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "context-034",
+    "source": "проверь пензе\nна карте",
+    "gold": "проверь пензе\nна карте",
+    "prediction": "проверь пензе\nна карте",
+    "tags": [
+      "negative",
+      "newline",
+      "exclusion_boundary"
+    ],
+    "manual_prediction": "проверь ПНЗ\nна карте",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  }
+]

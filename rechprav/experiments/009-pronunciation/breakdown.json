@@ -1,0 +1,4478 @@
+{
+  "old-006/exact-manual": {
+    "listed": {
+      "records": 16,
+      "tp": 14,
+      "fp": 0,
+      "fn": 3
+    },
+    "pnz": {
+      "records": 17,
+      "tp": 10,
+      "fp": 0,
+      "fn": 8
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 5,
+      "fp": 0,
+      "fn": 3
+    },
+    "novel": {
+      "records": 6,
+      "tp": 0,
+      "fp": 0,
+      "fn": 6
+    },
+    "distance_two": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "slot": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_cue": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "conflict": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiple_spans": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "city": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "titlecase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "path": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "filename": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "similar_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "control": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-006/exact-generated": {
+    "listed": {
+      "records": 16,
+      "tp": 8,
+      "fp": 0,
+      "fn": 9
+    },
+    "pnz": {
+      "records": 17,
+      "tp": 6,
+      "fp": 0,
+      "fn": 12
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 2,
+      "fp": 0,
+      "fn": 2
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 5,
+      "fp": 0,
+      "fn": 3
+    },
+    "novel": {
+      "records": 6,
+      "tp": 1,
+      "fp": 0,
+      "fn": 5
+    },
+    "distance_two": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "slot": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_cue": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "conflict": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "multiple_spans": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "city": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "titlecase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "path": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "filename": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "similar_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "control": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-006/exact-union": {
+    "listed": {
+      "records": 16,
+      "tp": 14,
+      "fp": 0,
+      "fn": 3
+    },
+    "pnz": {
+      "records": 17,
+      "tp": 11,
+      "fp": 0,
+      "fn": 7
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 6,
+      "fp": 0,
+      "fn": 2
+    },
+    "novel": {
+      "records": 6,
+      "tp": 1,
+      "fp": 0,
+      "fn": 5
+    },
+    "distance_two": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "slot": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_cue": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "conflict": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiple_spans": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "city": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "titlecase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "path": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "filename": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "similar_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "control": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-006/edit-manual": {
+    "listed": {
+      "records": 16,
+      "tp": 14,
+      "fp": 0,
+      "fn": 3
+    },
+    "pnz": {
+      "records": 17,
+      "tp": 14,
+      "fp": 0,
+      "fn": 4
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 7,
+      "fp": 0,
+      "fn": 1
+    },
+    "novel": {
+      "records": 6,
+      "tp": 4,
+      "fp": 0,
+      "fn": 2
+    },
+    "distance_two": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "slot": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_cue": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "conflict": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiple_spans": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "city": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "titlecase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "path": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "filename": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "similar_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "control": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-006/edit-generated": {
+    "listed": {
+      "records": 16,
+      "tp": 10,
+      "fp": 0,
+      "fn": 7
+    },
+    "pnz": {
+      "records": 17,
+      "tp": 8,
+      "fp": 0,
+      "fn": 10
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 2,
+      "fp": 0,
+      "fn": 2
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 6,
+      "fp": 0,
+      "fn": 2
+    },
+    "novel": {
+      "records": 6,
+      "tp": 1,
+      "fp": 0,
+      "fn": 5
+    },
+    "distance_two": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "slot": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_cue": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "conflict": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "multiple_spans": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "city": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "titlecase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "path": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "filename": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "similar_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "control": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-006/edit-union": {
+    "listed": {
+      "records": 16,
+      "tp": 14,
+      "fp": 0,
+      "fn": 3
+    },
+    "pnz": {
+      "records": 17,
+      "tp": 14,
+      "fp": 0,
+      "fn": 4
+    },
+    "real_word": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 7,
+      "tp": 7,
+      "fp": 0,
+      "fn": 1
+    },
+    "novel": {
+      "records": 6,
+      "tp": 4,
+      "fp": 0,
+      "fn": 2
+    },
+    "distance_two": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "slot": {
+      "records": 7,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_cue": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "lab_intent": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "conflict": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiple_spans": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "city": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "titlecase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "misleading_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "path": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "filename": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "similar_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "control": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-007/exact-manual": {
+    "positive": {
+      "records": 21,
+      "tp": 11,
+      "fp": 0,
+      "fn": 11
+    },
+    "known": {
+      "records": 6,
+      "tp": 5,
+      "fp": 0,
+      "fn": 1
+    },
+    "pnz": {
+      "records": 4,
+      "tp": 2,
+      "fp": 0,
+      "fn": 2
+    },
+    "novel": {
+      "records": 5,
+      "tp": 0,
+      "fp": 0,
+      "fn": 5
+    },
+    "known_fuzzy": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 1,
+      "fp": 0,
+      "fn": 2
+    },
+    "missing_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "slot": {
+      "records": 8,
+      "tp": 3,
+      "fp": 2,
+      "fn": 1
+    },
+    "pattern_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "right_context": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "lab": {
+      "records": 5,
+      "tp": 2,
+      "fp": 0,
+      "fn": 3
+    },
+    "routing": {
+      "records": 4,
+      "tp": 4,
+      "fp": 0,
+      "fn": 1
+    },
+    "conflicting_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "multiple_spans": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "city": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "exclusion": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "distant_cue": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "unmodeled_semantics": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "exclusion_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "oov_exclusion": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "exclusion_boundary": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "positive_boundary": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "partial_pronunciation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-007/exact-generated": {
+    "positive": {
+      "records": 21,
+      "tp": 5,
+      "fp": 0,
+      "fn": 17
+    },
+    "known": {
+      "records": 6,
+      "tp": 3,
+      "fp": 0,
+      "fn": 3
+    },
+    "pnz": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 4
+    },
+    "novel": {
+      "records": 5,
+      "tp": 1,
+      "fp": 0,
+      "fn": 4
+    },
+    "known_fuzzy": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "missing_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "slot": {
+      "records": 8,
+      "tp": 3,
+      "fp": 2,
+      "fn": 1
+    },
+    "pattern_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "right_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "missing_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "lab": {
+      "records": 5,
+      "tp": 0,
+      "fp": 0,
+      "fn": 5
+    },
+    "routing": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 5
+    },
+    "conflicting_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "multiple_spans": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "city": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "exclusion": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "distant_cue": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "unmodeled_semantics": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "exclusion_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "oov_exclusion": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "exclusion_boundary": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive_boundary": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "partial_pronunciation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-007/exact-union": {
+    "positive": {
+      "records": 21,
+      "tp": 12,
+      "fp": 0,
+      "fn": 10
+    },
+    "known": {
+      "records": 6,
+      "tp": 5,
+      "fp": 0,
+      "fn": 1
+    },
+    "pnz": {
+      "records": 4,
+      "tp": 2,
+      "fp": 0,
+      "fn": 2
+    },
+    "novel": {
+      "records": 5,
+      "tp": 1,
+      "fp": 0,
+      "fn": 4
+    },
+    "known_fuzzy": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "missing_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "slot": {
+      "records": 8,
+      "tp": 3,
+      "fp": 2,
+      "fn": 1
+    },
+    "pattern_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "right_context": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "lab": {
+      "records": 5,
+      "tp": 2,
+      "fp": 0,
+      "fn": 3
+    },
+    "routing": {
+      "records": 4,
+      "tp": 4,
+      "fp": 0,
+      "fn": 1
+    },
+    "conflicting_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "multiple_spans": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "city": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "exclusion": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "distant_cue": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "unmodeled_semantics": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "exclusion_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "oov_exclusion": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "exclusion_boundary": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "positive_boundary": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "partial_pronunciation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-007/edit-manual": {
+    "positive": {
+      "records": 21,
+      "tp": 14,
+      "fp": 0,
+      "fn": 8
+    },
+    "known": {
+      "records": 6,
+      "tp": 5,
+      "fp": 0,
+      "fn": 1
+    },
+    "pnz": {
+      "records": 4,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "novel": {
+      "records": 5,
+      "tp": 3,
+      "fp": 0,
+      "fn": 2
+    },
+    "known_fuzzy": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "missing_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "slot": {
+      "records": 8,
+      "tp": 3,
+      "fp": 2,
+      "fn": 1
+    },
+    "pattern_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "right_context": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "lab": {
+      "records": 5,
+      "tp": 3,
+      "fp": 0,
+      "fn": 2
+    },
+    "routing": {
+      "records": 4,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    },
+    "conflicting_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "multiple_spans": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "city": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "exclusion": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "distant_cue": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "unmodeled_semantics": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "exclusion_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "oov_exclusion": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "exclusion_boundary": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "positive_boundary": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "partial_pronunciation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-007/edit-generated": {
+    "positive": {
+      "records": 21,
+      "tp": 8,
+      "fp": 1,
+      "fn": 14
+    },
+    "known": {
+      "records": 6,
+      "tp": 3,
+      "fp": 0,
+      "fn": 3
+    },
+    "pnz": {
+      "records": 4,
+      "tp": 1,
+      "fp": 0,
+      "fn": 3
+    },
+    "novel": {
+      "records": 5,
+      "tp": 2,
+      "fp": 0,
+      "fn": 3
+    },
+    "known_fuzzy": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "missing_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "slot": {
+      "records": 8,
+      "tp": 3,
+      "fp": 2,
+      "fn": 1
+    },
+    "pattern_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "right_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "missing_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "lab": {
+      "records": 5,
+      "tp": 1,
+      "fp": 1,
+      "fn": 4
+    },
+    "routing": {
+      "records": 4,
+      "tp": 2,
+      "fp": 0,
+      "fn": 3
+    },
+    "conflicting_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 2
+    },
+    "multiple_spans": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "city": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "exclusion": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "distant_cue": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "unmodeled_semantics": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "exclusion_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "oov_exclusion": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "exclusion_boundary": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive_boundary": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "partial_pronunciation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-007/edit-union": {
+    "positive": {
+      "records": 21,
+      "tp": 14,
+      "fp": 0,
+      "fn": 8
+    },
+    "known": {
+      "records": 6,
+      "tp": 5,
+      "fp": 0,
+      "fn": 1
+    },
+    "pnz": {
+      "records": 4,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "novel": {
+      "records": 5,
+      "tp": 3,
+      "fp": 0,
+      "fn": 2
+    },
+    "known_fuzzy": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "missing_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "slot": {
+      "records": 8,
+      "tp": 3,
+      "fp": 2,
+      "fn": 1
+    },
+    "pattern_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "right_context": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "lab": {
+      "records": 5,
+      "tp": 3,
+      "fp": 0,
+      "fn": 2
+    },
+    "routing": {
+      "records": 4,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    },
+    "conflicting_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "multiple_spans": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 21,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "city": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "exclusion": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "distant_cue": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "unmodeled_semantics": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "exclusion_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "oov_exclusion": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "exclusion_boundary": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "positive_boundary": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "partial_pronunciation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-008/exact-manual": {
+    "whole": {
+      "records": 20,
+      "tp": 4,
+      "fp": 0,
+      "fn": 17
+    },
+    "known_syllable": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "both_contexts": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "three_tokens": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_tokens": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_fuzzy": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "alternate_split": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "single_letter": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "tab": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "nbsp": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "right_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "missing_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "lab": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 3
+    },
+    "conflicting_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "two_terms": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 3
+    },
+    "adjacent_terms": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "routing": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "fragment": {
+      "records": 9,
+      "tp": 3,
+      "fp": 0,
+      "fn": 6
+    },
+    "correct_letter_neighbor": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 4
+    },
+    "correct_word_neighbor": {
+      "records": 4,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "exclusion": {
+      "records": 3,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "standalone": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "crlf": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_letter": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_letters": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-008/exact-generated": {
+    "whole": {
+      "records": 20,
+      "tp": 10,
+      "fp": 1,
+      "fn": 11
+    },
+    "known_syllable": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "both_contexts": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "three_tokens": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_tokens": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_fuzzy": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "alternate_split": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "single_letter": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "tab": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "nbsp": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "right_context": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "missing_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "lab": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 3
+    },
+    "conflicting_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 1
+    },
+    "two_terms": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 2
+    },
+    "adjacent_terms": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "routing": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "fragment": {
+      "records": 9,
+      "tp": 0,
+      "fp": 3,
+      "fn": 9
+    },
+    "correct_letter_neighbor": {
+      "records": 4,
+      "tp": 0,
+      "fp": 3,
+      "fn": 4
+    },
+    "correct_word_neighbor": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 4
+    },
+    "exclusion": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "standalone": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "crlf": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_letter": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_letters": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-008/exact-union": {
+    "whole": {
+      "records": 20,
+      "tp": 13,
+      "fp": 1,
+      "fn": 8
+    },
+    "known_syllable": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "both_contexts": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "three_tokens": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_tokens": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_fuzzy": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "alternate_split": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "single_letter": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "tab": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "nbsp": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "right_context": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "missing_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "lab": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 3
+    },
+    "conflicting_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 1
+    },
+    "two_terms": {
+      "records": 2,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "adjacent_terms": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "routing": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "fragment": {
+      "records": 9,
+      "tp": 3,
+      "fp": 3,
+      "fn": 6
+    },
+    "correct_letter_neighbor": {
+      "records": 4,
+      "tp": 0,
+      "fp": 3,
+      "fn": 4
+    },
+    "correct_word_neighbor": {
+      "records": 4,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "exclusion": {
+      "records": 3,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "standalone": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "crlf": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_letter": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_letters": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-008/edit-manual": {
+    "whole": {
+      "records": 20,
+      "tp": 17,
+      "fp": 0,
+      "fn": 4
+    },
+    "known_syllable": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "both_contexts": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "three_tokens": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_tokens": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_fuzzy": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "alternate_split": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "single_letter": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "tab": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "nbsp": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "right_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "lab": {
+      "records": 3,
+      "tp": 2,
+      "fp": 1,
+      "fn": 1
+    },
+    "conflicting_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "two_terms": {
+      "records": 2,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "adjacent_terms": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "routing": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "fragment": {
+      "records": 9,
+      "tp": 4,
+      "fp": 4,
+      "fn": 5
+    },
+    "correct_letter_neighbor": {
+      "records": 4,
+      "tp": 0,
+      "fp": 4,
+      "fn": 4
+    },
+    "correct_word_neighbor": {
+      "records": 4,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "exclusion": {
+      "records": 3,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "standalone": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "crlf": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_letter": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_letters": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-008/edit-generated": {
+    "whole": {
+      "records": 20,
+      "tp": 16,
+      "fp": 1,
+      "fn": 5
+    },
+    "known_syllable": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "both_contexts": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "three_tokens": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_tokens": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_fuzzy": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "alternate_split": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "single_letter": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "tab": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "nbsp": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "right_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "lab": {
+      "records": 3,
+      "tp": 2,
+      "fp": 1,
+      "fn": 1
+    },
+    "conflicting_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 1
+    },
+    "two_terms": {
+      "records": 2,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "adjacent_terms": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "routing": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "fragment": {
+      "records": 9,
+      "tp": 3,
+      "fp": 4,
+      "fn": 6
+    },
+    "correct_letter_neighbor": {
+      "records": 4,
+      "tp": 0,
+      "fp": 4,
+      "fn": 4
+    },
+    "correct_word_neighbor": {
+      "records": 4,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "exclusion": {
+      "records": 3,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "standalone": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "crlf": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_letter": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_letters": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "old-008/edit-union": {
+    "whole": {
+      "records": 20,
+      "tp": 17,
+      "fp": 0,
+      "fn": 4
+    },
+    "known_syllable": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "both_contexts": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "three_tokens": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_tokens": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_fuzzy": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "alternate_split": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "single_letter": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "tab": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "nbsp": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "right_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "lab": {
+      "records": 3,
+      "tp": 2,
+      "fp": 1,
+      "fn": 1
+    },
+    "conflicting_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "two_terms": {
+      "records": 2,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "adjacent_terms": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "routing": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "fragment": {
+      "records": 9,
+      "tp": 4,
+      "fp": 4,
+      "fn": 5
+    },
+    "correct_letter_neighbor": {
+      "records": 4,
+      "tp": 0,
+      "fp": 4,
+      "fn": 4
+    },
+    "correct_word_neighbor": {
+      "records": 4,
+      "tp": 3,
+      "fp": 0,
+      "fn": 1
+    },
+    "exclusion": {
+      "records": 3,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "standalone": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "crlf": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_letter": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_letters": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-009/exact-manual": {
+    "pnz": {
+      "records": 7,
+      "tp": 5,
+      "fp": 0,
+      "fn": 2
+    },
+    "joined": {
+      "records": 6,
+      "tp": 3,
+      "fp": 0,
+      "fn": 3
+    },
+    "two_tokens": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 4
+    },
+    "three_tokens": {
+      "records": 6,
+      "tp": 1,
+      "fp": 0,
+      "fn": 5
+    },
+    "observed_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "bnz": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 3
+    },
+    "conflicting_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "plk": {
+      "records": 5,
+      "tp": 1,
+      "fp": 0,
+      "fn": 4
+    },
+    "alternate_name": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "manual_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "acp": {
+      "records": 3,
+      "tp": 1,
+      "fp": 0,
+      "fn": 2
+    },
+    "known_syllable": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "ozu": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 3
+    },
+    "canonical_lowercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "sks": {
+      "records": 3,
+      "tp": 1,
+      "fp": 0,
+      "fn": 2
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiple_terms": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "missing_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 12,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "city": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "slot": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_fuzzy": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_letter_neighbor": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-009/exact-generated": {
+    "pnz": {
+      "records": 7,
+      "tp": 4,
+      "fp": 0,
+      "fn": 3
+    },
+    "joined": {
+      "records": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_tokens": {
+      "records": 4,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "three_tokens": {
+      "records": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "observed_alias": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "known_alias": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "bnz": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "conflicting_context": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "plk": {
+      "records": 5,
+      "tp": 4,
+      "fp": 0,
+      "fn": 1
+    },
+    "alternate_name": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "manual_alias": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "acp": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_syllable": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "ozu": {
+      "records": 3,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "canonical_lowercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "sks": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_terms": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 12,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "city": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "slot": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_fuzzy": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_letter_neighbor": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 2
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-009/exact-union": {
+    "pnz": {
+      "records": 7,
+      "tp": 7,
+      "fp": 0,
+      "fn": 0
+    },
+    "joined": {
+      "records": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_tokens": {
+      "records": 4,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0
+    },
+    "three_tokens": {
+      "records": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "observed_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "bnz": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "conflicting_context": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "plk": {
+      "records": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    },
+    "alternate_name": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "manual_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "acp": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_syllable": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "ozu": {
+      "records": 3,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "canonical_lowercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "sks": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_terms": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 12,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "city": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "slot": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_fuzzy": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_letter_neighbor": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 2
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-009/edit-manual": {
+    "pnz": {
+      "records": 7,
+      "tp": 7,
+      "fp": 0,
+      "fn": 0
+    },
+    "joined": {
+      "records": 6,
+      "tp": 5,
+      "fp": 0,
+      "fn": 1
+    },
+    "two_tokens": {
+      "records": 4,
+      "tp": 3,
+      "fp": 1,
+      "fn": 1
+    },
+    "three_tokens": {
+      "records": 6,
+      "tp": 3,
+      "fp": 0,
+      "fn": 3
+    },
+    "observed_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "bnz": {
+      "records": 3,
+      "tp": 1,
+      "fp": 0,
+      "fn": 2
+    },
+    "conflicting_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "plk": {
+      "records": 5,
+      "tp": 2,
+      "fp": 0,
+      "fn": 3
+    },
+    "alternate_name": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "manual_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "acp": {
+      "records": 3,
+      "tp": 2,
+      "fp": 1,
+      "fn": 1
+    },
+    "known_syllable": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "ozu": {
+      "records": 3,
+      "tp": 1,
+      "fp": 0,
+      "fn": 2
+    },
+    "canonical_lowercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "sks": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiple_terms": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "missing_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 12,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "city": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "slot": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_fuzzy": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_letter_neighbor": {
+      "records": 2,
+      "tp": 1,
+      "fp": 1,
+      "fn": 1
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-009/edit-generated": {
+    "pnz": {
+      "records": 7,
+      "tp": 5,
+      "fp": 0,
+      "fn": 2
+    },
+    "joined": {
+      "records": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_tokens": {
+      "records": 4,
+      "tp": 3,
+      "fp": 1,
+      "fn": 1
+    },
+    "three_tokens": {
+      "records": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "observed_alias": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_alias": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "bnz": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "conflicting_context": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "plk": {
+      "records": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    },
+    "alternate_name": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "manual_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "acp": {
+      "records": 3,
+      "tp": 2,
+      "fp": 1,
+      "fn": 1
+    },
+    "known_syllable": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "ozu": {
+      "records": 3,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "canonical_lowercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "sks": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_terms": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 12,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "city": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "slot": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_fuzzy": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_letter_neighbor": {
+      "records": 2,
+      "tp": 1,
+      "fp": 1,
+      "fn": 1
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-009/edit-union": {
+    "pnz": {
+      "records": 7,
+      "tp": 7,
+      "fp": 0,
+      "fn": 0
+    },
+    "joined": {
+      "records": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_tokens": {
+      "records": 4,
+      "tp": 3,
+      "fp": 1,
+      "fn": 1
+    },
+    "three_tokens": {
+      "records": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0
+    },
+    "observed_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "bnz": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "conflicting_context": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "plk": {
+      "records": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    },
+    "alternate_name": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "manual_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "acp": {
+      "records": 3,
+      "tp": 2,
+      "fp": 1,
+      "fn": 1
+    },
+    "known_syllable": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "ozu": {
+      "records": 3,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "canonical_lowercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "sks": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_terms": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "missing_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 12,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "city": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "slot": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_fuzzy": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_letter_neighbor": {
+      "records": 2,
+      "tp": 1,
+      "fp": 1,
+      "fn": 1
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  }
+}

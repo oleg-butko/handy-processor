@@ -1,0 +1,113 @@
+[
+  {
+    "id": "span-005",
+    "source": "проверь пэ эн зе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пэ эн зе",
+    "tags": [
+      "whole",
+      "known_fuzzy"
+    ]
+  },
+  {
+    "id": "span-007",
+    "source": "проверь п энзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь п энзэ",
+    "tags": [
+      "whole",
+      "single_letter"
+    ]
+  },
+  {
+    "id": "span-012",
+    "source": "включи пэ энзэ",
+    "gold": "включи ПНЗ",
+    "prediction": "включи пэ энзэ",
+    "tags": [
+      "whole",
+      "missing_context"
+    ]
+  },
+  {
+    "id": "span-015",
+    "source": "проверь пэ энзэ на стенде",
+    "gold": "проверь БНЗ на стенде",
+    "prediction": "проверь ПНЗ на стенде",
+    "tags": [
+      "whole",
+      "conflicting_context"
+    ]
+  },
+  {
+    "id": "span-017",
+    "source": "проверь пэнзэ пэ энзэ",
+    "gold": "проверь ПНЗ ПНЗ",
+    "prediction": "проверь ПНЗ пэ энзэ",
+    "tags": [
+      "whole",
+      "adjacent_terms"
+    ]
+  },
+  {
+    "id": "span-019",
+    "source": "обозначь символом пэ энзэ модуля",
+    "gold": "обозначь символом пэ ПНЗ модуля",
+    "prediction": "обозначь символом ПНЗ модуля",
+    "tags": [
+      "fragment",
+      "correct_letter_neighbor"
+    ]
+  },
+  {
+    "id": "span-020",
+    "source": "обозначь буквой пэ энзэ модуля",
+    "gold": "обозначь буквой пэ ПНЗ модуля",
+    "prediction": "обозначь буквой ПНЗ модуля",
+    "tags": [
+      "fragment",
+      "correct_letter_neighbor"
+    ]
+  },
+  {
+    "id": "span-021",
+    "source": "проверь символ пэ энзэ модуля",
+    "gold": "проверь символ пэ ПНЗ модуля",
+    "prediction": "проверь символ ПНЗ модуля",
+    "tags": [
+      "fragment",
+      "correct_letter_neighbor"
+    ]
+  },
+  {
+    "id": "span-022",
+    "source": "обозначь символом пэ энзэ на стенде",
+    "gold": "обозначь символом пэ БНЗ на стенде",
+    "prediction": "обозначь символом БНЗ на стенде",
+    "tags": [
+      "fragment",
+      "correct_letter_neighbor",
+      "lab"
+    ]
+  },
+  {
+    "id": "span-023",
+    "source": "проверь я пэнзэ",
+    "gold": "проверь я ПНЗ",
+    "prediction": "проверь я пэнзэ",
+    "tags": [
+      "fragment",
+      "correct_word_neighbor"
+    ]
+  },
+  {
+    "id": "span-027",
+    "source": "проверь энзэ модуля",
+    "gold": "проверь ПНЗ модуля",
+    "prediction": "проверь энзэ модуля",
+    "tags": [
+      "fragment",
+      "standalone"
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "span-007",
+    "source": "проверь п энзэ",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь ПНЗ",
+    "tags": [
+      "whole",
+      "single_letter"
+    ],
+    "shortest_prediction": "проверь п ПНЗ",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  }
+]

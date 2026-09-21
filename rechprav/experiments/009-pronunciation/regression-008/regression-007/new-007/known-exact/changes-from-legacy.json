@@ -1,0 +1,49 @@
+[
+  {
+    "id": "context-004",
+    "source": "проверь пение модуля",
+    "gold": "проверь ПНЗ модуля",
+    "prediction": "проверь пение модуля",
+    "tags": [
+      "positive",
+      "known_fuzzy",
+      "pnz"
+    ],
+    "legacy_prediction": "проверь ПНЗ модуля",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "context-005",
+    "source": "сигнал пэ эн зе пропал",
+    "gold": "сигнал ПНЗ пропал",
+    "prediction": "сигнал пэ эн зе пропал",
+    "tags": [
+      "positive",
+      "multiword",
+      "novel"
+    ],
+    "legacy_prediction": "сигнал ПНЗ пропал",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "context-028",
+    "source": "проверь пение хора",
+    "gold": "проверь пение хора",
+    "prediction": "проверь пение хора",
+    "tags": [
+      "negative",
+      "known_fuzzy"
+    ],
+    "legacy_prediction": "проверь ПНЗ хора",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  }
+]
