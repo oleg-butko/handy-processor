@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "event_id": "illustrative-001",
+  "origin": "synthetic illustration from user idea, not observed editor event",
+  "confirmed_asr_correction": true,
+  "before": "сняли свод",
+  "after": "сняли слот",
+  "source_span": {
+    "byte_start": 11,
+    "byte_end": 19,
+    "text": "свод"
+  },
+  "replacement": "слот",
+  "left_context": [
+    "сняли"
+  ],
+  "right_context": [],
+  "target_set": "technical",
+  "status": "illustrative_only",
+  "retracted_by": null
+}
