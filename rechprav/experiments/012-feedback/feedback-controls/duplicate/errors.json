@@ -1,0 +1,75 @@
+[
+  {
+    "id": "feedback-005",
+    "source": "освободили свод памяти",
+    "gold": "освободили слот памяти",
+    "prediction": "освободили свод памяти",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "feedback-006",
+    "source": "проверь свод памяти",
+    "gold": "проверь слот памяти",
+    "prediction": "проверь свод памяти",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "feedback-011",
+    "source": "сняли свод старой арки",
+    "gold": "сняли свод старой арки",
+    "prediction": "сняли слот старой арки",
+    "tags": [
+      "negative",
+      "matching_context",
+      "architecture"
+    ]
+  },
+  {
+    "id": "feedback-012",
+    "source": "рабочие сняли свод здания",
+    "gold": "рабочие сняли свод здания",
+    "prediction": "рабочие сняли слот здания",
+    "tags": [
+      "negative",
+      "matching_context",
+      "architecture"
+    ]
+  },
+  {
+    "id": "feedback-013",
+    "source": "обсуждаем выражение сняли свод",
+    "gold": "обсуждаем выражение сняли свод",
+    "prediction": "обсуждаем выражение сняли слот",
+    "tags": [
+      "negative",
+      "literal",
+      "matching_context"
+    ]
+  },
+  {
+    "id": "feedback-024",
+    "source": "сняли своты",
+    "gold": "сняли слот",
+    "prediction": "сняли своты",
+    "tags": [
+      "positive",
+      "no_candidate"
+    ]
+  },
+  {
+    "id": "feedback-025",
+    "source": "нет звон",
+    "gold": "недозвон",
+    "prediction": "нет звон",
+    "tags": [
+      "positive",
+      "multiword"
+    ]
+  }
+]

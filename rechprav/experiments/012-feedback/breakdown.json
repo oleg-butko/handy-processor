@@ -1,0 +1,1744 @@
+{
+  "feedback-controls/baseline": {
+    "positive": {
+      "records": 11,
+      "tp": 0,
+      "fp": 0,
+      "fn": 11
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "feedback-controls/target-only": {
+    "positive": {
+      "records": 11,
+      "tp": 0,
+      "fp": 0,
+      "fn": 11
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "feedback-controls/source-only": {
+    "positive": {
+      "records": 11,
+      "tp": 10,
+      "fp": 1,
+      "fn": 1
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 12,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 1,
+      "fp": 1,
+      "fn": 0
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 1,
+      "fp": 1,
+      "fn": 0
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "feedback-controls/joint-global": {
+    "positive": {
+      "records": 11,
+      "tp": 10,
+      "fp": 1,
+      "fn": 1
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 12,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 1,
+      "fp": 1,
+      "fn": 0
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 1,
+      "fp": 1,
+      "fn": 0
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "feedback-controls/joint-context": {
+    "positive": {
+      "records": 11,
+      "tp": 7,
+      "fp": 0,
+      "fn": 4
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "feedback-controls/hybrid": {
+    "positive": {
+      "records": 11,
+      "tp": 7,
+      "fp": 0,
+      "fn": 4
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "feedback-controls/source-off": {
+    "positive": {
+      "records": 11,
+      "tp": 0,
+      "fp": 0,
+      "fn": 11
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "feedback-controls/target-off": {
+    "positive": {
+      "records": 11,
+      "tp": 0,
+      "fp": 0,
+      "fn": 11
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "feedback-controls/duplicate": {
+    "positive": {
+      "records": 11,
+      "tp": 7,
+      "fp": 0,
+      "fn": 4
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "feedback-controls/conflict": {
+    "positive": {
+      "records": 11,
+      "tp": 0,
+      "fp": 0,
+      "fn": 11
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "feedback-controls/preferred": {
+    "positive": {
+      "records": 11,
+      "tp": 10,
+      "fp": 1,
+      "fn": 1
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 12,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 1,
+      "fp": 1,
+      "fn": 0
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 1,
+      "fp": 1,
+      "fn": 0
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "feedback-controls/pair-context": {
+    "positive": {
+      "records": 11,
+      "tp": 7,
+      "fp": 0,
+      "fn": 4
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "feedback-controls/strict-known": {
+    "positive": {
+      "records": 11,
+      "tp": 0,
+      "fp": 0,
+      "fn": 11
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "other_alias": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "unseen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 19,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_target": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_candidate": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "multiword": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "unrelated": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  }
+}

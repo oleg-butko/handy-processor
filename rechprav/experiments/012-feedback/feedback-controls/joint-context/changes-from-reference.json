@@ -1,0 +1,212 @@
+[
+  {
+    "id": "feedback-005",
+    "source": "освободили свод памяти",
+    "gold": "освободили слот памяти",
+    "prediction": "освободили свод памяти",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "освободили слот памяти",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-006",
+    "source": "проверь свод памяти",
+    "gold": "проверь слот памяти",
+    "prediction": "проверь свод памяти",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "проверь слот памяти",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-007",
+    "source": "свод правил",
+    "gold": "свод правил",
+    "prediction": "свод правил",
+    "tags": [
+      "negative",
+      "known_word"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "слот правил",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-008",
+    "source": "ввод данных",
+    "gold": "ввод данных",
+    "prediction": "ввод данных",
+    "tags": [
+      "negative",
+      "known_word"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "слот данных",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-009",
+    "source": "свод законов",
+    "gold": "свод законов",
+    "prediction": "свод законов",
+    "tags": [
+      "negative",
+      "known_word"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "слот законов",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-010",
+    "source": "каменный свод",
+    "gold": "каменный свод",
+    "prediction": "каменный свод",
+    "tags": [
+      "negative",
+      "architecture"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "каменный слот",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-014",
+    "source": "слово свод написано правильно",
+    "gold": "слово свод написано правильно",
+    "prediction": "слово свод написано правильно",
+    "tags": [
+      "negative",
+      "literal"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "слово слот написано правильно",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-015",
+    "source": "сняли\nсвод",
+    "gold": "сняли\nсвод",
+    "prediction": "сняли\nсвод",
+    "tags": [
+      "negative",
+      "newline"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "сняли\nслот",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-016",
+    "source": "сняли, свод",
+    "gold": "сняли, свод",
+    "prediction": "сняли, свод",
+    "tags": [
+      "negative",
+      "punctuation"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "сняли, слот",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-023",
+    "source": "слот и свод правил",
+    "gold": "слот и свод правил",
+    "prediction": "слот и свод правил",
+    "tags": [
+      "negative",
+      "correct_target",
+      "known_word"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "слот и слот правил",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-025",
+    "source": "нет звон",
+    "gold": "недозвон",
+    "prediction": "нет звон",
+    "tags": [
+      "positive",
+      "multiword"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "недозвон",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-026",
+    "source": "обсуждаем выражение нет звон",
+    "gold": "обсуждаем выражение нет звон",
+    "prediction": "обсуждаем выражение нет звон",
+    "tags": [
+      "negative",
+      "multiword",
+      "literal"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "обсуждаем выражение недозвон",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-029",
+    "source": "сняли ввод и свод правил",
+    "gold": "сняли слот и свод правил",
+    "prediction": "сняли слот и свод правил",
+    "tags": [
+      "positive",
+      "mixed"
+    ],
+    "reference_profile": "joint-global",
+    "reference_prediction": "сняли слот и слот правил",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  }
+]

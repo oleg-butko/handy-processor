@@ -1,0 +1,836 @@
+{
+  "arch": "x86_64",
+  "arguments": [
+    "terms-benchmark",
+    "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+    "--config",
+    "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-no-genitive.toml",
+    "--output-dir",
+    "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/family-no-genitive"
+  ],
+  "command": "terms-benchmark",
+  "compiled_source_sha256": {
+    "Cargo.lock": "49e76a2b718996ad97b854789d7fae9e92bd96474786d3e5aba5177115be3a8a",
+    "Cargo.toml": "1432569012b432b4a6dedb173c05427f0511f70a6a56404b7faf82ab7eef98c8",
+    "src/corpus.rs": "12352c22a15e6c333973f25941d4ba9a60480081ae88cd9e364959b0945ef64b",
+    "src/corrector.rs": "55425938f874df15b5a5cfdabbe5592fe59de36b382d42489a6247a5e98e84ba",
+    "src/dictionary.rs": "4ea29fac723d5efb6190a75052d1a1766fd0e3291cd6ff01469ca3adf1cd354f",
+    "src/frequency.rs": "49219ecde3f7145ffc4c9f037399f28a945fcec9e138c9fb3b04a58223872ec1",
+    "src/hashing.rs": "e3b49fb102dc7c117dfaf9f29c77386b6d22dbc8a186f2d06cde47febaa50699",
+    "src/lib.rs": "185b18d3af8fb1572047d7d1e03a12c35c097459fdd2e34674873a2d6aae16bd",
+    "src/main.rs": "372dcda742ad853e2aa7f70c73f1bf8b315c0654e859fd7f17c4c05551cf951d",
+    "src/metrics.rs": "dff335346a23ee561ed6a292cfbe8f2623d7f8b77042ececcf97d97ee42ada92",
+    "src/packed.rs": "0513c3725b89655a1451f5551a4f447e9597ffb413e1649baa4a861483c96c0a",
+    "src/packed_frequency.rs": "34e03d6c6242562a22a65238e5af7915cf1380ccf88dafda5e048358bfa23180",
+    "src/pronunciation.rs": "a6b6f0412db5c8166239897a9bbe00c62e2aa12a86de096577d699d808f880a2",
+    "src/review.rs": "87ed6e193750e6e5c69cf328e6906d95bc6fe1e2460fad2c9609561d39c1cc33",
+    "src/term_context.rs": "752ffb4c6724172f934f6c5dac02b41602ffc610fffa6bdfccefc4ac47e79298",
+    "src/term_metrics.rs": "0026068037466d1ff32abddc1da9e5f40125e1d9ee3662bff09c60cbec354b51",
+    "src/terms.rs": "a7ff015a674669eb1ade3e80031e4b9c45d9f815ea377aa0f715780a62f2c8bb",
+    "src/text.rs": "61ba9d0b877da98c5ecc885d04700892a8dd58c330b3ec68b3b6b67218625794"
+  },
+  "evaluation_wall_ns": 669631,
+  "input_file": "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+  "input_sha256": "605df9d6a3b98130ade9c49bdacba8429655bcffa02d770446a4e37b57951fe2",
+  "note": "experimental run; check dataset provenance before interpreting quality",
+  "os": "linux",
+  "rechprav_version": "0.1.0",
+  "resources": {
+    "active_terms": 49,
+    "baseline_resources": {
+      "config": {
+        "dictionary": "../artifacts/opencorpora-wordfreq/dictionary.rpt",
+        "domain": "../data/fixtures/baseline/domain.txt",
+        "frequency": {
+          "path": "../artifacts/opencorpora-wordfreq/frequency.rpf",
+          "scoring": {
+            "edit_penalty": 1.0,
+            "keep_bias": 1.0,
+            "log_cap": 6.0,
+            "min_keep_margin": 0.5,
+            "min_runner_up_margin": 0.5,
+            "weight": 1.0
+          }
+        },
+        "ignore": "../data/fixtures/baseline/ignore.txt",
+        "policy": {
+          "max_candidates": 20,
+          "max_distance": 1,
+          "max_search_nodes": 100000,
+          "max_word_length": 64,
+          "min_word_length": 5,
+          "protect_titlecase": true,
+          "protect_uppercase": true
+        },
+        "strict_yo": false
+      },
+      "decision_policy": "OOV + complete distance-1 search + bounded frequency prior + KEEP and runner-up margins; uncalibrated",
+      "dictionary_storage": {
+        "bytes": 123007276,
+        "format": "packed_trie_v1",
+        "source_sha256": "e2e67e5b5e226473b668dff5029fb5af0aa55a3f6e0165da012363be39766a11"
+      },
+      "dictionary_words": 3017654,
+      "domain_words": 6,
+      "frequency_storage": {
+        "bytes": 22530646,
+        "format": "packed_frequency_v1",
+        "source_sha256": "b825e97778693cb7e3b5cb26d058ba6bde6cf4971471dc0a6f2d1a1e889c160f"
+      },
+      "frequency_words": 661389,
+      "ignore_words": 1,
+      "resource_sha256": {
+        "config": "b336c1acf684a26b723d121e3be69a4d3590795ed844a665afcd7c8f4f50dab0",
+        "dictionary": "2435885729fd1f05fe109ddf8564df2f6fb33b6731361fce97f853b9e5263619",
+        "domain": "3f55176416db3a592d5a7d7d42ea06e319dafc298ec599b6e7ccf23504db9bb9",
+        "frequency": "689c7de7c863d3aedb9a3fa1094a95bc1af6575a20e2900d87c29563fe953695",
+        "ignore": "73d9e75692a12aaee7e5cabde686fa0b77c93b3a6347c7ba6661193eb212a2fe"
+      },
+      "trie_nodes": 4562033
+    },
+    "config_sha256": "64a6dedb23a200af0914804001297190a013c8d2ba8c1e7047b33152742c6199",
+    "effective_config": {
+      "baseline_config": "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml",
+      "enabled": true,
+      "policy": {
+        "boost": 0.0,
+        "context_bonus": 2.0,
+        "context_window": 4,
+        "edit_penalty": 1.0,
+        "known_penalty": 1.0,
+        "max_comparisons": 20000,
+        "max_distance": 1,
+        "max_tokens": 3,
+        "min_margin": 1.0,
+        "min_score": 3.0,
+        "mode": "edit"
+      },
+      "sets": [
+        {
+          "boost": 0.0,
+          "enabled": true,
+          "id": "russian_phrases",
+          "terms": [
+            {
+              "aliases": [
+                "долго ждать"
+              ],
+              "boost": 1.0,
+              "canonical": "долго ждать",
+              "context": [],
+              "enabled": true,
+              "id": "p001",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "проколол колесо"
+              ],
+              "boost": 1.0,
+              "canonical": "проколол колесо",
+              "context": [],
+              "enabled": true,
+              "id": "p002",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "добрый день"
+              ],
+              "boost": 1.0,
+              "canonical": "добрый день",
+              "context": [],
+              "enabled": true,
+              "id": "p003",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "до свидания"
+              ],
+              "boost": 1.0,
+              "canonical": "до свидания",
+              "context": [],
+              "enabled": true,
+              "id": "p004",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "спокойной ночи"
+              ],
+              "boost": 1.0,
+              "canonical": "спокойной ночи",
+              "context": [],
+              "enabled": true,
+              "id": "p005",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "большое спасибо"
+              ],
+              "boost": 1.0,
+              "canonical": "большое спасибо",
+              "context": [],
+              "enabled": true,
+              "id": "p006",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "доброе утро"
+              ],
+              "boost": 1.0,
+              "canonical": "доброе утро",
+              "context": [],
+              "enabled": true,
+              "id": "p007",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "в добрый путь"
+              ],
+              "boost": 1.0,
+              "canonical": "в добрый путь",
+              "context": [],
+              "enabled": true,
+              "id": "p008",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "сломал ногу"
+              ],
+              "boost": 1.0,
+              "canonical": "сломал ногу",
+              "context": [],
+              "enabled": true,
+              "id": "p009",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "открыл дверь"
+              ],
+              "boost": 1.0,
+              "canonical": "открыл дверь",
+              "context": [],
+              "enabled": true,
+              "id": "p010",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "закрыл окно"
+              ],
+              "boost": 1.0,
+              "canonical": "закрыл окно",
+              "context": [],
+              "enabled": true,
+              "id": "p011",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "крепкий чай"
+              ],
+              "boost": 1.0,
+              "canonical": "крепкий чай",
+              "context": [],
+              "enabled": true,
+              "id": "p012",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "чёрный кофе"
+              ],
+              "boost": 1.0,
+              "canonical": "чёрный кофе",
+              "context": [],
+              "enabled": true,
+              "id": "p013",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "свежий хлеб"
+              ],
+              "boost": 1.0,
+              "canonical": "свежий хлеб",
+              "context": [],
+              "enabled": true,
+              "id": "p014",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "чистая вода"
+              ],
+              "boost": 1.0,
+              "canonical": "чистая вода",
+              "context": [],
+              "enabled": true,
+              "id": "p015",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "тёплая одежда"
+              ],
+              "boost": 1.0,
+              "canonical": "тёплая одежда",
+              "context": [],
+              "enabled": true,
+              "id": "p016",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "быстро бежать"
+              ],
+              "boost": 1.0,
+              "canonical": "быстро бежать",
+              "context": [],
+              "enabled": true,
+              "id": "p017",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "тихо говорить"
+              ],
+              "boost": 1.0,
+              "canonical": "тихо говорить",
+              "context": [],
+              "enabled": true,
+              "id": "p018",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "громко смеяться"
+              ],
+              "boost": 1.0,
+              "canonical": "громко смеяться",
+              "context": [],
+              "enabled": true,
+              "id": "p019",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "читать книгу"
+              ],
+              "boost": 1.0,
+              "canonical": "читать книгу",
+              "context": [],
+              "enabled": true,
+              "id": "p020",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "писать письмо"
+              ],
+              "boost": 1.0,
+              "canonical": "писать письмо",
+              "context": [],
+              "enabled": true,
+              "id": "p021",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "пить воду"
+              ],
+              "boost": 1.0,
+              "canonical": "пить воду",
+              "context": [],
+              "enabled": true,
+              "id": "p022",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "идти домой"
+              ],
+              "boost": 1.0,
+              "canonical": "идти домой",
+              "context": [],
+              "enabled": true,
+              "id": "p023",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "ждать ответа"
+              ],
+              "boost": 1.0,
+              "canonical": "ждать ответа",
+              "context": [],
+              "enabled": true,
+              "id": "p024",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "принять решение"
+              ],
+              "boost": 1.0,
+              "canonical": "принять решение",
+              "context": [],
+              "enabled": true,
+              "id": "p025",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "оказать помощь"
+              ],
+              "boost": 1.0,
+              "canonical": "оказать помощь",
+              "context": [],
+              "enabled": true,
+              "id": "p026",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "задать вопрос"
+              ],
+              "boost": 1.0,
+              "canonical": "задать вопрос",
+              "context": [],
+              "enabled": true,
+              "id": "p027",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "дать ответ"
+              ],
+              "boost": 1.0,
+              "canonical": "дать ответ",
+              "context": [],
+              "enabled": true,
+              "id": "p028",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "обратить внимание"
+              ],
+              "boost": 1.0,
+              "canonical": "обратить внимание",
+              "context": [],
+              "enabled": true,
+              "id": "p029",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "иметь значение"
+              ],
+              "boost": 1.0,
+              "canonical": "иметь значение",
+              "context": [],
+              "enabled": true,
+              "id": "p030",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "играть роль"
+              ],
+              "boost": 1.0,
+              "canonical": "играть роль",
+              "context": [],
+              "enabled": true,
+              "id": "p031",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "прийти вовремя"
+              ],
+              "boost": 1.0,
+              "canonical": "прийти вовремя",
+              "context": [],
+              "enabled": true,
+              "id": "p032",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "потерять ключи"
+              ],
+              "boost": 1.0,
+              "canonical": "потерять ключи",
+              "context": [],
+              "enabled": true,
+              "id": "p033",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "найти дорогу"
+              ],
+              "boost": 1.0,
+              "canonical": "найти дорогу",
+              "context": [],
+              "enabled": true,
+              "id": "p034",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "сесть за стол"
+              ],
+              "boost": 1.0,
+              "canonical": "сесть за стол",
+              "context": [],
+              "enabled": true,
+              "id": "p035",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "выйти из дома"
+              ],
+              "boost": 1.0,
+              "canonical": "выйти из дома",
+              "context": [],
+              "enabled": true,
+              "id": "p036",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "пойти на работу"
+              ],
+              "boost": 1.0,
+              "canonical": "пойти на работу",
+              "context": [],
+              "enabled": true,
+              "id": "p037",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "на всякий случай"
+              ],
+              "boost": 1.0,
+              "canonical": "на всякий случай",
+              "context": [],
+              "enabled": true,
+              "id": "p038",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "в конце концов"
+              ],
+              "boost": 1.0,
+              "canonical": "в конце концов",
+              "context": [],
+              "enabled": true,
+              "id": "p039",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            },
+            {
+              "aliases": [
+                "друг друга"
+              ],
+              "boost": 1.0,
+              "canonical": "друг друга",
+              "context": [],
+              "enabled": true,
+              "id": "p040",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 1
+            }
+          ]
+        },
+        {
+          "boost": 0.0,
+          "enabled": true,
+          "id": "user",
+          "terms": [
+            {
+              "aliases": [
+                "клипборд",
+                "калиборд"
+              ],
+              "boost": 1.0,
+              "canonical": "клипборд",
+              "context": [],
+              "enabled": true,
+              "id": "clipboard",
+              "known_words": "always",
+              "max_known_distance": 0
+            },
+            {
+              "aliases": [
+                "локалхост",
+                "луколхоз"
+              ],
+              "boost": 1.0,
+              "canonical": "локалхост",
+              "context": [],
+              "enabled": true,
+              "id": "localhost",
+              "known_words": "always",
+              "max_known_distance": 0
+            },
+            {
+              "aliases": [
+                "недозвон",
+                "нет звон"
+              ],
+              "boost": 1.0,
+              "canonical": "недозвон",
+              "context": [],
+              "enabled": true,
+              "id": "noanswer",
+              "known_words": "always",
+              "max_known_distance": 0
+            },
+            {
+              "aliases": [
+                "слот",
+                "свуты"
+              ],
+              "boost": 1.0,
+              "canonical": "слот",
+              "context": [],
+              "enabled": true,
+              "forms": [
+                {
+                  "aliases": [
+                    "слоте",
+                    "свате"
+                  ],
+                  "canonical": "слоте",
+                  "context": [],
+                  "context_patterns": [
+                    "в {term}"
+                  ],
+                  "require_context": true
+                }
+              ],
+              "id": "slot",
+              "known_words": "always",
+              "max_known_distance": 0
+            },
+            {
+              "aliases": [
+                "пнз",
+                "пнзэ"
+              ],
+              "boost": 1.0,
+              "canonical": "пнз",
+              "context": [],
+              "enabled": true,
+              "id": "pnz",
+              "known_words": "always",
+              "max_known_distance": 0
+            },
+            {
+              "aliases": [
+                "недозвон до",
+                "недозвода"
+              ],
+              "boost": 1.0,
+              "canonical": "недозвон до",
+              "context": [],
+              "enabled": true,
+              "id": "noanswer-to",
+              "kind": "phrase",
+              "known_words": "always",
+              "max_known_distance": 0
+            },
+            {
+              "aliases": [
+                "таб"
+              ],
+              "boost": 1.0,
+              "canonical": "таб",
+              "context": [],
+              "enabled": true,
+              "forms": [
+                {
+                  "aliases": [
+                    "табы",
+                    "этабы"
+                  ],
+                  "canonical": "табы",
+                  "context": []
+                }
+              ],
+              "id": "tab",
+              "known_words": "always",
+              "max_known_distance": 0
+            }
+          ]
+        }
+      ]
+    },
+    "scoring": "heuristic preferences, not probabilities; term-only pass",
+    "term_families": [
+      {
+        "canonical": "слот",
+        "resolved_forms": [
+          {
+            "aliases": [
+              "слот",
+              "свуты"
+            ],
+            "boost": 1.0,
+            "canonical": "слот",
+            "context": [],
+            "enabled": true,
+            "id": "slot",
+            "known_words": "always",
+            "max_known_distance": 0
+          },
+          {
+            "aliases": [
+              "слоте",
+              "свате"
+            ],
+            "boost": 1.0,
+            "canonical": "слоте",
+            "context": [],
+            "context_patterns": [
+              "в {term}"
+            ],
+            "enabled": true,
+            "id": "slot",
+            "known_words": "always",
+            "max_known_distance": 0,
+            "require_context": true
+          }
+        ],
+        "set": "user",
+        "term": "slot"
+      },
+      {
+        "canonical": "таб",
+        "resolved_forms": [
+          {
+            "aliases": [
+              "таб"
+            ],
+            "boost": 1.0,
+            "canonical": "таб",
+            "context": [],
+            "enabled": true,
+            "id": "tab",
+            "known_words": "always",
+            "max_known_distance": 0
+          },
+          {
+            "aliases": [
+              "табы",
+              "этабы"
+            ],
+            "boost": 1.0,
+            "canonical": "табы",
+            "context": [],
+            "enabled": true,
+            "id": "tab",
+            "known_words": "always",
+            "max_known_distance": 0
+          }
+        ],
+        "set": "user",
+        "term": "tab"
+      }
+    ]
+  },
+  "schema_version": 2,
+  "timing_scope": "validation + term correction + metrics + diagnostics; excludes resource load; not isolated latency",
+  "unix_timestamp": 1790008364
+}

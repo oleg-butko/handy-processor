@@ -1,0 +1,112 @@
+[
+  {
+    "id": "feedback-001",
+    "source": "сняли свод",
+    "gold": "сняли слот",
+    "prediction": "сняли свод",
+    "tags": [
+      "positive",
+      "seen_event"
+    ]
+  },
+  {
+    "id": "feedback-002",
+    "source": "сняли свод памяти",
+    "gold": "сняли слот памяти",
+    "prediction": "сняли свод памяти",
+    "tags": [
+      "positive",
+      "seen_context"
+    ]
+  },
+  {
+    "id": "feedback-003",
+    "source": "мы сняли свод вчера",
+    "gold": "мы сняли слот вчера",
+    "prediction": "мы сняли свод вчера",
+    "tags": [
+      "positive",
+      "seen_context"
+    ]
+  },
+  {
+    "id": "feedback-004",
+    "source": "сняли ввод",
+    "gold": "сняли слот",
+    "prediction": "сняли ввод",
+    "tags": [
+      "positive",
+      "other_alias"
+    ]
+  },
+  {
+    "id": "feedback-005",
+    "source": "освободили свод памяти",
+    "gold": "освободили слот памяти",
+    "prediction": "освободили свод памяти",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "feedback-006",
+    "source": "проверь свод памяти",
+    "gold": "проверь слот памяти",
+    "prediction": "проверь свод памяти",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "feedback-017",
+    "source": "сняли\tсвод!",
+    "gold": "сняли\tслот!",
+    "prediction": "сняли\tсвод!",
+    "tags": [
+      "positive",
+      "whitespace"
+    ]
+  },
+  {
+    "id": "feedback-018",
+    "source": "Сняли свод",
+    "gold": "Сняли слот",
+    "prediction": "Сняли свод",
+    "tags": [
+      "positive",
+      "case"
+    ]
+  },
+  {
+    "id": "feedback-024",
+    "source": "сняли своты",
+    "gold": "сняли слот",
+    "prediction": "сняли своты",
+    "tags": [
+      "positive",
+      "no_candidate"
+    ]
+  },
+  {
+    "id": "feedback-025",
+    "source": "нет звон",
+    "gold": "недозвон",
+    "prediction": "нет звон",
+    "tags": [
+      "positive",
+      "multiword"
+    ]
+  },
+  {
+    "id": "feedback-029",
+    "source": "сняли ввод и свод правил",
+    "gold": "сняли слот и свод правил",
+    "prediction": "сняли ввод и свод правил",
+    "tags": [
+      "positive",
+      "mixed"
+    ]
+  }
+]

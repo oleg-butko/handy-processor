@@ -1,0 +1,147 @@
+[
+  {
+    "id": "feedback-007",
+    "source": "свод правил",
+    "gold": "свод правил",
+    "prediction": "слот правил",
+    "tags": [
+      "negative",
+      "known_word"
+    ]
+  },
+  {
+    "id": "feedback-008",
+    "source": "ввод данных",
+    "gold": "ввод данных",
+    "prediction": "слот данных",
+    "tags": [
+      "negative",
+      "known_word"
+    ]
+  },
+  {
+    "id": "feedback-009",
+    "source": "свод законов",
+    "gold": "свод законов",
+    "prediction": "слот законов",
+    "tags": [
+      "negative",
+      "known_word"
+    ]
+  },
+  {
+    "id": "feedback-010",
+    "source": "каменный свод",
+    "gold": "каменный свод",
+    "prediction": "каменный слот",
+    "tags": [
+      "negative",
+      "architecture"
+    ]
+  },
+  {
+    "id": "feedback-011",
+    "source": "сняли свод старой арки",
+    "gold": "сняли свод старой арки",
+    "prediction": "сняли слот старой арки",
+    "tags": [
+      "negative",
+      "matching_context",
+      "architecture"
+    ]
+  },
+  {
+    "id": "feedback-012",
+    "source": "рабочие сняли свод здания",
+    "gold": "рабочие сняли свод здания",
+    "prediction": "рабочие сняли слот здания",
+    "tags": [
+      "negative",
+      "matching_context",
+      "architecture"
+    ]
+  },
+  {
+    "id": "feedback-013",
+    "source": "обсуждаем выражение сняли свод",
+    "gold": "обсуждаем выражение сняли свод",
+    "prediction": "обсуждаем выражение сняли слот",
+    "tags": [
+      "negative",
+      "literal",
+      "matching_context"
+    ]
+  },
+  {
+    "id": "feedback-014",
+    "source": "слово свод написано правильно",
+    "gold": "слово свод написано правильно",
+    "prediction": "слово слот написано правильно",
+    "tags": [
+      "negative",
+      "literal"
+    ]
+  },
+  {
+    "id": "feedback-015",
+    "source": "сняли\nсвод",
+    "gold": "сняли\nсвод",
+    "prediction": "сняли\nслот",
+    "tags": [
+      "negative",
+      "newline"
+    ]
+  },
+  {
+    "id": "feedback-016",
+    "source": "сняли, свод",
+    "gold": "сняли, свод",
+    "prediction": "сняли, слот",
+    "tags": [
+      "negative",
+      "punctuation"
+    ]
+  },
+  {
+    "id": "feedback-023",
+    "source": "слот и свод правил",
+    "gold": "слот и свод правил",
+    "prediction": "слот и слот правил",
+    "tags": [
+      "negative",
+      "correct_target",
+      "known_word"
+    ]
+  },
+  {
+    "id": "feedback-024",
+    "source": "сняли своты",
+    "gold": "сняли слот",
+    "prediction": "сняли своты",
+    "tags": [
+      "positive",
+      "no_candidate"
+    ]
+  },
+  {
+    "id": "feedback-026",
+    "source": "обсуждаем выражение нет звон",
+    "gold": "обсуждаем выражение нет звон",
+    "prediction": "обсуждаем выражение недозвон",
+    "tags": [
+      "negative",
+      "multiword",
+      "literal"
+    ]
+  },
+  {
+    "id": "feedback-029",
+    "source": "сняли ввод и свод правил",
+    "gold": "сняли слот и свод правил",
+    "prediction": "сняли слот и слот правил",
+    "tags": [
+      "positive",
+      "mixed"
+    ]
+  }
+]

@@ -1,0 +1,359 @@
+[
+  {
+    "id": "feedback-001",
+    "source": "сняли свод",
+    "gold": "сняли слот",
+    "prediction": "сняли слот",
+    "tags": [
+      "positive",
+      "seen_event"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "сняли свод",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-002",
+    "source": "сняли свод памяти",
+    "gold": "сняли слот памяти",
+    "prediction": "сняли слот памяти",
+    "tags": [
+      "positive",
+      "seen_context"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "сняли свод памяти",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-003",
+    "source": "мы сняли свод вчера",
+    "gold": "мы сняли слот вчера",
+    "prediction": "мы сняли слот вчера",
+    "tags": [
+      "positive",
+      "seen_context"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "мы сняли свод вчера",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-004",
+    "source": "сняли ввод",
+    "gold": "сняли слот",
+    "prediction": "сняли слот",
+    "tags": [
+      "positive",
+      "other_alias"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "сняли ввод",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-005",
+    "source": "освободили свод памяти",
+    "gold": "освободили слот памяти",
+    "prediction": "освободили слот памяти",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "освободили свод памяти",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-006",
+    "source": "проверь свод памяти",
+    "gold": "проверь слот памяти",
+    "prediction": "проверь слот памяти",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "проверь свод памяти",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-007",
+    "source": "свод правил",
+    "gold": "свод правил",
+    "prediction": "слот правил",
+    "tags": [
+      "negative",
+      "known_word"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "свод правил",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "feedback-008",
+    "source": "ввод данных",
+    "gold": "ввод данных",
+    "prediction": "слот данных",
+    "tags": [
+      "negative",
+      "known_word"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "ввод данных",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "feedback-009",
+    "source": "свод законов",
+    "gold": "свод законов",
+    "prediction": "слот законов",
+    "tags": [
+      "negative",
+      "known_word"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "свод законов",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "feedback-010",
+    "source": "каменный свод",
+    "gold": "каменный свод",
+    "prediction": "каменный слот",
+    "tags": [
+      "negative",
+      "architecture"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "каменный свод",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "feedback-011",
+    "source": "сняли свод старой арки",
+    "gold": "сняли свод старой арки",
+    "prediction": "сняли слот старой арки",
+    "tags": [
+      "negative",
+      "matching_context",
+      "architecture"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "сняли свод старой арки",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "feedback-012",
+    "source": "рабочие сняли свод здания",
+    "gold": "рабочие сняли свод здания",
+    "prediction": "рабочие сняли слот здания",
+    "tags": [
+      "negative",
+      "matching_context",
+      "architecture"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "рабочие сняли свод здания",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "feedback-013",
+    "source": "обсуждаем выражение сняли свод",
+    "gold": "обсуждаем выражение сняли свод",
+    "prediction": "обсуждаем выражение сняли слот",
+    "tags": [
+      "negative",
+      "literal",
+      "matching_context"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "обсуждаем выражение сняли свод",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "feedback-014",
+    "source": "слово свод написано правильно",
+    "gold": "слово свод написано правильно",
+    "prediction": "слово слот написано правильно",
+    "tags": [
+      "negative",
+      "literal"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "слово свод написано правильно",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "feedback-015",
+    "source": "сняли\nсвод",
+    "gold": "сняли\nсвод",
+    "prediction": "сняли\nслот",
+    "tags": [
+      "negative",
+      "newline"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "сняли\nсвод",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "feedback-016",
+    "source": "сняли, свод",
+    "gold": "сняли, свод",
+    "prediction": "сняли, слот",
+    "tags": [
+      "negative",
+      "punctuation"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "сняли, свод",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "feedback-017",
+    "source": "сняли\tсвод!",
+    "gold": "сняли\tслот!",
+    "prediction": "сняли\tслот!",
+    "tags": [
+      "positive",
+      "whitespace"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "сняли\tсвод!",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-018",
+    "source": "Сняли свод",
+    "gold": "Сняли слот",
+    "prediction": "Сняли слот",
+    "tags": [
+      "positive",
+      "case"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "Сняли свод",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-023",
+    "source": "слот и свод правил",
+    "gold": "слот и свод правил",
+    "prediction": "слот и слот правил",
+    "tags": [
+      "negative",
+      "correct_target",
+      "known_word"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "слот и свод правил",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "feedback-025",
+    "source": "нет звон",
+    "gold": "недозвон",
+    "prediction": "недозвон",
+    "tags": [
+      "positive",
+      "multiword"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "нет звон",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "feedback-026",
+    "source": "обсуждаем выражение нет звон",
+    "gold": "обсуждаем выражение нет звон",
+    "prediction": "обсуждаем выражение недозвон",
+    "tags": [
+      "negative",
+      "multiword",
+      "literal"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "обсуждаем выражение нет звон",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "feedback-029",
+    "source": "сняли ввод и свод правил",
+    "gold": "сняли слот и свод правил",
+    "prediction": "сняли слот и слот правил",
+    "tags": [
+      "positive",
+      "mixed"
+    ],
+    "reference_profile": "conflict",
+    "reference_prediction": "сняли ввод и свод правил",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  }
+]
