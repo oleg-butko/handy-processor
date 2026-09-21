@@ -1,0 +1,73 @@
+[
+  {
+    "id": "family-008",
+    "source": "сваты приехали",
+    "gold": "сваты приехали",
+    "prediction": "свитч приехали",
+    "tags": [
+      "negative",
+      "known_word"
+    ]
+  },
+  {
+    "id": "family-009",
+    "source": "думаю о свате",
+    "gold": "думаю о свате",
+    "prediction": "думаю о свитч",
+    "tags": [
+      "negative",
+      "known_word"
+    ]
+  },
+  {
+    "id": "family-014",
+    "source": "слово этабы содержит ошибку",
+    "gold": "слово этабы содержит ошибку",
+    "prediction": "слово табы содержит ошибку",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  },
+  {
+    "id": "family-015",
+    "source": "слово свуты записано неверно",
+    "gold": "слово свуты записано неверно",
+    "prediction": "слово слот записано неверно",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  },
+  {
+    "id": "family-016",
+    "source": "обсуждаем выражение без снятия сваты",
+    "gold": "обсуждаем выражение без снятия сваты",
+    "prediction": "обсуждаем выражение без снятия слота",
+    "tags": [
+      "negative",
+      "literal_alias",
+      "matching_context"
+    ]
+  },
+  {
+    "id": "family-017",
+    "source": "без снятия\nсваты",
+    "gold": "без снятия\nсваты",
+    "prediction": "без снятия\nсвитч",
+    "tags": [
+      "negative",
+      "newline"
+    ]
+  },
+  {
+    "id": "family-018",
+    "source": "ошибка в, свате",
+    "gold": "ошибка в, свате",
+    "prediction": "ошибка в, свитч",
+    "tags": [
+      "negative",
+      "punctuation"
+    ]
+  }
+]

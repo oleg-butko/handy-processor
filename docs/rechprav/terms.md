@@ -353,3 +353,73 @@ python3 rechprav/scripts/run_term_experiment.py rechprav/experiments/my-term-run
 
 Протокол: [006-term-plan.md](006-term-plan.md).
 Результаты и ограничения: [отчёт 006](../../rechprav/experiments/006-terms/report.md).
+
+
+## Семейства явных форм (011)
+
+[Готовая конфигурация](../../rechprav/configs/terms-families.toml) объединяет
+`слот`, `слота`, `слоте`, а также `таб`, `табы`. Базовая canonical и до 16
+дополнительных forms имеют общий id, boost, enabled, known_words и
+max_known_distance. Это заданные пользователем формы, не автоматическое склонение.
+
+Фрагмент внутри существующего набора TOML:
+
+```toml
+[[sets.terms]]
+id = "slot"
+canonical = "слот"
+aliases = ["слот", "свуты"]
+enabled = true
+boost = 1.0
+known_words = "always"
+max_known_distance = 0
+
+[[sets.terms.forms]]
+canonical = "слота"
+aliases = ["слота", "сваты"]
+require_context = true
+context_patterns = ["без снятия {term}"]
+
+[[sets.terms.forms]]
+canonical = "слоте"
+aliases = ["слоте", "свате"]
+require_context = true
+context_patterns = ["в {term}"]
+```
+
+Вес базовой записи меняет score всех форм на одинаковую величину; итоговые
+оценки могут различаться из-за контекста/дистанции/известности исходного слова.
+Выключатель отключает всю семью. Для независимого веса формы нужна отдельная
+запись. При отсутствующем или пустом aliases у дополнительной формы используется
+её canonical. У базовой записи правила aliases остаются прежними.
+
+У формы можно переопределить context, context_patterns, context_exclusions и
+require_context. Отсутствующее поле наследуется; явное значение заменяет всё
+соответствующее поле. Пустой список очищает наследованный список, false снимает
+наследованный require_context. Проверка конфигурации применяется после наследования:
+нельзя требовать контекст без подсказок. Общие known gates продолжают действовать.
+
+Все активные canonical форм защищены от исправления, даже если их нет в основном
+словаре. Удаление формы или выключение семьи снимает эту защиту, если её не дают
+другие записи/domain/ignore; словарь продолжает влиять согласно known_words.
+Поэтому удаление формы может менять и исправление ошибок, и сохранность правильного
+ввода. Формы с одинаковым ключом (регистр и ё/е не различаются) внутри семьи
+запрещены. Формы нельзя совмещать с kind=phrase или pronunciation в этой версии.
+Глобальный лимит 4096 aliases включает все формы; отдельного бюджета семье нет.
+
+Debug кандидата содержит family_canonical; его canonical обозначает конкретный
+выход, term — общий id. Manifest resources.term_families сохраняет только активные
+семьи с разрешёнными после наследования настройками всех форм, включая базовую.
+active_terms считает развёрнутые записи, не число семейств. Старые конфигурации
+без forms не получают новых полей диагностики.
+
+CLI читает настройки при новом запуске; существующий экземпляр TermEngine не
+перезагружается сам. Автоматическая перезагрузка сервера ещё не реализована.
+
+```bash
+rechprav/target/release/rechprav terms-inspect 'без снятия сваты' --config rechprav/configs/terms-families.toml
+python3 rechprav/scripts/run_family_experiment.py rechprav/experiments/my-family-run
+```
+
+[Протокол 011](011-term-families-plan.md),
+[результаты](../../rechprav/experiments/011-term-families/report.md).

@@ -1,0 +1,195 @@
+[
+  {
+    "id": "family-004",
+    "source": "этабы",
+    "gold": "табы",
+    "prediction": "этабы",
+    "tags": [
+      "positive",
+      "plural"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "табы",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-005",
+    "source": "свуты",
+    "gold": "слот",
+    "prediction": "свуты",
+    "tags": [
+      "positive",
+      "base"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "слот",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-006",
+    "source": "без снятия сваты",
+    "gold": "без снятия слота",
+    "prediction": "без снятия сваты",
+    "tags": [
+      "positive",
+      "genitive"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "без снятия слота",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-007",
+    "source": "ошибка в свате",
+    "gold": "ошибка в слоте",
+    "prediction": "ошибка в свате",
+    "tags": [
+      "positive",
+      "new_form"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "ошибка в слоте",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-010",
+    "source": "свуты и без снятия сваты",
+    "gold": "слот и без снятия слота",
+    "prediction": "свуты и без снятия сваты",
+    "tags": [
+      "positive",
+      "multiple_forms"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "слот и без снятия слота",
+    "gained_tp": 0,
+    "lost_tp": 2,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-011",
+    "source": "этабы и ошибка в свате",
+    "gold": "табы и ошибка в слоте",
+    "prediction": "этабы и ошибка в свате",
+    "tags": [
+      "positive",
+      "two_families"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "табы и ошибка в слоте",
+    "gained_tp": 0,
+    "lost_tp": 2,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-012",
+    "source": "таб и этабы",
+    "gold": "таб и табы",
+    "prediction": "таб и этабы",
+    "tags": [
+      "positive",
+      "protect_base"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "таб и табы",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-013",
+    "source": "слота и свуты",
+    "gold": "слота и слот",
+    "prediction": "слота и свуты",
+    "tags": [
+      "positive",
+      "protect_form"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "слота и слот",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-014",
+    "source": "слово этабы содержит ошибку",
+    "gold": "слово этабы содержит ошибку",
+    "prediction": "слово этабы содержит ошибку",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "слово табы содержит ошибку",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "family-015",
+    "source": "слово свуты записано неверно",
+    "gold": "слово свуты записано неверно",
+    "prediction": "слово свуты записано неверно",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "слово слот записано неверно",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "family-016",
+    "source": "обсуждаем выражение без снятия сваты",
+    "gold": "обсуждаем выражение без снятия сваты",
+    "prediction": "обсуждаем выражение без снятия сваты",
+    "tags": [
+      "negative",
+      "literal_alias",
+      "matching_context"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "обсуждаем выражение без снятия слота",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "family-023",
+    "source": "без снятия\tсваты!",
+    "gold": "без снятия\tслота!",
+    "prediction": "без снятия\tсваты!",
+    "tags": [
+      "positive",
+      "whitespace"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "без снятия\tслота!",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  }
+]

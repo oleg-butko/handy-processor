@@ -1,0 +1,53 @@
+[
+  {
+    "id": "phrase-control-010",
+    "source": "проверь этабы",
+    "gold": "проверь табы",
+    "prediction": "проверь этабы",
+    "tags": [
+      "positive",
+      "term"
+    ]
+  },
+  {
+    "id": "phrase-control-012",
+    "source": "свуты памяти",
+    "gold": "слот памяти",
+    "prediction": "свуты памяти",
+    "tags": [
+      "positive",
+      "learned_alias"
+    ]
+  },
+  {
+    "id": "phrase-control-029",
+    "source": "сваты приехали к невесте",
+    "gold": "сваты приехали к невесте",
+    "prediction": "свитч приехали к невесте",
+    "tags": [
+      "negative",
+      "known_word",
+      "inflection_collision"
+    ]
+  },
+  {
+    "id": "phrase-control-033",
+    "source": "обсуждаем выражение нет звон",
+    "gold": "обсуждаем выражение нет звон",
+    "prediction": "обсуждаем выражение недозвон",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  },
+  {
+    "id": "phrase-control-035",
+    "source": "слово луколхоз смешное",
+    "gold": "слово луколхоз смешное",
+    "prediction": "слово локалхост смешное",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  }
+]

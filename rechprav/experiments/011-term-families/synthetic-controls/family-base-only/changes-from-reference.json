@@ -1,0 +1,66 @@
+[
+  {
+    "id": "phrase-control-010",
+    "source": "проверь этабы",
+    "gold": "проверь табы",
+    "prediction": "проверь этабы",
+    "tags": [
+      "positive",
+      "term"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "проверь табы",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "phrase-control-013",
+    "source": "без снятия сваты памяти",
+    "gold": "без снятия слота памяти",
+    "prediction": "без снятия сваты памяти",
+    "tags": [
+      "positive",
+      "inflection"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "без снятия слота памяти",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "phrase-control-025",
+    "source": "табы и таб",
+    "gold": "табы и таб",
+    "prediction": "таб и таб",
+    "tags": [
+      "negative",
+      "correct_term"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "табы и таб",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "phrase-control-034",
+    "source": "слово этабы содержит ошибку",
+    "gold": "слово этабы содержит ошибку",
+    "prediction": "слово этабы содержит ошибку",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "слово табы содержит ошибку",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  }
+]

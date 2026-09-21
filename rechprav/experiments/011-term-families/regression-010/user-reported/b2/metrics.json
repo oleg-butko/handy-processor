@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "engine": "levenshtein_frequency",
+  "dataset_kind": "real_asr",
+  "split": "dev",
+  "strict_yo": false,
+  "reviewed_records": 9,
+  "excluded_ambiguous_records": 0,
+  "source_tokens": 16,
+  "gold_tokens": 17,
+  "counts_1_to_1": {
+    "tp": 1,
+    "fp": 1,
+    "fn_": 6,
+    "correct_input": 5,
+    "harmed_correct_input": 0
+  },
+  "rates_1_to_1": {
+    "precision": 0.5,
+    "recall": 0.14285714285714285,
+    "f05": 0.3333333333333333,
+    "f1": 0.2222222222222222,
+    "false_correction_rate": 0.0
+  },
+  "unsupported_gold_spans": 3,
+  "proposals_in_unsupported_spans": 0,
+  "proposed_edits": 2,
+  "corrected_gold_spans": 1,
+  "gold_spans": 10,
+  "overall_precision": 0.5,
+  "all_gold_span_recall": 0.1,
+  "wer_errors_before": {
+    "substitutions": 10,
+    "deletions": 2,
+    "insertions": 1
+  },
+  "wer_errors_after": {
+    "substitutions": 9,
+    "deletions": 2,
+    "insertions": 1
+  },
+  "wer_before": 0.7647058823529411,
+  "wer_after": 0.7058823529411765,
+  "coverage": 0.125,
+  "candidate_error_positions": 7,
+  "candidate_hits_at_k": {
+    "1": 1,
+    "3": 1,
+    "5": 1,
+    "10": 1,
+    "20": 1
+  },
+  "candidate_recall_at_k": {
+    "1": 0.14285714285714285,
+    "3": 0.14285714285714285,
+    "5": 0.14285714285714285,
+    "10": 0.14285714285714285,
+    "20": 0.14285714285714285
+  },
+  "candidate_recall_scope": "emitted candidates after protection/OOV gates, denominator = all annotated 1-to-1 errors; not ungated generator recall",
+  "incomplete_searches": 0,
+  "quality_claim": "experimental result; no automatic production approval"
+}

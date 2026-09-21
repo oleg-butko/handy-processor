@@ -1,0 +1,82 @@
+[
+  {
+    "id": "family-005",
+    "source": "свуты",
+    "gold": "слот",
+    "prediction": "свуты",
+    "tags": [
+      "positive",
+      "base"
+    ]
+  },
+  {
+    "id": "family-006",
+    "source": "без снятия сваты",
+    "gold": "без снятия слота",
+    "prediction": "без снятия сваты",
+    "tags": [
+      "positive",
+      "genitive"
+    ]
+  },
+  {
+    "id": "family-007",
+    "source": "ошибка в свате",
+    "gold": "ошибка в слоте",
+    "prediction": "ошибка в свате",
+    "tags": [
+      "positive",
+      "new_form"
+    ]
+  },
+  {
+    "id": "family-010",
+    "source": "свуты и без снятия сваты",
+    "gold": "слот и без снятия слота",
+    "prediction": "свуты и без снятия сваты",
+    "tags": [
+      "positive",
+      "multiple_forms"
+    ]
+  },
+  {
+    "id": "family-011",
+    "source": "этабы и ошибка в свате",
+    "gold": "табы и ошибка в слоте",
+    "prediction": "табы и ошибка в свате",
+    "tags": [
+      "positive",
+      "two_families"
+    ]
+  },
+  {
+    "id": "family-013",
+    "source": "слота и свуты",
+    "gold": "слота и слот",
+    "prediction": "слота и свуты",
+    "tags": [
+      "positive",
+      "protect_form"
+    ]
+  },
+  {
+    "id": "family-014",
+    "source": "слово этабы содержит ошибку",
+    "gold": "слово этабы содержит ошибку",
+    "prediction": "слово табы содержит ошибку",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  },
+  {
+    "id": "family-023",
+    "source": "без снятия\tсваты!",
+    "gold": "без снятия\tслота!",
+    "prediction": "без снятия\tсваты!",
+    "tags": [
+      "positive",
+      "whitespace"
+    ]
+  }
+]

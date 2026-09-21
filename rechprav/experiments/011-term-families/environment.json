@@ -1,0 +1,23 @@
+{
+  "implementation_commit": "f0161559882b88c720924ff2453f7e76894be290",
+  "implementation_status": [],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "binary_sha256": "122af734e0295dc396d10f8390cc288182d6b377a01909ea8e02c9ae4528bf9a",
+  "runner_sha256": {
+    "run_family_experiment.py": "8cb38cac7c7510ce24aedfe9ac5bc4694062f861e0868e8a92547acea7a76134",
+    "family_profiles.py": "41a0ed4e435e3ea065b2b250bf1cb4538f216f40a57b5c0bf2af10383b1b3317",
+    "replay_experiment.py": "8479fee0e97e925e9f796320f1c1c8a8a0947193e65eb85e07b664ccea63913c",
+    "user_phrase_profiles.py": "a91995b610a34de74d7c13149a45ed041ecb1d4854e996fb5d18bded2b7ddb98",
+    "run_term_experiment.py": "b2cf65eb5fe48d0079e1d380ef47fc3594a49cb6e4bffd35996d6c675123fdbd"
+  },
+  "corpus_sha256": {
+    "user-reported": "605df9d6a3b98130ade9c49bdacba8429655bcffa02d770446a4e37b57951fe2",
+    "synthetic-controls": "3ec707ddbcadf779c525c3fa03e5618ccb347b8019210e0c75312e0799017f21",
+    "new-families": "c3e44b15eeef9707ee74c4aa92191fd6d6e978a86d0492c2a91c8d66bee9b597"
+  },
+  "source_fingerprint_reports": 142,
+  "resource_hashes_verified": 695,
+  "legacy_byte_equal_profiles": 106,
+  "flat_config_sha256": "03e0933c1b4680fa3e82e0f2c0e7bea1d8075ac02db92ef7c1b6e7313f83f7f2",
+  "scope": "explicit forms, not morphology; family/flat output equality; three separate dev corpora; 106 historical profiles exactly reproduced"
+}

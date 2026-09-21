@@ -1,0 +1,3674 @@
+{
+  "user-reported/old-flat": {
+    "user_reported": {
+      "records": 9,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "user-reported/flat-complete": {
+    "user_reported": {
+      "records": 9,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "user-reported/family": {
+    "user_reported": {
+      "records": 9,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "user-reported/family-low": {
+    "user_reported": {
+      "records": 9,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "user-reported/family-high": {
+    "user_reported": {
+      "records": 9,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "user-reported/family-slot-off": {
+    "user_reported": {
+      "records": 9,
+      "tp": 8,
+      "fp": 0,
+      "fn": 2
+    }
+  },
+  "user-reported/family-no-genitive": {
+    "user_reported": {
+      "records": 9,
+      "tp": 9,
+      "fp": 0,
+      "fn": 1
+    }
+  },
+  "user-reported/family-base-only": {
+    "user_reported": {
+      "records": 9,
+      "tp": 8,
+      "fp": 0,
+      "fn": 2
+    }
+  },
+  "user-reported/family-set-off": {
+    "user_reported": {
+      "records": 9,
+      "tp": 2,
+      "fp": 0,
+      "fn": 8
+    }
+  },
+  "user-reported/family-conflict": {
+    "user_reported": {
+      "records": 9,
+      "tp": 8,
+      "fp": 0,
+      "fn": 2
+    }
+  },
+  "user-reported/family-preferred": {
+    "user_reported": {
+      "records": 9,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "user-reported/family-no-form-context": {
+    "user_reported": {
+      "records": 9,
+      "tp": 10,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/old-flat": {
+    "positive": {
+      "records": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/flat-complete": {
+    "positive": {
+      "records": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/family": {
+    "positive": {
+      "records": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/family-low": {
+    "positive": {
+      "records": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/family-high": {
+    "positive": {
+      "records": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/family-slot-off": {
+    "positive": {
+      "records": 13,
+      "tp": 11,
+      "fp": 0,
+      "fn": 2
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/family-no-genitive": {
+    "positive": {
+      "records": 13,
+      "tp": 12,
+      "fp": 0,
+      "fn": 1
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/family-base-only": {
+    "positive": {
+      "records": 13,
+      "tp": 11,
+      "fp": 0,
+      "fn": 2
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/family-set-off": {
+    "positive": {
+      "records": 13,
+      "tp": 9,
+      "fp": 0,
+      "fn": 4
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/family-conflict": {
+    "positive": {
+      "records": 13,
+      "tp": 11,
+      "fp": 0,
+      "fn": 2
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/family-preferred": {
+    "positive": {
+      "records": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "synthetic-controls/family-no-form-context": {
+    "positive": {
+      "records": 13,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "medium_pack": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "large_pack": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "learned_alias": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 30,
+      "tp": 0,
+      "fp": 4,
+      "fn": 0
+    },
+    "correct_phrase": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary_words": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_term": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_term_phrase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "inflection_collision": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_inflection": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_words": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "file": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-families/old-flat": {
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 5,
+      "fn": 0
+    },
+    "base_and_plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_forms": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive": {
+      "records": 11,
+      "tp": 11,
+      "fp": 1,
+      "fn": 2
+    },
+    "plural": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "genitive": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_form": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_forms": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_families": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "protect_base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 1,
+      "fn": 0
+    },
+    "protect_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "split_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-families/flat-complete": {
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "base_and_plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_forms": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive": {
+      "records": 11,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "plural": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "genitive": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_forms": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_families": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "split_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-families/family": {
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "base_and_plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_forms": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive": {
+      "records": 11,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "plural": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "genitive": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_forms": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_families": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "split_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-families/family-low": {
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "base_and_plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_forms": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive": {
+      "records": 11,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "plural": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "genitive": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_forms": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_families": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "split_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-families/family-high": {
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "base_and_plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_forms": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive": {
+      "records": 11,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "plural": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "genitive": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_forms": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_families": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "split_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-families/family-slot-off": {
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "base_and_plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_forms": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive": {
+      "records": 11,
+      "tp": 5,
+      "fp": 0,
+      "fn": 8
+    },
+    "plural": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "base": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "genitive": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "new_form": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_forms": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "two_families": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "protect_base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_form": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "split_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    }
+  },
+  "new-families/family-no-genitive": {
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "base_and_plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_forms": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive": {
+      "records": 11,
+      "tp": 10,
+      "fp": 0,
+      "fn": 3
+    },
+    "plural": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "genitive": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "new_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_forms": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "two_families": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "split_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    }
+  },
+  "new-families/family-base-only": {
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "base_and_plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "correct_forms": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive": {
+      "records": 11,
+      "tp": 5,
+      "fp": 0,
+      "fn": 8
+    },
+    "plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "genitive": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "new_form": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_forms": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "two_families": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "protect_base": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "protect_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "split_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    }
+  },
+  "new-families/family-set-off": {
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "base_and_plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_forms": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive": {
+      "records": 11,
+      "tp": 2,
+      "fp": 0,
+      "fn": 11
+    },
+    "plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "base": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "genitive": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "new_form": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "multiple_forms": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "two_families": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "protect_base": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "protect_form": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "split_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    }
+  },
+  "new-families/family-conflict": {
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 5,
+      "fn": 0
+    },
+    "base_and_plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_forms": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive": {
+      "records": 11,
+      "tp": 7,
+      "fp": 0,
+      "fn": 6
+    },
+    "plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "base": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "genitive": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "multiple_forms": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "two_families": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "protect_base": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "protect_form": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "split_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-families/family-preferred": {
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 7,
+      "fn": 0
+    },
+    "base_and_plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_forms": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive": {
+      "records": 11,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "plural": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "genitive": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "multiple_forms": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_families": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "split_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-families/family-no-form-context": {
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 7,
+      "fn": 0
+    },
+    "base_and_plural": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "correct_forms": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "positive": {
+      "records": 11,
+      "tp": 13,
+      "fp": 0,
+      "fn": 0
+    },
+    "plural": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "genitive": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "known_word": {
+      "records": 2,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "multiple_forms": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_families": {
+      "records": 1,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_base": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "protect_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal_alias": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "split_control": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "whitespace": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  }
+}

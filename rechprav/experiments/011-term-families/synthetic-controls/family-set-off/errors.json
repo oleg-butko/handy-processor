@@ -1,0 +1,42 @@
+[
+  {
+    "id": "phrase-control-010",
+    "source": "проверь этабы",
+    "gold": "проверь табы",
+    "prediction": "проверь этабы",
+    "tags": [
+      "positive",
+      "term"
+    ]
+  },
+  {
+    "id": "phrase-control-011",
+    "source": "открой луколхоз",
+    "gold": "открой локалхост",
+    "prediction": "открой луколхоз",
+    "tags": [
+      "positive",
+      "learned_alias"
+    ]
+  },
+  {
+    "id": "phrase-control-012",
+    "source": "свуты памяти",
+    "gold": "слот памяти",
+    "prediction": "свуты памяти",
+    "tags": [
+      "positive",
+      "learned_alias"
+    ]
+  },
+  {
+    "id": "phrase-control-013",
+    "source": "без снятия сваты памяти",
+    "gold": "без снятия слота памяти",
+    "prediction": "без снятия сваты памяти",
+    "tags": [
+      "positive",
+      "inflection"
+    ]
+  }
+]

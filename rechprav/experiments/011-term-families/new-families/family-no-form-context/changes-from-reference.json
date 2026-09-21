@@ -1,0 +1,66 @@
+[
+  {
+    "id": "family-008",
+    "source": "сваты приехали",
+    "gold": "сваты приехали",
+    "prediction": "слота приехали",
+    "tags": [
+      "negative",
+      "known_word"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "сваты приехали",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "family-009",
+    "source": "думаю о свате",
+    "gold": "думаю о свате",
+    "prediction": "думаю о слоте",
+    "tags": [
+      "negative",
+      "known_word"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "думаю о свате",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "family-017",
+    "source": "без снятия\nсваты",
+    "gold": "без снятия\nсваты",
+    "prediction": "без снятия\nслота",
+    "tags": [
+      "negative",
+      "newline"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "без снятия\nсваты",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "family-018",
+    "source": "ошибка в, свате",
+    "gold": "ошибка в, свате",
+    "prediction": "ошибка в, слоте",
+    "tags": [
+      "negative",
+      "punctuation"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "ошибка в, свате",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  }
+]

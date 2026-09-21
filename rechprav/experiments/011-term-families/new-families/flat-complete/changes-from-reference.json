@@ -1,0 +1,82 @@
+[
+  {
+    "id": "family-001",
+    "source": "таб и табы",
+    "gold": "таб и табы",
+    "prediction": "таб и табы",
+    "tags": [
+      "negative",
+      "base_and_plural"
+    ],
+    "reference_profile": "old-flat",
+    "reference_prediction": "табы и табы",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "family-007",
+    "source": "ошибка в свате",
+    "gold": "ошибка в слоте",
+    "prediction": "ошибка в слоте",
+    "tags": [
+      "positive",
+      "new_form"
+    ],
+    "reference_profile": "old-flat",
+    "reference_prediction": "ошибка в свате",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-011",
+    "source": "этабы и ошибка в свате",
+    "gold": "табы и ошибка в слоте",
+    "prediction": "табы и ошибка в слоте",
+    "tags": [
+      "positive",
+      "two_families"
+    ],
+    "reference_profile": "old-flat",
+    "reference_prediction": "табы и ошибка в свате",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-012",
+    "source": "таб и этабы",
+    "gold": "таб и табы",
+    "prediction": "таб и табы",
+    "tags": [
+      "positive",
+      "protect_base"
+    ],
+    "reference_profile": "old-flat",
+    "reference_prediction": "табы и табы",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "family-024",
+    "source": "слоте и таб",
+    "gold": "слоте и таб",
+    "prediction": "слоте и таб",
+    "tags": [
+      "negative",
+      "correct_forms"
+    ],
+    "reference_profile": "old-flat",
+    "reference_prediction": "слоте и табы",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "family-006",
+    "source": "без снятия сваты",
+    "gold": "без снятия слота",
+    "prediction": "без снятия сваты",
+    "tags": [
+      "positive",
+      "genitive"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "без снятия слота",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-010",
+    "source": "свуты и без снятия сваты",
+    "gold": "слот и без снятия слота",
+    "prediction": "слот и без снятия сваты",
+    "tags": [
+      "positive",
+      "multiple_forms"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "слот и без снятия слота",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-016",
+    "source": "обсуждаем выражение без снятия сваты",
+    "gold": "обсуждаем выражение без снятия сваты",
+    "prediction": "обсуждаем выражение без снятия сваты",
+    "tags": [
+      "negative",
+      "literal_alias",
+      "matching_context"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "обсуждаем выражение без снятия слота",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  },
+  {
+    "id": "family-023",
+    "source": "без снятия\tсваты!",
+    "gold": "без снятия\tслота!",
+    "prediction": "без снятия\tсваты!",
+    "tags": [
+      "positive",
+      "whitespace"
+    ],
+    "reference_profile": "family",
+    "reference_prediction": "без снятия\tслота!",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  }
+]

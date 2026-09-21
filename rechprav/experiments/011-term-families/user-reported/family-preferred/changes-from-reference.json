@@ -1,0 +1,32 @@
+[
+  {
+    "id": "user-20260921-002",
+    "source": "этабы",
+    "gold": "табы",
+    "prediction": "табы",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "family-conflict",
+    "reference_prediction": "этабы",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "user-20260921-005",
+    "source": "свуты и пнзэ",
+    "gold": "слот и пнз",
+    "prediction": "слот и пнз",
+    "tags": [
+      "user_reported"
+    ],
+    "reference_profile": "family-conflict",
+    "reference_prediction": "свуты и пнз",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  }
+]

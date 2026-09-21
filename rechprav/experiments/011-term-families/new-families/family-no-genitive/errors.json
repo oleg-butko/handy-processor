@@ -1,0 +1,52 @@
+[
+  {
+    "id": "family-006",
+    "source": "без снятия сваты",
+    "gold": "без снятия слота",
+    "prediction": "без снятия сваты",
+    "tags": [
+      "positive",
+      "genitive"
+    ]
+  },
+  {
+    "id": "family-010",
+    "source": "свуты и без снятия сваты",
+    "gold": "слот и без снятия слота",
+    "prediction": "слот и без снятия сваты",
+    "tags": [
+      "positive",
+      "multiple_forms"
+    ]
+  },
+  {
+    "id": "family-014",
+    "source": "слово этабы содержит ошибку",
+    "gold": "слово этабы содержит ошибку",
+    "prediction": "слово табы содержит ошибку",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  },
+  {
+    "id": "family-015",
+    "source": "слово свуты записано неверно",
+    "gold": "слово свуты записано неверно",
+    "prediction": "слово слот записано неверно",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  },
+  {
+    "id": "family-023",
+    "source": "без снятия\tсваты!",
+    "gold": "без снятия\tслота!",
+    "prediction": "без снятия\tсваты!",
+    "tags": [
+      "positive",
+      "whitespace"
+    ]
+  }
+]

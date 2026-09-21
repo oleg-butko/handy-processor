@@ -1,0 +1,20 @@
+[
+  {
+    "id": "user-20260921-002",
+    "source": "этабы",
+    "gold": "табы",
+    "prediction": "этабы",
+    "tags": [
+      "user_reported"
+    ]
+  },
+  {
+    "id": "user-20260921-005",
+    "source": "свуты и пнзэ",
+    "gold": "слот и пнз",
+    "prediction": "свуты и пнз",
+    "tags": [
+      "user_reported"
+    ]
+  }
+]

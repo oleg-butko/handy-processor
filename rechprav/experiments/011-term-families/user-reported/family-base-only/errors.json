@@ -1,0 +1,20 @@
+[
+  {
+    "id": "user-20260921-002",
+    "source": "этабы",
+    "gold": "табы",
+    "prediction": "этабы",
+    "tags": [
+      "user_reported"
+    ]
+  },
+  {
+    "id": "user-20260921-008",
+    "source": "без снятия сваты",
+    "gold": "без снятия слота",
+    "prediction": "без снятия сваты",
+    "tags": [
+      "user_reported"
+    ]
+  }
+]

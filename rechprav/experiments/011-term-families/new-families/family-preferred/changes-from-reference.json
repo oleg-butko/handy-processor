@@ -1,0 +1,130 @@
+[
+  {
+    "id": "family-004",
+    "source": "этабы",
+    "gold": "табы",
+    "prediction": "табы",
+    "tags": [
+      "positive",
+      "plural"
+    ],
+    "reference_profile": "family-conflict",
+    "reference_prediction": "этабы",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-005",
+    "source": "свуты",
+    "gold": "слот",
+    "prediction": "слот",
+    "tags": [
+      "positive",
+      "base"
+    ],
+    "reference_profile": "family-conflict",
+    "reference_prediction": "свуты",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-010",
+    "source": "свуты и без снятия сваты",
+    "gold": "слот и без снятия слота",
+    "prediction": "слот и без снятия слота",
+    "tags": [
+      "positive",
+      "multiple_forms"
+    ],
+    "reference_profile": "family-conflict",
+    "reference_prediction": "свуты и без снятия слота",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-011",
+    "source": "этабы и ошибка в свате",
+    "gold": "табы и ошибка в слоте",
+    "prediction": "табы и ошибка в слоте",
+    "tags": [
+      "positive",
+      "two_families"
+    ],
+    "reference_profile": "family-conflict",
+    "reference_prediction": "этабы и ошибка в слоте",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-012",
+    "source": "таб и этабы",
+    "gold": "таб и табы",
+    "prediction": "таб и табы",
+    "tags": [
+      "positive",
+      "protect_base"
+    ],
+    "reference_profile": "family-conflict",
+    "reference_prediction": "таб и этабы",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-013",
+    "source": "слота и свуты",
+    "gold": "слота и слот",
+    "prediction": "слота и слот",
+    "tags": [
+      "positive",
+      "protect_form"
+    ],
+    "reference_profile": "family-conflict",
+    "reference_prediction": "слота и свуты",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "family-014",
+    "source": "слово этабы содержит ошибку",
+    "gold": "слово этабы содержит ошибку",
+    "prediction": "слово табы содержит ошибку",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ],
+    "reference_profile": "family-conflict",
+    "reference_prediction": "слово этабы содержит ошибку",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "family-015",
+    "source": "слово свуты записано неверно",
+    "gold": "слово свуты записано неверно",
+    "prediction": "слово слот записано неверно",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ],
+    "reference_profile": "family-conflict",
+    "reference_prediction": "слово свуты записано неверно",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  }
+]

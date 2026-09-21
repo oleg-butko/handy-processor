@@ -1,0 +1,18 @@
+[
+  {
+    "id": "phrase-control-025",
+    "source": "табы и таб",
+    "gold": "табы и таб",
+    "prediction": "табы и таб",
+    "tags": [
+      "negative",
+      "correct_term"
+    ],
+    "reference_profile": "old-flat",
+    "reference_prediction": "табы и табы",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 0
+  }
+]

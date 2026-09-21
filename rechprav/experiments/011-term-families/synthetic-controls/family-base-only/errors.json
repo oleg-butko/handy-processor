@@ -1,0 +1,52 @@
+[
+  {
+    "id": "phrase-control-010",
+    "source": "проверь этабы",
+    "gold": "проверь табы",
+    "prediction": "проверь этабы",
+    "tags": [
+      "positive",
+      "term"
+    ]
+  },
+  {
+    "id": "phrase-control-013",
+    "source": "без снятия сваты памяти",
+    "gold": "без снятия слота памяти",
+    "prediction": "без снятия сваты памяти",
+    "tags": [
+      "positive",
+      "inflection"
+    ]
+  },
+  {
+    "id": "phrase-control-025",
+    "source": "табы и таб",
+    "gold": "табы и таб",
+    "prediction": "таб и таб",
+    "tags": [
+      "negative",
+      "correct_term"
+    ]
+  },
+  {
+    "id": "phrase-control-033",
+    "source": "обсуждаем выражение нет звон",
+    "gold": "обсуждаем выражение нет звон",
+    "prediction": "обсуждаем выражение недозвон",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  },
+  {
+    "id": "phrase-control-035",
+    "source": "слово луколхоз смешное",
+    "gold": "слово луколхоз смешное",
+    "prediction": "слово локалхост смешное",
+    "tags": [
+      "negative",
+      "literal_alias"
+    ]
+  }
+]
