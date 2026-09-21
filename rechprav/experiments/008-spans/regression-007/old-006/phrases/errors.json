@@ -1,0 +1,57 @@
+[
+  {
+    "id": "terms-010",
+    "source": "проверь бэнзе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бэнзе",
+    "tags": [
+      "novel",
+      "pnz",
+      "distance_two"
+    ]
+  },
+  {
+    "id": "terms-018",
+    "source": "пензе",
+    "gold": "ПНЗ",
+    "prediction": "пензе",
+    "tags": [
+      "listed",
+      "pnz",
+      "no_context",
+      "real_word"
+    ]
+  },
+  {
+    "id": "terms-019",
+    "source": "пэнзэ на стенде",
+    "gold": "БНЗ на стенде",
+    "prediction": "ПНЗ на стенде",
+    "tags": [
+      "listed",
+      "lab_intent",
+      "conflict"
+    ]
+  },
+  {
+    "id": "terms-020",
+    "source": "сигнал бензэ в лаборатории",
+    "gold": "сигнал БНЗ в лаборатории",
+    "prediction": "сигнал ПНЗ в лаборатории",
+    "tags": [
+      "listed",
+      "lab_intent",
+      "conflict"
+    ]
+  },
+  {
+    "id": "terms-042",
+    "source": "проверь пение",
+    "gold": "проверь пение",
+    "prediction": "проверь ПНЗ",
+    "tags": [
+      "negative",
+      "similar_word"
+    ]
+  }
+]

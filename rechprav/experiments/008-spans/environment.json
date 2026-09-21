@@ -1,0 +1,20 @@
+{
+  "implementation_commit": "79a4661ca69339720ea563582d205912efafe625",
+  "implementation_status": [],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "binary_sha256": "99ee70a4a1110c691d780a4c8ac1668e0bd992f92ea0d0b6d9dc954cecf3d827",
+  "runner_sha256": {
+    "run_span_experiment.py": "09afac4104d64aae843b549f6ba97972ec3cebf1424cfcca4bd83d3919a1df25",
+    "run_context_experiment.py": "d6045c9af5847f5a8743663f4c66c05bbe0a194b93912f2250c997cb19cd31f3",
+    "run_term_experiment.py": "52f7643ebcaca3e36413e1dfbe322389607d670b0c70603d13a9f8eab7e68120"
+  },
+  "corpus_sha256": {
+    "old-006": "fb207e3d0163f748bb8746441b4f5754a52699b71ecba948a6bc677f9aa6defe",
+    "old-007": "64b6047d838dd32ae11443e197755457cc09ff855ab0fff81055380c9f7799bc",
+    "new-008": "aa975a8cb20b4969eebd69ddac96f5cc45ce38c64a6c10dc31b73742c1e54290"
+  },
+  "source_fingerprint_reports": 50,
+  "resource_hashes_verified": 245,
+  "legacy_byte_equal_profiles": 32,
+  "scope": "three separate synthetic dev corpora; no real ASR holdout; fixed aliases, scores and gates; 32 previous profiles exactly reproduced"
+}

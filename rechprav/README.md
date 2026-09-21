@@ -247,6 +247,17 @@ rechprav/target/release/rechprav terms-inspect 'пэнзэ на стенде' --
 python3 rechprav/scripts/run_context_experiment.py rechprav/experiments/my-context-run
 ```
 
+[Опыт 008](experiments/008-spans/report.md) сравнивает три варианта выбора
+пересекающихся диапазонов: `policy.span_tie_break = "shortest"` (прежний default),
+`"distance"` и `"longest"`. На новых 40 примерах две альтернативы добавили одну
+правильную замену в legacy; на контекстном профиле 007 изменений нет.
+Меньшая дистанция не гарантирует сохранение правильной соседней буквы `пэ`.
+Default оставлен прежним; варианты доступны для экспериментов и review.
+
+```bash
+python3 rechprav/scripts/run_span_experiment.py rechprav/experiments/my-span-run
+```
+
 ## Организация
 
 `src/` — библиотека и CLI; `tests/` — проверки поведения, безопасности вывода и метрик;

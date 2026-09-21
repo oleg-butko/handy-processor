@@ -1,0 +1,102 @@
+[
+  {
+    "id": "terms-010",
+    "source": "проверь бэнзе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь бэнзе",
+    "tags": [
+      "novel",
+      "pnz",
+      "distance_two"
+    ]
+  },
+  {
+    "id": "terms-011",
+    "source": "проверь пэ эн зе",
+    "gold": "проверь ПНЗ",
+    "prediction": "проверь пэ эн зе",
+    "tags": [
+      "novel",
+      "pnz",
+      "multiword"
+    ]
+  },
+  {
+    "id": "terms-016",
+    "source": "вставь плату в свод",
+    "gold": "вставь плату в слот",
+    "prediction": "вставь плату в свод",
+    "tags": [
+      "listed",
+      "slot",
+      "missing_cue"
+    ]
+  },
+  {
+    "id": "terms-018",
+    "source": "пензе",
+    "gold": "ПНЗ",
+    "prediction": "пензе",
+    "tags": [
+      "listed",
+      "pnz",
+      "no_context",
+      "real_word"
+    ]
+  },
+  {
+    "id": "terms-019",
+    "source": "пэнзэ на стенде",
+    "gold": "БНЗ на стенде",
+    "prediction": "ПНЗ на стенде",
+    "tags": [
+      "listed",
+      "lab_intent",
+      "conflict"
+    ]
+  },
+  {
+    "id": "terms-020",
+    "source": "сигнал бензэ в лаборатории",
+    "gold": "сигнал БНЗ в лаборатории",
+    "prediction": "сигнал ПНЗ в лаборатории",
+    "tags": [
+      "listed",
+      "lab_intent",
+      "conflict"
+    ]
+  },
+  {
+    "id": "terms-025",
+    "source": "в пензе проверь сигнал",
+    "gold": "в пензе проверь сигнал",
+    "prediction": "в ПНЗ проверь сигнал",
+    "tags": [
+      "negative",
+      "city",
+      "misleading_context"
+    ]
+  },
+  {
+    "id": "terms-026",
+    "source": "модуль обрабатывает ввод данных",
+    "gold": "модуль обрабатывает ввод данных",
+    "prediction": "модуль обрабатывает слот данных",
+    "tags": [
+      "negative",
+      "slot",
+      "misleading_context"
+    ]
+  },
+  {
+    "id": "terms-027",
+    "source": "плата содержит свод правил",
+    "gold": "плата содержит свод правил",
+    "prediction": "плата содержит слот правил",
+    "tags": [
+      "negative",
+      "slot",
+      "misleading_context"
+    ]
+  }
+]

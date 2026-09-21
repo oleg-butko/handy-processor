@@ -1,0 +1,182 @@
+[
+  {
+    "corpus": "old-006",
+    "profile": "legacy",
+    "tp": 18,
+    "fp": 6,
+    "fn": 5,
+    "harmed_correct_input": 4,
+    "exact_records": 34,
+    "wer_after": 0.07692307692307693
+  },
+  {
+    "corpus": "old-006",
+    "profile": "known-exact",
+    "tp": 17,
+    "fp": 5,
+    "fn": 6,
+    "harmed_correct_input": 3,
+    "exact_records": 34,
+    "wer_after": 0.09401709401709402
+  },
+  {
+    "corpus": "old-006",
+    "profile": "phrases",
+    "tp": 19,
+    "fp": 3,
+    "fn": 4,
+    "harmed_correct_input": 1,
+    "exact_records": 38,
+    "wer_after": 0.042735042735042736
+  },
+  {
+    "corpus": "old-006",
+    "profile": "combined",
+    "tp": 18,
+    "fp": 2,
+    "fn": 5,
+    "harmed_correct_input": 0,
+    "exact_records": 38,
+    "wer_after": 0.05982905982905983
+  },
+  {
+    "corpus": "old-006",
+    "profile": "exclusions",
+    "tp": 18,
+    "fp": 2,
+    "fn": 5,
+    "harmed_correct_input": 0,
+    "exact_records": 38,
+    "wer_after": 0.05982905982905983
+  },
+  {
+    "corpus": "old-006",
+    "profile": "required",
+    "tp": 17,
+    "fp": 1,
+    "fn": 6,
+    "harmed_correct_input": 0,
+    "exact_records": 37,
+    "wer_after": 0.06837606837606838
+  },
+  {
+    "corpus": "old-006",
+    "profile": "legacy-conflict",
+    "tp": 2,
+    "fp": 2,
+    "fn": 21,
+    "harmed_correct_input": 2,
+    "exact_records": 21,
+    "wer_after": 0.3076923076923077
+  },
+  {
+    "corpus": "old-006",
+    "profile": "routed",
+    "tp": 18,
+    "fp": 0,
+    "fn": 5,
+    "harmed_correct_input": 0,
+    "exact_records": 38,
+    "wer_after": 0.05982905982905983
+  },
+  {
+    "corpus": "old-006",
+    "profile": "routed-no-exclusions",
+    "tp": 18,
+    "fp": 0,
+    "fn": 5,
+    "harmed_correct_input": 0,
+    "exact_records": 38,
+    "wer_after": 0.05982905982905983
+  },
+  {
+    "corpus": "new-007",
+    "profile": "legacy",
+    "tp": 12,
+    "fp": 17,
+    "fn": 10,
+    "harmed_correct_input": 13,
+    "exact_records": 21,
+    "wer_after": 0.1419753086419753
+  },
+  {
+    "corpus": "new-007",
+    "profile": "known-exact",
+    "tp": 10,
+    "fp": 16,
+    "fn": 12,
+    "harmed_correct_input": 12,
+    "exact_records": 20,
+    "wer_after": 0.16049382716049382
+  },
+  {
+    "corpus": "new-007",
+    "profile": "phrases",
+    "tp": 14,
+    "fp": 18,
+    "fn": 8,
+    "harmed_correct_input": 14,
+    "exact_records": 22,
+    "wer_after": 0.13580246913580246
+  },
+  {
+    "corpus": "new-007",
+    "profile": "combined",
+    "tp": 12,
+    "fp": 17,
+    "fn": 10,
+    "harmed_correct_input": 13,
+    "exact_records": 21,
+    "wer_after": 0.15432098765432098
+  },
+  {
+    "corpus": "new-007",
+    "profile": "exclusions",
+    "tp": 12,
+    "fp": 10,
+    "fn": 10,
+    "harmed_correct_input": 4,
+    "exact_records": 28,
+    "wer_after": 0.09876543209876543
+  },
+  {
+    "corpus": "new-007",
+    "profile": "required",
+    "tp": 10,
+    "fp": 6,
+    "fn": 12,
+    "harmed_correct_input": 4,
+    "exact_records": 26,
+    "wer_after": 0.1111111111111111
+  },
+  {
+    "corpus": "new-007",
+    "profile": "legacy-conflict",
+    "tp": 1,
+    "fp": 1,
+    "fn": 21,
+    "harmed_correct_input": 1,
+    "exact_records": 21,
+    "wer_after": 0.16666666666666666
+  },
+  {
+    "corpus": "new-007",
+    "profile": "routed",
+    "tp": 14,
+    "fp": 4,
+    "fn": 8,
+    "harmed_correct_input": 4,
+    "exact_records": 30,
+    "wer_after": 0.08641975308641975
+  },
+  {
+    "corpus": "new-007",
+    "profile": "routed-no-exclusions",
+    "tp": 14,
+    "fp": 10,
+    "fn": 8,
+    "harmed_correct_input": 12,
+    "exact_records": 24,
+    "wer_after": 0.13580246913580246
+  }
+]

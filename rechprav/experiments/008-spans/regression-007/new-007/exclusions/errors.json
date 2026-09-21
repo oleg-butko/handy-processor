@@ -1,0 +1,157 @@
+[
+  {
+    "id": "context-004",
+    "source": "проверь пение модуля",
+    "gold": "проверь ПНЗ модуля",
+    "prediction": "проверь пение модуля",
+    "tags": [
+      "positive",
+      "known_fuzzy",
+      "pnz"
+    ]
+  },
+  {
+    "id": "context-005",
+    "source": "сигнал пэ эн зе пропал",
+    "gold": "сигнал ПНЗ пропал",
+    "prediction": "сигнал пэ эн зе пропал",
+    "tags": [
+      "positive",
+      "multiword",
+      "novel"
+    ]
+  },
+  {
+    "id": "context-013",
+    "source": "вставь новую плату в свод",
+    "gold": "вставь новую плату в слот",
+    "prediction": "вставь новую плату в свод",
+    "tags": [
+      "positive",
+      "pattern_gap",
+      "slot"
+    ]
+  },
+  {
+    "id": "context-015",
+    "source": "модули пензе неисправны",
+    "gold": "модули ПНЗ неисправны",
+    "prediction": "модули пензе неисправны",
+    "tags": [
+      "positive",
+      "missing_inflection"
+    ]
+  },
+  {
+    "id": "context-016",
+    "source": "включи пэнзэ на стенде",
+    "gold": "включи БНЗ на стенде",
+    "prediction": "включи ПНЗ на стенде",
+    "tags": [
+      "positive",
+      "lab",
+      "routing"
+    ]
+  },
+  {
+    "id": "context-017",
+    "source": "наблюдай бензэ в лаборатории",
+    "gold": "наблюдай БНЗ в лаборатории",
+    "prediction": "наблюдай ПНЗ в лаборатории",
+    "tags": [
+      "positive",
+      "lab",
+      "routing"
+    ]
+  },
+  {
+    "id": "context-018",
+    "source": "датчик бэнзэ неисправен",
+    "gold": "датчик БНЗ неисправен",
+    "prediction": "датчик ПНЗ неисправен",
+    "tags": [
+      "positive",
+      "lab",
+      "routing",
+      "novel"
+    ]
+  },
+  {
+    "id": "context-019",
+    "source": "проверь пэнзэ на стенде",
+    "gold": "проверь БНЗ на стенде",
+    "prediction": "проверь ПНЗ на стенде",
+    "tags": [
+      "positive",
+      "lab",
+      "conflicting_context"
+    ]
+  },
+  {
+    "id": "context-020",
+    "source": "сигнал пензе в лаборатории",
+    "gold": "сигнал БНЗ в лаборатории",
+    "prediction": "сигнал ПНЗ в лаборатории",
+    "tags": [
+      "positive",
+      "lab",
+      "conflicting_context",
+      "known"
+    ]
+  },
+  {
+    "id": "context-021",
+    "source": "проверь пэнзэ модуля и датчик бензэ",
+    "gold": "проверь ПНЗ модуля и датчик БНЗ",
+    "prediction": "проверь ПНЗ модуля и датчик ПНЗ",
+    "tags": [
+      "positive",
+      "routing",
+      "multiple_spans"
+    ]
+  },
+  {
+    "id": "context-029",
+    "source": "процессор ускоряет ввод памяти",
+    "gold": "процессор ускоряет ввод памяти",
+    "prediction": "процессор ускоряет слот памяти",
+    "tags": [
+      "negative",
+      "slot",
+      "unmodeled_semantics"
+    ]
+  },
+  {
+    "id": "context-030",
+    "source": "проверь свод законодательных правил",
+    "gold": "проверь свод законодательных правил",
+    "prediction": "проверь слот законодательных правил",
+    "tags": [
+      "negative",
+      "slot",
+      "exclusion_gap"
+    ]
+  },
+  {
+    "id": "context-033",
+    "source": "проверь пензе. на карте",
+    "gold": "проверь пензе. на карте",
+    "prediction": "проверь ПНЗ. на карте",
+    "tags": [
+      "negative",
+      "punctuation",
+      "exclusion_boundary"
+    ]
+  },
+  {
+    "id": "context-034",
+    "source": "проверь пензе\nна карте",
+    "gold": "проверь пензе\nна карте",
+    "prediction": "проверь ПНЗ\nна карте",
+    "tags": [
+      "negative",
+      "newline",
+      "exclusion_boundary"
+    ]
+  }
+]
