@@ -1,0 +1,94 @@
+[
+  {
+    "id": "draft-005",
+    "source": "свод правил",
+    "gold": "свод правил",
+    "prediction": "слот правил",
+    "tags": [
+      "negative",
+      "ordinary"
+    ]
+  },
+  {
+    "id": "draft-007",
+    "source": "сняли свод старой арки",
+    "gold": "сняли свод старой арки",
+    "prediction": "сняли слот старой арки",
+    "tags": [
+      "negative",
+      "architecture"
+    ]
+  },
+  {
+    "id": "draft-008",
+    "source": "обсуждаем выражение сняли свод памяти",
+    "gold": "обсуждаем выражение сняли свод памяти",
+    "prediction": "обсуждаем выражение сняли слот памяти",
+    "tags": [
+      "negative",
+      "literal",
+      "matching_context"
+    ]
+  },
+  {
+    "id": "draft-015",
+    "source": "слово катэхэ написано неверно",
+    "gold": "слово катэхэ написано неверно",
+    "prediction": "слово КТХ написано неверно",
+    "tags": [
+      "negative",
+      "literal"
+    ]
+  },
+  {
+    "id": "draft-019",
+    "source": "сваты приехали",
+    "gold": "сваты приехали",
+    "prediction": "слота приехали",
+    "tags": [
+      "negative",
+      "ordinary"
+    ]
+  },
+  {
+    "id": "draft-020",
+    "source": "Нет звон",
+    "gold": "недозвон",
+    "prediction": "Нет звон",
+    "tags": [
+      "positive",
+      "no_context",
+      "known_source"
+    ]
+  },
+  {
+    "id": "draft-022",
+    "source": "сняли\nсвод памяти",
+    "gold": "сняли\nсвод памяти",
+    "prediction": "сняли\nслот памяти",
+    "tags": [
+      "negative",
+      "newline"
+    ]
+  },
+  {
+    "id": "draft-023",
+    "source": "сняли, свод памяти",
+    "gold": "сняли, свод памяти",
+    "prediction": "сняли, слот памяти",
+    "tags": [
+      "negative",
+      "punctuation"
+    ]
+  },
+  {
+    "id": "draft-028",
+    "source": "слово пензэ написано ошибочно",
+    "gold": "слово пензэ написано ошибочно",
+    "prediction": "слово ПНЗ написано ошибочно",
+    "tags": [
+      "negative",
+      "literal"
+    ]
+  }
+]

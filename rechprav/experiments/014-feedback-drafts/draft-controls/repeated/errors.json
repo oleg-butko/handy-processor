@@ -1,0 +1,74 @@
+[
+  {
+    "id": "draft-003",
+    "source": "сняли свод",
+    "gold": "сняли слот",
+    "prediction": "сняли свод",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "draft-004",
+    "source": "освободили свод памяти",
+    "gold": "освободили слот памяти",
+    "prediction": "освободили свод памяти",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "draft-008",
+    "source": "обсуждаем выражение сняли свод памяти",
+    "gold": "обсуждаем выражение сняли свод памяти",
+    "prediction": "обсуждаем выражение сняли слот памяти",
+    "tags": [
+      "negative",
+      "literal",
+      "matching_context"
+    ]
+  },
+  {
+    "id": "draft-010",
+    "source": "покажи калиборд",
+    "gold": "покажи клипборд",
+    "prediction": "покажи калиборд",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "draft-012",
+    "source": "долгождать",
+    "gold": "долго ждать",
+    "prediction": "долгождать",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "draft-016",
+    "source": "пензэ",
+    "gold": "ПНЗ",
+    "prediction": "пензэ",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "draft-020",
+    "source": "Нет звон",
+    "gold": "недозвон",
+    "prediction": "Нет звон",
+    "tags": [
+      "positive",
+      "no_context",
+      "known_source"
+    ]
+  }
+]

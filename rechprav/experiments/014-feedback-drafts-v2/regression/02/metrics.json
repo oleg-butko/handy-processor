@@ -1,0 +1,40 @@
+{
+  "dataset_kind": "synthetic",
+  "engine": "term_spans",
+  "exact_records": 16,
+  "excluded_ambiguous_records": 0,
+  "gold_tokens": 78,
+  "incomplete_records": 0,
+  "quality_claim": "experimental corpus result; synthetic fixtures do not estimate real ASR quality; scores are not probabilities",
+  "rates": {
+    "f05": 0.4854368932038835,
+    "f1": 0.5882352941176471,
+    "false_correction_rate": 0.208955223880597,
+    "precision": 0.43478260869565216,
+    "recall": 0.9090909090909091
+  },
+  "reviewed_records": 30,
+  "schema_version": 1,
+  "scope": "TP/FP/FN require exact source byte span and case-sensitive replacement; harms count touched correct input tokens once; WER uses case-insensitive yo-folded lexical tokens; no token zip",
+  "source_tokens": 79,
+  "span_counts": {
+    "correct_input": 67,
+    "fn_": 1,
+    "fp": 13,
+    "harmed_correct_input": 14,
+    "tp": 10
+  },
+  "split": "dev",
+  "wer_after": 0.19230769230769232,
+  "wer_before": 0.15384615384615385,
+  "wer_errors_after": {
+    "deletions": 1,
+    "insertions": 0,
+    "substitutions": 14
+  },
+  "wer_errors_before": {
+    "deletions": 0,
+    "insertions": 1,
+    "substitutions": 11
+  }
+}

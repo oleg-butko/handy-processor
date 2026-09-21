@@ -1,0 +1,28 @@
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли слот памяти","id":"draft-001","prediction":"сняли свод памяти","source":"сняли свод памяти","tags":["positive","seen_event"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"вчера сняли слот памяти","id":"draft-002","prediction":"вчера сняли свод памяти","source":"вчера сняли свод памяти","tags":["positive","seen_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли слот","id":"draft-003","prediction":"сняли свод","source":"сняли свод","tags":["positive","unseen_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"освободили слот памяти","id":"draft-004","prediction":"освободили свод памяти","source":"освободили свод памяти","tags":["positive","unseen_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"свод правил","id":"draft-005","prediction":"свод правил","source":"свод правил","tags":["negative","ordinary"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"ввод данных","id":"draft-006","prediction":"ввод данных","source":"ввод данных","tags":["negative","ordinary"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли свод старой арки","id":"draft-007","prediction":"сняли свод старой арки","source":"сняли свод старой арки","tags":["negative","architecture"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"обсуждаем выражение сняли свод памяти","id":"draft-008","prediction":"обсуждаем выражение сняли свод памяти","source":"обсуждаем выражение сняли свод памяти","tags":["negative","literal","matching_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"открой клипборд","id":"draft-009","prediction":"открой калиборд","source":"открой калиборд","tags":["positive","seen_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"покажи клипборд","id":"draft-010","prediction":"покажи калиборд","source":"покажи калиборд","tags":["positive","unseen_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"надо долго ждать ответа","id":"draft-011","prediction":"надо долгождать ответа","source":"надо долгождать ответа","tags":["positive","split"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"долго ждать","id":"draft-012","prediction":"долгождать","source":"долгождать","tags":["positive","unseen_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"включи ПНЗ","id":"draft-013","prediction":"включи пензэ","source":"включи пензэ","tags":["positive","abbreviation"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"включи КТХ","id":"draft-014","prediction":"включи катэхэ","source":"включи катэхэ","tags":["positive","new_term"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"слово катэхэ написано неверно","id":"draft-015","prediction":"слово катэхэ написано неверно","source":"слово катэхэ написано неверно","tags":["negative","literal"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"ПНЗ","id":"draft-016","prediction":"пензэ","source":"пензэ","tags":["positive","unseen_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"он проколол колесо","id":"draft-017","prediction":"он проковол колесо","source":"он проковол колесо","tags":["positive","dictionary_word"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"без снятия слота","id":"draft-018","prediction":"без снятия сваты","source":"без снятия сваты","tags":["positive","existing_form"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сваты приехали","id":"draft-019","prediction":"сваты приехали","source":"сваты приехали","tags":["negative","ordinary"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"недозвон","id":"draft-020","prediction":"Нет звон","source":"Нет звон","tags":["positive","no_context","known_source"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"обсуждаем выражение нет звон","id":"draft-021","prediction":"обсуждаем выражение нет звон","source":"обсуждаем выражение нет звон","tags":["negative","literal","known_source"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли\nсвод памяти","id":"draft-022","prediction":"сняли\nсвод памяти","source":"сняли\nсвод памяти","tags":["negative","newline"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли, свод памяти","id":"draft-023","prediction":"сняли, свод памяти","source":"сняли, свод памяти","tags":["negative","punctuation"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли `свод` памяти","id":"draft-024","prediction":"сняли `свод` памяти","source":"сняли `свод` памяти","tags":["negative","code"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"https://host/калиборд","id":"draft-025","prediction":"https://host/калиборд","source":"https://host/калиборд","tags":["negative","url"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"Сняли слот памяти!","id":"draft-026","prediction":"Сняли свод памяти!","source":"Сняли свод памяти!","tags":["positive","case"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"слот слота таб табы","id":"draft-027","prediction":"слот слота таб табы","source":"слот слота таб табы","tags":["negative","canonical"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"слово пензэ написано ошибочно","id":"draft-028","prediction":"слово пензэ написано ошибочно","source":"слово пензэ написано ошибочно","tags":["negative","literal"]}

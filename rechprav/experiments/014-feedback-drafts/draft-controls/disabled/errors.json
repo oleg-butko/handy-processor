@@ -1,0 +1,153 @@
+[
+  {
+    "id": "draft-001",
+    "source": "сняли свод памяти",
+    "gold": "сняли слот памяти",
+    "prediction": "сняли свод памяти",
+    "tags": [
+      "positive",
+      "seen_event"
+    ]
+  },
+  {
+    "id": "draft-002",
+    "source": "вчера сняли свод памяти",
+    "gold": "вчера сняли слот памяти",
+    "prediction": "вчера сняли свод памяти",
+    "tags": [
+      "positive",
+      "seen_context"
+    ]
+  },
+  {
+    "id": "draft-003",
+    "source": "сняли свод",
+    "gold": "сняли слот",
+    "prediction": "сняли свод",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "draft-004",
+    "source": "освободили свод памяти",
+    "gold": "освободили слот памяти",
+    "prediction": "освободили свод памяти",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "draft-009",
+    "source": "открой калиборд",
+    "gold": "открой клипборд",
+    "prediction": "открой калиборд",
+    "tags": [
+      "positive",
+      "seen_context"
+    ]
+  },
+  {
+    "id": "draft-010",
+    "source": "покажи калиборд",
+    "gold": "покажи клипборд",
+    "prediction": "покажи калиборд",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "draft-011",
+    "source": "надо долгождать ответа",
+    "gold": "надо долго ждать ответа",
+    "prediction": "надо долгождать ответа",
+    "tags": [
+      "positive",
+      "split"
+    ]
+  },
+  {
+    "id": "draft-012",
+    "source": "долгождать",
+    "gold": "долго ждать",
+    "prediction": "долгождать",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "draft-013",
+    "source": "включи пензэ",
+    "gold": "включи ПНЗ",
+    "prediction": "включи пензэ",
+    "tags": [
+      "positive",
+      "abbreviation"
+    ]
+  },
+  {
+    "id": "draft-014",
+    "source": "включи катэхэ",
+    "gold": "включи КТХ",
+    "prediction": "включи катэхэ",
+    "tags": [
+      "positive",
+      "new_term"
+    ]
+  },
+  {
+    "id": "draft-016",
+    "source": "пензэ",
+    "gold": "ПНЗ",
+    "prediction": "пензэ",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ]
+  },
+  {
+    "id": "draft-017",
+    "source": "он проковол колесо",
+    "gold": "он проколол колесо",
+    "prediction": "он проковол колесо",
+    "tags": [
+      "positive",
+      "dictionary_word"
+    ]
+  },
+  {
+    "id": "draft-018",
+    "source": "без снятия сваты",
+    "gold": "без снятия слота",
+    "prediction": "без снятия сваты",
+    "tags": [
+      "positive",
+      "existing_form"
+    ]
+  },
+  {
+    "id": "draft-020",
+    "source": "Нет звон",
+    "gold": "недозвон",
+    "prediction": "Нет звон",
+    "tags": [
+      "positive",
+      "no_context",
+      "known_source"
+    ]
+  },
+  {
+    "id": "draft-026",
+    "source": "Сняли свод памяти!",
+    "gold": "Сняли слот памяти!",
+    "prediction": "Сняли свод памяти!",
+    "tags": [
+      "positive",
+      "case"
+    ]
+  }
+]

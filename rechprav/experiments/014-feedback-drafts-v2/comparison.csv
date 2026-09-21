@@ -1,0 +1,10 @@
+corpus,profile,reference,tp,fp,fn,harmed_correct_input,exact_records,wer_after,total_comparisons,gained_tp,lost_tp,removed_fp,new_fp
+draft-controls,disabled,disabled,0,0,15,0,13,0.23076923076923078,0,0,0,0,0
+draft-controls,accepted,disabled,9,1,6,1,21,0.11538461538461539,1102,9,0,0,1
+draft-controls,no-context,accepted,14,8,1,8,19,0.1282051282051282,1080,5,0,0,7
+draft-controls,duplicate,accepted,9,1,6,1,21,0.11538461538461539,1102,0,0,0,0
+draft-controls,repeated,accepted,9,1,6,1,21,0.11538461538461539,1102,0,0,0,0
+draft-controls,undo-one,accepted,9,1,6,1,21,0.11538461538461539,1102,0,0,0,0
+draft-controls,undo-last,accepted,6,0,9,0,19,0.14102564102564102,964,0,3,1,0
+draft-controls,conflict,accepted,6,0,9,0,19,0.14102564102564102,1247,0,3,1,0
+draft-controls,other-scope,accepted,0,4,15,1,12,0.24358974358974358,151,0,9,1,4

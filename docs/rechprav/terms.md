@@ -549,3 +549,13 @@ python3 rechprav/scripts/run_weighted_experiment.py rechprav/experiments/my-weig
 ```
 
 [Протокол](013-weighted-plan.md), [результаты и timings](../../rechprav/experiments/013-weighted/report.md).
+
+
+## Предложения из подтверждённых исправлений (014)
+
+[Отдельный инструмент feedback_draft](feedback-drafts.md) читает журнал correction/
+retract и экспортирует выключенный exact-профиль: пары, обязательный соседний
+контекст, фиксированный вес, scope и evidence ids. Это не глобальное изменение
+aliases/весов существующего термина. Без контекста применяется known_words=never.
+Подтверждение ASR-ошибки не включает правило автоматически; опыт явно моделирует
+принятие в отдельных копиях конфигурации. [Результаты](../../rechprav/experiments/014-feedback-drafts-v2/report.md).

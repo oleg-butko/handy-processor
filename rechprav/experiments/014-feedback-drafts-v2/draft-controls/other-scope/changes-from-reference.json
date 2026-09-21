@@ -1,0 +1,163 @@
+[
+  {
+    "id": "draft-001",
+    "source": "сняли свод памяти",
+    "gold": "сняли слот памяти",
+    "prediction": "сняли свитч памяти",
+    "tags": [
+      "positive",
+      "seen_event"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "сняли слот памяти",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "draft-002",
+    "source": "вчера сняли свод памяти",
+    "gold": "вчера сняли слот памяти",
+    "prediction": "вчера сняли свитч памяти",
+    "tags": [
+      "positive",
+      "seen_context"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "вчера сняли слот памяти",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "draft-008",
+    "source": "обсуждаем выражение сняли свод памяти",
+    "gold": "обсуждаем выражение сняли свод памяти",
+    "prediction": "обсуждаем выражение сняли свитч памяти",
+    "tags": [
+      "negative",
+      "literal",
+      "matching_context"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "обсуждаем выражение сняли слот памяти",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 1,
+    "new_fp": 1
+  },
+  {
+    "id": "draft-009",
+    "source": "открой калиборд",
+    "gold": "открой клипборд",
+    "prediction": "открой калиборд",
+    "tags": [
+      "positive",
+      "seen_context"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "открой клипборд",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "draft-011",
+    "source": "надо долгождать ответа",
+    "gold": "надо долго ждать ответа",
+    "prediction": "надо долгождать ответа",
+    "tags": [
+      "positive",
+      "split"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "надо долго ждать ответа",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "draft-013",
+    "source": "включи пензэ",
+    "gold": "включи ПНЗ",
+    "prediction": "включи пензэ",
+    "tags": [
+      "positive",
+      "abbreviation"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "включи ПНЗ",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "draft-014",
+    "source": "включи катэхэ",
+    "gold": "включи КТХ",
+    "prediction": "включи катэхэ",
+    "tags": [
+      "positive",
+      "new_term"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "включи КТХ",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "draft-017",
+    "source": "он проковол колесо",
+    "gold": "он проколол колесо",
+    "prediction": "он проковол колесо",
+    "tags": [
+      "positive",
+      "dictionary_word"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "он проколол колесо",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "draft-018",
+    "source": "без снятия сваты",
+    "gold": "без снятия слота",
+    "prediction": "без снятия сваты",
+    "tags": [
+      "positive",
+      "existing_form"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "без снятия слота",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "draft-026",
+    "source": "Сняли свод памяти!",
+    "gold": "Сняли слот памяти!",
+    "prediction": "Сняли свитч памяти!",
+    "tags": [
+      "positive",
+      "case"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "Сняли слот памяти!",
+    "gained_tp": 0,
+    "lost_tp": 1,
+    "removed_fp": 0,
+    "new_fp": 1
+  }
+]

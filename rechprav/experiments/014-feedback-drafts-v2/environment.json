@@ -1,0 +1,23 @@
+{
+  "implementation_commit": "63dad3d82c47f03f63893c77765f04f6828a21fb",
+  "implementation_status": [],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "binary_sha256": "93199bc0ae9c94b7f5721ab4d5ce28384529bac9aebac9e9f9cd978555694e6b",
+  "draft_binary_sha256": "add813962cb5766028a6e246ec14fb966cffa6b3d7ebbb6d6b12bc2f58fe3ca5",
+  "draft_source_reports": 9,
+  "draft_resource_reports": 45,
+  "runner_sha256": {
+    "run_draft_experiment.py": "bf13f9dd624b8de64fb2581cc2df1f006b827f8c4c97f2deaa74487dfa86c424",
+    "draft_profiles.py": "5dd9f48f67e8ce62efa030d2b32cacc683238a9141dc4e7a1169ffad90433162",
+    "prepare_draft_fixture.py": "e1581745e9690b14690e041cee0ac28e4e753d3e530177cc5934729d9a163e94",
+    "run_term_experiment.py": "5802ca027c8e4964070c5236aefa3eaf9e398097927f199a70bc1930d3d195e2"
+  },
+  "corpus_sha256": {
+    "draft-controls": "cc84e26bd8d67b535a3610a6eb7268a51eb99dabb2df1cb36baa4e715934683e"
+  },
+  "source_fingerprint_reports": 15,
+  "resource_hashes_verified": 70,
+  "legacy_byte_equal_profiles": 6,
+  "reference_config_sha256": "1f2d91df3f85e504da2668c7e23e2be5bceb9535c41bdcc038874e262111e0aa",
+  "scope": "offline disabled suggestions; manual acceptance simulated only in experiment; synthetic events/dev controls; six representative historical runs exactly reproduced, correction runtime unchanged"
+}

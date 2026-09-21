@@ -1,0 +1,194 @@
+[
+  {
+    "id": "draft-003",
+    "source": "сняли свод",
+    "gold": "сняли слот",
+    "prediction": "сняли слот",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "сняли свод",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "draft-004",
+    "source": "освободили свод памяти",
+    "gold": "освободили слот памяти",
+    "prediction": "освободили слот памяти",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "освободили свод памяти",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "draft-005",
+    "source": "свод правил",
+    "gold": "свод правил",
+    "prediction": "слот правил",
+    "tags": [
+      "negative",
+      "ordinary"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "свод правил",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "draft-007",
+    "source": "сняли свод старой арки",
+    "gold": "сняли свод старой арки",
+    "prediction": "сняли слот старой арки",
+    "tags": [
+      "negative",
+      "architecture"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "сняли свод старой арки",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "draft-010",
+    "source": "покажи калиборд",
+    "gold": "покажи клипборд",
+    "prediction": "покажи клипборд",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "покажи калиборд",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "draft-012",
+    "source": "долгождать",
+    "gold": "долго ждать",
+    "prediction": "долго ждать",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "долгождать",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "draft-015",
+    "source": "слово катэхэ написано неверно",
+    "gold": "слово катэхэ написано неверно",
+    "prediction": "слово КТХ написано неверно",
+    "tags": [
+      "negative",
+      "literal"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "слово катэхэ написано неверно",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "draft-016",
+    "source": "пензэ",
+    "gold": "ПНЗ",
+    "prediction": "ПНЗ",
+    "tags": [
+      "positive",
+      "unseen_context"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "пензэ",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "draft-019",
+    "source": "сваты приехали",
+    "gold": "сваты приехали",
+    "prediction": "слота приехали",
+    "tags": [
+      "negative",
+      "ordinary"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "сваты приехали",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "draft-022",
+    "source": "сняли\nсвод памяти",
+    "gold": "сняли\nсвод памяти",
+    "prediction": "сняли\nслот памяти",
+    "tags": [
+      "negative",
+      "newline"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "сняли\nсвод памяти",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "draft-023",
+    "source": "сняли, свод памяти",
+    "gold": "сняли, свод памяти",
+    "prediction": "сняли, слот памяти",
+    "tags": [
+      "negative",
+      "punctuation"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "сняли, свод памяти",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  },
+  {
+    "id": "draft-028",
+    "source": "слово пензэ написано ошибочно",
+    "gold": "слово пензэ написано ошибочно",
+    "prediction": "слово ПНЗ написано ошибочно",
+    "tags": [
+      "negative",
+      "literal"
+    ],
+    "reference_profile": "accepted",
+    "reference_prediction": "слово пензэ написано ошибочно",
+    "gained_tp": 0,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 1
+  }
+]

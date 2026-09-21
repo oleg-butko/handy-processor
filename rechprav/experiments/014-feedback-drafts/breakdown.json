@@ -1,0 +1,1208 @@
+{
+  "draft-controls/disabled": {
+    "positive": {
+      "records": 15,
+      "tp": 0,
+      "fp": 0,
+      "fn": 15
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "unseen_context": {
+      "records": 5,
+      "tp": 0,
+      "fp": 0,
+      "fn": 5
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "abbreviation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "new_term": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "dictionary_word": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "existing_form": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "no_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_source": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "draft-controls/accepted": {
+    "positive": {
+      "records": 15,
+      "tp": 9,
+      "fp": 0,
+      "fn": 6
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "unseen_context": {
+      "records": 5,
+      "tp": 0,
+      "fp": 0,
+      "fn": 5
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "ordinary": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 4,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "split": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "abbreviation": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "dictionary_word": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "existing_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_source": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "draft-controls/no-context": {
+    "positive": {
+      "records": 15,
+      "tp": 14,
+      "fp": 0,
+      "fn": 1
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "unseen_context": {
+      "records": 5,
+      "tp": 5,
+      "fp": 0,
+      "fn": 0
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 8,
+      "fn": 0
+    },
+    "ordinary": {
+      "records": 3,
+      "tp": 0,
+      "fp": 2,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "literal": {
+      "records": 4,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "split": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "abbreviation": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "dictionary_word": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "existing_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_source": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "draft-controls/duplicate": {
+    "positive": {
+      "records": 15,
+      "tp": 9,
+      "fp": 0,
+      "fn": 6
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "unseen_context": {
+      "records": 5,
+      "tp": 0,
+      "fp": 0,
+      "fn": 5
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "ordinary": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 4,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "split": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "abbreviation": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "dictionary_word": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "existing_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_source": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "draft-controls/repeated": {
+    "positive": {
+      "records": 15,
+      "tp": 9,
+      "fp": 0,
+      "fn": 6
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "unseen_context": {
+      "records": 5,
+      "tp": 0,
+      "fp": 0,
+      "fn": 5
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "ordinary": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 4,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "split": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "abbreviation": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "dictionary_word": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "existing_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_source": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "draft-controls/undo-one": {
+    "positive": {
+      "records": 15,
+      "tp": 9,
+      "fp": 0,
+      "fn": 6
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "unseen_context": {
+      "records": 5,
+      "tp": 0,
+      "fp": 0,
+      "fn": 5
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "ordinary": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 4,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "split": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "abbreviation": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "dictionary_word": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "existing_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_source": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "draft-controls/undo-last": {
+    "positive": {
+      "records": 15,
+      "tp": 6,
+      "fp": 0,
+      "fn": 9
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "unseen_context": {
+      "records": 5,
+      "tp": 0,
+      "fp": 0,
+      "fn": 5
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "abbreviation": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "dictionary_word": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "existing_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_source": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "draft-controls/conflict": {
+    "positive": {
+      "records": 15,
+      "tp": 6,
+      "fp": 0,
+      "fn": 9
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "unseen_context": {
+      "records": 5,
+      "tp": 0,
+      "fp": 0,
+      "fn": 5
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "ordinary": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 4,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "split": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "abbreviation": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "new_term": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "dictionary_word": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "existing_form": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "no_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_source": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "draft-controls/other-scope": {
+    "positive": {
+      "records": 15,
+      "tp": 0,
+      "fp": 3,
+      "fn": 15
+    },
+    "seen_event": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 1
+    },
+    "seen_context": {
+      "records": 2,
+      "tp": 0,
+      "fp": 1,
+      "fn": 2
+    },
+    "unseen_context": {
+      "records": 5,
+      "tp": 0,
+      "fp": 0,
+      "fn": 5
+    },
+    "negative": {
+      "records": 13,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "ordinary": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "architecture": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 4,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "matching_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "split": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "abbreviation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "new_term": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "dictionary_word": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "existing_form": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "no_context": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "known_source": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "case": {
+      "records": 1,
+      "tp": 0,
+      "fp": 1,
+      "fn": 1
+    },
+    "canonical": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    }
+  }
+}

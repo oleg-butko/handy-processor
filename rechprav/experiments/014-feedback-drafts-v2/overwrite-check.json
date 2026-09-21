@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/home/user1/handy-processor/rechprav/target/release/examples/feedback_draft",
+    "/home/user1/handy-processor/rechprav/experiments/014-feedback-drafts-v2/events/accepted.jsonl",
+    "--config",
+    "/home/user1/handy-processor/rechprav/configs/terms-families.toml",
+    "--scope",
+    "technical",
+    "--output-dir",
+    "/home/user1/handy-processor/rechprav/experiments/014-feedback-drafts-v2/drafts/accepted"
+  ],
+  "exit_code": 1,
+  "stderr": "Error: output directory must be new; journal validation completed before creation\n\nCaused by:\n    File exists (os error 17)\n",
+  "unchanged_output_sha256": {
+    "proposals.toml": "b0448f6289f566ae6d8c05717c42bfe0da112012916e3c26997322c87cdda1d6",
+    "report.json": "a033e9b50fcc8af0179f0347b3a9f2dd70f550927f4f508d8a4ebbba7cdec892",
+    "draft-manifest.json": "ab87aab824cd0119bffdcc819ded4d84e0e89bb866f66efd27246dc9498407c2"
+  }
+}

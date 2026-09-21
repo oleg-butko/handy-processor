@@ -356,6 +356,24 @@ python3 rechprav/scripts/run_weighted_experiment.py rechprav/experiments/my-weig
 и защитами. Включены отдельные измерения warm analyze.
 [Формат и ограничения](../docs/rechprav/terms.md#взвешенная-буквенная-дистанция-013).
 
+## Черновики из журнала исправлений
+
+Отдельный offline-инструмент читает correction/retract события, выделяет
+подтверждённую пару и её соседей, классифицирует цель по словарю и активным
+формам. Он создаёт выключенные предложения для выбранного scope. Дубли,
+независимые подтверждения и отмены пересчитываются из журнала; веса не накапливаются.
+
+```bash
+/home/user1/.local/bin/cargo build --manifest-path rechprav/Cargo.toml --release --locked --offline --example feedback_draft
+rechprav/target/release/examples/feedback_draft rechprav/data/fixtures/feedback-drafts/events.jsonl --config rechprav/configs/terms-families.toml --scope technical --output-dir rechprav/artifacts/my-feedback-draft
+python3 rechprav/scripts/run_draft_experiment.py rechprav/experiments/my-draft-run
+```
+
+Выходной каталог должен быть новым. [Формат и принятие предложений](../docs/rechprav/feedback-drafts.md),
+[опыт 014](experiments/014-feedback-drafts-v2/report.md). Рабочий профиль и редактор
+не изменяются. Отмена влияет на новый черновик; ранее экспортированная копия
+автоматически не отключается. Для живой интеграции ещё нужен реестр принятия.
+
 ## Организация
 
 `src/` — библиотека и CLI; `tests/` — проверки поведения, безопасности вывода и метрик;
