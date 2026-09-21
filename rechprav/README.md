@@ -339,6 +339,23 @@ python3 rechprav/scripts/run_feedback_experiment.py rechprav/experiments/my-feed
 сохранности обычной речи → принятие/отмена. Интеграция и автоматическое обучение
 пока не выполнены. [Настройки](../docs/rechprav/terms.md#понижение-предпочтения-исходных-слов-012).
 
+## Взвешенная дистанция
+
+В edit-поиске можно включить `policy.weighted_distance`: задать цены отдельных
+направленных буквенных замен, вставки и удаления. Лимит для известных слов
+остаётся в обычных правках. По умолчанию модель отключена; её стоимости —
+проверяемая эвристика, не вероятности ASR.
+
+```bash
+rechprav/target/release/rechprav terms-inspect 'клиппорт' --config rechprav/configs/terms-weighted.toml
+python3 rechprav/scripts/run_weighted_experiment.py rechprav/experiments/my-weighted-run
+```
+
+[Опыт 013](experiments/013-weighted/report.md) сравнивает семь профилей на новых
+искажениях и отдельно на девяти пользовательских парах, с неизменными aliases
+и защитами. Включены отдельные измерения warm analyze.
+[Формат и ограничения](../docs/rechprav/terms.md#взвешенная-буквенная-дистанция-013).
+
 ## Организация
 
 `src/` — библиотека и CLI; `tests/` — проверки поведения, безопасности вывода и метрик;

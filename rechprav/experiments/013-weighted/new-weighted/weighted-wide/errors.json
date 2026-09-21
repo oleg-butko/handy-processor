@@ -1,0 +1,55 @@
+[
+  {
+    "id": "weighted-021",
+    "source": "луколхоз",
+    "gold": "локалхост",
+    "prediction": "луколхоз",
+    "tags": [
+      "positive",
+      "far_error"
+    ]
+  },
+  {
+    "id": "weighted-022",
+    "source": "свуты",
+    "gold": "слот",
+    "prediction": "свуты",
+    "tags": [
+      "positive",
+      "far_error"
+    ]
+  },
+  {
+    "id": "weighted-032",
+    "source": "слово клиппорт написано неверно",
+    "gold": "слово клиппорт написано неверно",
+    "prediction": "слово клипборд написано неверно",
+    "tags": [
+      "negative",
+      "literal",
+      "oov"
+    ]
+  },
+  {
+    "id": "weighted-033",
+    "source": "слово нетосвон придумано",
+    "gold": "слово нетосвон придумано",
+    "prediction": "слово недозвон придумано",
+    "tags": [
+      "negative",
+      "literal",
+      "oov"
+    ]
+  },
+  {
+    "id": "weighted-034",
+    "source": "упоминаем бээнсэ как ошибку",
+    "gold": "упоминаем бээнсэ как ошибку",
+    "prediction": "упоминаем пнз как ошибку",
+    "tags": [
+      "negative",
+      "literal",
+      "oov"
+    ]
+  }
+]

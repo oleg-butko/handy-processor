@@ -1,0 +1,47 @@
+[
+  {
+    "id": "user-20260921-001",
+    "source": "калиборд",
+    "gold": "клипборд",
+    "prediction": "калиборд",
+    "tags": [
+      "user_reported"
+    ]
+  },
+  {
+    "id": "user-20260921-003",
+    "source": "луколхоз",
+    "gold": "локалхост",
+    "prediction": "луколхоз",
+    "tags": [
+      "user_reported"
+    ]
+  },
+  {
+    "id": "user-20260921-004",
+    "source": "Нет звон",
+    "gold": "недозвон",
+    "prediction": "Нет звон",
+    "tags": [
+      "user_reported"
+    ]
+  },
+  {
+    "id": "user-20260921-005",
+    "source": "свуты и пнзэ",
+    "gold": "слот и пнз",
+    "prediction": "свуты и пнзэ",
+    "tags": [
+      "user_reported"
+    ]
+  },
+  {
+    "id": "user-20260921-008",
+    "source": "без снятия сваты",
+    "gold": "без снятия слота",
+    "prediction": "без снятия сваты",
+    "tags": [
+      "user_reported"
+    ]
+  }
+]

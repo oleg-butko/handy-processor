@@ -1,0 +1,30 @@
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли слот","id":"feedback-001","prediction":"сняли свод","source":"сняли свод","tags":["positive","seen_event"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли слот памяти","id":"feedback-002","prediction":"сняли свод памяти","source":"сняли свод памяти","tags":["positive","seen_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"мы сняли слот вчера","id":"feedback-003","prediction":"мы сняли свод вчера","source":"мы сняли свод вчера","tags":["positive","seen_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли слот","id":"feedback-004","prediction":"сняли ввод","source":"сняли ввод","tags":["positive","other_alias"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"освободили слот памяти","id":"feedback-005","prediction":"освободили свод памяти","source":"освободили свод памяти","tags":["positive","unseen_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"проверь слот памяти","id":"feedback-006","prediction":"проверь свод памяти","source":"проверь свод памяти","tags":["positive","unseen_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"свод правил","id":"feedback-007","prediction":"свод правил","source":"свод правил","tags":["negative","known_word"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"ввод данных","id":"feedback-008","prediction":"ввод данных","source":"ввод данных","tags":["negative","known_word"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"свод законов","id":"feedback-009","prediction":"свод законов","source":"свод законов","tags":["negative","known_word"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"каменный свод","id":"feedback-010","prediction":"каменный свод","source":"каменный свод","tags":["negative","architecture"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли свод старой арки","id":"feedback-011","prediction":"сняли свод старой арки","source":"сняли свод старой арки","tags":["negative","matching_context","architecture"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"рабочие сняли свод здания","id":"feedback-012","prediction":"рабочие сняли свод здания","source":"рабочие сняли свод здания","tags":["negative","matching_context","architecture"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"обсуждаем выражение сняли свод","id":"feedback-013","prediction":"обсуждаем выражение сняли свод","source":"обсуждаем выражение сняли свод","tags":["negative","literal","matching_context"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"слово свод написано правильно","id":"feedback-014","prediction":"слово свод написано правильно","source":"слово свод написано правильно","tags":["negative","literal"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли\nсвод","id":"feedback-015","prediction":"сняли\nсвод","source":"сняли\nсвод","tags":["negative","newline"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли, свод","id":"feedback-016","prediction":"сняли, свод","source":"сняли, свод","tags":["negative","punctuation"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли\tслот!","id":"feedback-017","prediction":"сняли\tсвод!","source":"сняли\tсвод!","tags":["positive","whitespace"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"Сняли слот","id":"feedback-018","prediction":"Сняли свод","source":"Сняли свод","tags":["positive","case"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли СВОД","id":"feedback-019","prediction":"сняли СВОД","source":"сняли СВОД","tags":["negative","uppercase"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли `свод`","id":"feedback-020","prediction":"сняли `свод`","source":"сняли `свод`","tags":["negative","code"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"https://host/свод","id":"feedback-021","prediction":"https://host/свод","source":"https://host/свод","tags":["negative","url"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли слот","id":"feedback-022","prediction":"сняли слот","source":"сняли слот","tags":["negative","correct_target"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"слот и свод правил","id":"feedback-023","prediction":"слот и свод правил","source":"слот и свод правил","tags":["negative","correct_target","known_word"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли слот","id":"feedback-024","prediction":"сняли своты","source":"сняли своты","tags":["positive","no_candidate"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"недозвон","id":"feedback-025","prediction":"нет звон","source":"нет звон","tags":["positive","multiword"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"обсуждаем выражение нет звон","id":"feedback-026","prediction":"обсуждаем выражение нет звон","source":"обсуждаем выражение нет звон","tags":["negative","multiword","literal"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"нет, звон","id":"feedback-027","prediction":"нет, звон","source":"нет, звон","tags":["negative","punctuation","multiword"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"нет\nзвон","id":"feedback-028","prediction":"нет\nзвон","source":"нет\nзвон","tags":["negative","newline","multiword"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"сняли слот и свод правил","id":"feedback-029","prediction":"сняли ввод и свод правил","source":"сняли ввод и свод правил","tags":["positive","mixed"]}
+{"comparisons":0,"complete":true,"decisions":[],"edits":[],"gold":"открой клипборд","id":"feedback-030","prediction":"открой клипборд","source":"открой клипборд","tags":["negative","unrelated"]}

@@ -1,0 +1,2333 @@
+{
+  "workers": 2,
+  "byte_equal_profiles": 155,
+  "source": "/home/user1/handy-processor/rechprav/experiments/012-feedback",
+  "runner_sha256": "8479fee0e97e925e9f796320f1c1c8a8a0947193e65eb85e07b664ccea63913c",
+  "runs": [
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/baseline/manifest.json",
+      "manifest_sha256": "f0de6d9acdd62f4c5edc5508080d71b21c8fdd0eb1372222c06b543d8ace4545",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/baseline.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/baseline"
+      ],
+      "predictions_sha256": "22cbe26f76aa63cf82b808b51138960238c723b3cc32ffe21906a654e6f4565c",
+      "metrics_sha256": "150b72a8016b4b602d29bd16cb72f32c019bd1ac893665c1530d38109123cde0"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/conflict/manifest.json",
+      "manifest_sha256": "5c0209edcf1efb100e88db660dce3abfeab9e666d73c251068d9a410c74f13fc",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/conflict.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/conflict"
+      ],
+      "predictions_sha256": "6cd4ca06c5f8210302784c91e4e57ddfd8bac04407a7b1f7440270de7a9ab386",
+      "metrics_sha256": "150b72a8016b4b602d29bd16cb72f32c019bd1ac893665c1530d38109123cde0"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/duplicate/manifest.json",
+      "manifest_sha256": "574b4b758aa08d528b6150ad833c35b33cb81e6102b260d930378c015bc17260",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/duplicate.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/duplicate"
+      ],
+      "predictions_sha256": "248bd269dca97424b7dcc40fa9f6b0a80d00434c178fee5add3c8aa93ecd88e5",
+      "metrics_sha256": "36fbd138f09391b7a36e2a7b9bc7a634dbaec46b2fd853ce6c1d9d9d16d6de65"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/hybrid/manifest.json",
+      "manifest_sha256": "5308e84ccd2d5c1675a269dcfefc320d293f4bec2806bc036018ac39480fb216",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/hybrid.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/hybrid"
+      ],
+      "predictions_sha256": "aa7341324f5b972602822e206c0baaf229c01bdd3d8576e838a3216b07399c7d",
+      "metrics_sha256": "36fbd138f09391b7a36e2a7b9bc7a634dbaec46b2fd853ce6c1d9d9d16d6de65"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/joint-context/manifest.json",
+      "manifest_sha256": "950088d763036d67a060245b86badfae72b9318f7b26081c6c003c4a93bc9b3f",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/joint-context.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/joint-context"
+      ],
+      "predictions_sha256": "6e1ee915d5cdecc5773a2095fa9f86ee240985bf75699a0a30b5ad6a833cd39d",
+      "metrics_sha256": "36fbd138f09391b7a36e2a7b9bc7a634dbaec46b2fd853ce6c1d9d9d16d6de65"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/joint-global/manifest.json",
+      "manifest_sha256": "f943515fa621e8504b407e85da0afd2ec4f61f387cf83bd4365adfb78e651993",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/joint-global.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/joint-global"
+      ],
+      "predictions_sha256": "02cd584d9c1648545ef21cb37a932d02a27fe19c26c3e3c79475f5db3ff1a6e4",
+      "metrics_sha256": "068792ab84df8c04c86612f38e4f540e971df3726d6e373ef0f086bf47480e06"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/pair-context/manifest.json",
+      "manifest_sha256": "45172afed33cc6d08ad63e818e21416b5c82315b3e5d0089b322160c3ddc91cf",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/pair-context.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/pair-context"
+      ],
+      "predictions_sha256": "457e2e386e1cb9662895e6ab76ab89d32a1659303e1b43df97a1061318de29d8",
+      "metrics_sha256": "36fbd138f09391b7a36e2a7b9bc7a634dbaec46b2fd853ce6c1d9d9d16d6de65"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/preferred/manifest.json",
+      "manifest_sha256": "470f380de42c88965410b307a3d9120ab7e9a5e8bf05103891501403c48c2ef0",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/preferred.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/preferred"
+      ],
+      "predictions_sha256": "1bf344b19a31cdfd212513f44c76b2752b50abc9c5e5ef0c3cbbc80853b9d6d7",
+      "metrics_sha256": "068792ab84df8c04c86612f38e4f540e971df3726d6e373ef0f086bf47480e06"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/source-off/manifest.json",
+      "manifest_sha256": "7d16bc8b1fa4a1474a6d2c099c13d7672739b90d7b97798be915d63cb33fd7bb",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/source-off.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/source-off"
+      ],
+      "predictions_sha256": "7253bd4e70aab1a13e3a60321c4e454a6d3bbc5565d94ce0dc14ac3e185982ed",
+      "metrics_sha256": "150b72a8016b4b602d29bd16cb72f32c019bd1ac893665c1530d38109123cde0"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/source-only/manifest.json",
+      "manifest_sha256": "d04a7a5f4d412c33b35b03fdb0279e17b62b8600e630399d97308fcc52f0b3a4",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/source-only.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/source-only"
+      ],
+      "predictions_sha256": "e3e20bd182cf3a197114eaa26bee31bb325959f44614978c31a4719eddc2eb9d",
+      "metrics_sha256": "068792ab84df8c04c86612f38e4f540e971df3726d6e373ef0f086bf47480e06"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/strict-known/manifest.json",
+      "manifest_sha256": "5a2412139830f7a72dd7d1bd0168b4da6d433808cdd1daefde07c3cd6388db3b",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/strict-known.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/strict-known"
+      ],
+      "predictions_sha256": "416d669b515c67d639bdb86d7800afed02133767b80abaa681e992ff1c103bd4",
+      "metrics_sha256": "150b72a8016b4b602d29bd16cb72f32c019bd1ac893665c1530d38109123cde0"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/target-off/manifest.json",
+      "manifest_sha256": "4f822edec418c978d291050551e308dc7baab33b25cae362ce3cb116c55943f5",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/target-off.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/target-off"
+      ],
+      "predictions_sha256": "0171ceb8efcea779f2c0d278408ce8f5b71948e64ca349250f02889a4ca3f027",
+      "metrics_sha256": "150b72a8016b4b602d29bd16cb72f32c019bd1ac893665c1530d38109123cde0"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/feedback-controls/target-only/manifest.json",
+      "manifest_sha256": "5d7af18036f3f5746682947558a7d95bc9634cb5e64d2f6f8cd207fdc03745df",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/feedback/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/012-feedback/configs/target-only.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/feedback-controls/target-only"
+      ],
+      "predictions_sha256": "7253bd4e70aab1a13e3a60321c4e454a6d3bbc5565d94ce0dc14ac3e185982ed",
+      "metrics_sha256": "150b72a8016b4b602d29bd16cb72f32c019bd1ac893665c1530d38109123cde0"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/new-families/family/manifest.json",
+      "manifest_sha256": "0a576ae4f23e21e9695b38284482dd98f0d46692b46eaecb6ffd55778c67cac0",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-families/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/new-families/family"
+      ],
+      "predictions_sha256": "bf60ecfd724ad5bfb1a1131495564a31a6300e0333d2bd890113d8abd985ab1e",
+      "metrics_sha256": "2d7928698e97c4326bff2354e2e9e3205b28709d121ddf27e6bda0d091235f2f"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/new-families/family-base-only/manifest.json",
+      "manifest_sha256": "43cedca7bf3244d4090f6e4c88aec68f2d40ca3d010c045c7a4a73ed595efb51",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-families/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-base-only.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/new-families/family-base-only"
+      ],
+      "predictions_sha256": "dc512281cb74e45f4ae5cc1d8ed5c7828ddee73d972fc4132f6eb6651f74ce30",
+      "metrics_sha256": "18166b1969e7e0f61e1891caf9455bc2dda8aa920a2c8b93fd46427cb8a5f957"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/new-families/family-conflict/manifest.json",
+      "manifest_sha256": "27e21eb8dfe18eda978df188a5621443c0047c48d3e01cd270c5d60849d63832",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-families/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-conflict.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/new-families/family-conflict"
+      ],
+      "predictions_sha256": "342ed0a5f83336b3a2a85cef1e723d433dcaeca1308b54daa9952f6189285d0e",
+      "metrics_sha256": "1270544f21eca93a1133b21f3a2e411dde096c7314eaf32613b178e74fdc5d3c"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/new-families/family-high/manifest.json",
+      "manifest_sha256": "a644ccfc4807c56c80f6694f8e71de7fd4328ea25e175598a42f1f3ed49ba8d6",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-families/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-high.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/new-families/family-high"
+      ],
+      "predictions_sha256": "3b6c9ebca0c8546d41ba4a90f8dc651315bf83349e915cdbf1bf0ad1f1f097f8",
+      "metrics_sha256": "2d7928698e97c4326bff2354e2e9e3205b28709d121ddf27e6bda0d091235f2f"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/new-families/family-low/manifest.json",
+      "manifest_sha256": "74317783846f86ad3a1c7f6a28cd2d031713a9354ac54858ccfa1c09d8077981",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-families/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-low.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/new-families/family-low"
+      ],
+      "predictions_sha256": "4c7c515c160a9fd41cab278aa2992c475a0df1c963f8d70dac58c0d8e136098e",
+      "metrics_sha256": "2d7928698e97c4326bff2354e2e9e3205b28709d121ddf27e6bda0d091235f2f"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/new-families/family-no-form-context/manifest.json",
+      "manifest_sha256": "710c24f884810b42b6d404918cc2c9fa261e0bc1c3bbd55d7f82974cdddcca1f",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-families/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-no-form-context.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/new-families/family-no-form-context"
+      ],
+      "predictions_sha256": "5980d16556d09407d48f5d93a1d04eb1b5a2ca1d3ffef7e9b33af2f877bd837f",
+      "metrics_sha256": "80b9c3eacb24ccc9fddc56fd4534cfc1cb181c7fa7d7ee725fd877bf14268a13"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/new-families/family-no-genitive/manifest.json",
+      "manifest_sha256": "8438fbe955465efdb159c0bbecf7eabd3aef69d7a42ed8772be8d9c5a47d383c",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-families/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-no-genitive.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/new-families/family-no-genitive"
+      ],
+      "predictions_sha256": "be8df7905e23d801c3b2535b75acd40a6c86e667511dc3b4b2f1d9541dd20d05",
+      "metrics_sha256": "8380df1013b7c5e14def4e02fda672a8134fede478d53f00fb4ca1e0c75ca124"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/new-families/family-preferred/manifest.json",
+      "manifest_sha256": "532725e92b22583afaffffed83708d448ae99acbab856e779cbb8d9d091ac703",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-families/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-preferred.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/new-families/family-preferred"
+      ],
+      "predictions_sha256": "3f9016420fb42abbe3706cf74dfec6ed6962dc8f08f0f5f88518ebbaa770c65a",
+      "metrics_sha256": "80b9c3eacb24ccc9fddc56fd4534cfc1cb181c7fa7d7ee725fd877bf14268a13"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/new-families/family-set-off/manifest.json",
+      "manifest_sha256": "a6fed7aa5829e80678294370f7029e685a2c60884315f29754dbdc8a1cd97ee8",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-families/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-set-off.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/new-families/family-set-off"
+      ],
+      "predictions_sha256": "9ea85d390fc266a7b6ae9593704c5d724e3472d303293477859c1576c9702fb4",
+      "metrics_sha256": "cca44df7856fc9feaabdfcffe2b00746572e3eeba78606915205b1e61db10207"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/new-families/family-slot-off/manifest.json",
+      "manifest_sha256": "94527d0af392366c7808cb0940f794a8451a0d0fda178b50351a05bd12cdca3a",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-families/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-slot-off.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/new-families/family-slot-off"
+      ],
+      "predictions_sha256": "18fa2c7ef8e7b55c8b79ffe7e26ad84340983b4af2d4e7a9ca1ff27d6bea7efd",
+      "metrics_sha256": "db4025a5077aefefaefc82f9cb7616f954f8136cc5695ef1a2ef2b268794b640"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/new-families/flat-complete/manifest.json",
+      "manifest_sha256": "e45ae6ee1eb5ec8d9823201d465bf5b48f1f980ceaddbbff4dae8b447aca0f3b",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-families/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/flat-complete.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/new-families/flat-complete"
+      ],
+      "predictions_sha256": "f8e8a3a2de9a863a0c2646be6684c07e0bcdb3b5af1faa408a8ffbdc6acee498",
+      "metrics_sha256": "2d7928698e97c4326bff2354e2e9e3205b28709d121ddf27e6bda0d091235f2f"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/new-families/old-flat/manifest.json",
+      "manifest_sha256": "bf703dae272b5cd989f02595b97d67b3c4c6c697ccca7da36d75f4255b68f382",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-families/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/old-flat.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/new-families/old-flat"
+      ],
+      "predictions_sha256": "80b32eac1f70cb96b4f9d8a26575adc4c0ec9000ee9d621ed0a9bda7e32ef7db",
+      "metrics_sha256": "aba2946eb7691f950a67597d1fcc34a673b7bea739ef97ddf46a9f84e84fc030"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/new-009/edit-generated/manifest.json",
+      "manifest_sha256": "aa8226373c40eea313e62de339d3c53c688ef30e25a94b0bb4ea77d77dbb4c19",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/pronunciation/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/edit-generated.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/new-009/edit-generated"
+      ],
+      "predictions_sha256": "887214415026eaf2dce156f05d048d003684eb44bed82b94a72ebe16eef81a3e",
+      "metrics_sha256": "cfb771156e08d895d6abbae04938d145f2d80df727f3063dbe2b72ab9ecc9c9e"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/new-009/edit-manual/manifest.json",
+      "manifest_sha256": "a5ec81938fbdd150ae74e1531f85bae6039827643f637029ff9ac212f3f792fc",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/pronunciation/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/edit-manual.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/new-009/edit-manual"
+      ],
+      "predictions_sha256": "dc0e33e93e52811eee47c4cc79454c13d5738495a66c96f2f38941a120a453cf",
+      "metrics_sha256": "fc4db1495f50aed2cceb426e9cc014b208724b75d5842a8ec30eb1febeca746d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/new-009/edit-union/manifest.json",
+      "manifest_sha256": "d170236a40e8ec4f37d3570d537fc17acc928f97d7f29dd88d67be54f971e81d",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/pronunciation/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/edit-union.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/new-009/edit-union"
+      ],
+      "predictions_sha256": "e8d905b767a298cbcbf3eabc5b684997844ab49ef0682c0763f321202f33bbf7",
+      "metrics_sha256": "1589ee911b144afaf723064c97e067576bcd63448e750b3012527e948ff2102a"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/new-009/exact-generated/manifest.json",
+      "manifest_sha256": "b86e448dfd8a3a26c881d8738521a2bf11854d4b696321aab81c2783a877abf7",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/pronunciation/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/exact-generated.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/new-009/exact-generated"
+      ],
+      "predictions_sha256": "d0bf2aef0dd223bbcf3ba7cf096e497aa98cc1470997430e1f85d71f329381f2",
+      "metrics_sha256": "13896218617bb90fe0b49c807857e8b125baf3e03627625bc335e5135e17751f"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/new-009/exact-manual/manifest.json",
+      "manifest_sha256": "ec6d336f774fc9e6e534b7ec0e34daf4411d22132ff8cf8ba9ffb7259db1533a",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/pronunciation/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/exact-manual.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/new-009/exact-manual"
+      ],
+      "predictions_sha256": "157021bb16915582fb2da55018d434d32a016a40107b51fe6ce5ee40f159fd00",
+      "metrics_sha256": "2c74ca0538053f1893d74bab972ca5808feecd4308f481306f8315531692a737"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/new-009/exact-union/manifest.json",
+      "manifest_sha256": "adda4533df78cab5fe65c7820355aa22eef529b9be7546c010d7a8d83cb94d9a",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/pronunciation/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/exact-union.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/new-009/exact-union"
+      ],
+      "predictions_sha256": "89f0decf7779d52c9c0edf04b554fefc16f6ea2b450d632c13f3a61b68379694",
+      "metrics_sha256": "4581bdb8b4e41f4adb9ae2f04a7398ba583a3595ed8b5001075de18a558ca643"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-006/edit-generated/manifest.json",
+      "manifest_sha256": "a83bd6459f53170dbe8b0a9111553b2d7c7d97ab9dedf2eb79697f31a17b95e0",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/edit-generated.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-006/edit-generated"
+      ],
+      "predictions_sha256": "98b81f9848fac815e1d76ab501adf6a12363d685abafaa14c882181dc4f01952",
+      "metrics_sha256": "a80cc8c474dc54a8e5a17aecca31c8f73e1038037642a7395c7a9818d83fd428"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-006/edit-manual/manifest.json",
+      "manifest_sha256": "986ac74a1a0ea983147cbb59f8df7a228408b7dd4637c56f6b6376fc58a00edd",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/edit-manual.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-006/edit-manual"
+      ],
+      "predictions_sha256": "1351b4ada59ff1b56114ea77413c9bbe936357515b1a865014167b5d365fb8f0",
+      "metrics_sha256": "84b005cea329f1adc2f99239e35bdb0b2447f31553af36c9eb9bde03a579a6c1"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-006/edit-union/manifest.json",
+      "manifest_sha256": "d5c06bacea357ed5a507d16d5244eac3a6f0152f7ab3e8fa9a2af490b2a757b1",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/edit-union.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-006/edit-union"
+      ],
+      "predictions_sha256": "1db45282c725c3ddd39a417ed4af5c7f1715b8f11837e9b712724ac31ac87be8",
+      "metrics_sha256": "84b005cea329f1adc2f99239e35bdb0b2447f31553af36c9eb9bde03a579a6c1"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-006/exact-generated/manifest.json",
+      "manifest_sha256": "ba84fe59b37446a5f2af6230e14a922405f5278f42c4bfc6cb3a4acdd4c10b04",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/exact-generated.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-006/exact-generated"
+      ],
+      "predictions_sha256": "722270a81baa2ffba94e5a5951d9e2486091e2a92db531359b2e44d27369f926",
+      "metrics_sha256": "85b8d698339760c463f33262d27f3a1596435731fe1fa1f065f0eccda3b07f26"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-006/exact-manual/manifest.json",
+      "manifest_sha256": "57fef030e6b0452d6f8a62baf069bf2c9a9b0099a8fc9533719753f4b54931b0",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/exact-manual.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-006/exact-manual"
+      ],
+      "predictions_sha256": "4493ec2c0e4ba713f0feafc238ccb929a14766d20d9251e110d236882828c979",
+      "metrics_sha256": "e8ec97c64d7954ff57202560b9e1aacbd917d92fdc42b40fc5dafe5737e7c008"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-006/exact-union/manifest.json",
+      "manifest_sha256": "e228c1bc03d03382cf068badae2f38c0d73abd1aab60f28d67fd2be23ff2d124",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/exact-union.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-006/exact-union"
+      ],
+      "predictions_sha256": "d87b879c91319cf648512ce1017cb9e5cfb2a26745b929b3e5b03c7e1323e45b",
+      "metrics_sha256": "55206b769dc441fa88f5e6e31bb8e593b2bb580d92679faea6ab4679507cf4f4"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-007/edit-generated/manifest.json",
+      "manifest_sha256": "4a8f879bd0eee561b1e1a8564c9a4c573db39132f0454f223a6796e5093f1502",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/edit-generated.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-007/edit-generated"
+      ],
+      "predictions_sha256": "2ed0d47264c2a421406edce67036fc98f25211baae6da318f9001a10beba74d8",
+      "metrics_sha256": "bfdf0a8c38e7ac71b388ea19573881add5850689c0ac27125d034f3552a54449"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-007/edit-manual/manifest.json",
+      "manifest_sha256": "8969832c6d5d86b51594b96d1f5bb74227cab2993fede005438f798ce72fff53",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/edit-manual.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-007/edit-manual"
+      ],
+      "predictions_sha256": "c7ff1cd0aadcdb010397c7923e8e1733d04bcb98ffaf9a46f8f4f5130705fc29",
+      "metrics_sha256": "8d752fec3dc6cdfd2d25eedd24b7a8b16539b95f34e1ad0c692208990f7c3a78"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-007/edit-union/manifest.json",
+      "manifest_sha256": "58e65e0a112785bcc2ae68efecb656e77d0e1ce8a8ef1d4161606724a035afc8",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/edit-union.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-007/edit-union"
+      ],
+      "predictions_sha256": "703ffc1820c7c82f9ee5e0b71d0024d850a5005838e35c57e8d0ef7099d4ca7f",
+      "metrics_sha256": "8d752fec3dc6cdfd2d25eedd24b7a8b16539b95f34e1ad0c692208990f7c3a78"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-007/exact-generated/manifest.json",
+      "manifest_sha256": "357bfc974a8681edba047c4649e753e38ec66944da43eb8c96ea00681013e598",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/exact-generated.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-007/exact-generated"
+      ],
+      "predictions_sha256": "b784ee9290c7fc970bfa19e3a4d55a8897f3f9edbc94385be7699021ea17e025",
+      "metrics_sha256": "d1fb74239068b3f7f5a92df3a65bcd927ea9860991320bca9d5a214d69da9689"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-007/exact-manual/manifest.json",
+      "manifest_sha256": "1e9ff37ffddb7a6de9eaa5b760dbaa883133fd1a526b0e5956d7cc3d8e911426",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/exact-manual.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-007/exact-manual"
+      ],
+      "predictions_sha256": "a932e10e7adfdc1c726801de0546b17dd2234e99343a64d8852a562a45d05622",
+      "metrics_sha256": "456a1c4c69e7a6d4a3235ec7f4d785631662da5d2241d912a4d4433ba15667ae"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-007/exact-union/manifest.json",
+      "manifest_sha256": "50eb5ee7ea68a07238aab877c7f57e9962dd6ceff5614ffc41106a9eca3e7e5c",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/exact-union.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-007/exact-union"
+      ],
+      "predictions_sha256": "a86c287206b87d7174acb77ffbfe3e4e8d889f38b2d55c1909d95a7f67b4e518",
+      "metrics_sha256": "16f97a7626d11feb18509e40f55bdf500fb87710bdc00c3adecc35ff25be7538"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-008/edit-generated/manifest.json",
+      "manifest_sha256": "30aaf12017bca8e6f0f01ef1203bdf8f3627b2c8d08176fcee55f8ee2d9f18d4",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-spans/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/edit-generated.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-008/edit-generated"
+      ],
+      "predictions_sha256": "5aeeaebb806e938bd777d83f81a7689d1e90a786e62f3c7736f3061bfd59958e",
+      "metrics_sha256": "337a0426ad3585d75f1c73740ea5014d08c79c57406bc1c4e20141aeb6c430b7"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-008/edit-manual/manifest.json",
+      "manifest_sha256": "0c0fb0c9a9a6156b4451ab0a2d104685274eb7da9e3dc19f1112272b8b0bfdc0",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-spans/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/edit-manual.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-008/edit-manual"
+      ],
+      "predictions_sha256": "94a9b763f15f4336bf7ec6c9e9e21e9a081f6f436ead61a9c51a30081ce484f1",
+      "metrics_sha256": "53d82e32cdcc6678016737e658113d2e94ded2523281998a36cb69045021de2d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-008/edit-union/manifest.json",
+      "manifest_sha256": "2a89a8f12ea093b1dffa76c0ee36c938602d32f57fab43faa2c008d7fd26b254",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-spans/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/edit-union.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-008/edit-union"
+      ],
+      "predictions_sha256": "5fd6683074fbbf57887635785cfc9bd907f428e3805ad9548e4fb79dd5b567d4",
+      "metrics_sha256": "53d82e32cdcc6678016737e658113d2e94ded2523281998a36cb69045021de2d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-008/exact-generated/manifest.json",
+      "manifest_sha256": "e403d1a859576d44caa46ebf1551942069a0821e6805499eee5b2f4281cb0887",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-spans/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/exact-generated.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-008/exact-generated"
+      ],
+      "predictions_sha256": "17dbb3d45f1425f38795299c4f6a31ec8b8f1f6f2c6b0c508ef4db5b35aecb1f",
+      "metrics_sha256": "7c0bb3b3737991d11b607bdb0404553ed769853f3f7e21e894eada6d959d6120"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-008/exact-manual/manifest.json",
+      "manifest_sha256": "f220f787d285d2777aaf039300876534223c2a2f151d53998ceb70412195e540",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-spans/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/exact-manual.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-008/exact-manual"
+      ],
+      "predictions_sha256": "e7bb841bd4dbe3f5ec5f62b68e7c8a60d17f1dfb8cc04fc3c9cfc6e6fe43e384",
+      "metrics_sha256": "793a4d2a7db9bf8715951b3b7c7c82ab9452d3b950aa1dd39916656835dc125d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/old-008/exact-union/manifest.json",
+      "manifest_sha256": "0c513b890db647adfe57133dcb96435994193f26909a1ff8e997d23aa8e30a75",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-spans/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/configs/exact-union.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/old-008/exact-union"
+      ],
+      "predictions_sha256": "750241f2479ddc52600750d6bbb0f2b8092b3e74506d4641008234a0cffda4d1",
+      "metrics_sha256": "d1249a2775dc80b2afbfa37c52b403b87d6f483d2d4f75dfd0782ab878683336"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/new-008/legacy-distance/manifest.json",
+      "manifest_sha256": "1a84c8d5349d230c41e81c8c0155a3b3a28fbadeec3702a180e5f95bbc3ac74a",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-spans/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/legacy-distance.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/new-008/legacy-distance"
+      ],
+      "predictions_sha256": "5c5c12375723cccd2a2349b828e51b6b2e7803d435ce94fe0137757146f181ba",
+      "metrics_sha256": "23361f5c9eca9279215be627b0c53ecd9d7de99d26ba17cb5b051ca5d186800a"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/new-008/legacy-longest/manifest.json",
+      "manifest_sha256": "68324e416df61ccf7a8ff643094b2086b040cba3a83ffc89446e074be974a8aa",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-spans/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/legacy-longest.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/new-008/legacy-longest"
+      ],
+      "predictions_sha256": "5c5c12375723cccd2a2349b828e51b6b2e7803d435ce94fe0137757146f181ba",
+      "metrics_sha256": "23361f5c9eca9279215be627b0c53ecd9d7de99d26ba17cb5b051ca5d186800a"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/new-008/legacy-shortest/manifest.json",
+      "manifest_sha256": "c30b4b7c2921275505d7bc3e6adbb397284b3e793da9fec4d2fa8a24044ecf60",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-spans/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/legacy-shortest.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/new-008/legacy-shortest"
+      ],
+      "predictions_sha256": "7a515d2e4f7d20664fe6089e2a2cd1b40775fb9e32bed8a1fa888d66dfe9b2ca",
+      "metrics_sha256": "cd382696e8e067c0c4c58e6dce061a2ed26d0405b5f017425102b49c9a54af37"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/new-008/routed-distance/manifest.json",
+      "manifest_sha256": "e16ab8783dc24f0a192a70ea6b60f4318d7419077696c277dc73487c71495af0",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-spans/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/routed-distance.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/new-008/routed-distance"
+      ],
+      "predictions_sha256": "d4477583113c600da27f9d0673f776eb3ea138306eb242f36c21c1c47ff2156b",
+      "metrics_sha256": "53d82e32cdcc6678016737e658113d2e94ded2523281998a36cb69045021de2d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/new-008/routed-longest/manifest.json",
+      "manifest_sha256": "d78278175e7bb4d566ac7efef8131561b418b4d0ddd3465b321165769417d791",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-spans/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/routed-longest.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/new-008/routed-longest"
+      ],
+      "predictions_sha256": "d4477583113c600da27f9d0673f776eb3ea138306eb242f36c21c1c47ff2156b",
+      "metrics_sha256": "53d82e32cdcc6678016737e658113d2e94ded2523281998a36cb69045021de2d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/new-008/routed-shortest/manifest.json",
+      "manifest_sha256": "03747c6715186407b0ca7e7fbde66d6bcc5b9b903118b4d6fb75f852b6616913",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-spans/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/routed-shortest.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/new-008/routed-shortest"
+      ],
+      "predictions_sha256": "d4477583113c600da27f9d0673f776eb3ea138306eb242f36c21c1c47ff2156b",
+      "metrics_sha256": "53d82e32cdcc6678016737e658113d2e94ded2523281998a36cb69045021de2d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/old-006/legacy-distance/manifest.json",
+      "manifest_sha256": "3735d5ecb05ee54a10e7cfb9c8cf0f96fce482fb0b310997c312da0cc12dea34",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/legacy-distance.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/old-006/legacy-distance"
+      ],
+      "predictions_sha256": "7fc5f61e7ef36a94d993ffe3d9c482fe03389171987b6aaf40721875c6d0031b",
+      "metrics_sha256": "62c28b334c1b397998e8736984378a46788a23d142b57f89ea189376257bed39"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/old-006/legacy-longest/manifest.json",
+      "manifest_sha256": "c11dd5aaea32a294334c0543b2a2fa0fa17ffbb3466cdf85d0b21ec930829b25",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/legacy-longest.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/old-006/legacy-longest"
+      ],
+      "predictions_sha256": "7fc5f61e7ef36a94d993ffe3d9c482fe03389171987b6aaf40721875c6d0031b",
+      "metrics_sha256": "62c28b334c1b397998e8736984378a46788a23d142b57f89ea189376257bed39"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/old-006/legacy-shortest/manifest.json",
+      "manifest_sha256": "af769e675ea0564375b20833492638bf861fe07b1236beff79f118f2fa2cc70d",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/legacy-shortest.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/old-006/legacy-shortest"
+      ],
+      "predictions_sha256": "7fc5f61e7ef36a94d993ffe3d9c482fe03389171987b6aaf40721875c6d0031b",
+      "metrics_sha256": "62c28b334c1b397998e8736984378a46788a23d142b57f89ea189376257bed39"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/old-006/routed-distance/manifest.json",
+      "manifest_sha256": "a02784d1041d6eb5b243c8f40e70341d5dfd36397eb58686b2359cdb9dfb80a8",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/routed-distance.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/old-006/routed-distance"
+      ],
+      "predictions_sha256": "0fb4e3cec9012c12d1fae6ec1b4806500b75c996fec1d65f85343e7ca7970d9f",
+      "metrics_sha256": "84b005cea329f1adc2f99239e35bdb0b2447f31553af36c9eb9bde03a579a6c1"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/old-006/routed-longest/manifest.json",
+      "manifest_sha256": "0e2949d060eb5095fb67e30c4975b065e437f6b79c875ba3b24aae06aa71a2bb",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/routed-longest.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/old-006/routed-longest"
+      ],
+      "predictions_sha256": "0fb4e3cec9012c12d1fae6ec1b4806500b75c996fec1d65f85343e7ca7970d9f",
+      "metrics_sha256": "84b005cea329f1adc2f99239e35bdb0b2447f31553af36c9eb9bde03a579a6c1"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/old-006/routed-shortest/manifest.json",
+      "manifest_sha256": "0f90d8125c8f6bb8fa651cd7d649c7fd54630cb00006925dbe00fa9eaa5632f5",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/routed-shortest.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/old-006/routed-shortest"
+      ],
+      "predictions_sha256": "0fb4e3cec9012c12d1fae6ec1b4806500b75c996fec1d65f85343e7ca7970d9f",
+      "metrics_sha256": "84b005cea329f1adc2f99239e35bdb0b2447f31553af36c9eb9bde03a579a6c1"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/old-007/legacy-distance/manifest.json",
+      "manifest_sha256": "4e888a16479dfae16c020a149956613d5c8a639890023a266bb77548d1c44fc1",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/legacy-distance.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/old-007/legacy-distance"
+      ],
+      "predictions_sha256": "e8c187d3017b7fe7a96fd4e7738a8a1581e0f944adc6fba54e5fb65634239510",
+      "metrics_sha256": "dacb2fae9f9f746cb0c5fcbdd4a13b78db16f1d913399cd0941b876cfd1aeabb"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/old-007/legacy-longest/manifest.json",
+      "manifest_sha256": "8b1065ef5a23de6f86d333c70b357727e56f53895357eaafcd58a9867bd7b63e",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/legacy-longest.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/old-007/legacy-longest"
+      ],
+      "predictions_sha256": "e8c187d3017b7fe7a96fd4e7738a8a1581e0f944adc6fba54e5fb65634239510",
+      "metrics_sha256": "dacb2fae9f9f746cb0c5fcbdd4a13b78db16f1d913399cd0941b876cfd1aeabb"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/old-007/legacy-shortest/manifest.json",
+      "manifest_sha256": "83c99d9c882667ee32a381c8b1a20dbaae51dc5bff47b184a335d0bddcdd1a5c",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/legacy-shortest.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/old-007/legacy-shortest"
+      ],
+      "predictions_sha256": "e8c187d3017b7fe7a96fd4e7738a8a1581e0f944adc6fba54e5fb65634239510",
+      "metrics_sha256": "dacb2fae9f9f746cb0c5fcbdd4a13b78db16f1d913399cd0941b876cfd1aeabb"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/old-007/routed-distance/manifest.json",
+      "manifest_sha256": "c0eaabc7a623e310075f4120eaade27da8883fa012701756d393dad4bc15d839",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/routed-distance.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/old-007/routed-distance"
+      ],
+      "predictions_sha256": "a3a1bd92a4caa840b1375bc485fe977649f37435ac156662422b6eab34e1e490",
+      "metrics_sha256": "8d752fec3dc6cdfd2d25eedd24b7a8b16539b95f34e1ad0c692208990f7c3a78"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/old-007/routed-longest/manifest.json",
+      "manifest_sha256": "d162f54242d7efea8309b04edbd30dab29d287e8cd648984c4fd856b9684e564",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/routed-longest.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/old-007/routed-longest"
+      ],
+      "predictions_sha256": "a3a1bd92a4caa840b1375bc485fe977649f37435ac156662422b6eab34e1e490",
+      "metrics_sha256": "8d752fec3dc6cdfd2d25eedd24b7a8b16539b95f34e1ad0c692208990f7c3a78"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/old-007/routed-shortest/manifest.json",
+      "manifest_sha256": "c70e8aec00c634f665d796d07fe15728c1fab38da3eb215d00835e6629c481cb",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/configs/routed-shortest.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/old-007/routed-shortest"
+      ],
+      "predictions_sha256": "a3a1bd92a4caa840b1375bc485fe977649f37435ac156662422b6eab34e1e490",
+      "metrics_sha256": "8d752fec3dc6cdfd2d25eedd24b7a8b16539b95f34e1ad0c692208990f7c3a78"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/b2-new/manifest.json",
+      "manifest_sha256": "d525646d43d72ae36aaf2adea3390c8b69218532de111fe6b6c997895ab0ba46",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/b2-new"
+      ],
+      "predictions_sha256": "f44c419331c538416a745879455368f8d3ae6de6d90597c9d97a13d25841d159",
+      "metrics_sha256": "543d48eab0b5f8795850cede05550a5aac8e40d530fdf2f496f4399babc555df"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/b2-old/manifest.json",
+      "manifest_sha256": "743aad9626842e1c89e02f7d95306343b52c228f87a61001550c386bfdfd83af",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/baseline/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/b2-old"
+      ],
+      "predictions_sha256": "edc07f0fbb22a5488433d9276d9291cf5dbfc8efe366c24910ce69ebb5bcc6cb",
+      "metrics_sha256": "631bef66dd823f8e5d6da4116c0c4beb6a6361666a2dde4be3fe1e2b034a8f05"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/conflict/manifest.json",
+      "manifest_sha256": "80a3cf5b05414f358fc813f35a18293dc5be92893313514c36f9752e2e22d047",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/legacy-regression/conflict.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/conflict"
+      ],
+      "predictions_sha256": "2bdeca33b8136028e92af96f89698134a128dbed50d7afabb4bbbea47910d128",
+      "metrics_sha256": "9cf9f260f0c485d1ab89bc85c87b453747d666cecae5d70ffc539eda98bacecf"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/disabled/manifest.json",
+      "manifest_sha256": "a4b0c7939b7a5cfe57bc0b02f9404d732f1fe6d6c60dca11e734d1e46dfc1b77",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/legacy-regression/disabled.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/disabled"
+      ],
+      "predictions_sha256": "1bbb4820e891d5f685e69dc5a08e37f061456955a047495247bcda603c0245ec",
+      "metrics_sha256": "016daf4ca7f971c07b0f3197fbde69fb5e7d1c76d9847ea69fb8944321165525"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/edit-1/manifest.json",
+      "manifest_sha256": "270338768f1cca9cf5d0d576093b3188dac4fed40b885e7c8cddb33803782ead",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/legacy-regression/edit-1.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/edit-1"
+      ],
+      "predictions_sha256": "7fc5f61e7ef36a94d993ffe3d9c482fe03389171987b6aaf40721875c6d0031b",
+      "metrics_sha256": "62c28b334c1b397998e8736984378a46788a23d142b57f89ea189376257bed39"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/edit-2/manifest.json",
+      "manifest_sha256": "9a44570e36b2ff43360ec2a441d481cd1dd4cde8e3baa3af6c7e52b79f95dee6",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/legacy-regression/edit-2.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/edit-2"
+      ],
+      "predictions_sha256": "aaec60dc476c7554e8dd459e3e38a4fc59da0cd7930730348917b7c19b2408ee",
+      "metrics_sha256": "8f67def03dd85902bbb622d4d0de8dbd3410c826bf2d654180aa6535a6933b54"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/exact/manifest.json",
+      "manifest_sha256": "7f0ea04e4fdf2156ea30a898b7b7f0fc3c8adf4062db935ba8462e9dbef9e355",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/legacy-regression/exact.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/exact"
+      ],
+      "predictions_sha256": "d6e2e158256e8fccd104729d50b959c2318cbaeebdbd9f8048a73d85e3b7b98a",
+      "metrics_sha256": "7722a494be5ad9a6b954d539de06d557902b17f3ffca43e0ae93b5eeb57ef97b"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/lab-only/manifest.json",
+      "manifest_sha256": "5c1588a773b5c0516e98dd1b69af6bb1ff74a226dde484ab10a6cfbc0b22b175",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/legacy-regression/lab-only.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/lab-only"
+      ],
+      "predictions_sha256": "1ad400a7a28e6a8ebc29c1196c06c6825cebf6fe4e8b453d3172e8b86da7154f",
+      "metrics_sha256": "925d13adaad81b63e2db7e227dec4d9cd0a2dd318c2ccba4660ec569d3d4540c"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/oov-only/manifest.json",
+      "manifest_sha256": "49f9461ff72fb984d63ff18bb006b34f042bd41694eb2959c580733cfd7a8c91",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/legacy-regression/oov-only.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/oov-only"
+      ],
+      "predictions_sha256": "6c74eedf675b788786b8698aa0ade7b99ce7572e2c95c354f9ab75a230cfc7aa",
+      "metrics_sha256": "eafcb2b32af9695c66b29e2b70d1116484518d04797cc2f0f4436be55fab7086"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/pnz-disabled/manifest.json",
+      "manifest_sha256": "13660f2799963527e80dd7acdca9849e200e73074e10ff84b350c33baac45366",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/legacy-regression/pnz-disabled.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/pnz-disabled"
+      ],
+      "predictions_sha256": "c660bbe8bfbd7a8140fc651a7db119b4159171c096d1126d30a5777fe604ad4a",
+      "metrics_sha256": "9cf9f260f0c485d1ab89bc85c87b453747d666cecae5d70ffc539eda98bacecf"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/pnz-high/manifest.json",
+      "manifest_sha256": "a2919eb0817a836bb70ef7b4f004fef394e7ffbda8d6e9d11b90ea7b32f3ade9",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/legacy-regression/pnz-high.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/pnz-high"
+      ],
+      "predictions_sha256": "28e9724c3c6df5c5018d041dc4091d71ac80eb9b30234b35dbd79b8dad2d0b31",
+      "metrics_sha256": "62c28b334c1b397998e8736984378a46788a23d142b57f89ea189376257bed39"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/pnz-low/manifest.json",
+      "manifest_sha256": "30d48e1ebf22170b33dba3f2cdc9fdd7e3e86b4da552ddfce96bfb663c177f3d",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/legacy-regression/pnz-low.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/pnz-low"
+      ],
+      "predictions_sha256": "dc382299d17e46b43e5447d715675840db3d4e9cfc604f048d889526bfa35213",
+      "metrics_sha256": "0f3acc4503f80f6707e1b8d7190e81a1bb243e557b38831bea918cff85292ec7"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/prefer-hardware/manifest.json",
+      "manifest_sha256": "1ff0f0e0edad8c147441b8e072a71f29acc73bdc253367a67f0d649b3b21cb79",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/legacy-regression/prefer-hardware.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/prefer-hardware"
+      ],
+      "predictions_sha256": "e3eedbdaba40449871a439d515b943fb79c13dbe78e6f7c3d0b7110d5d34f76c",
+      "metrics_sha256": "62c28b334c1b397998e8736984378a46788a23d142b57f89ea189376257bed39"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/unguarded/manifest.json",
+      "manifest_sha256": "f99d62a5e66b607af5b017af942cbd01c4b78fead1726611d4a6d60e27c2b51d",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/legacy-regression/unguarded.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/legacy-regression/unguarded"
+      ],
+      "predictions_sha256": "c2b153700302d55dd9dafa4142cf904016d69c96280b167e73f268089fc8ed09",
+      "metrics_sha256": "7306825dab48f624323d68dea859e0b7e08efc7dfd4a90f40deef706188e18c8"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/combined/manifest.json",
+      "manifest_sha256": "963bb5273517991958245f86f6a10a8ba203763882337ba707998cad0e3d4df3",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/combined.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/combined"
+      ],
+      "predictions_sha256": "89bfb218d317840d6fe4106e83af62ff054714c20de4f4537a9ab87cb313c18f",
+      "metrics_sha256": "264b86ad2158ba167f1aa37153e1c1405a79327fec8d16117ba68e1a7a3e6379"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/exclusions/manifest.json",
+      "manifest_sha256": "2a09219ba1a2d7291fdf66248dcf4a278192bc5ee00fa7962adee7ad08d873c8",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/exclusions.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/exclusions"
+      ],
+      "predictions_sha256": "3022a5cb67d1eef8acefdbd713814d4887d3e09849a46a42f990707d59720537",
+      "metrics_sha256": "933711633c571ebb483aa1441604ed397905410c7cb37615a8790bd3d51b1be7"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/known-exact/manifest.json",
+      "manifest_sha256": "4a325f75762fc7badb9035d9909e7b665e0540eef43df15cd92df16123a87fa2",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/known-exact.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/known-exact"
+      ],
+      "predictions_sha256": "2b9ed91c16d18e0e8713636212dcd0034c18e9178969d6b41a055385160ef3fd",
+      "metrics_sha256": "9b21b5fc5721ce93c8166c840612fd024cf39744e3c832074201830757cb34a1"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/legacy/manifest.json",
+      "manifest_sha256": "f56329f178484a07b8e911414c763285d32121f72c48a3da77cfa77665c680db",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/legacy.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/legacy"
+      ],
+      "predictions_sha256": "e8c187d3017b7fe7a96fd4e7738a8a1581e0f944adc6fba54e5fb65634239510",
+      "metrics_sha256": "dacb2fae9f9f746cb0c5fcbdd4a13b78db16f1d913399cd0941b876cfd1aeabb"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/legacy-conflict/manifest.json",
+      "manifest_sha256": "19d1f83c022c5d3341271bb0d4c2122295665f88a393951a41836a048f4121bf",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/legacy-conflict.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/legacy-conflict"
+      ],
+      "predictions_sha256": "bcf453a6c4bbdf82f0bf1b58f8093af864c24614a7dedf67fe9d3aa9efdda288",
+      "metrics_sha256": "baed8977162d2a3dd437704a6008fa349b4fe2675270e9c08293a3c99b7aa41d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/phrases/manifest.json",
+      "manifest_sha256": "7e27ab9853670aa5be5cf2258c141a8dfde535a97d813cd82d036c33b8b49558",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/phrases.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/phrases"
+      ],
+      "predictions_sha256": "b9b4773cea0ec7990f34979e64c064770967a95b744f9cf4090d3c0065639553",
+      "metrics_sha256": "b61d94ba36c50523c174afdaf934015c0433bb2f7bd02087147e7e35546c9a96"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/required/manifest.json",
+      "manifest_sha256": "3464c80c527d35233b8baff0ac4b6511befbe5b34abd01fef3e7b81015b69f33",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/required.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/required"
+      ],
+      "predictions_sha256": "b6eb2b4d0c0b0782bcb2a20ae2bc77c656523c32583e90db61c470c28a995d50",
+      "metrics_sha256": "1c5d974b46b13e30d464d7b9c82d9fa2bae78b52850e9e49181743a345703c95"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/routed/manifest.json",
+      "manifest_sha256": "ba27acbc41001248e9bbca40ef8afc624480702a8f6b4ccfba5306be5f09e3d9",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/routed.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/routed"
+      ],
+      "predictions_sha256": "a3a1bd92a4caa840b1375bc485fe977649f37435ac156662422b6eab34e1e490",
+      "metrics_sha256": "8d752fec3dc6cdfd2d25eedd24b7a8b16539b95f34e1ad0c692208990f7c3a78"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/routed-no-exclusions/manifest.json",
+      "manifest_sha256": "af28ca48966544c6eaa576293544d93714fa1cbb0ded994f7cdaf70dfd5d4584",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/term-context/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/routed-no-exclusions.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/new-007/routed-no-exclusions"
+      ],
+      "predictions_sha256": "ad414e98c5fa75459a98908164b2330d287aa750cd75b1cfa2fb8abc5f0ff717",
+      "metrics_sha256": "2d2c44c5425058cc4b4aee92f870a1451a15c87bae1637216151fd1079b05d07"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/combined/manifest.json",
+      "manifest_sha256": "c6cbe40bd660b6ce18452f90496986d88425c4c7e00413a470093efd80a2d850",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/combined.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/combined"
+      ],
+      "predictions_sha256": "477708cbad38e2554a868b8518e21c0637b78ca1ba8ed7fe0dba8dfd6431bed4",
+      "metrics_sha256": "c906a1cc3a3d511c162b74b124071b9f257fdfc7a5119b80e113e774396c4086"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/exclusions/manifest.json",
+      "manifest_sha256": "74329e851bbba0f126431d1c0e08915581f372635b00f4e8ddd3bb8ad817e6da",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/exclusions.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/exclusions"
+      ],
+      "predictions_sha256": "2375c260c4fb17f7d6d55afa1313fc44568d3e51bb73a28cb2e5ef5c21704320",
+      "metrics_sha256": "c906a1cc3a3d511c162b74b124071b9f257fdfc7a5119b80e113e774396c4086"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/known-exact/manifest.json",
+      "manifest_sha256": "cb615ef73ca96571b8bf8dcf53a4bc64c416f10b2a9b38ada5f52a7a89a05272",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/known-exact.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/known-exact"
+      ],
+      "predictions_sha256": "d089d1ee39d777430652c5d096dd525a2e364cd81d22d80d0750ebe117189193",
+      "metrics_sha256": "67ca80dfb7dc0e64addba6a7a61aefeef8c1b478f235be2a48f2c6adecf455ab"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/legacy/manifest.json",
+      "manifest_sha256": "80c08a81ff95ffad786a65a0fab505cfff9078551d48dcc0ea65423fc7b63ef5",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/legacy.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/legacy"
+      ],
+      "predictions_sha256": "7fc5f61e7ef36a94d993ffe3d9c482fe03389171987b6aaf40721875c6d0031b",
+      "metrics_sha256": "62c28b334c1b397998e8736984378a46788a23d142b57f89ea189376257bed39"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/legacy-conflict/manifest.json",
+      "manifest_sha256": "9e44b14ac01daa6cf8d756ae54cb57b3ed63c79619472fa7b7c6476c023e8470",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/legacy-conflict.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/legacy-conflict"
+      ],
+      "predictions_sha256": "2bdeca33b8136028e92af96f89698134a128dbed50d7afabb4bbbea47910d128",
+      "metrics_sha256": "9cf9f260f0c485d1ab89bc85c87b453747d666cecae5d70ffc539eda98bacecf"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/phrases/manifest.json",
+      "manifest_sha256": "0e3415a5dd78c268f148439700bf345a8de209cc3d007469963b93f22f9d63e5",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/phrases.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/phrases"
+      ],
+      "predictions_sha256": "6c1b054f933987817bceefa772af533cdef8321d69a98cbdf8ca9ad07f4cb3f2",
+      "metrics_sha256": "8ad0a9cb28e05a57613fa74ca76a5ed61b79f8949d213cf71197fdcd8652a5b2"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/required/manifest.json",
+      "manifest_sha256": "407b6989d7a18d44259731c74f51a83d4a867e4041eb868bdfff7a99f16649b7",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/required.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/required"
+      ],
+      "predictions_sha256": "d7c4f56040e77c4c5a8934b59eb7f947df70f35266a126b97eb220c32543700e",
+      "metrics_sha256": "bdf5830c07ead62d37071ca1fd8a5529ff2a9a1a58a00a0b290e675fd5b18f12"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/routed/manifest.json",
+      "manifest_sha256": "ec7734e1ab98cb90868c2ac67d780f62cb8ff97b993dff5ce2c7231083f6d937",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/routed.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/routed"
+      ],
+      "predictions_sha256": "0fb4e3cec9012c12d1fae6ec1b4806500b75c996fec1d65f85343e7ca7970d9f",
+      "metrics_sha256": "84b005cea329f1adc2f99239e35bdb0b2447f31553af36c9eb9bde03a579a6c1"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/routed-no-exclusions/manifest.json",
+      "manifest_sha256": "89fb2ced59a7d96fe0512c3a722962e120ad8b1ae6b4b8731c06b60feb7d5e89",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/terms/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/regression-009/regression-008/regression-007/configs/routed-no-exclusions.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/regression-009/regression-008/regression-007/old-006/routed-no-exclusions"
+      ],
+      "predictions_sha256": "ba0869e50628d89965401f6847ec96fd86044f7de7d66699085fb225120e4075",
+      "metrics_sha256": "84b005cea329f1adc2f99239e35bdb0b2447f31553af36c9eb9bde03a579a6c1"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/b2/manifest.json",
+      "manifest_sha256": "c4c76f659fc3c38d55aa04ec6f9b29440ff8dc75b6fe996f9d804ffd88a01196",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/b2"
+      ],
+      "predictions_sha256": "91fce220c2eb891dc37d985d45217e3cc91dd2a695ed72b17dc75bddd8c804a0",
+      "metrics_sha256": "975c438065319252b633f68224a8f0374df505cdb346ad043625bec07a3e4282"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/canonical-large/manifest.json",
+      "manifest_sha256": "1f22ceb72d300158236980b7ae759973e5f6fc802366218f8de3a4fc7dcb59b5",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/canonical-large.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/canonical-large"
+      ],
+      "predictions_sha256": "cc08326396bd9300b4cd01e531c10de1001763e67975ab6144ddadaeb199c6fb",
+      "metrics_sha256": "7bc6dd5bba45d1a0c1ab03b4e3450411fdc8b4e550653930d441eae4f62734f2"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/canonical-large-distance2/manifest.json",
+      "manifest_sha256": "3a823b50ae1529cbe9d748476bf199d9e2dc970e388b73db5307a053556d7652",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/canonical-large-distance2.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/canonical-large-distance2"
+      ],
+      "predictions_sha256": "3548998e74a8a7da29f361c6c5be1b4210dbd0a90c81dc38c93a0313f01cb697",
+      "metrics_sha256": "7bc6dd5bba45d1a0c1ab03b4e3450411fdc8b4e550653930d441eae4f62734f2"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/canonical-medium/manifest.json",
+      "manifest_sha256": "55122b2217fc4f64d2ca42c09932108dd31e86ca3d4c6c094d67094d81807f43",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/canonical-medium.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/canonical-medium"
+      ],
+      "predictions_sha256": "e3a84131a2f62dcce74bfa7652e09b222d37c8cfaaa57b9e7a038cceab608a43",
+      "metrics_sha256": "e5f49318211161db8a8ea85089cc8f050a7445c0eb1555a9230b225e6f90de92"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/canonical-small/manifest.json",
+      "manifest_sha256": "6cb75e423a790ac58efc33955b5170ba7536883f0881f11fce6ffa22f59c1baf",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/canonical-small.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/canonical-small"
+      ],
+      "predictions_sha256": "fc68a34202ec882c5ee6037652a2c9bbf974c9008a5894b2554c9aa1c2e6ddf9",
+      "metrics_sha256": "eb4dd236b6b3e8f430959a5c8d460885de30b2b90809ca56f30ab462a68adf54"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/conflict/manifest.json",
+      "manifest_sha256": "af7ab6a61946682faba81c020f782d1601a0f38e88469313fe5065b74da949b0",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/conflict.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/conflict"
+      ],
+      "predictions_sha256": "e45c81602ea66096ddb5bc32724a876a087fd72a13eb8869c4fffea62219c3db",
+      "metrics_sha256": "7c6e57eb7963a876a2cbadb46ce043f404a152a5b64bff736d3559ca78fa57de"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/disabled/manifest.json",
+      "manifest_sha256": "28e71b9ea8a790dd35f61935ca14d7a66dfff1c6b43ff866e526ed2060c219f0",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/disabled.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/disabled"
+      ],
+      "predictions_sha256": "4e475720ac9d8ccc1fcaa9738cd490fc627f51d0538808bbd37ceac666b1c42e",
+      "metrics_sha256": "d5522e8e474a5c6851efeb056496d3b2313cedf8b808afe4612a7ab39c1a9945"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/learned-context/manifest.json",
+      "manifest_sha256": "a148b53920189ec81b6e937bf790413e3c713378493ca105bdc2b1f57c15e9c4",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/learned-context.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/learned-context"
+      ],
+      "predictions_sha256": "7d30d39f7f0158faaca492e662b4927fcade261c1a804a7ee1dd1809ba672d1b",
+      "metrics_sha256": "847b8ffc0042a3922520631290150c412d0ea9fc9810c7496dbd4f966d346759"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/learned-high/manifest.json",
+      "manifest_sha256": "5539ab1e8af55cbb36eace60febf4051dae174c4705de93ca880bd8b971e1993",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/learned-high.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/learned-high"
+      ],
+      "predictions_sha256": "c3efe8ef85e57419339a82da908ab0646501fb0cd68114cc07c62a31c827ff4e",
+      "metrics_sha256": "a049cfbdf7bd7ad8f99f284d01b2881ea9c210f0b63259b78125c6df23cd409f"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/learned-large/manifest.json",
+      "manifest_sha256": "d26cde9d8d0d4a227f518caaf090193032ca4c6bd7518edc1f3e961cf8201b4a",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/learned-large.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/learned-large"
+      ],
+      "predictions_sha256": "08dbef15decbbd0fe7ff07a77d359a80d986e2add87b7de247119c6f79461d87",
+      "metrics_sha256": "a049cfbdf7bd7ad8f99f284d01b2881ea9c210f0b63259b78125c6df23cd409f"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/learned-low/manifest.json",
+      "manifest_sha256": "4c6a464f10320fd08a8a377067fc1c8b2b090b46b6f60ec8f23d9a2df5972f6d",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/learned-low.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/learned-low"
+      ],
+      "predictions_sha256": "2194d7017f50418b03220552bb33ae95454227106a50312a9dcae64cd8fd1164",
+      "metrics_sha256": "3597dc2c103419892da3f42800fdce89c42899e0d47ad4401a7ff44abaa23b0d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/learned-safe/manifest.json",
+      "manifest_sha256": "d98e477cc50b2fff92f96098b6f74c3895d172c12a9047e5761ea9cf302669c8",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/learned-safe.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/learned-safe"
+      ],
+      "predictions_sha256": "e4940346722e04e004f6ee17c13d0b62f05bc773df62c85842065e885bdc5ebd",
+      "metrics_sha256": "e8524a4834efd416c340b581f27e4d9f8fb7fc881930eac2608e180350cf31bc"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/phrases-only/manifest.json",
+      "manifest_sha256": "eaeb0ccf85059233e46bb168e74e1ebd1cbf690c4b3b75d5f6eff313b98377a6",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/phrases-only.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/phrases-only"
+      ],
+      "predictions_sha256": "918e2567bef2b38cc67f5150beb5e77a829b02933d073e4a17e8c2fef33fcf81",
+      "metrics_sha256": "f8599e1520112c4fd2c6fe79bd28290274ec590441eeed99374be376f238026d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/prefer-user/manifest.json",
+      "manifest_sha256": "c0df78cdcc0ae0866ff7299ff2c79a3c2ad9264daa8bf367e362a84b0fad2f98",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/prefer-user.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/prefer-user"
+      ],
+      "predictions_sha256": "f0026eb099761d3eb1c920a2a5ba2768d7a4a8b80b79195efa34aeb3ff9c06d9",
+      "metrics_sha256": "a049cfbdf7bd7ad8f99f284d01b2881ea9c210f0b63259b78125c6df23cd409f"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/slot-term-off/manifest.json",
+      "manifest_sha256": "de43db420fb727e02c2fa9e0242ab3f8b4d1ae8d0b1068dd4d2c1130ba408d23",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/slot-term-off.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/slot-term-off"
+      ],
+      "predictions_sha256": "8cf7bd2288433551b5bcaf3ce18595fe19584df1be77c74d1751b085d1a32ae5",
+      "metrics_sha256": "e95b95471a065bc6023721d5a8a3d6bfe36ec1d021b99f266f1cf9cb936ca5c0"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/synthetic-controls/user-set-off/manifest.json",
+      "manifest_sha256": "c1f9c9ad59dff2b07175b80ba1c024a0310efc7ec40bba4d86ebf0aa120dd546",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/user-set-off.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/synthetic-controls/user-set-off"
+      ],
+      "predictions_sha256": "918e2567bef2b38cc67f5150beb5e77a829b02933d073e4a17e8c2fef33fcf81",
+      "metrics_sha256": "f8599e1520112c4fd2c6fe79bd28290274ec590441eeed99374be376f238026d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/b2/manifest.json",
+      "manifest_sha256": "54d3087a0d88c8dd7b85e055b3f2454fd11b391e2d1dcbdeca9c75838ff78ba6",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/b2"
+      ],
+      "predictions_sha256": "2dbc2535caa9d2d79e12e23dcd4e30572a30a148630f528e01a49fe5e1e1a35d",
+      "metrics_sha256": "8aef4ad4d43c71ff1c02acea2b4bde08d8804f9803c168ee0198885bc625fdee"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/canonical-large/manifest.json",
+      "manifest_sha256": "0515fc0d1d953f0e9741e4e026d0e54a9cd8f01040087b9e029e02eed62e6f49",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/canonical-large.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/canonical-large"
+      ],
+      "predictions_sha256": "95a5d251d1c47214a73a8315eac80a260523607c6889f9088c287ca50c66b553",
+      "metrics_sha256": "1f164179381cbb50504b7bc88363b071695d2e5a8f384d6c36e321c234014716"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/canonical-large-distance2/manifest.json",
+      "manifest_sha256": "a4a25e7346c323d368ee3247df7f2fbed5c7342dae7c65d64171005b9e331070",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/canonical-large-distance2.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/canonical-large-distance2"
+      ],
+      "predictions_sha256": "7c8a01688dc95386770e852ae5a842ca39841693abdfcb6d94923fb4058f3a7a",
+      "metrics_sha256": "7443d0021867aad63a14d1ca835d67f3fcb7acad68276c2701da9c8396a76bb4"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/canonical-medium/manifest.json",
+      "manifest_sha256": "bb3689f2c079fe5a777514ec561bb91eabb2a101593b68143dbd9f63ac2823bd",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/canonical-medium.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/canonical-medium"
+      ],
+      "predictions_sha256": "b7109eb363f9f47a130f8702ae8cb755bf2b876a8e9c86dee7def3b00a093ae9",
+      "metrics_sha256": "1f164179381cbb50504b7bc88363b071695d2e5a8f384d6c36e321c234014716"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/canonical-small/manifest.json",
+      "manifest_sha256": "2910aad3a61d9fac8f8cf2a4610c770cbf9ca9904b29982cbbf2028bb08292b5",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/canonical-small.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/canonical-small"
+      ],
+      "predictions_sha256": "0adb916e97c5372999b77a1711b20f32661f41a8ed2be87740033a89d7b33aa4",
+      "metrics_sha256": "1f164179381cbb50504b7bc88363b071695d2e5a8f384d6c36e321c234014716"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/conflict/manifest.json",
+      "manifest_sha256": "ffe1fcaf1f453b265d06e688a3239d9dba5a487d5b044be1170537f39fa4c36a",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/conflict.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/conflict"
+      ],
+      "predictions_sha256": "91bae9d2fef28e73a197175af5d432214772a22ee4722b2fb109013590b4aafa",
+      "metrics_sha256": "c7ddb5306ed9420fcefda8e8204e7f60c2b7f8aa4b66c57423a49b60a6f393cf"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/disabled/manifest.json",
+      "manifest_sha256": "c5f815ec67a0546dda9edb8a6a655957de58de490834d99211ca429e72f55ebf",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/disabled.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/disabled"
+      ],
+      "predictions_sha256": "42823d08cfeb8141e0d6c77612909df7b4c6093d591e11c778ef4e6fa20dddca",
+      "metrics_sha256": "925429c018bcc0d614ef5bb8d0f14b4e1b8e35795558ac5ed0f344142dde58a4"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/learned-context/manifest.json",
+      "manifest_sha256": "58d6c51b8bfe1c5603517cae844c8d1ce43d983000173556d6a538fda2a18a07",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/learned-context.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/learned-context"
+      ],
+      "predictions_sha256": "f3a820367b480e44ba09248238f62af86159017c7e88f0d53b7dcbe9c38c446e",
+      "metrics_sha256": "23d54c9bb81a293c2b6b73244921a0baa63dbf125510b2f5ce9dedbec5992bdd"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/learned-high/manifest.json",
+      "manifest_sha256": "a44bf3aebb26ffc956f81842c5e5aec353b355d2b1985653c52ebaa5e6dabf63",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/learned-high.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/learned-high"
+      ],
+      "predictions_sha256": "017ef0fd5713b18879cf59fd4260680f4dd7c7585453b238bc8f40722e74a4b0",
+      "metrics_sha256": "23d54c9bb81a293c2b6b73244921a0baa63dbf125510b2f5ce9dedbec5992bdd"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/learned-large/manifest.json",
+      "manifest_sha256": "cd3e24f846698d9c588d0ad4fdb5347acdf0e6b002188af2eee3937c94b20ca9",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/learned-large.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/learned-large"
+      ],
+      "predictions_sha256": "8f0d5680fd94f555f58f031c81aa0c45d936ced29a8cf9fe5cfd84d7ddd7575c",
+      "metrics_sha256": "23d54c9bb81a293c2b6b73244921a0baa63dbf125510b2f5ce9dedbec5992bdd"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/learned-low/manifest.json",
+      "manifest_sha256": "c2fa407f595337281c1ba3434a05b346f19f9d0dea8f49dac7d0eae920898ebe",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/learned-low.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/learned-low"
+      ],
+      "predictions_sha256": "060b5412e3bf0f546a8d9911dd738f47157ba47ab49ac4b2dd8aace7b2dd03ef",
+      "metrics_sha256": "1a6ffbb55591c00b4e26b07d852571e0935c03640e581634daf0680e8c7a095a"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/learned-safe/manifest.json",
+      "manifest_sha256": "5fbee38776b007929491447dbc2479dfb83d2a03c5573eeba65b1621c6977155",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/learned-safe.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/learned-safe"
+      ],
+      "predictions_sha256": "f3a820367b480e44ba09248238f62af86159017c7e88f0d53b7dcbe9c38c446e",
+      "metrics_sha256": "23d54c9bb81a293c2b6b73244921a0baa63dbf125510b2f5ce9dedbec5992bdd"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/phrases-only/manifest.json",
+      "manifest_sha256": "b3c1b09d958aa7a1c1c8b9a3c37f97c0c1acdf19e3cab48716f54e7e7152562c",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/phrases-only.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/phrases-only"
+      ],
+      "predictions_sha256": "0412e7001724717c24bc5b6c5a8a4c7e15211a76204f2126408f174d568647aa",
+      "metrics_sha256": "0e29ccdbcbb5e20d4d56dadae96f44e5d987dfbfc9fb9b431da503e2afb5acbf"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/prefer-user/manifest.json",
+      "manifest_sha256": "bc7371d201b2c5bdbe9bb85d690d22a148ea1d3ce7e2d46bb164ab67eca3443c",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/prefer-user.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/prefer-user"
+      ],
+      "predictions_sha256": "5bd607a107606b2d90651edfbf9be3c5576188cccc95036ec5e49c61b32f832c",
+      "metrics_sha256": "23d54c9bb81a293c2b6b73244921a0baa63dbf125510b2f5ce9dedbec5992bdd"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/slot-term-off/manifest.json",
+      "manifest_sha256": "5d7ca392a1dfd20932d5d19e1f7215772474badf430047888c8fa7af0633c80c",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/slot-term-off.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/slot-term-off"
+      ],
+      "predictions_sha256": "cb8ea6bf993dee9e1b84207d80785a87c4e07a1f4b71faa6ba2c5e6de31ac8b3",
+      "metrics_sha256": "97b14402aa087d48408d483e609600b87d1c4ae134eca89edb63633dc4b4e4d1"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/regression-010/user-reported/user-set-off/manifest.json",
+      "manifest_sha256": "aaa923f14aebb61843dee3df256a7ac150dfc92a024c0fd5db9bb147def0c0fa",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/010-user-phrases/configs/user-set-off.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/regression-010/user-reported/user-set-off"
+      ],
+      "predictions_sha256": "0412e7001724717c24bc5b6c5a8a4c7e15211a76204f2126408f174d568647aa",
+      "metrics_sha256": "0e29ccdbcbb5e20d4d56dadae96f44e5d987dfbfc9fb9b431da503e2afb5acbf"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/synthetic-controls/family/manifest.json",
+      "manifest_sha256": "47a2410edac0d1886c2c62b0d54f4ed323dde62764b80bc82dc8ac4460978284",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/synthetic-controls/family"
+      ],
+      "predictions_sha256": "bfa4d87c4e4ab7cc3ca1d3feb4b763c612dd5afed5899ff75423a0db9ccd6904",
+      "metrics_sha256": "3bf58c9653aec33442b31ccbdd7975129ff97211da51a9678a2bb3de7147c96d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/synthetic-controls/family-base-only/manifest.json",
+      "manifest_sha256": "eee6c6f7c345f5e506035aa54c1e18922480eae57d575ec48d28f0def16385fb",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-base-only.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/synthetic-controls/family-base-only"
+      ],
+      "predictions_sha256": "e7b9ed829d44123bbd819c4c5506d72c2298f5882002e3e6ebb4d74c69b26eb7",
+      "metrics_sha256": "afa0f72f5b58acb8336cc34cfa5332ae954815cc234c70ff5ccb91988d638686"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/synthetic-controls/family-conflict/manifest.json",
+      "manifest_sha256": "fa8230311104cd41c8074e087b79d06ae386dcef3b81e1dbf587df814ee74fbc",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-conflict.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/synthetic-controls/family-conflict"
+      ],
+      "predictions_sha256": "d6adef79d0c9a40c1a90a7128d1f442cc08c43ab523ad064e59bd847eec0da3c",
+      "metrics_sha256": "afa0f72f5b58acb8336cc34cfa5332ae954815cc234c70ff5ccb91988d638686"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/synthetic-controls/family-high/manifest.json",
+      "manifest_sha256": "d3daafb08bf14ddc620412d82206180804987487876212cba6111cd686474b44",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-high.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/synthetic-controls/family-high"
+      ],
+      "predictions_sha256": "79a0f683df5ec8448b5c25411e1b672d89f40ed39de1cbedceca0a549529a356",
+      "metrics_sha256": "3bf58c9653aec33442b31ccbdd7975129ff97211da51a9678a2bb3de7147c96d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/synthetic-controls/family-low/manifest.json",
+      "manifest_sha256": "a80fe2fcadbb9bc97af587b78f8cc28c8d1d5167b838cb5cbb20483c6e508909",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-low.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/synthetic-controls/family-low"
+      ],
+      "predictions_sha256": "7281dd47ef528b0e7351f39ec0e59da7effe26cbdd110846e3e142f44c67561f",
+      "metrics_sha256": "3bf58c9653aec33442b31ccbdd7975129ff97211da51a9678a2bb3de7147c96d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/synthetic-controls/family-no-form-context/manifest.json",
+      "manifest_sha256": "14e89cbf1294cd9915555545ef5016192c4dc4819207b2fc32518c2f4e68cd7f",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-no-form-context.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/synthetic-controls/family-no-form-context"
+      ],
+      "predictions_sha256": "baa4bcb65d1618cc559bbbb2a0944a4a00d16a72bd064e7880b074da9558bc5c",
+      "metrics_sha256": "e8524a4834efd416c340b581f27e4d9f8fb7fc881930eac2608e180350cf31bc"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/synthetic-controls/family-no-genitive/manifest.json",
+      "manifest_sha256": "f809567d62458337966ff3bc4b164234d860eb9a4683ac8cebeb025bc4924440",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-no-genitive.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/synthetic-controls/family-no-genitive"
+      ],
+      "predictions_sha256": "1f82ed75d59c3334737ae12872ee50e68666d40ec00a78a340d632ab6303c6f2",
+      "metrics_sha256": "f7aa40001e1543a1cdd444211ebbeb2eb2ef6b0e36f8b9b2f389df709546eff0"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/synthetic-controls/family-preferred/manifest.json",
+      "manifest_sha256": "75a18c10af036a336acbf97a4d1de33e26f37d9dbc798241490548f1d99de9fb",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-preferred.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/synthetic-controls/family-preferred"
+      ],
+      "predictions_sha256": "d00bd64e027892b6720091f02f497d77c6bb90f1150d513d8c328a1795a3b9c2",
+      "metrics_sha256": "e8524a4834efd416c340b581f27e4d9f8fb7fc881930eac2608e180350cf31bc"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/synthetic-controls/family-set-off/manifest.json",
+      "manifest_sha256": "f0cbd665606fdc931491a8a1a5ca1e0e590563a8d1421c0e9f710f9520a392c7",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-set-off.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/synthetic-controls/family-set-off"
+      ],
+      "predictions_sha256": "81dca459fd513c58711c2d8b83c51f40c72985d93d75aedb8a47a5575d6b9117",
+      "metrics_sha256": "cecf7b32c03b1b99f9d7b4432848a9c82dd36a0a88dbf8dda359c90357ed776a"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/synthetic-controls/family-slot-off/manifest.json",
+      "manifest_sha256": "2c389272ca8052fa1aecf8271af1f4555e8999aac6f32715e37ec7eb2d1d7c38",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-slot-off.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/synthetic-controls/family-slot-off"
+      ],
+      "predictions_sha256": "be9564df2975bff39082e2eaecc4408ea407dc67c7c951c91cecdd6b60dc8849",
+      "metrics_sha256": "afa0f72f5b58acb8336cc34cfa5332ae954815cc234c70ff5ccb91988d638686"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/synthetic-controls/flat-complete/manifest.json",
+      "manifest_sha256": "fe3ec58eb0f6e7820e14c2fb4065aa188678366c07d44680ceac4816e04801e6",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/flat-complete.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/synthetic-controls/flat-complete"
+      ],
+      "predictions_sha256": "37c8697de68fa6acd0b572d420cd98b855078c83000b530efccb0cfad5c98001",
+      "metrics_sha256": "3bf58c9653aec33442b31ccbdd7975129ff97211da51a9678a2bb3de7147c96d"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/synthetic-controls/old-flat/manifest.json",
+      "manifest_sha256": "3d47a1bc24a202e39832d7e9900f5b31c8f2e2e02ece014fe8e1ee390d019ca8",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/fixtures/user-phrases/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/old-flat.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/synthetic-controls/old-flat"
+      ],
+      "predictions_sha256": "e4940346722e04e004f6ee17c13d0b62f05bc773df62c85842065e885bdc5ebd",
+      "metrics_sha256": "e8524a4834efd416c340b581f27e4d9f8fb7fc881930eac2608e180350cf31bc"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/family/manifest.json",
+      "manifest_sha256": "8755991ab6c264a3454c970732bf6b0d83524b2eb73fe96a6448fc116b09f28d",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/user-reported/family"
+      ],
+      "predictions_sha256": "63f9192bae7b512456d3e2e1a1046505a90a435fbadab44d41d035ddb34d7d74",
+      "metrics_sha256": "23d54c9bb81a293c2b6b73244921a0baa63dbf125510b2f5ce9dedbec5992bdd"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/family-base-only/manifest.json",
+      "manifest_sha256": "9abbaf505caa6609d085a5a33d6fa1f1185dc09b618238b855c4d85759bd74b6",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-base-only.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/user-reported/family-base-only"
+      ],
+      "predictions_sha256": "e4a3517d5cb5f5979ece824948f921a5d24582ce108efb249f3b3bb286a78f12",
+      "metrics_sha256": "97b14402aa087d48408d483e609600b87d1c4ae134eca89edb63633dc4b4e4d1"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/family-conflict/manifest.json",
+      "manifest_sha256": "f0fd7f04103eddf7de39e085446cc2fd39df3afbeecb61c44c7c8c49cfbd00f0",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-conflict.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/user-reported/family-conflict"
+      ],
+      "predictions_sha256": "3e58d442e341250e87e03db428b5849bf78b9f80856a45197c4c8797dcb61523",
+      "metrics_sha256": "97b14402aa087d48408d483e609600b87d1c4ae134eca89edb63633dc4b4e4d1"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/family-high/manifest.json",
+      "manifest_sha256": "e552406dec979a1b0953d18fda13284c85bdc35481441b1c300dc6ca3a519a97",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-high.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/user-reported/family-high"
+      ],
+      "predictions_sha256": "2e7c648832740368e87ee141a7cc0132468d028888dc0ab4ca73505ff59c92aa",
+      "metrics_sha256": "23d54c9bb81a293c2b6b73244921a0baa63dbf125510b2f5ce9dedbec5992bdd"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/family-low/manifest.json",
+      "manifest_sha256": "af2732c1e324f2590b455d8d53fe68e2d3fc6ce02c1c603312b699ba947f9fa4",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-low.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/user-reported/family-low"
+      ],
+      "predictions_sha256": "cfeea38631b2770521fef5254a2a19c2054d1f6b4add6d338629b51c856ecd8d",
+      "metrics_sha256": "23d54c9bb81a293c2b6b73244921a0baa63dbf125510b2f5ce9dedbec5992bdd"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/family-no-form-context/manifest.json",
+      "manifest_sha256": "9ed71dd6889273f9d0ef109e9f43954f5083623c32b9de17f862557c8949a24f",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-no-form-context.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/user-reported/family-no-form-context"
+      ],
+      "predictions_sha256": "36f64edaeb47d7eca0288db1e768e0509336d9732d152161ddbc3a0687f87e84",
+      "metrics_sha256": "23d54c9bb81a293c2b6b73244921a0baa63dbf125510b2f5ce9dedbec5992bdd"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/family-no-genitive/manifest.json",
+      "manifest_sha256": "b492b2f67e314d021cdfe8880a56e410f115cc23b3497ddb769556ae99f97b46",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-no-genitive.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/user-reported/family-no-genitive"
+      ],
+      "predictions_sha256": "7d7b8505e32b3aa64e50254ad66e2aa08bcac1fe7be0245a2ddbeb1f9af2f59b",
+      "metrics_sha256": "edea7ecd3f4c542cc33748e31d9d64a282cec21d61fd1e8ea392b258cc80a2d6"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/family-preferred/manifest.json",
+      "manifest_sha256": "2abb3384acf25b84cbbb35ac4d0f1a52fb1c773ffed5a25a9b49e6a0439f7764",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-preferred.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/user-reported/family-preferred"
+      ],
+      "predictions_sha256": "48375eab83d5f5809f6ff4d4fc1d353476c3a6a38cc7e30090322d105be32adb",
+      "metrics_sha256": "23d54c9bb81a293c2b6b73244921a0baa63dbf125510b2f5ce9dedbec5992bdd"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/family-set-off/manifest.json",
+      "manifest_sha256": "ba53881e0943b58087db78cb4e7f5d755f99fade64601ad339539ae860a8f35a",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-set-off.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/user-reported/family-set-off"
+      ],
+      "predictions_sha256": "0412e7001724717c24bc5b6c5a8a4c7e15211a76204f2126408f174d568647aa",
+      "metrics_sha256": "0e29ccdbcbb5e20d4d56dadae96f44e5d987dfbfc9fb9b431da503e2afb5acbf"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/family-slot-off/manifest.json",
+      "manifest_sha256": "2e7d94310ff2c84e1498565c112df404398541c9d477869c8f9d19fc2143f170",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/family-slot-off.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/user-reported/family-slot-off"
+      ],
+      "predictions_sha256": "99d97319a8718b411c52a60f538a123bb970a119e69d661dc462499c64639fb4",
+      "metrics_sha256": "97b14402aa087d48408d483e609600b87d1c4ae134eca89edb63633dc4b4e4d1"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/flat-complete/manifest.json",
+      "manifest_sha256": "b6f0c40ae0a0ebefe1f815fe820724a2b336f59643c83cf33e1176e09eddcfc1",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/flat-complete.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/user-reported/flat-complete"
+      ],
+      "predictions_sha256": "f8b94feb136ad0d3d206a162744e40eb9271123c7ba5a9f876a7cd182141c77c",
+      "metrics_sha256": "23d54c9bb81a293c2b6b73244921a0baa63dbf125510b2f5ce9dedbec5992bdd"
+    },
+    {
+      "previous_manifest": "/home/user1/handy-processor/rechprav/experiments/012-feedback/regression-011/user-reported/old-flat/manifest.json",
+      "manifest_sha256": "cc91093fa68d1354d4b277255011d2ab518dc5c4ab6a7222f43c344860fdfaf9",
+      "command": [
+        "/home/user1/handy-processor/rechprav/target/release/rechprav",
+        "terms-benchmark",
+        "/home/user1/handy-processor/rechprav/data/user-examples/2026-09-21/corpus.jsonl",
+        "--config",
+        "/home/user1/handy-processor/rechprav/experiments/011-term-families/configs/old-flat.toml",
+        "--output-dir",
+        "/home/user1/handy-processor/rechprav/experiments/013-weighted/regression-012/regression-011/user-reported/old-flat"
+      ],
+      "predictions_sha256": "f3a820367b480e44ba09248238f62af86159017c7e88f0d53b7dcbe9c38c446e",
+      "metrics_sha256": "23d54c9bb81a293c2b6b73244921a0baa63dbf125510b2f5ce9dedbec5992bdd"
+    }
+  ]
+}

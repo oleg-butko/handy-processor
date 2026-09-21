@@ -1,0 +1,24 @@
+{
+  "implementation_commit": "a956638eb6d3200cfc35c07f6c04b26e962c1402",
+  "implementation_status": [],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "binary_sha256": "93199bc0ae9c94b7f5721ab4d5ce28384529bac9aebac9e9f9cd978555694e6b",
+  "timing_binary_sha256": "10386c5aeffcb13cce210ee10d48d8801a6c1f5cd790c5bcf12230aba9a48bee",
+  "timing_reports": 12,
+  "runner_sha256": {
+    "run_weighted_experiment.py": "c9ce26925beb758d240507e8702e390adc5f3a611206bdabca73055dc1e1fc76",
+    "weighted_profiles.py": "b4d65673759ab6811fcbd28f874bcd113115932247bdcda466a643fb88d92f1a",
+    "replay_experiment.py": "8479fee0e97e925e9f796320f1c1c8a8a0947193e65eb85e07b664ccea63913c",
+    "user_phrase_profiles.py": "a91995b610a34de74d7c13149a45ed041ecb1d4854e996fb5d18bded2b7ddb98",
+    "run_term_experiment.py": "5802ca027c8e4964070c5236aefa3eaf9e398097927f199a70bc1930d3d195e2"
+  },
+  "corpus_sha256": {
+    "new-weighted": "53499eb1dfeb38db114968bf3cfc2d22ced35756ec3b63fde75f3995dfcd6bc3",
+    "user-reported": "605df9d6a3b98130ade9c49bdacba8429655bcffa02d770446a4e37b57951fe2"
+  },
+  "source_fingerprint_reports": 169,
+  "resource_hashes_verified": 825,
+  "legacy_byte_equal_profiles": 155,
+  "example_config_sha256": "9aaec0f9d5d27f16e227367c37c2e098258fa1b97141e2f230787d54f61633d8",
+  "scope": "weighted costs are authored hypotheses; fixed aliases/gates; synthetic and user-reported dev separate; 155 historical profiles exactly reproduced"
+}

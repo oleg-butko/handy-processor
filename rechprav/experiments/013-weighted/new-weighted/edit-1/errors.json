@@ -1,0 +1,121 @@
+[
+  {
+    "id": "weighted-002",
+    "source": "клиппорт",
+    "gold": "клипборд",
+    "prediction": "клиппорт",
+    "tags": [
+      "positive",
+      "novel",
+      "two_pairs"
+    ]
+  },
+  {
+    "id": "weighted-003",
+    "source": "клибпорт",
+    "gold": "клипборд",
+    "prediction": "клибпорт",
+    "tags": [
+      "positive",
+      "novel",
+      "three_pairs"
+    ]
+  },
+  {
+    "id": "weighted-004",
+    "source": "клипбар",
+    "gold": "клипборд",
+    "prediction": "клипбар",
+    "tags": [
+      "positive",
+      "novel",
+      "vowel_gap"
+    ]
+  },
+  {
+    "id": "weighted-007",
+    "source": "лакалхасд",
+    "gold": "локалхост",
+    "prediction": "лакалхасд",
+    "tags": [
+      "positive",
+      "novel",
+      "three_pairs"
+    ]
+  },
+  {
+    "id": "weighted-011",
+    "source": "нетосвон",
+    "gold": "недозвон",
+    "prediction": "нетосвон",
+    "tags": [
+      "positive",
+      "novel",
+      "two_pairs"
+    ]
+  },
+  {
+    "id": "weighted-012",
+    "source": "нидосвон",
+    "gold": "недозвон",
+    "prediction": "нидосвон",
+    "tags": [
+      "positive",
+      "novel",
+      "vowel"
+    ]
+  },
+  {
+    "id": "weighted-014",
+    "source": "бээнсэ",
+    "gold": "пнз",
+    "prediction": "бээнсэ",
+    "tags": [
+      "positive",
+      "novel",
+      "two_pairs",
+      "pronunciation"
+    ]
+  },
+  {
+    "id": "weighted-017",
+    "source": "без снятия слоды",
+    "gold": "без снятия слота",
+    "prediction": "без снятия слоды",
+    "tags": [
+      "positive",
+      "novel",
+      "form"
+    ]
+  },
+  {
+    "id": "weighted-021",
+    "source": "луколхоз",
+    "gold": "локалхост",
+    "prediction": "луколхоз",
+    "tags": [
+      "positive",
+      "far_error"
+    ]
+  },
+  {
+    "id": "weighted-022",
+    "source": "свуты",
+    "gold": "слот",
+    "prediction": "свуты",
+    "tags": [
+      "positive",
+      "far_error"
+    ]
+  },
+  {
+    "id": "weighted-040",
+    "source": "табы и клиппорт",
+    "gold": "табы и клипборд",
+    "prediction": "табы и клиппорт",
+    "tags": [
+      "positive",
+      "mixed"
+    ]
+  }
+]

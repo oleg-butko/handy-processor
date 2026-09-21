@@ -1,0 +1,1122 @@
+{
+  "new-weighted/edit-1": {
+    "positive": {
+      "records": 23,
+      "tp": 12,
+      "fp": 0,
+      "fn": 11
+    },
+    "novel": {
+      "records": 18,
+      "tp": 10,
+      "fp": 0,
+      "fn": 8
+    },
+    "one_pair": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_pairs": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 3
+    },
+    "three_pairs": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "vowel_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "vowel": {
+      "records": 3,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "deletion": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "insertion": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "pronunciation": {
+      "records": 3,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "exact_compact": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "form": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "far_error": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 17,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "oov": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    }
+  },
+  "new-weighted/edit-2": {
+    "positive": {
+      "records": 23,
+      "tp": 19,
+      "fp": 0,
+      "fn": 4
+    },
+    "novel": {
+      "records": 18,
+      "tp": 16,
+      "fp": 0,
+      "fn": 2
+    },
+    "one_pair": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_pairs": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "three_pairs": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "vowel_gap": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "vowel": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "deletion": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "insertion": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "pronunciation": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "exact_compact": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "form": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "far_error": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 17,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "oov": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-weighted/weighted-uniform": {
+    "positive": {
+      "records": 23,
+      "tp": 12,
+      "fp": 0,
+      "fn": 11
+    },
+    "novel": {
+      "records": 18,
+      "tp": 10,
+      "fp": 0,
+      "fn": 8
+    },
+    "one_pair": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_pairs": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 3
+    },
+    "three_pairs": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "vowel_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "vowel": {
+      "records": 3,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "deletion": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "insertion": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "pronunciation": {
+      "records": 3,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "exact_compact": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "form": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "far_error": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 17,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "oov": {
+      "records": 3,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    }
+  },
+  "new-weighted/weighted-pairs": {
+    "positive": {
+      "records": 23,
+      "tp": 16,
+      "fp": 0,
+      "fn": 7
+    },
+    "novel": {
+      "records": 18,
+      "tp": 13,
+      "fp": 0,
+      "fn": 5
+    },
+    "one_pair": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_pairs": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "three_pairs": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "vowel_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "vowel": {
+      "records": 3,
+      "tp": 2,
+      "fp": 0,
+      "fn": 1
+    },
+    "deletion": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "insertion": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "pronunciation": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "exact_compact": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "form": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "far_error": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 17,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "oov": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-weighted/weighted-vowels": {
+    "positive": {
+      "records": 23,
+      "tp": 17,
+      "fp": 0,
+      "fn": 6
+    },
+    "novel": {
+      "records": 18,
+      "tp": 14,
+      "fp": 0,
+      "fn": 4
+    },
+    "one_pair": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_pairs": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "three_pairs": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "vowel_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "vowel": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "deletion": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "insertion": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "pronunciation": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "exact_compact": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "form": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "far_error": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 17,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "oov": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-weighted/weighted-wide": {
+    "positive": {
+      "records": 23,
+      "tp": 21,
+      "fp": 0,
+      "fn": 2
+    },
+    "novel": {
+      "records": 18,
+      "tp": 18,
+      "fp": 0,
+      "fn": 0
+    },
+    "one_pair": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_pairs": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "three_pairs": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "vowel_gap": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "vowel": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "deletion": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "insertion": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "pronunciation": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "exact_compact": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "form": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "far_error": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 17,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "oov": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "new-weighted/weighted-gaps": {
+    "positive": {
+      "records": 23,
+      "tp": 17,
+      "fp": 0,
+      "fn": 6
+    },
+    "novel": {
+      "records": 18,
+      "tp": 14,
+      "fp": 0,
+      "fn": 4
+    },
+    "one_pair": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "two_pairs": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "three_pairs": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "vowel_gap": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 1
+    },
+    "vowel": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "deletion": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "insertion": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "pronunciation": {
+      "records": 3,
+      "tp": 3,
+      "fp": 0,
+      "fn": 0
+    },
+    "exact_compact": {
+      "records": 2,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    "form": {
+      "records": 2,
+      "tp": 1,
+      "fp": 0,
+      "fn": 1
+    },
+    "phrase": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    "far_error": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 2
+    },
+    "negative": {
+      "records": 17,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "canonical": {
+      "records": 2,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "known": {
+      "records": 7,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "literal": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "oov": {
+      "records": 3,
+      "tp": 0,
+      "fp": 3,
+      "fn": 0
+    },
+    "code": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "url": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "uppercase": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "punctuation": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "newline": {
+      "records": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "mixed": {
+      "records": 1,
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "user-reported/edit-1": {
+    "user_reported": {
+      "records": 9,
+      "tp": 3,
+      "fp": 0,
+      "fn": 7
+    }
+  },
+  "user-reported/edit-2": {
+    "user_reported": {
+      "records": 9,
+      "tp": 5,
+      "fp": 0,
+      "fn": 5
+    }
+  },
+  "user-reported/weighted-uniform": {
+    "user_reported": {
+      "records": 9,
+      "tp": 3,
+      "fp": 0,
+      "fn": 7
+    }
+  },
+  "user-reported/weighted-pairs": {
+    "user_reported": {
+      "records": 9,
+      "tp": 3,
+      "fp": 0,
+      "fn": 7
+    }
+  },
+  "user-reported/weighted-vowels": {
+    "user_reported": {
+      "records": 9,
+      "tp": 3,
+      "fp": 0,
+      "fn": 7
+    }
+  },
+  "user-reported/weighted-wide": {
+    "user_reported": {
+      "records": 9,
+      "tp": 4,
+      "fp": 0,
+      "fn": 6
+    }
+  },
+  "user-reported/weighted-gaps": {
+    "user_reported": {
+      "records": 9,
+      "tp": 3,
+      "fp": 0,
+      "fn": 7
+    }
+  }
+}

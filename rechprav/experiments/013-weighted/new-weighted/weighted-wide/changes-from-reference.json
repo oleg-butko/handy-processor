@@ -1,0 +1,70 @@
+[
+  {
+    "id": "weighted-003",
+    "source": "клибпорт",
+    "gold": "клипборд",
+    "prediction": "клипборд",
+    "tags": [
+      "positive",
+      "novel",
+      "three_pairs"
+    ],
+    "reference_profile": "weighted-vowels",
+    "reference_prediction": "клибпорт",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "weighted-004",
+    "source": "клипбар",
+    "gold": "клипборд",
+    "prediction": "клипборд",
+    "tags": [
+      "positive",
+      "novel",
+      "vowel_gap"
+    ],
+    "reference_profile": "weighted-vowels",
+    "reference_prediction": "клипбар",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "weighted-007",
+    "source": "лакалхасд",
+    "gold": "локалхост",
+    "prediction": "локалхост",
+    "tags": [
+      "positive",
+      "novel",
+      "three_pairs"
+    ],
+    "reference_profile": "weighted-vowels",
+    "reference_prediction": "лакалхасд",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  },
+  {
+    "id": "weighted-017",
+    "source": "без снятия слоды",
+    "gold": "без снятия слота",
+    "prediction": "без снятия слота",
+    "tags": [
+      "positive",
+      "novel",
+      "form"
+    ],
+    "reference_profile": "weighted-vowels",
+    "reference_prediction": "без снятия слоды",
+    "gained_tp": 1,
+    "lost_tp": 0,
+    "removed_fp": 0,
+    "new_fp": 0
+  }
+]

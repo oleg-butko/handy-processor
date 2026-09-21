@@ -1,0 +1,15 @@
+corpus,profile,reference,tp,fp,fn,harmed_correct_input,exact_records,wer_after,total_comparisons,gained_tp,lost_tp,removed_fp,new_fp
+new-weighted,edit-1,edit-1,12,0,11,0,29,0.15942028985507245,4551,0,0,0,0
+new-weighted,edit-2,edit-1,19,3,4,3,33,0.10144927536231885,4562,7,0,0,3
+new-weighted,weighted-uniform,edit-1,12,0,11,0,29,0.15942028985507245,4551,0,0,0,0
+new-weighted,weighted-pairs,edit-1,16,3,7,3,30,0.14492753623188406,4551,4,0,0,3
+new-weighted,weighted-vowels,weighted-pairs,17,3,6,3,31,0.13043478260869565,4551,1,0,0,0
+new-weighted,weighted-wide,weighted-vowels,21,3,2,3,35,0.07246376811594203,4560,4,0,0,0
+new-weighted,weighted-gaps,weighted-vowels,17,3,6,3,31,0.13043478260869565,4551,0,0,0,0
+user-reported,edit-1,edit-1,3,0,7,0,3,0.5294117647058824,1250,0,0,0,0
+user-reported,edit-2,edit-1,5,0,5,0,4,0.4117647058823529,1250,2,0,0,0
+user-reported,weighted-uniform,edit-1,3,0,7,0,3,0.5294117647058824,1250,0,0,0,0
+user-reported,weighted-pairs,edit-1,3,0,7,0,3,0.5294117647058824,1250,0,0,0,0
+user-reported,weighted-vowels,weighted-pairs,3,0,7,0,3,0.5294117647058824,1250,0,0,0,0
+user-reported,weighted-wide,weighted-vowels,4,0,6,0,4,0.4117647058823529,1250,1,0,0,0
+user-reported,weighted-gaps,weighted-vowels,3,0,7,0,3,0.5294117647058824,1250,0,0,0,0
