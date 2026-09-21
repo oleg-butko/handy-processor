@@ -142,6 +142,14 @@ fn range(
     if source_end == prefix || target_end == prefix {
         return None;
     }
+    // Runtime phrase edits preserve normalized-equal edges verbatim. Do not promise
+    // a case/spacing change there that the generated rule cannot reproduce.
+    if before[start..selected[prefix].byte_start] != replacement[..out.lexical[prefix].byte_start]
+        || before[selected[source_end - 1].byte_end..end]
+            != replacement[out.lexical[target_end - 1].byte_end..]
+    {
+        return None;
+    }
 
     if !explicit
         && (source_keys.first() == target_keys.first() || source_keys.last() == target_keys.last())

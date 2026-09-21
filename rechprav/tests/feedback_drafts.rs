@@ -344,3 +344,43 @@ fn pure_insert_delete_selections_and_profile_protection_stay_review_only() {
     assert!(d.proposals.is_empty());
     assert_eq!(d.audit[0].status, "protected_by_profile");
 }
+
+#[test]
+fn explicit_phrase_selection_cannot_change_runtime_preserved_edges() {
+    for (before, after) in [
+        ("мой свод", "Мой слот"),
+        ("мой  свод", "мой слот"),
+        ("свод мой", "слот Мой"),
+    ] {
+        let mut e = event("edges", before, after);
+        if let Event::Correction { selection, .. } = &mut e {
+            *selection = Some(feedback::Selection {
+                byte_start: 0,
+                byte_end: before.len(),
+                replacement: after.into(),
+            });
+        }
+        assert!(
+            draft(&[e], "technical", &user(), &base())
+                .unwrap()
+                .proposals
+                .is_empty(),
+            "{before}->{after}"
+        );
+    }
+    let mut e = event("edges", "мой свод", "мой слот");
+    if let Event::Correction { selection, .. } = &mut e {
+        *selection = Some(feedback::Selection {
+            byte_start: 0,
+            byte_end: "мой свод".len(),
+            replacement: "мой слот".into(),
+        });
+    }
+    assert_eq!(
+        draft(&[e], "technical", &user(), &base())
+            .unwrap()
+            .proposals
+            .len(),
+        1
+    );
+}
