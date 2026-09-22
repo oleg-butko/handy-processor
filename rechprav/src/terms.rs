@@ -28,6 +28,20 @@ pub enum MatchMode {
     Edit,
 }
 
+/// A rule may narrow global edit/weighted generation without changing ranking or gates.
+#[derive(Clone, Copy, Debug, Default, Deserialize, Serialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum Generation {
+    #[default]
+    Inherit,
+    Exact,
+}
+impl Generation {
+    fn is_inherit(&self) -> bool {
+        *self == Self::Inherit
+    }
+}
+
 #[derive(Clone, Copy, Debug, Default, Deserialize, Serialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 pub enum KnownWords {
@@ -191,6 +205,8 @@ impl Default for Policy {
 pub struct Term {
     pub id: String,
     pub canonical: String,
+    #[serde(default, skip_serializing_if = "Generation::is_inherit")]
+    pub generation: Generation,
     #[serde(default, skip_serializing_if = "TermKind::is_default")]
     pub kind: TermKind,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
@@ -841,7 +857,9 @@ impl TermEngine {
                             return incomplete(result);
                         }
                         result.comparisons += 1;
-                        let matched = if let Some(weighted) = &p.weighted_distance {
+                        let matched = if entry.term.generation == Generation::Exact {
+                            (spaced == *alias).then_some((0, 0))
+                        } else if let Some(weighted) = &p.weighted_distance {
                             weighted.cost_at_most(&compact, joined).map(|cost| {
                                 let raw =
                                     distance_at_most(&compact, joined, weighted.max_cost / 50)
@@ -950,6 +968,7 @@ impl TermEngine {
                         weighted_cost: p
                             .weighted_distance
                             .as_ref()
+                            .filter(|_| entry.term.generation != Generation::Exact)
                             .map(|_| cost_units as f64 / 100.0),
                         score,
                         source_penalty,

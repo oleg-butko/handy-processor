@@ -1,4 +1,4 @@
-import test from "node:test";
+import test, { after } from "node:test";
 import assert from "node:assert/strict";
 import { mkdtempSync, writeFileSync, readFileSync, existsSync, rmSync, copyFileSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -7,11 +7,11 @@ import { fileURLToPath } from "node:url";
 import { spawn, spawnSync } from "node:child_process";
 import { DatabaseSync } from "node:sqlite";
 import { PublicationStore, pack, digest, readText } from "./store.mjs";
+import { currentFixtures } from "./testing/fixtures.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
-const fixture = join(root, "experiments/017-profile-composition-v3");
-const composed = pack(join(fixture, "composed/composed"), join(fixture, "inputs/composed.toml"));
-const disabled = pack(join(fixture, "composed/global-off"), join(fixture, "inputs/global-off.toml"));
+const { directory, composed, disabled } = currentFixtures(root);
+after(() => rmSync(directory, { recursive: true, force: true }));
 const worker = fileURLToPath(new URL("testing/worker.mjs", import.meta.url));
 const req = (id = "a", revision = 0, bundle = composed) => ({ schema_version: 1, request_id: id, expected_revision: revision, bundle });
 // Preserve the producer's numeric JSON representation (1.0 vs 1) so a mutation
@@ -272,4 +272,13 @@ test("request budget is bounded and duplicate delivery remains possible at the l
   assert.throws(() => store.request(req("extra", 127, bundle)), /stale expected_revision/);
   assert.throws(() => store.request(req("extra", 128, bundle)), /invalid schema or revision/);
   assert.equal(store.snapshot().active, null);
+});
+
+test("historical producer export requires fresh validation after runtime changes", t => {
+  const { store } = setup(t); initial(store);
+  const old = join(root, "experiments/017-profile-composition-v3");
+  const historical = pack(join(old, "composed/composed"), join(old, "inputs/composed.toml"));
+  store.request(req("historical", 1, historical));
+  assert.throws(() => store.publish("historical"), /producer compiled sources mismatch/);
+  assert.equal(store.snapshot().active.generation, 1);
 });

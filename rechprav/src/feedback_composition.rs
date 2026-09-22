@@ -3,7 +3,7 @@ use crate::feedback_registry::Registry;
 use anyhow::{Result, ensure};
 use rechprav::{
     hashing::sha256_hex,
-    terms::{Config, KnownWords, MatchMode, Term, TermSet},
+    terms::{Config, Generation, KnownWords, Term, TermSet},
     text,
 };
 use serde::{Deserialize, Serialize};
@@ -186,10 +186,8 @@ pub fn compose(
             if !binding.enabled {
                 return "binding_disabled";
             }
-            if manual.policy.mode != MatchMode::Exact {
-                return "unsupported_mode";
-            }
             let mut term = (*generated).clone();
+            term.generation = Generation::Exact;
             if let Some(owner) = &binding.owner {
                 let Some(set_index) = manual.sets.iter().position(|s| s.id == owner.set_id) else {
                     return "owner_missing";

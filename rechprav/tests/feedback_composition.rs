@@ -238,11 +238,10 @@ fn explicit_new_terms_cannot_evade_owners_and_deleted_owner_remains_missing() {
 }
 
 #[test]
-fn unsupported_modes_cues_and_disjoint_patterns_preserve_manual_profile() {
-    for mode in ["edit", "cues", "disjoint"] {
+fn unsupported_cues_and_disjoint_patterns_preserve_manual_profile() {
+    for mode in ["cues", "disjoint"] {
         let mut user = manual();
         match mode {
-            "edit" => user.policy.mode = rechprav::terms::MatchMode::Edit,
             "cues" => user.sets[0].terms[0].context = vec!["памяти".into()],
             _ => user.sets[0].terms[0].context_patterns = vec!["вставили {term}".into()],
         }
@@ -253,6 +252,31 @@ fn unsupported_modes_cues_and_disjoint_patterns_preserve_manual_profile() {
             serde_json::to_value(&user).unwrap()
         );
     }
+}
+
+#[test]
+fn edit_composition_keeps_manual_generation_and_pins_accepted_aliases() {
+    let mut user = manual();
+    user.policy.mode = rechprav::terms::MatchMode::Edit;
+    let c = built(&user, &[slot()]);
+    assert_eq!(c.audit[0].status, "added");
+    assert_eq!(
+        c.config.sets[0].terms[0].generation,
+        rechprav::terms::Generation::Inherit
+    );
+    assert_eq!(
+        c.config.sets[0].terms[1].generation,
+        rechprav::terms::Generation::Exact
+    );
+    assert_eq!(corrected(&c.config, "свуть"), "слот");
+    assert_eq!(
+        corrected(&c.config, "сняли свод памяти"),
+        "сняли слот памяти"
+    );
+    assert_eq!(
+        corrected(&c.config, "сняли сводд памяти"),
+        "сняли сводд памяти"
+    );
 }
 
 #[test]
