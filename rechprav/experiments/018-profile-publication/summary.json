@@ -1,0 +1,25 @@
+{
+  "profiles": [
+    {
+      "profile": "composed",
+      "generation": 1,
+      "config_sha256": "ce022197f5e95593a0b917c24c26948d406d4b411fa2131405e939e98a26165a",
+      "predictions_sha256": "fb3734a32866ab61808a3f93f424efbe03e4cfe5bfdbbea2373049896dafc655",
+      "predictions_equal_017": true,
+      "metrics_equal_017": true
+    },
+    {
+      "profile": "global-off",
+      "generation": 3,
+      "config_sha256": "06b68bec8d30c922ec2f7cf5e235b607fbe5e44fad1e8ff3c2b41f139950cc75",
+      "predictions_sha256": "fc21f4dc44f56595f8f7b9aec6fd22b1799ee75ff7c5f55041c723d19d1baa1c",
+      "predictions_equal_017": true,
+      "metrics_equal_017": true
+    }
+  ],
+  "active_generation": 5,
+  "desired_revision": 5,
+  "process_crash_points": 6,
+  "tests": 18,
+  "quality_claim": "unchanged 017 dev controls; no new ASR quality claim"
+}

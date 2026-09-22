@@ -1,0 +1,34 @@
+{
+  "artifact_audit": "all 5 snapshots: bundle/output/source hashes and TOML/report config checked",
+  "rust_tests_passed": 135,
+  "node_tests_passed": 18,
+  "additional_commands": [
+    {
+      "command": "/home/user1/.local/bin/cargo clippy --manifest-path rechprav/Cargo.toml --locked --offline --all-targets -- -D warnings",
+      "exit_code": 0
+    },
+    {
+      "command": "/home/user1/.local/bin/cargo fmt --manifest-path rechprav/Cargo.toml -- --check",
+      "exit_code": 0
+    },
+    {
+      "command": "/home/user1/.local/bin/cargo build --manifest-path rechprav/Cargo.toml --release --locked --offline --example profile_validate",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -m py_compile rechprav/scripts/run_publication_experiment.py",
+      "exit_code": 0
+    }
+  ],
+  "first_plan_sha256": "142bb32d8c0dc5a33547e6dc1710bc398a148830461a369c3d8733e20cb9c854",
+  "initial_development_test_run": {
+    "passed": 15,
+    "failed": 2,
+    "test_source_sha256": "224c7132464ca838b8ea69e4e3d96bbb6c7ebf8db655929d21240b1c513f7e7a",
+    "failures": [
+      "temporary manual fixture omitted required sets",
+      "JS manifest reserialization changed 1.0 to 1, triggering resource guard before forged-report guard"
+    ],
+    "targeted_rerun_passed": 2
+  }
+}

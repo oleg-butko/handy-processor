@@ -423,6 +423,23 @@ python3 rechprav/scripts/run_composition_experiment.py rechprav/experiments/my-c
 Добавление feedback пока поддержано только в exact mode, свободные context cues
 не поддержаны. Экспорт не устанавливает профиль в работающее приложение.
 
+## Публикация профиля
+
+Экспериментальный транспорт сохраняет профиль в отдельную SQLite-базу. Rust
+повторяет сборку из событий и решений; транзакция связывает профиль с поколением.
+Новая заявка отменяет незавершённую старую сборку, ошибка сохраняет прежний профиль.
+
+```bash
+/home/user1/.local/bin/cargo build --manifest-path rechprav/Cargo.toml --release --locked --offline --example profile_validate --example feedback_compose
+node --test rechprav/publication/store.test.mjs
+python3 rechprav/scripts/run_publication_experiment.py rechprav/experiments/my-publication-run
+```
+
+[Формат/команды/ограничения](../docs/rechprav/profile-publication.md),
+[опыт 018](experiments/018-profile-publication/report.md).
+Проверены конкурентные запросы, повторы и шесть точек SIGKILL. Runtime-приложение
+ещё не читает базу; загрузка engine и удержание внешних ресурсов — следующий этап.
+
 ## Организация файлов
 
 `src/` — библиотека и CLI; `tests/` — проверки поведения, безопасности вывода и метрик;

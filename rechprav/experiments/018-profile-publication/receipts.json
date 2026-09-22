@@ -1,0 +1,105 @@
+[
+  {
+    "operation": "request",
+    "result": {
+      "request_id": "initial",
+      "generation": 1,
+      "bundle_sha256": "7152c2fc8d863f4f8ba055a12fedc2ca27adbc6206a76f8a39c1aff3550fd107",
+      "replayed": false
+    }
+  },
+  {
+    "operation": "publish",
+    "request_id": "initial",
+    "result": {
+      "request_id": "initial",
+      "generation": 1,
+      "bundle_sha256": "7152c2fc8d863f4f8ba055a12fedc2ca27adbc6206a76f8a39c1aff3550fd107",
+      "config_sha256": "ce022197f5e95593a0b917c24c26948d406d4b411fa2131405e939e98a26165a",
+      "replayed": false
+    }
+  },
+  {
+    "operation": "request",
+    "result": {
+      "request_id": "older",
+      "generation": 2,
+      "bundle_sha256": "7152c2fc8d863f4f8ba055a12fedc2ca27adbc6206a76f8a39c1aff3550fd107",
+      "replayed": false
+    }
+  },
+  {
+    "operation": "request",
+    "result": {
+      "request_id": "disable",
+      "generation": 3,
+      "bundle_sha256": "b48ebea5b9b9c08358d8a37581df7a0030082557a38ea7677bcafdb711612da8",
+      "replayed": false
+    }
+  },
+  {
+    "operation": "publish",
+    "request_id": "older",
+    "result": {
+      "error": "superseded request"
+    }
+  },
+  {
+    "operation": "publish",
+    "request_id": "disable",
+    "result": {
+      "request_id": "disable",
+      "generation": 3,
+      "bundle_sha256": "b48ebea5b9b9c08358d8a37581df7a0030082557a38ea7677bcafdb711612da8",
+      "config_sha256": "06b68bec8d30c922ec2f7cf5e235b607fbe5e44fad1e8ff3c2b41f139950cc75",
+      "replayed": false
+    }
+  },
+  {
+    "operation": "request",
+    "result": {
+      "request_id": "invalid",
+      "generation": 4,
+      "bundle_sha256": "c58aed1435b346c311b747f67a089903488e890b89bbda4cd2352cb480279460",
+      "replayed": false
+    }
+  },
+  {
+    "operation": "publish",
+    "request_id": "invalid",
+    "result": {
+      "error": "validation failed: Error: config hash mismatch"
+    }
+  },
+  {
+    "operation": "publish",
+    "request_id": "initial",
+    "result": {
+      "bundle_sha256": "7152c2fc8d863f4f8ba055a12fedc2ca27adbc6206a76f8a39c1aff3550fd107",
+      "config_sha256": "ce022197f5e95593a0b917c24c26948d406d4b411fa2131405e939e98a26165a",
+      "generation": 1,
+      "request_id": "initial",
+      "replayed": true
+    }
+  },
+  {
+    "operation": "request",
+    "result": {
+      "request_id": "restore",
+      "generation": 5,
+      "bundle_sha256": "7152c2fc8d863f4f8ba055a12fedc2ca27adbc6206a76f8a39c1aff3550fd107",
+      "replayed": false
+    }
+  },
+  {
+    "operation": "publish",
+    "request_id": "restore",
+    "result": {
+      "request_id": "restore",
+      "generation": 5,
+      "bundle_sha256": "7152c2fc8d863f4f8ba055a12fedc2ca27adbc6206a76f8a39c1aff3550fd107",
+      "config_sha256": "ce022197f5e95593a0b917c24c26948d406d4b411fa2131405e939e98a26165a",
+      "replayed": false
+    }
+  }
+]

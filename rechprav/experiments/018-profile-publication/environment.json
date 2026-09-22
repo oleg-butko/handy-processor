@@ -1,0 +1,18 @@
+{
+  "implementation_commit": "5a83e188212b979b2bbe7748c4ef4d8e7d261f32",
+  "implementation_status": [],
+  "node": "v24.19.0",
+  "database_path": "/home/user1/handy-processor/rechprav/artifacts/publication-018-r_ox8jya/profiles.sqlite",
+  "source_sha256": {
+    "examples/profile_validate.rs": "505aa588f3739cbf16e075f24bac8edd450147f277e6bf453e76f3c9909dcdc3",
+    "scripts/run_publication_experiment.py": "1aa49218d09f6a8d60ea70a38bcb6bc63ea49ea2bbf7312e983ee4435b4d8c84",
+    "publication/cli.mjs": "151af673add2118dbf8d3796e64ff3b9c370d9a427591cd19d5787280f192bb3",
+    "publication/store.mjs": "11d952a0e8b7c34d706aefdc26d2f4cc7fe7ea11c7329742f4d812af6a9c2b94",
+    "publication/store.test.mjs": "06839689f9c83bc7f8eeb86c60e571617f549d4d889eb7479ca294fb2dab8bcb",
+    "publication/testing/worker.mjs": "9ee072b28680cb5109908f5ba689ae9209ca7a03767368c292bba70465578e16"
+  },
+  "runtime_binary_sha256": "93199bc0ae9c94b7f5721ab4d5ce28384529bac9aebac9e9f9cd978555694e6b",
+  "validator_binary_sha256": "b68378fd4f84b1efb1e75262f06fd653c9144c7970a0b3f03e8805e374bddcaf",
+  "composer_binary_sha256": "429d6786f03503718a2e4d7ed34cef79068db3a6d042ac79de5a65b9aa90d2b2",
+  "corpus_sha256": "372bd6e7c8577ace168c7ac44898b25949cd4c87656b99ed7ea225266b2de565"
+}

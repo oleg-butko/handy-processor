@@ -740,6 +740,44 @@ First-plan и рабочие конфиги/сервер/БД не меняли�
 и UI/outbox/live reload. Поддержка смешанных exact/edit policies и более точного
 fingerprint review остаётся отдельным опытом.
 
+## 2026-09-22 — 018: публикация и восстановление поколений
+
+Ветка `feat/rechprav-profile-publication`. Протокол `5773314`, код `5a83e18`.
+Новый standalone Rust validator повторяет registry/composition из зафиксированных
+входов, проверяет compiled sources/resources/outputs и создание TermEngine.
+Node native SQLite хранит bundle и публикует generation/validation/receipt/active
+одной транзакцией; код корректора и композитора 017 не менялся.
+
+Выбран отдельный счётчик desired: CAS только по последнему active не отменяет
+старую сборку, пока новая ещё не опубликована. Request фиксирует новое намерение
+до validation; publish проверяет его повторно после validation. Сравнение с
+самодельными lock/rename не проводилось: SQLite выбран по наличию транзакций и
+native backend, а не по недоказанному превосходству в benchmark.
+
+Первый Node прогон дал 15/17: ошибка fixture (нет обязательного sets) и слишком
+широкая мутация JSON manifest (1.0→1), из-за которой resource guard срабатывал
+раньше нужной проверки. Исправлены тестовые данные, оба целевых теста прошли;
+добавлен тест неизменности сохранённых байтов при редактировании объекта caller.
+Итоговые 18/18 включают шесть настоящих SIGKILL, процессы с общим CAS, одинаковые
+запросы/publish, supersession во время validation, чтение до commit, чужую базу,
+повреждение snapshot, подмену правил/решений с пересчитанными hashes и изменение
+временного словаря. После crash/reopen проверен SQLite integrity_check.
+
+Сквозной CLI опыт: поколения active 1→3→5. Поколение 2 вытеснено новым намерением,
+4 не прошло hash validation; оба оставили прежний active. Повтор receipt поколения
+1 при active=3 не включил старый профиль. JSON snapshots/receipts/bundles и логи
+сохранены; SQLite только в ignored artifacts. 40 predictions/два metrics.json
+побайтно равны 017: качество осталось 7/1/1 для composed и 0/0/8 для global-off.
+135 Rust-тестов, clippy/fmt/offline release build/py_compile прошли. Runtime и
+composer binary hashes прежние; большая матрица старых алгоритмов не повторялась.
+
+[Отчёт](../../rechprav/experiments/018-profile-publication/report.md),
+[контракт](profile-publication.md). First-plan, приложение и его БД/конфиги не
+менялись, сеть не использовалась. Ограничения: SIGKILL не имитирует power loss;
+внешние ресурсы могут измениться после validation. Следующий 019 проверяет reader,
+загрузку ресурсов и атомарную замену engine+generation с сохранением старого engine
+при ошибке. Интеграция UI/сервера и смешанные exact/edit policies остаются далее.
+
 ## Шаблон следующей записи
 
 - Дата, experiment id, ветка/commit реализации.
