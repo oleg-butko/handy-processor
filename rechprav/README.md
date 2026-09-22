@@ -15,6 +15,11 @@
 
 ## Сборка и проверки
 
+Текущий сквозной опыт — [020: смешанная генерация](../docs/rechprav/mixed-generation.md).
+Для точного повторения runners 017–019 нужен их commit: после изменения runtime
+старые review/export намеренно отклоняются. Publication-тесты сами создают новые
+временные synthetic reviews.
+
 Из корня `handy-processor`. В текущей VM Rust доступен через `~/.local/bin/`:
 
 ```bash
@@ -420,8 +425,9 @@ python3 rechprav/scripts/run_composition_experiment.py rechprav/experiments/my-c
 
 [Формат/ограничения](../docs/rechprav/profile-composition.md),
 [опыт 017](experiments/017-profile-composition-v3/report.md).
-Добавление feedback пока поддержано только в exact mode, свободные context cues
-не поддержаны. Экспорт не устанавливает профиль в работающее приложение.
+С этапа 020 feedback добавляется и при edit/weighted policy, сохраняя собственный
+exact-поиск; свободные context cues пока не поддержаны. Экспорт не устанавливает
+профиль в работающее приложение.
 
 ## Публикация профиля
 
@@ -454,6 +460,20 @@ python3 rechprav/scripts/run_reader_experiment.py rechprav/experiments/my-reader
 [опыт 019](experiments/019-profile-reader/report.md).
 Проверена модель Rc на одном потоке; reload в driver синхронен. Процессный мост,
 параллельный сервер, таймауты и бюджет памяти ещё требуют отдельных проверок.
+
+## Ручной edit-поиск и точные исправления
+
+Необязательное `sets.terms.generation="exact"` ограничивает конкретное правило
+перечисленными aliases; без поля сохраняется глобальная политика. Композитор
+выставляет exact всем принятым исправлениям. Веса и known/context gates сохраняются.
+
+```bash
+/home/user1/.local/bin/cargo build --manifest-path rechprav/Cargo.toml --release --locked --offline --bin rechprav --example feedback_compose --example profile_validate --example profile_reader
+python3 rechprav/scripts/run_mixed_experiment.py rechprav/experiments/my-mixed-run
+```
+
+[Формат и ограничения](../docs/rechprav/mixed-generation.md),
+[результаты 020](experiments/020-mixed-generation/report.md).
 
 ## Организация файлов
 

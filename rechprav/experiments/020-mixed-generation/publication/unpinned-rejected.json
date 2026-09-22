@@ -1,0 +1,8 @@
+{
+  "command": [
+    "rechprav/target/release/examples/profile_validate"
+  ],
+  "stdin": "unpinned-bundle.json",
+  "exit_code": 1,
+  "stderr": "Error: config differs from replay\n"
+}

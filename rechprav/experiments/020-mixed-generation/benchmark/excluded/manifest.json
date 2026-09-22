@@ -1,0 +1,323 @@
+{
+  "arch": "x86_64",
+  "arguments": [
+    "terms-benchmark",
+    "/home/user1/handy-processor/rechprav/experiments/020-mixed-generation/inputs/corpus.jsonl",
+    "--config",
+    "/home/user1/handy-processor/rechprav/experiments/020-mixed-generation/configs/excluded.toml",
+    "--output-dir",
+    "/home/user1/handy-processor/rechprav/experiments/020-mixed-generation/benchmark/excluded"
+  ],
+  "command": "terms-benchmark",
+  "compiled_source_sha256": {
+    "Cargo.lock": "49e76a2b718996ad97b854789d7fae9e92bd96474786d3e5aba5177115be3a8a",
+    "Cargo.toml": "1432569012b432b4a6dedb173c05427f0511f70a6a56404b7faf82ab7eef98c8",
+    "src/corpus.rs": "12352c22a15e6c333973f25941d4ba9a60480081ae88cd9e364959b0945ef64b",
+    "src/corrector.rs": "55425938f874df15b5a5cfdabbe5592fe59de36b382d42489a6247a5e98e84ba",
+    "src/dictionary.rs": "4ea29fac723d5efb6190a75052d1a1766fd0e3291cd6ff01469ca3adf1cd354f",
+    "src/frequency.rs": "49219ecde3f7145ffc4c9f037399f28a945fcec9e138c9fb3b04a58223872ec1",
+    "src/hashing.rs": "e3b49fb102dc7c117dfaf9f29c77386b6d22dbc8a186f2d06cde47febaa50699",
+    "src/lib.rs": "185b18d3af8fb1572047d7d1e03a12c35c097459fdd2e34674873a2d6aae16bd",
+    "src/main.rs": "372dcda742ad853e2aa7f70c73f1bf8b315c0654e859fd7f17c4c05551cf951d",
+    "src/metrics.rs": "dff335346a23ee561ed6a292cfbe8f2623d7f8b77042ececcf97d97ee42ada92",
+    "src/packed.rs": "0513c3725b89655a1451f5551a4f447e9597ffb413e1649baa4a861483c96c0a",
+    "src/packed_frequency.rs": "34e03d6c6242562a22a65238e5af7915cf1380ccf88dafda5e048358bfa23180",
+    "src/pronunciation.rs": "a6b6f0412db5c8166239897a9bbe00c62e2aa12a86de096577d699d808f880a2",
+    "src/review.rs": "87ed6e193750e6e5c69cf328e6906d95bc6fe1e2460fad2c9609561d39c1cc33",
+    "src/term_context.rs": "752ffb4c6724172f934f6c5dac02b41602ffc610fffa6bdfccefc4ac47e79298",
+    "src/term_metrics.rs": "0026068037466d1ff32abddc1da9e5f40125e1d9ee3662bff09c60cbec354b51",
+    "src/terms.rs": "a8a208dff5d18ca592d34c84bc29811979de0a9cc28b29f76d446b3822df1ab5",
+    "src/text.rs": "61ba9d0b877da98c5ecc885d04700892a8dd58c330b3ec68b3b6b67218625794"
+  },
+  "evaluation_wall_ns": 1906783,
+  "input_file": "/home/user1/handy-processor/rechprav/experiments/020-mixed-generation/inputs/corpus.jsonl",
+  "input_sha256": "b571976c6aae451de0cf77afe99478678fb155a190b2d30b586d46f23a74127f",
+  "note": "experimental run; check dataset provenance before interpreting quality",
+  "os": "linux",
+  "rechprav_version": "0.1.0",
+  "resources": {
+    "active_terms": 9,
+    "baseline_resources": {
+      "config": {
+        "dictionary": "../artifacts/opencorpora-wordfreq/dictionary.rpt",
+        "domain": "../data/fixtures/baseline/domain.txt",
+        "frequency": {
+          "path": "../artifacts/opencorpora-wordfreq/frequency.rpf",
+          "scoring": {
+            "edit_penalty": 1.0,
+            "keep_bias": 1.0,
+            "log_cap": 6.0,
+            "min_keep_margin": 0.5,
+            "min_runner_up_margin": 0.5,
+            "weight": 1.0
+          }
+        },
+        "ignore": "../data/fixtures/baseline/ignore.txt",
+        "policy": {
+          "max_candidates": 20,
+          "max_distance": 1,
+          "max_search_nodes": 100000,
+          "max_word_length": 64,
+          "min_word_length": 5,
+          "protect_titlecase": true,
+          "protect_uppercase": true
+        },
+        "strict_yo": false
+      },
+      "decision_policy": "OOV + complete distance-1 search + bounded frequency prior + KEEP and runner-up margins; uncalibrated",
+      "dictionary_storage": {
+        "bytes": 123007276,
+        "format": "packed_trie_v1",
+        "source_sha256": "e2e67e5b5e226473b668dff5029fb5af0aa55a3f6e0165da012363be39766a11"
+      },
+      "dictionary_words": 3017654,
+      "domain_words": 6,
+      "frequency_storage": {
+        "bytes": 22530646,
+        "format": "packed_frequency_v1",
+        "source_sha256": "b825e97778693cb7e3b5cb26d058ba6bde6cf4971471dc0a6f2d1a1e889c160f"
+      },
+      "frequency_words": 661389,
+      "ignore_words": 1,
+      "resource_sha256": {
+        "config": "b336c1acf684a26b723d121e3be69a4d3590795ed844a665afcd7c8f4f50dab0",
+        "dictionary": "2435885729fd1f05fe109ddf8564df2f6fb33b6731361fce97f853b9e5263619",
+        "domain": "3f55176416db3a592d5a7d7d42ea06e319dafc298ec599b6e7ccf23504db9bb9",
+        "frequency": "689c7de7c863d3aedb9a3fa1094a95bc1af6575a20e2900d87c29563fe953695",
+        "ignore": "73d9e75692a12aaee7e5cabde686fa0b77c93b3a6347c7ba6661193eb212a2fe"
+      },
+      "trie_nodes": 4562033
+    },
+    "config_sha256": "71f15f8407334b76acdd8bb0a61e5f2105b452a28433cd3731beb563718e04d2",
+    "effective_config": {
+      "baseline_config": "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml",
+      "enabled": true,
+      "policy": {
+        "boost": 0.0,
+        "context_bonus": 2.0,
+        "context_window": 4,
+        "edit_penalty": 1.0,
+        "known_penalty": 1.0,
+        "max_comparisons": 20000,
+        "max_distance": 1,
+        "max_tokens": 3,
+        "min_margin": 1.0,
+        "min_score": 3.0,
+        "mode": "edit"
+      },
+      "sets": [
+        {
+          "boost": 0.0,
+          "enabled": true,
+          "id": "hardware",
+          "terms": [
+            {
+              "aliases": [
+                "свуты"
+              ],
+              "boost": 0.0,
+              "canonical": "слот",
+              "context": [],
+              "context_exclusions": [
+                "сняли {term} памяти"
+              ],
+              "enabled": true,
+              "forms": [
+                {
+                  "aliases": [
+                    "слота"
+                  ],
+                  "canonical": "слота",
+                  "context_patterns": [
+                    "без снятия {term}"
+                  ],
+                  "require_context": true
+                }
+              ],
+              "id": "slot",
+              "known_words": "always",
+              "max_known_distance": 0
+            },
+            {
+              "aliases": [
+                "калиборд"
+              ],
+              "boost": 0.0,
+              "canonical": "клипборд",
+              "context": [],
+              "enabled": true,
+              "id": "clipboard",
+              "known_words": "always",
+              "max_known_distance": 0
+            },
+            {
+              "aliases": [
+                "сваты"
+              ],
+              "boost": 0.0,
+              "canonical": "слота",
+              "context": [],
+              "context_exclusions": [
+                "сняли {term} памяти"
+              ],
+              "context_patterns": [
+                "без снятия {term}"
+              ],
+              "enabled": true,
+              "generation": "exact",
+              "id": "fb_1b93b6ea4dbafbb896a304af1915baa1",
+              "known_words": "always",
+              "max_known_distance": 0,
+              "require_context": true
+            },
+            {
+              "aliases": [
+                "свод"
+              ],
+              "boost": 0.0,
+              "canonical": "слот",
+              "context": [],
+              "context_exclusions": [
+                "сняли {term} памяти"
+              ],
+              "context_patterns": [
+                "сняли {term} памяти"
+              ],
+              "enabled": true,
+              "generation": "exact",
+              "id": "fb_58aced23a727ae54089768852d8fb683",
+              "known_words": "always",
+              "max_known_distance": 0,
+              "require_context": true
+            }
+          ]
+        },
+        {
+          "boost": 0.0,
+          "enabled": true,
+          "id": "phrases",
+          "terms": [
+            {
+              "aliases": [
+                "долго ждать"
+              ],
+              "boost": 0.0,
+              "canonical": "долго ждать",
+              "context": [],
+              "enabled": true,
+              "id": "wait",
+              "kind": "phrase",
+              "known_words": "preserve"
+            },
+            {
+              "aliases": [
+                "долгождать"
+              ],
+              "boost": 0.0,
+              "canonical": "долго ждать",
+              "context": [],
+              "context_patterns": [
+                "надо {term} ответа"
+              ],
+              "enabled": true,
+              "generation": "exact",
+              "id": "fb_ea1a510ecba1a777a36509b5f0c658d6",
+              "kind": "phrase",
+              "known_words": "preserve",
+              "max_known_distance": 0,
+              "require_context": true
+            }
+          ]
+        },
+        {
+          "boost": 0.0,
+          "enabled": true,
+          "id": "fb_new_83e3b78f14e08cc5",
+          "terms": [
+            {
+              "aliases": [
+                "пэ эн зэ"
+              ],
+              "boost": 0.0,
+              "canonical": "ПНЗ",
+              "context": [],
+              "context_patterns": [
+                "проверь {term} сегодня"
+              ],
+              "enabled": true,
+              "generation": "exact",
+              "id": "fb_7ac1a8d408103b88f02e74e4a6ea33ee",
+              "known_words": "always",
+              "max_known_distance": 0,
+              "require_context": true
+            },
+            {
+              "aliases": [
+                "катэхэ"
+              ],
+              "boost": 0.0,
+              "canonical": "КТХ",
+              "context": [],
+              "context_patterns": [
+                "включи {term}"
+              ],
+              "enabled": true,
+              "generation": "exact",
+              "id": "fb_a37b1efbeff5faf7ed8a9e7af8d75f01",
+              "known_words": "always",
+              "max_known_distance": 0,
+              "require_context": true
+            }
+          ]
+        }
+      ]
+    },
+    "scoring": "heuristic preferences, not probabilities; term-only pass",
+    "term_families": [
+      {
+        "canonical": "слот",
+        "resolved_forms": [
+          {
+            "aliases": [
+              "свуты"
+            ],
+            "boost": 0.0,
+            "canonical": "слот",
+            "context": [],
+            "context_exclusions": [
+              "сняли {term} памяти"
+            ],
+            "enabled": true,
+            "id": "slot",
+            "known_words": "always",
+            "max_known_distance": 0
+          },
+          {
+            "aliases": [
+              "слота"
+            ],
+            "boost": 0.0,
+            "canonical": "слота",
+            "context": [],
+            "context_exclusions": [
+              "сняли {term} памяти"
+            ],
+            "context_patterns": [
+              "без снятия {term}"
+            ],
+            "enabled": true,
+            "id": "slot",
+            "known_words": "always",
+            "max_known_distance": 0,
+            "require_context": true
+          }
+        ],
+        "set": "hardware",
+        "term": "slot"
+      }
+    ]
+  },
+  "schema_version": 2,
+  "timing_scope": "validation + term correction + metrics + diagnostics; excludes resource load; not isolated latency",
+  "unix_timestamp": 1790075544
+}

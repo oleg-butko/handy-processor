@@ -16,7 +16,7 @@
 | Rust/Cargo | Найдены в `~/.local/bin`; Rust/Cargo 1.98.0, установка не понадобилась |
 | Первичные источники | Проверены пакеты OpenCorpora/wordfreq и условия русского Hunspell; сайт OpenCorpora недоступен инструменту просмотра |
 | Технические данные | 67 tokenizer fixtures, исходные корпуса 12/27 записей, терминологические наборы 43, 42, 40, 40, 43, 24, 30, 40 и 28 записей; отдельно девять пользовательских пар |
-| Проверки | 142 Rust-теста, clippy/fmt/release и 18 Node-тестов публикации в 019; 16 Node-тестов capture в 016; 80 ответов reader равны контролям 017 |
+| Проверки | 147 Rust-тестов, clippy/fmt/release и 19 Node-тестов публикации в 020; 29 старых профилей побайтно сохранены; 60 сквозных анализов reader |
 | Качество и производительность коррекции | B1/B2 на синтетике; контрольные пользовательские ASR-пары; сравнение BTreeMap/packed trie; независимый ASR test, FST и SymSpell ещё не оценены |
 
 Первичный [отчёт](../../rechprav/experiments/000-inventory/report.md) и
@@ -589,3 +589,31 @@ complete/comparisons равны 017, включая старые handles пос�
 таймауты, crash worker, очередь и budget памяти нужны до интеграции. Следующий
 алгоритмический опыт 020 — совместить manual edit и generated exact с отдельной
 политикой генерации, сохранив точность aliases и пользовательские настройки.
+
+## 020 — manual edit + generated exact
+
+[Отчёт](../../rechprav/experiments/020-mixed-generation/report.md),
+[политика](mixed-generation.md), [таблица](../../rechprav/experiments/020-mixed-generation/summary.json).
+Протокол/controls `a124227`, код `66a5cb2`. У term появилась generation=exact;
+без поля наследуется глобальный режим. Композитор закрепляет exact у generated,
+ручные definitions/веса/gates сохраняются. Weighted не обходит точность alias.
+
+20 фиксированных профилей, 30 synthetic/dev строк / 13 gold spans / 17 KEEP:
+manual-exact 2 TP/0 FP/11 FN; composed-exact 8/1/5; manual-edit 5/0/8;
+mixed и uniform weighted mixed 10/1/3; diagnostic unpinned 12/2/1.
+Mixed исправляет isolated «долгождать» и ручную опечатку «калиборт» без расширения
+принятых aliases. Unpinned лучше покрывает слитные варианты ПНЗ, но добавляет FP
+«катэхи → КТХ» по gold этого набора. Exact пропускает два неперечисленных написания
+ПНЗ и новый контекст; буквальное упоминание слота всё ещё исправляет ошибочно.
+
+Отдельная generation policy принята для соблюдения границ подтверждённой пары;
+не заявляется превосходство по recall или качеству реального ASR. Веса, выключатели,
+конфликты, known gate, exclusions, undo/duplicates/penalty проверены отдельно.
+147 Rust-тестов, 19 publication-тестов, clippy/fmt/build прошли. 29 профилей 013/017
+без поля generation побайтно совпали, 60 reader анализов равны benchmarks.
+91 source manifest и 445 resource hashes проверены.
+
+Runtime fingerprint обновился: старые reviews стали stale, старые exports
+отклонены; тестовые решения сформированы заново. Guard не отключался, рабочий
+сервер не подключён. Далее 021 — управляемое расширение aliases аббревиатур с
+явным подтверждением и новыми controls; метаязыковой FP остаётся отдельной задачей.

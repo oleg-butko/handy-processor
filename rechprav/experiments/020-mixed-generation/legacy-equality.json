@@ -1,0 +1,147 @@
+[
+  {
+    "profile": "017-binding-off",
+    "equal": true,
+    "predictions_sha256": "60c8f41929a56b83ac03f6556ed1a0d815636a4d84fa393f9c1ea1060f2a1c80"
+  },
+  {
+    "profile": "017-composed",
+    "equal": true,
+    "predictions_sha256": "fb3734a32866ab61808a3f93f424efbe03e4cfe5bfdbbea2373049896dafc655"
+  },
+  {
+    "profile": "017-conflict",
+    "equal": true,
+    "predictions_sha256": "0396849a727956282430af959b04b655fe213a7dd3c94044c93adfca013d9c3f"
+  },
+  {
+    "profile": "017-disjoint-context",
+    "equal": true,
+    "predictions_sha256": "1b3fc6f748cc61befaff72cbf9c4f72c4f1fadf71d83883d57d88dacd0f39e6a"
+  },
+  {
+    "profile": "017-duplicate",
+    "equal": true,
+    "predictions_sha256": "fb3734a32866ab61808a3f93f424efbe03e4cfe5bfdbbea2373049896dafc655"
+  },
+  {
+    "profile": "017-excluded",
+    "equal": true,
+    "predictions_sha256": "64bf0b2d468e88e21af3f66e0b5e5f966f9d54283d727c1a42c584e85081c4be"
+  },
+  {
+    "profile": "017-feedback-off",
+    "equal": true,
+    "predictions_sha256": "6d5e51192e6504e26c9439743d57d03bbd27a464a4d1d40ea58b32cf575eec90"
+  },
+  {
+    "profile": "017-global-off",
+    "equal": true,
+    "predictions_sha256": "fc21f4dc44f56595f8f7b9aec6fd22b1799ee75ff7c5f55041c723d19d1baa1c"
+  },
+  {
+    "profile": "017-known-never",
+    "equal": true,
+    "predictions_sha256": "33f079a5a959fb00b4a4678a07ba1ac836dc9ade9ff7a75e2681561fe84e3b89"
+  },
+  {
+    "profile": "017-manual-only",
+    "equal": true,
+    "predictions_sha256": "6d5e51192e6504e26c9439743d57d03bbd27a464a4d1d40ea58b32cf575eec90"
+  },
+  {
+    "profile": "017-new-low",
+    "equal": true,
+    "predictions_sha256": "4cc830535594d32817bde80f728f79654edbca2a10f73d5705fe483c10140d7b"
+  },
+  {
+    "profile": "017-new-over-existing",
+    "equal": true,
+    "predictions_sha256": "60c8f41929a56b83ac03f6556ed1a0d815636a4d84fa393f9c1ea1060f2a1c80"
+  },
+  {
+    "profile": "017-owner-deleted",
+    "equal": true,
+    "predictions_sha256": "af6345ef9f8ed484a334731ef3ebc59f4c5afceefbb6f43dcc9d8c4ec3b95d4b"
+  },
+  {
+    "profile": "017-owner-high-conflict",
+    "equal": true,
+    "predictions_sha256": "70a2929f0e99a3d5414ef27eaa2f56d05bb575bfed6b56f85eb6671b70ce6e33"
+  },
+  {
+    "profile": "017-owner-low",
+    "equal": true,
+    "predictions_sha256": "f84207f0b11f6730c7450b9f9990c9fadbbfb3c2e5f7705cf58bcd834649a37c"
+  },
+  {
+    "profile": "017-owner-off",
+    "equal": true,
+    "predictions_sha256": "af6345ef9f8ed484a334731ef3ebc59f4c5afceefbb6f43dcc9d8c4ec3b95d4b"
+  },
+  {
+    "profile": "017-set-off",
+    "equal": true,
+    "predictions_sha256": "b33d9236980ef305276aafbc8bdc471ceb551ecaefa7dba85c2857d6ea0e398e"
+  },
+  {
+    "profile": "017-source-penalty",
+    "equal": true,
+    "predictions_sha256": "61c2e5368f35a601cd76bffe4072cf863057128480f3e054ef8a800d27ecc5a8"
+  },
+  {
+    "profile": "017-stale-settings",
+    "equal": true,
+    "predictions_sha256": "6d5e51192e6504e26c9439743d57d03bbd27a464a4d1d40ea58b32cf575eec90"
+  },
+  {
+    "profile": "017-undo",
+    "equal": true,
+    "predictions_sha256": "60c8f41929a56b83ac03f6556ed1a0d815636a4d84fa393f9c1ea1060f2a1c80"
+  },
+  {
+    "profile": "017-unsupported-cues",
+    "equal": true,
+    "predictions_sha256": "82ce51bc0224fe1808e300cf4f34684cf175f7b2e1a02d9039086a01b543b54c"
+  },
+  {
+    "profile": "017-unsupported-edit",
+    "equal": true,
+    "predictions_sha256": "d555ef75b0019345aff4587656a1676aedb42cddeaefb0e6334fd1a630469c00"
+  },
+  {
+    "profile": "013-edit-1",
+    "equal": true,
+    "predictions_sha256": "ac309173f92148834486c8da726d61486015b7dd9a8558044e132a673f2b0a2e"
+  },
+  {
+    "profile": "013-edit-2",
+    "equal": true,
+    "predictions_sha256": "8c7b76de0ff648f999c7ff21b472f132ce3980ea196bf03e356f50c4237c338d"
+  },
+  {
+    "profile": "013-weighted-gaps",
+    "equal": true,
+    "predictions_sha256": "728fedce5e62a833cdfa8ddc1deeb13fdbfe3ec54a7a1320401c7c94c8995c4a"
+  },
+  {
+    "profile": "013-weighted-pairs",
+    "equal": true,
+    "predictions_sha256": "370cf26441b3a491dbecc51db335db1e3ec4d738786577308f31b72721f486bc"
+  },
+  {
+    "profile": "013-weighted-uniform",
+    "equal": true,
+    "predictions_sha256": "b27583281e94da4443253eebb35b167a065c895370da37a2b9d18d08c45a29ea"
+  },
+  {
+    "profile": "013-weighted-vowels",
+    "equal": true,
+    "predictions_sha256": "d418aef23302460ce6834178dd69998c599ff26c8c4795624b2f71bd23e06ed2"
+  },
+  {
+    "profile": "013-weighted-wide",
+    "equal": true,
+    "predictions_sha256": "1dd50881db51a5824d715f9de8d2b381f267291f5a57f770bd44314221443ce3"
+  }
+]

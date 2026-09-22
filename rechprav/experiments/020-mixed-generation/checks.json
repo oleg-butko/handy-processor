@@ -1,0 +1,14 @@
+{
+  "resource_hashes_verified": 445,
+  "source_manifests_verified": 91,
+  "rust_tests": 147,
+  "publication_tests": 19,
+  "first_plan_sha256": "142bb32d8c0dc5a33547e6dc1710bc398a148830461a369c3d8733e20cb9c854",
+  "unpinned_rejected_even_with_updated_output_hash": true,
+  "additional_checks": [
+    "clippy --all-targets -- -D warnings",
+    "cargo fmt -- --check",
+    "offline release build runtime/composer/validator/reader",
+    "py_compile mixed_profiles.py run_mixed_experiment.py"
+  ]
+}

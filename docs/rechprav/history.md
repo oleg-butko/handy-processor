@@ -813,6 +813,50 @@ Driver reload синхронен. Это не готовая интеграци�
 baseline, проверить per-rule generation без расширения aliases, gates, веса и
 выключатели. Изменение runtime fingerprint потребует новых review, guard сохранять.
 
+## 2026-09-22 — 020: точные aliases внутри ручного edit-профиля
+
+Ветка `feat/rechprav-mixed-generation`. Протокол и 30 controls заморожены `a124227`,
+код `66a5cb2`. До правки сохранён прежний runtime binary с SHA 93199bc0… в ignored
+artifacts/020-mixed-generation-baseline. Новый term.generation имеет значения
+inherit (default, прежнее поведение) и exact. Exact проверяется до edit/weighted;
+границы слов сохранены, family наследует policy. Композитор ставит exact каждому
+generated term и больше не отказывает только из-за manual mode=edit.
+
+Ручные настройки не переписывались. Существующий общий ranker, gates/context,
+weights, exclusions и source penalties используются прежним образом. Добавлены
+четыре unit tests generation и один composition; снята устаревшая проверка
+отказа edit. Node publication fixtures теперь получают новые synthetic reviews
+в temp-каталоге текущим композитором: старый compiled fingerprint намеренно
+несовместим. Исторические артефакты не менялись.
+
+Полный опыт прошёл с первого запуска: 20 профилей на 30 synthetic/dev строках,
+13 gold spans. Mixed 10 TP/1 FP/3 FN против composed exact 8/1/5. Устраняются
+пропуски isolated «долгождать» и ручной опечатки «калиборт». Два слитных написания
+ПНЗ и иной контекст оставлены положительными gold и дают FN. FP буквального
+упоминания остаётся. Unpinned даёт 12/2/1: два дополнительных TP ПНЗ и FP «катэхи».
+Не принят как default из-за молчаливого расширения alias; это tradeoff precision/
+recall на авторских controls, не доказательство для реальной истории. Uniform
+weighted совпал по качеству с mixed; подбор стоимости по этим данным не делался.
+
+Проверены выключатели, веса, конфликт/приоритет, known-never, exclusions, undo,
+duplicate и source penalty. 22 legacy profiles 017 и семь 013 побайтно сохранили
+предсказания/метрики. Все 147 Rust и 19 publication тестов прошли, включая шесть
+точек SIGKILL, clippy/fmt/offline builds/py_compile. Публикация mixed/global-off и
+reader дали 60 анализов, совпавших с benchmark; старый handle сохранил поколение.
+Проверены 91 source manifest/445 resource hashes и first-plan SHA.
+
+На прежних input/manual/bindings/decisions 017 получены stale_environment и ноль
+generated правил — чистая проверка изменения runtime. Старый export отклонён
+по compiled sources. Дополнительный unpinned bundle с пересчитанным output hash
+также отклонён replay. Новый guarded pipeline воспроизводится runner 020;
+исторические runners 017–019 воспроизводить на их commits.
+
+[Отчёт](../../rechprav/experiments/020-mixed-generation/report.md),
+[интерфейс](mixed-generation.md). Сеть, рабочие сервер/БД/конфиги и first-plan не
+затрагивались. Следующий 021: управляемые предложения aliases аббревиатур с новым
+review и отдельными заранее размеченными controls, без скрытого расширения всех
+соседних слов и без превращения контекстного ограничения в мягкий вес.
+
 ## Шаблон следующей записи
 
 - Дата, experiment id, ветка/commit реализации.

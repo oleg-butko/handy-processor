@@ -1,0 +1,182 @@
+[
+  {
+    "profile": "manual-exact",
+    "tp": 2,
+    "fp": 0,
+    "fn": 11,
+    "exact_records": 19,
+    "added_rules": 0,
+    "publishable": true
+  },
+  {
+    "profile": "exact",
+    "tp": 8,
+    "fp": 1,
+    "fn": 5,
+    "exact_records": 24,
+    "added_rules": 5,
+    "publishable": true
+  },
+  {
+    "profile": "manual-edit",
+    "tp": 5,
+    "fp": 0,
+    "fn": 8,
+    "exact_records": 22,
+    "added_rules": 0,
+    "publishable": true
+  },
+  {
+    "profile": "mixed",
+    "tp": 10,
+    "fp": 1,
+    "fn": 3,
+    "exact_records": 26,
+    "added_rules": 5,
+    "publishable": true
+  },
+  {
+    "profile": "weighted",
+    "tp": 10,
+    "fp": 1,
+    "fn": 3,
+    "exact_records": 26,
+    "added_rules": 5,
+    "publishable": true
+  },
+  {
+    "profile": "unpinned",
+    "tp": 12,
+    "fp": 2,
+    "fn": 1,
+    "exact_records": 27,
+    "added_rules": 5,
+    "publishable": false
+  },
+  {
+    "profile": "feedback-off",
+    "tp": 5,
+    "fp": 0,
+    "fn": 8,
+    "exact_records": 22,
+    "added_rules": 0,
+    "publishable": true
+  },
+  {
+    "profile": "binding-off",
+    "tp": 8,
+    "fp": 0,
+    "fn": 5,
+    "exact_records": 25,
+    "added_rules": 4,
+    "publishable": true
+  },
+  {
+    "profile": "owner-off",
+    "tp": 6,
+    "fp": 0,
+    "fn": 7,
+    "exact_records": 23,
+    "added_rules": 3,
+    "publishable": true
+  },
+  {
+    "profile": "set-off",
+    "tp": 4,
+    "fp": 0,
+    "fn": 9,
+    "exact_records": 21,
+    "added_rules": 3,
+    "publishable": true
+  },
+  {
+    "profile": "global-off",
+    "tp": 0,
+    "fp": 0,
+    "fn": 13,
+    "exact_records": 17,
+    "added_rules": 0,
+    "publishable": true
+  },
+  {
+    "profile": "owner-low",
+    "tp": 6,
+    "fp": 0,
+    "fn": 7,
+    "exact_records": 23,
+    "added_rules": 5,
+    "publishable": true
+  },
+  {
+    "profile": "new-low",
+    "tp": 8,
+    "fp": 1,
+    "fn": 5,
+    "exact_records": 24,
+    "added_rules": 5,
+    "publishable": true
+  },
+  {
+    "profile": "conflict",
+    "tp": 8,
+    "fp": 0,
+    "fn": 5,
+    "exact_records": 25,
+    "added_rules": 5,
+    "publishable": true
+  },
+  {
+    "profile": "owner-high-conflict",
+    "tp": 10,
+    "fp": 1,
+    "fn": 3,
+    "exact_records": 26,
+    "added_rules": 5,
+    "publishable": true
+  },
+  {
+    "profile": "known-never",
+    "tp": 7,
+    "fp": 0,
+    "fn": 6,
+    "exact_records": 24,
+    "added_rules": 5,
+    "publishable": true
+  },
+  {
+    "profile": "excluded",
+    "tp": 8,
+    "fp": 0,
+    "fn": 5,
+    "exact_records": 25,
+    "added_rules": 5,
+    "publishable": true
+  },
+  {
+    "profile": "undo",
+    "tp": 8,
+    "fp": 0,
+    "fn": 5,
+    "exact_records": 25,
+    "added_rules": 4,
+    "publishable": true
+  },
+  {
+    "profile": "duplicate",
+    "tp": 10,
+    "fp": 1,
+    "fn": 3,
+    "exact_records": 26,
+    "added_rules": 5,
+    "publishable": true
+  },
+  {
+    "profile": "source-penalty",
+    "tp": 8,
+    "fp": 1,
+    "fn": 5,
+    "exact_records": 24,
+    "added_rules": 5,
+    "publishable": true
+  }
+]

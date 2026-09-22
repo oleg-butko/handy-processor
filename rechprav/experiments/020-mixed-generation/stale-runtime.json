@@ -1,0 +1,45 @@
+{
+  "states": [
+    {
+      "proposal_id": "fb_1b93b6ea4dbafbb896a304af1915baa1",
+      "decision_id": "accept-2",
+      "status": "stale_environment",
+      "approved_evidence_ids": [],
+      "current_evidence_ids": [
+        "form"
+      ],
+      "surviving_evidence_ids": []
+    },
+    {
+      "proposal_id": "fb_58aced23a727ae54089768852d8fb683",
+      "decision_id": "accept-3",
+      "status": "stale_environment",
+      "approved_evidence_ids": [],
+      "current_evidence_ids": [
+        "slot"
+      ],
+      "surviving_evidence_ids": []
+    },
+    {
+      "proposal_id": "fb_a37b1efbeff5faf7ed8a9e7af8d75f01",
+      "decision_id": "accept-1",
+      "status": "stale_environment",
+      "approved_evidence_ids": [],
+      "current_evidence_ids": [
+        "new"
+      ],
+      "surviving_evidence_ids": []
+    },
+    {
+      "proposal_id": "fb_ea1a510ecba1a777a36509b5f0c658d6",
+      "decision_id": "accept-0",
+      "status": "stale_environment",
+      "approved_evidence_ids": [],
+      "current_evidence_ids": [
+        "phrase"
+      ],
+      "surviving_evidence_ids": []
+    }
+  ],
+  "added_rules": 0
+}

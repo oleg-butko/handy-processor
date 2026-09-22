@@ -63,11 +63,10 @@ Generated term содержит только подтверждённый alias 
 - Свободные cues `context=[...]` пока не поддержаны при добавлении owned feedback:
   невозможно просто переписать их OR-семантику как пересечение anchored patterns.
   Ручной term продолжает работать, generated получает unsupported_context_cues.
-- Feedback добавляется только при global `mode="exact"`. При `mode="edit"`
-  ручной профиль работает как раньше, generated получает unsupported_mode.
-  Иначе нечёткий поиск неожиданно расширил бы принятую точную пару, особенно OOV.
-  Конфиги старых edit-экспериментов поэтому нельзя считать автоматически
-  совместимыми с этим композитором.
+- С этапа 020 feedback поддерживает global exact/edit/weighted: каждый generated
+  term получает `generation="exact"`. Ручной поиск сохраняет свою политику,
+  принятый alias не расширяется. Ранее, в 017, edit давал unsupported_mode;
+  это ограничение снято отдельной политикой [генерации](mixed-generation.md).
 
 Существующие score thresholds, context bonus, source penalties применяются ко
 всему итоговому профилю. Это настройки пользователя, не вероятности и не
@@ -97,7 +96,7 @@ proposal id с owner и output set; через registry доступны decisio
 | owner_missing / owner_target_mismatch | Привязка больше не соответствует ручному термину |
 | existing_target_requires_owner | Нельзя создать независимую копию существующей цели |
 | disjoint_context | Контексты не имеют совместимого anchored pattern |
-| unsupported_mode / unsupported_context_cues | Композитор не умеет сохранить нужную семантику |
+| unsupported_context_cues | Композитор не умеет сохранить семантику свободных cues |
 
 Некорректный binding/boost, дубли id, namespace collision или превышение пределов
 итогового Config — ошибка всей сборки до создания output. Не выбирается случайная
@@ -108,7 +107,7 @@ proposal id с owner и output set; через registry доступны decisio
 
 ```bash
 /home/user1/.local/bin/cargo build --manifest-path rechprav/Cargo.toml --release --locked --offline --example feedback_compose
-python3 rechprav/scripts/run_composition_experiment.py rechprav/experiments/my-composition-run
+python3 rechprav/scripts/run_mixed_experiment.py rechprav/experiments/my-mixed-run
 ```
 
 Для собственного прогона:
@@ -125,9 +124,10 @@ feedback_compose с пустым decisions.jsonl. Проверить `report.jso
 После принятия повторить команду в новый output directory.
 
 Выходы: report.json с registry/audit/config, composed.toml и composition-manifest.json
-с hashes. Это экспорт, не атомарная установка в приложение. Следующий этап —
-публикация проверенного снимка с контролем поколения/целостности и восстановлением
-после прерванной записи; затем UI/outbox/live reload.
+с hashes. Для экспериментальной публикации и загрузки используются протоколы
+[018](profile-publication.md) и [019](profile-reader.md). После изменения runtime
+в 020 старые exports/reviews требуют новой проверки. Исторический runner 017
+воспроизводится на его commit; текущий сквозной опыт — 020.
 
 [Протокол](017-composition-plan.md),
 [эксперимент](../../rechprav/experiments/017-profile-composition-v3/report.md).

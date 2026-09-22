@@ -1,5 +1,10 @@
 # Reader и время жизни engine
 
+Для текущего runtime после этапа 020 сквозной прогон —
+[run_mixed_experiment.py](../../rechprav/scripts/run_mixed_experiment.py).
+Исторический runner 019 ниже воспроизводится на commit `e3bbaa3`: он использует
+старые snapshots, которые новый compiled fingerprint намеренно не принимает.
+
 Этап 019 проверяет Rust-модель загрузки профиля из снимка 018. Код:
 `rechprav/src/profile_reader.rs`, общий `src/profile_validation.rs`, JSONL-driver
 `examples/profile_reader.rs`. Это отдельный экспериментальный процесс, без

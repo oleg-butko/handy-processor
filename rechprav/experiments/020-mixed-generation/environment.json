@@ -1,0 +1,27 @@
+{
+  "implementation_commit": "66a5cb222ef5e5b7ba6c9551ca31fe19b1361e3d",
+  "implementation_status": [],
+  "source_sha256": {
+    "scripts/mixed_profiles.py": "8b91f1a1b30a9fbea489711dfdac382c88045d78921990f4e375c7b1d8188d2a",
+    "scripts/run_mixed_experiment.py": "f2a70b5edf96caa14435773dfe48f748acd8e68ff50a478ab893a89e7c029c59",
+    "scripts/composition_profiles.py": "02ccae6d9a1b59cff631ba3140bf26bedcc9ceea2e206b901c54c9bc4014259c",
+    "scripts/run_term_experiment.py": "5802ca027c8e4964070c5236aefa3eaf9e398097927f199a70bc1930d3d195e2",
+    "src/terms.rs": "a8a208dff5d18ca592d34c84bc29811979de0a9cc28b29f76d446b3822df1ab5",
+    "src/feedback_composition.rs": "3d888ffa5c68e07ae4972bbe64894af2156b92fe2fdbf3cb9c4c21c8293b01de",
+    "tests/generation.rs": "f0f1d50c2dea9860ec29f213a4b503f8a01dd3fa4555046ab4a7294da9cb4c7f",
+    "tests/feedback_composition.rs": "8665bf893c5ea88c36394a7fe3c49767bbf964147d913a1a46873cfd9a189ad3",
+    "publication/store.test.mjs": "73533d127e0de4d292251236e1899c142ffc6390a5b0d1cf2330808b7d00a569",
+    "publication/testing/fixtures.mjs": "545a97165f8a1cd29b97130f06d7773c3ce99001d125b0fe0dafed09ba286966"
+  },
+  "corpus_sha256": "b571976c6aae451de0cf77afe99478678fb155a190b2d30b586d46f23a74127f",
+  "manifests_verified": 91,
+  "binary_sha256": "1fa8889fc433cf79129ea2e675a1e4786d40cdccde3fb4102cf8af82637db6db",
+  "previous_binary_sha256": "93199bc0ae9c94b7f5721ab4d5ce28384529bac9aebac9e9f9cd978555694e6b",
+  "composer_binary_sha256": "23c9b1bfb3b72d0c860c36fc660146385954548593f5874a5a727290bd54e926",
+  "validator_binary_sha256": "a818a2f092826e559c5a64ecbb31f4b70555c5ca67c9a8595877fa5817e582d4",
+  "reader_binary_sha256": "91814bc4001b5d7db05620f22a5887745db9b5496a17db4ef338e76a10be26ed",
+  "database_path": "/home/user1/handy-processor/rechprav/artifacts/publication-020-rpxer4he/profiles.sqlite",
+  "legacy_profiles": 29,
+  "reader_comparisons": 60,
+  "claim": "fixed synthetic/dev generation controls; no real ASR quality estimate"
+}
