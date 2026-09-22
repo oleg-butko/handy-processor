@@ -1,0 +1,53 @@
+baseline_config = "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml"
+enabled = true
+
+[policy]
+mode = "exact"
+
+[[sets]]
+id = "hardware"
+enabled = true
+boost = 0.0
+
+[[sets.terms]]
+id = "slot"
+canonical = "слот"
+aliases = ["свуты"]
+boost = 3.0
+known_words = "always"
+max_known_distance = 0
+
+[[sets.terms.forms]]
+canonical = "слота"
+aliases = ["слота"]
+require_context = true
+context_patterns = ["без снятия {term}"]
+
+[[sets.terms]]
+id = "clipboard"
+canonical = "клипборд"
+aliases = ["калиборд"]
+known_words = "always"
+max_known_distance = 0
+
+[[sets]]
+id = "phrases"
+
+[[sets.terms]]
+id = "wait"
+canonical = "долго ждать"
+kind = "phrase"
+aliases = ["долго ждать"]
+known_words = "preserve"
+
+[[sets]]
+id = "network"
+
+[[sets.terms]]
+id = "switch"
+canonical = "свитч"
+aliases = ["свод"]
+known_words = "always"
+require_context = true
+context_patterns = ["сняли {term} памяти"]
+max_known_distance = 0

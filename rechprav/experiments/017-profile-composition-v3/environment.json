@@ -1,0 +1,17 @@
+{
+  "implementation_commit": "2d34543cba40021557700ea1280f185e1c2e8be2",
+  "implementation_status": [],
+  "binary_sha256": "93199bc0ae9c94b7f5721ab4d5ce28384529bac9aebac9e9f9cd978555694e6b",
+  "composer_binary_sha256": "429d6786f03503718a2e4d7ed34cef79068db3a6d042ac79de5a65b9aa90d2b2",
+  "corpus_sha256": "372bd6e7c8577ace168c7ac44898b25949cd4c87656b99ed7ea225266b2de565",
+  "verified_source_manifests": 66,
+  "verified_resource_hashes": 325,
+  "source_sha256": {
+    "composition_profiles.py": "02ccae6d9a1b59cff631ba3140bf26bedcc9ceea2e206b901c54c9bc4014259c",
+    "run_composition_experiment.py": "a0c395e1719d73a1666c6db9726336bc5f91f983bf978f80101761e95af243ca",
+    "prepare_user_phrase_fixture.py": "f47d3a152f4910f42feec5a0e137eddeb4937b316d2bce859c79e16df2e6bccc",
+    "prepare_draft_fixture.py": "e1581745e9690b14690e041cee0ac28e4e753d3e530177cc5934729d9a163e94",
+    "run_term_experiment.py": "5802ca027c8e4964070c5236aefa3eaf9e398097927f199a70bc1930d3d195e2"
+  },
+  "scope": "offline composition, 20 synthetic dev controls, fresh explicit review per profile, runtime unchanged"
+}

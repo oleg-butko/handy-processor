@@ -1,0 +1,75 @@
+baseline_config = "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml"
+enabled = true
+
+[policy]
+mode = "exact"
+max_distance = 1
+max_tokens = 3
+max_comparisons = 20000
+context_window = 4
+boost = 0.0
+edit_penalty = 1.0
+context_bonus = 2.0
+known_penalty = 1.0
+min_score = 3.0
+min_margin = 1.0
+
+[[sets]]
+id = "hardware"
+enabled = true
+boost = 0.0
+
+[[sets.terms]]
+id = "clipboard"
+canonical = "клипборд"
+aliases = ["калиборд"]
+enabled = true
+boost = 0.0
+known_words = "always"
+context = []
+max_known_distance = 0
+
+[[sets]]
+id = "phrases"
+enabled = true
+boost = 0.0
+
+[[sets.terms]]
+id = "wait"
+canonical = "долго ждать"
+kind = "phrase"
+aliases = ["долго ждать"]
+enabled = true
+boost = 0.0
+known_words = "preserve"
+context = []
+
+[[sets.terms]]
+id = "fb_ea1a510ecba1a777a36509b5f0c658d6"
+canonical = "долго ждать"
+kind = "phrase"
+aliases = ["долгождать"]
+enabled = true
+boost = 0.0
+known_words = "preserve"
+context = []
+max_known_distance = 0
+context_patterns = ["надо {term} ответа"]
+require_context = true
+
+[[sets]]
+id = "fb_new_83e3b78f14e08cc5"
+enabled = true
+boost = 0.0
+
+[[sets.terms]]
+id = "fb_a37b1efbeff5faf7ed8a9e7af8d75f01"
+canonical = "КТХ"
+aliases = ["катэхэ"]
+enabled = true
+boost = 0.0
+known_words = "always"
+context = []
+max_known_distance = 0
+context_patterns = ["включи {term}"]
+require_context = true

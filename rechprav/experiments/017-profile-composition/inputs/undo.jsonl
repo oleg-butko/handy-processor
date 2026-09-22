@@ -1,0 +1,5 @@
+{"schema_version": 1, "event_id": "slot", "kind": "correction", "scope": "technical", "before": "сняли свод памяти", "after": "сняли слот памяти", "confirmed_asr": true}
+{"schema_version": 1, "event_id": "form", "kind": "correction", "scope": "technical", "before": "без снятия сваты", "after": "без снятия слота", "confirmed_asr": true}
+{"schema_version": 1, "event_id": "new", "kind": "correction", "scope": "technical", "before": "включи катэхэ", "after": "включи КТХ", "confirmed_asr": true}
+{"schema_version": 1, "event_id": "phrase", "kind": "correction", "scope": "technical", "before": "надо долгождать ответа", "after": "надо долго ждать ответа", "confirmed_asr": true}
+{"schema_version": 1, "event_id": "undo-slot", "kind": "retract", "target_event_id": "slot"}

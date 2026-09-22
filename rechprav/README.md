@@ -407,7 +407,23 @@ python3 rechprav/scripts/run_capture_experiment.py rechprav/experiments/my-captu
 Проверены restart, повторы, конкурентные запросы и принудительное завершение
 процесса. Прототип работает с явным коротким окном текста; UI ещё не подключён.
 
-## Организация
+## Композиция ручных и принятых правил
+
+`feedback_compose` строит один профиль, привязывая выученные aliases к владельцу:
+его весу, выключателям, known-word gates и пересечению контекстов. Новые термины
+требуют явного разрешения. Ручные записи сохраняются при отзыве evidence.
+
+```bash
+/home/user1/.local/bin/cargo build --manifest-path rechprav/Cargo.toml --release --locked --offline --example feedback_compose
+python3 rechprav/scripts/run_composition_experiment.py rechprav/experiments/my-composition-run
+```
+
+[Формат/ограничения](../docs/rechprav/profile-composition.md),
+[опыт 017](experiments/017-profile-composition-v3/report.md).
+Добавление feedback пока поддержано только в exact mode, свободные context cues
+не поддержаны. Экспорт не устанавливает профиль в работающее приложение.
+
+## Организация файлов
 
 `src/` — библиотека и CLI; `tests/` — проверки поведения, безопасности вывода и метрик;
 `data/fixtures/` — технические примеры; `experiments/` — сохранённые прогоны.

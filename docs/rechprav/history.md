@@ -697,6 +697,49 @@ Rust-матрицу не повторяли, новые Node проверки и
 outbox и общего undo CodeMirror. Далее 017: композиция ручных и принятых правил,
 веса/выключатели/конфликты, потом атомарная публикация и UI-подключение.
 
+## 2026-09-22 — 017: композиция manual/generated с владельцем
+
+Ветка `feat/rechprav-profile-composition`. Frozen протокол и 21 сценарий `9640bf1`.
+Rust-композитор/CLI/восемь тестов/runner `aacba3a`: один Config, явные bindings,
+вес/выключатели владельца, form overrides, пересечение anchored patterns и
+known gates, exclusions. New-term binding не дублирует существующие, включая
+disabled, canonical/forms. Отзыв evidence сохраняет ручные aliases. Provenance
+связывает output set/term с proposal/owner и registry decision/evidence ids.
+
+Ограничения: добавление feedback только при exact policy; свободные context cues
+дают skip reason. Global edit нельзя молча распространять на принятый exact alias.
+Старые ручные definitions/policy/source penalties сохраняются. Fingerprint
+включает manual+bindings и требует нового review после изменения настроек;
+каждый ablation отдельно принимался заново для проверки composition guards.
+
+Первый запуск в 017-profile-composition остановился до benchmark: diagnostic
+duplicate-bindings.json совпал с именем нормального duplicate-сценария. Защита
+от overwrite сработала. `a456c62` поменял только имя invalid fixture; v2 завершился.
+Затем сверка с ранее указанными пользователем примерами выявила ошибочный gold
+KEEP для isolated долгождать.
+`2d34543` вернул gold долго ждать; эти FN нельзя скрывать контекстным ограничением.
+Третий прогон — окончательный. 45 configs и 440 коррекций неизменны относительно
+v2, изменены только gold/tags и производные метрики. Обе ранние попытки сохранены.
+
+На 20 synthetic/dev строках / 8 gold spans, 22 профиля: manual-only 2 TP/0 FP/6 FN,
+composed 7/1/1. Равные конкуренты дают 5/0/3, owner boost+3 возвращает 7/1/1;
+owner boost-5 подавляет и manual, и generated варианты, source penalty действует
+на указанный source. Known-never/exclusions остаются gates. Один FP буквального
+упоминания остаётся; isolated split — FN без контекста. Manual edit исправляет
+этот split, и это корректно учтено после исправления gold. Лучший ASR-корректор
+по этому опыту не выбирался: проверялась управляемость композиции.
+
+135 Rust-тестов, clippy/fmt/release example build/py_compile прошли; 66 manifests,
+325 resource hashes, input/binding/decision/output hashes проверены. Runtime
+SHA совпадает с 013–016; прежняя большая benchmark matrix/Node tests не повторялись.
+First-plan и рабочие конфиги/сервер/БД не менялись, сеть не использовалась.
+
+[Итоговый отчёт](../../rechprav/experiments/017-profile-composition-v3/report.md),
+[формат и ограничения](profile-composition.md). Следующий 018 — публикация
+проверенного снимка с поколением/CAS и восстановлением после сбоя, затем reader
+и UI/outbox/live reload. Поддержка смешанных exact/edit policies и более точного
+fingerprint review остаётся отдельным опытом.
+
 ## Шаблон следующей записи
 
 - Дата, experiment id, ветка/commit реализации.

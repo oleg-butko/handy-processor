@@ -1,0 +1,35 @@
+{
+  "enabled": true,
+  "bindings": [
+    {
+      "proposal_id": "fb_ea1a510ecba1a777a36509b5f0c658d6",
+      "enabled": true,
+      "owner": {
+        "set_id": "phrases",
+        "term_id": "wait"
+      },
+      "boost": 0.0
+    },
+    {
+      "proposal_id": "fb_a37b1efbeff5faf7ed8a9e7af8d75f01",
+      "enabled": true,
+      "owner": null,
+      "boost": 0.0
+    },
+    {
+      "proposal_id": "fb_1b93b6ea4dbafbb896a304af1915baa1",
+      "enabled": true,
+      "owner": {
+        "set_id": "hardware",
+        "term_id": "slot"
+      },
+      "boost": 0.0
+    },
+    {
+      "proposal_id": "fb_58aced23a727ae54089768852d8fb683",
+      "enabled": true,
+      "owner": null,
+      "boost": 0.0
+    }
+  ]
+}

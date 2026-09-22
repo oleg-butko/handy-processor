@@ -1,0 +1,222 @@
+[
+  {
+    "profile": "manual-only",
+    "added_rules": 0,
+    "tp": 2,
+    "fp": 0,
+    "fn": 5,
+    "harmed_correct_input": 0,
+    "exact_records": 15,
+    "wer_after": 0.11320754716981132
+  },
+  {
+    "profile": "composed",
+    "added_rules": 4,
+    "tp": 7,
+    "fp": 1,
+    "fn": 0,
+    "harmed_correct_input": 1,
+    "exact_records": 19,
+    "wer_after": 0.018867924528301886
+  },
+  {
+    "profile": "feedback-off",
+    "added_rules": 0,
+    "tp": 2,
+    "fp": 0,
+    "fn": 5,
+    "harmed_correct_input": 0,
+    "exact_records": 15,
+    "wer_after": 0.11320754716981132
+  },
+  {
+    "profile": "binding-off",
+    "added_rules": 3,
+    "tp": 5,
+    "fp": 0,
+    "fn": 2,
+    "harmed_correct_input": 0,
+    "exact_records": 18,
+    "wer_after": 0.03773584905660377
+  },
+  {
+    "profile": "owner-off",
+    "added_rules": 2,
+    "tp": 3,
+    "fp": 0,
+    "fn": 4,
+    "harmed_correct_input": 0,
+    "exact_records": 16,
+    "wer_after": 0.07547169811320754
+  },
+  {
+    "profile": "set-off",
+    "added_rules": 2,
+    "tp": 2,
+    "fp": 0,
+    "fn": 5,
+    "harmed_correct_input": 0,
+    "exact_records": 15,
+    "wer_after": 0.09433962264150944
+  },
+  {
+    "profile": "global-off",
+    "added_rules": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 7,
+    "harmed_correct_input": 0,
+    "exact_records": 13,
+    "wer_after": 0.1509433962264151
+  },
+  {
+    "profile": "owner-low",
+    "added_rules": 4,
+    "tp": 3,
+    "fp": 0,
+    "fn": 4,
+    "harmed_correct_input": 0,
+    "exact_records": 16,
+    "wer_after": 0.07547169811320754
+  },
+  {
+    "profile": "new-low",
+    "added_rules": 4,
+    "tp": 6,
+    "fp": 1,
+    "fn": 1,
+    "harmed_correct_input": 1,
+    "exact_records": 18,
+    "wer_after": 0.03773584905660377
+  },
+  {
+    "profile": "conflict",
+    "added_rules": 4,
+    "tp": 5,
+    "fp": 0,
+    "fn": 2,
+    "harmed_correct_input": 0,
+    "exact_records": 18,
+    "wer_after": 0.03773584905660377
+  },
+  {
+    "profile": "owner-high-conflict",
+    "added_rules": 4,
+    "tp": 7,
+    "fp": 1,
+    "fn": 0,
+    "harmed_correct_input": 1,
+    "exact_records": 19,
+    "wer_after": 0.018867924528301886
+  },
+  {
+    "profile": "known-never",
+    "added_rules": 4,
+    "tp": 4,
+    "fp": 0,
+    "fn": 3,
+    "harmed_correct_input": 0,
+    "exact_records": 17,
+    "wer_after": 0.05660377358490566
+  },
+  {
+    "profile": "excluded",
+    "added_rules": 4,
+    "tp": 5,
+    "fp": 0,
+    "fn": 2,
+    "harmed_correct_input": 0,
+    "exact_records": 18,
+    "wer_after": 0.03773584905660377
+  },
+  {
+    "profile": "disjoint-context",
+    "added_rules": 3,
+    "tp": 4,
+    "fp": 0,
+    "fn": 3,
+    "harmed_correct_input": 0,
+    "exact_records": 17,
+    "wer_after": 0.05660377358490566
+  },
+  {
+    "profile": "unsupported-cues",
+    "added_rules": 2,
+    "tp": 4,
+    "fp": 0,
+    "fn": 3,
+    "harmed_correct_input": 0,
+    "exact_records": 17,
+    "wer_after": 0.05660377358490566
+  },
+  {
+    "profile": "unsupported-edit",
+    "added_rules": 0,
+    "tp": 3,
+    "fp": 1,
+    "fn": 4,
+    "harmed_correct_input": 1,
+    "exact_records": 15,
+    "wer_after": 0.11320754716981132
+  },
+  {
+    "profile": "undo",
+    "added_rules": 3,
+    "tp": 5,
+    "fp": 0,
+    "fn": 2,
+    "harmed_correct_input": 0,
+    "exact_records": 18,
+    "wer_after": 0.03773584905660377
+  },
+  {
+    "profile": "duplicate",
+    "added_rules": 4,
+    "tp": 7,
+    "fp": 1,
+    "fn": 0,
+    "harmed_correct_input": 1,
+    "exact_records": 19,
+    "wer_after": 0.018867924528301886
+  },
+  {
+    "profile": "owner-deleted",
+    "added_rules": 2,
+    "tp": 3,
+    "fp": 0,
+    "fn": 4,
+    "harmed_correct_input": 0,
+    "exact_records": 16,
+    "wer_after": 0.07547169811320754
+  },
+  {
+    "profile": "new-over-existing",
+    "added_rules": 3,
+    "tp": 5,
+    "fp": 0,
+    "fn": 2,
+    "harmed_correct_input": 0,
+    "exact_records": 18,
+    "wer_after": 0.03773584905660377
+  },
+  {
+    "profile": "source-penalty",
+    "added_rules": 4,
+    "tp": 5,
+    "fp": 1,
+    "fn": 2,
+    "harmed_correct_input": 1,
+    "exact_records": 17,
+    "wer_after": 0.05660377358490566
+  },
+  {
+    "profile": "stale-settings",
+    "added_rules": 0,
+    "tp": 2,
+    "fp": 0,
+    "fn": 5,
+    "harmed_correct_input": 0,
+    "exact_records": 15,
+    "wer_after": 0.11320754716981132
+  }
+]

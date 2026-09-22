@@ -1,0 +1,18 @@
+{
+  "user_corpus_sha256": "605df9d6a3b98130ade9c49bdacba8429655bcffa02d770446a4e37b57951fe2",
+  "control_corpus_sha256": "372bd6e7c8577ace168c7ac44898b25949cd4c87656b99ed7ea225266b2de565",
+  "identical_source_checks": [
+    {
+      "control_id": "compose-007",
+      "user_id": "user-20260921-008",
+      "source": "без снятия сваты",
+      "gold": "без снятия слота"
+    },
+    {
+      "control_id": "compose-013",
+      "user_id": "user-20260921-007",
+      "source": "долгождать",
+      "gold": "долго ждать"
+    }
+  ]
+}
