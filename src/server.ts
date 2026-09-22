@@ -22,6 +22,7 @@ import { RuleSettings } from "./rule-settings.js";
 import { TransformationLog } from "./transformation-log.js";
 import { loadWebUiAssets } from "./web-ui-assets.js";
 import { TemplateFile } from "./templates.js";
+import { CorrectionWorker, correctionWorkerOptions } from "./correction-worker.js";
 
 const host = "127.0.0.1";
 const runtimeDirectory = resolveRuntimeDirectory();
@@ -32,8 +33,10 @@ const transformationLog = new TransformationLog(
 const ruleSettings = new RuleSettings(transformationLog);
 const editorSessions = new EditorSessionRegistry();
 const diagnosticLog = new FileDiagnosticLog(runtimeDirectory);
+const correctionWorker = new CorrectionWorker(correctionWorkerOptions(runtimeDirectory));
 const webUiAssets = loadWebUiAssets(join(process.cwd(), "web-dist"));
 const handleRequest = createRequestHandler({
+  correctionWorker,
   templates: new TemplateFile(runtimeDirectory, transformationLog),
   transformationHistory: transformationLog,
   ruleSettings,
@@ -57,6 +60,7 @@ function closeStorage(): void {
   }
 
   storageClosed = true;
+  correctionWorker.close();
   transformationLog.close();
 }
 

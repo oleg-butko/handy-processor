@@ -223,7 +223,7 @@ function AppContent({
           />
         </Tabs.Panel>
         <Tabs.Panel className="app-tab-panel" value="history">
-          <HistoryPage rules={rules} />
+          <HistoryPage rules={rules} active={activeTab === "history"} />
         </Tabs.Panel>
         <Tabs.Panel className="app-tab-panel" value="rules">
           <RulesPage

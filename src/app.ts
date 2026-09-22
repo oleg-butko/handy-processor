@@ -7,7 +7,8 @@ import type {
 import type { EditorSessionRegistry } from "./editor-sessions.js";
 import type { RuleSettings } from "./rule-settings.js";
 import type { TransformationContext } from "./transformation-context.js";
-import { transformTranscription } from "./transform.js";
+import { transformTranscriptionAsync } from "./transform.js";
+import type { CorrectionWorker } from "./correction-worker.js";
 import type { AppliedTransformationRule } from "./transformation-rules.js";
 import type {
   EditorDraft,
@@ -67,6 +68,7 @@ export interface EditorDraftStorage {
 }
 
 export interface AppDependencies {
+  readonly correctionWorker?: CorrectionWorker;
   readonly templates?: TemplateFile;
   readonly transformationHistory: TransformationHistory;
   readonly ruleSettings: RuleSettings;
@@ -452,6 +454,7 @@ function getTransformationPage(
 }
 
 export function createRequestHandler({
+  correctionWorker,
   templates,
   transformationHistory,
   ruleSettings,
@@ -523,10 +526,11 @@ export function createRequestHandler({
         const body = await readJson(request);
         const input = getLastUserMessage(body);
         const context = editorSessions.currentContext();
-        const transformation = transformTranscription(
+        const transformation = await transformTranscriptionAsync(
           input,
           ruleSettings.enabledRuleIds(),
           context,
+          correctionWorker,
         );
         const content = transformation.text;
         const model = typeof body.model === "string" ? body.model : MODEL_ID;
@@ -556,6 +560,27 @@ export function createRequestHandler({
             total_tokens: 0,
           },
         });
+        return;
+      }
+
+      if (path === "/api/correction" && request.method === "GET") {
+        sendJson(response, 200, correctionWorker?.status() ?? {
+          state: "unavailable", profile: null, config: null, error: "Корректор не подключён",
+        });
+        return;
+      }
+
+      if (path === "/api/correction/reload" && request.method === "POST") {
+        const origin = request.headers.origin;
+        if (origin !== `http://${request.headers.host}` ||
+            !/^http:\/\/(?:localhost|127\.0\.0\.1):\d+$/u.test(origin ?? "") ||
+            !/^application\/json(?:\s*;|$)/iu.test(request.headers["content-type"] ?? "")) {
+          throw new HttpError(403, "Reload requires a same-origin JSON request");
+        }
+        if (!correctionWorker) throw new HttpError(503, "Корректор не подключён");
+        try { await correctionWorker.reload(); }
+        catch (error) { throw new HttpError(409, error instanceof Error ? error.message : "Ошибка загрузки"); }
+        sendJson(response, 200, correctionWorker.status());
         return;
       }
 

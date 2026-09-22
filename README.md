@@ -21,19 +21,26 @@ post-processing feature. It currently:
 For example, `МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.` becomes
 `мне нужно 22 файла`.
 
-The server uses only Node.js built-ins at runtime and listens on
+The HTTP server uses Node.js built-ins and listens on
 `127.0.0.1:11434` by default. It prints the browser URL when it starts.
+The optional term/phrase correction rule uses a separate Rust worker and a
+local dictionary. See [correction setup and history explanations](docs/rechprav/handy-integration.md).
 See the [documentation index](docs/README.md) for build guides, architecture
 notes and completed plans.
 
 ## Run it
 
-Install Node.js 24.8 or newer, then run:
+Install Node.js 24.8 or newer and Rust/Cargo, then run:
 
 ```bash
 npm ci
 npm run dev
 ```
+
+The correction worker build uses the locked, offline Cargo dependencies in
+`rechprav`; they must already be available locally. The dictionary is a separate
+generated resource. Missing correction resources leave that optional rule
+unavailable without disabling the other rules.
 
 Open the URL printed by the server, normally
 `http://localhost:11434/`.

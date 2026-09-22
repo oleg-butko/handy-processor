@@ -1,0 +1,126 @@
+# User-editable starter profile. Restart/reload correction after edits.
+# Weights are preferences, not probabilities. Sets/terms can be disabled.
+baseline_config = "handy-dictionary.toml"
+enabled = true
+
+[policy]
+mode = "edit"
+max_distance = 1
+max_tokens = 3
+max_comparisons = 20000
+min_score = 3.0
+min_margin = 1.0
+
+[[sets]]
+id = "phrases"
+enabled = true
+
+[[sets.terms]]
+id = "wait"
+canonical = "долго ждать"
+aliases = ["долго ждать"]
+kind = "phrase"
+boost = 1.0
+known_words = "preserve"
+max_known_distance = 1
+
+[[sets.terms]]
+id = "wheel"
+canonical = "проколол колесо"
+aliases = ["проколол колесо"]
+kind = "phrase"
+boost = 1.0
+known_words = "preserve"
+max_known_distance = 1
+
+[[sets]]
+id = "technical"
+enabled = true
+
+[[sets.terms]]
+id = "clipboard"
+canonical = "клипборд"
+aliases = ["клипборд", "калиборд"]
+boost = 1.0
+known_words = "always"
+max_known_distance = 0
+
+[[sets.terms]]
+id = "localhost"
+canonical = "локалхост"
+aliases = ["локалхост", "луколхоз"]
+boost = 1.0
+known_words = "always"
+max_known_distance = 0
+
+[[sets.terms]]
+id = "tab"
+canonical = "таб"
+aliases = ["таб"]
+boost = 1.0
+known_words = "always"
+max_known_distance = 0
+[[sets.terms.forms]]
+canonical = "табы"
+aliases = ["табы", "этабы"]
+
+[[sets.terms]]
+id = "slot"
+canonical = "слот"
+aliases = ["слот", "свуты"]
+boost = 1.0
+known_words = "always"
+max_known_distance = 0
+[[sets.terms.forms]]
+canonical = "слота"
+aliases = ["слота", "сваты"]
+require_context = true
+context_patterns = ["без снятия {term}"]
+[[sets.terms.forms]]
+canonical = "слоте"
+aliases = ["слоте", "свате"]
+require_context = true
+context_patterns = ["в {term}"]
+
+# Existing Russian words are only aliases within a narrow context.
+[[sets.terms]]
+id = "slot-context"
+canonical = "слот"
+aliases = ["свод", "ввод"]
+generation = "exact"
+boost = 1.0
+known_words = "context"
+max_known_distance = 0
+require_context = true
+context_patterns = ["сняли {term}"]
+context_exclusions = ["{term} правил", "{term} данных", "{term} здания", "{term} старой"]
+
+[[sets.terms]]
+id = "pnz"
+canonical = "ПНЗ"
+aliases = ["пнз", "пнзэ", "пээнзэ", "пэнзэ", "пензе", "пензэ", "бензэ"]
+pronunciation = "ru_letters"
+boost = 1.0
+known_words = "context"
+max_known_distance = 0
+context_patterns = ["проверь {term}", "слот и {term}", "свуты и {term}", "модуль {term}"]
+context_exclusions = ["в {term}", "город {term}"]
+
+[[sets.terms]]
+id = "noanswer"
+canonical = "недозвон"
+aliases = ["недозвон", "нет звон"]
+generation = "exact"
+boost = 1.0
+known_words = "always"
+max_known_distance = 0
+
+[[sets.terms]]
+id = "noanswer-to"
+canonical = "недозвон до"
+aliases = ["недозвон до", "недозвода"]
+kind = "phrase"
+generation = "exact"
+boost = 1.0
+known_words = "always"
+max_known_distance = 0

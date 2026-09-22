@@ -9,7 +9,8 @@ describe("RuleSettings", () => {
     const storage = new TransformationLog(":memory:");
     try {
       const settings = new RuleSettings(storage);
-      assert.equal(settings.list().every((rule) => rule.enabled), true);
+      assert.equal(settings.list().every((rule) => rule.enabled === rule.defaultEnabled), true);
+      assert.equal(settings.enabledRuleIds().has(TRANSFORMATION_RULE_IDS.correction), false);
 
       const updated = settings.setEnabled(
         TRANSFORMATION_RULE_IDS.lowercase,

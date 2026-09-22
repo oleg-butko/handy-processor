@@ -15,6 +15,7 @@ import {
   Tooltip,
 } from "@mantine/core";
 import { useCallback, useEffect, useState } from "react";
+import { CorrectionDetails } from "./CorrectionDetails.js";
 import type {
   HistoryResponse,
   TransformationRecord,
@@ -24,6 +25,8 @@ import type {
 const PAGE_SIZE = 10;
 
 const RULE_REASON_LABELS: Readonly<Record<string, string>> = {
+  "correction-unavailable": "Коррекция недоступна; исходник сохранён для последующих правил",
+  "correction-incomplete": "Поиск не завершён; предложенные исправления отменены",
   "sentence-start": "Пропущено: курсор находился в начале предложения",
   "context-unknown": "Пропущено: контекст редактора неизвестен",
   "source-not-supported": "Пропущено: правило не применяется к этому источнику",
@@ -63,6 +66,7 @@ function AppliedRules({
   }
 
   return (
+    <Stack gap="xs" w="100%" miw={0}>
     <Group gap={6}>
       {item.appliedRules.map((rule) => {
         const skipped = rule.outcome === "skipped";
@@ -91,6 +95,8 @@ function AppliedRules({
         );
       })}
     </Group>
+    {item.appliedRules.map((rule) => <CorrectionDetails key={`${rule.id}:${rule.version}`} rule={rule} />)}
+    </Stack>
   );
 }
 
@@ -186,8 +192,10 @@ function TransformationCard({
 
 export function HistoryPage({
   rules,
+  active = true,
 }: {
   readonly rules: readonly TransformationRuleState[];
+  readonly active?: boolean;
 }) {
   const [page, setPage] = useState(1);
   const [history, setHistory] = useState<HistoryResponse>();
@@ -230,10 +238,11 @@ export function HistoryPage({
   }, [page]);
 
   useEffect(() => {
+    if (!active) return;
     const controller = new AbortController();
     void loadHistory(controller.signal);
     return () => controller.abort();
-  }, [loadHistory, refreshToken]);
+  }, [active, loadHistory, refreshToken]);
 
   return (
     <Stack gap="md" pt="md">

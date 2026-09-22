@@ -1,9 +1,13 @@
+import type { CorrectionTrace } from "../../src/correction-types.js";
+
 export interface AppliedRuleRecord {
   readonly id: string;
   readonly version: number;
   readonly changed: boolean;
   readonly outcome: "changed" | "unchanged" | "skipped";
   readonly reason?: string;
+  readonly error?: string;
+  readonly correction?: CorrectionTrace;
 }
 
 export interface TransformationRecord {

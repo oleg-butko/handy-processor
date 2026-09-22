@@ -166,7 +166,7 @@ describe("OpenAI-compatible API", () => {
       items: Array<{ id: string; enabled: boolean }>;
     };
     assert.equal(rulesResponse.status, 200);
-    assert.equal(rules.items.length, 4);
+    assert.equal(rules.items.length, 5);
 
     const updateResponse = await fetch(
       `${baseUrl}/api/rules/${TRANSFORMATION_RULE_IDS.lowercase}`,

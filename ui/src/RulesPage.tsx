@@ -14,6 +14,7 @@ import {
   Title,
 } from "@mantine/core";
 import type { TransformationRuleState } from "./types.js";
+import { CorrectionStatus } from "./CorrectionStatus.js";
 
 interface RulesPageProps {
   readonly rules: readonly TransformationRuleState[];
@@ -97,6 +98,7 @@ function RuleCard({
             </Paper>
           </Stack>
         </SimpleGrid>
+        {rule.id === "recognition.terms-and-phrases" ? <CorrectionStatus enabled={rule.enabled} /> : null}
       </Stack>
     </Card>
   );

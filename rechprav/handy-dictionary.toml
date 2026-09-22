@@ -1,0 +1,3 @@
+# Membership/protection for the term engine; no automatic dictionary edits.
+dictionary = "artifacts/opencorpora-wordfreq/dictionary.rpt"
+strict_yo = false

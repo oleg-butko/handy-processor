@@ -1,4 +1,5 @@
 import { normalizeRussianNumerals } from "./russian-numerals.js";
+import type { CorrectionTrace } from "./correction-types.js";
 import {
   EXTERNAL_TRANSFORMATION_CONTEXT,
   TRANSFORMATION_SOURCES,
@@ -7,6 +8,7 @@ import {
 } from "./transformation-context.js";
 
 export const TRANSFORMATION_RULE_IDS = {
+  correction: "recognition.terms-and-phrases",
   lowercase: "case.lowercase",
   editorLowercaseInsideSentence: "editor.case.lowercase-inside-sentence",
   russianNumerals: "numbers.ru-cardinals-to-digits",
@@ -45,6 +47,8 @@ export interface AppliedTransformationRule {
   /** Kept in the public response while older UI versions still consume it. */
   readonly changed: boolean;
   readonly reason?: string;
+  readonly error?: string;
+  readonly correction?: CorrectionTrace;
 }
 
 export interface TransformationResult {
@@ -57,6 +61,19 @@ export interface TransformationResult {
  * remain stable even if a user-facing title changes.
  */
 export const TRANSFORMATION_RULES: readonly TransformationRule[] = [
+  {
+    id: TRANSFORMATION_RULE_IDS.correction,
+    version: 1,
+    title: "Коррекция терминов и фраз",
+    description: "Исправляет варианты терминов, словоформы, произношения аббревиатур и слитные фразы. Учитывает контекст и веса; при конфликте сохраняет исходник. Выполняется до изменения регистра и чисел.",
+    defaultEnabled: false,
+    category: "common",
+    sources: [TRANSFORMATION_SOURCES.external, TRANSFORMATION_SOURCES.voiceEditor],
+    example: { input: "без снятия сваты", output: "без снятия слота" },
+    // Executed by the asynchronous adapter; a synchronous call must report a skip.
+    when: () => ({ apply: false, reason: "correction-unavailable" }),
+    apply: (text) => text,
+  },
   {
     id: TRANSFORMATION_RULE_IDS.lowercase,
     version: 1,

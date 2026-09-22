@@ -284,3 +284,19 @@ body {
   }
 
 }
+/* Persisted correction explanations; keep long dictionary names within cards. */
+.correction-details, .correction-settings {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--mantine-color-default-border);
+  border-radius: var(--mantine-radius-sm);
+}
+.correction-details summary, .correction-settings summary, .correction-decision summary {
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.correction-decision { padding: 0.35rem; }
+.correction-path { overflow-wrap: anywhere; }
+.correction-candidates-scroll { overflow-x: auto; width: 100%; min-width: 0; }
