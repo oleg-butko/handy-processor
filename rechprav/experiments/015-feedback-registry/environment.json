@@ -1,0 +1,20 @@
+{
+  "implementation_commit": "0f7dd01dc6984d0e6961a8ecb35840354e84bf39",
+  "implementation_status": [],
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "binary_sha256": "93199bc0ae9c94b7f5721ab4d5ce28384529bac9aebac9e9f9cd978555694e6b",
+  "registry_binary_sha256": "2494bd6204ea80687c243a6ad11c864f8d69c5f1f1f163ac6f92512366258591",
+  "corpus_sha256": "cc84e26bd8d67b535a3610a6eb7268a51eb99dabb2df1cb36baa4e715934683e",
+  "reference_config_sha256": "1f2d91df3f85e504da2668c7e23e2be5bceb9535c41bdcc038874e262111e0aa",
+  "runner_sha256": {
+    "run_registry_experiment.py": "339b1b2ff067f02a707df8adb2e531ebc4a2b59976ccc0d874abeaa774b61fad",
+    "registry_profiles.py": "e201d7c409dc8c7ddcfa7b50e79e2b949a63af107a7f9c088bfc0b8b3c081c1f",
+    "prepare_draft_fixture.py": "e1581745e9690b14690e041cee0ac28e4e753d3e530177cc5934729d9a163e94",
+    "run_term_experiment.py": "5802ca027c8e4964070c5236aefa3eaf9e398097927f199a70bc1930d3d195e2"
+  },
+  "verified_source_manifests": 39,
+  "verified_resource_hashes": 180,
+  "registry_manifests": 22,
+  "historical_byte_equal_profiles": 17,
+  "scope": "offline explicit acceptance lifecycle; existing 28 synthetic/dev examples; correction runtime unchanged"
+}

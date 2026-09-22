@@ -1,0 +1,210 @@
+{
+  "draft": {
+    "scope": "other",
+    "input_events": 15,
+    "unique_events": 15,
+    "duplicate_events": 0,
+    "active_corrections": 15,
+    "proposals": [
+      {
+        "id": "fb_df6c1738e73d29b45693ddb29106ce74",
+        "scope": "other",
+        "alias": "свод",
+        "canonical": "свитч",
+        "context_pattern": "сняли {term} памяти",
+        "evidence_ids": [
+          "other"
+        ],
+        "target_class": "dictionary_word",
+        "target_word_membership": [
+          true
+        ],
+        "conflicting_proposals": []
+      }
+    ],
+    "audit": [
+      {
+        "event_id": "case-only",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "clipboard",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "code",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "delete",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "form",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "format",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "isolated",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "other",
+        "status": "proposal",
+        "change": {
+          "byte_start": 11,
+          "byte_end": 19,
+          "source": "свод",
+          "alias": "свод",
+          "replacement": "свитч",
+          "context_pattern": "сняли {term} памяти"
+        }
+      },
+      {
+        "event_id": "slot",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "split",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "style",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "term",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "two-edits",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "unknown",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "word",
+        "status": "other_scope"
+      }
+    ],
+    "config": {
+      "baseline_config": "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml",
+      "enabled": false,
+      "policy": {
+        "mode": "exact",
+        "max_distance": 1,
+        "max_tokens": 3,
+        "max_comparisons": 20000,
+        "context_window": 4,
+        "boost": 0.0,
+        "edit_penalty": 1.0,
+        "context_bonus": 2.0,
+        "known_penalty": 1.0,
+        "min_score": 3.0,
+        "min_margin": 1.0
+      },
+      "sets": [
+        {
+          "id": "other",
+          "enabled": false,
+          "boost": 0.0,
+          "terms": [
+            {
+              "id": "fb_df6c1738e73d29b45693ddb29106ce74",
+              "canonical": "свитч",
+              "aliases": [
+                "свод"
+              ],
+              "enabled": false,
+              "boost": 0.0,
+              "known_words": "always",
+              "context": [],
+              "max_known_distance": 0,
+              "context_patterns": [
+                "сняли {term} памяти"
+              ],
+              "require_context": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review_tokens": [
+    {
+      "scope": "other",
+      "proposal_id": "fb_df6c1738e73d29b45693ddb29106ce74",
+      "checkpoint": {
+        "event_count": 15,
+        "events_sha256": "344810d33d244ffb254eaedb4150f840b41805a3e097ce82835163dbe0d64f7f",
+        "environment_sha256": "1747147bcf4605e3fd877259b93e6038df3ae95c34067116a4ba1e509bcd2b86"
+      }
+    }
+  ],
+  "states": [
+    {
+      "proposal_id": "fb_df6c1738e73d29b45693ddb29106ce74",
+      "decision_id": "decision-008",
+      "status": "accepted",
+      "approved_evidence_ids": [
+        "other"
+      ],
+      "current_evidence_ids": [
+        "other"
+      ],
+      "surviving_evidence_ids": [
+        "other"
+      ]
+    }
+  ],
+  "input_decisions": 9,
+  "unique_decisions": 9,
+  "duplicate_decisions": 0,
+  "config": {
+    "baseline_config": "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml",
+    "enabled": true,
+    "policy": {
+      "mode": "exact",
+      "max_distance": 1,
+      "max_tokens": 3,
+      "max_comparisons": 20000,
+      "context_window": 4,
+      "boost": 0.0,
+      "edit_penalty": 1.0,
+      "context_bonus": 2.0,
+      "known_penalty": 1.0,
+      "min_score": 3.0,
+      "min_margin": 1.0
+    },
+    "sets": [
+      {
+        "id": "other",
+        "enabled": true,
+        "boost": 0.0,
+        "terms": [
+          {
+            "id": "fb_df6c1738e73d29b45693ddb29106ce74",
+            "canonical": "свитч",
+            "aliases": [
+              "свод"
+            ],
+            "enabled": true,
+            "boost": 0.0,
+            "known_words": "always",
+            "context": [],
+            "max_known_distance": 0,
+            "context_patterns": [
+              "сняли {term} памяти"
+            ],
+            "require_context": true
+          }
+        ]
+      }
+    ]
+  }
+}

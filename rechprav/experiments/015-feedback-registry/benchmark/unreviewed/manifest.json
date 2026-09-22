@@ -1,0 +1,72 @@
+{
+  "arch": "x86_64",
+  "arguments": [
+    "terms-benchmark",
+    "/home/user1/handy-processor/rechprav/data/fixtures/feedback-drafts/corpus.jsonl",
+    "--config",
+    "/home/user1/handy-processor/rechprav/experiments/015-feedback-registry/registry/unreviewed/active.toml",
+    "--output-dir",
+    "/home/user1/handy-processor/rechprav/experiments/015-feedback-registry/benchmark/unreviewed"
+  ],
+  "command": "terms-benchmark",
+  "compiled_source_sha256": {
+    "Cargo.lock": "49e76a2b718996ad97b854789d7fae9e92bd96474786d3e5aba5177115be3a8a",
+    "Cargo.toml": "1432569012b432b4a6dedb173c05427f0511f70a6a56404b7faf82ab7eef98c8",
+    "src/corpus.rs": "12352c22a15e6c333973f25941d4ba9a60480081ae88cd9e364959b0945ef64b",
+    "src/corrector.rs": "55425938f874df15b5a5cfdabbe5592fe59de36b382d42489a6247a5e98e84ba",
+    "src/dictionary.rs": "4ea29fac723d5efb6190a75052d1a1766fd0e3291cd6ff01469ca3adf1cd354f",
+    "src/frequency.rs": "49219ecde3f7145ffc4c9f037399f28a945fcec9e138c9fb3b04a58223872ec1",
+    "src/hashing.rs": "e3b49fb102dc7c117dfaf9f29c77386b6d22dbc8a186f2d06cde47febaa50699",
+    "src/lib.rs": "185b18d3af8fb1572047d7d1e03a12c35c097459fdd2e34674873a2d6aae16bd",
+    "src/main.rs": "372dcda742ad853e2aa7f70c73f1bf8b315c0654e859fd7f17c4c05551cf951d",
+    "src/metrics.rs": "dff335346a23ee561ed6a292cfbe8f2623d7f8b77042ececcf97d97ee42ada92",
+    "src/packed.rs": "0513c3725b89655a1451f5551a4f447e9597ffb413e1649baa4a861483c96c0a",
+    "src/packed_frequency.rs": "34e03d6c6242562a22a65238e5af7915cf1380ccf88dafda5e048358bfa23180",
+    "src/pronunciation.rs": "a6b6f0412db5c8166239897a9bbe00c62e2aa12a86de096577d699d808f880a2",
+    "src/review.rs": "87ed6e193750e6e5c69cf328e6906d95bc6fe1e2460fad2c9609561d39c1cc33",
+    "src/term_context.rs": "752ffb4c6724172f934f6c5dac02b41602ffc610fffa6bdfccefc4ac47e79298",
+    "src/term_metrics.rs": "0026068037466d1ff32abddc1da9e5f40125e1d9ee3662bff09c60cbec354b51",
+    "src/terms.rs": "2d1858b4cedbd2bd7dd67980ac24669ce56a8f9c3dcfc525d0e64a0ef1aa1947",
+    "src/text.rs": "61ba9d0b877da98c5ecc885d04700892a8dd58c330b3ec68b3b6b67218625794"
+  },
+  "evaluation_wall_ns": 21868264,
+  "input_file": "/home/user1/handy-processor/rechprav/data/fixtures/feedback-drafts/corpus.jsonl",
+  "input_sha256": "cc84e26bd8d67b535a3610a6eb7268a51eb99dabb2df1cb36baa4e715934683e",
+  "note": "experimental run; check dataset provenance before interpreting quality",
+  "os": "linux",
+  "rechprav_version": "0.1.0",
+  "resources": {
+    "active_terms": 0,
+    "baseline_resources": null,
+    "config_sha256": "7f1a413c375cb42633beafd8e6262068838337ac55b4007b48edb3b40da9182d",
+    "effective_config": {
+      "baseline_config": "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml",
+      "enabled": false,
+      "policy": {
+        "boost": 0.0,
+        "context_bonus": 2.0,
+        "context_window": 4,
+        "edit_penalty": 1.0,
+        "known_penalty": 1.0,
+        "max_comparisons": 20000,
+        "max_distance": 1,
+        "max_tokens": 3,
+        "min_margin": 1.0,
+        "min_score": 3.0,
+        "mode": "exact"
+      },
+      "sets": [
+        {
+          "boost": 0.0,
+          "enabled": false,
+          "id": "technical",
+          "terms": []
+        }
+      ]
+    },
+    "scoring": "heuristic preferences, not probabilities; term-only pass"
+  },
+  "schema_version": 2,
+  "timing_scope": "validation + term correction + metrics + diagnostics; excludes resource load; not isolated latency",
+  "unix_timestamp": 1790053031
+}

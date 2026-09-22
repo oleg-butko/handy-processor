@@ -1,0 +1,22 @@
+[
+  {
+    "case": "rewritten-prefix",
+    "stderr": "Error: journal prefix changed\n",
+    "exit_code": 1
+  },
+  {
+    "case": "conflicting-decision",
+    "stderr": "Error: conflicting decision id decision-000\n",
+    "exit_code": 1
+  },
+  {
+    "case": "no-overwrite",
+    "stderr": "Error: output directory must be new; journal validation completed before creation\n\nCaused by:\n    File exists (os error 17)\n",
+    "exit_code": 1,
+    "unchanged_sha256": {
+      "report.json": "9df80901655ce6486f6972d5ae48d6e1fb17cc97a308f217b801f0ae2afb242d",
+      "active.toml": "887659a15a1a293688fe2450108a3f53bb9bb867dd7074669da2b67ab8d71483",
+      "registry-manifest.json": "d831f4ee923624ae5ad3e2a739af93b84dbed755ea7c5011c0fce940b9e12bef"
+    }
+  }
+]

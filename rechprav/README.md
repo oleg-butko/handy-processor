@@ -372,7 +372,24 @@ python3 rechprav/scripts/run_draft_experiment.py rechprav/experiments/my-draft-r
 Выходной каталог должен быть новым. [Формат и принятие предложений](../docs/rechprav/feedback-drafts.md),
 [опыт 014](experiments/014-feedback-drafts-v2/report.md). Рабочий профиль и редактор
 не изменяются. Отмена влияет на новый черновик; ранее экспортированная копия
-автоматически не отключается. Для живой интеграции ещё нужен реестр принятия.
+автоматически не отключается.
+
+## Принятие и отзыв правил
+
+В этапе 015 добавлен отдельный `feedback_registry`: он читает журнал решений
+accept/reject/disable и экспортирует active.toml только из принятых правил с
+оставшимися одобренными подтверждениями. Новая пара после отмены всех старых
+подтверждений требует нового принятия; смена настроек тоже требует review.
+
+```bash
+/home/user1/.local/bin/cargo build --manifest-path rechprav/Cargo.toml --release --locked --offline --example feedback_registry
+python3 rechprav/scripts/run_registry_experiment.py rechprav/experiments/my-registry-run
+```
+
+[Пошаговое применение и формат решений](../docs/rechprav/feedback-registry.md),
+[эксперимент 015](experiments/015-feedback-registry/report.md).
+Это offline-снимок: запись действий редактора, объединение с ручным профилем
+и обновление работающего приложения ещё не подключены.
 
 ## Организация
 
