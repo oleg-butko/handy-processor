@@ -96,6 +96,7 @@ def main():
         for filename, digest in validation["compiled_source_sha256"].items():
             assert sha(root / filename) == digest
         assert sha(root / "examples/profile_validate.rs") == validation["validator_source_sha256"]
+        assert sha(root / "src/profile_validation.rs") == validation["validation_source_sha256"]
         config = output / "configs" / f"{name}.toml"
         with config.open("x") as stream: stream.write(bundle["config"])
         assert sha(config) == validation["config_sha256"]
@@ -109,7 +110,7 @@ def main():
         process_crash_points=6, tests=18, quality_claim="unchanged 017 dev controls; no new ASR quality claim"))
     save(output / "receipts.json", receipts)
     save(output / "commands.json", commands)
-    files = [root / "examples/profile_validate.rs", Path(__file__).resolve(), *sorted((root / "publication").rglob("*.mjs"))]
+    files = [root / "examples/profile_validate.rs", root / "src/profile_validation.rs", Path(__file__).resolve(), *sorted((root / "publication").rglob("*.mjs"))]
     save(output / "environment.json", dict(
         implementation_commit=subprocess.check_output(["git", "-C", root, "rev-parse", "HEAD"], text=True).strip(),
         implementation_status=subprocess.check_output(["git", "-C", root, "status", "--porcelain", "--", "src", "examples", "scripts", "publication"], text=True).splitlines(),
