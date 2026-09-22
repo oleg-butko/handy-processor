@@ -1,7 +1,7 @@
 // Offline fragment capture prototype. No imports or writes into the running application.
 import { DatabaseSync } from "node:sqlite";
 import { createHash } from "node:crypto";
-import { closeSync, existsSync, fsyncSync, mkdirSync, openSync, writeFileSync } from "node:fs";
+import { closeSync, fsyncSync, mkdirSync, openSync, readSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const APPLICATION_ID = 0x52504331; // RPC1, separate from the application's SQLite schema.
@@ -102,7 +102,16 @@ export class CaptureStore {
   }
   // Test-only fault callback permits real process termination at the transaction boundary.
   constructor(path, { testFault = () => {} } = {}) {
-    check(existsSync(path), "capture database does not exist; create explicitly");
+    // SQLite may recover a hot journal while opening a database. Inspect the stable
+    // header read-only before letting SQLite touch an unrelated application's file.
+    const fd = openSync(path, "r");
+    try {
+      const header = Buffer.alloc(100);
+      check(readSync(fd, header, 0, 100, 0) === 100
+        && header.subarray(0, 16).toString("ascii") === "SQLite format 3\0"
+        && header.readUInt32BE(68) === APPLICATION_ID && header.readUInt32BE(60) === 1,
+      "not a supported capture database");
+    } finally { closeSync(fd); }
     this.#db = new DatabaseSync(path, { timeout: 5_000 });
     this.#testFault = testFault;
     try {
