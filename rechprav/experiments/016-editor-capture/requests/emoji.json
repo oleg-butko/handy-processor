@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "request_id": "emoji",
+  "fragment_id": "emoji-fragment",
+  "session_id": "window-1",
+  "scope": "technical",
+  "expected_revision": 0,
+  "kind": "replace",
+  "before": "😀 сняли свод памяти",
+  "after": "😀 сняли слот памяти",
+  "confirmed_asr": true,
+  "selection": {
+    "start_utf16": 9,
+    "end_utf16": 13,
+    "replacement": "слот"
+  }
+}

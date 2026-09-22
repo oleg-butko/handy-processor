@@ -1,0 +1,42 @@
+[
+  {
+    "profile": "accepted",
+    "active_rules": 4,
+    "tp": 6,
+    "fp": 1,
+    "fn": 9,
+    "harmed_correct_input": 1,
+    "exact_records": 18,
+    "wer_after": 0.15384615384615385
+  },
+  {
+    "profile": "undo",
+    "active_rules": 3,
+    "tp": 3,
+    "fp": 0,
+    "fn": 12,
+    "harmed_correct_input": 0,
+    "exact_records": 16,
+    "wer_after": 0.1794871794871795
+  },
+  {
+    "profile": "redo-stale",
+    "active_rules": 3,
+    "tp": 3,
+    "fp": 0,
+    "fn": 12,
+    "harmed_correct_input": 0,
+    "exact_records": 16,
+    "wer_after": 0.1794871794871795
+  },
+  {
+    "profile": "redo-accepted",
+    "active_rules": 4,
+    "tp": 6,
+    "fp": 1,
+    "fn": 9,
+    "harmed_correct_input": 1,
+    "exact_records": 18,
+    "wer_after": 0.15384615384615385
+  }
+]

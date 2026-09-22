@@ -1,0 +1,9 @@
+{"after":"сняли слот памяти","before":"сняли свод памяти","confirmed_asr":true,"event_id":"slot","kind":"correction","schema_version":1,"scope":"technical"}
+{"after":"открой клипборд","before":"открой калиборд","confirmed_asr":true,"event_id":"clipboard","kind":"correction","schema_version":1,"scope":"technical"}
+{"after":"надо долго ждать ответа","before":"надо долгождать ответа","confirmed_asr":true,"event_id":"split","kind":"correction","schema_version":1,"scope":"technical"}
+{"after":"включи ПНЗ","before":"включи пензэ","confirmed_asr":true,"event_id":"pnz","kind":"correction","schema_version":1,"scope":"technical"}
+{"after":"прекрасный день","before":"очень хороший день","confirmed_asr":false,"event_id":"style","kind":"correction","schema_version":1,"scope":"technical"}
+{"after":"сняли свитч памяти","before":"сняли свод памяти","confirmed_asr":true,"event_id":"other","kind":"correction","schema_version":1,"scope":"other"}
+{"after":"😀 сняли слот памяти","before":"😀 сняли свод памяти","confirmed_asr":true,"event_id":"emoji","kind":"correction","schema_version":1,"scope":"technical","selection":{"byte_end":24,"byte_start":16,"replacement":"слот"}}
+{"event_id":"undo-slot","kind":"retract","schema_version":1,"target_event_id":"slot"}
+{"event_id":"undo-emoji","kind":"retract","schema_version":1,"target_event_id":"emoji"}

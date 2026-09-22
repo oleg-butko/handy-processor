@@ -1,0 +1,374 @@
+{
+  "initial": [
+    {
+      "schema_version": 1,
+      "request_id": "slot",
+      "fragment_id": "slot-fragment",
+      "session_id": "window-1",
+      "scope": "technical",
+      "expected_revision": 0,
+      "kind": "replace",
+      "before": "сняли свод памяти",
+      "after": "сняли слот памяти",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "request_id": "clipboard",
+      "fragment_id": "clipboard-fragment",
+      "session_id": "window-1",
+      "scope": "technical",
+      "expected_revision": 0,
+      "kind": "replace",
+      "before": "открой калиборд",
+      "after": "открой клипборд",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "request_id": "split",
+      "fragment_id": "split-fragment",
+      "session_id": "window-1",
+      "scope": "technical",
+      "expected_revision": 0,
+      "kind": "replace",
+      "before": "надо долгождать ответа",
+      "after": "надо долго ждать ответа",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "request_id": "pnz",
+      "fragment_id": "pnz-fragment",
+      "session_id": "window-1",
+      "scope": "technical",
+      "expected_revision": 0,
+      "kind": "replace",
+      "before": "включи пензэ",
+      "after": "включи ПНЗ",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "request_id": "style",
+      "fragment_id": "style-fragment",
+      "session_id": "window-1",
+      "scope": "technical",
+      "expected_revision": 0,
+      "kind": "replace",
+      "before": "очень хороший день",
+      "after": "прекрасный день",
+      "confirmed_asr": false
+    },
+    {
+      "schema_version": 1,
+      "request_id": "other",
+      "fragment_id": "other-fragment",
+      "session_id": "window-1",
+      "scope": "other",
+      "expected_revision": 0,
+      "kind": "replace",
+      "before": "сняли свод памяти",
+      "after": "сняли свитч памяти",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "request_id": "emoji",
+      "fragment_id": "emoji-fragment",
+      "session_id": "window-1",
+      "scope": "technical",
+      "expected_revision": 0,
+      "kind": "replace",
+      "before": "😀 сняли свод памяти",
+      "after": "😀 сняли слот памяти",
+      "confirmed_asr": true,
+      "selection": {
+        "start_utf16": 9,
+        "end_utf16": 13,
+        "replacement": "слот"
+      }
+    }
+  ],
+  "expected_initial": [
+    {
+      "schema_version": 1,
+      "event_id": "slot",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "сняли свод памяти",
+      "after": "сняли слот памяти",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "clipboard",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "открой калиборд",
+      "after": "открой клипборд",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "split",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "надо долгождать ответа",
+      "after": "надо долго ждать ответа",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "pnz",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "включи пензэ",
+      "after": "включи ПНЗ",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "style",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "очень хороший день",
+      "after": "прекрасный день",
+      "confirmed_asr": false
+    },
+    {
+      "schema_version": 1,
+      "event_id": "other",
+      "kind": "correction",
+      "scope": "other",
+      "before": "сняли свод памяти",
+      "after": "сняли свитч памяти",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "emoji",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "😀 сняли свод памяти",
+      "after": "😀 сняли слот памяти",
+      "confirmed_asr": true,
+      "selection": {
+        "byte_start": 16,
+        "byte_end": 24,
+        "replacement": "слот"
+      }
+    }
+  ],
+  "undo": [
+    {
+      "schema_version": 1,
+      "request_id": "undo-slot",
+      "fragment_id": "slot-fragment",
+      "session_id": "window-1",
+      "scope": "technical",
+      "expected_revision": 1,
+      "kind": "undo",
+      "before": "сняли слот памяти",
+      "after": "сняли свод памяти",
+      "target_request_id": "slot"
+    },
+    {
+      "schema_version": 1,
+      "request_id": "undo-emoji",
+      "fragment_id": "emoji-fragment",
+      "session_id": "window-1",
+      "scope": "technical",
+      "expected_revision": 1,
+      "kind": "undo",
+      "before": "😀 сняли слот памяти",
+      "after": "😀 сняли свод памяти",
+      "target_request_id": "emoji"
+    }
+  ],
+  "redo": {
+    "schema_version": 1,
+    "request_id": "redo-slot",
+    "fragment_id": "slot-fragment",
+    "session_id": "window-1",
+    "scope": "technical",
+    "expected_revision": 2,
+    "kind": "replace",
+    "before": "сняли свод памяти",
+    "after": "сняли слот памяти",
+    "confirmed_asr": true
+  },
+  "expected_undo": [
+    {
+      "schema_version": 1,
+      "event_id": "slot",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "сняли свод памяти",
+      "after": "сняли слот памяти",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "clipboard",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "открой калиборд",
+      "after": "открой клипборд",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "split",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "надо долгождать ответа",
+      "after": "надо долго ждать ответа",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "pnz",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "включи пензэ",
+      "after": "включи ПНЗ",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "style",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "очень хороший день",
+      "after": "прекрасный день",
+      "confirmed_asr": false
+    },
+    {
+      "schema_version": 1,
+      "event_id": "other",
+      "kind": "correction",
+      "scope": "other",
+      "before": "сняли свод памяти",
+      "after": "сняли свитч памяти",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "emoji",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "😀 сняли свод памяти",
+      "after": "😀 сняли слот памяти",
+      "confirmed_asr": true,
+      "selection": {
+        "byte_start": 16,
+        "byte_end": 24,
+        "replacement": "слот"
+      }
+    },
+    {
+      "schema_version": 1,
+      "event_id": "undo-slot",
+      "kind": "retract",
+      "target_event_id": "slot"
+    },
+    {
+      "schema_version": 1,
+      "event_id": "undo-emoji",
+      "kind": "retract",
+      "target_event_id": "emoji"
+    }
+  ],
+  "expected_redo": [
+    {
+      "schema_version": 1,
+      "event_id": "slot",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "сняли свод памяти",
+      "after": "сняли слот памяти",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "clipboard",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "открой калиборд",
+      "after": "открой клипборд",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "split",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "надо долгождать ответа",
+      "after": "надо долго ждать ответа",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "pnz",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "включи пензэ",
+      "after": "включи ПНЗ",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "style",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "очень хороший день",
+      "after": "прекрасный день",
+      "confirmed_asr": false
+    },
+    {
+      "schema_version": 1,
+      "event_id": "other",
+      "kind": "correction",
+      "scope": "other",
+      "before": "сняли свод памяти",
+      "after": "сняли свитч памяти",
+      "confirmed_asr": true
+    },
+    {
+      "schema_version": 1,
+      "event_id": "emoji",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "😀 сняли свод памяти",
+      "after": "😀 сняли слот памяти",
+      "confirmed_asr": true,
+      "selection": {
+        "byte_start": 16,
+        "byte_end": 24,
+        "replacement": "слот"
+      }
+    },
+    {
+      "schema_version": 1,
+      "event_id": "undo-slot",
+      "kind": "retract",
+      "target_event_id": "slot"
+    },
+    {
+      "schema_version": 1,
+      "event_id": "undo-emoji",
+      "kind": "retract",
+      "target_event_id": "emoji"
+    },
+    {
+      "schema_version": 1,
+      "event_id": "redo-slot",
+      "kind": "correction",
+      "scope": "technical",
+      "before": "сняли свод памяти",
+      "after": "сняли слот памяти",
+      "confirmed_asr": true
+    }
+  ]
+}

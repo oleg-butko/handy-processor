@@ -1,0 +1,25 @@
+{
+  "implementation_commit": "3b68fd5384662b4074b7cb12fbe68f231bd05e67",
+  "implementation_status": [],
+  "node_version": "v24.19.0",
+  "platform": "Linux-6.12.107+deb13-amd64-x86_64-with-glibc2.41",
+  "binary_sha256": "93199bc0ae9c94b7f5721ab4d5ce28384529bac9aebac9e9f9cd978555694e6b",
+  "registry_binary_sha256": "2494bd6204ea80687c243a6ad11c864f8d69c5f1f1f163ac6f92512366258591",
+  "corpus_sha256": "cc84e26bd8d67b535a3610a6eb7268a51eb99dabb2df1cb36baa4e715934683e",
+  "source_sha256": {
+    "editor/capture-store.mjs": "c9900d6ca9d02c2ec02e6cdba11752a81b5473c136b61ccd15cac52a13ec0b9f",
+    "editor/capture-cli.mjs": "4cf0302f45d83e4b8373cb31154642f07718eaeff241a1c46eac0fd59e88bd9e",
+    "editor/capture-store.test.mjs": "e32c3125844dce9b24876af9879d245bdee0d04e97fbac138a4246cb4e680c44",
+    "editor/testing/process-worker.mjs": "c1b695df78bafa2ff64b16b36036e927657fb390682dd913dd4264d9937262f4",
+    "scripts/capture_profiles.py": "7a40003ad3eca3a352b73eb888b7789004b5845e5f7efb0295c5739d5b067af7",
+    "scripts/run_capture_experiment.py": "951ffc4acdfc1007b5311a35af98435d382ab3376e4fac6c4e03cb62972214fc",
+    "scripts/prepare_draft_fixture.py": "e1581745e9690b14690e041cee0ac28e4e753d3e530177cc5934729d9a163e94",
+    "scripts/run_term_experiment.py": "5802ca027c8e4964070c5236aefa3eaf9e398097927f199a70bc1930d3d195e2"
+  },
+  "capture_tests": 16,
+  "verified_source_manifests": 11,
+  "verified_resource_hashes": 55,
+  "verified_capture_manifests": 4,
+  "generated_database": "/home/user1/handy-processor/rechprav/artifacts/016-capture-1kpi2nr8/capture.sqlite3",
+  "scope": "offline capture of synthetic explicit fragment corrections; actual UI capture and live profile installation absent"
+}

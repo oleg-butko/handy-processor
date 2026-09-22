@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "request_id": "other",
+  "fragment_id": "other-fragment",
+  "session_id": "window-1",
+  "scope": "other",
+  "expected_revision": 0,
+  "kind": "replace",
+  "before": "сняли свод памяти",
+  "after": "сняли свитч памяти",
+  "confirmed_asr": true
+}

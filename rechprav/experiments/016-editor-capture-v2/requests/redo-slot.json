@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "request_id": "redo-slot",
+  "fragment_id": "slot-fragment",
+  "session_id": "window-1",
+  "scope": "technical",
+  "expected_revision": 2,
+  "kind": "replace",
+  "before": "сняли свод памяти",
+  "after": "сняли слот памяти",
+  "confirmed_asr": true
+}

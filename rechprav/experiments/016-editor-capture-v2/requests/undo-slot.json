@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "request_id": "undo-slot",
+  "fragment_id": "slot-fragment",
+  "session_id": "window-1",
+  "scope": "technical",
+  "expected_revision": 1,
+  "kind": "undo",
+  "before": "сняли слот памяти",
+  "after": "сняли свод памяти",
+  "target_request_id": "slot"
+}

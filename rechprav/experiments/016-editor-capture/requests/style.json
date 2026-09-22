@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "request_id": "style",
+  "fragment_id": "style-fragment",
+  "session_id": "window-1",
+  "scope": "technical",
+  "expected_revision": 0,
+  "kind": "replace",
+  "before": "очень хороший день",
+  "after": "прекрасный день",
+  "confirmed_asr": false
+}

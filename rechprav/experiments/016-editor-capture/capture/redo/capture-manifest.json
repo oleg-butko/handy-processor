@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "event_count": 10,
+  "output_sha256": {
+    "events.jsonl": "b06d2ed4b22725c30ed34098918873cfb6241109e370acad49f2bfea50b6f618",
+    "requests.jsonl": "892511b0b4a485d044b5a4f470cd5502a398e7361029ed4ecb500c77538b1db1",
+    "snapshot.json": "733f863af53b5d7a4686ee63bd2f90eb340079bcd1abeb9d7dbc543347dae48b"
+  }
+}

@@ -391,6 +391,22 @@ python3 rechprav/scripts/run_registry_experiment.py rechprav/experiments/my-regi
 Это offline-снимок: запись действий редактора, объединение с ручным профилем
 и обновление работающего приложения ещё не подключены.
 
+## Запись подтверждённых исправлений
+
+Для записи подтверждённых исправлений подготовлен отдельный offline-прототип
+на Node/SQLite: `editor/capture-cli.mjs`. Он переводит UTF-16 selection в UTF-8,
+сохраняет revision/событие/receipt одной транзакцией и экспортирует JSONL для Rust.
+
+```bash
+node --test rechprav/editor/capture-store.test.mjs
+python3 rechprav/scripts/run_capture_experiment.py rechprav/experiments/my-capture-run
+```
+
+[Формат и команды](../docs/rechprav/editor-capture.md),
+[опыт 016](experiments/016-editor-capture-v2/report.md).
+Проверены restart, повторы, конкурентные запросы и принудительное завершение
+процесса. Прототип работает с явным коротким окном текста; UI ещё не подключён.
+
 ## Организация
 
 `src/` — библиотека и CLI; `tests/` — проверки поведения, безопасности вывода и метрик;

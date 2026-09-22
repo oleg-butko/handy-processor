@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: durable idempotency survives restart and ignores JSON key ordering
+ok 1 - durable idempotency survives restart and ignores JSON key ordering
+  ---
+  duration_ms: 13.992778
+  type: 'test'
+  ...
+# Subtest: revision and before guards reject stale, future and divergent state without reserving ids
+ok 2 - revision and before guards reject stale, future and divergent state without reserving ids
+  ---
+  duration_ms: 6.023917
+  type: 'test'
+  ...
+# Subtest: UTF-16 selection after emoji becomes original UTF-8 byte offsets
+ok 3 - UTF-16 selection after emoji becomes original UTF-8 byte offsets
+  ---
+  duration_ms: 3.386839
+  type: 'test'
+  ...
+# Subtest: malformed surrogate, selection and hidden fields cannot enter the journal
+ok 4 - malformed surrogate, selection and hidden fields cannot enter the journal
+  ---
+  duration_ms: 6.159982
+  type: 'test'
+  ...
+# Subtest: undo is atomic, duplicate delivery is inert, redo creates new evidence
+ok 5 - undo is atomic, duplicate delivery is inert, redo creates new evidence
+  ---
+  duration_ms: 5.687249
+  type: 'test'
+  ...
+# Subtest: undo cannot target another fragment, a nonlatest edit or a noninverse pair
+ok 6 - undo cannot target another fragment, a nonlatest edit or a noninverse pair
+  ---
+  duration_ms: 7.170292
+  type: 'test'
+  ...
+# Subtest: scope remains attached to the fragment and other scopes use independent fragments
+ok 7 - scope remains attached to the fragment and other scopes use independent fragments
+  ---
+  duration_ms: 4.5169
+  type: 'test'
+  ...
+# Subtest: export is a consistent deterministic snapshot and never overwrites an existing directory
+ok 8 - export is a consistent deterministic snapshot and never overwrites an existing directory
+  ---
+  duration_ms: 7.342413
+  type: 'test'
+  ...
+# Subtest: opening a foreign SQLite database or creating over one leaves it unchanged
+ok 9 - opening a foreign SQLite database or creating over one leaves it unchanged
+  ---
+  duration_ms: 3.610569
+  type: 'test'
+  ...
+# Subtest: SIGKILL at after-insert recovers an all-or-nothing request and supports retry
+ok 10 - SIGKILL at after-insert recovers an all-or-nothing request and supports retry
+  ---
+  duration_ms: 132.861577
+  type: 'test'
+  ...
+# Subtest: SIGKILL at before-commit recovers an all-or-nothing request and supports retry
+ok 11 - SIGKILL at before-commit recovers an all-or-nothing request and supports retry
+  ---
+  duration_ms: 104.711364
+  type: 'test'
+  ...
+# Subtest: SIGKILL at after-commit recovers an all-or-nothing request and supports retry
+ok 12 - SIGKILL at after-commit recovers an all-or-nothing request and supports retry
+  ---
+  duration_ms: 132.158316
+  type: 'test'
+  ...
+# Subtest: interrupted undo rolls back the retraction together with the request and fragment
+ok 13 - interrupted undo rolls back the retraction together with the request and fragment
+  ---
+  duration_ms: 90.537828
+  type: 'test'
+  ...
+# Subtest: CLI rejects invalid UTF-8 instead of silently replacing input bytes
+ok 14 - CLI rejects invalid UTF-8 instead of silently replacing input bytes
+  ---
+  duration_ms: 92.64505
+  type: 'test'
+  ...
+# Subtest: concurrent processes serialize distinct edits
+ok 15 - concurrent processes serialize distinct edits
+  ---
+  duration_ms: 105.094465
+  type: 'test'
+  ...
+# Subtest: concurrent processes serialize identical delivery
+ok 16 - concurrent processes serialize identical delivery
+  ---
+  duration_ms: 104.615479
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 980.464772

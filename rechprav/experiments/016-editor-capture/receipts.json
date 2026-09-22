@@ -1,0 +1,82 @@
+[
+  {
+    "request_id": "slot",
+    "sequence": 1,
+    "fragment_id": "slot-fragment",
+    "revision": 1,
+    "event_id": "slot",
+    "replayed": false
+  },
+  {
+    "request_id": "clipboard",
+    "sequence": 2,
+    "fragment_id": "clipboard-fragment",
+    "revision": 1,
+    "event_id": "clipboard",
+    "replayed": false
+  },
+  {
+    "request_id": "split",
+    "sequence": 3,
+    "fragment_id": "split-fragment",
+    "revision": 1,
+    "event_id": "split",
+    "replayed": false
+  },
+  {
+    "request_id": "pnz",
+    "sequence": 4,
+    "fragment_id": "pnz-fragment",
+    "revision": 1,
+    "event_id": "pnz",
+    "replayed": false
+  },
+  {
+    "request_id": "style",
+    "sequence": 5,
+    "fragment_id": "style-fragment",
+    "revision": 1,
+    "event_id": "style",
+    "replayed": false
+  },
+  {
+    "request_id": "other",
+    "sequence": 6,
+    "fragment_id": "other-fragment",
+    "revision": 1,
+    "event_id": "other",
+    "replayed": false
+  },
+  {
+    "request_id": "emoji",
+    "sequence": 7,
+    "fragment_id": "emoji-fragment",
+    "revision": 1,
+    "event_id": "emoji",
+    "replayed": false
+  },
+  {
+    "request_id": "undo-slot",
+    "sequence": 8,
+    "fragment_id": "slot-fragment",
+    "revision": 2,
+    "event_id": "undo-slot",
+    "replayed": false
+  },
+  {
+    "request_id": "undo-emoji",
+    "sequence": 9,
+    "fragment_id": "emoji-fragment",
+    "revision": 2,
+    "event_id": "undo-emoji",
+    "replayed": false
+  },
+  {
+    "request_id": "redo-slot",
+    "sequence": 10,
+    "fragment_id": "slot-fragment",
+    "revision": 3,
+    "event_id": "redo-slot",
+    "replayed": false
+  }
+]

@@ -1,0 +1,427 @@
+{
+  "draft": {
+    "scope": "technical",
+    "input_events": 10,
+    "unique_events": 10,
+    "duplicate_events": 0,
+    "active_corrections": 6,
+    "proposals": [
+      {
+        "id": "fb_ea1a510ecba1a777a36509b5f0c658d6",
+        "scope": "technical",
+        "alias": "долгождать",
+        "canonical": "долго ждать",
+        "context_pattern": "надо {term} ответа",
+        "evidence_ids": [
+          "split"
+        ],
+        "target_class": "existing_user_term",
+        "target_word_membership": [
+          true,
+          true
+        ],
+        "conflicting_proposals": []
+      },
+      {
+        "id": "fb_e60a912adee81af064dcff8a8847f3a5",
+        "scope": "technical",
+        "alias": "калиборд",
+        "canonical": "клипборд",
+        "context_pattern": "открой {term}",
+        "evidence_ids": [
+          "clipboard"
+        ],
+        "target_class": "existing_user_term",
+        "target_word_membership": [
+          false
+        ],
+        "conflicting_proposals": []
+      },
+      {
+        "id": "fb_7ecb0f11178d88ecc79fab0ed362c244",
+        "scope": "technical",
+        "alias": "пензэ",
+        "canonical": "ПНЗ",
+        "context_pattern": "включи {term}",
+        "evidence_ids": [
+          "pnz"
+        ],
+        "target_class": "existing_user_term",
+        "target_word_membership": [
+          false
+        ],
+        "conflicting_proposals": []
+      },
+      {
+        "id": "fb_58aced23a727ae54089768852d8fb683",
+        "scope": "technical",
+        "alias": "свод",
+        "canonical": "слот",
+        "context_pattern": "сняли {term} памяти",
+        "evidence_ids": [
+          "redo-slot"
+        ],
+        "target_class": "existing_user_term",
+        "target_word_membership": [
+          true
+        ],
+        "conflicting_proposals": []
+      }
+    ],
+    "audit": [
+      {
+        "event_id": "clipboard",
+        "status": "proposal",
+        "change": {
+          "byte_start": 13,
+          "byte_end": 29,
+          "source": "калиборд",
+          "alias": "калиборд",
+          "replacement": "клипборд",
+          "context_pattern": "открой {term}"
+        }
+      },
+      {
+        "event_id": "emoji",
+        "status": "retracted"
+      },
+      {
+        "event_id": "other",
+        "status": "other_scope"
+      },
+      {
+        "event_id": "pnz",
+        "status": "proposal",
+        "change": {
+          "byte_start": 13,
+          "byte_end": 23,
+          "source": "пензэ",
+          "alias": "пензэ",
+          "replacement": "ПНЗ",
+          "context_pattern": "включи {term}"
+        }
+      },
+      {
+        "event_id": "redo-slot",
+        "status": "proposal",
+        "change": {
+          "byte_start": 11,
+          "byte_end": 19,
+          "source": "свод",
+          "alias": "свод",
+          "replacement": "слот",
+          "context_pattern": "сняли {term} памяти"
+        }
+      },
+      {
+        "event_id": "slot",
+        "status": "retracted"
+      },
+      {
+        "event_id": "split",
+        "status": "proposal",
+        "change": {
+          "byte_start": 9,
+          "byte_end": 29,
+          "source": "долгождать",
+          "alias": "долгождать",
+          "replacement": "долго ждать",
+          "context_pattern": "надо {term} ответа"
+        }
+      },
+      {
+        "event_id": "style",
+        "status": "not_confirmed_asr"
+      },
+      {
+        "event_id": "undo-emoji",
+        "status": "retraction"
+      },
+      {
+        "event_id": "undo-slot",
+        "status": "retraction"
+      }
+    ],
+    "config": {
+      "baseline_config": "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml",
+      "enabled": false,
+      "policy": {
+        "mode": "exact",
+        "max_distance": 1,
+        "max_tokens": 3,
+        "max_comparisons": 20000,
+        "context_window": 4,
+        "boost": 0.0,
+        "edit_penalty": 1.0,
+        "context_bonus": 2.0,
+        "known_penalty": 1.0,
+        "min_score": 3.0,
+        "min_margin": 1.0
+      },
+      "sets": [
+        {
+          "id": "technical",
+          "enabled": false,
+          "boost": 0.0,
+          "terms": [
+            {
+              "id": "fb_ea1a510ecba1a777a36509b5f0c658d6",
+              "canonical": "долго ждать",
+              "kind": "phrase",
+              "aliases": [
+                "долгождать"
+              ],
+              "enabled": false,
+              "boost": 0.0,
+              "known_words": "always",
+              "context": [],
+              "max_known_distance": 0,
+              "context_patterns": [
+                "надо {term} ответа"
+              ],
+              "require_context": true
+            },
+            {
+              "id": "fb_e60a912adee81af064dcff8a8847f3a5",
+              "canonical": "клипборд",
+              "aliases": [
+                "калиборд"
+              ],
+              "enabled": false,
+              "boost": 0.0,
+              "known_words": "always",
+              "context": [],
+              "max_known_distance": 0,
+              "context_patterns": [
+                "открой {term}"
+              ],
+              "require_context": true
+            },
+            {
+              "id": "fb_7ecb0f11178d88ecc79fab0ed362c244",
+              "canonical": "ПНЗ",
+              "aliases": [
+                "пензэ"
+              ],
+              "enabled": false,
+              "boost": 0.0,
+              "known_words": "always",
+              "context": [],
+              "max_known_distance": 0,
+              "context_patterns": [
+                "включи {term}"
+              ],
+              "require_context": true
+            },
+            {
+              "id": "fb_58aced23a727ae54089768852d8fb683",
+              "canonical": "слот",
+              "aliases": [
+                "свод"
+              ],
+              "enabled": false,
+              "boost": 0.0,
+              "known_words": "always",
+              "context": [],
+              "max_known_distance": 0,
+              "context_patterns": [
+                "сняли {term} памяти"
+              ],
+              "require_context": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "review_tokens": [
+    {
+      "scope": "technical",
+      "proposal_id": "fb_ea1a510ecba1a777a36509b5f0c658d6",
+      "checkpoint": {
+        "event_count": 10,
+        "events_sha256": "590bf6768bbe5131ac005c622959a2e6ad1712b93fdf158c17519a54a784ffee",
+        "environment_sha256": "1747147bcf4605e3fd877259b93e6038df3ae95c34067116a4ba1e509bcd2b86"
+      }
+    },
+    {
+      "scope": "technical",
+      "proposal_id": "fb_e60a912adee81af064dcff8a8847f3a5",
+      "checkpoint": {
+        "event_count": 10,
+        "events_sha256": "590bf6768bbe5131ac005c622959a2e6ad1712b93fdf158c17519a54a784ffee",
+        "environment_sha256": "1747147bcf4605e3fd877259b93e6038df3ae95c34067116a4ba1e509bcd2b86"
+      }
+    },
+    {
+      "scope": "technical",
+      "proposal_id": "fb_7ecb0f11178d88ecc79fab0ed362c244",
+      "checkpoint": {
+        "event_count": 10,
+        "events_sha256": "590bf6768bbe5131ac005c622959a2e6ad1712b93fdf158c17519a54a784ffee",
+        "environment_sha256": "1747147bcf4605e3fd877259b93e6038df3ae95c34067116a4ba1e509bcd2b86"
+      }
+    },
+    {
+      "scope": "technical",
+      "proposal_id": "fb_58aced23a727ae54089768852d8fb683",
+      "checkpoint": {
+        "event_count": 10,
+        "events_sha256": "590bf6768bbe5131ac005c622959a2e6ad1712b93fdf158c17519a54a784ffee",
+        "environment_sha256": "1747147bcf4605e3fd877259b93e6038df3ae95c34067116a4ba1e509bcd2b86"
+      }
+    }
+  ],
+  "states": [
+    {
+      "proposal_id": "fb_58aced23a727ae54089768852d8fb683",
+      "decision_id": "accept-redo",
+      "status": "accepted",
+      "approved_evidence_ids": [
+        "redo-slot"
+      ],
+      "current_evidence_ids": [
+        "redo-slot"
+      ],
+      "surviving_evidence_ids": [
+        "redo-slot"
+      ]
+    },
+    {
+      "proposal_id": "fb_7ecb0f11178d88ecc79fab0ed362c244",
+      "decision_id": "accept-2",
+      "status": "accepted",
+      "approved_evidence_ids": [
+        "pnz"
+      ],
+      "current_evidence_ids": [
+        "pnz"
+      ],
+      "surviving_evidence_ids": [
+        "pnz"
+      ]
+    },
+    {
+      "proposal_id": "fb_e60a912adee81af064dcff8a8847f3a5",
+      "decision_id": "accept-1",
+      "status": "accepted",
+      "approved_evidence_ids": [
+        "clipboard"
+      ],
+      "current_evidence_ids": [
+        "clipboard"
+      ],
+      "surviving_evidence_ids": [
+        "clipboard"
+      ]
+    },
+    {
+      "proposal_id": "fb_ea1a510ecba1a777a36509b5f0c658d6",
+      "decision_id": "accept-0",
+      "status": "accepted",
+      "approved_evidence_ids": [
+        "split"
+      ],
+      "current_evidence_ids": [
+        "split"
+      ],
+      "surviving_evidence_ids": [
+        "split"
+      ]
+    }
+  ],
+  "input_decisions": 5,
+  "unique_decisions": 5,
+  "duplicate_decisions": 0,
+  "config": {
+    "baseline_config": "/home/user1/handy-processor/rechprav/configs/opencorpora-packed-frequency-b2.toml",
+    "enabled": true,
+    "policy": {
+      "mode": "exact",
+      "max_distance": 1,
+      "max_tokens": 3,
+      "max_comparisons": 20000,
+      "context_window": 4,
+      "boost": 0.0,
+      "edit_penalty": 1.0,
+      "context_bonus": 2.0,
+      "known_penalty": 1.0,
+      "min_score": 3.0,
+      "min_margin": 1.0
+    },
+    "sets": [
+      {
+        "id": "technical",
+        "enabled": true,
+        "boost": 0.0,
+        "terms": [
+          {
+            "id": "fb_ea1a510ecba1a777a36509b5f0c658d6",
+            "canonical": "долго ждать",
+            "kind": "phrase",
+            "aliases": [
+              "долгождать"
+            ],
+            "enabled": true,
+            "boost": 0.0,
+            "known_words": "always",
+            "context": [],
+            "max_known_distance": 0,
+            "context_patterns": [
+              "надо {term} ответа"
+            ],
+            "require_context": true
+          },
+          {
+            "id": "fb_e60a912adee81af064dcff8a8847f3a5",
+            "canonical": "клипборд",
+            "aliases": [
+              "калиборд"
+            ],
+            "enabled": true,
+            "boost": 0.0,
+            "known_words": "always",
+            "context": [],
+            "max_known_distance": 0,
+            "context_patterns": [
+              "открой {term}"
+            ],
+            "require_context": true
+          },
+          {
+            "id": "fb_7ecb0f11178d88ecc79fab0ed362c244",
+            "canonical": "ПНЗ",
+            "aliases": [
+              "пензэ"
+            ],
+            "enabled": true,
+            "boost": 0.0,
+            "known_words": "always",
+            "context": [],
+            "max_known_distance": 0,
+            "context_patterns": [
+              "включи {term}"
+            ],
+            "require_context": true
+          },
+          {
+            "id": "fb_58aced23a727ae54089768852d8fb683",
+            "canonical": "слот",
+            "aliases": [
+              "свод"
+            ],
+            "enabled": true,
+            "boost": 0.0,
+            "known_words": "always",
+            "context": [],
+            "max_known_distance": 0,
+            "context_patterns": [
+              "сняли {term} памяти"
+            ],
+            "require_context": true
+          }
+        ]
+      }
+    ]
+  }
+}

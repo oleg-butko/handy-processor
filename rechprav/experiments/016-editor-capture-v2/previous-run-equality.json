@@ -1,0 +1,23 @@
+{
+  "byte_equal_files": [
+    "summary.json",
+    "receipts.json",
+    "frozen-inputs.json",
+    "benchmark/accepted/predictions.jsonl",
+    "benchmark/accepted/metrics.json",
+    "benchmark/undo/predictions.jsonl",
+    "benchmark/undo/metrics.json",
+    "benchmark/redo-stale/predictions.jsonl",
+    "benchmark/redo-stale/metrics.json",
+    "benchmark/redo-accepted/predictions.jsonl",
+    "benchmark/redo-accepted/metrics.json",
+    "capture/initial/events.jsonl",
+    "capture/initial/snapshot.json",
+    "capture/duplicate/events.jsonl",
+    "capture/duplicate/snapshot.json",
+    "capture/undo/events.jsonl",
+    "capture/undo/snapshot.json",
+    "capture/redo/events.jsonl",
+    "capture/redo/snapshot.json"
+  ]
+}
