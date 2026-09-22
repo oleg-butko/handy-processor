@@ -97,7 +97,7 @@ def main():
     assert stale["config"] == reviews["composed"]["config"]
     reports["stale-settings"] = stale
     bad = copy.deepcopy(cases["composed"][1]); bad["bindings"].append(copy.deepcopy(bad["bindings"][0]))
-    bad_path = output / "inputs/duplicate-bindings.json"; save(bad_path, bad)
+    bad_path = output / "inputs/invalid-duplicate-bindings.json"; save(bad_path, bad)
     save(output / "invalid-check.json", compose("invalid", output / "inputs/composed.toml", bad_path, initial, empty, success=False))
 
     validation = json.loads(run([binary,"validate",corpus_path]).stdout)
