@@ -1,0 +1,1032 @@
+{
+  "files": [
+    {
+      "path": "data/fixtures/corpus.jsonl",
+      "sha256": "2094f1fd56fb6799e0e9e972696421e5d4bbdfea382f57c03768b444ff7ebd19",
+      "records": 12,
+      "unique_sources": 12,
+      "gold_spans": 8,
+      "keep_rows": 5,
+      "provenance": {
+        "synthetic": 12
+      }
+    },
+    {
+      "path": "data/user-examples/2026-09-21/corpus.jsonl",
+      "sha256": "605df9d6a3b98130ade9c49bdacba8429655bcffa02d770446a4e37b57951fe2",
+      "records": 9,
+      "unique_sources": 9,
+      "gold_spans": 10,
+      "keep_rows": 0,
+      "provenance": {
+        "real_asr": 9
+      }
+    },
+    {
+      "path": "data/fixtures/baseline/corpus.jsonl",
+      "sha256": "7a6b3d4fc2fd6d9d83ff28811f8ac9e6438a0589ff8ea655936084ec50307714",
+      "records": 27,
+      "unique_sources": 27,
+      "gold_spans": 17,
+      "keep_rows": 12,
+      "provenance": {
+        "synthetic": 27
+      }
+    },
+    {
+      "path": "data/fixtures/terms/corpus.jsonl",
+      "sha256": "fb207e3d0163f748bb8746441b4f5754a52699b71ecba948a6bc677f9aa6defe",
+      "records": 43,
+      "unique_sources": 43,
+      "gold_spans": 23,
+      "keep_rows": 21,
+      "provenance": {
+        "synthetic": 43
+      }
+    },
+    {
+      "path": "data/fixtures/term-context/corpus.jsonl",
+      "sha256": "64b6047d838dd32ae11443e197755457cc09ff855ab0fff81055380c9f7799bc",
+      "records": 42,
+      "unique_sources": 42,
+      "gold_spans": 22,
+      "keep_rows": 21,
+      "provenance": {
+        "synthetic": 42
+      }
+    },
+    {
+      "path": "data/fixtures/term-spans/corpus.jsonl",
+      "sha256": "aa975a8cb20b4969eebd69ddac96f5cc45ce38c64a6c10dc31b73742c1e54290",
+      "records": 40,
+      "unique_sources": 40,
+      "gold_spans": 30,
+      "keep_rows": 13,
+      "provenance": {
+        "synthetic": 40
+      }
+    },
+    {
+      "path": "data/fixtures/pronunciation/corpus.jsonl",
+      "sha256": "3f8a7aeffd16280c8f08f731c90d6fc0c3cbd0061b8c688db6a3d5a66a0918a8",
+      "records": 40,
+      "unique_sources": 40,
+      "gold_spans": 29,
+      "keep_rows": 12,
+      "provenance": {
+        "synthetic": 40
+      }
+    },
+    {
+      "path": "data/fixtures/user-phrases/corpus.jsonl",
+      "sha256": "3ec707ddbcadf779c525c3fa03e5618ccb347b8019210e0c75312e0799017f21",
+      "records": 43,
+      "unique_sources": 43,
+      "gold_spans": 13,
+      "keep_rows": 30,
+      "provenance": {
+        "synthetic": 43
+      }
+    },
+    {
+      "path": "data/fixtures/term-families/corpus.jsonl",
+      "sha256": "c3e44b15eeef9707ee74c4aa92191fd6d6e978a86d0492c2a91c8d66bee9b597",
+      "records": 24,
+      "unique_sources": 24,
+      "gold_spans": 13,
+      "keep_rows": 13,
+      "provenance": {
+        "synthetic": 24
+      }
+    },
+    {
+      "path": "data/fixtures/feedback/corpus.jsonl",
+      "sha256": "f351b1a6a56945c205d6cb79cd2f6f94bc1e1a223a614ce561da09d5bc3de289",
+      "records": 30,
+      "unique_sources": 30,
+      "gold_spans": 11,
+      "keep_rows": 19,
+      "provenance": {
+        "synthetic": 30
+      }
+    },
+    {
+      "path": "data/fixtures/weighted/corpus.jsonl",
+      "sha256": "53499eb1dfeb38db114968bf3cfc2d22ced35756ec3b63fde75f3995dfcd6bc3",
+      "records": 40,
+      "unique_sources": 40,
+      "gold_spans": 23,
+      "keep_rows": 17,
+      "provenance": {
+        "synthetic": 40
+      }
+    },
+    {
+      "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+      "sha256": "cc84e26bd8d67b535a3610a6eb7268a51eb99dabb2df1cb36baa4e715934683e",
+      "records": 28,
+      "unique_sources": 28,
+      "gold_spans": 15,
+      "keep_rows": 13,
+      "provenance": {
+        "synthetic": 28
+      }
+    },
+    {
+      "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+      "sha256": "b571976c6aae451de0cf77afe99478678fb155a190b2d30b586d46f23a74127f",
+      "records": 30,
+      "unique_sources": 30,
+      "gold_spans": 13,
+      "keep_rows": 17,
+      "provenance": {
+        "synthetic": 30
+      }
+    }
+  ],
+  "total_rows": 408,
+  "unique_sources": 335,
+  "repeated_sources": 55,
+  "conflicts": {},
+  "repeated_groups": {
+    "я установил драйвир": [
+      {
+        "path": "data/fixtures/corpus.jsonl",
+        "id": "synthetic-001",
+        "gold": "я установил драйвер",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/baseline/corpus.jsonl",
+        "id": "synthetic-001",
+        "gold": "я установил драйвер",
+        "split": "dev"
+      }
+    ],
+    "Проверь драйвир.": [
+      {
+        "path": "data/fixtures/corpus.jsonl",
+        "id": "synthetic-002",
+        "gold": "Проверь драйвер.",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/baseline/corpus.jsonl",
+        "id": "synthetic-002",
+        "gold": "Проверь драйвер.",
+        "split": "dev"
+      }
+    ],
+    "я вижу плот": [
+      {
+        "path": "data/fixtures/corpus.jsonl",
+        "id": "synthetic-003",
+        "gold": "я вижу плод",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/baseline/corpus.jsonl",
+        "id": "synthetic-003",
+        "gold": "я вижу плод",
+        "split": "dev"
+      }
+    ],
+    "драйвир и дибаггер": [
+      {
+        "path": "data/fixtures/corpus.jsonl",
+        "id": "synthetic-004",
+        "gold": "драйвер и дебаггер",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/baseline/corpus.jsonl",
+        "id": "synthetic-004",
+        "gold": "драйвер и дебаггер",
+        "split": "dev"
+      }
+    ],
+    "всё работает нормально": [
+      {
+        "path": "data/fixtures/corpus.jsonl",
+        "id": "synthetic-005",
+        "gold": "всё работает нормально",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/baseline/corpus.jsonl",
+        "id": "synthetic-005",
+        "gold": "всё работает нормально",
+        "split": "dev"
+      }
+    ],
+    "куда ты идёшь": [
+      {
+        "path": "data/fixtures/corpus.jsonl",
+        "id": "synthetic-006",
+        "gold": "куда ты идёшь",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/baseline/corpus.jsonl",
+        "id": "synthetic-006",
+        "gold": "куда ты идёшь",
+        "split": "dev"
+      }
+    ],
+    "CUDA, Vulkan, C++ и /tmp/a.txt": [
+      {
+        "path": "data/fixtures/corpus.jsonl",
+        "id": "synthetic-007",
+        "gold": "CUDA, Vulkan, C++ и /tmp/a.txt",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/baseline/corpus.jsonl",
+        "id": "synthetic-007",
+        "gold": "CUDA, Vulkan, C++ и /tmp/a.txt",
+        "split": "dev"
+      }
+    ],
+    "Ёлка\tи ёж\r\nв лесу": [
+      {
+        "path": "data/fixtures/corpus.jsonl",
+        "id": "synthetic-008",
+        "gold": "Ёлка\tи ёж\r\nв лесу",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/baseline/corpus.jsonl",
+        "id": "synthetic-008",
+        "gold": "Ёлка\tи ёж\r\nв лесу",
+        "split": "dev"
+      }
+    ],
+    "на пример возьми это": [
+      {
+        "path": "data/fixtures/corpus.jsonl",
+        "id": "synthetic-009",
+        "gold": "например возьми это",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/baseline/corpus.jsonl",
+        "id": "synthetic-009",
+        "gold": "например возьми это",
+        "split": "dev"
+      }
+    ],
+    "я пришёл потомучто обещал": [
+      {
+        "path": "data/fixtures/corpus.jsonl",
+        "id": "synthetic-010",
+        "gold": "я пришёл потому что обещал",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/baseline/corpus.jsonl",
+        "id": "synthetic-010",
+        "gold": "я пришёл потому что обещал",
+        "split": "dev"
+      }
+    ],
+    "": [
+      {
+        "path": "data/fixtures/corpus.jsonl",
+        "id": "synthetic-011",
+        "gold": "",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/baseline/corpus.jsonl",
+        "id": "synthetic-011",
+        "gold": "",
+        "split": "dev"
+      }
+    ],
+    "исправь ошипку": [
+      {
+        "path": "data/fixtures/corpus.jsonl",
+        "id": "synthetic-012",
+        "gold": "исправь ошибку",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/baseline/corpus.jsonl",
+        "id": "synthetic-012",
+        "gold": "исправь ошибку",
+        "split": "dev"
+      }
+    ],
+    "этабы": [
+      {
+        "path": "data/user-examples/2026-09-21/corpus.jsonl",
+        "id": "user-20260921-002",
+        "gold": "табы",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/term-families/corpus.jsonl",
+        "id": "family-004",
+        "gold": "табы",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/weighted/corpus.jsonl",
+        "id": "weighted-019",
+        "gold": "табы",
+        "split": "dev"
+      }
+    ],
+    "луколхоз": [
+      {
+        "path": "data/user-examples/2026-09-21/corpus.jsonl",
+        "id": "user-20260921-003",
+        "gold": "локалхост",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/weighted/corpus.jsonl",
+        "id": "weighted-021",
+        "gold": "локалхост",
+        "split": "dev"
+      }
+    ],
+    "Нет звон": [
+      {
+        "path": "data/user-examples/2026-09-21/corpus.jsonl",
+        "id": "user-20260921-004",
+        "gold": "недозвон",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-020",
+        "gold": "недозвон",
+        "split": "dev"
+      }
+    ],
+    "проковол колесо": [
+      {
+        "path": "data/user-examples/2026-09-21/corpus.jsonl",
+        "id": "user-20260921-006",
+        "gold": "проколол колесо",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/term-families/corpus.jsonl",
+        "id": "family-021",
+        "gold": "проколол колесо",
+        "split": "dev"
+      }
+    ],
+    "долгождать": [
+      {
+        "path": "data/user-examples/2026-09-21/corpus.jsonl",
+        "id": "user-20260921-007",
+        "gold": "долго ждать",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/term-families/corpus.jsonl",
+        "id": "family-022",
+        "gold": "долго ждать",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/weighted/corpus.jsonl",
+        "id": "weighted-020",
+        "gold": "долго ждать",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-012",
+        "gold": "долго ждать",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-013",
+        "gold": "долго ждать",
+        "split": "dev"
+      }
+    ],
+    "без снятия сваты": [
+      {
+        "path": "data/user-examples/2026-09-21/corpus.jsonl",
+        "id": "user-20260921-008",
+        "gold": "без снятия слота",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/term-families/corpus.jsonl",
+        "id": "family-006",
+        "gold": "без снятия слота",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-018",
+        "gold": "без снятия слота",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-007",
+        "gold": "без снятия слота",
+        "split": "dev"
+      }
+    ],
+    "проверь пээнзэ": [
+      {
+        "path": "data/fixtures/terms/corpus.jsonl",
+        "id": "terms-001",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/pronunciation/corpus.jsonl",
+        "id": "pronunciation-001",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      }
+    ],
+    "проверь пэнзэ": [
+      {
+        "path": "data/fixtures/terms/corpus.jsonl",
+        "id": "terms-002",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/pronunciation/corpus.jsonl",
+        "id": "pronunciation-005",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      }
+    ],
+    "проверь пензе": [
+      {
+        "path": "data/fixtures/terms/corpus.jsonl",
+        "id": "terms-003",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/pronunciation/corpus.jsonl",
+        "id": "pronunciation-007",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      }
+    ],
+    "проверь бензэ": [
+      {
+        "path": "data/fixtures/terms/corpus.jsonl",
+        "id": "terms-005",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/pronunciation/corpus.jsonl",
+        "id": "pronunciation-006",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      }
+    ],
+    "проверь пэ эн зэ": [
+      {
+        "path": "data/fixtures/terms/corpus.jsonl",
+        "id": "terms-006",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/term-spans/corpus.jsonl",
+        "id": "span-003",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/pronunciation/corpus.jsonl",
+        "id": "pronunciation-004",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      }
+    ],
+    "проверь пэн зэ": [
+      {
+        "path": "data/fixtures/terms/corpus.jsonl",
+        "id": "terms-007",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/term-spans/corpus.jsonl",
+        "id": "span-004",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      }
+    ],
+    "проверь пэ эн зе": [
+      {
+        "path": "data/fixtures/terms/corpus.jsonl",
+        "id": "terms-011",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/term-spans/corpus.jsonl",
+        "id": "span-005",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      }
+    ],
+    "проверь пэ энзэ": [
+      {
+        "path": "data/fixtures/terms/corpus.jsonl",
+        "id": "terms-012",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/term-spans/corpus.jsonl",
+        "id": "span-001",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/pronunciation/corpus.jsonl",
+        "id": "pronunciation-002",
+        "gold": "проверь ПНЗ",
+        "split": "dev"
+      }
+    ],
+    "проверь пензе на карте": [
+      {
+        "path": "data/fixtures/term-context/corpus.jsonl",
+        "id": "context-022",
+        "gold": "проверь пензе на карте",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/pronunciation/corpus.jsonl",
+        "id": "pronunciation-027",
+        "gold": "проверь пензе на карте",
+        "split": "dev"
+      }
+    ],
+    "проверь ввод данных": [
+      {
+        "path": "data/fixtures/term-context/corpus.jsonl",
+        "id": "context-026",
+        "gold": "проверь ввод данных",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/term-spans/corpus.jsonl",
+        "id": "span-037",
+        "gold": "проверь ввод данных",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/pronunciation/corpus.jsonl",
+        "id": "pronunciation-028",
+        "gold": "проверь ввод данных",
+        "split": "dev"
+      }
+    ],
+    "проверь свод правил": [
+      {
+        "path": "data/fixtures/term-context/corpus.jsonl",
+        "id": "context-027",
+        "gold": "проверь свод правил",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/term-spans/corpus.jsonl",
+        "id": "span-038",
+        "gold": "проверь свод правил",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/pronunciation/corpus.jsonl",
+        "id": "pronunciation-029",
+        "gold": "проверь свод правил",
+        "split": "dev"
+      }
+    ],
+    "проверь пение хора": [
+      {
+        "path": "data/fixtures/term-context/corpus.jsonl",
+        "id": "context-028",
+        "gold": "проверь пение хора",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/pronunciation/corpus.jsonl",
+        "id": "pronunciation-030",
+        "gold": "проверь пение хора",
+        "split": "dev"
+      }
+    ],
+    "обозначь символом пэ энзэ модуля": [
+      {
+        "path": "data/fixtures/term-spans/corpus.jsonl",
+        "id": "span-019",
+        "gold": "обозначь символом пэ ПНЗ модуля",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/pronunciation/corpus.jsonl",
+        "id": "pronunciation-034",
+        "gold": "обозначь символом пэ ПНЗ модуля",
+        "split": "dev"
+      }
+    ],
+    "он проковол колесо": [
+      {
+        "path": "data/fixtures/user-phrases/corpus.jsonl",
+        "id": "phrase-control-002",
+        "gold": "он проколол колесо",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-017",
+        "gold": "он проколол колесо",
+        "split": "dev"
+      }
+    ],
+    "обсуждаем выражение нет звон": [
+      {
+        "path": "data/fixtures/user-phrases/corpus.jsonl",
+        "id": "phrase-control-033",
+        "gold": "обсуждаем выражение нет звон",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback/corpus.jsonl",
+        "id": "feedback-026",
+        "gold": "обсуждаем выражение нет звон",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-021",
+        "gold": "обсуждаем выражение нет звон",
+        "split": "dev"
+      }
+    ],
+    "слово этабы содержит ошибку": [
+      {
+        "path": "data/fixtures/user-phrases/corpus.jsonl",
+        "id": "phrase-control-034",
+        "gold": "слово этабы содержит ошибку",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/term-families/corpus.jsonl",
+        "id": "family-014",
+        "gold": "слово этабы содержит ошибку",
+        "split": "dev"
+      }
+    ],
+    "https://host/этабы": [
+      {
+        "path": "data/fixtures/user-phrases/corpus.jsonl",
+        "id": "phrase-control-037",
+        "gold": "https://host/этабы",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/term-families/corpus.jsonl",
+        "id": "family-020",
+        "gold": "https://host/этабы",
+        "split": "dev"
+      }
+    ],
+    "нет\nзвон": [
+      {
+        "path": "data/fixtures/user-phrases/corpus.jsonl",
+        "id": "phrase-control-041",
+        "gold": "нет\nзвон",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback/corpus.jsonl",
+        "id": "feedback-028",
+        "gold": "нет\nзвон",
+        "split": "dev"
+      }
+    ],
+    "таб и табы": [
+      {
+        "path": "data/fixtures/term-families/corpus.jsonl",
+        "id": "family-001",
+        "gold": "таб и табы",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/weighted/corpus.jsonl",
+        "id": "weighted-024",
+        "gold": "таб и табы",
+        "split": "dev"
+      }
+    ],
+    "слот слота слоте": [
+      {
+        "path": "data/fixtures/term-families/corpus.jsonl",
+        "id": "family-002",
+        "gold": "слот слота слоте",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/weighted/corpus.jsonl",
+        "id": "weighted-023",
+        "gold": "слот слота слоте",
+        "split": "dev"
+      }
+    ],
+    "свуты": [
+      {
+        "path": "data/fixtures/term-families/corpus.jsonl",
+        "id": "family-005",
+        "gold": "слот",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/weighted/corpus.jsonl",
+        "id": "weighted-022",
+        "gold": "слот",
+        "split": "dev"
+      }
+    ],
+    "сваты приехали": [
+      {
+        "path": "data/fixtures/term-families/corpus.jsonl",
+        "id": "family-008",
+        "gold": "сваты приехали",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/weighted/corpus.jsonl",
+        "id": "weighted-030",
+        "gold": "сваты приехали",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-019",
+        "gold": "сваты приехали",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-009",
+        "gold": "сваты приехали",
+        "split": "dev"
+      }
+    ],
+    "сняли свод": [
+      {
+        "path": "data/fixtures/feedback/corpus.jsonl",
+        "id": "feedback-001",
+        "gold": "сняли слот",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-003",
+        "gold": "сняли слот",
+        "split": "dev"
+      }
+    ],
+    "сняли свод памяти": [
+      {
+        "path": "data/fixtures/feedback/corpus.jsonl",
+        "id": "feedback-002",
+        "gold": "сняли слот памяти",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-001",
+        "gold": "сняли слот памяти",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-001",
+        "gold": "сняли слот памяти",
+        "split": "dev"
+      }
+    ],
+    "освободили свод памяти": [
+      {
+        "path": "data/fixtures/feedback/corpus.jsonl",
+        "id": "feedback-005",
+        "gold": "освободили слот памяти",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-004",
+        "gold": "освободили слот памяти",
+        "split": "dev"
+      }
+    ],
+    "свод правил": [
+      {
+        "path": "data/fixtures/feedback/corpus.jsonl",
+        "id": "feedback-007",
+        "gold": "свод правил",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/weighted/corpus.jsonl",
+        "id": "weighted-025",
+        "gold": "свод правил",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-005",
+        "gold": "свод правил",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-004",
+        "gold": "свод правил",
+        "split": "dev"
+      }
+    ],
+    "ввод данных": [
+      {
+        "path": "data/fixtures/feedback/corpus.jsonl",
+        "id": "feedback-008",
+        "gold": "ввод данных",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/weighted/corpus.jsonl",
+        "id": "weighted-026",
+        "gold": "ввод данных",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-006",
+        "gold": "ввод данных",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "mixed-008",
+        "gold": "ввод данных",
+        "split": "dev"
+      }
+    ],
+    "сняли свод старой арки": [
+      {
+        "path": "data/fixtures/feedback/corpus.jsonl",
+        "id": "feedback-011",
+        "gold": "сняли свод старой арки",
+        "split": "dev"
+      },
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-007",
+        "gold": "сняли свод старой арки",
+        "split": "dev"
+      }
+    ],
+    "вчера сняли свод памяти": [
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-002",
+        "gold": "вчера сняли слот памяти",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-002",
+        "gold": "вчера сняли слот памяти",
+        "split": "dev"
+      }
+    ],
+    "обсуждаем выражение сняли свод памяти": [
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-008",
+        "gold": "обсуждаем выражение сняли свод памяти",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-003",
+        "gold": "обсуждаем выражение сняли свод памяти",
+        "split": "dev"
+      }
+    ],
+    "открой калиборд": [
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-009",
+        "gold": "открой клипборд",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-014",
+        "gold": "открой клипборд",
+        "split": "dev"
+      }
+    ],
+    "надо долгождать ответа": [
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-011",
+        "gold": "надо долго ждать ответа",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-012",
+        "gold": "надо долго ждать ответа",
+        "split": "dev"
+      }
+    ],
+    "включи катэхэ": [
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-014",
+        "gold": "включи КТХ",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-010",
+        "gold": "включи КТХ",
+        "split": "dev"
+      }
+    ],
+    "сняли\nсвод памяти": [
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-022",
+        "gold": "сняли\nсвод памяти",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-016",
+        "gold": "сняли\nсвод памяти",
+        "split": "dev"
+      }
+    ],
+    "сняли, свод памяти": [
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-023",
+        "gold": "сняли, свод памяти",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-017",
+        "gold": "сняли, свод памяти",
+        "split": "dev"
+      }
+    ],
+    "сняли `свод` памяти": [
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-024",
+        "gold": "сняли `свод` памяти",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-018",
+        "gold": "сняли `свод` памяти",
+        "split": "dev"
+      }
+    ],
+    "https://host/калиборд": [
+      {
+        "path": "data/fixtures/feedback-drafts/corpus.jsonl",
+        "id": "draft-025",
+        "gold": "https://host/калиборд",
+        "split": "dev"
+      },
+      {
+        "path": "experiments/020-mixed-generation/inputs/corpus.jsonl",
+        "id": "compose-019",
+        "gold": "https://host/калиборд",
+        "split": "dev"
+      }
+    ]
+  },
+  "scope": "exact source bytes only; authored examples are not independent ASR observations"
+}

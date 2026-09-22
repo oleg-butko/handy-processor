@@ -1,0 +1,233 @@
+[
+  {
+    "dataset": "reference-013",
+    "profile": "edit-1",
+    "records": 40,
+    "tp": 12,
+    "fp": 0,
+    "fn": 11,
+    "harmed_correct_input": 0,
+    "exact_records": 29,
+    "wer_after": 0.15942028985507245
+  },
+  {
+    "dataset": "reference-013",
+    "profile": "edit-2",
+    "records": 40,
+    "tp": 19,
+    "fp": 3,
+    "fn": 4,
+    "harmed_correct_input": 3,
+    "exact_records": 33,
+    "wer_after": 0.10144927536231885
+  },
+  {
+    "dataset": "reference-013",
+    "profile": "weighted-uniform",
+    "records": 40,
+    "tp": 12,
+    "fp": 0,
+    "fn": 11,
+    "harmed_correct_input": 0,
+    "exact_records": 29,
+    "wer_after": 0.15942028985507245
+  },
+  {
+    "dataset": "reference-013",
+    "profile": "weighted-pairs",
+    "records": 40,
+    "tp": 16,
+    "fp": 3,
+    "fn": 7,
+    "harmed_correct_input": 3,
+    "exact_records": 30,
+    "wer_after": 0.14492753623188406
+  },
+  {
+    "dataset": "reference-013",
+    "profile": "weighted-vowels",
+    "records": 40,
+    "tp": 17,
+    "fp": 3,
+    "fn": 6,
+    "harmed_correct_input": 3,
+    "exact_records": 31,
+    "wer_after": 0.13043478260869565
+  },
+  {
+    "dataset": "reference-013",
+    "profile": "weighted-wide",
+    "records": 40,
+    "tp": 21,
+    "fp": 3,
+    "fn": 2,
+    "harmed_correct_input": 3,
+    "exact_records": 35,
+    "wer_after": 0.07246376811594203
+  },
+  {
+    "dataset": "reference-013",
+    "profile": "weighted-gaps",
+    "records": 40,
+    "tp": 17,
+    "fp": 3,
+    "fn": 6,
+    "harmed_correct_input": 3,
+    "exact_records": 31,
+    "wer_after": 0.13043478260869565
+  },
+  {
+    "dataset": "user-reported",
+    "profile": "edit-1",
+    "records": 9,
+    "tp": 3,
+    "fp": 0,
+    "fn": 7,
+    "harmed_correct_input": 0,
+    "exact_records": 3,
+    "wer_after": 0.5294117647058824
+  },
+  {
+    "dataset": "user-reported",
+    "profile": "edit-2",
+    "records": 9,
+    "tp": 5,
+    "fp": 0,
+    "fn": 5,
+    "harmed_correct_input": 0,
+    "exact_records": 4,
+    "wer_after": 0.4117647058823529
+  },
+  {
+    "dataset": "user-reported",
+    "profile": "weighted-uniform",
+    "records": 9,
+    "tp": 3,
+    "fp": 0,
+    "fn": 7,
+    "harmed_correct_input": 0,
+    "exact_records": 3,
+    "wer_after": 0.5294117647058824
+  },
+  {
+    "dataset": "user-reported",
+    "profile": "weighted-pairs",
+    "records": 9,
+    "tp": 3,
+    "fp": 0,
+    "fn": 7,
+    "harmed_correct_input": 0,
+    "exact_records": 3,
+    "wer_after": 0.5294117647058824
+  },
+  {
+    "dataset": "user-reported",
+    "profile": "weighted-vowels",
+    "records": 9,
+    "tp": 3,
+    "fp": 0,
+    "fn": 7,
+    "harmed_correct_input": 0,
+    "exact_records": 3,
+    "wer_after": 0.5294117647058824
+  },
+  {
+    "dataset": "user-reported",
+    "profile": "weighted-wide",
+    "records": 9,
+    "tp": 4,
+    "fp": 0,
+    "fn": 6,
+    "harmed_correct_input": 0,
+    "exact_records": 4,
+    "wer_after": 0.4117647058823529
+  },
+  {
+    "dataset": "user-reported",
+    "profile": "weighted-gaps",
+    "records": 9,
+    "tp": 3,
+    "fp": 0,
+    "fn": 7,
+    "harmed_correct_input": 0,
+    "exact_records": 3,
+    "wer_after": 0.5294117647058824
+  },
+  {
+    "dataset": "additional-controls",
+    "profile": "edit-1",
+    "records": 57,
+    "tp": 12,
+    "fp": 1,
+    "fn": 9,
+    "harmed_correct_input": 1,
+    "exact_records": 48,
+    "wer_after": 0.06802721088435375
+  },
+  {
+    "dataset": "additional-controls",
+    "profile": "edit-2",
+    "records": 57,
+    "tp": 12,
+    "fp": 1,
+    "fn": 9,
+    "harmed_correct_input": 1,
+    "exact_records": 48,
+    "wer_after": 0.06802721088435375
+  },
+  {
+    "dataset": "additional-controls",
+    "profile": "weighted-uniform",
+    "records": 57,
+    "tp": 12,
+    "fp": 1,
+    "fn": 9,
+    "harmed_correct_input": 1,
+    "exact_records": 48,
+    "wer_after": 0.06802721088435375
+  },
+  {
+    "dataset": "additional-controls",
+    "profile": "weighted-pairs",
+    "records": 57,
+    "tp": 12,
+    "fp": 1,
+    "fn": 9,
+    "harmed_correct_input": 1,
+    "exact_records": 48,
+    "wer_after": 0.06802721088435375
+  },
+  {
+    "dataset": "additional-controls",
+    "profile": "weighted-vowels",
+    "records": 57,
+    "tp": 12,
+    "fp": 1,
+    "fn": 9,
+    "harmed_correct_input": 1,
+    "exact_records": 48,
+    "wer_after": 0.06802721088435375
+  },
+  {
+    "dataset": "additional-controls",
+    "profile": "weighted-wide",
+    "records": 57,
+    "tp": 12,
+    "fp": 1,
+    "fn": 9,
+    "harmed_correct_input": 1,
+    "exact_records": 48,
+    "wer_after": 0.06802721088435375
+  },
+  {
+    "dataset": "additional-controls",
+    "profile": "weighted-gaps",
+    "records": 57,
+    "tp": 12,
+    "fp": 1,
+    "fn": 9,
+    "harmed_correct_input": 1,
+    "exact_records": 48,
+    "wer_after": 0.06802721088435375
+  }
+]

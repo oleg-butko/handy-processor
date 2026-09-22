@@ -1,0 +1,23 @@
+{
+  "implementation_commit": "bc4c9457a2281f3a836682157284fdbecf86ab63",
+  "implementation_status": [],
+  "runtime_sha256": "1fa8889fc433cf79129ea2e675a1e4786d40cdccde3fb4102cf8af82637db6db",
+  "script_sha256": "fdba96d7728acb2e102ec33fa8f42b05facbedb1b9e72e00921f22ae65890f7d",
+  "helper_sha256": "5802ca027c8e4964070c5236aefa3eaf9e398097927f199a70bc1930d3d195e2",
+  "config_sha256": {
+    "edit-1": "c5d034d05c7999d5b713f894839474ef565c60ce3a256a2f6a43d28339bf67e7",
+    "edit-2": "cee9f1e2b784b4290f5bb5d542dd469343b93b905f644dd38e414791300badcc",
+    "weighted-uniform": "302eb9b2ee8eff90a92e8b5ea5a7d3c2cd56cb907358b953e8eba1efebc8dc02",
+    "weighted-pairs": "4b04af1e03214c2eb43825c6bf0de5e84db1a3490f21a49fcc8ba55905e51df4",
+    "weighted-vowels": "35acd9778c0307a4d05023cc0a45c0ae5bd5b59cdbdae27a0fe6f34cde46f3b6",
+    "weighted-wide": "59e2c8cec8b18366744532947e0319d740cc82cdb871d46a680a4bfb5faed191",
+    "weighted-gaps": "abc1a91e4749f41bbfb065d940e64954f0bb0397a762b9c6117f576cdc7cdc0b"
+  },
+  "corpus_sha256": {
+    "reference-013": "53499eb1dfeb38db114968bf3cfc2d22ced35756ec3b63fde75f3995dfcd6bc3",
+    "user-reported": "605df9d6a3b98130ade9c49bdacba8429655bcffa02d770446a4e37b57951fe2",
+    "additional-controls": "0ccfdf7f440b4943a245d6290d45b24f96b93a7937efef1370faa29e96a6cf5b"
+  },
+  "historical_profiles_equal": 14,
+  "claim": "frozen settings, retrospective authored controls, no runtime edits or threshold fitting; not an independent ASR test"
+}

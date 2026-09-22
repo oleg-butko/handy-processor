@@ -1,0 +1,9 @@
+{
+  "manifests": 21,
+  "hash_comparisons": 525,
+  "distinct_hashed_paths": 33,
+  "inventory_files_verified": 13,
+  "runtime_and_runner_hashes_verified": true,
+  "all_additional_final_text_and_edits_equal": true,
+  "verification_script_sha256": "f7029cece745e869d0db477be4eff09cdfba2ec15318a1adefe6c20b205295de"
+}

@@ -1,0 +1,68 @@
+{
+  "excluded": [
+    {
+      "path": "data/fixtures/term-families/corpus.jsonl",
+      "id": "family-001",
+      "source": "таб и табы",
+      "reason": "already_in_reference_or_selected"
+    },
+    {
+      "path": "data/fixtures/term-families/corpus.jsonl",
+      "id": "family-002",
+      "source": "слот слота слоте",
+      "reason": "already_in_reference_or_selected"
+    },
+    {
+      "path": "data/fixtures/term-families/corpus.jsonl",
+      "id": "family-004",
+      "source": "этабы",
+      "reason": "already_in_reference_or_selected"
+    },
+    {
+      "path": "data/fixtures/term-families/corpus.jsonl",
+      "id": "family-005",
+      "source": "свуты",
+      "reason": "already_in_reference_or_selected"
+    },
+    {
+      "path": "data/fixtures/term-families/corpus.jsonl",
+      "id": "family-006",
+      "source": "без снятия сваты",
+      "reason": "already_in_reference_or_selected"
+    },
+    {
+      "path": "data/fixtures/term-families/corpus.jsonl",
+      "id": "family-008",
+      "source": "сваты приехали",
+      "reason": "already_in_reference_or_selected"
+    },
+    {
+      "path": "data/fixtures/term-families/corpus.jsonl",
+      "id": "family-014",
+      "source": "слово этабы содержит ошибку",
+      "reason": "already_in_reference_or_selected"
+    },
+    {
+      "path": "data/fixtures/term-families/corpus.jsonl",
+      "id": "family-020",
+      "source": "https://host/этабы",
+      "reason": "already_in_reference_or_selected"
+    },
+    {
+      "path": "data/fixtures/term-families/corpus.jsonl",
+      "id": "family-021",
+      "source": "проковол колесо",
+      "reason": "already_in_reference_or_selected"
+    },
+    {
+      "path": "data/fixtures/term-families/corpus.jsonl",
+      "id": "family-022",
+      "source": "долгождать",
+      "reason": "already_in_reference_or_selected"
+    }
+  ],
+  "records": 57,
+  "gold_spans": 21,
+  "selection": "exact-source deduplication and removal of reference/user sources; no prediction-dependent filtering",
+  "limitation": "010/011 were available at design time; this is not a held-out test"
+}

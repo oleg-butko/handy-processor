@@ -1,0 +1,58 @@
+{
+  "dataset": "additional-controls",
+  "profiles": {
+    "edit-1": {
+      "candidate_appearances": 15,
+      "gates": {
+        "eligible": 13,
+        "known_changed_word_blocked": 2
+      }
+    },
+    "edit-2": {
+      "candidate_appearances": 40,
+      "gates": {
+        "eligible": 17,
+        "known_changed_word_blocked": 5,
+        "known_distance_limit": 18
+      }
+    },
+    "weighted-uniform": {
+      "candidate_appearances": 15,
+      "gates": {
+        "eligible": 13,
+        "known_changed_word_blocked": 2
+      }
+    },
+    "weighted-pairs": {
+      "candidate_appearances": 15,
+      "gates": {
+        "eligible": 13,
+        "known_changed_word_blocked": 2
+      }
+    },
+    "weighted-vowels": {
+      "candidate_appearances": 16,
+      "gates": {
+        "eligible": 13,
+        "known_changed_word_blocked": 3
+      }
+    },
+    "weighted-wide": {
+      "candidate_appearances": 25,
+      "gates": {
+        "eligible": 13,
+        "known_changed_word_blocked": 3,
+        "known_distance_limit": 9
+      }
+    },
+    "weighted-gaps": {
+      "candidate_appearances": 16,
+      "gates": {
+        "eligible": 13,
+        "known_changed_word_blocked": 3
+      }
+    }
+  },
+  "all_final_text_and_edits_equal": true,
+  "scope": "candidate appearances in decision traces, not unique terms or applied edits; not equivalence of algorithms"
+}

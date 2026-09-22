@@ -1,0 +1,497 @@
+{
+  "reference-013/edit-1": [
+    {
+      "id": "weighted-002",
+      "source": "клиппорт",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "клиппорт",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-004",
+      "source": "клипбар",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "клипбар",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-011",
+      "source": "нетосвон",
+      "gold": "недозвон",
+      "before": "недозвон",
+      "after": "нетосвон",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-012",
+      "source": "нидосвон",
+      "gold": "недозвон",
+      "before": "недозвон",
+      "after": "нидосвон",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-014",
+      "source": "бээнсэ",
+      "gold": "пнз",
+      "before": "пнз",
+      "after": "бээнсэ",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-017",
+      "source": "без снятия слоды",
+      "gold": "без снятия слота",
+      "before": "без снятия слота",
+      "after": "без снятия слоды",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-032",
+      "source": "слово клиппорт написано неверно",
+      "gold": "слово клиппорт написано неверно",
+      "before": "слово клипборд написано неверно",
+      "after": "слово клиппорт написано неверно",
+      "gained_tp": 0,
+      "lost_tp": 0,
+      "new_fp": 0,
+      "removed_fp": 1
+    },
+    {
+      "id": "weighted-033",
+      "source": "слово нетосвон придумано",
+      "gold": "слово нетосвон придумано",
+      "before": "слово недозвон придумано",
+      "after": "слово нетосвон придумано",
+      "gained_tp": 0,
+      "lost_tp": 0,
+      "new_fp": 0,
+      "removed_fp": 1
+    },
+    {
+      "id": "weighted-034",
+      "source": "упоминаем бээнсэ как ошибку",
+      "gold": "упоминаем бээнсэ как ошибку",
+      "before": "упоминаем пнз как ошибку",
+      "after": "упоминаем бээнсэ как ошибку",
+      "gained_tp": 0,
+      "lost_tp": 0,
+      "new_fp": 0,
+      "removed_fp": 1
+    },
+    {
+      "id": "weighted-040",
+      "source": "табы и клиппорт",
+      "gold": "табы и клипборд",
+      "before": "табы и клипборд",
+      "after": "табы и клиппорт",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    }
+  ],
+  "reference-013/edit-2": [],
+  "reference-013/weighted-uniform": [
+    {
+      "id": "weighted-002",
+      "source": "клиппорт",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "клиппорт",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-004",
+      "source": "клипбар",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "клипбар",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-011",
+      "source": "нетосвон",
+      "gold": "недозвон",
+      "before": "недозвон",
+      "after": "нетосвон",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-012",
+      "source": "нидосвон",
+      "gold": "недозвон",
+      "before": "недозвон",
+      "after": "нидосвон",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-014",
+      "source": "бээнсэ",
+      "gold": "пнз",
+      "before": "пнз",
+      "after": "бээнсэ",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-017",
+      "source": "без снятия слоды",
+      "gold": "без снятия слота",
+      "before": "без снятия слота",
+      "after": "без снятия слоды",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-032",
+      "source": "слово клиппорт написано неверно",
+      "gold": "слово клиппорт написано неверно",
+      "before": "слово клипборд написано неверно",
+      "after": "слово клиппорт написано неверно",
+      "gained_tp": 0,
+      "lost_tp": 0,
+      "new_fp": 0,
+      "removed_fp": 1
+    },
+    {
+      "id": "weighted-033",
+      "source": "слово нетосвон придумано",
+      "gold": "слово нетосвон придумано",
+      "before": "слово недозвон придумано",
+      "after": "слово нетосвон придумано",
+      "gained_tp": 0,
+      "lost_tp": 0,
+      "new_fp": 0,
+      "removed_fp": 1
+    },
+    {
+      "id": "weighted-034",
+      "source": "упоминаем бээнсэ как ошибку",
+      "gold": "упоминаем бээнсэ как ошибку",
+      "before": "упоминаем пнз как ошибку",
+      "after": "упоминаем бээнсэ как ошибку",
+      "gained_tp": 0,
+      "lost_tp": 0,
+      "new_fp": 0,
+      "removed_fp": 1
+    },
+    {
+      "id": "weighted-040",
+      "source": "табы и клиппорт",
+      "gold": "табы и клипборд",
+      "before": "табы и клипборд",
+      "after": "табы и клиппорт",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    }
+  ],
+  "reference-013/weighted-pairs": [
+    {
+      "id": "weighted-004",
+      "source": "клипбар",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "клипбар",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-012",
+      "source": "нидосвон",
+      "gold": "недозвон",
+      "before": "недозвон",
+      "after": "нидосвон",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-017",
+      "source": "без снятия слоды",
+      "gold": "без снятия слота",
+      "before": "без снятия слота",
+      "after": "без снятия слоды",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    }
+  ],
+  "reference-013/weighted-vowels": [
+    {
+      "id": "weighted-004",
+      "source": "клипбар",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "клипбар",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-017",
+      "source": "без снятия слоды",
+      "gold": "без снятия слота",
+      "before": "без снятия слота",
+      "after": "без снятия слоды",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    }
+  ],
+  "reference-013/weighted-wide": [
+    {
+      "id": "weighted-003",
+      "source": "клибпорт",
+      "gold": "клипборд",
+      "before": "клибпорт",
+      "after": "клипборд",
+      "gained_tp": 1,
+      "lost_tp": 0,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-007",
+      "source": "лакалхасд",
+      "gold": "локалхост",
+      "before": "лакалхасд",
+      "after": "локалхост",
+      "gained_tp": 1,
+      "lost_tp": 0,
+      "new_fp": 0,
+      "removed_fp": 0
+    }
+  ],
+  "reference-013/weighted-gaps": [
+    {
+      "id": "weighted-004",
+      "source": "клипбар",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "клипбар",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "weighted-017",
+      "source": "без снятия слоды",
+      "gold": "без снятия слота",
+      "before": "без снятия слота",
+      "after": "без снятия слоды",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    }
+  ],
+  "user-reported/edit-1": [
+    {
+      "id": "user-20260921-001",
+      "source": "калиборд",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "калиборд",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "user-20260921-005",
+      "source": "свуты и пнзэ",
+      "gold": "слот и пнз",
+      "before": "свуты и пнз",
+      "after": "свуты и пнзэ",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    }
+  ],
+  "user-reported/edit-2": [],
+  "user-reported/weighted-uniform": [
+    {
+      "id": "user-20260921-001",
+      "source": "калиборд",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "калиборд",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "user-20260921-005",
+      "source": "свуты и пнзэ",
+      "gold": "слот и пнз",
+      "before": "свуты и пнз",
+      "after": "свуты и пнзэ",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    }
+  ],
+  "user-reported/weighted-pairs": [
+    {
+      "id": "user-20260921-001",
+      "source": "калиборд",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "калиборд",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "user-20260921-005",
+      "source": "свуты и пнзэ",
+      "gold": "слот и пнз",
+      "before": "свуты и пнз",
+      "after": "свуты и пнзэ",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    }
+  ],
+  "user-reported/weighted-vowels": [
+    {
+      "id": "user-20260921-001",
+      "source": "калиборд",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "калиборд",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "user-20260921-005",
+      "source": "свуты и пнзэ",
+      "gold": "слот и пнз",
+      "before": "свуты и пнз",
+      "after": "свуты и пнзэ",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    }
+  ],
+  "user-reported/weighted-wide": [
+    {
+      "id": "user-20260921-001",
+      "source": "калиборд",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "калиборд",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "user-20260921-005",
+      "source": "свуты и пнзэ",
+      "gold": "слот и пнз",
+      "before": "свуты и пнз",
+      "after": "свуты и пнзэ",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "user-20260921-009",
+      "source": "недозвода клиента",
+      "gold": "недозвон до клиента",
+      "before": "недозвода клиента",
+      "after": "недозвон до клиента",
+      "gained_tp": 1,
+      "lost_tp": 0,
+      "new_fp": 0,
+      "removed_fp": 0
+    }
+  ],
+  "user-reported/weighted-gaps": [
+    {
+      "id": "user-20260921-001",
+      "source": "калиборд",
+      "gold": "клипборд",
+      "before": "клипборд",
+      "after": "калиборд",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    },
+    {
+      "id": "user-20260921-005",
+      "source": "свуты и пнзэ",
+      "gold": "слот и пнз",
+      "before": "свуты и пнз",
+      "after": "свуты и пнзэ",
+      "gained_tp": 0,
+      "lost_tp": 1,
+      "new_fp": 0,
+      "removed_fp": 0
+    }
+  ],
+  "additional-controls/edit-1": [],
+  "additional-controls/edit-2": [],
+  "additional-controls/weighted-uniform": [],
+  "additional-controls/weighted-pairs": [],
+  "additional-controls/weighted-vowels": [],
+  "additional-controls/weighted-wide": [],
+  "additional-controls/weighted-gaps": []
+}
