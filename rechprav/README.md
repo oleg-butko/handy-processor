@@ -440,6 +440,21 @@ python3 rechprav/scripts/run_publication_experiment.py rechprav/experiments/my-p
 Проверены конкурентные запросы, повторы и шесть точек SIGKILL. Runtime-приложение
 ещё не читает базу; загрузка engine и удержание внешних ресурсов — следующий этап.
 
+## Загруженный профиль и начатые запросы
+
+Reader удерживает проверенные ресурсы в памяти. При переключении старый запрос
+сохраняет свой engine/generation; ошибка загрузки оставляет прежний engine.
+
+```bash
+/home/user1/.local/bin/cargo build --manifest-path rechprav/Cargo.toml --release --locked --offline --example profile_reader --example profile_validate --example feedback_compose
+python3 rechprav/scripts/run_reader_experiment.py rechprav/experiments/my-reader-run
+```
+
+[Контракт и JSONL driver](../docs/rechprav/profile-reader.md),
+[опыт 019](experiments/019-profile-reader/report.md).
+Проверена модель Rc на одном потоке; reload в driver синхронен. Процессный мост,
+параллельный сервер, таймауты и бюджет памяти ещё требуют отдельных проверок.
+
 ## Организация файлов
 
 `src/` — библиотека и CLI; `tests/` — проверки поведения, безопасности вывода и метрик;

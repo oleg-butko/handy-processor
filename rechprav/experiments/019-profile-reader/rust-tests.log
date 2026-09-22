@@ -1,0 +1,236 @@
+
+running 2 tests
+test terms::weighted_tests::uniform_costs_equal_unicode_levenshtein_and_direction_is_explicit ... ok
+test terms::weighted_tests::weighted_cutoffs_match_full_matrix_exhaustively ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 13 tests
+test spelling_order_and_yo_collisions_are_deterministic ... ok
+test dotted_filenames_are_atomic_but_decimals_remain_numbers ... ok
+test transpositions_are_two_levenshtein_edits_not_one ... ok
+test evaluator_counts_wrong_candidate_as_both_fp_and_fn_and_harms_separately ... ok
+test changes_inside_unsupported_gold_spans_are_not_hidden_from_precision ... ok
+test review_wraps_on_both_sides_when_replacements_grow ... ok
+test long_replacement_and_source_share_one_token_across_visual_fragments ... ok
+test ambiguity_and_incomplete_search_never_authorize_a_replacement ... ok
+test protection_is_prioritized_and_real_words_are_never_replaced ... ok
+test edits_preserve_punctuation_whitespace_case_and_endings ... ok
+test config_paths_are_relative_to_config_and_unknown_keys_fail ... ok
+test resource_ablation_changes_only_the_intended_protection ... ok
+test trie_matches_exhaustive_reference_including_cyrillic_and_empty_queries ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+
+
+running 7 tests
+test invalid_baseline_config_does_not_create_output_directory ... ok
+test invalid_utf8_and_width_do_not_create_outputs ... ok
+test baseline_cli_corrects_with_config_and_exports_reproducible_resources ... ok
+test cli_review_preserves_bytes_and_refuses_existing_output ... ok
+test build_dict_is_sorted_reusable_and_does_not_overwrite ... ok
+test symlinks_and_hardlinks_cannot_overwrite_sources ... ok
+test prepare_refuses_overwrite_and_benchmark_refuses_pending ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s
+
+
+running 6 tests
+test form_removal_changes_protection_and_ambiguous_forms_keep_regardless_of_order ... ok
+test families_protect_base_and_forms_and_apply_form_contexts ... ok
+test one_weight_and_switch_control_all_forms_without_bypassing_context ... ok
+test load_exposes_resolved_inheritance_and_reads_changed_family_config ... ok
+test families_equal_handwritten_flat_entries_and_share_budget_limits ... ok
+test family_validation_catches_duplicates_inheritance_and_expanded_limits ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+
+running 8 tests
+test explicit_new_terms_cannot_evade_owners_and_deleted_owner_remains_missing ... ok
+test manual_definitions_are_preserved_and_feedback_is_routed_separately ... ok
+test retraction_removes_feedback_without_removing_manual_alias ... ok
+test invalid_bindings_and_term_id_collisions_are_errors ... ok
+test owner_weight_and_known_gate_apply_to_learned_alias ... ok
+test unsupported_modes_cues_and_disjoint_patterns_preserve_manual_profile ... ok
+test family_patterns_are_intersected_not_ored_and_exclusions_survive ... ok
+test global_set_term_and_binding_switches_do_not_resurrect_terms ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+
+running 9 tests
+test explicit_selection_requires_exact_utf8_reconstruction ... ok
+test invalid_journal_ids_forward_retractions_and_limits_fail_closed ... ok
+test minimal_utf8_change_context_and_disabled_draft_roundtrip ... ok
+test pure_insert_delete_selections_and_profile_protection_stay_review_only ... ok
+test unsupported_or_unconfirmed_edits_are_reviewed_not_learned ... ok
+test explicit_phrase_selection_cannot_change_runtime_preserved_edges ... ok
+test classification_forms_phrases_and_no_context_do_not_mutate_dictionary ... ok
+test scopes_conflicts_and_order_do_not_choose_a_winner ... ok
+test duplicates_repeated_evidence_retractions_and_readdition_are_recomputed ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+
+running 8 tests
+test environment_change_requires_review_even_if_the_same_proposal_survives ... ok
+test strict_schema_and_decision_budget_reject_invalid_input ... ok
+test old_prefix_cannot_be_rewritten_or_truncated_and_bad_proposals_fail ... ok
+test scopes_and_new_context_do_not_inherit_acceptance ... ok
+test acceptance_is_explicit_and_removed_after_last_approved_evidence ... ok
+test last_unique_decision_wins_duplicate_accept_does_not_reenable ... ok
+test unreviewed_conflicts_do_not_apply_but_two_accepted_targets_keep ... ok
+test partial_undo_keeps_other_reviewed_support_without_increasing_weight ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
+
+running 15 tests
+test correction_metrics_use_hand_computed_confusion_counts ... ok
+test line_reader_round_trips_all_endings_without_phantom_lines ... ok
+test wer_counts_insertions_deletions_and_compounds_not_zip ... ok
+test review_golden_preserves_source_and_one_marker_per_lexical_token ... ok
+test lexical_annotations_cannot_rewrite_punctuation ... ok
+test normalization_never_changes_source_ranges ... ok
+test pending_and_ambiguous_cannot_silently_become_gold ... ok
+test validator_rejects_bad_utf8_offsets_inconsistent_gold_and_overlaps ... ok
+test validation_checks_ids_groups_and_cross_source_gold_leakage ... ok
+test wrapping_ranges_cover_each_lexical_position_once_except_continuations ... ok
+test sensitive_atoms_and_mixed_case_are_protected ... ok
+test benchmarks_do_not_mix_synthetic_real_or_splits ... ok
+test curated_tokenization_is_lossless_and_mapped ... ok
+test corpus_fixture_gold_and_counts_are_consistent ... ok
+test wrapping_long_tokens_controls_and_combining_clusters_obeys_both_limits ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+
+running 10 tests
+test malformed_frequencies_and_nonfinite_or_unsafe_policies_are_rejected ... ok
+test bounded_log_prior_has_known_values_and_zero_weight_ablation ... ok
+test yo_collisions_use_max_deterministically_not_double_counting ... ok
+test unknown_and_explicit_zero_frequency_do_not_authorize_a_change ... ok
+test frequency_can_resolve_multiple_candidates_and_scores_are_explained ... ok
+test frequent_original_can_keep_even_with_one_candidate ... ok
+test tie_and_near_tie_keep_with_deterministic_alternatives ... ok
+test frequent_wrong_candidate_is_still_possible_without_context ... ok
+test config_loads_relative_frequency_path_and_hashes_exact_bytes ... ok
+test incomplete_search_and_protection_override_frequency ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+
+running 1 test
+test sha256_matches_independent_vectors_across_padding_and_stream_boundaries ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+
+running 6 tests
+test binary_format_is_deterministic_and_records_source_identity ... ok
+test incomplete_search_returns_identical_prefix_and_diagnostics ... ok
+test canonical_yo_spelling_long_forms_and_normalization_survive_roundtrip ... ok
+test corrupt_truncated_and_trailing_files_are_rejected_without_panics ... ok
+test cli_build_and_correction_preserve_output_and_reject_corrupt_resource ... ok
+test packed_matches_full_matrix_and_reference_traversal_exhaustively ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.38s
+
+
+running 4 tests
+test binary_search_matches_reference_for_all_small_keys_and_gaps ... ok
+test rejects_truncation_corruption_and_malformed_rows_even_with_valid_checksum ... ok
+test values_scores_missing_and_yo_are_exact_after_roundtrip ... ok
+test cli_build_preserves_decisions_refuses_overwrite_and_rejects_bad_resource ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+
+
+running 7 tests
+test phrase_metrics_score_minimal_spans_and_one_to_many_without_harming_preserved_words ... ok
+test phrase_budget_and_conflicts_do_not_authorize_partial_edits ... ok
+test preserve_known_words_allows_oov_edit_but_not_a_known_word_inside_the_actual_edit ... ok
+test phrase_output_splits_input_and_trims_unchanged_edge_words_with_original_bytes ... ok
+test correct_phrases_and_unsupported_pure_insertions_deletions_are_kept ... ok
+test phrase_validation_requires_explicit_kind_bounded_words_and_no_generator ... ok
+test phrase_weights_switches_and_known_caps_remain_independent_controls ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+
+running 7 tests
+test unready_reader_is_explicit_and_invalid_receipts_do_not_advance_it ... ok
+test pending_new_intent_cancels_load_without_replacing_an_existing_engine ... ok
+test loaded_resources_are_owned_and_not_reopened_for_texts_or_duplicate_snapshots ... ok
+test regressions_scope_and_same_generation_different_bytes_are_rejected ... ok
+test late_prepared_engine_cannot_replace_a_newer_target ... ok
+test old_handle_finishes_on_old_engine_and_drops_after_last_use ... ok
+test resource_failure_keeps_old_engine_but_invalidates_older_tickets ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.35s
+
+
+running 6 tests
+test malformed_or_unbounded_source_preferences_are_rejected ... ok
+test multiword_source_matches_token_boundaries_without_deleting_neighbors ... ok
+test source_penalty_changes_keep_threshold_but_not_competing_target_margin ... ok
+test switches_and_budget_drop_partial_edits_and_empty_defaults_preserve_debug ... ok
+test source_penalties_never_bypass_gates_protection_or_candidate_generation ... ok
+test contextual_maximum_does_not_sum_duplicates_and_respects_boundaries ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+
+running 29 tests
+test invalid_configs_reject_unsafe_targets_ranges_and_nonfinite_preferences ... ok
+test edit_mode_uses_pronunciation_distance_and_controls_thresholds ... ok
+test letter_generator_has_fixed_names_segmentations_and_bounded_expansion ... ok
+test known_word_policy_is_a_gate_that_boost_cannot_bypass_and_context_has_boundaries ... ok
+test context_is_optional_for_oov_unless_required_and_can_route_conflicting_sets ... ok
+test disabled_feature_set_and_term_are_identity_without_loading_resources ... ok
+test conflicting_sets_keep_ties_and_order_does_not_choose_winner ... ok
+test anchored_context_requires_both_adjacent_sides_without_crossing_boundaries ... ok
+test exhausted_search_discards_all_partial_edits ... ok
+test exclusion_vetoes_known_oov_and_positive_cues_even_at_high_boost ... ok
+test aliases_and_multiword_spans_preserve_surrounding_bytes_and_canonical_case ... ok
+test generated_and_manual_aliases_deduplicate_after_normalization_without_votes ... ok
+test generated_aliases_respect_disabled_scopes_conflicts_and_search_budget ... ok
+test malformed_or_unbounded_context_rules_fail_validation ... ok
+test generated_aliases_correct_all_splits_without_loosening_context_or_known_word_gates ... ok
+test span_distance_keeps_shorter_span_when_both_aliases_are_exact ... ok
+test pronunciation_manifest_exposes_active_normalized_aliases_and_provenance ... ok
+test known_distance_cap_blocks_fuzzy_real_words_but_keeps_oov_and_split_zero_distance ... ok
+test context_patterns_normalize_case_and_yo_using_baseline_mode ... ok
+test span_policies_do_not_bypass_target_conflicts_or_local_ambiguity ... ok
+test span_metrics_count_multiword_true_positive_and_harmed_correct_input_without_zip ... ok
+test pattern_work_consumes_budget_and_discards_previous_selected_spans ... ok
+test span_policy_serialization_preserves_legacy_metadata_and_rejects_typos ... ok
+test span_distance_repairs_whole_pronunciation_but_does_not_infer_semantic_boundaries ... ok
+test technical_atoms_ignore_domain_and_canonical_terms_remain_protected ... ok
+test overlapping_ranges_never_double_apply_or_bypass_a_conflict ... ok
+test span_policies_preserve_gates_protection_and_all_or_nothing_budget ... ok
+test pronunciation_validation_bounds_expanded_not_only_manual_aliases ... ok
+test cli_preserves_file_endings_provenance_and_refuses_existing_or_invalid_outputs ... ok
+
+test result: ok. 29 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s
+
+
+running 4 tests
+test raw_cap_prefers_feasible_alias_even_when_its_weighted_cost_is_higher ... ok
+test weighted_finds_new_double_error_but_keeps_raw_known_cap ... ok
+test weighted_config_is_optional_and_rejects_unbounded_or_ambiguous_costs ... ok
+test protections_context_conflicts_and_all_or_nothing_budget_remain ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

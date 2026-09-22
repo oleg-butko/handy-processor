@@ -1,0 +1,24 @@
+{
+  "artifact_audit": "97 response source manifests, six source hashes, three input snapshots, publication test sources and all four binaries verified",
+  "rust_tests": 142,
+  "node_tests": 18,
+  "first_plan_unchanged": true,
+  "additional_commands": [
+    {
+      "command": "/home/user1/.local/bin/cargo clippy --manifest-path rechprav/Cargo.toml --locked --offline --all-targets -- -D warnings",
+      "exit_code": 0
+    },
+    {
+      "command": "/home/user1/.local/bin/cargo fmt --manifest-path rechprav/Cargo.toml -- --check",
+      "exit_code": 0
+    },
+    {
+      "command": "/home/user1/.local/bin/cargo build --manifest-path rechprav/Cargo.toml --release --locked --offline --example profile_validate --example profile_reader",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -m py_compile rechprav/scripts/run_reader_experiment.py rechprav/scripts/run_publication_experiment.py",
+      "exit_code": 0
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "rust_tests": 142,
+  "reader_tests": 7,
+  "publication_tests": 18,
+  "requests": 97,
+  "analysis_comparisons": 80,
+  "all_equal_017": true,
+  "final_generation": 5,
+  "claim": "single-thread ownership/interleaving and unchanged authored dev predictions; no multithreaded server claim"
+}

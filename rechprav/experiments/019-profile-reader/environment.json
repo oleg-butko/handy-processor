@@ -1,0 +1,22 @@
+{
+  "implementation_commit": "e3bbaa3439fbe7da40b816d139970c2a4243e9d4",
+  "implementation_status": [],
+  "source_sha256": {
+    "examples/profile_reader.rs": "fb0af651fcaf108707280f8d39807ed4bc94828414599725516fe82b04d7de4a",
+    "examples/profile_validate.rs": "47a0103032e1e8f54824df19f1a234f861593411344615887c9628826b7f8b88",
+    "src/profile_reader.rs": "e7ca6e91e943fda717f1fbb42d4323f65411b821f2e797ffbeece4813b088a90",
+    "src/profile_validation.rs": "fd2abc12d479db485f2a505f9cccc95c5169e2fc757fc9d56e8c1406ebff2b1e",
+    "tests/profile_reader.rs": "28d5b34e3ae880ddd2fea24df1a2cc1a081103853611b1d07d88b3f08346b8fe",
+    "scripts/run_reader_experiment.py": "bce6205d8152d01fdea0a67d2c3cc59c9cb8de5587fe927b160cea643b4957e7"
+  },
+  "input_snapshot_sha256": {
+    "initial": "2d9fbddd572cc7f5b5aa47d8741dae4e2e8169de18754984731db9ec646b2d1e",
+    "disabled": "e809213c792db89cc14d12d1aed83d01bf182ef91e3545e0fd87029836c9c145",
+    "restored": "c4e185c62beda644de959e68d28c332dca68bbc78b32a279015bb3a00cc7f0a4"
+  },
+  "corpus_sha256": "372bd6e7c8577ace168c7ac44898b25949cd4c87656b99ed7ea225266b2de565",
+  "reader_binary_sha256": "b051fbb54353bf50e8cdb34fe83917454c7d8cb58882880cd191999903e1b253",
+  "validator_binary_sha256": "c61fed770b082aee47fd197121f1688419209f36fe871cfc2aac17a29cc6fe86",
+  "runtime_binary_sha256": "93199bc0ae9c94b7f5721ab4d5ce28384529bac9aebac9e9f9cd978555694e6b",
+  "composer_binary_sha256": "429d6786f03503718a2e4d7ed34cef79068db3a6d042ac79de5a65b9aa90d2b2"
+}

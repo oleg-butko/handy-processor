@@ -1,0 +1,482 @@
+[
+  {
+    "id": "compose-001",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-002",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-003",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-004",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-005",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-006",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-007",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-008",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-009",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-010",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-011",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-012",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-013",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-014",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-015",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-016",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-017",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-018",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-019",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-020",
+    "phase": "initial",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-001",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-002",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-003",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-004",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-005",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-006",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-007",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-008",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-009",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-010",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-011",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-012",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-013",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-014",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-015",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-016",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-017",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-018",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-019",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-020",
+    "phase": "old_after_reload",
+    "generation": 1,
+    "equal_017": true
+  },
+  {
+    "id": "compose-001",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-002",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-003",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-004",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-005",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-006",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-007",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-008",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-009",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-010",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-011",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-012",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-013",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-014",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-015",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-016",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-017",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-018",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-019",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-020",
+    "phase": "disabled",
+    "generation": 3,
+    "equal_017": true
+  },
+  {
+    "id": "compose-001",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-002",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-003",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-004",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-005",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-006",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-007",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-008",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-009",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-010",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-011",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-012",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-013",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-014",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-015",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-016",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-017",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-018",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-019",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  },
+  {
+    "id": "compose-020",
+    "phase": "restored",
+    "generation": 5,
+    "equal_017": true
+  }
+]

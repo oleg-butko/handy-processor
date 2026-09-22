@@ -98,6 +98,10 @@ scope, environment, resource metadata, compiled sources и hash самого в�
 Хранилище проверяет привязку ответа к переданным байтам. Бинарник берётся из
 фиксированного локального `target/release/examples/profile_validate`.
 
+С этапа 019 replay вынесен в `src/profile_validation.rs`, его hash также включён
+в ответ. Reader использует общий код, получая уже загруженный engine;
+[описание](profile-reader.md). Экспорт/формат запроса 018 не изменились.
+
 ## Запись, чтение и границы
 
 SQLite application_id=`0x52505031`, schema=1, DELETE journal, synchronous FULL.

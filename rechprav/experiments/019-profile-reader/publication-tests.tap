@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: publication preserves exact composed bytes; receipts never reactivate old generations
+ok 1 - publication preserves exact composed bytes; receipts never reactivate old generations
+  ---
+  duration_ms: 5568.555444
+  type: 'test'
+  ...
+# Subtest: new intent supersedes an older build, including intent arriving during validation
+ok 2 - new intent supersedes an older build, including intent arriving during validation
+  ---
+  duration_ms: 7750.416455
+  type: 'test'
+  ...
+# Subtest: hash tampering, forged outputs and provenance mismatches keep the previous snapshot
+ok 3 - hash tampering, forged outputs and provenance mismatches keep the previous snapshot
+  ---
+  duration_ms: 18304.306506
+  type: 'test'
+  ...
+# Subtest: request captures bytes independently of later edits to the caller's bundle
+ok 4 - request captures bytes independently of later edits to the caller's bundle
+  ---
+  duration_ms: 2362.418339
+  type: 'test'
+  ...
+# Subtest: input limits, explicit schema, scope, missing files and fatal UTF-8 decoding
+ok 5 - input limits, explicit schema, scope, missing files and fatal UTF-8 decoding
+  ---
+  duration_ms: 65.75735
+  type: 'test'
+  ...
+# Subtest: changed external dictionary is detected by replay without touching original resources
+ok 6 - changed external dictionary is detected by replay without touching original resources
+  ---
+  duration_ms: 2344.001025
+  type: 'test'
+  ...
+# Subtest: SIGKILL request-after-insert: restart sees a whole generation
+ok 7 - SIGKILL request-after-insert: restart sees a whole generation
+  ---
+  duration_ms: 4912.323221
+  type: 'test'
+  ...
+# Subtest: SIGKILL request-before-commit: restart sees a whole generation
+ok 8 - SIGKILL request-before-commit: restart sees a whole generation
+  ---
+  duration_ms: 4896.930852
+  type: 'test'
+  ...
+# Subtest: SIGKILL request-after-commit: restart sees a whole generation
+ok 9 - SIGKILL request-after-commit: restart sees a whole generation
+  ---
+  duration_ms: 5580.129429
+  type: 'test'
+  ...
+# Subtest: SIGKILL publish-after-insert: restart sees a whole generation
+ok 10 - SIGKILL publish-after-insert: restart sees a whole generation
+  ---
+  duration_ms: 8086.963896
+  type: 'test'
+  ...
+# Subtest: SIGKILL publish-before-commit: restart sees a whole generation
+ok 11 - SIGKILL publish-before-commit: restart sees a whole generation
+  ---
+  duration_ms: 8447.515866
+  type: 'test'
+  ...
+# Subtest: SIGKILL publish-after-commit: restart sees a whole generation
+ok 12 - SIGKILL publish-after-commit: restart sees a whole generation
+  ---
+  duration_ms: 5665.167795
+  type: 'test'
+  ...
+# Subtest: competing processes: different-requests
+ok 13 - competing processes: different-requests
+  ---
+  duration_ms: 165.9434
+  type: 'test'
+  ...
+# Subtest: competing processes: identical-requests
+ok 14 - competing processes: identical-requests
+  ---
+  duration_ms: 135.520803
+  type: 'test'
+  ...
+# Subtest: competing processes: same-publication
+ok 15 - competing processes: same-publication
+  ---
+  duration_ms: 2791.260592
+  type: 'test'
+  ...
+# Subtest: foreign SQLite and unsupported schema are refused before writes; creation is exclusive
+ok 16 - foreign SQLite and unsupported schema are refused before writes; creation is exclusive
+  ---
+  duration_ms: 3.482697
+  type: 'test'
+  ...
+# Subtest: stored bundle corruption is refused by reader and publisher
+ok 17 - stored bundle corruption is refused by reader and publisher
+  ---
+  duration_ms: 2363.993923
+  type: 'test'
+  ...
+# Subtest: request budget is bounded and duplicate delivery remains possible at the limit
+ok 18 - request budget is bounded and duplicate delivery remains possible at the limit
+  ---
+  duration_ms: 64.356565
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 79686.417238
