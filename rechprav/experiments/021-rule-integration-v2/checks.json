@@ -1,0 +1,44 @@
+{
+  "implementation_commit": "84e1f8490f5122e3468aa3926bdab85779e9352b",
+  "summary_resource_and_source_hashes_verified": 10,
+  "initial_and_final_predictions_byte_equal": true,
+  "checks": [
+    {
+      "command": "npm run build",
+      "result": "passed; Vite reports >700 kB chunk size warning"
+    },
+    {
+      "command": "node --test dist/*.test.js",
+      "result": "92 passed before strict worker snapshot validation was added"
+    },
+    {
+      "command": "npm run build:server && npm run typecheck",
+      "result": "passed after strict snapshot validation"
+    },
+    {
+      "command": "node --test dist/correction.test.js dist/app.test.js dist/transformation-log.test.js",
+      "result": "31 passed after strict validation, including 6 correction integration tests"
+    },
+    {
+      "command": "node --test ui/tests/templates.browser.test.mjs",
+      "result": "7 passed as part of combined browser run; unchanged after subsequent correction layout fixes"
+    },
+    {
+      "command": "CORRECTION_SCREENSHOT=/tmp/handy-correction-history.png node --test ui/tests/correction.browser.test.mjs",
+      "result": "1 passed after mobile width assertions and layout fixes; screenshot inspected"
+    },
+    {
+      "command": "npm run test:packaging",
+      "result": "2 passed; existing portable packaging, not a packaged correction deployment test"
+    },
+    {
+      "command": "/home/user1/.local/bin/cargo clippy --manifest-path rechprav/Cargo.toml --locked --offline --example correction_worker -- -D warnings",
+      "result": "passed"
+    },
+    {
+      "command": "/home/user1/.local/bin/cargo fmt --manifest-path rechprav/Cargo.toml -- --check",
+      "result": "passed"
+    }
+  ],
+  "scope": "isolated test databases and localhost servers; no changes to live user data/services; no network downloads"
+}

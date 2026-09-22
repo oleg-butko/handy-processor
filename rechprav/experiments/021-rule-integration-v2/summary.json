@@ -1,0 +1,45 @@
+{
+  "scope": "Integration check on known development examples, not independent quality evidence; gold is formatted by existing rules; corpora are not pooled",
+  "profiles": [
+    {
+      "dataset": "user-reported",
+      "records": 9,
+      "exactBefore": 0,
+      "exactAfter": 9,
+      "harmedCorrectRows": 0
+    },
+    {
+      "dataset": "phrase-controls",
+      "records": 43,
+      "exactBefore": 30,
+      "exactAfter": 34,
+      "harmedCorrectRows": 3
+    },
+    {
+      "dataset": "family-controls",
+      "records": 24,
+      "exactBefore": 13,
+      "exactAfter": 21,
+      "harmedCorrectRows": 3
+    }
+  ],
+  "worker": {
+    "state": "ready",
+    "profile": "e5cd6c0c37f07c132765c9da62cb07e8b48b84ba0b935e406d31168b1d7fa7a6",
+    "config": "/home/user1/handy-processor/rechprav/handy-terms.toml",
+    "error": null
+  },
+  "commit": "84e1f8490f5122e3468aa3926bdab85779e9352b",
+  "hashes": {
+    "/home/user1/handy-processor/rechprav/target/release/examples/correction_worker": "42bc5b9c2b4c81ee2ac5fc68c910158c241022bfbc56d10fe3989cf327fb0956",
+    "/home/user1/handy-processor/rechprav/handy-terms.toml": "aa6a3c5422d47a453974a001ddf5d0da6fa2f9c9fe6c52b5deddd1fde233de96",
+    "rechprav/handy-dictionary.toml": "ac0702dbbd944b079b1091b6af2889f9bc55fc325a5e7f2d7190871d7e9ebc42",
+    "rechprav/artifacts/opencorpora-wordfreq/dictionary.rpt": "2435885729fd1f05fe109ddf8564df2f6fb33b6731361fce97f853b9e5263619",
+    "rechprav/data/user-examples/2026-09-21/corpus.jsonl": "605df9d6a3b98130ade9c49bdacba8429655bcffa02d770446a4e37b57951fe2",
+    "rechprav/data/fixtures/user-phrases/corpus.jsonl": "3ec707ddbcadf779c525c3fa03e5618ccb347b8019210e0c75312e0799017f21",
+    "rechprav/data/fixtures/term-families/corpus.jsonl": "c3e44b15eeef9707ee74c4aa92191fd6d6e978a86d0492c2a91c8d66bee9b597",
+    "rechprav/examples/correction_worker.rs": "b6681cd7468179ea49de016fc0a55a3062124174710b88cfa06f3af335a3de24",
+    "src/correction-worker.ts": "002b41e2313c0bd5b11ad91e089defd2e98e810ac4567b84f26c1b60f79506ee",
+    "src/transform.ts": "e9e2a4e87904e59cea14331407ef2f0b9a8b557ca30a35345ec25fcf30cce006"
+  }
+}
