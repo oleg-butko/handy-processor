@@ -1,0 +1,49 @@
+{
+  "implementation_commit": "b9dbe0e13c6edf63cfaaf446dce5762f39c5d285",
+  "checks": [
+    {
+      "name": "server-tests",
+      "command": [
+        "node",
+        "--test",
+        "dist/managed-lifecycle.test.js",
+        "dist/correction.test.js",
+        "dist/transformation-context.test.js",
+        "dist/rule-settings.test.js",
+        "dist/server-process.test.js",
+        "dist/app.test.js",
+        "dist/diagnostic-log.test.js",
+        "dist/transformation-log.test.js",
+        "dist/transform.test.js",
+        "dist/russian-numerals.test.js",
+        "dist/templates.test.js",
+        "dist/runtime-config.test.js",
+        "dist/editor-sessions.test.js",
+        "dist/web-ui-assets.test.js",
+        "dist/build-info.test.js"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "browser-tests",
+      "command": [
+        "node",
+        "--test",
+        "ui/tests/correction.browser.test.mjs",
+        "ui/tests/templates.browser.test.mjs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "corpus_predictions_byte_equal_to_021_v2": true,
+  "corpus_resource_hashes_verified": 10
+}

@@ -1,0 +1,6 @@
+npm notice run handy-processor@0.1.0 typecheck
+npm notice run npm run typecheck:server && npm run typecheck:ui
+npm notice run handy-processor@0.1.0 typecheck:server
+npm notice run tsc -p tsconfig.json --noEmit
+npm notice run handy-processor@0.1.0 typecheck:ui
+npm notice run tsc -p ui/tsconfig.json --noEmit
