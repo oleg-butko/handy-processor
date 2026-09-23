@@ -1,0 +1,2 @@
+npm notice run handy-processor@0.1.0 build:server
+npm notice run tsc -p tsconfig.json

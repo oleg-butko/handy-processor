@@ -153,6 +153,10 @@ class CorrectionProcess implements TranscriptionCorrector {
 
   async analyze(text: string): Promise<CorrectionOutput> {
     if (Buffer.byteLength(text) > 16384) throw new Error("Коррекция ограничена 16 КиБ текста за запрос");
+    // JSON can carry lone UTF-16 surrogates, but Rust Strings cannot. Reject only
+    // this request before it can terminate the shared worker and its whole queue.
+    // In Unicode mode this matches lone surrogates, not valid pairs (e.g. emoji).
+    if (/\p{Surrogate}/u.test(text)) throw new Error("Некорректный Unicode в запросе коррекции");
     if (this.#waiting >= (this.#options.maxPending ?? 8)) throw new Error("Очередь корректора заполнена");
     this.#waiting++;
     try {
@@ -222,6 +226,10 @@ export class CorrectionWorker implements TranscriptionCorrector {
     try {
       await candidate.load();
       if (this.#closed) throw new Error("Корректор остановлен");
+      // A later line in the same stdout batch can fail after resolving ready,
+      // before this continuation runs. Never replace the active process with it.
+      const loaded = candidate.status();
+      if (loaded.state !== "ready") throw new Error(loaded.error ?? "Корректор недоступен");
       const previous = this.#active;
       this.#active = candidate;
       this.#candidate = undefined;

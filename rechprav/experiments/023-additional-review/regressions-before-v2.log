@@ -1,0 +1,45 @@
+✖ malformed Unicode is isolated from concurrent requests to the real worker (51.772108ms)
+✖ reload rejects a candidate that fails in the same batch as its ready message (163.659386ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 433.13184
+
+✖ failing tests:
+
+test at dist/correction.test.js:166:1
+✖ malformed Unicode is isolated from concurrent requests to the real worker (51.772108ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Unicode/. Input:
+  
+  'Error: Корректор завершился: Error: unexpected end of hex escape at line 1 column 23'
+  
+      at TestContext.<anonymous> (file:///home/user1/handy-processor/dist/correction.test.js:174:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Error: Корректор завершился: Error: unexpected end of hex escape at line 1 column 23',
+    expected: /Unicode/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at dist/correction.test.js:184:1
+✖ reload rejects a candidate that fails in the same batch as its ready message (163.659386ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///home/user1/handy-processor/dist/correction.test.js:203:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Некорректный ответ/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

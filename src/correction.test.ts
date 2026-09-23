@@ -168,6 +168,50 @@ test("invalid reload keeps the working profile and subsequent corrections availa
   assert.equal((await worker.analyze("калиборд")).text, "клипборд");
 });
 
+test("malformed Unicode is isolated from concurrent requests to the real worker", async (t) => {
+  const { worker } = fixture(t);
+  const before = await worker.analyze("калиборд");
+  for (const invalid of ["\ud800", "\udfff", "\ud800текст\udc00"]) {
+    const [rejected, healthy] = await Promise.allSettled([
+      worker.analyze(invalid), worker.analyze("калиборд 😀"),
+    ]);
+    assert.equal(rejected.status, "rejected");
+    assert.match(String(rejected.reason), /Unicode/);
+    assert.equal(healthy.status, "fulfilled");
+    assert.equal(healthy.value.text, "клипборд 😀");
+    assert.equal(worker.status().state, "ready");
+    assert.equal(worker.status().profile, before.trace.profile);
+    const skipped = await transformTranscriptionAsync(invalid, new Set([ids.correction]), undefined, worker);
+    assert.equal(skipped.text, invalid);
+    assert.equal(skipped.appliedRules[0]?.outcome, "skipped");
+  }
+});
+
+test("reload rejects a candidate that fails in the same batch as its ready message", async (t) => {
+  const { directory } = fixture(t);
+  const fake = join(directory, "ready-then-broken.mjs");
+  const config = join(directory, "mode.txt");
+  writeFileSync(config, "healthy");
+  writeFileSync(fake, `import {readFileSync} from 'node:fs';
+    import {createInterface} from 'node:readline';
+    const profile='process-'+process.pid;
+    const ready=JSON.stringify({ready:true,protocol:1,profile})+'\\n';
+    process.stdout.write(ready+(readFileSync(process.argv[2],'utf8')==='broken'?'{}\\n':''));
+    createInterface({input:process.stdin}).on('line',line=>{
+      const q=JSON.parse(line);
+      console.log(JSON.stringify({id:q.id,text:q.text,trace:{schemaVersion:1,profile,complete:true,
+        decisions:[],minScore:3,minMargin:1,omittedDecisions:0,omittedCandidates:0}}));
+    });`);
+  const worker = new CorrectionWorker({ executable: process.execPath, arguments: [fake], config, timeoutMs: 1000 });
+  t.after(() => worker.close());
+  const before = await worker.analyze("до перезагрузки");
+  writeFileSync(config, "broken");
+  await assert.rejects(worker.reload(), /Некорректный ответ/);
+  assert.equal(worker.status().state, "ready");
+  assert.equal(worker.status().profile, before.trace.profile);
+  assert.equal((await worker.analyze("после ошибки")).trace.profile, before.trace.profile);
+});
+
 test("synchronous spawn errors do not leave later requests waiting forever", async () => {
   const worker = new CorrectionWorker({ executable: "", config: "unused", timeoutMs: 100 });
   try {

@@ -1,0 +1,20 @@
+✔ real worker: one decision for overlapping methods, scores, context and original-case protection (59.431504ms)
+✔ real worker: conflict keeps input, changed weights require reload, incomplete search applies nothing (85.423017ms)
+✔ HTTP toggle and persisted explanations survive SQLite reopening and profile changes (176.546438ms)
+✔ unavailable worker and oversized input preserve text and leave formatting available (10.004373ms)
+✔ bounded queue and timeout reject all pending work; a later request starts a fresh process (682.190033ms)
+✔ worker crash and malformed explanation cannot enter persisted history as a successful correction (195.754085ms)
+✔ invalid reload keeps the working profile and subsequent corrections available (57.324667ms)
+✔ malformed Unicode is isolated from concurrent requests to the real worker (34.810047ms)
+✔ reload rejects a candidate that fails in the same batch as its ready message (198.761597ms)
+✔ synchronous spawn errors do not leave later requests waiting forever (3.068028ms)
+✔ valid short input may expand beyond 32768 characters without discarding all corrections (50.430393ms)
+✔ reload isolates generations, keeps in-flight results, and bounds concurrent replacements (1638.19778ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3453.164007

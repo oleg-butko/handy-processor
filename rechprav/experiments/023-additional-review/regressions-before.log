@@ -1,0 +1,49 @@
+✖ malformed Unicode is isolated from concurrent requests to the real worker (46.647103ms)
+✖ reload rejects a candidate that fails in the same batch as its ready message (172.125911ms)
+ℹ Error: Test "malformed Unicode is isolated from concurrent requests to the real worker" at dist/correction.test.js:166:1 generated asynchronous activity after the test ended. This activity created the error "Error: Корректор завершился: Error: unexpected end of hex escape at line 1 column 23" and would have caused the test to fail, but instead triggered an unhandledRejection event.
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 420.929424
+
+✖ failing tests:
+
+test at dist/correction.test.js:166:1
+✖ malformed Unicode is isolated from concurrent requests to the real worker (46.647103ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Unicode/. Input:
+  
+  'Error: Корректор завершился: Error: unexpected end of hex escape at line 1 column 23'
+  
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///home/user1/handy-processor/dist/correction.test.js:172:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Корректор завершился: Error: unexpected end of hex escape at line 1 column 23
+        at ChildProcess.<anonymous> (file:///home/user1/handy-processor/dist/correction-worker.js:92:28)
+        at ChildProcess.emit (node:events:509:28)
+        at ChildProcess._handle.onexit (node:internal/child_process:295:12),
+    expected: /Unicode/,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at dist/correction.test.js:181:1
+✖ reload rejects a candidate that fails in the same batch as its ready message (172.125911ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///home/user1/handy-processor/dist/correction.test.js:200:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Некорректный ответ/,
+    operator: 'rejects',
+    diff: 'simple'
+  }
