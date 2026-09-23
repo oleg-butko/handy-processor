@@ -1,0 +1,5 @@
+npm notice run handy-processor@0.1.0 archive:sources
+npm notice run python3 scripts/create_source_archive.py
+Source archive created: /home/user1/handy-processor/archive/handy-processor-sources-20260923-064246.zip
+Size: 31.16 MiB
+elapsed_seconds=2.894

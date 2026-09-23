@@ -210,7 +210,9 @@ def create_source_archive() -> Path:
             temporary,
             mode="x",
             compression=ZIP_DEFLATED,
-            compresslevel=9,
+            # The 118 MiB dictionary makes level 9 much slower for little gain.
+            # Keep standard DEFLATE and full validation, favor fast source updates.
+            compresslevel=1,
         ) as archive:
             for source, name in entries:
                 archive.write(source, arcname=name)
