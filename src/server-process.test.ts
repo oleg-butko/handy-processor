@@ -27,7 +27,7 @@ async function reservePort(): Promise<number> {
   return port;
 }
 
-async function startManagedServer(): Promise<ManagedServer> {
+async function startManagedServer(stallCorrection = false): Promise<ManagedServer> {
   const directory = mkdtempSync(join(tmpdir(), "handy-processor-managed-"));
   const port = await reservePort();
   writeFileSync(
@@ -35,6 +35,13 @@ async function startManagedServer(): Promise<ManagedServer> {
     `${JSON.stringify({ port })}\n`,
     "utf8",
   );
+  const stalledWorker = join(directory, "stalled-worker.mjs");
+  if (stallCorrection) writeFileSync(stalledWorker, `
+    import { writeFileSync } from 'node:fs';
+    writeFileSync(${JSON.stringify(join(directory, "worker-started"))}, 'started');
+    process.stdin.resume(); process.stdin.on('end', () => process.exit(0));
+    setInterval(() => {}, 1000);
+  `);
 
   const child = spawn(
     process.execPath,
@@ -44,6 +51,10 @@ async function startManagedServer(): Promise<ManagedServer> {
       env: {
         ...process.env,
         HANDY_PROCESSOR_RUNTIME_DIR: directory,
+        ...(stallCorrection ? {
+          HANDY_PROCESSOR_CORRECTION_BINARY: process.execPath,
+          HANDY_PROCESSOR_CORRECTION_CONFIG: stalledWorker,
+        } : {}),
       },
       stdio: ["pipe", "pipe", "pipe"],
     },
@@ -120,6 +131,44 @@ async function exerciseManagedShutdown(mode: "command" | "eof"): Promise<void> {
 }
 
 describe("managed server process", () => {
+  it("cancels a stalled correction before waiting for HTTP requests to drain", async () => {
+    const server = await startManagedServer(true);
+    let response: Promise<Response> | undefined;
+    let timer: NodeJS.Timeout | undefined;
+    try {
+      await fetch(`${server.url}/api/rules/recognition.terms-and-phrases`, {
+        method: "PATCH", headers: { "content-type": "application/json" }, body: '{"enabled":true}',
+      });
+      response = fetch(`${server.url}/v1/chat/completions`, {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ messages: [{ role: "user", content: "калиборд" }] }),
+      });
+      void response.catch(() => {});
+      const deadline = Date.now() + 2000;
+      while (!existsSync(join(server.directory, "worker-started")) && Date.now() < deadline) {
+        await new Promise(resolve => setTimeout(resolve, 20));
+      }
+      assert.ok(existsSync(join(server.directory, "worker-started")));
+      const exit = once(server.child, "exit");
+      server.child.stdin.write("shutdown\n");
+      const result = await Promise.race([exit, new Promise(resolve => {
+        timer = setTimeout(() => resolve("hung"), 2000);
+      })]);
+      assert.notEqual(result, "hung", server.output.join(""));
+      assert.equal((result as [number | null])[0], 0);
+      assert.equal((await (await response).json()).choices[0].message.content, "калиборд");
+    } finally {
+      clearTimeout(timer);
+      if (server.child.exitCode === null && server.child.signalCode === null) {
+        const exit = once(server.child, "exit");
+        server.child.kill("SIGKILL");
+        await exit;
+      }
+      await response?.catch(() => {});
+      rmSync(server.directory, { recursive: true, force: true });
+    }
+  });
+
   it("shuts down on the launcher command", async () => {
     await exerciseManagedShutdown("command");
   });

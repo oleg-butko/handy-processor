@@ -47,6 +47,11 @@ const handleRequest = createRequestHandler({
 });
 
 const server = createServer((request, response) => {
+  response.once("finish", () => {
+    // A response may become idle only after shutdown has already begun.
+    // Reap it after HTTP finishes updating the socket's active/idle state.
+    if (stopping) setImmediate(() => server.closeIdleConnections());
+  });
   void handleRequest(request, response);
 });
 
@@ -71,6 +76,9 @@ function requestShutdown(reason: string): void {
 
   stopping = true;
   managedInput?.stop();
+  // Release requests waiting for startup/analysis before server.close waits
+  // for those same HTTP requests. Keep SQLite open until responses are logged.
+  correctionWorker.close();
   console.log(`Stopping Handy Processor: ${reason}`);
 
   server.close((error) => {

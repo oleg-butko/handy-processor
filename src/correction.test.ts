@@ -157,3 +157,73 @@ test("worker crash and malformed explanation cannot enter persisted history as a
     } finally { worker.close(); }
   }
 });
+
+test("invalid reload keeps the working profile and subsequent corrections available", async (t) => {
+  const { worker, config } = fixture(t);
+  const before = await worker.analyze("калиборд");
+  writeFileSync(config, "invalid toml [");
+  await assert.rejects(worker.reload());
+  assert.equal(worker.status().state, "ready");
+  assert.equal(worker.status().profile, before.trace.profile);
+  assert.equal((await worker.analyze("калиборд")).text, "клипборд");
+});
+
+test("synchronous spawn errors do not leave later requests waiting forever", async () => {
+  const worker = new CorrectionWorker({ executable: "", config: "unused", timeoutMs: 100 });
+  try {
+    await assert.rejects(worker.analyze("первый"));
+    let timer: NodeJS.Timeout | undefined;
+    const second = worker.analyze("второй").then(() => "resolved", () => "rejected");
+    const result = await Promise.race([second, new Promise<string>(resolve => {
+      timer = setTimeout(() => resolve("hung"), 250);
+    })]);
+    clearTimeout(timer);
+    assert.equal(result, "rejected");
+  } finally { worker.close(); }
+});
+
+test("valid short input may expand beyond 32768 characters without discarding all corrections", async (t) => {
+  const { worker, config } = fixture(t);
+  const canonical = "слот".repeat(16);
+  writeFileSync(config, `baseline_config="dictionary.toml"\nenabled=true\n[[sets]]\nid="long"\n[[sets.terms]]\nid="long"\ncanonical="${canonical}"\naliases=["я"]\ngeneration="exact"\nknown_words="always"\nboost=1.0\n`);
+  const text = Array(600).fill("я").join(" ");
+  const result = await worker.analyze(text);
+  assert.equal(result.text, Array(600).fill(canonical).join(" "));
+  assert.ok(result.trace.omittedDecisions > 0);
+});
+
+test("reload isolates generations, keeps in-flight results, and bounds concurrent replacements", async (t) => {
+  const { directory } = fixture(t);
+  const fake = join(directory, "generations.mjs");
+  const config = join(directory, "generation.json");
+  writeFileSync(fake, `import {readFileSync} from 'node:fs';
+    const config=JSON.parse(readFileSync(process.argv[2], 'utf8'));
+    setTimeout(()=>console.log(JSON.stringify({ready:true,protocol:1,profile:config.profile})),config.delay);
+    let buffer=''; process.stdin.setEncoding('utf8'); process.stdin.on('data',chunk=>{
+      buffer+=chunk; let end; while((end=buffer.indexOf('\\n'))>=0){
+        const q=JSON.parse(buffer.slice(0,end)); buffer=buffer.slice(end+1);
+        setTimeout(()=>console.log(JSON.stringify({id:q.id,text:q.text,trace:{schemaVersion:1,profile:config.profile,complete:true,decisions:[],minScore:3,minMargin:1,omittedDecisions:0,omittedCandidates:0}})),q.text==='slow'?500:0);
+      }
+    });`);
+  writeFileSync(config, JSON.stringify({ profile: "old", delay: 0 }));
+  const worker = new CorrectionWorker({ executable: process.execPath, arguments: [fake], config, timeoutMs: 1000, maxPending: 1 });
+  t.after(() => worker.close());
+  assert.equal((await worker.analyze("warm")).trace.profile, "old");
+  writeFileSync(config, JSON.stringify({ profile: "new", delay: 100 }));
+  const reload = worker.reload();
+  await assert.rejects(worker.reload(), /Дождитесь/);
+  const oldRequest = worker.analyze("slow");
+  await reload;
+  assert.equal(worker.status().profile, "new");
+  await assert.rejects(worker.analyze("over capacity"), /Очередь/);
+  await assert.rejects(worker.reload(), /Дождитесь/);
+  assert.equal((await oldRequest).trace.profile, "old");
+  assert.equal((await worker.analyze("fresh")).trace.profile, "new");
+  writeFileSync(config, JSON.stringify({ profile: "stalled", delay: 10000 }));
+  await assert.rejects(worker.reload(), /время загрузки/);
+  assert.equal((await worker.analyze("still fresh")).trace.profile, "new");
+  const closing = worker.reload();
+  worker.close();
+  await assert.rejects(closing, /остановлен/);
+  await assert.rejects(worker.analyze("closed"), /остановлен/);
+});

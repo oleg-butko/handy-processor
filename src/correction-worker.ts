@@ -26,8 +26,8 @@ export function correctionWorkerOptions(directory: string): CorrectionWorkerOpti
   };
 }
 
-/** One warm process, bounded in-flight work, fail-open only at the pipeline boundary. */
-export class CorrectionWorker implements TranscriptionCorrector {
+/** One process; lifecycle callbacks only affect their own generation. */
+class CorrectionProcess implements TranscriptionCorrector {
   readonly #options: CorrectionWorkerOptions;
   readonly #pending = new Map<number, Pending>();
   #child: ChildProcessWithoutNullStreams | undefined;
@@ -42,8 +42,18 @@ export class CorrectionWorker implements TranscriptionCorrector {
   #closed = false;
   #profile: string | null = null;
   #error: string | null = null;
+  readonly #idleWaiters: (() => void)[] = [];
 
   constructor(options: CorrectionWorkerOptions) { this.#options = options; }
+
+  get busy(): boolean { return this.#waiting > 0; }
+
+  whenIdle(): Promise<void> {
+    if (!this.busy) return Promise.resolve();
+    return new Promise(resolve => this.#idleWaiters.push(resolve));
+  }
+
+  load(): Promise<void> { return this.#start(); }
 
   status() {
     return { state: this.#profile ? "ready" : this.#child ? "loading" : "stopped",
@@ -78,14 +88,24 @@ export class CorrectionWorker implements TranscriptionCorrector {
       this.#readyReject = reject;
     });
     const ready = this.#ready;
-    const child = spawn(this.#options.executable,
-      [...(this.#options.arguments ?? []), this.#options.config], { stdio: "pipe", windowsHide: true });
+    let child: ChildProcessWithoutNullStreams;
+    try {
+      child = spawn(this.#options.executable,
+        [...(this.#options.arguments ?? []), this.#options.config], { stdio: "pipe", windowsHide: true });
+    } catch (error) {
+      // spawn also throws synchronously (e.g. empty executable or NUL in args).
+      // Reject the shared startup promise instead of leaving it pending forever.
+      this.#fail(error instanceof Error ? error : new Error(String(error)));
+      return ready;
+    }
     this.#child = child;
     this.#startupTimer = setTimeout(() => this.#fail(new Error("Истекло время загрузки корректора")),
       this.#options.timeoutMs ?? 30_000);
     child.stdout.setEncoding("utf8");
     child.stderr.setEncoding("utf8");
-    child.stderr.on("data", (part: string) => { this.#stderr = (this.#stderr + part).slice(-2000); });
+    child.stderr.on("data", (part: string) => {
+      if (this.#child === child) this.#stderr = (this.#stderr + part).slice(-2000);
+    });
     child.on("error", (error) => { if (this.#child === child) this.#fail(error); });
     child.stdin.on("error", (error) => { if (this.#child === child) this.#fail(error); });
     child.on("exit", () => {
@@ -104,7 +124,8 @@ export class CorrectionWorker implements TranscriptionCorrector {
         this.#buffer = this.#buffer.slice(end + 1);
         try {
           const reply = JSON.parse(line);
-          if (reply.ready === true && reply.protocol === 1 && typeof reply.profile === "string" && this.#profile === null) {
+          if (reply.ready === true && reply.protocol === 1 && typeof reply.profile === "string" &&
+              reply.profile.length > 0 && reply.profile.length <= 128 && this.#profile === null) {
             this.#profile = reply.profile;
             this.#error = null;
             clearTimeout(this.#startupTimer);
@@ -146,17 +167,83 @@ export class CorrectionWorker implements TranscriptionCorrector {
         this.#pending.set(id, { resolve, reject, timer });
         child.stdin.write(line);
       });
-    } finally { this.#waiting--; }
-  }
-
-  async reload(): Promise<void> {
-    if (this.#waiting > 0) throw new Error("Дождитесь завершения текущей коррекции");
-    this.#fail(new Error("Профиль перезагружается"));
-    await this.#start();
+    } finally {
+      this.#waiting--;
+      if (!this.busy) for (const resolve of this.#idleWaiters.splice(0)) resolve();
+    }
   }
 
   close(): void {
     this.#closed = true;
     this.#fail(new Error("Корректор остановлен"));
+  }
+}
+
+/** Keep the loaded profile until its replacement is ready; at most two generations. */
+export class CorrectionWorker implements TranscriptionCorrector {
+  readonly #options: CorrectionWorkerOptions;
+  #active: CorrectionProcess;
+  #candidate: CorrectionProcess | undefined;
+  #retired: CorrectionProcess | undefined;
+  #closed = false;
+  #reloadError: string | null = null;
+  #waiting = 0;
+
+  constructor(options: CorrectionWorkerOptions) {
+    this.#options = options;
+    this.#active = new CorrectionProcess(options);
+  }
+
+  status() {
+    const active = this.#active.status();
+    return { ...active, reloading: this.#candidate !== undefined,
+      error: this.#reloadError ?? active.error };
+  }
+
+  async analyze(text: string): Promise<CorrectionOutput> {
+    if (this.#closed) throw new Error("Корректор остановлен");
+    if (this.#waiting >= (this.#options.maxPending ?? 8)) throw new Error("Очередь корректора заполнена");
+    // With no loaded profile yet, share the candidate's bounded startup queue.
+    const process = this.#candidate && this.#active.status().state !== "ready"
+      ? this.#candidate : this.#active;
+    this.#waiting++;
+    try { return await process.analyze(text); }
+    finally { this.#waiting--; }
+  }
+
+  async reload(): Promise<void> {
+    if (this.#closed) throw new Error("Корректор остановлен");
+    if (this.#candidate || this.#retired || this.#active.busy) {
+      throw new Error("Дождитесь завершения текущей коррекции или перезагрузки");
+    }
+    const candidate = new CorrectionProcess(this.#options);
+    this.#candidate = candidate;
+    this.#reloadError = null;
+    try {
+      await candidate.load();
+      if (this.#closed) throw new Error("Корректор остановлен");
+      const previous = this.#active;
+      this.#active = candidate;
+      this.#candidate = undefined;
+      // Requests accepted during loading finish on their original profile.
+      this.#retired = previous;
+      void previous.whenIdle().then(() => {
+        previous.close();
+        if (this.#retired === previous) this.#retired = undefined;
+      });
+    } catch (error) {
+      candidate.close();
+      this.#reloadError = error instanceof Error ? error.message : String(error);
+      throw error;
+    } finally {
+      if (this.#candidate === candidate) this.#candidate = undefined;
+    }
+  }
+
+  close(): void {
+    this.#closed = true;
+    this.#candidate?.close();
+    this.#retired?.close();
+    this.#active.close();
   }
 }

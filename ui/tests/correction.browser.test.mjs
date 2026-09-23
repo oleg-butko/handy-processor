@@ -32,6 +32,21 @@ test('real correction toggle, persisted candidate explanations, reload and mobil
   const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH ?? (existsSync('/usr/bin/chromium') ? '/usr/bin/chromium' : undefined), chromiumSandbox: true });
   t.after(() => browser.close());
   const page = await browser.newPage();
+  let releaseStatus;
+  let statusCaptured;
+  const delayedStatus = new Promise(resolve => { releaseStatus = resolve; });
+  const capturedStatus = new Promise(resolve => { statusCaptured = resolve; });
+  let holdFirstStatus = false;
+  await page.route('**/api/correction', async route => {
+    if (!holdFirstStatus) { await route.continue(); return; }
+    holdFirstStatus = false;
+    const response = await route.fetch();
+    const body = await response.json();
+    statusCaptured();
+    await delayedStatus;
+    await route.fulfill({ status: 200, json: body });
+  });
+  t.after(() => releaseStatus());
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   const base = `http://127.0.0.1:${server.address().port}`;
@@ -46,8 +61,10 @@ test('real correction toggle, persisted candidate explanations, reload and mobil
   const toggle = page.getByRole('checkbox', { name: 'Включить правило «Коррекция терминов и фраз»' });
   assert.equal(await toggle.isChecked(), false);
   assert.equal(await submit('без снятия сваты'), 'без снятия сваты');
-  await toggle.check();
+  holdFirstStatus = true;
+  await toggle.click();
   await page.getByRole('checkbox', { name: 'Выключить правило «Коррекция терминов и фраз»' }).waitFor();
+  await capturedStatus;
   assert.equal(await submit('без снятия сваты'), 'без снятия слота');
   assert.equal(await submit('сняли свод правил'), 'сняли свод правил');
   await page.getByRole('tab', { name: 'История', exact: true }).click();
@@ -76,7 +93,21 @@ test('real correction toggle, persisted candidate explanations, reload and mobil
   await page.locator('.correction-settings > summary').click();
   await page.getByRole('button', { name: 'Загрузить профиль заново' }).click();
   await page.getByText('Профиль загружен', { exact: true }).waitFor();
-  await page.getByRole('checkbox', { name: 'Выключить правило «Коррекция терминов и фраз»' }).uncheck();
+  const staleDelivered = page.waitForResponse(response => response.url() === `${base}/api/correction`);
+  releaseStatus();
+  await staleDelivered;
+  await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  assert.equal(await page.getByText('Профиль загружен', { exact: true }).isVisible(), true);
+  const profileFile = join(directory, 'terms.toml');
+  const originalProfile = readFileSync(profileFile, 'utf8');
+  writeFileSync(profileFile, 'invalid toml [');
+  await page.getByRole('button', { name: 'Загрузить профиль заново' }).click();
+  await page.getByText('Новый профиль не загружен; прежний продолжает работать', { exact: true }).waitFor();
+  assert.equal(await submit('без снятия сваты'), 'без снятия слота');
+  writeFileSync(profileFile, originalProfile);
+  await page.getByRole('button', { name: 'Загрузить профиль заново' }).click();
+  await page.getByText('Новый профиль не загружен; прежний продолжает работать', { exact: true }).waitFor({ state: 'hidden' });
+  await page.getByRole('checkbox', { name: 'Выключить правило «Коррекция терминов и фраз»' }).click();
   await page.getByRole('checkbox', { name: 'Включить правило «Коррекция терминов и фраз»' }).waitFor();
   assert.equal(await submit('без снятия сваты'), 'без снятия сваты');
   assert.deepEqual(errors, []);

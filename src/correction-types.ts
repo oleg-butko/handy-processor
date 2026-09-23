@@ -52,7 +52,9 @@ export function isCorrectionOutput(value: unknown, profile: string): value is Co
   const text = (v: unknown): v is string => typeof v === "string" && v.length <= 32768;
   const strings = (v: unknown) => Array.isArray(v) && v.length <= 128 && v.every(text);
   const count = (v: unknown) => Number.isSafeInteger(v) && (v as number) >= 0;
-  if (!object(value) || !text(value.text) || !object(value.trace)) return false;
+  // A short alias can expand into a 64-character term many times. The input
+  // bound is not a bound on corrected text; the transport still caps reply bytes.
+  if (!object(value) || typeof value.text !== "string" || value.text.length > 1024 * 1024 || !object(value.trace)) return false;
   const t = value.trace;
   if (t.schemaVersion !== 1 || t.profile !== profile || typeof t.complete !== "boolean" ||
       !finite(t.minScore) || !finite(t.minMargin) || !count(t.omittedDecisions) || !count(t.omittedCandidates) ||
