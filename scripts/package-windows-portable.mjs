@@ -7,8 +7,9 @@ import {
   readSync,
   readFileSync,
 } from "node:fs";
-import { basename, resolve } from "node:path";
+import { relative, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
+import { correctionRuntimeFiles, copyCorrectionRuntime } from "./correction-runtime.mjs";
 
 const projectRoot = resolve(import.meta.dirname, "..");
 
@@ -62,11 +63,15 @@ export function packageWindowsPortable({
   config,
   destination,
   templatesExample,
+  correctionRoot = projectRoot,
 }) {
   requirePortableExecutable(launcher, "Launcher");
   requirePortableExecutable(server, "Server SEA");
   validateConfig(config);
   if (templatesExample) requireFile(templatesExample, "Templates example");
+  // Validate the complete companion bundle before touching an existing release.
+  const correction = correctionRuntimeFiles(correctionRoot, "win32");
+  requirePortableExecutable(correction[0].source, "Correction worker");
   mkdirSync(destination, { recursive: true });
 
   const files = [
@@ -79,7 +84,7 @@ export function packageWindowsPortable({
     copyFileSync(source, target);
   }
 
-  return files.map(([, target]) => target);
+  return [...files.map(([, target]) => target), ...copyCorrectionRuntime(correction, destination)];
 }
 
 function main() {
@@ -97,7 +102,7 @@ function main() {
 
   console.log(`Portable release is ready: ${destination}`);
   for (const file of files) {
-    console.log(`- ${basename(file)}`);
+    console.log(`- ${relative(destination, file)}`);
   }
 }
 

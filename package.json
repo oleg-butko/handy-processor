@@ -24,7 +24,7 @@
     "check:launcher": "npm --prefix launcher run check",
     "test:launcher": "npm --prefix launcher test",
     "package:windows:portable": "node scripts/package-windows-portable.mjs",
-    "build:windows:portable": "npm run build:sea:node26 && npm run stage:launcher:sidecar && npm --prefix launcher run build:portable && npm run package:windows:portable",
+    "build:windows:portable": "npm run build:correction && npm run build:sea:node26 && npm run stage:launcher:sidecar && npm --prefix launcher run build:portable && npm run package:windows:portable",
     "build:linux:launcher": "npm run build:sea:node26:linux && npm run stage:launcher:sidecar:linux && npm --prefix launcher run build:portable && npm run stage:launcher:config:linux",
     "start:linux:launcher": "launcher/src-tauri/target/release/HandyProcessor",
     "test:packaging": "node --test scripts/package-windows-portable.test.mjs",

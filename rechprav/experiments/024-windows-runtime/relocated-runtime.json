@@ -1,0 +1,33 @@
+{
+  "platform": "linux",
+  "profile": "e5cd6c0c37f07c132765c9da62cb07e8b48b84ba0b935e406d31168b1d7fa7a6",
+  "copied": [
+    "rechprav/target/release/examples/correction_worker",
+    "rechprav/handy-terms.toml",
+    "rechprav/handy-dictionary.toml",
+    "rechprav/artifacts/opencorpora-wordfreq/dictionary.rpt",
+    "rechprav/DICTIONARY-NOTICE.md"
+  ],
+  "cases": [
+    {
+      "input": "калиборд",
+      "expected": "клипборд",
+      "actual": "клипборд"
+    },
+    {
+      "input": "без снятия сваты",
+      "expected": "без снятия слота",
+      "actual": "без снятия слота"
+    },
+    {
+      "input": "сняли свод правил",
+      "expected": "сняли свод правил",
+      "actual": "сняли свод правил"
+    },
+    {
+      "input": "проверь пэ эн зэ",
+      "expected": "проверь ПНЗ",
+      "actual": "проверь ПНЗ"
+    }
+  ]
+}

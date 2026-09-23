@@ -81,6 +81,16 @@ py scripts\unpack_source_archive.py --config C:\work\update-config.json
 npm run build:windows:portable
 ```
 
+При первом обновлении с корректором заполните кеш его Rust-зависимостей:
+`cargo fetch --manifest-path rechprav/Cargo.toml --locked`. Новый ZIP содержит
+исходники worker и подготовленный словарь; portable-сборка включает их runtime
+в итоговый каталог. Подробнее: [коррекция терминов и фраз](../rechprav/handy-integration.md#windows-portable-и-ошибка-enoent).
+
+Пользовательские профили коррекции редактируйте в `release/.../rechprav/`:
+этот каталог сохраняется при обновлении исходников, а повторная упаковка не
+заменяет уже существующие TOML. Профили в исходном `rechprav/` обновляются из ZIP
+как стартовые файлы проекта.
+
 Если изменился корневой или launcher `package-lock.json`, перед сборкой нужно
 синхронизировать сохранённые зависимости:
 

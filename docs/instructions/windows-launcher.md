@@ -17,13 +17,19 @@ desktop:
                     -> handy-processor-server.exe --managed
 ```
 
-Portable-каталог содержит три обязательных файла и пример шаблонов:
+Portable-каталог содержит launcher, сервер, настройки, пример шаблонов и
+комплект коррекции:
 
 ```text
 HandyProcessor.exe
 handy-processor-server.exe
 config.json
 templates.example.txt
+rechprav/handy-terms.toml
+rechprav/handy-dictionary.toml
+rechprav/DICTIONARY-NOTICE.md
+rechprav/target/release/examples/correction_worker.exe
+rechprav/artifacts/opencorpora-wordfreq/dictionary.rpt
 ```
 
 `handy-processor.sqlite3` создаётся после первого запроса. React/Mantine UI,
@@ -63,16 +69,24 @@ cargo --version
 ```powershell
 npm ci
 npm run install:launcher
+cargo fetch --manifest-path rechprav/Cargo.toml --locked
 npm run build:windows:portable
 ```
 
 Последняя команда последовательно:
 
-1. собирает React UI и Node.js 26 SEA;
+1. собирает Rust worker коррекции, React UI и Node.js 26 SEA;
 2. копирует SEA под target-specific sidecar-именем Tauri;
 3. собирает release launcher без installer bundle;
-4. проверяет сигнатуру `MZ` обоих EXE и валидность `config.json`;
-5. формирует `release\handy-processor-windows-x64`.
+4. проверяет сигнатуру `MZ` всех трёх EXE, валидность `config.json` и наличие ресурсов коррекции;
+5. формирует `release\handy-processor-windows-x64`, включая worker, профили и словарь.
+
+`cargo fetch` нужен однократно для кеша зависимостей worker; сама его сборка
+использует `--locked --offline`. Полный словарь не хранится в Git: новый ZIP
+из `npm run archive:sources` уже включает его, а при Git checkout ресурс нужно
+подготовить или скопировать отдельно. Повторная упаковка сохраняет существующие
+TOML-настройки коррекции в release-каталоге. Подробнее, включая исправление
+`correction_worker.exe ENOENT`: [коррекция в Handy Processor](../rechprav/handy-integration.md#windows-portable-и-ошибка-enoent).
 
 SQLite-базу из рабочего или старого release-каталога build script не копирует
 и не удаляет.

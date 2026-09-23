@@ -1,0 +1,14 @@
+npm notice run handy-processor@0.1.0 test:packaging
+npm notice run node --test scripts/package-windows-portable.test.mjs
+✔ creates a portable directory with exactly the required build artifacts (15.58103ms)
+✔ missing correction resources and a non-Windows worker fail before changing the release (9.522169ms)
+✔ native runtime staging preserves the executable and directory layout (2.908933ms)
+✔ rejects a non-Windows server artifact (1.09742ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 182.989696

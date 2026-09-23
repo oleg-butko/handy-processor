@@ -72,9 +72,73 @@ HANDY_PROCESSOR_CORRECTION_CONFIG=/path/to/terms.toml npm start
 
 Без переменных используются пути относительно runtime directory:
 `rechprav/target/release/examples/correction_worker` (`.exe` в Windows) и
-`rechprav/handy-terms.toml`. Для отдельно упакованного сервера нужно доставить
+`rechprav/handy-terms.toml`. Для отдельно собранного SEA-сервера нужно доставить
 worker, профиль и словарь в это расположение либо указать переменные выше.
-Существующие готовые бинарники launcher/SEA этим изменением не перепаковывались.
+Windows portable-сборка включает эти файлы автоматически, как описано ниже.
+
+## Windows portable и ошибка ENOENT
+
+`spawn ...\correction_worker.exe ENOENT` означает, что сервер не смог найти
+исполняемый файл корректора по указанному пути. Кнопка **Загрузить профиль
+заново** запускает уже собранный worker; она не собирает и не скачивает его.
+До исправления этапа 024 команда `npm run build:windows:portable` собирала
+только сервер и лаунчер. Теперь она также вызывает `npm run build:correction`
+и включает runtime коррекции в результат.
+
+На Windows из корня обновлённых исходников:
+
+```powershell
+# Однократно на машине с Rust/Cargo: заполнить кеш зависимостей worker.
+cargo fetch --manifest-path rechprav/Cargo.toml --locked
+npm run build:windows:portable
+```
+
+Нужен нативный Windows Rust toolchain с поддержкой edition 2024 и установленными
+MSVC Build Tools, как для лаунчера. Основная сборка worker остаётся `--locked
+--offline`. Собранный в Debian ELF-файл нельзя переименовать в `.exe` для Windows.
+
+Полный `dictionary.rpt` не хранится в Git. При переносе через `npm run
+archive:sources` новый ZIP уже содержит подготовленный в VM словарь, исходники
+`rechprav`, Cargo.lock и профили. Если получаете проект через Git, отдельно
+скопируйте `rechprav/artifacts/opencorpora-wordfreq/dictionary.rpt` из VM с
+сохранением пути либо подготовьте его по инструкциям выше. Частотный индекс,
+Python-окружение и экспериментальные корпуса для работы правила не нужны.
+
+Готовый каталог должен содержать:
+
+```text
+release/handy-processor-windows-x64/
+  HandyProcessor.exe
+  handy-processor-server.exe
+  config.json
+  rechprav/
+    handy-terms.toml
+    handy-dictionary.toml
+    DICTIONARY-NOTICE.md
+    target/release/examples/correction_worker.exe
+    artifacts/opencorpora-wordfreq/dictionary.rpt
+```
+
+При повторной упаковке существующие `rechprav/handy-terms.toml` и
+`rechprav/handy-dictionary.toml` в готовом каталоге сохраняются: пользовательские
+термины и настройки словаря не сбрасываются. Binary и стандартный словарь
+обновляются. Дополнительные ресурсы пользовательского профиля нужно доставлять
+самостоятельно. Упаковщик проверяет наличие обязательных файлов и Windows-формат
+worker до изменения готового каталога.
+
+Для исправления существующей сборки без повторной сборки сервера/лаунчера:
+
+```powershell
+npm run build:correction
+npm run package:windows:portable
+```
+
+Это требует уже имеющихся `sea-build/handy-processor.exe`, `sea-build/config.json`
+и `launcher/src-tauri/target/release/HandyProcessor.exe`, а также словаря выше.
+После обновления файлов запустите приложение и нажмите **Загрузить профиль
+заново**. Для отдельной проверки переносимого runtime из исходников доступна
+команда `node rechprav/scripts/check_runtime_bundle.mjs`: она копирует комплект
+во временный каталог, запускает настоящий worker и проверяет четыре примера.
 
 ## Объяснения в истории
 

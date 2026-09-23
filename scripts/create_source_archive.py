@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create a ZIP containing only the Handy Processor source allowlist."""
+"""Create a ZIP of sources and the prepared correction dictionary for builds."""
 
 from __future__ import annotations
 
@@ -27,6 +27,12 @@ SOURCE_DIRECTORIES = (
     "scripts",
     "src",
     "ui",
+    "rechprav/src",
+    "rechprav/examples",
+    "rechprav/scripts",
+    "rechprav/configs",
+    "rechprav/tests",
+    "rechprav/data/fixtures",
 )
 
 SOURCE_FILES = (
@@ -50,6 +56,15 @@ SOURCE_FILES = (
     "unpack-sources.config.json",
     "version-major.txt",
     "vite.config.ts",
+    "rechprav/Cargo.toml",
+    "rechprav/Cargo.lock",
+    "rechprav/README.md",
+    "rechprav/handy-terms.toml",
+    "rechprav/handy-dictionary.toml",
+    "rechprav/DICTIONARY-NOTICE.md",
+    # Include the prepared, platform-independent runtime resource for Windows
+    # builds from the ZIP. Do not include target/, venvs or private corpora.
+    "rechprav/artifacts/opencorpora-wordfreq/dictionary.rpt",
 )
 
 
@@ -70,6 +85,8 @@ def collect_sources() -> list[tuple[Path, str]]:
 
         entries.append((directory, archive_name(directory, directory=True)))
         for path in sorted(directory.rglob("*")):
+            if "__pycache__" in path.parts or path.suffix == ".pyc":
+                continue
             if path.is_symlink():
                 raise RuntimeError(f"Source path must not be a symlink: {path}")
             if path.is_dir():

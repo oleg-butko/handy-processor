@@ -1,0 +1,17 @@
+{
+  "archive": "archive/handy-processor-sources-20260923-052617.zip",
+  "entries": 335,
+  "uncompressed_bytes": 126006682,
+  "validated_by_unpacker": true,
+  "required_files_sha256_match": [
+    "rechprav/Cargo.toml",
+    "rechprav/Cargo.lock",
+    "rechprav/examples/correction_worker.rs",
+    "rechprav/src/lib.rs",
+    "rechprav/handy-terms.toml",
+    "rechprav/handy-dictionary.toml",
+    "rechprav/DICTIONARY-NOTICE.md",
+    "rechprav/artifacts/opencorpora-wordfreq/dictionary.rpt",
+    "scripts/correction-runtime.mjs"
+  ]
+}

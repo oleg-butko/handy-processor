@@ -1,0 +1,3 @@
+npm notice run handy-processor@0.1.0 build:correction
+npm notice run node scripts/build-correction.mjs
+    Finished `release` profile [optimized] target(s) in 1.11s
