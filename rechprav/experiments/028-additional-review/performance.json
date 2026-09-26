@@ -1,0 +1,13 @@
+{
+  "node": "v24.19.0",
+  "limit": 50000,
+  "iterations": 1000,
+  "old": {
+    "ms": 988.81,
+    "finalCount": 50000
+  },
+  "new": {
+    "ms": 63.94,
+    "finalCount": 50000
+  }
+}

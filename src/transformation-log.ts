@@ -433,12 +433,12 @@ export class TransformationLog {
     `);
     this.#pruneTransformations = this.#database.prepare(`
       DELETE FROM transformations
-      WHERE id <= COALESCE((
+      WHERE id IN (
         SELECT id
         FROM transformations
-        ORDER BY id DESC
-        LIMIT 1 OFFSET ?
-      ), 0)
+        ORDER BY id ASC
+        LIMIT ?
+      )
     `);
     this.#listRuleSettings = this.#database.prepare(`
       SELECT rule_id, enabled
@@ -525,7 +525,8 @@ export class TransformationLog {
         context.source,
         storedContext === null ? null : JSON.stringify(storedContext),
       );
-      this.#pruneTransformations.run(this.getTransformationHistoryLimit());
+      const excess = this.#transformationCount() - this.getTransformationHistoryLimit();
+      if (excess > 0) this.#pruneTransformations.run(excess);
       this.#database.exec("COMMIT");
     } catch (error) {
       this.#database.exec("ROLLBACK");
@@ -611,12 +612,17 @@ export class TransformationLog {
     return value;
   }
 
+  #transformationCount(): number {
+    return (this.#count.get() as { total: number }).total;
+  }
+
   setTransformationHistoryLimit(value: number): void {
     validateTransformationHistoryLimit(value);
     this.#database.exec("BEGIN IMMEDIATE");
     try {
       this.#setAppSetting.run(TRANSFORMATION_HISTORY_LIMIT_KEY, String(value));
-      this.#pruneTransformations.run(value);
+      const excess = this.#transformationCount() - value;
+      if (excess > 0) this.#pruneTransformations.run(excess);
       this.#database.exec("COMMIT");
     } catch (error) {
       this.#database.exec("ROLLBACK");

@@ -142,6 +142,53 @@ describe("TransformationLog", () => {
     }
   });
 
+  it("keeps the newest rows after bulk pruning and gaps in record IDs", () => {
+    const log = new TransformationLog(":memory:");
+    try {
+      for (const text of ["A", "B", "C", "D", "E", "F", "G", "H"]) {
+        log.add(text, text, [], EXTERNAL_TRANSFORMATION_CONTEXT);
+      }
+      log.setTransformationHistoryLimit(3);
+      assert.deepEqual(log.list(1, 10).items.map((item) => item.originalText), ["H", "G", "F"]);
+
+      log.setTransformationHistoryLimit(5);
+      for (const text of ["I", "J", "K"]) {
+        log.add(text, text, [], EXTERNAL_TRANSFORMATION_CONTEXT);
+      }
+      assert.deepEqual(log.list(1, 10).items.map((item) => item.originalText), ["K", "J", "I", "H", "G"]);
+
+      log.setTransformationHistoryLimit(2);
+      log.add("L", "L", [], EXTERNAL_TRANSFORMATION_CONTEXT);
+      assert.deepEqual(log.list(1, 10).items.map((item) => item.originalText), ["L", "K"]);
+    } finally {
+      log.close();
+    }
+  });
+
+  it("prunes an externally grown history on the next add", () => {
+    const directory = mkdtempSync(join(tmpdir(), "handy-processor-prune-"));
+    const databasePath = join(directory, "history.sqlite3");
+    const log = new TransformationLog(databasePath);
+    try {
+      log.setTransformationHistoryLimit(2);
+      const otherConnection = new DatabaseSync(databasePath);
+      try {
+        const insert = otherConnection.prepare(
+          "INSERT INTO transformations (original_text, transformed_text) VALUES (?, ?)",
+        );
+        for (const text of ["A", "B", "C"]) insert.run(text, text);
+      } finally {
+        otherConnection.close();
+      }
+
+      log.add("D", "D", [], EXTERNAL_TRANSFORMATION_CONTEXT);
+      assert.deepEqual(log.list(1, 10).items.map((item) => item.originalText), ["D", "C"]);
+    } finally {
+      log.close();
+      rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
   it("migrates version 1 history and marks old rule data as unknown", () => {
     const directory = mkdtempSync(join(tmpdir(), "handy-processor-log-"));
     const databasePath = join(directory, "history.sqlite3");
