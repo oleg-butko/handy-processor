@@ -16,6 +16,7 @@ import type {
   EditorNoteSummary,
   TransformationPage,
   TransformationHistoryFilter,
+  TransformationRecord,
   TransformationTextPair,
 } from "./transformation-log.js";
 import { MAX_TRANSFORMATION_HISTORY_LIMIT } from "./transformation-log.js";
@@ -27,8 +28,6 @@ export const MODEL_ID = "handy-basic-transformer";
 const MAX_REQUEST_BYTES = 1024 * 1024;
 const DEFAULT_PAGE_SIZE = 10;
 const MAX_PAGE_SIZE = 100;
-const EXPORT_RESULT_SEPARATOR = "--- РЕЗУЛЬТАТ ---";
-const EXPORT_RECORD_SEPARATOR = "==============================";
 
 type JsonObject = Record<string, unknown>;
 
@@ -41,6 +40,7 @@ export interface TransformationHistory {
   ): void;
   list(page: number, pageSize: number, filter?: TransformationHistoryFilter): TransformationPage;
   iterateTextPairs(): Iterable<TransformationTextPair>;
+  iterateRecords(): Iterable<TransformationRecord>;
   getTransformationHistoryLimit(): number;
   setTransformationHistoryLimit(value: number): void;
 }
@@ -143,26 +143,46 @@ async function writeResponseChunk(
   });
 }
 
-async function sendTransformationExport(
+function startTransformationExport(
   response: ServerResponse,
-  records: Iterable<TransformationTextPair>,
-): Promise<void> {
+  contentType: string,
+  extension: "txt" | "jsonl",
+): void {
   const date = new Date().toISOString().slice(0, 10);
   response.writeHead(200, {
-    "content-type": "text/plain; charset=utf-8",
-    "content-disposition": `attachment; filename="handy-processor-history-${date}.txt"`,
+    "content-type": `${contentType}; charset=utf-8`,
+    "content-disposition": `attachment; filename="handy-processor-history-${date}.${extension}"`,
     "cache-control": "no-store",
     "x-content-type-options": "nosniff",
   });
+}
 
-  let first = true;
+function escapeExportLine(text: string): string {
+  return text.replace(/\\/gu, "\\\\").replace(/\r/gu, "\\r").replace(/\n/gu, "\\n");
+}
+
+async function sendTextTransformationExport(
+  response: ServerResponse,
+  records: Iterable<TransformationTextPair>,
+): Promise<void> {
+  startTransformationExport(response, "text/plain", "txt");
+
   for (const record of records) {
-    const prefix = first ? "" : `\n${EXPORT_RECORD_SEPARATOR}\n\n`;
     await writeResponseChunk(
       response,
-      `${prefix}${record.originalText}\n\n${EXPORT_RESULT_SEPARATOR}\n\n${record.transformedText}\n`,
+      `${escapeExportLine(record.originalText)}\n${escapeExportLine(record.transformedText)}\n\n`,
     );
-    first = false;
+  }
+  response.end();
+}
+
+async function sendJsonlTransformationExport(
+  response: ServerResponse,
+  records: Iterable<TransformationRecord>,
+): Promise<void> {
+  startTransformationExport(response, "application/x-ndjson", "jsonl");
+  for (const record of records) {
+    await writeResponseChunk(response, `${JSON.stringify(record)}\n`);
   }
   response.end();
 }
@@ -606,10 +626,14 @@ export function createRequestHandler({
       }
 
       if (request.method === "GET" && path === "/api/transformations/export") {
-        await sendTransformationExport(
-          response,
-          transformationHistory.iterateTextPairs(),
-        );
+        const format = url.searchParams.get("format") ?? "text";
+        if (format === "text") {
+          await sendTextTransformationExport(response, transformationHistory.iterateTextPairs());
+        } else if (format === "jsonl") {
+          await sendJsonlTransformationExport(response, transformationHistory.iterateRecords());
+        } else {
+          throw new HttpError(400, "Export format must be text or jsonl");
+        }
         return;
       }
 

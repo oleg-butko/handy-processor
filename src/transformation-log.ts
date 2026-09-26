@@ -80,6 +80,18 @@ interface TransformationTextPairRow {
   readonly transformed_text: string;
 }
 
+function toTransformationRecord(row: TransformationRow): TransformationRecord {
+  return {
+    id: row.id,
+    originalText: row.original_text,
+    transformedText: row.transformed_text,
+    createdAt: row.created_at,
+    appliedRules: parseRuleSnapshot(row.rules_snapshot),
+    source: parseSource(row.source),
+    context: parseContextSnapshot(row.context_snapshot),
+  };
+}
+
 interface RuleSettingRow {
   readonly rule_id: string;
   readonly enabled: number;
@@ -570,15 +582,7 @@ export class TransformationLog {
 
     return {
       total: countRow?.total ?? 0,
-      items: rows.map((row) => ({
-        id: row.id,
-        originalText: row.original_text,
-        transformedText: row.transformed_text,
-        createdAt: row.created_at,
-        appliedRules: parseRuleSnapshot(row.rules_snapshot),
-        source: parseSource(row.source),
-        context: parseContextSnapshot(row.context_snapshot),
-      })),
+      items: rows.map(toTransformationRecord),
     };
   }
 
@@ -596,6 +600,19 @@ export class TransformationLog {
         originalText: row.original_text,
         transformedText: row.transformed_text,
       };
+    }
+  }
+
+  *iterateRecords(): IterableIterator<TransformationRecord> {
+    // Export through its own statement so overlapping downloads stay independent.
+    const statement = this.#database.prepare(`
+      SELECT id, original_text, transformed_text, created_at, rules_snapshot,
+        source, context_snapshot
+      FROM transformations
+      ORDER BY id DESC
+    `);
+    for (const row of statement.iterate() as Iterable<TransformationRow>) {
+      yield toTransformationRecord(row);
     }
   }
 

@@ -196,6 +196,8 @@ Invoke-RestMethod `
   `page`/`pageSize` pagination.
 - `GET /api/transformations/export` — downloads source/result pairs as UTF-8
   text.
+- `GET /api/transformations/export?format=jsonl` — streams complete history
+  records as JSON Lines.
 - `GET/PATCH /api/settings/history` — reads or changes the SQLite history
   retention limit (50,000 by default).
 - `GET /api/rules` — returns the transformation rule catalog and current state.

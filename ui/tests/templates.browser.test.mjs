@@ -263,8 +263,10 @@ test('templates filter, selected-level actions, predefined phrases and native ac
   await t.test('native ACL errors are logged and show the log path', async () => {
     await page.evaluate(() => {
       const invoke = window.__TAURI__.core.invoke;
+      window.__historyExportFormats = [];
       window.__TAURI__.core.invoke = (command, args) => {
         if (command === 'templates_desktop_state' || command === 'save_history_export') {
+          if (command === 'save_history_export') window.__historyExportFormats.push(args?.format);
           return Promise.reject(`Command ${command} not allowed by ACL`);
         }
         return invoke(command, args);
@@ -283,12 +285,40 @@ test('templates filter, selected-level actions, predefined phrases and native ac
     await page.getByText('Не удалось экспортировать историю. Подробности записаны в /test/handy-processor.log', { exact: true }).waitFor();
     assert.equal(diagnostics.at(-1)?.event, 'history-export');
     assert.match(diagnostics.at(-1)?.message, /save_history_export not allowed by ACL/);
+    await page.getByRole('button', { name: 'Скачать JSONL файл', exact: true }).click();
+    await page.waitForFunction(() => window.__historyExportFormats.length === 2);
+    assert.deepEqual(await page.evaluate(() => window.__historyExportFormats), ['text', 'jsonl']);
     await page.route('**/api/diagnostics/client-error', route => route.fulfill({ status: 500, body: 'Log unavailable' }));
     await page.getByRole('tab', { name: 'Шаблоны', exact: true }).click();
     const error = page.getByRole('alert').filter({ hasText: 'templates_desktop_state not allowed by ACL' });
     await error.waitFor();
     assert.equal((await error.textContent()).includes('Подробности записаны'), false);
     await page.unroute('**/api/diagnostics/client-error');
+  });
+  await t.test('browser downloads text and JSONL history with distinct filenames', async () => {
+    await page.evaluate(() => { delete window.__TAURI__; });
+    const requestedFormats = [];
+    await page.route('**/api/transformations/export*', route => {
+      const format = new URL(route.request().url()).searchParams.get('format') ?? 'text';
+      requestedFormats.push(format);
+      return route.fulfill({
+        status: 200,
+        contentType: format === 'jsonl' ? 'application/x-ndjson' : 'text/plain',
+        body: format === 'jsonl' ? '{"originalText":"свод","transformedText":"слот"}\n' : 'свод\nслот\n\n',
+      });
+    });
+    await page.getByRole('tab', { name: 'Настройки', exact: true }).click();
+    for (const [label, extension] of [
+      ['Скачать текстовый файл', 'txt'],
+      ['Скачать JSONL файл', 'jsonl'],
+    ]) {
+      const downloadPromise = page.waitForEvent('download');
+      await page.getByRole('button', { name: label, exact: true }).click();
+      const download = await downloadPromise;
+      assert.match(download.suggestedFilename(), new RegExp(`^handy-processor-history-\\d{4}-\\d{2}-\\d{2}\\.${extension}$`));
+    }
+    assert.deepEqual(requestedFormats, ['text', 'jsonl']);
+    await page.unroute('**/api/transformations/export*');
   });
   assert.deepEqual(errors, []);
 });

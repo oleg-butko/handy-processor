@@ -52,12 +52,14 @@ export function isLauncherWebView(): boolean {
   return typeof window.__TAURI__?.core?.invoke === "function";
 }
 
-export async function saveHistoryExportInLauncher(): Promise<string> {
+export type HistoryExportFormat = "text" | "jsonl";
+
+export async function saveHistoryExportInLauncher(format: HistoryExportFormat): Promise<string> {
   const core = window.__TAURI__?.core;
   if (core === undefined) {
     throw new Error("Launcher bridge недоступен");
   }
-  return core.invoke<string>("save_history_export");
+  return core.invoke<string>("save_history_export", { format });
 }
 
 function describeError(error: unknown): string {

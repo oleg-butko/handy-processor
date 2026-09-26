@@ -5,7 +5,9 @@ mod templates_desktop;
 use templates_desktop::*;
 
 use handy_processor_launcher::{
-    history_export::download_history_export, runtime::RuntimePaths, supervisor::Supervisor,
+    history_export::{download_history_export, ExportFormat},
+    runtime::RuntimePaths,
+    supervisor::Supervisor,
 };
 use tauri::{
     menu::MenuBuilder,
@@ -81,12 +83,19 @@ fn configure_window(window: &WebviewWindow) {
 async fn save_history_export(
     window: WebviewWindow,
     paths: State<'_, RuntimePaths>,
+    format: Option<String>,
 ) -> Result<String, String> {
     validate_window(&window, &paths)?;
 
+    let format = match format.as_deref().unwrap_or("text") {
+        "text" => ExportFormat::Text,
+        "jsonl" => ExportFormat::Jsonl,
+        _ => return Err("unsupported history export format".into()),
+    };
+
     let paths = paths.inner().clone();
     tauri::async_runtime::spawn_blocking(move || {
-        download_history_export(&paths.directory, paths.port)
+        download_history_export(&paths.directory, paths.port, format)
     })
     .await
     .map_err(|error| format!("history export task failed: {error}"))?

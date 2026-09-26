@@ -1,6 +1,5 @@
 import {
   Alert,
-  Badge,
   Button,
   Card,
   Group,
@@ -22,6 +21,7 @@ import {
   isLauncherWebView,
   reportHistoryExportError,
   saveHistoryExportInLauncher,
+  type HistoryExportFormat,
 } from "./launcher-bridge.js";
 
 const DEFAULT_TRANSFORMATION_HISTORY_LIMIT = 50_000;
@@ -58,7 +58,7 @@ export function SettingsPage({
   const [historySettingsError, setHistorySettingsError] = useState<string>();
   const [historyLimitConfirmationOpened, setHistoryLimitConfirmationOpened] =
     useState(false);
-  const [exportingHistory, setExportingHistory] = useState(false);
+  const [exportingHistory, setExportingHistory] = useState<HistoryExportFormat | null>(null);
   const [exportError, setExportError] = useState<string>();
   const [exportResult, setExportResult] = useState<string>();
 
@@ -125,18 +125,20 @@ export function SettingsPage({
     }
   }
 
-  async function exportTransformationHistory(): Promise<void> {
-    setExportingHistory(true);
+  async function exportTransformationHistory(format: HistoryExportFormat): Promise<void> {
+    setExportingHistory(format);
     setExportError(undefined);
     setExportResult(undefined);
     try {
       if (isLauncherWebView()) {
-        const path = await saveHistoryExportInLauncher();
+        const path = await saveHistoryExportInLauncher(format);
         setExportResult(`Файл сохранён: ${path}`);
         return;
       }
 
-      const response = await fetch("/api/transformations/export");
+      const response = await fetch(format === "jsonl"
+        ? "/api/transformations/export?format=jsonl"
+        : "/api/transformations/export");
       if (!response.ok) {
         throw new Error(`Сервер вернул HTTP ${response.status}`);
       }
@@ -144,7 +146,7 @@ export function SettingsPage({
       const blobUrl = URL.createObjectURL(await response.blob());
       const link = document.createElement("a");
       link.href = blobUrl;
-      link.download = `handy-processor-history-${new Date().toISOString().slice(0, 10)}.txt`;
+      link.download = `handy-processor-history-${new Date().toISOString().slice(0, 10)}.${format === "jsonl" ? "jsonl" : "txt"}`;
       link.hidden = true;
       document.body.append(link);
       try {
@@ -167,7 +169,7 @@ export function SettingsPage({
           : `Не удалось экспортировать историю. Подробности записаны в ${logPath}`,
       );
     } finally {
-      setExportingHistory(false);
+      setExportingHistory(null);
     }
   }
 
@@ -352,14 +354,10 @@ export function SettingsPage({
         <Stack gap="sm">
           <Group gap="xs">
             <Text fw={600}>Экспортировать историю как текстовый файл</Text>
-            <Badge color="orange" size="sm" variant="light">
-              Экспериментально
-            </Badge>
           </Group>
           <Text c="dimmed" size="xs">
-            В файл попадут только исходный текст и результат. Между ними будет
-            строка «--- РЕЗУЛЬТАТ ---»; служебные данные и правила не
-            экспортируются.
+            Исходный текст, результат и пустая строка для каждой записи.
+            Внутренние переносы строк экранируются.
           </Text>
           {exportError ? (
             <Alert color="red">{exportError}</Alert>
@@ -371,11 +369,27 @@ export function SettingsPage({
           ) : null}
           <Group>
             <Button
-              loading={exportingHistory}
+              loading={exportingHistory === "text"}
+              disabled={exportingHistory !== null}
               variant="light"
-              onClick={() => void exportTransformationHistory()}
+              onClick={() => void exportTransformationHistory("text")}
             >
               Скачать текстовый файл
+            </Button>
+          </Group>
+          <Text fw={600}>Экспортировать историю как JSONL файл</Text>
+          <Text c="dimmed" size="xs">
+            Одна JSON-запись на строку: тексты, дата, источник, контекст и все
+            сохранённые сведения о применённых правилах.
+          </Text>
+          <Group>
+            <Button
+              loading={exportingHistory === "jsonl"}
+              disabled={exportingHistory !== null}
+              variant="light"
+              onClick={() => void exportTransformationHistory("jsonl")}
+            >
+              Скачать JSONL файл
             </Button>
           </Group>
         </Stack>

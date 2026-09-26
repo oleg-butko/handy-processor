@@ -13,7 +13,7 @@ import { EditorSessionRegistry } from "./editor-sessions.js";
 import { RuleSettings } from "./rule-settings.js";
 import { TRANSFORMATION_RULE_IDS } from "./transformation-rules.js";
 import { TransformationLog } from "./transformation-log.js";
-import { EXTERNAL_TRANSFORMATION_CONTEXT } from "./transformation-context.js";
+import { EXTERNAL_TRANSFORMATION_CONTEXT, TRANSFORMATION_SOURCES } from "./transformation-context.js";
 import type { WebUiAssets } from "./web-ui-assets.js";
 
 const transformationLog = new TransformationLog(":memory:");
@@ -278,8 +278,8 @@ describe("OpenAI-compatible API", () => {
     transformationLog.setTransformationHistoryLimit(2);
     try {
       transformationLog.add(
-        "ПЕРВЫЙ ИСХОДНЫЙ",
-        "первый результат",
+        "ПЕРВЫЙ\r\nИСХОДНЫЙ",
+        "первый\\результат",
         [],
         EXTERNAL_TRANSFORMATION_CONTEXT,
       );
@@ -301,21 +301,72 @@ describe("OpenAI-compatible API", () => {
         await response.text(),
         [
           "ВТОРОЙ ИСХОДНЫЙ",
-          "",
-          "--- РЕЗУЛЬТАТ ---",
-          "",
           "второй результат",
           "",
-          "==============================",
+          "ПЕРВЫЙ\\r\\nИСХОДНЫЙ",
+          "первый\\\\результат",
           "",
-          "ПЕРВЫЙ ИСХОДНЫЙ",
-          "",
-          "--- РЕЗУЛЬТАТ ---",
-          "",
-          "первый результат",
           "",
         ].join("\n"),
       );
+    } finally {
+      transformationLog.setTransformationHistoryLimit(50_000);
+    }
+  });
+
+  it("exports complete history records as one JSON object per line", async () => {
+    transformationLog.setTransformationHistoryLimit(2);
+    try {
+      const correction = {
+        id: TRANSFORMATION_RULE_IDS.correction,
+        version: 1,
+        outcome: "changed",
+        changed: true,
+        correction: {
+          schemaVersion: 1,
+          profile: "technical-test",
+          complete: true,
+          minScore: 1,
+          minMargin: 0.5,
+          decisions: [{
+            original: "свод", selected: "слот", reason: "term", runner_up_margin: 1,
+            byte_start: 6, byte_end: 14,
+            candidates: [{
+              canonical: "слот", alias: "свод", set: "test", term: "слот",
+              score: 3, distance: 2, eligible: true, gate: "accepted",
+              parts: { term: 3 }, context_hits: ["сняли"],
+            }],
+          }],
+          omittedDecisions: 0,
+          omittedCandidates: 0,
+        },
+      } as const;
+      transformationLog.add("сняли свод\nсегодня", "сняли слот\nсегодня", [correction], {
+        source: TRANSFORMATION_SOURCES.voiceEditor,
+        editor: { sessionId: "test", documentRevision: 1, selectionStart: 0,
+          selectionEnd: 0, sentencePosition: "middle" },
+      });
+
+      const response = await fetch(`${baseUrl}/api/transformations/export?format=jsonl`);
+      assert.equal(response.status, 200);
+      assert.match(response.headers.get("content-type") ?? "", /^application\/x-ndjson/u);
+      assert.match(response.headers.get("content-disposition") ?? "",
+        /^attachment; filename="handy-processor-history-\d{4}-\d{2}-\d{2}\.jsonl"$/u);
+      const lines = (await response.text()).trimEnd().split("\n");
+      assert.equal(lines.length, 2);
+      const records = lines.map((line) => JSON.parse(line) as Record<string, unknown>);
+      assert.deepEqual(records, transformationLog.list(1, 2).items);
+      assert.deepEqual(records[0]?.appliedRules, [correction]);
+      assert.deepEqual(records[0]?.context, {
+        schemaVersion: 1, editor: { sentencePosition: "middle" },
+      });
+      assert.equal(records[0]?.originalText, "сняли свод\nсегодня");
+      assert.deepEqual(Object.keys(records[0] ?? {}), [
+        "id", "originalText", "transformedText", "createdAt", "appliedRules", "source", "context",
+      ]);
+
+      const invalid = await fetch(`${baseUrl}/api/transformations/export?format=csv`);
+      assert.equal(invalid.status, 400);
     } finally {
       transformationLog.setTransformationHistoryLimit(50_000);
     }

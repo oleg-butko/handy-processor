@@ -11,9 +11,34 @@ use anyhow::{bail, Context, Result};
 const IO_TIMEOUT: Duration = Duration::from_secs(60);
 const MAX_HEADER_BYTES: usize = 64 * 1024;
 const EXPORT_FILE_PREFIX: &str = "handy-processor-history-";
-const EXPORT_FILE_SUFFIX: &str = ".txt";
 
-pub fn download_history_export(directory: &Path, port: u16) -> Result<PathBuf> {
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ExportFormat {
+    Text,
+    Jsonl,
+}
+
+impl ExportFormat {
+    fn request_path(self) -> &'static str {
+        match self {
+            Self::Text => "/api/transformations/export",
+            Self::Jsonl => "/api/transformations/export?format=jsonl",
+        }
+    }
+
+    fn suffix(self) -> &'static str {
+        match self {
+            Self::Text => ".txt",
+            Self::Jsonl => ".jsonl",
+        }
+    }
+}
+
+pub fn download_history_export(
+    directory: &Path,
+    port: u16,
+    format: ExportFormat,
+) -> Result<PathBuf> {
     let address = SocketAddr::new(IpAddr::V4(Ipv4Addr::LOCALHOST), port);
     let mut stream = TcpStream::connect_timeout(&address, IO_TIMEOUT)
         .with_context(|| format!("cannot connect to history server on port {port}"))?;
@@ -21,14 +46,15 @@ pub fn download_history_export(directory: &Path, port: u16) -> Result<PathBuf> {
     stream.set_write_timeout(Some(IO_TIMEOUT))?;
     write!(
         stream,
-        "GET /api/transformations/export HTTP/1.1\r\nHost: 127.0.0.1:{port}\r\nConnection: close\r\n\r\n"
+        "GET {} HTTP/1.1\r\nHost: 127.0.0.1:{port}\r\nConnection: close\r\n\r\n",
+        format.request_path()
     )?;
     stream.flush()?;
 
     let mut reader = BufReader::new(stream);
     let headers = read_response_headers(&mut reader)?;
-    let file_name = export_file_name(&headers.content_disposition)?;
-    let (path, mut file) = create_export_file(directory, file_name)?;
+    let file_name = export_file_name(&headers.content_disposition, format)?;
+    let (path, mut file) = create_export_file(directory, file_name, format)?;
 
     let result = if headers.chunked {
         copy_chunked(&mut reader, &mut file)
@@ -93,7 +119,7 @@ fn read_response_headers(reader: &mut impl BufRead) -> Result<ResponseHeaders> {
     })
 }
 
-fn export_file_name(content_disposition: &str) -> Result<&str> {
+fn export_file_name(content_disposition: &str, format: ExportFormat) -> Result<&str> {
     let file_name = content_disposition
         .split(';')
         .map(str::trim)
@@ -102,7 +128,7 @@ fn export_file_name(content_disposition: &str) -> Result<&str> {
         .context("history export response has no filename")?;
     let date = file_name
         .strip_prefix(EXPORT_FILE_PREFIX)
-        .and_then(|value| value.strip_suffix(EXPORT_FILE_SUFFIX))
+        .and_then(|value| value.strip_suffix(format.suffix()))
         .context("history export filename is invalid")?;
     let bytes = date.as_bytes();
     if bytes.len() != 10
@@ -118,15 +144,19 @@ fn export_file_name(content_disposition: &str) -> Result<&str> {
     Ok(file_name)
 }
 
-fn create_export_file(directory: &Path, file_name: &str) -> Result<(PathBuf, File)> {
+fn create_export_file(
+    directory: &Path,
+    file_name: &str,
+    format: ExportFormat,
+) -> Result<(PathBuf, File)> {
     let stem = file_name
-        .strip_suffix(EXPORT_FILE_SUFFIX)
+        .strip_suffix(format.suffix())
         .context("history export filename has no extension")?;
     for index in 1..=10_000 {
         let candidate_name = if index == 1 {
             file_name.to_owned()
         } else {
-            format!("{stem}-{index}{EXPORT_FILE_SUFFIX}")
+            format!("{stem}-{index}{}", format.suffix())
         };
         let path = directory.join(candidate_name);
         match OpenOptions::new().write(true).create_new(true).open(&path) {
@@ -203,14 +233,24 @@ mod tests {
         path
     }
 
-    fn serve_export(listener: TcpListener, body: &'static str) -> thread::JoinHandle<()> {
+    fn serve_export(
+        listener: TcpListener,
+        body: &'static str,
+        format: ExportFormat,
+    ) -> thread::JoinHandle<()> {
         thread::spawn(move || {
             let (mut connection, _) = listener.accept().unwrap();
-            let mut request = [0_u8; 1024];
-            let _ = connection.read(&mut request).unwrap();
+            let mut request_line = String::new();
+            BufReader::new(&connection)
+                .read_line(&mut request_line)
+                .unwrap();
+            assert_eq!(
+                request_line.trim_end_matches(['\r', '\n']),
+                format!("GET {} HTTP/1.1", format.request_path())
+            );
             let response = format!(
-                "HTTP/1.1 200 OK\r\nContent-Disposition: attachment; filename=\"handy-processor-history-2026-08-30.txt\"\r\nTransfer-Encoding: chunked\r\nConnection: close\r\n\r\n{:x}\r\n{body}\r\n0\r\n\r\n",
-                body.len()
+                "HTTP/1.1 200 OK\r\nContent-Disposition: attachment; filename=\"handy-processor-history-2026-08-30{}\"\r\nTransfer-Encoding: chunked\r\nConnection: close\r\n\r\n{:x}\r\n{body}\r\n0\r\n\r\n",
+                format.suffix(), body.len()
             );
             connection.write_all(response.as_bytes()).unwrap();
         })
@@ -226,9 +266,9 @@ mod tests {
         .unwrap();
         let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).unwrap();
         let port = listener.local_addr().unwrap().port();
-        let server = serve_export(listener, "исходный\n\n--- РЕЗУЛЬТАТ ---\n\nрезультат\n");
+        let server = serve_export(listener, "исходный\nрезультат\n\n", ExportFormat::Text);
 
-        let path = download_history_export(&directory, port).unwrap();
+        let path = download_history_export(&directory, port, ExportFormat::Text).unwrap();
 
         assert_eq!(
             path.file_name().unwrap(),
@@ -236,7 +276,7 @@ mod tests {
         );
         assert_eq!(
             fs::read_to_string(path).unwrap(),
-            "исходный\n\n--- РЕЗУЛЬТАТ ---\n\nрезультат\n"
+            "исходный\nрезультат\n\n"
         );
         assert_eq!(
             fs::read_to_string(directory.join("handy-processor-history-2026-08-30.txt")).unwrap(),
@@ -247,8 +287,35 @@ mod tests {
     }
 
     #[test]
+    fn downloads_jsonl_with_its_own_extension_and_request_path() {
+        let directory = temporary_directory();
+        let listener = TcpListener::bind((Ipv4Addr::LOCALHOST, 0)).unwrap();
+        let port = listener.local_addr().unwrap().port();
+        let body = "{\"originalText\":\"свод\",\"transformedText\":\"слот\"}\n";
+        let server = serve_export(listener, body, ExportFormat::Jsonl);
+
+        let path = download_history_export(&directory, port, ExportFormat::Jsonl).unwrap();
+        assert_eq!(
+            path.file_name().unwrap(),
+            "handy-processor-history-2026-08-30.jsonl"
+        );
+        assert_eq!(fs::read_to_string(path).unwrap(), body);
+        server.join().unwrap();
+        fs::remove_dir_all(directory).unwrap();
+    }
+
+    #[test]
     fn rejects_unsafe_export_filenames() {
-        assert!(export_file_name("attachment; filename=\"../history.txt\"").is_err());
-        assert!(export_file_name("attachment; filename=\"history.txt\"").is_err());
+        assert!(
+            export_file_name("attachment; filename=\"../history.txt\"", ExportFormat::Text).is_err()
+        );
+        assert!(
+            export_file_name("attachment; filename=\"history.txt\"", ExportFormat::Text).is_err()
+        );
+        assert!(export_file_name(
+            "attachment; filename=\"handy-processor-history-2026-08-30.txt\"",
+            ExportFormat::Jsonl
+        )
+        .is_err());
     }
 }
