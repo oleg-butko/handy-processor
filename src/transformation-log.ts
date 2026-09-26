@@ -11,6 +11,7 @@ import type {
   AppliedTransformationRule,
   TransformationRuleId,
 } from "./transformation-rules.js";
+import { TRANSFORMATION_RULE_IDS } from "./transformation-rules.js";
 
 export interface TransformationRecord {
   readonly id: number;
@@ -25,6 +26,14 @@ export interface TransformationRecord {
 export interface TransformationPage {
   readonly items: readonly TransformationRecord[];
   readonly total: number;
+}
+
+export type HistorySearchMode = "both" | "original" | "result";
+
+export interface TransformationHistoryFilter {
+  readonly query?: string;
+  readonly searchIn?: HistorySearchMode;
+  readonly correctionOnly?: boolean;
 }
 
 export interface TransformationTextPair {
@@ -375,6 +384,11 @@ export class TransformationLog {
       PRAGMA synchronous = NORMAL;
     `);
     migrate(this.#database);
+    // SQLite's built-in lower()/LIKE fold ASCII only. Search must also match
+    // uppercase Russian text and phrases spanning whitespace in ASR output.
+    this.#database.function("history_contains", { deterministic: true }, (value, query) =>
+      typeof value === "string" && typeof query === "string" &&
+      value.replace(/\s+/gu, " ").toLocaleLowerCase("ru-RU").includes(query) ? 1 : 0);
 
     this.#insert = this.#database.prepare(`
       INSERT INTO transformations (
@@ -509,10 +523,39 @@ export class TransformationLog {
     }
   }
 
-  list(page: number, pageSize: number): TransformationPage {
-    const countRow = this.#count.get() as { total: number } | undefined;
-    const rows = this.#list.all(pageSize, (page - 1) * pageSize) as unknown as
-      TransformationRow[];
+  list(page: number, pageSize: number, filter: TransformationHistoryFilter = {}): TransformationPage {
+    const query = filter.query?.trim().replace(/\s+/gu, " ").toLocaleLowerCase("ru-RU") ?? "";
+    const conditions: string[] = [];
+    const parameters: string[] = [];
+    if (query) {
+      if (filter.searchIn === "original") {
+        conditions.push("history_contains(original_text, ?) = 1");
+        parameters.push(query);
+      } else if (filter.searchIn === "result") {
+        conditions.push("history_contains(transformed_text, ?) = 1");
+        parameters.push(query);
+      } else {
+        conditions.push("(history_contains(original_text, ?) = 1 OR history_contains(transformed_text, ?) = 1)");
+        parameters.push(query, query);
+      }
+    }
+    if (filter.correctionOnly) {
+      conditions.push(`EXISTS (
+        SELECT 1 FROM json_each(transformations.rules_snapshot, '$.applied') AS rule
+        WHERE json_extract(rule.value, '$.id') = ?
+          AND json_extract(rule.value, '$.outcome') = 'changed'
+          AND json_extract(rule.value, '$.changed') = 1
+      )`);
+      parameters.push(TRANSFORMATION_RULE_IDS.correction);
+    }
+    const where = conditions.length ? ` WHERE ${conditions.join(" AND ")}` : "";
+    const countRow = (conditions.length ? this.#database.prepare(`SELECT COUNT(*) AS total FROM transformations${where}`).get(...parameters)
+      : this.#count.get()) as { total: number } | undefined;
+    const rows = (conditions.length ? this.#database.prepare(`
+      SELECT id, original_text, transformed_text, created_at, rules_snapshot, source, context_snapshot
+      FROM transformations${where} ORDER BY id DESC LIMIT ? OFFSET ?
+    `).all(...parameters, pageSize, (page - 1) * pageSize)
+      : this.#list.all(pageSize, (page - 1) * pageSize)) as unknown as TransformationRow[];
 
     return {
       total: countRow?.total ?? 0,

@@ -1,0 +1,17 @@
+✔ real correction toggle, persisted candidate explanations, reload and mobile layout (7096.981095ms)
+▶ templates filter, selected-level actions, predefined phrases and native activation
+  ✔ compact hotkey settings and predefined words with refresh (803.89124ms)
+  ✔ selected levels and predefined phrases supply the exact paste text (1234.705371ms)
+  ✔ delayed native state cannot reset edited or saved hotkey settings (732.166181ms)
+  ✔ recording stops when the window loses focus or unloads (270.95938ms)
+  ✔ changing the source cannot be overwritten by an older tab reload (577.715954ms)
+  ✔ native ACL errors are logged and show the log path (633.928316ms)
+✔ templates filter, selected-level actions, predefined phrases and native activation (7409.782913ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8272.344

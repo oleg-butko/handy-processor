@@ -8,13 +8,17 @@ import {
   Loader,
   Pagination,
   Paper,
+  SegmentedControl,
   SimpleGrid,
   Stack,
+  Switch,
   Text,
+  TextInput,
   Title,
   Tooltip,
 } from "@mantine/core";
 import { useCallback, useEffect, useState } from "react";
+import { TRANSFORMATION_RULE_IDS } from "../../src/transformation-rules.js";
 import { CorrectionDetails } from "./CorrectionDetails.js";
 import type {
   HistoryResponse,
@@ -23,6 +27,12 @@ import type {
 } from "./types.js";
 
 const PAGE_SIZE = 10;
+type SearchMode = "both" | "original" | "result";
+
+function hasCorrectionReplacement(item: TransformationRecord): boolean {
+  return item.appliedRules?.some(rule =>
+    rule.id === TRANSFORMATION_RULE_IDS.correction && rule.outcome === "changed" && rule.changed) ?? false;
+}
 
 const RULE_REASON_LABELS: Readonly<Record<string, string>> = {
   "correction-unavailable": "Коррекция недоступна; исходник сохранён для последующих правил",
@@ -95,7 +105,9 @@ function AppliedRules({
         );
       })}
     </Group>
-    {item.appliedRules.map((rule) => <CorrectionDetails key={`${rule.id}:${rule.version}`} rule={rule} />)}
+    {item.appliedRules.filter(rule => rule.id === TRANSFORMATION_RULE_IDS.correction &&
+      rule.outcome === "changed" && rule.changed).map(rule =>
+      <CorrectionDetails key={`${rule.id}:${rule.version}`} rule={rule} />)}
     </Stack>
   );
 }
@@ -141,50 +153,39 @@ function TransformationCard({
   readonly ruleTitles: ReadonlyMap<string, string>;
 }) {
   return (
-    <Card className="hp-surface" withBorder radius="md" padding="sm">
-      <Stack gap="sm">
+    <Card className="hp-surface history-card" withBorder radius="md" padding="sm">
+      <Stack gap="xs">
         <Group justify="space-between" align="center" wrap="wrap">
           <Group gap="xs">
             <Badge size="sm" variant="light" color="gray">
               #{item.id}
             </Badge>
             <ContextBadges item={item} />
+            {hasCorrectionReplacement(item) ? <Badge size="sm" color="red" variant="filled">Замена</Badge> : null}
           </Group>
           <Text c="dimmed" size="xs">
             {formatDate(item.createdAt)}
           </Text>
         </Group>
 
-        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="sm">
-          <Stack gap={4}>
-            <Text c="dimmed" fw={700} size="xs" tt="uppercase">
-              Исходный текст
-            </Text>
-            <Paper className="text-panel" p="xs" radius="sm">
+        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xs">
+            <Paper className="text-panel" p={6} radius="sm" role="group" aria-label="Исходный текст">
               <Text component="div" className="log-text" size="sm">
                 {item.originalText}
               </Text>
             </Paper>
-          </Stack>
 
-          <Stack gap={4}>
-            <Text c="cyan.8" fw={700} size="xs" tt="uppercase">
-              Результат
-            </Text>
-            <Paper className="text-panel text-panel-result" p="xs" radius="sm">
+            <Paper className="text-panel text-panel-result" p={6} radius="sm" role="group" aria-label="Результат">
               <Text component="div" className="log-text" size="sm">
                 {item.transformedText}
               </Text>
             </Paper>
-          </Stack>
         </SimpleGrid>
 
-        <Group gap={6} align="center">
-          <Text c="dimmed" fw={700} size="xs" tt="uppercase">
-            Применённые правила
-          </Text>
+        <details className="history-rules-details">
+          <summary>Применённые правила</summary>
           <AppliedRules item={item} ruleTitles={ruleTitles} />
-        </Group>
+        </details>
       </Stack>
     </Card>
   );
@@ -198,11 +199,23 @@ export function HistoryPage({
   readonly active?: boolean;
 }) {
   const [page, setPage] = useState(1);
+  const [query, setQuery] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchIn, setSearchIn] = useState<SearchMode>("both");
+  const [correctionOnly, setCorrectionOnly] = useState(false);
   const [history, setHistory] = useState<HistoryResponse>();
+  const [loadedKey, setLoadedKey] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>();
   const [refreshToken, setRefreshToken] = useState(0);
   const ruleTitles = new Map(rules.map((rule) => [rule.id, rule.title]));
+  const requestKey = `${page}:${searchIn}:${correctionOnly}:${searchTerm}`;
+  const queryPending = query.trim() !== searchTerm;
+
+  useEffect(() => {
+    const timer = setTimeout(() => setSearchTerm(query.trim()), 300);
+    return () => clearTimeout(timer);
+  }, [query]);
 
   const loadHistory = useCallback(async (signal: AbortSignal) => {
     setLoading(true);
@@ -210,21 +223,21 @@ export function HistoryPage({
 
     try {
       const response = await fetch(
-        `/api/transformations?page=${page}&pageSize=${PAGE_SIZE}`,
+        `/api/transformations?${new URLSearchParams({ page: String(page), pageSize: String(PAGE_SIZE),
+          query: searchTerm, searchIn, correctionOnly: String(correctionOnly) })}`,
         { signal },
       );
       if (!response.ok) {
         throw new Error(`Сервер вернул HTTP ${response.status}`);
       }
 
-      setHistory((await response.json()) as HistoryResponse);
-    } catch (requestError) {
-      if (
-        requestError instanceof DOMException &&
-        requestError.name === "AbortError"
-      ) {
-        return;
+      const result = (await response.json()) as HistoryResponse;
+      if (!signal.aborted) {
+        setHistory(result);
+        setLoadedKey(requestKey);
       }
+    } catch (requestError) {
+      if (signal.aborted) return;
       setError(
         requestError instanceof Error
           ? requestError.message
@@ -235,14 +248,17 @@ export function HistoryPage({
         setLoading(false);
       }
     }
-  }, [page]);
+  }, [page, searchTerm, searchIn, correctionOnly, requestKey]);
 
   useEffect(() => {
-    if (!active) return;
+    if (!active || queryPending) return;
     const controller = new AbortController();
     void loadHistory(controller.signal);
     return () => controller.abort();
-  }, [active, loadHistory, refreshToken]);
+  }, [active, loadHistory, refreshToken, queryPending]);
+
+  const visibleHistory = !loading && !queryPending && loadedKey === requestKey ? history : undefined;
+  const filtered = searchTerm.length > 0 || correctionOnly;
 
   return (
     <Stack gap="md" pt="md">
@@ -263,30 +279,45 @@ export function HistoryPage({
         </Button>
       </Group>
 
+      <Stack gap="xs" className="history-filters">
+        <TextInput label="Поиск по истории" placeholder="Слово или фраза" value={query} maxLength={256}
+          onChange={event => { setQuery(event.currentTarget.value); setPage(1); }} />
+        <Group gap="xs" align="center" wrap="wrap">
+          <Text size="sm">Искать в:</Text>
+          <SegmentedControl size="xs" aria-label="Область поиска" value={searchIn} data={[
+            { label: "Оба текста", value: "both" },
+            { label: "Исходный", value: "original" },
+            { label: "Результат", value: "result" },
+          ]} onChange={value => { setSearchIn(value as SearchMode); setPage(1); }} />
+        </Group>
+        <Switch label="Только с заменой терминов и фраз" checked={correctionOnly}
+          onChange={event => { setCorrectionOnly(event.currentTarget.checked); setPage(1); }} />
+      </Stack>
+
       {error ? (
         <Alert color="red" title="Ошибка загрузки">
           {error}
         </Alert>
       ) : null}
 
-      {loading && history === undefined ? (
+      {!visibleHistory && !error ? (
         <Center py={80}>
           <Loader />
         </Center>
       ) : null}
 
-      {!loading && history?.items.length === 0 ? (
+      {visibleHistory?.items.length === 0 ? (
         <Paper className="hp-surface" withBorder radius="md" p={32} ta="center">
-          <Title order={3}>История пока пуста</Title>
+          <Title order={3}>{filtered ? "Ничего не найдено" : "История пока пуста"}</Title>
           <Text c="dimmed" mt="xs">
-            Записи появятся после первой post-processing трансформации Handy.
+            {filtered ? "Попробуйте другой запрос или отключите фильтр." : "Записи появятся после первой обработки текста Handy."}
           </Text>
         </Paper>
       ) : null}
 
-      {history?.items.length ? (
-        <Stack gap="sm" opacity={loading ? 0.55 : 1}>
-          {history.items.map((item) => (
+      {visibleHistory?.items.length ? (
+        <Stack gap="sm">
+          {visibleHistory.items.map((item) => (
             <TransformationCard
               item={item}
               key={item.id}
@@ -296,17 +327,17 @@ export function HistoryPage({
         </Stack>
       ) : null}
 
-      {history && history.pagination.totalPages > 1 ? (
+      {visibleHistory && (filtered || visibleHistory.pagination.totalPages > 1) ? (
         <Group justify="space-between" align="center">
           <Text c="dimmed" size="sm">
-            Всего записей: {history.pagination.total}
+            {filtered ? "Найдено записей" : "Всего записей"}: {visibleHistory.pagination.total}
           </Text>
-          <Pagination
+          {visibleHistory.pagination.totalPages > 1 ? <Pagination
             value={page}
-            total={history.pagination.totalPages}
+            total={visibleHistory.pagination.totalPages}
             onChange={setPage}
             withEdges
-          />
+          /> : null}
         </Group>
       ) : null}
     </Stack>

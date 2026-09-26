@@ -23,7 +23,8 @@ const number = (value: number) => new Intl.NumberFormat("ru-RU", { maximumFracti
 
 export function CorrectionDetails({ rule }: { readonly rule: AppliedRuleRecord }) {
   const trace = rule.correction;
-  if (!trace && !rule.error) return null;
+  if (rule.outcome !== "changed" || !rule.changed || !trace?.complete ||
+      !trace.decisions.some(decision => decision.selected !== null)) return null;
   return (
     <details className="correction-details">
       <summary>Почему выбраны эти исправления</summary>

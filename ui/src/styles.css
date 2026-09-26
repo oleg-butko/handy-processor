@@ -120,6 +120,11 @@ body {
   border-color: var(--hp-result-border);
 }
 
+.history-card .text-panel { min-height: 0; }
+.history-rules-details { min-width: 0; }
+.history-rules-details > summary { cursor: pointer; font-size: 0.82rem; color: var(--mantine-color-dimmed); }
+.history-rules-details[open] > :not(summary) { margin-top: 0.5rem; }
+
 .log-text {
   white-space: pre-wrap;
   overflow-wrap: anywhere;

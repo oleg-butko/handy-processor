@@ -235,6 +235,9 @@ describe("OpenAI-compatible API", () => {
   it("validates history pagination", async () => {
     const response = await fetch(`${baseUrl}/api/transformations?page=0`);
     assert.equal(response.status, 400);
+    for (const query of ["searchIn=unknown", "correctionOnly=maybe", `query=${"я".repeat(257)}`]) {
+      assert.equal((await fetch(`${baseUrl}/api/transformations?${query}`)).status, 400, query);
+    }
   });
 
   it("loads, validates, and updates the transformation history limit", async () => {

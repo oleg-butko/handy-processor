@@ -71,6 +71,42 @@ describe("TransformationLog", () => {
     }
   });
 
+  it("searches all pages of Russian text and filters actual correction changes", () => {
+    const log = new TransformationLog(":memory:");
+    const changed = [{ id: TRANSFORMATION_RULE_IDS.correction, version: 1,
+      outcome: "changed", changed: true }] as const;
+    const unchanged = [{ id: TRANSFORMATION_RULE_IDS.correction, version: 1,
+      outcome: "unchanged", changed: false }] as const;
+    const skipped = [{ id: TRANSFORMATION_RULE_IDS.correction, version: 1,
+      outcome: "skipped", changed: false }] as const;
+    try {
+      log.add("СНЯЛИ СВОД", "сняли слот", changed, EXTERNAL_TRANSFORMATION_CONTEXT);
+      for (let i = 0; i < 12; i++) log.add(`другая запись ${i}`, `другая запись ${i}`, [], EXTERNAL_TRANSFORMATION_CONTEXT);
+      log.add("СВОД ПРАВИЛ", "свод правил", unchanged, EXTERNAL_TRANSFORMATION_CONTEXT);
+      log.add("слот уже верный", "слот уже верный", skipped, EXTERNAL_TRANSFORMATION_CONTEXT);
+      log.add("ВВОД", "слот", lowercaseApplied, EXTERNAL_TRANSFORMATION_CONTEXT);
+      log.add("проверь\nПНЗ", "проверь ПНЗ", changed, EXTERNAL_TRANSFORMATION_CONTEXT);
+      log.add("знак %", "знак %", [], EXTERNAL_TRANSFORMATION_CONTEXT);
+
+      assert.deepEqual(log.list(1, 10, { query: "СНЯЛИ   СВОД", searchIn: "original" }).items.map(row => row.originalText), ["СНЯЛИ СВОД"]);
+      assert.deepEqual(log.list(1, 10, { query: "сняли СЛОТ", searchIn: "result" }).items.map(row => row.originalText), ["СНЯЛИ СВОД"]);
+      assert.equal(log.list(1, 10, { query: "сняли слот", searchIn: "original" }).total, 0);
+      assert.equal(log.list(1, 10, { query: "свод", searchIn: "both" }).total, 2);
+      assert.equal(log.list(1, 10, { query: "проверь пнз", searchIn: "original" }).total, 1);
+      assert.equal(log.list(1, 10, { query: "%" }).total, 1); // Literal substring, not SQL LIKE wildcard.
+      const first = log.list(1, 1, { correctionOnly: true });
+      const second = log.list(2, 1, { correctionOnly: true });
+      assert.equal(first.total, 2);
+      assert.deepEqual(first.items.map(row => row.originalText), ["проверь\nПНЗ"]);
+      assert.deepEqual(second.items.map(row => row.originalText), ["СНЯЛИ СВОД"]);
+      assert.deepEqual(log.list(1, 10, { query: "слот", searchIn: "result", correctionOnly: true }).items.map(row => row.originalText), ["СНЯЛИ СВОД"]);
+      assert.equal(log.list(1, 10, { query: "слот", searchIn: "original", correctionOnly: true }).total, 0);
+      assert.equal(log.list(1, 10, { query: "несуществующее", correctionOnly: true }).total, 0);
+    } finally {
+      log.close();
+    }
+  });
+
   it("persists and enforces the transformation history limit", () => {
     const log = new TransformationLog(":memory:");
     try {

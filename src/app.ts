@@ -15,6 +15,7 @@ import type {
   EditorNote,
   EditorNoteSummary,
   TransformationPage,
+  TransformationHistoryFilter,
   TransformationTextPair,
 } from "./transformation-log.js";
 import { MAX_TRANSFORMATION_HISTORY_LIMIT } from "./transformation-log.js";
@@ -38,7 +39,7 @@ export interface TransformationHistory {
     appliedRules: readonly AppliedTransformationRule[],
     context: TransformationContext,
   ): void;
-  list(page: number, pageSize: number): TransformationPage;
+  list(page: number, pageSize: number, filter?: TransformationHistoryFilter): TransformationPage;
   iterateTextPairs(): Iterable<TransformationTextPair>;
   getTransformationHistoryLimit(): number;
   setTransformationHistoryLimit(value: number): void;
@@ -440,7 +441,18 @@ function getTransformationPage(
     DEFAULT_PAGE_SIZE,
     MAX_PAGE_SIZE,
   );
-  const result = history.list(page, pageSize);
+  const query = parameters.get("query") ?? "";
+  if (query.length > 256) throw new HttpError(400, "'query' must be at most 256 characters");
+  const searchIn = parameters.get("searchIn") ?? "both";
+  if (!["both", "original", "result"].includes(searchIn)) {
+    throw new HttpError(400, "'searchIn' must be both, original or result");
+  }
+  const correctionOnly = parameters.get("correctionOnly") ?? "false";
+  if (correctionOnly !== "true" && correctionOnly !== "false") {
+    throw new HttpError(400, "'correctionOnly' must be true or false");
+  }
+  const result = history.list(page, pageSize, { query, searchIn: searchIn as "both" | "original" | "result",
+    correctionOnly: correctionOnly === "true" });
 
   return {
     items: result.items,

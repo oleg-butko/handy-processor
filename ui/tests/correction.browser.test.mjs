@@ -68,27 +68,56 @@ test('real correction toggle, persisted candidate explanations, reload and mobil
   assert.equal(await submit('без снятия сваты'), 'без снятия слота');
   assert.equal(await submit('сняли свод правил'), 'сняли свод правил');
   await page.getByRole('tab', { name: 'История', exact: true }).click();
-  const details = page.locator('.correction-details');
-  await details.first().waitFor();
-  assert.equal(await details.count(), 2);
-  await details.first().locator(':scope > summary').click();
-  const rejected = details.first().locator('.correction-decision').filter({ hasText: '«свод»' }).first();
-  await rejected.locator(':scope > summary').click();
-  assert.match(await rejected.textContent(), /Сработало контекстное исключение/);
-  await details.nth(1).locator(':scope > summary').click();
-  const chosen = details.nth(1).locator('.correction-decision').first();
+  const changedCard = page.locator('.history-card').filter({ has: page.getByText('Замена', { exact: true }) });
+  const unchangedCard = page.locator('.history-card').filter({ hasText: 'сняли свод правил' });
+  await changedCard.waitFor();
+  assert.equal(await changedCard.locator('.correction-details').isVisible(), false); // Rules are collapsed by default.
+  assert.equal(await changedCard.getByText('Замена', { exact: true }).count(), 1);
+  assert.equal(await unchangedCard.getByText('Замена', { exact: true }).count(), 0);
+  assert.equal(await page.getByText('Исходный текст', { exact: true }).count(), 0);
+  assert.equal(await page.getByText('Результат', { exact: true }).count(), 1); // Search option, not a card label.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole('heading', { name: 'История преобразований' }).scrollIntoViewIfNeeded();
+  if (process.env.CORRECTION_SCREENSHOT) await page.screenshot({ path: process.env.CORRECTION_SCREENSHOT, fullPage: true });
+  await changedCard.locator('.history-rules-details > summary').click();
+  await unchangedCard.locator('.history-rules-details > summary').click();
+  assert.equal(await unchangedCard.locator('.correction-details').count(), 0);
+  const details = changedCard.locator('.correction-details');
+  await details.locator(':scope > summary').click();
+  const chosen = details.locator('.correction-decision').first();
   await chosen.locator(':scope > summary').click();
   assert.match(await chosen.textContent(), /«сваты» → «слота»/);
   await chosen.getByText('Из чего сложилась оценка', { exact: true }).first().click();
   assert.match(await chosen.textContent(), /Вес термина/);
   assert.match(await chosen.textContent(), /Бонус контекста/);
   assert.match(await chosen.textContent(), /без снятия/);
-  await page.setViewportSize({ width: 390, height: 844 });
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true);
-  assert.equal(await details.nth(1).evaluate(element => element.getBoundingClientRect().right <= innerWidth), true);
-  assert.equal(await details.nth(1).locator('.correction-candidates-scroll').first().evaluate(element =>
+  assert.equal(await details.evaluate(element => element.getBoundingClientRect().right <= innerWidth), true);
+  assert.equal(await details.locator('.correction-candidates-scroll').first().evaluate(element =>
     element.clientWidth < element.scrollWidth && element.getBoundingClientRect().right <= innerWidth), true);
-  if (process.env.CORRECTION_SCREENSHOT) await page.screenshot({ path: process.env.CORRECTION_SCREENSHOT, fullPage: true });
+
+  for (let i = 0; i < 11; i++) assert.equal(await submit(`фоновая запись ${i}`), `фоновая запись ${i}`);
+  await page.getByRole('button', { name: 'Обновить' }).click();
+  await page.getByLabel('Поиск по истории').fill('сваты');
+  await changedCard.waitFor(); // Search reaches the older record beyond the first page.
+  await page.getByText('Найдено записей: 2').waitFor();
+  await page.getByText('Исходный', { exact: true }).click();
+  await changedCard.waitFor();
+  await page.getByText('Результат', { exact: true }).click();
+  await changedCard.waitFor({ state: 'hidden' });
+  await page.getByText('Найдено записей: 1').waitFor();
+  await page.getByLabel('Поиск по истории').fill('слота');
+  await changedCard.waitFor();
+  await page.getByLabel('Только с заменой терминов и фраз').check();
+  await changedCard.waitFor();
+  await page.getByText('Исходный', { exact: true }).click();
+  await page.getByText('Ничего не найдено').waitFor();
+  await page.getByText('Оба текста', { exact: true }).click();
+  await changedCard.waitFor();
+  await page.getByLabel('Поиск по истории').fill('свод правил');
+  await page.getByText('Ничего не найдено').waitFor();
+  await page.getByLabel('Только с заменой терминов и фраз').uncheck();
+  await unchangedCard.waitFor();
   await page.getByRole('tab', { name: 'Список правил', exact: true }).click();
   await page.locator('.correction-settings > summary').click();
   await page.getByRole('button', { name: 'Загрузить профиль заново' }).click();
