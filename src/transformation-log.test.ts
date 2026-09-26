@@ -87,12 +87,14 @@ describe("TransformationLog", () => {
       log.add("ВВОД", "слот", lowercaseApplied, EXTERNAL_TRANSFORMATION_CONTEXT);
       log.add("проверь\nПНЗ", "проверь ПНЗ", changed, EXTERNAL_TRANSFORMATION_CONTEXT);
       log.add("знак %", "знак %", [], EXTERNAL_TRANSFORMATION_CONTEXT);
+      log.add("разные   слова", "разные   слова", [], EXTERNAL_TRANSFORMATION_CONTEXT);
 
       assert.deepEqual(log.list(1, 10, { query: "СНЯЛИ   СВОД", searchIn: "original" }).items.map(row => row.originalText), ["СНЯЛИ СВОД"]);
       assert.deepEqual(log.list(1, 10, { query: "сняли СЛОТ", searchIn: "result" }).items.map(row => row.originalText), ["СНЯЛИ СВОД"]);
       assert.equal(log.list(1, 10, { query: "сняли слот", searchIn: "original" }).total, 0);
       assert.equal(log.list(1, 10, { query: "свод", searchIn: "both" }).total, 2);
       assert.equal(log.list(1, 10, { query: "проверь пнз", searchIn: "original" }).total, 1);
+      assert.equal(log.list(1, 10, { query: "РАЗНЫЕ слова", searchIn: "original" }).total, 1);
       assert.equal(log.list(1, 10, { query: "%" }).total, 1); // Literal substring, not SQL LIKE wildcard.
       const first = log.list(1, 1, { correctionOnly: true });
       const second = log.list(2, 1, { correctionOnly: true });

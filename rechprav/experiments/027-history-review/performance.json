@@ -1,0 +1,31 @@
+{
+  "rows": 50000,
+  "optimized": {
+    "text": {
+      "milliseconds": 263,
+      "matches": 2500
+    },
+    "correction": {
+      "milliseconds": 78,
+      "matches": 2500
+    },
+    "combined": {
+      "milliseconds": 209,
+      "matches": 2500
+    },
+    "phrase": {
+      "milliseconds": 102,
+      "matches": 50000
+    }
+  },
+  "legacy": {
+    "text": {
+      "milliseconds": 858,
+      "matches": 2500
+    },
+    "combined": {
+      "milliseconds": 809,
+      "matches": 2500
+    }
+  }
+}

@@ -110,6 +110,16 @@ interface StoredRuleSnapshot {
 
 const SCHEMA_VERSION = 6;
 const TRANSFORMATION_HISTORY_LIMIT_KEY = "transformation_history_limit";
+const IRREGULAR_SPACING = /[^\S ]| {2,}/u;
+
+function containsHistoryText(value: string, query: string): boolean {
+  // Russian case conversion does not need locale-sensitive casing. This fast
+  // path avoids whitespace normalization for single words and ordinary phrases.
+  const folded = value.toLowerCase();
+  if (folded.includes(query)) return true;
+  return query.includes(" ") && IRREGULAR_SPACING.test(folded) &&
+    folded.replace(/\s+/gu, " ").includes(query);
+}
 
 function validateTransformationHistoryLimit(value: number): void {
   if (
@@ -388,7 +398,7 @@ export class TransformationLog {
     // uppercase Russian text and phrases spanning whitespace in ASR output.
     this.#database.function("history_contains", { deterministic: true }, (value, query) =>
       typeof value === "string" && typeof query === "string" &&
-      value.replace(/\s+/gu, " ").toLocaleLowerCase("ru-RU").includes(query) ? 1 : 0);
+      containsHistoryText(value, query) ? 1 : 0);
 
     this.#insert = this.#database.prepare(`
       INSERT INTO transformations (
@@ -524,7 +534,7 @@ export class TransformationLog {
   }
 
   list(page: number, pageSize: number, filter: TransformationHistoryFilter = {}): TransformationPage {
-    const query = filter.query?.trim().replace(/\s+/gu, " ").toLocaleLowerCase("ru-RU") ?? "";
+    const query = filter.query?.trim().replace(/\s+/gu, " ").toLowerCase() ?? "";
     const conditions: string[] = [];
     const parameters: string[] = [];
     if (query) {

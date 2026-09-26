@@ -1,0 +1,21 @@
+{
+  "rows": 50000,
+  "timings": {
+    "text": {
+      "milliseconds": 277,
+      "matches": 2500
+    },
+    "correction": {
+      "milliseconds": 84,
+      "matches": 2500
+    },
+    "combined": {
+      "milliseconds": 216,
+      "matches": 2500
+    },
+    "phrase": {
+      "milliseconds": 106,
+      "matches": 50000
+    }
+  }
+}
