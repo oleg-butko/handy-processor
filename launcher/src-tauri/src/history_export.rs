@@ -274,10 +274,7 @@ mod tests {
             path.file_name().unwrap(),
             "handy-processor-history-2026-08-30-2.txt"
         );
-        assert_eq!(
-            fs::read_to_string(path).unwrap(),
-            "исходный\nрезультат\n\n"
-        );
+        assert_eq!(fs::read_to_string(path).unwrap(), "исходный\nрезультат\n\n");
         assert_eq!(
             fs::read_to_string(directory.join("handy-processor-history-2026-08-30.txt")).unwrap(),
             "existing"
@@ -306,9 +303,11 @@ mod tests {
 
     #[test]
     fn rejects_unsafe_export_filenames() {
-        assert!(
-            export_file_name("attachment; filename=\"../history.txt\"", ExportFormat::Text).is_err()
-        );
+        assert!(export_file_name(
+            "attachment; filename=\"../history.txt\"",
+            ExportFormat::Text
+        )
+        .is_err());
         assert!(
             export_file_name("attachment; filename=\"history.txt\"", ExportFormat::Text).is_err()
         );
