@@ -42,6 +42,15 @@ test("history import, fuzzy variants, annotation and project restore", async () 
     await page.locator("#group-id").fill("slot-case");
     page.on("dialog", (dialog) => dialog.accept());
     await page.locator("#apply-group").click();
+    assert.match(await page.locator("#analysis-summary").textContent(), /1 проверено: 1 ошибок/u);
+    await page.locator("#status-filter").selectOption("reviewed");
+    await page.locator("#origin-filter").selectOption("synthetic");
+    await page.locator("#search-form button[type=submit]").click();
+    await page.waitForFunction(() => document.querySelector("#summary")?.textContent?.includes("1 найдено"));
+    await page.locator("#status-filter").selectOption("all");
+    await page.locator("#origin-filter").selectOption("all");
+    await page.locator("#search-form button[type=submit]").click();
+    await page.waitForFunction(() => document.querySelector("#summary")?.textContent?.includes("3 найдено"));
     const downloadPromise = page.waitForEvent("download");
     await page.locator("#save-project").click();
     const download = await downloadPromise;

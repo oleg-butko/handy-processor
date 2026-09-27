@@ -1,5 +1,6 @@
 import { buildIndex, hasChangedCorrection, search } from "./search.js";
 import { defaultAnnotation, MAX_FILE_BYTES, parseJsonl, serializeProject } from "./project.js";
+import { summarizeAnnotations } from "./analysis.js";
 
 const $ = (id) => document.getElementById(id);
 const state = {
@@ -54,6 +55,51 @@ function renderSummary() {
   }
   $("summary").textContent = `${state.index.entries.length} записей · ${reviewed} проверено · ${corrected} ошибок подтверждено · ${ambiguous} неясно · ` +
     `${state.result.total} найдено в ${state.result.groups.length} вариантах`;
+}
+
+function focusRecord(id) {
+  if (!state.index) return;
+  ++state.searchOperation;
+  $("query").value = "";
+  $("distance").value = "0";
+  $("mode").value = "original";
+  $("status-filter").value = "all";
+  $("origin-filter").value = "all";
+  $("source").value = "all";
+  $("changed-only").checked = false;
+  state.result = search(state.index, { query: "" });
+  const entryIndex = state.index.idToIndex.get(id);
+  const groupIndex = state.result.groups.findIndex((group) => group.ids.includes(entryIndex));
+  if (groupIndex < 0) return;
+  const group = state.result.groups[groupIndex];
+  state.shownGroups = Math.max(100, groupIndex + 1);
+  state.selectedGroup = group.key;
+  state.selectedRecord = id;
+  state.recordPage = Math.floor(group.ids.indexOf(entryIndex) / 40);
+  render();
+}
+
+function renderAnalysis() {
+  const container = $("analysis-pairs");
+  container.replaceChildren();
+  if (!state.index) return;
+  const analysis = summarizeAnnotations(state.index.entries.map((entry) => entry.record), state.annotations);
+  const totals = analysis.totals;
+  $("analysis-summary").textContent = `${totals.reviewed} проверено: ${totals.corrected} ошибок, ${totals.alreadyCorrect} исходников верны. ` +
+    `Из ошибок ${totals.exactFix} исправлены точно, ${totals.missed} пропущены, ${totals.otherResult} дали другой результат; ` +
+    `${totals.damagedCorrect} верных исходников испорчено. Происхождение: ${totals.realAsr} ASR, ` +
+    `${totals.synthetic} технических, ${totals.unconfirmedOrigin} без подтверждения.`;
+  for (const pair of analysis.pairs.slice(0, 30)) {
+    const button = element("button", "");
+    button.type = "button";
+    button.append(element("strong", "", `${pair.source.slice(0, 120)} → ${pair.gold.slice(0, 120)}`));
+    button.append(element("small", "", `${pair.count} подтверждено · ${pair.exactFix} точно исправлено · ${pair.missed} пропущено · ${pair.otherResult} другой результат`));
+    button.addEventListener("click", () => focusRecord(pair.ids[0]));
+    container.append(button);
+  }
+  if (analysis.pairs.length > 30) {
+    container.append(element("small", "", `Показаны 30 из ${analysis.pairs.length} пар.`));
+  }
 }
 
 function renderGroups() {
@@ -156,7 +202,7 @@ function renderDetail() {
       ? "Смысл неясен; запись не должна входить в оценку." : "Эталон пока не подтверждён.";
 }
 
-function render() { renderSummary(); renderGroups(); renderRecords(); renderDetail(); }
+function render() { renderSummary(); renderAnalysis(); renderGroups(); renderRecords(); renderDetail(); }
 
 async function runSearch() {
   if (!state.index) return;
@@ -172,6 +218,9 @@ async function runSearch() {
       mode: $("mode").value,
       distance: Number($("distance").value),
       source: $("source").value,
+      statusFilter: $("status-filter").value,
+      originFilter: $("origin-filter").value,
+      annotations: state.annotations,
       sort: $("sort").value,
       changedOnly: $("changed-only").checked,
     });
@@ -215,9 +264,11 @@ function updateAnnotation(update) {
   state.annotations.set(entry.record.id, { ...current, ...update });
   state.dirty = true;
   renderSummary();
+  renderAnalysis();
   renderGroups();
   renderRecords();
   renderDetail();
+  if ($("status-filter").value !== "all" || $("origin-filter").value !== "all") void runSearch();
 }
 
 function downloadProject() {
@@ -248,6 +299,7 @@ $("gold").addEventListener("input", () => {
   state.dirty = true;
   $("annotation-state").textContent = "Черновик сохранён в памяти; подтвердите правку и скачайте проект.";
 });
+$("gold").addEventListener("blur", () => { renderSummary(); renderAnalysis(); });
 $("note").addEventListener("input", () => {
   const entry = selectedEntry();
   if (!entry) return;

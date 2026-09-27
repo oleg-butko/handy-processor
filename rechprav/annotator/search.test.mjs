@@ -39,3 +39,15 @@ test("empty query lists repeated originals and short broad fuzzy searches are re
   assert.equal(all.groups[0].ids.length, 2);
   assert.throws(() => search(index, { query: "пнз", distance: 2 }), /более длинные слова/u);
 });
+
+test("review and origin filters use explicit annotation, never processor output", () => {
+  const index = buildIndex(records);
+  const annotations = new Map([
+    [1, { status: "reviewed", gold: "сняли слот", originKind: "synthetic" }],
+    [2, { status: "ambiguous", gold: null, originKind: "unknown" }],
+  ]);
+  assert.equal(search(index, { query: "сняли", annotations, statusFilter: "reviewed" }).total, 1);
+  assert.equal(search(index, { query: "сняли", annotations, statusFilter: "pending" }).total, 1);
+  assert.equal(search(index, { query: "сняли", annotations, originFilter: "unknown" }).total, 2);
+  assert.equal(search(index, { query: "сняли", annotations, originFilter: "synthetic" }).total, 1);
+});

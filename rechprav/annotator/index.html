@@ -37,6 +37,12 @@
       <label>Источник
         <select id="source"><option value="all">Любой</option><option value="external">Внешний ввод</option><option value="voice-editor">Голосовой редактор</option></select>
       </label>
+      <label>Разметка
+        <select id="status-filter"><option value="all">Любая</option><option value="pending">Не проверено</option><option value="reviewed">Проверено</option><option value="ambiguous">Неясно</option></select>
+      </label>
+      <label>Происхождение
+        <select id="origin-filter"><option value="all">Любое</option><option value="unknown">Не подтверждено</option><option value="real-asr">Реальное ASR</option><option value="synthetic">Технический пример</option><option value="not-asr">Другой текст</option></select>
+      </label>
       <label>Порядок
         <select id="sort"><option value="frequency">Частые сначала</option><option value="closest">Близкие сначала</option></select>
       </label>
@@ -46,6 +52,12 @@
 
     <p id="message" class="message" role="status"></p>
     <p id="summary" class="summary">Импортируйте историю, чтобы начать.</p>
+    <section class="panel analysis-panel" aria-label="Подтверждённые повторы">
+      <h2>Подтверждённые повторы</h2>
+      <p class="hint">Подсчёт по всей загруженной разметке, включая технические примеры. Совпадение результата с эталоном здесь буквальное; это не метрика независимого ASR-набора.</p>
+      <p id="analysis-summary" class="summary">Пока нет проверенных записей.</p>
+      <div id="analysis-pairs" class="pairs"></div>
+    </section>
     <div class="columns">
       <section class="panel groups-panel">
         <h2>Варианты <small id="group-count"></small></h2>

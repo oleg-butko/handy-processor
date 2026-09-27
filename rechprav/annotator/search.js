@@ -126,6 +126,11 @@ export function search(index, options = {}) {
     const entry = index.entries[id];
     if (options.source && options.source !== "all" && entry.record.source !== options.source) continue;
     if (options.changedOnly && !hasChangedCorrection(entry.record)) continue;
+    const annotation = options.annotations?.get(entry.record.id);
+    if (options.statusFilter && options.statusFilter !== "all" &&
+        (annotation?.status ?? "pending") !== options.statusFilter) continue;
+    if (options.originFilter && options.originFilter !== "all" &&
+        (annotation?.originKind ?? "unknown") !== options.originFilter) continue;
     let best = null;
     if (query.length === 0) {
       best = { matched: entry.original.join(" ") || "(пусто)", distance: 0, scope: "original" };
