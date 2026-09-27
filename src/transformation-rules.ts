@@ -13,6 +13,7 @@ export const TRANSFORMATION_RULE_IDS = {
   editorLowercaseInsideSentence: "editor.case.lowercase-inside-sentence",
   russianNumerals: "numbers.ru-cardinals-to-digits",
   removeFinalPeriod: "punctuation.remove-final-period",
+  removeAllCommas: "punctuation.remove-all-commas",
 } as const;
 
 export type TransformationRuleId =
@@ -151,6 +152,20 @@ export const TRANSFORMATION_RULES: readonly TransformationRule[] = [
       output: "Текст готов",
     },
     apply: (text) => text.replace(/\.(\s*)$/u, "$1"),
+  },
+  {
+    id: TRANSFORMATION_RULE_IDS.removeAllCommas,
+    version: 1,
+    title: "Удаление всех запятых",
+    description: "Удаляет все запятые в тексте, сохраняя остальные знаки препинания.",
+    defaultEnabled: false,
+    category: "common",
+    sources: [TRANSFORMATION_SOURCES.external, TRANSFORMATION_SOURCES.voiceEditor],
+    example: {
+      input: "Первый, второй, третий.",
+      output: "Первый второй третий.",
+    },
+    apply: (text) => text.replace(/,/gu, ""),
   },
 ];
 

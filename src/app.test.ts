@@ -166,7 +166,12 @@ describe("OpenAI-compatible API", () => {
       items: Array<{ id: string; enabled: boolean }>;
     };
     assert.equal(rulesResponse.status, 200);
-    assert.equal(rules.items.length, 5);
+    assert.equal(rules.items.length, 6);
+    assert.deepEqual(rules.items.slice(-2).map((rule) => rule.id), [
+      TRANSFORMATION_RULE_IDS.removeFinalPeriod,
+      TRANSFORMATION_RULE_IDS.removeAllCommas,
+    ]);
+    assert.equal(rules.items.at(-1)?.enabled, false);
 
     const updateResponse = await fetch(
       `${baseUrl}/api/rules/${TRANSFORMATION_RULE_IDS.lowercase}`,
@@ -211,6 +216,38 @@ describe("OpenAI-compatible API", () => {
         TRANSFORMATION_RULE_IDS.removeFinalPeriod,
       ],
     );
+  });
+
+  it("toggles comma removal independently for new transformations", async () => {
+    const url = `${baseUrl}/api/rules/${TRANSFORMATION_RULE_IDS.removeAllCommas}`;
+    const setEnabled = (enabled: boolean) => fetch(url, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ enabled }),
+    });
+    const submit = async () => {
+      const response = await fetch(`${baseUrl}/v1/chat/completions`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ messages: [{ role: "user", content: "ПЕРВЫЙ, ВТОРОЙ." }] }),
+      });
+      return ((await response.json()) as {
+        choices: Array<{ message: { content: string } }>;
+      }).choices[0]?.message.content;
+    };
+
+    try {
+      assert.equal((await setEnabled(true)).status, 200);
+      assert.equal((await submit())?.includes(","), false);
+      assert.deepEqual(
+        transformationLog.list(1, 1).items[0]?.appliedRules?.at(-1),
+        { id: TRANSFORMATION_RULE_IDS.removeAllCommas, version: 1,
+          outcome: "changed", changed: true },
+      );
+    } finally {
+      assert.equal((await setEnabled(false)).status, 200);
+    }
+    assert.equal((await submit())?.includes(","), true);
   });
 
   it("validates rule updates", async () => {

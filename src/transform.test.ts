@@ -47,6 +47,30 @@ describe("transformTranscription", () => {
     assert.equal(transform("IS THIS OK?"), "is this ok?");
   });
 
+  it("keeps commas by default and removes all of them when enabled", () => {
+    assert.equal(transform("ПЕРВЫЙ, ВТОРОЙ, ТРЕТИЙ."), "первый, второй, третий");
+    const result = transformTranscription(
+      "Первый, второй, третий.",
+      new Set([
+        TRANSFORMATION_RULE_IDS.removeAllCommas,
+        TRANSFORMATION_RULE_IDS.removeFinalPeriod,
+      ]),
+    );
+    assert.equal(result.text, "Первый второй третий");
+    assert.deepEqual(result.appliedRules.map((rule) => rule.id), [
+      TRANSFORMATION_RULE_IDS.removeFinalPeriod,
+      TRANSFORMATION_RULE_IDS.removeAllCommas,
+    ]);
+    assert.equal(
+      transformTranscription(
+        "Начало, продолжение!",
+        new Set([TRANSFORMATION_RULE_IDS.removeAllCommas]),
+        editorContext("start"),
+      ).text,
+      "Начало продолжение!",
+    );
+  });
+
   it("normalizes simple Russian numerals as part of the transformation", () => {
     assert.equal(
       transform("МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА."),
@@ -89,6 +113,13 @@ describe("transformTranscription", () => {
         new Set([TRANSFORMATION_RULE_IDS.lowercase]),
       ).text,
       "hello world.",
+    );
+    assert.equal(
+      transformTranscription(
+        "One, two, three.",
+        new Set([TRANSFORMATION_RULE_IDS.removeAllCommas]),
+      ).text,
+      "One two three.",
     );
   });
 
