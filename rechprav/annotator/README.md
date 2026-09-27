@@ -59,11 +59,40 @@ npm run dev:annotator
 Формат строки проекта — схема 2: `history` содержит исходную запись,
 `annotation` — `status`, `gold`, `note`, `originKind`, `groupId` и при наличии
 черновика `draftGold`. Проекты схемы 1 также открываются; их происхождение
-остаётся неподтверждённым. Этот проект —
-промежуточная очередь, **не** [корпус для benchmark](../../docs/rechprav/corpus-format.md):
-в нём пока нет проверенных диапазонов правок и разбиения train/dev/test.
-Следующий этап — преобразование только подтверждённых строк в формат корпуса
-с проверкой источника, групп повторов и неоднозначных случаев.
+остаётся неподтверждённым. Сам проект не является
+[корпусом для benchmark](../../docs/rechprav/corpus-format.md).
+
+Для построения корпуса из подтверждённых записей сначала сохраните проект,
+затем запустите из корня проекта (выходной каталог должен быть новым):
+
+```bash
+mkdir -p rechprav/data/private
+/home/user1/.local/bin/cargo run --manifest-path rechprav/Cargo.toml --locked --offline -- \
+  import-annotations rechprav/data/private/my-project.jsonl \
+  --output-dir rechprav/data/private/my-corpus-001
+```
+
+Команда создаёт `report.json` и при наличии подходящих записей отдельные
+`corpus-real-asr.jsonl` и `corpus-synthetic.jsonl`. Она берёт только явно
+подтверждённые записи с указанным происхождением, сама вычисляет диапазоны
+лексических правок через Rust-токенизатор и проверяет каждый результат
+валидатором корпуса. Неподдерживаемые изменения, например пунктуация или чистая
+вставка, перечисляются по ID в `report.json` и не попадают в корпус. Результат
+процессора Handy не служит эталоном. Совпадающие после нормализации source/gold и вручную связанные
+варианты получают общий `group_id`; `split` остаётся `unassigned`. Корпуса
+реального ASR и технических примеров не смешиваются в одном файле.
+После проверки отчёта можно выполнить:
+
+```bash
+/home/user1/.local/bin/cargo run --manifest-path rechprav/Cargo.toml --locked --offline -- \
+  validate rechprav/data/private/my-corpus-001/corpus-real-asr.jsonl
+```
+
+Если файла реального ASR ещё нет, сначала работайте с техническим корпусом.
+Для примера есть `rechprav/data/fixtures/annotation-project/project.jsonl`.
+Рабочие файлы в `rechprav/data/private/` исключены из Git. Только после
+ручной проверки групп корпус следует делить по группам на train/dev/test;
+инструмент пока не делает этого автоматически.
 
 Проверка поиска: `node --test rechprav/annotator/search.test.mjs`.
 Браузерный тест: `node --test rechprav/annotator/annotator.browser.test.mjs`

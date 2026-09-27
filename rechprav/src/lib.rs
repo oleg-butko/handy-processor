@@ -1,3 +1,4 @@
+pub mod annotation_import;
 pub mod corpus;
 pub mod corrector;
 pub mod dictionary;

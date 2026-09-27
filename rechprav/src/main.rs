@@ -1,6 +1,7 @@
 use anyhow::{Context, Result, ensure};
 use clap::{Args, Parser, Subcommand, ValueEnum};
 use rechprav::{
+    annotation_import,
     corpus::{self, Origin},
     corrector::{Baseline, Corrector, Keep, analyze},
     dictionary::Dictionary,
@@ -153,6 +154,12 @@ enum Command {
         #[arg(required = true)]
         datasets: Vec<PathBuf>,
     },
+    /// Convert an explicitly reviewed annotator project into a corpus and exclusion report.
+    ImportAnnotations {
+        input: PathBuf,
+        #[arg(long)]
+        output_dir: PathBuf,
+    },
     /// Write review, corrected text and debug to a NEW directory. Use --config to correct.
     #[command(visible_alias = "correct")]
     Review {
@@ -218,6 +225,10 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
         ("Cargo.toml", include_bytes!("../Cargo.toml")),
         ("Cargo.lock", include_bytes!("../Cargo.lock")),
         ("src/lib.rs", include_bytes!("lib.rs")),
+        (
+            "src/annotation_import.rs",
+            include_bytes!("annotation_import.rs"),
+        ),
         ("src/main.rs", include_bytes!("main.rs")),
         ("src/corpus.rs", include_bytes!("corpus.rs")),
         ("src/corrector.rs", include_bytes!("corrector.rs")),
@@ -440,6 +451,32 @@ fn run() -> Result<()> {
                 "{}",
                 serde_json::to_string_pretty(&corpus::validate(&records)?)?
             );
+        }
+        Command::ImportAnnotations { input, output_dir } => {
+            let contents =
+                fs::read_to_string(&input).context("read annotation project as UTF-8")?;
+            let conversion = annotation_import::convert(&contents)?;
+            new_dir(&output_dir)?;
+            save_json(&output_dir.join("report.json"), &conversion.report)?;
+            for (kind, name) in [
+                (Origin::RealAsr, "corpus-real-asr.jsonl"),
+                (Origin::Synthetic, "corpus-synthetic.jsonl"),
+            ] {
+                let selected = conversion
+                    .records
+                    .iter()
+                    .filter(|record| record.provenance.kind == kind)
+                    .collect::<Vec<_>>();
+                if !selected.is_empty() {
+                    let mut file = new_file(&output_dir.join(name))?;
+                    for record in selected {
+                        serde_json::to_writer(&mut file, record)?;
+                        writeln!(file)?;
+                    }
+                    file.flush()?;
+                }
+            }
+            println!("{}", serde_json::to_string_pretty(&conversion.report)?);
         }
         Command::Review {
             input,
