@@ -20,7 +20,7 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 .file-button.secondary { background: white; color: #285b9d; }
 .search-panel label, .annotation-panel label { display: flex; flex-direction: column; gap: 5px; font-size: .88rem; font-weight: 600; }
 .search-panel .query { flex: 1 1 280px; }
-input[type=search], select, textarea { border: 1px solid #aab6c5; border-radius: 6px; padding: 9px; font: inherit; background: white; color: inherit; }
+input[type=search], input[type=text], select, textarea { border: 1px solid #aab6c5; border-radius: 6px; padding: 9px; font: inherit; background: white; color: inherit; }
 input[type=search] { width: 100%; }
 .search-panel .checkbox { flex-direction: row; align-items: center; gap: 6px; padding-bottom: 9px; }
 .message { min-height: 1.5em; color: #a02222; margin: 5px 0; }
@@ -42,6 +42,7 @@ input[type=search] { width: 100%; }
 .record-detail summary { cursor: pointer; color: #285b9d; }
 .record-detail .diagnostics { max-height: 240px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .75rem; }
 .annotation-panel textarea { width: 100%; resize: vertical; }
+.annotation-panel input[type=text], .annotation-panel select { width: 100%; }
 .annotation-panel label { margin: 10px 0; }
 .annotation-actions { display: flex; flex-wrap: wrap; gap: 7px; }
 .annotation-actions button { flex: 1 1 auto; }

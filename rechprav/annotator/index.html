@@ -66,6 +66,19 @@
         <label>Примечание (необязательно)
           <textarea id="note" rows="2" disabled></textarea>
         </label>
+        <label>Происхождение текста
+          <select id="origin-kind" disabled>
+            <option value="unknown">Не подтверждено</option>
+            <option value="real-asr">Проверенное распознавание Handy</option>
+            <option value="synthetic">Технический пример</option>
+            <option value="not-asr">Другой текст — исключить</option>
+          </select>
+        </label>
+        <label>Группа похожих фраз
+          <input id="group-id" type="text" maxlength="120" placeholder="Пусто = одинаковый исходник" disabled>
+        </label>
+        <button id="apply-group" type="button" disabled>Присвоить группу всем записям варианта</button>
+        <p class="hint">Укажите одно имя для связанных вариантов. Это не копирует подтверждённый текст и не меняет происхождение соседних записей.</p>
         <div class="annotation-actions">
           <button id="mark-correct" type="button" disabled>Исходник верен</button>
           <button id="mark-edited" type="button" disabled>Подтвердить правку</button>

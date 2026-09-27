@@ -38,6 +38,10 @@ test("history import, fuzzy variants, annotation and project restore", async () 
     await page.locator("#gold").fill("сняли слот");
     await page.locator("#mark-edited").click();
     await page.waitForFunction(() => document.querySelector("#summary")?.textContent?.includes("1 ошибок подтверждено"));
+    await page.locator("#origin-kind").selectOption("synthetic");
+    await page.locator("#group-id").fill("slot-case");
+    page.on("dialog", (dialog) => dialog.accept());
+    await page.locator("#apply-group").click();
     const downloadPromise = page.waitForEvent("download");
     await page.locator("#save-project").click();
     const download = await downloadPromise;
@@ -45,13 +49,18 @@ test("history import, fuzzy variants, annotation and project restore", async () 
     await download.saveAs(saved);
     const rows = (await readFile(saved, "utf8")).trim().split("\n").map(JSON.parse);
     assert.equal(rows.length, 5);
+    assert.equal(rows[0].schema_version, 2);
     assert.equal(rows[0].annotation.gold, "сняли слот");
+    assert.equal(rows[0].annotation.originKind, "synthetic");
+    assert.equal(rows[0].annotation.groupId, "slot-case");
+    assert.equal(rows[1].annotation.gold, null);
+    assert.equal(rows[1].annotation.groupId, "slot-case");
 
-    page.on("dialog", (dialog) => dialog.accept());
     await page.locator("#project-file").setInputFiles(saved);
     await page.waitForFunction(() => document.querySelector("#file-name")?.textContent?.includes("rechprav-annotation-"));
     assert.match(await page.locator("#summary").textContent(), /1 проверено/u);
     assert.equal(await page.locator("#gold").inputValue(), "сняли слот");
+    assert.equal(await page.locator("#group-id").inputValue(), "slot-case");
 
     await page.evaluate(() => {
       const original = File.prototype.text;

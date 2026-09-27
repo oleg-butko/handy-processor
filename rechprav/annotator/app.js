@@ -1,8 +1,7 @@
 import { buildIndex, hasChangedCorrection, search } from "./search.js";
+import { defaultAnnotation, MAX_FILE_BYTES, parseJsonl, serializeProject } from "./project.js";
 
 const $ = (id) => document.getElementById(id);
-const MAX_FILE_BYTES = 100 * 1024 * 1024;
-const MAX_RECORDS = 100_000;
 const state = {
   index: null,
   annotations: new Map(),
@@ -24,56 +23,8 @@ function element(tag, className, text) {
   return node;
 }
 
-function validateRecord(record, line) {
-  if (!record || typeof record !== "object" || Array.isArray(record) ||
-      !Number.isSafeInteger(record.id) || record.id < 1 ||
-      typeof record.originalText !== "string" || typeof record.transformedText !== "string" ||
-      !["external", "voice-editor"].includes(record.source) ||
-      record.originalText.length > 20_000 || record.transformedText.length > 20_000) {
-    throw new Error(`Строка ${line}: неверная запись истории`);
-  }
-}
-
-function parseJsonl(text, project) {
-  const records = [];
-  const annotations = new Map();
-  const ids = new Set();
-  const lines = text.replace(/^\uFEFF/u, "").split(/\r?\n/u);
-  for (let i = 0; i < lines.length; i += 1) {
-    if (!lines[i].trim()) continue;
-    if (records.length >= MAX_RECORDS) throw new Error(`Максимум ${MAX_RECORDS} записей в одном проекте`);
-    let item;
-    try { item = JSON.parse(lines[i]); } catch { throw new Error(`Строка ${i + 1}: некорректный JSON`); }
-    if (project && (item?.schema_version !== 1 || !item.history || !item.annotation)) {
-      throw new Error(`Строка ${i + 1}: это не проект разметки версии 1`);
-    }
-    const record = project ? item.history : item;
-    validateRecord(record, i + 1);
-    if (ids.has(record.id)) throw new Error(`Строка ${i + 1}: повтор ID ${record.id}`);
-    ids.add(record.id);
-    records.push(record);
-    if (project) {
-      const annotation = item.annotation;
-      if (!["pending", "reviewed", "ambiguous"].includes(annotation.status) ||
-          (annotation.gold !== null && typeof annotation.gold !== "string") ||
-          (typeof annotation.gold === "string" && annotation.gold.length > 20_000) ||
-          (annotation.draftGold !== undefined && typeof annotation.draftGold !== "string") ||
-          (typeof annotation.draftGold === "string" && annotation.draftGold.length > 20_000) ||
-          typeof annotation.note !== "string" ||
-          annotation.note.length > 20_000 ||
-          (annotation.status === "reviewed" && annotation.gold === null) ||
-          (annotation.status !== "reviewed" && annotation.gold !== null)) {
-        throw new Error(`Строка ${i + 1}: неверная разметка`);
-      }
-      annotations.set(record.id, annotation);
-    }
-  }
-  if (records.length === 0) throw new Error("JSONL-файл не содержит записей");
-  return { records, annotations };
-}
-
 function annotationFor(record) {
-  return state.annotations.get(record.id) ?? { status: "pending", gold: null, note: "" };
+  return state.annotations.get(record.id) ?? defaultAnnotation();
 }
 
 function selectedGroup() {
@@ -168,11 +119,13 @@ function renderDetail() {
   const entry = selectedEntry();
   const detail = $("record-detail");
   detail.replaceChildren();
-  for (const id of ["gold", "note", "mark-correct", "mark-edited", "mark-ambiguous"]) $(id).disabled = !entry;
+  for (const id of ["gold", "note", "origin-kind", "group-id", "apply-group", "mark-correct", "mark-edited", "mark-ambiguous"]) $(id).disabled = !entry;
   if (!entry) {
     detail.textContent = "Выберите вариант и запись.";
     $("gold").value = "";
     $("note").value = "";
+    $("origin-kind").value = "unknown";
+    $("group-id").value = "";
     $("annotation-state").textContent = "";
     return;
   }
@@ -196,6 +149,8 @@ function renderDetail() {
   }
   $("gold").value = annotation.status === "reviewed" ? annotation.gold ?? "" : annotation.draftGold ?? "";
   $("note").value = annotation.note;
+  $("origin-kind").value = annotation.originKind;
+  $("group-id").value = annotation.groupId;
   $("annotation-state").textContent = annotation.status === "reviewed"
     ? "Текст подтверждён человеком." : annotation.status === "ambiguous"
       ? "Смысл неясен; запись не должна входить в оценку." : "Эталон пока не подтверждён.";
@@ -267,12 +222,7 @@ function updateAnnotation(update) {
 
 function downloadProject() {
   if (!state.index) return;
-  const lines = state.index.entries.map(({ record }) => JSON.stringify({
-    schema_version: 1,
-    history: record,
-    annotation: annotationFor(record),
-  }));
-  const blob = new Blob([lines.join("\n") + "\n"], { type: "application/x-ndjson;charset=utf-8" });
+  const blob = new Blob([serializeProject(state.index.entries.map((entry) => entry.record), state.annotations)], { type: "application/x-ndjson;charset=utf-8" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
@@ -303,6 +253,37 @@ $("note").addEventListener("input", () => {
   if (!entry) return;
   state.annotations.set(entry.record.id, { ...annotationFor(entry.record), note: $("note").value });
   state.dirty = true;
+});
+$("origin-kind").addEventListener("change", () => {
+  const entry = selectedEntry();
+  if (entry) updateAnnotation({ originKind: $("origin-kind").value });
+});
+$("group-id").addEventListener("input", () => {
+  const entry = selectedEntry();
+  if (!entry) return;
+  state.annotations.set(entry.record.id, { ...annotationFor(entry.record), groupId: $("group-id").value });
+  state.dirty = true;
+});
+$("group-id").addEventListener("blur", () => {
+  const entry = selectedEntry();
+  if (!entry) return;
+  const groupId = $("group-id").value.trim();
+  if (groupId === $("group-id").value) return;
+  $("group-id").value = groupId;
+  state.annotations.set(entry.record.id, { ...annotationFor(entry.record), groupId });
+});
+$("apply-group").addEventListener("click", () => {
+  const group = selectedGroup();
+  const groupId = $("group-id").value.trim();
+  if (!group || !groupId) { message("Укажите непустое имя группы."); return; }
+  if (!window.confirm(`Назначить группу «${groupId}» ${group.ids.length} записям этого варианта?`)) return;
+  for (const index of group.ids) {
+    const record = state.index.entries[index].record;
+    state.annotations.set(record.id, { ...annotationFor(record), groupId });
+  }
+  state.dirty = true;
+  renderDetail();
+  message(`Группа «${groupId}» назначена ${group.ids.length} записям; правильный текст не менялся.`);
 });
 $("mark-correct").addEventListener("click", () => {
   const entry = selectedEntry();
