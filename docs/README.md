@@ -21,9 +21,13 @@
 
 ## Завершённые планы
 
-Реализовано, ожидает ручной проверки на Windows:
-[план шаблонов](templates-implementation-plan.md).
-
 - [Опциональный Tauri-лаунчер](done/launcher-implementation-plan.md)
 - [Голосовой редактор](done/voice-editor-implementation-plan.md)
 - [Управление заметками и историей](done/history-and-note-management-plan.md)
+- [Шаблоны, двойное нажатие Win и вставка](done/templates-implementation-plan.md) —
+  код реализован; работа с настоящими окнами и глобальным перехватом ещё требует
+  ручной проверки на Windows.
+- [Обзор экспериментов Rechprav 000–020](done/rechprav-results-review-plan.md)
+- [Подключение правила коррекции](done/rechprav-rule-integration-plan.md)
+
+Активные исследования и следующие небольшие шаги: [Rechprav](rechprav/README.md).

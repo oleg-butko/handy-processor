@@ -3,19 +3,19 @@
 A small OpenAI-compatible HTTP server for Handy's experimental
 post-processing feature. It currently:
 
-1. optionally converts the transcription to lowercase; and
+1. optionally converts the transcription to lowercase;
 2. optionally converts supported Russian cardinal numerals, including common case forms
    and scales through trillion, to digits, with conservative one-edit typo
-   correction inside confirmed numeric phrases; and
+   correction inside confirmed numeric phrases;
 3. optionally removes a period only when it is the final character (ignoring trailing
-   whitespace);
-4. stores each transformation in a size-limited local SQLite history that can
-   be exported as text; and
-5. provides a context-aware voice editor with named SQLite notes and
-   persistent undo/redo history; and
-6. shows the paginated history and configurable rule list in a React + Mantine
-   web UI; and
-7. filters three-level text templates, with a Windows double-Win shortcut
+   whitespace), or removes every comma when that separate rule is enabled;
+4. optionally corrects user-defined terms and phrases with a Rust worker;
+5. stores each transformation in a size-limited local SQLite history with
+   search, correction filtering, and text/JSONL export;
+6. provides a context-aware voice editor with named SQLite notes and
+   persistent undo/redo history;
+7. shows the history and configurable rule list in a React + Mantine web UI;
+8. filters three-level text templates, with a Windows double-Win shortcut
    and clipboard paste back into the originating application.
 
 For example, `МНЕ НУЖНО ДВАДЦАТЬ ДВА ФАЙЛА.` becomes

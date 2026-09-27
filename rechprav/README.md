@@ -14,12 +14,15 @@
 - [Протокол экспериментов](../docs/rechprav/experiment-protocol.md)
 - [История](../docs/rechprav/history.md)
 - [Сводка результатов](../docs/rechprav/RESULTS.md)
+- [Текущее состояние и следующие шаги](../docs/rechprav/next-steps.md)
 - [Первичное обследование](experiments/000-inventory/report.md)
 - [Формат корпуса и инструкция по разметке](../docs/rechprav/corpus-format.md)
 
 ## Сборка и проверки
 
-Текущий сквозной опыт — [020: смешанная генерация](../docs/rechprav/mixed-generation.md).
+Последний завершённый алгоритмический опыт —
+[020: смешанная генерация](../docs/rechprav/mixed-generation.md). За ним
+последовала [интеграция 021](../docs/rechprav/handy-integration.md).
 Для точного повторения runners 017–019 нужен их commit: после изменения runtime
 старые review/export намеренно отклоняются. Publication-тесты сами создают новые
 временные synthetic reviews.

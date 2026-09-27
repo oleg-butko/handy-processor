@@ -1,5 +1,9 @@
 # Подключение к списку правил и истории
 
+Статус: выполнено в этапе 021. Рабочее правило, JSONL worker и объяснения в
+истории описаны в [инструкции](../rechprav/handy-integration.md); проверки — в
+[отчёте](../../rechprav/experiments/021-rule-integration-v2/report.md).
+
 2026-09-22, ветка `feat/rechprav-rule-integration`.
 
 1. Один отключаемый метод для aliases, форм, фраз, произношений, контекста и
