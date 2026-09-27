@@ -12,6 +12,8 @@ const state = {
   recordPage: 0,
   shownGroups: 100,
   dirty: false,
+  operation: 0,
+  searchOperation: 0,
 };
 
 function message(text) { $("message").textContent = text; }
@@ -54,8 +56,11 @@ function parseJsonl(text, project) {
       const annotation = item.annotation;
       if (!["pending", "reviewed", "ambiguous"].includes(annotation.status) ||
           (annotation.gold !== null && typeof annotation.gold !== "string") ||
+          (typeof annotation.gold === "string" && annotation.gold.length > 20_000) ||
           (annotation.draftGold !== undefined && typeof annotation.draftGold !== "string") ||
+          (typeof annotation.draftGold === "string" && annotation.draftGold.length > 20_000) ||
           typeof annotation.note !== "string" ||
+          annotation.note.length > 20_000 ||
           (annotation.status === "reviewed" && annotation.gold === null) ||
           (annotation.status !== "reviewed" && annotation.gold !== null)) {
         throw new Error(`Строка ${i + 1}: неверная разметка`);
@@ -63,6 +68,7 @@ function parseJsonl(text, project) {
       annotations.set(record.id, annotation);
     }
   }
+  if (records.length === 0) throw new Error("JSONL-файл не содержит записей");
   return { records, annotations };
 }
 
@@ -199,10 +205,14 @@ function render() { renderSummary(); renderGroups(); renderRecords(); renderDeta
 
 async function runSearch() {
   if (!state.index) return;
+  const index = state.index;
+  const operation = state.operation;
+  const searchOperation = ++state.searchOperation;
   message("Поиск…");
   await new Promise((resolve) => requestAnimationFrame(() => setTimeout(resolve, 0)));
+  if (operation !== state.operation || searchOperation !== state.searchOperation || index !== state.index) return;
   try {
-    state.result = search(state.index, {
+    state.result = search(index, {
       query: $("query").value,
       mode: $("mode").value,
       distance: Number($("distance").value),
@@ -224,18 +234,23 @@ async function importFile(file, project) {
   if (!file) return;
   if (state.dirty && !window.confirm("Несохранённая разметка будет потеряна. Продолжить?")) return;
   if (file.size > MAX_FILE_BYTES) { message("Файл слишком большой для браузерной версии (максимум 100 МиБ)."); return; }
+  const operation = ++state.operation;
+  ++state.searchOperation;
   message("Чтение и индексация файла…");
   await new Promise((resolve) => requestAnimationFrame(() => setTimeout(resolve, 0)));
+  if (operation !== state.operation) return;
   try {
     const parsed = parseJsonl(await file.text(), project);
+    if (operation !== state.operation) return;
     const index = buildIndex(parsed.records);
+    if (operation !== state.operation) return;
     state.index = index;
     state.annotations = parsed.annotations;
     state.dirty = false;
     $("file-name").textContent = `${file.name} · ${parsed.records.length} записей`;
     $("save-project").disabled = false;
     await runSearch();
-  } catch (error) { message(error.message); }
+  } catch (error) { if (operation === state.operation) message(error.message); }
 }
 
 function updateAnnotation(update) {
@@ -266,8 +281,7 @@ function downloadProject() {
   link.click();
   link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 60_000);
-  state.dirty = false;
-  message("Проект подготовлен к скачиванию. Проверьте, что файл сохранён.");
+  message("Проект подготовлен к скачиванию. Проверьте файл перед закрытием вкладки; предупреждение о несохранённых изменениях останется.");
 }
 
 $("history-file").addEventListener("change", (event) => { void importFile(event.target.files?.[0], false); event.target.value = ""; });

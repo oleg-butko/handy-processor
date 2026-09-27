@@ -47,9 +47,29 @@ test("history import, fuzzy variants, annotation and project restore", async () 
     assert.equal(rows.length, 5);
     assert.equal(rows[0].annotation.gold, "сняли слот");
 
+    page.on("dialog", (dialog) => dialog.accept());
     await page.locator("#project-file").setInputFiles(saved);
-    await page.waitForFunction(() => document.querySelector("#summary")?.textContent?.includes("1 проверено"));
+    await page.waitForFunction(() => document.querySelector("#file-name")?.textContent?.includes("rechprav-annotation-"));
+    assert.match(await page.locator("#summary").textContent(), /1 проверено/u);
     assert.equal(await page.locator("#gold").inputValue(), "сняли слот");
+
+    await page.evaluate(() => {
+      const original = File.prototype.text;
+      File.prototype.text = function () {
+        if (this.name !== "slow.jsonl") return original.call(this);
+        return new Promise((resolve, reject) => setTimeout(() => original.call(this).then(resolve, reject), 300));
+      };
+    });
+    const record = (id) => JSON.stringify({ id, originalText: "пример", transformedText: "пример", source: "external" });
+    await page.locator("#history-file").setInputFiles({ name: "slow.jsonl", mimeType: "application/x-ndjson", buffer: Buffer.from(record(10)) });
+    await page.locator("#history-file").setInputFiles({ name: "fast.jsonl", mimeType: "application/x-ndjson", buffer: Buffer.from(record(11)) });
+    await page.waitForFunction(() => document.querySelector("#file-name")?.textContent?.includes("fast.jsonl"));
+    await page.waitForTimeout(400);
+    assert.match(await page.locator("#file-name").textContent(), /fast\.jsonl/u);
+
+    await page.locator("#history-file").setInputFiles({ name: "empty.jsonl", mimeType: "application/x-ndjson", buffer: Buffer.from("\n") });
+    await page.getByText("JSONL-файл не содержит записей").waitFor();
+    assert.match(await page.locator("#file-name").textContent(), /fast\.jsonl/u);
     assert.deepEqual(errors, []);
   } finally {
     await browser.close();
