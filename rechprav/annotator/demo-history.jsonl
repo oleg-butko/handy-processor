@@ -1,0 +1,5 @@
+{"id":1,"originalText":"сняли свод","transformedText":"сняли слот","createdAt":"2026-09-27T10:00:00.000Z","appliedRules":[{"id":"recognition.terms-and-phrases","version":1,"outcome":"changed","changed":true}],"source":"external","context":null}
+{"id":2,"originalText":"сняли свод","transformedText":"сняли свод","createdAt":"2026-09-27T10:01:00.000Z","appliedRules":[],"source":"external","context":null}
+{"id":3,"originalText":"сняли слот","transformedText":"сняли слот","createdAt":"2026-09-27T10:02:00.000Z","appliedRules":[],"source":"external","context":null}
+{"id":4,"originalText":"без снятия сваты","transformedText":"без снятия слота","createdAt":"2026-09-27T10:03:00.000Z","appliedRules":[{"id":"recognition.terms-and-phrases","version":1,"outcome":"changed","changed":true}],"source":"voice-editor","context":{"schemaVersion":1,"editor":{"sentencePosition":"middle"}}}
+{"id":5,"originalText":"проверили ввод","transformedText":"проверили ввод","createdAt":"2026-09-27T10:04:00.000Z","appliedRules":[],"source":"external","context":null}

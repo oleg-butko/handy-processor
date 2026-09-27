@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rechprav — очередь разметки</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <p class="eyebrow">Локальный инструмент Rechprav</p>
+        <h1>История и разметка</h1>
+        <p>Найдите повторяющиеся варианты распознавания и подтвердите правильный текст. Результат процессора не считается эталоном.</p>
+      </div>
+      <div class="privacy">Файл читается в браузере. Данные не отправляются на сервер; сохраните проект перед закрытием вкладки.</div>
+    </header>
+
+    <section class="toolbar" aria-label="Файлы проекта">
+      <label class="file-button">Импорт истории JSONL<input id="history-file" type="file" accept=".jsonl,.ndjson,application/x-ndjson"></label>
+      <label class="file-button secondary">Открыть проект<input id="project-file" type="file" accept=".jsonl,.ndjson,application/x-ndjson"></label>
+      <button id="save-project" disabled>Сохранить проект JSONL</button>
+      <span id="file-name">Файл не загружен</span>
+    </section>
+
+    <form id="search-form" class="search-panel">
+      <label class="query">Слово или фраза
+        <input id="query" type="search" placeholder="Например: сняли свод; пусто — частые одинаковые исходники">
+      </label>
+      <label>Искать в
+        <select id="mode"><option value="original">Исходнике</option><option value="result">Результате</option><option value="both">Обоих</option></select>
+      </label>
+      <label>Опечаток на слово
+        <select id="distance"><option value="0">0 — точно</option><option value="1">1</option><option value="2">2</option></select>
+      </label>
+      <label>Источник
+        <select id="source"><option value="all">Любой</option><option value="external">Внешний ввод</option><option value="voice-editor">Голосовой редактор</option></select>
+      </label>
+      <label>Порядок
+        <select id="sort"><option value="frequency">Частые сначала</option><option value="closest">Близкие сначала</option></select>
+      </label>
+      <label class="checkbox"><input id="changed-only" type="checkbox"> Только реальные замены корректора</label>
+      <button type="submit">Найти</button>
+    </form>
+
+    <p id="message" class="message" role="status"></p>
+    <p id="summary" class="summary">Импортируйте историю, чтобы начать.</p>
+    <div class="columns">
+      <section class="panel groups-panel">
+        <h2>Варианты <small id="group-count"></small></h2>
+        <p class="hint">Частота — число записей с похожим фрагментом. Похожие слова лишь кандидаты: проверьте записи вручную.</p>
+        <div id="groups" class="list"></div>
+      </section>
+      <section class="panel records-panel">
+        <h2>Записи <small id="record-count"></small></h2>
+        <div id="record-list" class="list"></div>
+        <div class="pager"><button id="previous-page" type="button">Назад</button><span id="page-label"></span><button id="next-page" type="button">Дальше</button></div>
+      </section>
+      <section class="panel annotation-panel">
+        <h2>Проверка записи</h2>
+        <div id="record-detail" class="record-detail">Выберите вариант и запись.</div>
+        <label class="gold-label">Правильный текст
+          <textarea id="gold" rows="5" disabled></textarea>
+        </label>
+        <label>Примечание (необязательно)
+          <textarea id="note" rows="2" disabled></textarea>
+        </label>
+        <div class="annotation-actions">
+          <button id="mark-correct" type="button" disabled>Исходник верен</button>
+          <button id="mark-edited" type="button" disabled>Подтвердить правку</button>
+          <button id="mark-ambiguous" type="button" disabled>Неясно</button>
+        </div>
+        <p id="annotation-state" class="hint"></p>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

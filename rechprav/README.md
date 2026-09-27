@@ -15,6 +15,7 @@
 - [История](../docs/rechprav/history.md)
 - [Сводка результатов](../docs/rechprav/RESULTS.md)
 - [Текущее состояние и следующие шаги](../docs/rechprav/next-steps.md)
+- [Локальная очередь разметки и нечёткий поиск повторов](annotator/README.md)
 - [Первичное обследование](experiments/000-inventory/report.md)
 - [Формат корпуса и инструкция по разметке](../docs/rechprav/corpus-format.md)
 

@@ -34,6 +34,7 @@
     "validate:numerals-morphology": "python3 scripts/generate_russian_numerals.py --check --validate-morphology",
     "dev": "npm run build:correction && npm run build:ui && tsx watch src/server.ts",
     "dev:ui": "vite",
+    "dev:annotator": "vite rechprav/annotator --host 127.0.0.1",
     "start": "node dist/server.js",
     "test": "npm run build && node --test dist/*.test.js && npm run test:packaging",
     "typecheck": "npm run typecheck:server && npm run typecheck:ui",
