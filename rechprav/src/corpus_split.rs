@@ -67,12 +67,18 @@ pub fn split(mut records: Vec<corpus::Record>, seed: &str) -> Result<SplitOutput
             }
         }
     }
-    let mut ordered = groups.into_iter().collect::<Vec<_>>();
-    ordered.sort_by(|(name_a, rows_a), (name_b, rows_b)| {
-        rows_b.len().cmp(&rows_a.len()).then_with(|| {
-            hashing::sha256_hex(format!("{seed}\0{name_a}").as_bytes())
-                .cmp(&hashing::sha256_hex(format!("{seed}\0{name_b}").as_bytes()))
+    let mut ordered = groups
+        .into_iter()
+        .map(|(name, members)| {
+            let hash = hashing::sha256_hex(format!("{seed}\0{name}").as_bytes());
+            (hash, members)
         })
+        .collect::<Vec<_>>();
+    ordered.sort_by(|(hash_a, rows_a), (hash_b, rows_b)| {
+        rows_b
+            .len()
+            .cmp(&rows_a.len())
+            .then_with(|| hash_a.cmp(hash_b))
     });
     let total = records.len();
     let targets = [total as f64 * 0.6, total as f64 * 0.2, total as f64 * 0.2];

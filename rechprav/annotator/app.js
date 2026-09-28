@@ -83,22 +83,23 @@ function renderAnalysis() {
   const container = $("analysis-pairs");
   container.replaceChildren();
   if (!state.index) return;
-  const analysis = summarizeAnnotations(state.index.entries.map((entry) => entry.record), state.annotations);
+  const analysis = summarizeAnnotations(state.index, state.annotations);
   const totals = analysis.totals;
   $("analysis-summary").textContent = `${totals.reviewed} проверено: ${totals.corrected} ошибок, ${totals.alreadyCorrect} исходников верны. ` +
     `Из ошибок ${totals.exactFix} исправлены точно, ${totals.missed} пропущены, ${totals.otherResult} дали другой результат; ` +
     `${totals.damagedCorrect} верных исходников испорчено. Происхождение: ${totals.realAsr} ASR, ` +
     `${totals.synthetic} технических, ${totals.unconfirmedOrigin} без подтверждения.`;
-  for (const pair of analysis.pairs.slice(0, 30)) {
+  for (const pair of analysis.pairs) {
     const button = element("button", "");
     button.type = "button";
     button.append(element("strong", "", `${pair.source.slice(0, 120)} → ${pair.gold.slice(0, 120)}`));
-    button.append(element("small", "", `${pair.count} подтверждено · ${pair.exactFix} точно исправлено · ${pair.missed} пропущено · ${pair.otherResult} другой результат`));
+    button.append(element("small", "", `${pair.count} подтверждено (${pair.realAsr} ASR, ${pair.synthetic} технических, ${pair.unconfirmedOrigin} без происхождения) · ` +
+      `${pair.exactFix} точно исправлено · ${pair.missed} пропущено · ${pair.otherResult} другой результат`));
     button.addEventListener("click", () => focusRecord(pair.ids[0]));
     container.append(button);
   }
-  if (analysis.pairs.length > 30) {
-    container.append(element("small", "", `Показаны 30 из ${analysis.pairs.length} пар.`));
+  if (analysis.pairCount > analysis.pairs.length) {
+    container.append(element("small", "", `Показаны ${analysis.pairs.length} из ${analysis.pairCount} пар.`));
   }
 }
 
