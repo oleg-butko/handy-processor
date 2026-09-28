@@ -3,6 +3,7 @@ use clap::{Args, Parser, Subcommand, ValueEnum};
 use rechprav::{
     annotation_import,
     corpus::{self, Origin},
+    corpus_split,
     corrector::{Baseline, Corrector, Keep, analyze},
     dictionary::Dictionary,
     frequency::{FrequencyPolicy, FrequencyScorer},
@@ -160,6 +161,14 @@ enum Command {
         #[arg(long)]
         output_dir: PathBuf,
     },
+    /// Assign whole reviewed groups to reproducible 60/20/20 pilot splits.
+    SplitCorpus {
+        input: PathBuf,
+        #[arg(long)]
+        output_dir: PathBuf,
+        #[arg(long, default_value = "pilot-1")]
+        seed: String,
+    },
     /// Write review, corrected text and debug to a NEW directory. Use --config to correct.
     #[command(visible_alias = "correct")]
     Review {
@@ -231,6 +240,7 @@ fn manifest(input: &Path, contents: &[u8], command: &str) -> serde_json::Value {
         ),
         ("src/main.rs", include_bytes!("main.rs")),
         ("src/corpus.rs", include_bytes!("corpus.rs")),
+        ("src/corpus_split.rs", include_bytes!("corpus_split.rs")),
         ("src/corrector.rs", include_bytes!("corrector.rs")),
         ("src/dictionary.rs", include_bytes!("dictionary.rs")),
         ("src/frequency.rs", include_bytes!("frequency.rs")),
@@ -477,6 +487,36 @@ fn run() -> Result<()> {
                 }
             }
             println!("{}", serde_json::to_string_pretty(&conversion.report)?);
+        }
+        Command::SplitCorpus {
+            input,
+            output_dir,
+            seed,
+        } => {
+            let contents = fs::read(&input).context("read corpus as UTF-8 JSONL")?;
+            let records = corpus::parse(std::str::from_utf8(&contents)?, &input)?;
+            let result = corpus_split::split(records, &seed)?;
+            new_dir(&output_dir)?;
+            save_json(&output_dir.join("report.json"), &result.report)?;
+            save_json(
+                &output_dir.join("manifest.json"),
+                &manifest(&input, &contents, "split-corpus"),
+            )?;
+            for (name, records) in [
+                ("train.jsonl", &result.train),
+                ("dev.jsonl", &result.dev),
+                ("test.jsonl", &result.test),
+            ] {
+                if !records.is_empty() {
+                    let mut file = new_file(&output_dir.join(name))?;
+                    for record in records {
+                        serde_json::to_writer(&mut file, record)?;
+                        writeln!(file)?;
+                    }
+                    file.flush()?;
+                }
+            }
+            println!("{}", serde_json::to_string_pretty(&result.report)?);
         }
         Command::Review {
             input,

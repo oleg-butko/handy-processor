@@ -1,5 +1,6 @@
 pub mod annotation_import;
 pub mod corpus;
+pub mod corpus_split;
 pub mod corrector;
 pub mod dictionary;
 pub mod frequency;

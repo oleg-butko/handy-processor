@@ -179,6 +179,21 @@ pub fn validate_record(record: &Record) -> Result<()> {
     Ok(())
 }
 
+/// The same key is used for leakage checks and safe grouping before a split.
+pub fn leakage_key(phrase: &str) -> String {
+    let normalized = tokenize(phrase, false)
+        .lexical
+        .into_iter()
+        .map(|token| token.key)
+        .collect::<Vec<_>>()
+        .join(" ");
+    if normalized.is_empty() {
+        key(phrase, false)
+    } else {
+        normalized
+    }
+}
+
 #[derive(Debug, Serialize)]
 pub struct Validation {
     pub records: usize,
@@ -220,18 +235,7 @@ pub fn validate(records: &[Record]) -> Result<Validation> {
             );
         }
         for phrase in std::iter::once(record.source.as_str()).chain(record.gold.as_deref()) {
-            let normalized = tokenize(phrase, false)
-                .lexical
-                .into_iter()
-                .map(|t| t.key)
-                .collect::<Vec<_>>()
-                .join(" ");
-            // Punctuation-only records are checked by a normalized raw key instead.
-            let normalized = if normalized.is_empty() {
-                key(phrase, false)
-            } else {
-                normalized
-            };
+            let normalized = leakage_key(phrase);
             if let Some(previous) = phrases.insert(normalized, record.split) {
                 ensure!(
                     previous == record.split,

@@ -99,9 +99,22 @@ mkdir -p rechprav/data/private
 
 Если файла реального ASR ещё нет, сначала работайте с техническим корпусом.
 Для примера есть `rechprav/data/fixtures/annotation-project/project.jsonl`.
-Рабочие файлы в `rechprav/data/private/` исключены из Git. Только после
-ручной проверки групп корпус следует делить по группам на train/dev/test;
-инструмент пока не делает этого автоматически.
+Рабочие файлы в `rechprav/data/private/` исключены из Git. После ручной проверки
+групп один корпус можно разделить целыми группами:
+
+```bash
+/home/user1/.local/bin/cargo run --manifest-path rechprav/Cargo.toml --locked --offline -- \
+  split-corpus rechprav/data/private/my-corpus-001/corpus-real-asr.jsonl \
+  --seed pilot-1 --output-dir rechprav/data/private/my-split-001
+```
+
+Команда проверяет перекрытие нормализованных source/gold между группами,
+назначает группы примерно в пропорции 60/20/20 и повторно валидирует все части
+вместе. Выходной каталог новый; в нём `report.json`, `manifest.json` с хешем
+входа и непустые `train.jsonl`, `dev.jsonl`, `test.jsonl`. На малом наборе часть
+может оказаться пустой. Один запуск принимает только реальное ASR **или**
+технические примеры. При одинаковом входе и seed результат воспроизводим;
+до оценки на test нельзя выбирать seed по результатам корректора.
 
 Проверка поиска: `node --test rechprav/annotator/search.test.mjs`.
 Браузерный тест: `node --test rechprav/annotator/annotator.browser.test.mjs`

@@ -136,20 +136,6 @@ fn derive_edits(source: &str, gold: &str) -> Result<Vec<corpus::Edit>> {
     Ok(edits)
 }
 
-fn phrase_key(phrase: &str) -> String {
-    let tokens = text::tokenize(phrase, false)
-        .lexical
-        .into_iter()
-        .map(|token| token.key)
-        .collect::<Vec<_>>()
-        .join(" ");
-    if tokens.is_empty() {
-        text::key(phrase, false)
-    } else {
-        tokens
-    }
-}
-
 fn find(parent: &mut [usize], index: usize) -> usize {
     if parent[index] != index {
         parent[index] = find(parent, parent[index]);
@@ -291,8 +277,8 @@ pub fn convert(contents: &str) -> Result<Conversion> {
     let mut manual_owner = HashMap::new();
     for (index, record) in records.iter().enumerate() {
         for key in [
-            phrase_key(&record.source),
-            phrase_key(record.gold.as_deref().unwrap()),
+            corpus::leakage_key(&record.source),
+            corpus::leakage_key(record.gold.as_deref().unwrap()),
         ] {
             if let Some(&other) = phrase_owner.get(&key) {
                 union(&mut parent, index, other);

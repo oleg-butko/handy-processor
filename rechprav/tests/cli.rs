@@ -9,6 +9,55 @@ fn cli(args: &[&str]) -> std::process::Output {
 }
 
 #[test]
+fn reviewed_project_converts_and_splits_without_overwriting() {
+    let temp = tempdir().unwrap();
+    let project = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join("data/fixtures/annotation-project/project.jsonl");
+    let imported = temp.path().join("imported");
+    let output = cli(&[
+        "import-annotations",
+        project.to_str().unwrap(),
+        "--output-dir",
+        imported.to_str().unwrap(),
+    ]);
+    assert!(
+        output.status.success(),
+        "{}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    let corpus = imported.join("corpus-synthetic.jsonl");
+    let report: serde_json::Value =
+        serde_json::from_str(&fs::read_to_string(imported.join("report.json")).unwrap()).unwrap();
+    assert_eq!(report["exported_records"], 3);
+    assert_eq!(report["exclusions"].as_array().unwrap().len(), 2);
+    assert!(
+        cli(&["validate", corpus.to_str().unwrap()])
+            .status
+            .success()
+    );
+
+    let split = temp.path().join("split");
+    let args = [
+        "split-corpus",
+        corpus.to_str().unwrap(),
+        "--output-dir",
+        split.to_str().unwrap(),
+        "--seed",
+        "fixture",
+    ];
+    assert!(cli(&args).status.success());
+    assert!(split.join("train.jsonl").exists());
+    assert!(!split.join("dev.jsonl").exists());
+    assert!(!split.join("test.jsonl").exists());
+    assert!(!cli(&args).status.success());
+    assert!(
+        cli(&["validate", split.join("train.jsonl").to_str().unwrap()])
+            .status
+            .success()
+    );
+}
+
+#[test]
 fn baseline_cli_corrects_with_config_and_exports_reproducible_resources() {
     let temp = tempdir().unwrap();
     let input = temp.path().join("input.txt");
